@@ -12,6 +12,8 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.pop.IModule;
 import org.eclipse.net4j.pop.task.ITask;
+import org.eclipse.net4j.util.ObjectUtil;
+import org.eclipse.net4j.util.StringUtil;
 
 import org.eclipse.core.runtime.PlatformObject;
 
@@ -52,5 +54,39 @@ public class Module extends PlatformObject implements IModule
   {
     // TODO Implement Module.close()
     throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  public int compareTo(IModule o)
+  {
+    return StringUtil.compare(name, o.getName());
+  }
+
+  @Override
+  public boolean equals(Object obj)
+  {
+    if (obj == this)
+    {
+      return true;
+    }
+
+    if (obj instanceof IModule)
+    {
+      IModule that = (IModule)obj;
+      return ObjectUtil.equals(task, that.getTask());
+    }
+
+    return false;
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return ObjectUtil.hashCode(task);
+  }
+
+  @Override
+  public String toString()
+  {
+    return name;
   }
 }

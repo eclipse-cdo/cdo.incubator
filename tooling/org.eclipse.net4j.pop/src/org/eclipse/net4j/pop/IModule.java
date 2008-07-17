@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.IAdaptable;
 /**
  * @author Eike Stepper
  */
-public interface IModule extends IAdaptable
+public interface IModule extends Comparable<IModule>, IAdaptable
 {
   public String getID();
 

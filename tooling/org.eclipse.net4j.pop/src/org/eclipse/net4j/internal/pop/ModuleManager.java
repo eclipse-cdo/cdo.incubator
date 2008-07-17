@@ -20,7 +20,10 @@ import org.eclipse.net4j.util.container.Container;
 import org.eclipse.core.runtime.Platform;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Eike Stepper
@@ -29,7 +32,7 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 {
   public static final ModuleManager INSTANCE = new ModuleManager();
 
-  private List<Module> modules = new ArrayList<Module>();
+  private Map<String, Module> modules = new HashMap<String, Module>();
 
   private ModuleManager()
   {
@@ -60,9 +63,12 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   public Module[] getModules()
   {
+    checkActive();
     synchronized (modules)
     {
-      return modules.toArray(new Module[modules.size()]);
+      List<Module> list = new ArrayList<Module>(modules.values());
+      Collections.sort(list);
+      return list.toArray(new Module[list.size()]);
     }
   }
 
@@ -97,5 +103,16 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   private void addModule(Module module)
   {
+    String id = module.getID();
+    synchronized (modules)
+    {
+      if (modules.containsKey(id))
+      {
+        throw new IllegalStateException("Duplicate module ID: " + id);
+      }
+
+      modules.put(id, module);
+      fireElementAddedEvent(module);
+    }
   }
 }
