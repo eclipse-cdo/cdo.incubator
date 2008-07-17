@@ -11,13 +11,37 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.pop.IModule;
+import org.eclipse.net4j.pop.task.ITask;
+
+import org.eclipse.core.runtime.PlatformObject;
 
 /**
  * @author Eike Stepper
  */
-public class Module implements IModule
+public class Module extends PlatformObject implements IModule
 {
+  private String id;
+
+  private String name;
+
+  private ITask task;
+
   public Module()
   {
+  }
+
+  public String getID()
+  {
+    return id;
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public ITask getTask()
+  {
+    return task;
   }
 }

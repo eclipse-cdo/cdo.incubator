@@ -10,10 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.core.runtime.IAdaptable;
+
 /**
  * @author Eike Stepper
  */
-public interface IModuleManager
+public interface IModuleManager extends IAdaptable
 {
   public static final IModuleManager INSTANCE = org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE;
 

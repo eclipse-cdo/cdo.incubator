@@ -10,9 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.task.ITask;
+
+import org.eclipse.core.runtime.IAdaptable;
+
 /**
  * @author Eike Stepper
  */
-public interface IModule
+public interface IModule extends IAdaptable
 {
+  public String getID();
+
+  public String getName();
+
+  public ITask getTask();
 }

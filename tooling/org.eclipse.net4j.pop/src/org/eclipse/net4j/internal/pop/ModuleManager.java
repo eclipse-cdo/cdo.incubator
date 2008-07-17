@@ -13,6 +13,8 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.pop.IModuleManager;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
+import org.eclipse.core.runtime.Platform;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +37,11 @@ public class ModuleManager extends Lifecycle implements IModuleManager
     {
       return elements.toArray(new Module[elements.size()]);
     }
+  }
+
+  @SuppressWarnings("unchecked")
+  public Object getAdapter(Class adapter)
+  {
+    return Platform.getAdapterManager().getAdapter(this, adapter);
   }
 }
