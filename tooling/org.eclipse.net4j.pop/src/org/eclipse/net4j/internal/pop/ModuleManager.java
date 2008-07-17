@@ -29,7 +29,7 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 {
   public static final ModuleManager INSTANCE = new ModuleManager();
 
-  private List<Module> elements = new ArrayList<Module>();
+  private List<Module> modules = new ArrayList<Module>();
 
   private ModuleManager()
   {
@@ -45,7 +45,11 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   public IModule createModule(String id, String name, ITask task)
   {
-    return null;
+    task.addComment("*** pop-module ***\nid = " + id + "\nname = " + name);
+    task.save();
+    Module module = new Module(id, name, task);
+    addModule(module);
+    return module;
   }
 
   public IModule openModule(ITask task)
@@ -56,9 +60,9 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   public Module[] getModules()
   {
-    synchronized (elements)
+    synchronized (modules)
     {
-      return elements.toArray(new Module[elements.size()]);
+      return modules.toArray(new Module[modules.size()]);
     }
   }
 
@@ -71,5 +75,27 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
   public Object getAdapter(Class adapter)
   {
     return Platform.getAdapterManager().getAdapter(this, adapter);
+  }
+
+  @Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    initModules();
+  }
+
+  @Override
+  protected void doDeactivate() throws Exception
+  {
+    modules.clear();
+    super.doDeactivate();
+  }
+
+  private void initModules()
+  {
+  }
+
+  private void addModule(Module module)
+  {
   }
 }

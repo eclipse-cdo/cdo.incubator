@@ -26,8 +26,11 @@ public class Module extends PlatformObject implements IModule
 
   private ITask task;
 
-  public Module()
+  public Module(String id, String name, ITask task)
   {
+    this.id = id;
+    this.name = name;
+    this.task = task;
   }
 
   public String getID()
