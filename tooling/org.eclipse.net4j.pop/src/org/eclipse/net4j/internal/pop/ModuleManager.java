@@ -13,12 +13,14 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.pop.IModule;
 import org.eclipse.net4j.pop.IModuleManager;
 import org.eclipse.net4j.pop.task.ITask;
+import org.eclipse.net4j.pop.task.ITaskAttributeValue;
 import org.eclipse.net4j.pop.task.ITaskRepository;
 import org.eclipse.net4j.util.container.Container;
 
 import org.eclipse.core.runtime.Platform;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -34,10 +36,17 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
   {
   }
 
-  public IModule createModule(ITaskRepository taskRepository, String id, String name)
+  public IModule createModule(String id, String name, ITaskRepository taskRepository,
+      Collection<ITaskAttributeValue> taskAttributeValues)
   {
-    // TODO Implement ModuleManager.createModule(taskRepository, id, name)
-    throw new UnsupportedOperationException("Not yet implemented");
+    ITask task = taskRepository.createTask();
+    task.setAttributeValues(taskAttributeValues);
+    return createModule(id, name, task);
+  }
+
+  public IModule createModule(String id, String name, ITask task)
+  {
+    return null;
   }
 
   public IModule openModule(ITask task)
