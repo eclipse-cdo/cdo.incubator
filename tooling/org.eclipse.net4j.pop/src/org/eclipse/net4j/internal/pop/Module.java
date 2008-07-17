@@ -24,25 +24,17 @@ public class Module extends PlatformObject implements IModule
 {
   private String id;
 
-  private String name;
-
   private ITask task;
 
-  public Module(String id, String name, ITask task)
+  public Module(String id, ITask task)
   {
     this.id = id;
-    this.name = name;
     this.task = task;
   }
 
   public String getID()
   {
     return id;
-  }
-
-  public String getName()
-  {
-    return name;
   }
 
   public ITask getTask()
@@ -58,7 +50,7 @@ public class Module extends PlatformObject implements IModule
 
   public int compareTo(IModule o)
   {
-    return StringUtil.compare(name, o.getName());
+    return StringUtil.compare(id, o.getID());
   }
 
   @Override
@@ -72,7 +64,7 @@ public class Module extends PlatformObject implements IModule
     if (obj instanceof IModule)
     {
       IModule that = (IModule)obj;
-      return ObjectUtil.equals(task, that.getTask());
+      return ObjectUtil.equals(id, that.getID());
     }
 
     return false;
@@ -81,12 +73,12 @@ public class Module extends PlatformObject implements IModule
   @Override
   public int hashCode()
   {
-    return ObjectUtil.hashCode(task);
+    return ObjectUtil.hashCode(id);
   }
 
   @Override
   public String toString()
   {
-    return name;
+    return id;
   }
 }

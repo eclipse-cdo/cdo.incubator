@@ -24,10 +24,9 @@ public interface IModuleManager extends IContainer<IModule>, IAdaptable
 {
   public static final IModuleManager INSTANCE = org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE;
 
-  public IModule createModule(String id, String name, ITaskRepository taskRepository,
-      ITaskAttributeValue[] taskAttributeValues);
+  public IModule createModule(String id, ITaskRepository taskRepository, ITaskAttributeValue[] taskAttributeValues);
 
-  public IModule createModule(String id, String name, ITask task);
+  public IModule createModule(String id, ITask task);
 
   public IModule openModule(ITask task);
 

@@ -21,8 +21,6 @@ public interface IModule extends Comparable<IModule>, IAdaptable
 {
   public String getID();
 
-  public String getName();
-
   public ITask getTask();
 
   public void close();
