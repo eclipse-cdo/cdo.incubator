@@ -48,8 +48,9 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   public IModule createModule(String id, String name, ITask task)
   {
-    task.addComment("*** pop-module ***\nid = " + id + "\nname = " + name);
+    task.addComment("*** pop-module  " + id + " ***\nname = " + name);
     task.save();
+
     Module module = new Module(id, name, task);
     addModule(module);
     return module;
