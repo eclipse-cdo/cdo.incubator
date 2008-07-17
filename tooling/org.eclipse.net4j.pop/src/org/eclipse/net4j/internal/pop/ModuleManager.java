@@ -16,6 +16,8 @@ import org.eclipse.net4j.pop.task.ITask;
 import org.eclipse.net4j.pop.task.ITaskAttributeValue;
 import org.eclipse.net4j.pop.task.ITaskComment;
 import org.eclipse.net4j.pop.task.ITaskRepository;
+import org.eclipse.net4j.pop.task.ITaskRepositoryManager;
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
 
 import org.eclipse.core.runtime.Platform;
@@ -149,7 +151,18 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   private boolean isModuleExisting(String id)
   {
-    // TODO Implement ModuleManager.isModuleExisting(id)
+    for (ITaskRepository repository : ITaskRepositoryManager.INSTANCE.getRepositories())
+    {
+      for (ITask task : repository.queryComments(POP_MODULE_PREFIX))
+      {
+        String existingID = getModuleID(task);
+        if (ObjectUtil.equals(id, existingID))
+        {
+          return true;
+        }
+      }
+    }
+
     return false;
   }
 
