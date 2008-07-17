@@ -10,14 +10,22 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.task.ITask;
+import org.eclipse.net4j.pop.task.ITaskRepository;
+import org.eclipse.net4j.util.container.IContainer;
+
 import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface IModuleManager extends IAdaptable
+public interface IModuleManager extends IContainer<IModule>, IAdaptable
 {
   public static final IModuleManager INSTANCE = org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE;
+
+  public IModule createModule(ITaskRepository taskRepository, String id, String name);
+
+  public IModule openModule(ITask task);
 
   public IModule[] getModules();
 }

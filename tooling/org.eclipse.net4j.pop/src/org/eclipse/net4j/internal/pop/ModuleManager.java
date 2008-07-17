@@ -10,8 +10,11 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
+import org.eclipse.net4j.pop.IModule;
 import org.eclipse.net4j.pop.IModuleManager;
-import org.eclipse.net4j.util.lifecycle.Lifecycle;
+import org.eclipse.net4j.pop.task.ITask;
+import org.eclipse.net4j.pop.task.ITaskRepository;
+import org.eclipse.net4j.util.container.Container;
 
 import org.eclipse.core.runtime.Platform;
 
@@ -21,7 +24,7 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public class ModuleManager extends Lifecycle implements IModuleManager
+public class ModuleManager extends Container<IModule> implements IModuleManager
 {
   public static final ModuleManager INSTANCE = new ModuleManager();
 
@@ -31,12 +34,29 @@ public class ModuleManager extends Lifecycle implements IModuleManager
   {
   }
 
+  public IModule createModule(ITaskRepository taskRepository, String id, String name)
+  {
+    // TODO Implement ModuleManager.createModule(taskRepository, id, name)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  public IModule openModule(ITask task)
+  {
+    // TODO Implement ModuleManager.openModule(task)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
   public Module[] getModules()
   {
     synchronized (elements)
     {
       return elements.toArray(new Module[elements.size()]);
     }
+  }
+
+  public Module[] getElements()
+  {
+    return getModules();
   }
 
   @SuppressWarnings("unchecked")

@@ -44,4 +44,10 @@ public class Module extends PlatformObject implements IModule
   {
     return task;
   }
+
+  public void close()
+  {
+    // TODO Implement Module.close()
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
 }

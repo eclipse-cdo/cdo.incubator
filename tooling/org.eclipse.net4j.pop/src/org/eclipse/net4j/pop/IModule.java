@@ -24,4 +24,6 @@ public interface IModule extends IAdaptable
   public String getName();
 
   public ITask getTask();
+
+  public void close();
 }
