@@ -20,7 +20,6 @@ import org.eclipse.net4j.util.container.Container;
 import org.eclipse.core.runtime.Platform;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -37,7 +36,7 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
   }
 
   public IModule createModule(String id, String name, ITaskRepository taskRepository,
-      Collection<ITaskAttributeValue> taskAttributeValues)
+      ITaskAttributeValue[] taskAttributeValues)
   {
     ITask task = taskRepository.createTask();
     task.setAttributeValues(taskAttributeValues);

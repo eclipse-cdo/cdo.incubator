@@ -17,8 +17,6 @@ import org.eclipse.net4j.util.container.IContainer;
 
 import org.eclipse.core.runtime.IAdaptable;
 
-import java.util.Collection;
-
 /**
  * @author Eike Stepper
  */
@@ -27,7 +25,7 @@ public interface IModuleManager extends IContainer<IModule>, IAdaptable
   public static final IModuleManager INSTANCE = org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE;
 
   public IModule createModule(String id, String name, ITaskRepository taskRepository,
-      Collection<ITaskAttributeValue> taskAttributeValues);
+      ITaskAttributeValue[] taskAttributeValues);
 
   public IModule createModule(String id, String name, ITask task);
 
