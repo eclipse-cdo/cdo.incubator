@@ -59,7 +59,7 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
     String existingID = getModuleID(task);
     if (existingID != null)
     {
-      throw new IllegalStateException("Task already has a module: " + existingID);
+      throw new IllegalStateException("Task does already contain a module: " + existingID);
     }
 
     return doCreateModule(id, task);
