@@ -10,12 +10,17 @@
  **************************************************************************/
 package @api.package@;
 
+import org.eclipse.net4j.util.container.IContainer;
+import org.eclipse.core.runtime.IAdaptable;
+
 /**
  * \@author @author.name@
  */
-public interface I@api.type@Manager
+public interface I@api.type@Manager extends IContainer<I@api.type@>, IAdaptable
 {
-  public static final I@api.type@Manager INSTANCE = @impl.package@.@api.type@Manager.INSTANCE;
+  I@api.type@Manager INSTANCE = @impl.package@.@api.type@Manager.INSTANCE;
+  
+  public I@api.type@ get@api.type@(String id);
   
   public I@api.type@[] get@api.type@s();
 }

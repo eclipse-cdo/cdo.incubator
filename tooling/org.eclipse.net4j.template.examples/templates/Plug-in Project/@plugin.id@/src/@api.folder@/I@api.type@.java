@@ -10,9 +10,12 @@
  **************************************************************************/
 package @api.package@;
 
+import org.eclipse.core.runtime.IAdaptable;
+
 /**
  * \@author @author.name@
  */
-public interface I@api.type@
+public interface I@api.type@ extends Comparable<I@api.type@>, IAdaptable
 {
+  public String getID();
 }

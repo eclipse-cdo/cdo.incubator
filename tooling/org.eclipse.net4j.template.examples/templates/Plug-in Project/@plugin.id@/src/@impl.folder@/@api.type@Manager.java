@@ -11,28 +11,94 @@
 package @impl.package@;
 
 import @api.package@.I@api.type@Manager;
-import org.eclipse.net4j.util.lifecycle.Lifecycle;
-import java.util.List;
+import @api.package@.I@api.type@;
+import org.eclipse.net4j.util.container.Container;
+import org.eclipse.core.runtime.Platform;
+
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * \@author @author.name@
  */
-public class @api.type@Manager extends Lifecycle implements I@api.type@Manager
+public class @api.type@Manager extends Container<I@api.type@> implements I@api.type@Manager
 {
   public static final @api.type@Manager INSTANCE = new @api.type@Manager();
-
-  private List<@api.type@> elements = new ArrayList<@api.type@>();
+  
+  private Map<String, @api.type@> elements = new HashMap<String, @api.type@>();
   
   private @api.type@Manager()
   {
   }
   
-  public @api.type@[] get@api.type@s()
+  public void add@api.type@(I@api.type@ element)
   {
+    String id = element.getID();
     synchronized (elements)
     {
-  	  return elements.toArray(new @api.type@[elements.size()]);
+      if (elements.containsKey(id))
+      {
+        throw new IllegalStateException("Duplicate  ID: " + id);
+      }
+
+      elements.put(id, (@api.type@)element);
+      if (isActive())
+      {
+        fireElementAddedEvent(element);
+      }
     }
+  }
+  
+  public @api.type@ get@api.type@(String id)
+  {
+    checkActive();
+    synchronized (elements)
+    {
+      return elements.get(id);
+    }
+  }
+
+  public @api.type@[] get@api.type@s()
+  {
+    checkActive();
+    synchronized (elements)
+    {
+      List<@api.type@> list = new ArrayList<@api.type@>(elements.values());
+      Collections.sort(list);
+      return list.toArray(new @api.type@[list.size()]);
+    }
+  }
+  
+  public @api.type@[] getElements()
+  {
+    return get@api.type@s();
+  }
+
+  \@SuppressWarnings("unchecked")
+  public Object getAdapter(Class adapter)
+  {
+    return Platform.getAdapterManager().getAdapter(this, adapter);
+  }
+
+  \@Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    init@api.type@s();
+  }
+
+  \@Override
+  protected void doDeactivate() throws Exception
+  {
+    elements.clear();
+    super.doDeactivate();
+  }
+
+  protected void init@api.type@s()
+  {
+    // TODO Implement @api.type@Manager.init@api.type@s()
   }
 }

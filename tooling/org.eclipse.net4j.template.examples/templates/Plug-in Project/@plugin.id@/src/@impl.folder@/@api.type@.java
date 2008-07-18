@@ -11,13 +11,58 @@
 package @impl.package@;
 
 import @api.package@.I@api.type@;
+import org.eclipse.net4j.util.ObjectUtil;
+import org.eclipse.net4j.util.StringUtil;
+import org.eclipse.core.runtime.PlatformObject;
 
 /**
  * \@author @author.name@
  */
-public class @api.type@ implements I@api.type@
+public class @api.type@ extends PlatformObject implements I@api.type@
 {
-  public @api.type@()
+  private String id;
+  
+  public @api.type@(String id)
   {
+    this.id = id;
+  }
+
+  public String getID()
+  {
+    return id;
+  }
+  
+  public int compareTo(I@api.type@ o)
+  {
+    return StringUtil.compare(id, o.getID());
+  }
+
+  \@Override
+  public boolean equals(Object obj)
+  {
+    if (obj == this)
+    {
+      return true;
+    }
+
+    if (obj instanceof I@api.type@)
+    {
+      I@api.type@ that = (I@api.type@)obj;
+      return ObjectUtil.equals(id, that.getID());
+    }
+
+    return false;
+  }
+
+  \@Override
+  public int hashCode()
+  {
+    return ObjectUtil.hashCode(id);
+  }
+
+  \@Override
+  public String toString()
+  {
+    return id;
   }
 }
