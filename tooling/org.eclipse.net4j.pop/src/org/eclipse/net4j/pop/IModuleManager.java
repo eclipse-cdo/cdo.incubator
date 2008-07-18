@@ -30,5 +30,7 @@ public interface IModuleManager extends IContainer<IModule>, IAdaptable
 
   public IModule openModule(ITask task);
 
+  public IModule getModule(String id);
+
   public IModule[] getModules();
 }

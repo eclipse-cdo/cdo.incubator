@@ -65,7 +65,7 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
     return doCreateModule(id, task);
   }
 
-  public IModule openModule(ITask task)
+  public Module openModule(ITask task)
   {
     task.sync();
     String id = getModuleID(task);
@@ -77,6 +77,15 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
     Module module = new Module(id, task);
     addModule(module);
     return module;
+  }
+
+  public Module getModule(String id)
+  {
+    checkActive();
+    synchronized (modules)
+    {
+      return modules.get(id);
+    }
   }
 
   public Module[] getModules()
@@ -117,19 +126,21 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   private void initModules()
   {
+    // TODO Implement ModuleManager.initModules()
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
-  private void addModule(Module module)
+  public void addModule(IModule module)
   {
     String id = module.getID();
     synchronized (modules)
     {
       if (modules.containsKey(id))
       {
-        throw new IllegalStateException("Duplicate module ID: " + id);
+        throw new IllegalStateException("Duplicate  ID: " + id);
       }
 
-      modules.put(id, module);
+      modules.put(id, (Module)module);
       fireElementAddedEvent(module);
     }
   }
@@ -138,7 +149,7 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
   {
     if (isModuleExisting(id))
     {
-      throw new IllegalStateException("Module exists: id");
+      throw new IllegalStateException("Module exists: " + id);
     }
 
     task.addComment(POP_MODULE_PREFIX + id + POP_MODULE_SUFFIX);
