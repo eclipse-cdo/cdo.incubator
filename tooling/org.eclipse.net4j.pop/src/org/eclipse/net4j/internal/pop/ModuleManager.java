@@ -33,11 +33,11 @@ import java.util.Map;
  */
 public class ModuleManager extends Container<IModule> implements IModuleManager
 {
-  private static final String POP_MODULE_SUFFIX = " ***";
+  public static final ModuleManager INSTANCE = new ModuleManager();
 
   private static final String POP_MODULE_PREFIX = "***pop-module ";
 
-  public static final ModuleManager INSTANCE = new ModuleManager();
+  private static final String POP_MODULE_SUFFIX = " ***";
 
   private Map<String, Module> modules = new HashMap<String, Module>();
 
