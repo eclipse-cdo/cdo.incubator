@@ -41,6 +41,12 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   private Map<String, Module> modules = new HashMap<String, Module>();
 
+  // private static TaskRepositoryManager repositoryManager;
+  //
+  // private static RepositoryModel repositoryModel;
+  //
+  // private static TaskList taskList;
+
   private ModuleManager()
   {
   }
@@ -126,6 +132,10 @@ public class ModuleManager extends Container<IModule> implements IModuleManager
 
   private void initModules()
   {
+    // repositoryManager = new TaskRepositoryManager();
+    // taskList = new TaskList();
+    // repositoryModel = new RepositoryModel(taskList, repositoryManager);
+
     // TODO Implement ModuleManager.initModules()
     throw new UnsupportedOperationException("Not yet implemented");
   }
