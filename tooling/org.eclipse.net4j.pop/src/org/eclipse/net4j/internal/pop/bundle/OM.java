@@ -52,13 +52,13 @@ public abstract class OM
     public void start(BundleContext context) throws Exception
     {
       super.start(context);
-      org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE.activate();
+      // org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE.activate();
     }
 
     @Override
     public void stop(BundleContext context) throws Exception
     {
-      org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE.deactivate();
+      // org.eclipse.net4j.internal.pop.ModuleManager.INSTANCE.deactivate();
       super.stop(context);
     }
   }

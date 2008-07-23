@@ -10,12 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
-import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface ICodeRepository
+public interface ICommitter extends IAdaptable
 {
-  public IProject[] checkout();
+  public String getName();
+
+  public String getEmail();
+
+  public String getTicketAccount();
+
+  public String getCodeAccount();
 }
