@@ -21,24 +21,31 @@ import java.util.Date;
  */
 public class Merge extends Element implements IMerge
 {
+  private Container container;
+
+  private Date mergeDate;
+
   private IDelivery delivery;
 
-  protected Merge()
+  public Merge(Container container, Date mergeDate, IDelivery delivery)
   {
+    this.container = container;
+    this.mergeDate = mergeDate;
+    this.delivery = delivery;
+  }
+
+  public Container getContainer()
+  {
+    return container;
+  }
+
+  public Date getMergeDate()
+  {
+    return mergeDate;
   }
 
   public IDelivery getDelivery()
   {
     return delivery;
-  }
-
-  public Date getDate()
-  {
-    return null;
-  }
-
-  public Container getMergeContainer()
-  {
-    return null;
   }
 }

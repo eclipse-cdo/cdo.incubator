@@ -10,8 +10,9 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.code.ITag;
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 import org.eclipse.core.runtime.IAdaptable;
 
@@ -27,7 +28,7 @@ public interface ITaskStream extends IStream, IDelivery.Container
    */
   public interface Container extends IAdaptable
   {
-    public ITaskStream addTaskStream(ITag baseline, String ticketID);
+    public ITaskStream addTaskStream(IBranch branch, ITicket ticket);
 
     public int getTaskStreamCount();
 

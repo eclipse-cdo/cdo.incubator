@@ -11,32 +11,40 @@
 package org.eclipse.net4j.internal.pop.stream;
 
 import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.stream.IStream;
+import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
-public abstract class Stream extends Element implements IStream
+public class TaskStreamContainer extends ElementContainer<ITaskStream> implements ITaskStream.Container
 {
-  private IBranch branch;
-
-  private ITicket ticket;
-
-  protected Stream(IBranch branch, ITicket ticket)
+  public TaskStreamContainer(Element notifier)
   {
-    this.branch = branch;
-    this.ticket = ticket;
+    super(notifier);
   }
 
-  public IBranch getBranch()
+  public ITaskStream addTaskStream(IBranch branch, ITicket ticket)
   {
-    return branch;
+    ITaskStream taskStream = new TaskStream(this, branch, ticket);
+    addElement(taskStream);
+    return taskStream;
   }
 
-  public ITicket getTicket()
+  public ITaskStream getTaskStream(int index)
   {
-    return ticket;
+    return getElement(index);
+  }
+
+  public int getTaskStreamCount()
+  {
+    return getElementCount();
+  }
+
+  public ITaskStream[] getTaskStreams()
+  {
+    return getElements(ITaskStream.class);
   }
 }

@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop.delivery;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
+import org.eclipse.net4j.pop.delivery.IMerge.Container;
 
 import java.util.Date;
 
@@ -26,9 +27,9 @@ public class MergeProducer extends MergeContainer implements IMerge.Producer
     super(notifier);
   }
 
-  public IMerge addMerge(IDelivery delivery, Date date)
+  public IMerge addMerge(Date mergeDate, IDelivery delivery)
   {
-    IMerge merge = new Merge();
+    IMerge merge = new Merge((Container)getDelegator(), mergeDate, delivery);
     addElement(merge);
     return merge;
   }

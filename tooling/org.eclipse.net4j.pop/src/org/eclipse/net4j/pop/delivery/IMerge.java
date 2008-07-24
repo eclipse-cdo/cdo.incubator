@@ -19,11 +19,11 @@ import java.util.Date;
  */
 public interface IMerge extends IElement
 {
-  public Date getDate();
+  public Date getMergeDate();
 
   public IDelivery getDelivery();
 
-  public IMerge.Container getMergeContainer();
+  public Container getContainer();
 
   /**
    * @author Eike Stepper
@@ -42,6 +42,6 @@ public interface IMerge extends IElement
    */
   public interface Producer extends Container
   {
-    public IMerge addMerge(IDelivery delivery, Date date);
+    public IMerge addMerge(Date mergeDate, IDelivery delivery);
   }
 }

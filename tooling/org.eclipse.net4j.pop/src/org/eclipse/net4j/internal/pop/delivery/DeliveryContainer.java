@@ -10,11 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.delivery.IDelivery.Container;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Eike Stepper
@@ -26,11 +28,15 @@ public class DeliveryContainer extends ElementContainer<IDelivery> implements ID
     super(notifier);
   }
 
-  public IDelivery addDelivery(Date date)
+  public IDelivery addDelivery(Date deliveryDate)
   {
-    IDelivery delivery = new Delivery();
-    addElement(delivery);
-    return delivery;
+    List<IDelivery> elements = getElements();
+    synchronized (elements)
+    {
+      IDelivery delivery = new Delivery((Container)getDelegator(), deliveryDate, elements.size());
+      addElement(delivery);
+      return delivery;
+    }
   }
 
   public IDelivery[] getDeliveries()

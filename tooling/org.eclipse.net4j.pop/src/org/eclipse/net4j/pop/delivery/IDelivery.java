@@ -30,7 +30,7 @@ public interface IDelivery extends IElement
    */
   public interface Container extends IElement
   {
-    public IDelivery addDelivery(Date date);
+    public IDelivery addDelivery(Date deliveryDate);
 
     public int getDeliveryCount();
 

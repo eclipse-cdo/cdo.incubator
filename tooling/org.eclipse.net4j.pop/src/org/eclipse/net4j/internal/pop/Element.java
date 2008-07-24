@@ -30,6 +30,14 @@ public abstract class Element extends Notifier implements IElement
   {
   }
 
+  protected void checkArgument(Object arg, String argName, Class<?> argClass)
+  {
+    if (!argClass.isInstance(arg))
+    {
+      throw new IllegalArgumentException(argName);
+    }
+  }
+
   protected void checkArgument(Object arg, String argName)
   {
     if (arg == null)

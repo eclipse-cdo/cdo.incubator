@@ -20,22 +20,31 @@ import java.util.Date;
  */
 public class Delivery extends Element implements IDelivery
 {
-  public Delivery()
+  private Container container;
+
+  private Date deliveryDate;
+
+  private int deliveryNumber;
+
+  public Delivery(Container container, Date deliveryDate, int deliveryNumber)
   {
+    this.container = container;
+    this.deliveryDate = deliveryDate;
+    this.deliveryNumber = deliveryNumber;
   }
 
   public Container getDeliveryContainer()
   {
-    return null;
+    return container;
   }
 
   public Date getDeliveryDate()
   {
-    return null;
+    return deliveryDate;
   }
 
   public int getDeliveryNumber()
   {
-    return 0;
+    return deliveryNumber;
   }
 }

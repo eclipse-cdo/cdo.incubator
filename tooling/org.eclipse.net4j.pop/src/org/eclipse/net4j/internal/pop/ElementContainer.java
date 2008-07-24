@@ -23,11 +23,16 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
 {
   private List<ELEMENT> elements = new ArrayList<ELEMENT>();
 
-  private Element notifier;
+  private Element delegator;
 
-  protected ElementContainer(Element notifier)
+  protected ElementContainer(Element delegator)
   {
-    this.notifier = notifier;
+    this.delegator = delegator;
+  }
+
+  protected Element getDelegator()
+  {
+    return delegator;
   }
 
   protected void addElement(ELEMENT element)
@@ -37,7 +42,7 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
       if (!elements.contains(element))
       {
         elements.add(element);
-        notifier.fireEvent(new ElementAddedEvent(notifier, element));
+        delegator.fireEvent(new ElementAddedEvent(delegator, element));
       }
     }
   }
@@ -48,7 +53,7 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
     {
       if (!elements.remove(element))
       {
-        notifier.fireEvent(new ElementRemovedEvent(notifier, element));
+        delegator.fireEvent(new ElementRemovedEvent(delegator, element));
       }
     }
   }
@@ -67,6 +72,11 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
     {
       return elements.get(index);
     }
+  }
+
+  protected List<ELEMENT> getElements()
+  {
+    return elements;
   }
 
   @SuppressWarnings("unchecked")
