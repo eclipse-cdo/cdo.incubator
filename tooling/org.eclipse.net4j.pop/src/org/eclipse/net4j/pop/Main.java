@@ -24,7 +24,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    IPop pop = PopUtil.createPop("CDO", null);
+    IPop pop = PopUtil.createPop("CDO", null, null);
     ITaskStream taskStream = pop.addTaskStream(null, null);
 
     IDelivery delivery1 = taskStream.addDelivery(new Date());

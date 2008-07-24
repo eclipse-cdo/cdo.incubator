@@ -17,6 +17,7 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
+import org.eclipse.net4j.pop.stream.IStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.text.MessageFormat;
@@ -31,7 +32,7 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
 
   public MaintenanceStream(Container container, IBranch branch, ITicket ticket)
   {
-    super(branch, ticket);
+    super(((IStream)container).getPop(), branch, ticket);
     this.container = container;
   }
 

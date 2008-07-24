@@ -10,10 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.stream.IDevelopmentStream;
-import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.util.IElement;
 
 /**
@@ -21,13 +17,7 @@ import org.eclipse.net4j.pop.util.IElement;
  */
 public interface IBranchingStrategy extends IElement
 {
-  public IBranch getDevelopmentBranch(IPop pop);
+  public IBranch getMaintenanceBranch(IBranchPoint baseline);
 
-  public IBranch getMaintenanceBranch(IDevelopmentStream stream);
-
-  public IBranch getTaskBranch(IDevelopmentStream stream);
-
-  public IBranch getTaskBranch(ITaskStream stream);
-
-  public IBranch getMergeBranch(IMerge merge);
+  public IBranch getTaskBranch(IBranchPoint baseline);
 }

@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.util.IElement;
@@ -19,6 +20,8 @@ import org.eclipse.net4j.pop.util.IElement;
  */
 public interface IStream extends IElement
 {
+  public IPop getPop();
+
   public IBranch getBranch();
 
   public ITicket getTicket();

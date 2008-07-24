@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.code.IBranchingStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 
@@ -22,6 +23,8 @@ import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 public interface IPop extends IDevelopmentStream, ICommitter.Container
 {
   public String getName();
+
+  public IBranchingStrategy getBranchingStrategy();
 
   public ICommitter addCommitter(String name, String email, String ticketAccount, String codeAccount);
 }
