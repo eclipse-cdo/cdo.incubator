@@ -8,32 +8,27 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.release;
+package org.eclipse.net4j.internal.pop.stream;
 
-import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.stream.IMaintenanceStream;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
-public interface IRelease extends ITarget, IMilestone.Container
+public class MaintenanceStream extends IntegrationStream implements IMaintenanceStream
 {
-  public IVersion getVersion();
+  private Container container;
 
-  public boolean isCompatible();
-
-  public Container getContainer();
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
+  public MaintenanceStream(Container container, IBranch branch, ITicket ticket)
   {
-    public IRelease addRelease(boolean compatible);
+    super(branch, ticket);
+    this.container = container;
+  }
 
-    public int getReleaseCount();
-
-    public IRelease getRelease(int index);
-
-    public IRelease[] getReleases();
+  public Container getContainer()
+  {
+    return container;
   }
 }

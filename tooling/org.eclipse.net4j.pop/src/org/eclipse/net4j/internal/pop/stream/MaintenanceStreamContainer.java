@@ -13,39 +13,40 @@ package org.eclipse.net4j.internal.pop.stream;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.stream.ITaskStream;
-import org.eclipse.net4j.pop.stream.ITaskStream.Container;
+import org.eclipse.net4j.pop.stream.IMaintenanceStream;
+import org.eclipse.net4j.pop.stream.IMaintenanceStream.Container;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
-public class TaskStreamContainer extends ElementContainer<ITaskStream> implements ITaskStream.Container
+public class MaintenanceStreamContainer extends ElementContainer<IMaintenanceStream> implements
+    IMaintenanceStream.Container
 {
-  public TaskStreamContainer(Element delegator)
+  public MaintenanceStreamContainer(Element delegator)
   {
     super(delegator);
   }
 
-  public ITaskStream addTaskStream(IBranch branch, ITicket ticket)
+  public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket)
   {
-    ITaskStream taskStream = new TaskStream((Container)getDelegator(), branch, ticket);
-    addElement(taskStream);
-    return taskStream;
+    IMaintenanceStream maintenanceStream = new MaintenanceStream((Container)getDelegator(), branch, ticket);
+    addElement(maintenanceStream);
+    return maintenanceStream;
   }
 
-  public ITaskStream getTaskStream(int index)
+  public IMaintenanceStream getMaintenanceStream(int index)
   {
     return getElement(index);
   }
 
-  public int getTaskStreamCount()
+  public int getMaintenanceStreamCount()
   {
     return getElementCount();
   }
 
-  public ITaskStream[] getTaskStreams()
+  public IMaintenanceStream[] getMaintenanceStreams()
   {
-    return getElements(ITaskStream.class);
+    return getElements(IMaintenanceStream.class);
   }
 }

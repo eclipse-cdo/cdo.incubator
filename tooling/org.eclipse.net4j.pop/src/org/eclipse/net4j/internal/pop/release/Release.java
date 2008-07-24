@@ -23,19 +23,23 @@ import java.util.List;
  */
 public class Release extends Target implements IRelease
 {
+  private Container container;
+
   private IVersion version;
 
   private boolean compatible;
 
   private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
 
-  public Release()
+  public Release(Container container, boolean compatible)
   {
+    this.container = container;
+    this.compatible = compatible;
   }
 
-  public Container getReleaseContainer()
+  public Container getContainer()
   {
-    return null;
+    return container;
   }
 
   public IVersion getVersion()

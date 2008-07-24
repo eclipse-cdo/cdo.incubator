@@ -22,9 +22,9 @@ import java.util.Date;
  */
 public class MergeProducer extends MergeContainer implements IMerge.Producer
 {
-  public MergeProducer(Element notifier)
+  public MergeProducer(Element delegator)
   {
-    super(notifier);
+    super(delegator);
   }
 
   public IMerge addMerge(Date mergeDate, IDelivery delivery)

@@ -23,9 +23,9 @@ import java.util.List;
  */
 public class DeliveryContainer extends ElementContainer<IDelivery> implements IDelivery.Container
 {
-  public DeliveryContainer(Element notifier)
+  public DeliveryContainer(Element delegator)
   {
-    super(notifier);
+    super(delegator);
   }
 
   public IDelivery addDelivery(Date deliveryDate)

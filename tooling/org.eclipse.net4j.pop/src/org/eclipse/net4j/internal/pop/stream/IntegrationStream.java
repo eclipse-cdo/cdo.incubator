@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
-import org.eclipse.net4j.internal.pop.delivery.MergeContainer;
+import org.eclipse.net4j.internal.pop.delivery.MergeProducer;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
@@ -32,7 +32,7 @@ public class IntegrationStream extends Stream implements IIntegrationStream
 {
   private TaskStreamContainer taskStreamContainer = new TaskStreamContainer(this);
 
-  private MergeContainer mergeContainer = new MergeContainer(this);
+  private MergeProducer mergeProducer = new MergeProducer(this);
 
   private ReleaseContainer releaseContainer = new ReleaseContainer(this);
 
@@ -43,64 +43,62 @@ public class IntegrationStream extends Stream implements IIntegrationStream
 
   public ITaskStream addTaskStream(IBranch branch, ITicket ticket)
   {
-    ITaskStream taskStream = new TaskStream(this, branch, ticket);
-    taskStreamContainer.addTaskStream(branch, ticket);
-    return taskStream;
+    return taskStreamContainer.addTaskStream(branch, ticket);
   }
 
   public ITaskStream getTaskStream(int index)
   {
-    return null;
+    return taskStreamContainer.getTaskStream(index);
   }
 
   public int getTaskStreamCount()
   {
-    return 0;
+    return taskStreamContainer.getTaskStreamCount();
   }
 
   public ITaskStream[] getTaskStreams()
   {
-    return null;
+    return taskStreamContainer.getTaskStreams();
   }
 
   public IMerge addMerge(Date mergeDate, IDelivery delivery)
   {
-    return null;
+    return mergeProducer.addMerge(mergeDate, delivery);
   }
 
   public IMerge getMerge(int index)
   {
-    return null;
+    return mergeProducer.getMerge(index);
   }
 
   public int getMergeCount()
   {
-    return 0;
+    return mergeProducer.getMergeCount();
   }
 
   public IMerge[] getMerges()
   {
-    return null;
+    return mergeProducer.getMerges();
   }
 
-  public IRelease addRelease()
+  public IRelease addRelease(boolean compatible)
   {
-    return null;
+    return releaseContainer.addRelease(compatible);
   }
 
   public IRelease getRelease(int index)
   {
-    return null;
+    return releaseContainer.getRelease(index);
   }
 
   public int getReleaseCount()
   {
-    return 0;
+    return releaseContainer.getReleaseCount();
   }
 
   public IRelease[] getReleases()
   {
-    return null;
+    return releaseContainer.getReleases();
   }
 
   @Override
@@ -108,7 +106,7 @@ public class IntegrationStream extends Stream implements IIntegrationStream
   {
     super.collectAdaptables(adaptables);
     adaptables.add(taskStreamContainer);
-    adaptables.add(mergeContainer);
+    adaptables.add(mergeProducer);
     adaptables.add(releaseContainer);
   }
 }

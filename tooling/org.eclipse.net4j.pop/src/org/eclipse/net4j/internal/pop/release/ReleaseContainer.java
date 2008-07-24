@@ -10,23 +10,24 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IRelease.Container;
 
 /**
  * @author Eike Stepper
  */
 public class ReleaseContainer extends ElementContainer<IRelease> implements IRelease.Container
 {
-  public ReleaseContainer(Element notifier)
+  public ReleaseContainer(Element delegator)
   {
-    super(notifier);
+    super(delegator);
   }
 
-  public IRelease addRelease()
+  public IRelease addRelease(boolean compatible)
   {
-    IRelease release = new Release();
+    IRelease release = new Release((Container)getDelegator(), compatible);
     addElement(release);
     return release;
   }

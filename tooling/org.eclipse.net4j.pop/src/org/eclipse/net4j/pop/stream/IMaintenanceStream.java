@@ -10,8 +10,9 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.code.ITag;
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 import org.eclipse.core.runtime.IAdaptable;
 
@@ -20,16 +21,14 @@ import org.eclipse.core.runtime.IAdaptable;
  */
 public interface IMaintenanceStream extends IStream, IRelease.Container
 {
-  public IDevelopmentStream getDevelopmentStream();
-
-  public Container getMaintenanceStreamContainer();
+  public Container getContainer();
 
   /**
    * @author Eike Stepper
    */
   public interface Container extends IAdaptable
   {
-    public IMaintenanceStream addMaintenanceStream(ITag baseline, String ticketID);
+    public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket);
 
     public int getMaintenanceStreamCount();
 
