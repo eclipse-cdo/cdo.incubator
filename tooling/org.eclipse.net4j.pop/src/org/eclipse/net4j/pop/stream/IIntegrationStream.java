@@ -10,12 +10,16 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
+import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
+
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IIntegrationStream extends IStream, ITaskStream.Container, IMerge.Producer, IRelease.Container
+public interface IIntegrationStream extends IStream, ITaskStream.Container, IMerge.Container, IRelease.Container
 {
+  public IMerge addMerge(Date mergeDate, IDelivery delivery);
 }

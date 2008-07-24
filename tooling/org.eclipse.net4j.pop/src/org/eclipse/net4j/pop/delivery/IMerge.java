@@ -36,12 +36,4 @@ public interface IMerge extends IElement
 
     public IMerge[] getMerges();
   }
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Producer extends Container
-  {
-    public IMerge addMerge(Date mergeDate, IDelivery delivery);
-  }
 }

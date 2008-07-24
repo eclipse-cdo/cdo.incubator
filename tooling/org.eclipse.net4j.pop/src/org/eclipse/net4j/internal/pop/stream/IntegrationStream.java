@@ -45,7 +45,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream addTaskStream(IBranch branch, ITicket ticket)
   {
-    return taskStreamContainer.addTaskStream(branch, ticket);
+    ITaskStream taskStream = new TaskStream(this, branch, ticket);
+    taskStreamContainer.addElement(taskStream);
+    return taskStream;
   }
 
   public ITaskStream getTaskStream(int index)

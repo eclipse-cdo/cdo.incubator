@@ -12,10 +12,7 @@ package org.eclipse.net4j.internal.pop.stream;
 
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.internal.pop.ElementContainer;
-import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.stream.ITaskStream;
-import org.eclipse.net4j.pop.stream.ITaskStream.Container;
-import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
@@ -25,13 +22,6 @@ public class TaskStreamContainer extends ElementContainer<ITaskStream> implement
   public TaskStreamContainer(Element delegator)
   {
     super(delegator);
-  }
-
-  public ITaskStream addTaskStream(IBranch branch, ITicket ticket)
-  {
-    ITaskStream taskStream = new TaskStream((Container)getDelegator(), branch, ticket);
-    addElement(taskStream);
-    return taskStream;
   }
 
   public ITaskStream getTaskStream(int index)
