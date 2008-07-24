@@ -82,9 +82,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return mergeProducer.getMerges();
   }
 
-  public IRelease addRelease(IVersion version, boolean compatible)
+  public IRelease addRelease(IVersion version)
   {
-    return releaseContainer.addRelease(version, compatible);
+    return releaseContainer.addRelease(version);
   }
 
   public IRelease getRelease(int index)

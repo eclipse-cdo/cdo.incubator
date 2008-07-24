@@ -26,9 +26,9 @@ public class ReleaseContainer extends ElementContainer<IRelease> implements IRel
     super(delegator);
   }
 
-  public IRelease addRelease(IVersion version, boolean compatible)
+  public IRelease addRelease(IVersion version)
   {
-    IRelease release = new Release((Container)getDelegator(), version, compatible);
+    IRelease release = new Release((Container)getDelegator(), version);
     addElement(release);
     return release;
   }

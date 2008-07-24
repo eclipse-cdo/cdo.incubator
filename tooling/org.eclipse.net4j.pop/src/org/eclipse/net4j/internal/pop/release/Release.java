@@ -28,15 +28,12 @@ public class Release extends Target implements IRelease
 
   private IVersion version;
 
-  private boolean compatible;
-
   private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
 
-  public Release(Container container, IVersion version, boolean compatible)
+  public Release(Container container, IVersion version)
   {
     this.container = container;
     this.version = version;
-    this.compatible = compatible;
   }
 
   public Container getContainer()
@@ -47,11 +44,6 @@ public class Release extends Target implements IRelease
   public IVersion getVersion()
   {
     return version;
-  }
-
-  public boolean isCompatible()
-  {
-    return compatible;
   }
 
   public IMilestone addMilestone(String name)
