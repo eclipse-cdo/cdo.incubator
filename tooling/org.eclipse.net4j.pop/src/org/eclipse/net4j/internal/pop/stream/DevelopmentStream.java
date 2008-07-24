@@ -34,7 +34,9 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
 
   public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket)
   {
-    return maintenanceStreamContainer.addMaintenanceStream(branch, ticket);
+    IMaintenanceStream maintenanceStream = new MaintenanceStream(this, branch, ticket);
+    maintenanceStreamContainer.addElement(maintenanceStream);
+    return maintenanceStream;
   }
 
   public IMaintenanceStream getMaintenanceStream(int index)

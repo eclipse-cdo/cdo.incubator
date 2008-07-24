@@ -10,10 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
+import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
 public interface IDevelopmentStream extends IIntegrationStream, IMaintenanceStream.Container
 {
+  public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket);
+
 }

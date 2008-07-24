@@ -48,7 +48,9 @@ public class Release extends Target implements IRelease
 
   public IMilestone addMilestone(String name)
   {
-    return milestoneContainer.addMilestone(name);
+    IMilestone milestone = new Milestone(this, name);
+    milestoneContainer.addElement(milestone);
+    return milestone;
   }
 
   public IMilestone getMilestone(int index)

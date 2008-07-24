@@ -12,10 +12,7 @@ package org.eclipse.net4j.internal.pop.stream;
 
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.internal.pop.ElementContainer;
-import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
-import org.eclipse.net4j.pop.stream.IMaintenanceStream.Container;
-import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
@@ -26,13 +23,6 @@ public class MaintenanceStreamContainer extends ElementContainer<IMaintenanceStr
   public MaintenanceStreamContainer(Element delegator)
   {
     super(delegator);
-  }
-
-  public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket)
-  {
-    IMaintenanceStream maintenanceStream = new MaintenanceStream((Container)getDelegator(), branch, ticket);
-    addElement(maintenanceStream);
-    return maintenanceStream;
   }
 
   public IMaintenanceStream getMaintenanceStream(int index)

@@ -21,6 +21,8 @@ public interface IRelease extends ITarget, IMilestone.Container
 
   public IVersion getVersion();
 
+  public IMilestone addMilestone(String name);
+
   /**
    * @author Eike Stepper
    */

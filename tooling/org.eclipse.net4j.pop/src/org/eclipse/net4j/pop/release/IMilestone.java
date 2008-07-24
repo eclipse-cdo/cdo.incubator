@@ -26,8 +26,6 @@ public interface IMilestone extends ITarget
    */
   public interface Container extends IElement
   {
-    public IMilestone addMilestone(String name);
-
     public int getMilestoneCount();
 
     public IMilestone getMilestone(int index);

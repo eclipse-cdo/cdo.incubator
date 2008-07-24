@@ -11,9 +11,7 @@
 package org.eclipse.net4j.pop.stream;
 
 import org.eclipse.net4j.pop.IElement;
-import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
@@ -27,8 +25,6 @@ public interface IMaintenanceStream extends IStream, IRelease.Container
    */
   public interface Container extends IElement
   {
-    public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket);
-
     public int getMaintenanceStreamCount();
 
     public IMaintenanceStream getMaintenanceStream(int index);
