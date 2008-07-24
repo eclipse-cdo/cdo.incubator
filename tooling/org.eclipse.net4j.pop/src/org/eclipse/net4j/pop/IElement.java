@@ -8,40 +8,46 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.delivery;
+package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.util.event.IEvent;
+import org.eclipse.net4j.util.event.INotifier;
 
-import java.util.Date;
+import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface IMerge extends IElement
+public interface IElement extends INotifier, IAdaptable
 {
-  public Date getDate();
-
-  public IDelivery getDelivery();
-
-  public IMerge.Container getMergeContainer();
-
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IElement
+  public interface ElementEvent extends IEvent
   {
-    public int getMergeCount();
-
-    public IMerge getMerge(int index);
-
-    public IMerge[] getMerges();
+    public IElement getSourceElement();
   }
 
   /**
    * @author Eike Stepper
    */
-  public interface Producer extends Container
+  public interface ReferenceEvent extends ElementEvent
   {
-    public IMerge addMerge(IDelivery delivery, Date date);
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface AddedEvent extends ReferenceEvent
+  {
+    public IElement getAddedElement();
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface RemovedEvent extends ReferenceEvent
+  {
+    public IElement getRemovedElement();
   }
 }

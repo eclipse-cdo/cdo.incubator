@@ -10,14 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.pop.IElement;
 
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IBranchPoint extends Comparable<IBranchPoint>, IAdaptable
+public interface IBranchPoint extends IElement, Comparable<IBranchPoint>
 {
   public static final Date UNKNOWN = new Date(Long.MAX_VALUE);
 

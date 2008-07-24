@@ -26,7 +26,7 @@ public class TaskStream extends Stream implements ITaskStream
 {
   private ITaskStream.Container container;
 
-  private IDelivery.Container deliveryContainer = new DeliveryContainer();
+  private IDelivery.Container deliveryContainer = new DeliveryContainer(this);
 
   public TaskStream(IPop pop, IBranch branch, ITicket ticket, ITaskStream.Container container)
   {

@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.AbstractElement;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.IBranchPoint;
 
@@ -19,7 +19,7 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class BranchPoint extends AbstractElement implements IBranchPoint
+public class BranchPoint extends Element implements IBranchPoint
 {
   private IBranch branch;
 

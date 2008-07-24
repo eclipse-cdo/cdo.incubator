@@ -10,12 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
-import org.eclipse.core.runtime.IAdaptable;
-
 /**
  * @author Eike Stepper
  */
-public interface ICommitter extends IAdaptable
+public interface ICommitter extends IElement
 {
   public String getName();
 

@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.pop.IElement;
 
 /**
  * @author Eike Stepper
@@ -24,7 +24,7 @@ public interface IMilestone extends ITarget
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IAdaptable
+  public interface Container extends IElement
   {
     public IMilestone addMilestone(String name);
 

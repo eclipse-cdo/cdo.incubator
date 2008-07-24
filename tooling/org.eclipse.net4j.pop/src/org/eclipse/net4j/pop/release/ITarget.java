@@ -10,13 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
+import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.pop.delivery.IMerge;
-
-import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface ITarget extends IAdaptable, IMerge.Container
+public interface ITarget extends IElement, IMerge.Container
 {
 }

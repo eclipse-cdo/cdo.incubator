@@ -10,14 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.delivery;
 
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.pop.IElement;
 
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IDelivery extends IAdaptable
+public interface IDelivery extends IElement
 {
   public Date getDeliveryDate();
 
@@ -28,7 +28,7 @@ public interface IDelivery extends IAdaptable
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IAdaptable
+  public interface Container extends IElement
   {
     public IDelivery addDelivery(Date date);
 

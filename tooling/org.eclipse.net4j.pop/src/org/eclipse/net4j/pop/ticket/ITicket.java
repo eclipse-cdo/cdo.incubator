@@ -10,14 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.ticket;
 
+import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.pop.stream.IStream;
-
-import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface ITicket extends IAdaptable
+public interface ITicket extends IElement
 {
   public IStream getStream();
 

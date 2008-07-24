@@ -10,13 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.IElement;
+
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface ICodeRepository extends IAdaptable
+public interface ICodeRepository extends IElement
 {
   public IProject[] checkout();
 }

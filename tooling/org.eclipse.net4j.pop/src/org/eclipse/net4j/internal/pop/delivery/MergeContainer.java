@@ -10,14 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.DelegatedContainer;
+import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IMerge;
 
 /**
  * @author Eike Stepper
  */
-public class MergeContainer extends DelegatedContainer<IMerge> implements IMerge.Container
+public class MergeContainer extends ElementContainer<IMerge> implements IMerge.Container
 {
   public MergeContainer(Element notifier)
   {

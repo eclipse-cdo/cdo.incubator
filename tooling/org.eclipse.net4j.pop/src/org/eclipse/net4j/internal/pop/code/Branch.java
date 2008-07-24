@@ -10,14 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.AbstractElement;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.IBranchPoint;
 
 /**
  * @author Eike Stepper
  */
-public abstract class Branch extends AbstractElement implements IBranch
+public abstract class Branch extends Element implements IBranch
 {
   private String branchName;
 

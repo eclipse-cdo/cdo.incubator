@@ -8,28 +8,33 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.ticket;
+package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.Element;
-import org.eclipse.net4j.pop.stream.IStream;
-import org.eclipse.net4j.pop.ticket.ITicket;
+import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.util.event.Event;
 
 /**
  * @author Eike Stepper
  */
-public class Ticket extends Element implements ITicket
+public class ElementAddedEvent extends Event implements IElement.RemovedEvent
 {
-  public Ticket()
+  private static final long serialVersionUID = 1L;
+
+  private IElement removedElement;
+
+  public ElementAddedEvent(IElement sourceElement, IElement removedElement)
   {
+    super(sourceElement);
+    this.removedElement = removedElement;
   }
 
-  public IStream getStream()
+  public IElement getSourceElement()
   {
-    return null;
+    return (IElement)getSource();
   }
 
-  public String getTicketID()
+  public IElement getRemovedElement()
   {
-    return null;
+    return removedElement;
   }
 }

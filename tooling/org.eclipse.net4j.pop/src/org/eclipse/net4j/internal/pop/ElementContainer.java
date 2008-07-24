@@ -19,13 +19,13 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public abstract class DelegatedContainer<ELEMENT extends IElement> extends Element
+public abstract class ElementContainer<ELEMENT extends IElement> extends Element
 {
   private List<ELEMENT> elements = new ArrayList<ELEMENT>();
 
   private Element notifier;
 
-  protected DelegatedContainer(Element notifier)
+  protected ElementContainer(Element notifier)
   {
     this.notifier = notifier;
   }

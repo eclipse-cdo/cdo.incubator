@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.DelegatedContainer;
+import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 
@@ -19,7 +19,7 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class DeliveryContainer extends DelegatedContainer<IDelivery> implements IDelivery.Container
+public class DeliveryContainer extends ElementContainer<IDelivery> implements IDelivery.Container
 {
   public DeliveryContainer(Element notifier)
   {

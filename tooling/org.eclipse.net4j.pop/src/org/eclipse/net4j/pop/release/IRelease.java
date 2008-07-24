@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.pop.IElement;
 
 /**
  * @author Eike Stepper
@@ -26,7 +26,7 @@ public interface IRelease extends ITarget, IMilestone.Container
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IAdaptable
+  public interface Container extends IElement
   {
     public IRelease addRelease();
 
