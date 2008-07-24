@@ -18,11 +18,11 @@ import org.eclipse.net4j.pop.release.ITarget;
 /**
  * @author Eike Stepper
  */
-public class Target extends Element implements ITarget
+public abstract class Target extends Element implements ITarget
 {
   private IMerge.Container mergeContainer = new MergeContainer(this);
 
-  public Target()
+  protected Target()
   {
   }
 

@@ -12,6 +12,8 @@ package org.eclipse.net4j.internal.pop.release;
 
 import org.eclipse.net4j.pop.release.IMilestone;
 
+import java.text.MessageFormat;
+
 /**
  * @author Eike Stepper
  */
@@ -35,5 +37,11 @@ public class Milestone extends Target implements IMilestone
   public String getMilestoneName()
   {
     return milestoneName;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Milestone[milestoneName={0}]", milestoneName);
   }
 }

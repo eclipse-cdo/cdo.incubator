@@ -13,6 +13,8 @@ package org.eclipse.net4j.internal.pop.ticket;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.text.MessageFormat;
+
 /**
  * @author Eike Stepper
  */
@@ -28,5 +30,11 @@ public class Ticket extends Element implements ITicket
   public String getTicketID()
   {
     return ticketID;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Ticket[ticketID={0}]", ticketID);
   }
 }

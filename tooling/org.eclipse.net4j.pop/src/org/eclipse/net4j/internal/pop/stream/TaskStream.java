@@ -18,6 +18,7 @@ import org.eclipse.net4j.pop.ticket.ITicket;
 
 import org.eclipse.core.runtime.IAdaptable;
 
+import java.text.MessageFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -59,6 +60,12 @@ public class TaskStream extends Stream implements ITaskStream
   public int getDeliveryCount()
   {
     return deliveryContainer.getDeliveryCount();
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("TaskStream[branch={0}, ticket={1}]", getBranch(), getTicket());
   }
 
   @Override

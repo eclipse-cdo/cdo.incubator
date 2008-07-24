@@ -17,6 +17,7 @@ import org.eclipse.net4j.pop.ticket.ITicket;
 
 import org.eclipse.core.runtime.IAdaptable;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 /**
@@ -49,6 +50,12 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
   public IMaintenanceStream[] getMaintenanceStreams()
   {
     return maintenanceStreamContainer.getMaintenanceStreams();
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("DevelopmentStream[branch={0}, ticket={1}]", getBranch(), getTicket());
   }
 
   @Override

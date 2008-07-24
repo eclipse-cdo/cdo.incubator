@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.IBranchPoint;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 /**
@@ -56,5 +57,11 @@ public class BranchPoint extends Element implements IBranchPoint
   public int compareTo(IBranchPoint o)
   {
     return date.compareTo(o.getDate());
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("BranchPoint[branch={0}, date={1,date} {1,time}]", branch, date);
   }
 }

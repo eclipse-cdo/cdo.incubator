@@ -30,6 +30,16 @@ public abstract class Element extends Notifier implements IElement
   {
   }
 
+  // TODO Enforce Object protocol
+  // @Override
+  // public abstract boolean equals(Object obj);
+  //
+  // @Override
+  // public abstract int hashCode();
+
+  @Override
+  public abstract String toString();
+
   protected void checkArgument(Object arg, String argName, Class<?> argClass)
   {
     if (!argClass.isInstance(arg))

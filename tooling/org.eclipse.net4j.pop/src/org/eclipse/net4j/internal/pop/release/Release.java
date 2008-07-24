@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.release.IVersion;
 
 import org.eclipse.core.runtime.IAdaptable;
 
+import java.text.MessageFormat;
 import java.util.List;
 
 /**
@@ -31,9 +32,10 @@ public class Release extends Target implements IRelease
 
   private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
 
-  public Release(Container container, boolean compatible)
+  public Release(Container container, IVersion version, boolean compatible)
   {
     this.container = container;
+    this.version = version;
     this.compatible = compatible;
   }
 
@@ -70,6 +72,12 @@ public class Release extends Target implements IRelease
   public IMilestone[] getMilestones()
   {
     return milestoneContainer.getMilestones();
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Release[version={0}]", version);
   }
 
   @Override

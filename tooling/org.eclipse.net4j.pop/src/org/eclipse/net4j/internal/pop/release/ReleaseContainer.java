@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop.release;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.release.IRelease.Container;
 
 /**
@@ -25,9 +26,9 @@ public class ReleaseContainer extends ElementContainer<IRelease> implements IRel
     super(delegator);
   }
 
-  public IRelease addRelease(boolean compatible)
+  public IRelease addRelease(IVersion version, boolean compatible)
   {
-    IRelease release = new Release((Container)getDelegator(), compatible);
+    IRelease release = new Release((Container)getDelegator(), version, compatible);
     addElement(release);
     return release;
   }

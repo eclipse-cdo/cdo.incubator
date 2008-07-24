@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop.delivery;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 /**
@@ -46,5 +47,12 @@ public class Delivery extends Element implements IDelivery
   public int getDeliveryNumber()
   {
     return deliveryNumber;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Delivery[deliveryNumber={0}, deliveryDate={1,date} {1,time}]", deliveryNumber,
+        deliveryDate);
   }
 }

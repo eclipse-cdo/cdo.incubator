@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IIntegrationStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -28,7 +29,7 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public class IntegrationStream extends Stream implements IIntegrationStream
+public abstract class IntegrationStream extends Stream implements IIntegrationStream
 {
   private TaskStreamContainer taskStreamContainer = new TaskStreamContainer(this);
 
@@ -36,7 +37,7 @@ public class IntegrationStream extends Stream implements IIntegrationStream
 
   private ReleaseContainer releaseContainer = new ReleaseContainer(this);
 
-  public IntegrationStream(IBranch branch, ITicket ticket)
+  protected IntegrationStream(IBranch branch, ITicket ticket)
   {
     super(branch, ticket);
   }
@@ -81,9 +82,9 @@ public class IntegrationStream extends Stream implements IIntegrationStream
     return mergeProducer.getMerges();
   }
 
-  public IRelease addRelease(boolean compatible)
+  public IRelease addRelease(IVersion version, boolean compatible)
   {
-    return releaseContainer.addRelease(compatible);
+    return releaseContainer.addRelease(version, compatible);
   }
 
   public IRelease getRelease(int index)

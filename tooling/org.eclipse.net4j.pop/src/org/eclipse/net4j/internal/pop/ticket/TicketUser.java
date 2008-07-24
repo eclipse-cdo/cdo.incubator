@@ -13,6 +13,8 @@ package org.eclipse.net4j.internal.pop.ticket;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 
+import java.text.MessageFormat;
+
 /**
  * @author Eike Stepper
  */
@@ -44,5 +46,11 @@ public class TicketUser extends Element implements ITicketUser
   public String getTicketAccount()
   {
     return ticketAccount;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("TicketUser[name={0}, email={1}, ticketAccount={2}]", name, email, ticketAccount);
   }
 }

@@ -28,7 +28,7 @@ public interface IRelease extends ITarget, IMilestone.Container
    */
   public interface Container extends IElement
   {
-    public IRelease addRelease(boolean compatible);
+    public IRelease addRelease(IVersion version, boolean compatible);
 
     public int getReleaseCount();
 

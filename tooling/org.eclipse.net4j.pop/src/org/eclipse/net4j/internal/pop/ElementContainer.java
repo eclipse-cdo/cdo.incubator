@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.pop.IElement;
 
 import java.lang.reflect.Array;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,5 +88,11 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
       ELEMENT[] prototype = (ELEMENT[])Array.newInstance(componentType, elements.size());
       return elements.toArray(prototype);
     }
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("{0}[{1}]", getClass().getSimpleName(), elements);
   }
 }

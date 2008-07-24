@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop.code;
 import org.eclipse.net4j.internal.pop.ticket.TicketUser;
 import org.eclipse.net4j.pop.code.ICommitter;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 /**
@@ -47,5 +48,12 @@ public class Committer extends TicketUser implements ICommitter
   public Date getExitDate()
   {
     return exitDate;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Committer[name={0}, email={1}, ticketAccount={2}, codeAccount={3}]", getName(),
+        getEmail(), getTicketAccount(), codeAccount);
   }
 }

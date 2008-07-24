@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 /**
@@ -47,5 +48,11 @@ public class Merge extends Element implements IMerge
   public IDelivery getDelivery()
   {
     return delivery;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Delivery[delivery={0}, mergeDate={1,date} {1,time}]", delivery, mergeDate);
   }
 }
