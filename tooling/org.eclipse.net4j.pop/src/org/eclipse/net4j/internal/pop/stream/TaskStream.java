@@ -14,7 +14,7 @@ import org.eclipse.net4j.internal.pop.delivery.Delivery;
 import org.eclipse.net4j.internal.pop.delivery.DeliveryContainer;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.stream.IStream;
+import org.eclipse.net4j.pop.stream.IIntegrationStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
@@ -29,19 +29,19 @@ import java.util.List;
  */
 public class TaskStream extends Stream implements ITaskStream
 {
-  private Container container;
+  private IIntegrationStream integrationStream;
 
   private DeliveryContainer deliveryContainer = new DeliveryContainer(this);
 
-  public TaskStream(Container container, IBranch branch, ITicket ticket)
+  public TaskStream(IIntegrationStream integrationStream, IBranch branch, ITicket ticket)
   {
-    super(((IStream)container).getPop(), branch, ticket);
-    this.container = container;
+    super(branch, ticket);
+    this.integrationStream = integrationStream;
   }
 
-  public Container getContainer()
+  public IIntegrationStream getIntegrationStream()
   {
-    return container;
+    return integrationStream;
   }
 
   public IDelivery addDelivery(Date deliveryDate)

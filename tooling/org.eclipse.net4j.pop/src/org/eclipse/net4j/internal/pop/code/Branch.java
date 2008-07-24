@@ -10,34 +10,89 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.code.IBranchPoint;
+import org.eclipse.net4j.pop.code.ITag;
+
+import java.text.MessageFormat;
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public abstract class Branch extends Element implements IBranch
+public class Branch extends Element implements IBranch
 {
-  private String branchName;
+  private String name;
 
-  private IBranchPoint baseline;
+  private ITag startTag;
 
-  public Branch(String branchName, IBranchPoint baseline)
+  private TagContainer tagContainer = new TagContainer(this);
+
+  private BranchContainer branchContainer = new BranchContainer(this);
+
+  public Branch(String name, ITag startTag)
   {
-    checkArgument(branchName, "branchName");
-    checkArgument(baseline, "baseline");
-    this.baseline = baseline;
-    this.branchName = branchName;
+    this.name = name;
+    this.startTag = startTag;
   }
 
-  public String getBranchName()
+  public String getName()
   {
-    return branchName;
+    return name;
   }
 
-  public IBranchPoint getBaseline()
+  public ITag getStartTag()
   {
-    return baseline;
+    return startTag;
+  }
+
+  public ITag addTag(String name, Date date)
+  {
+    ITag tag = new Tag(this, name, date);
+    tagContainer.addElement(tag);
+    return tag;
+  }
+
+  public ITag getTag(int index)
+  {
+    return tagContainer.getElement(index);
+  }
+
+  public int getTagCount()
+  {
+    return tagContainer.getElementCount();
+  }
+
+  public ITag[] getTags()
+  {
+    return tagContainer.getElements(ITag.class);
+  }
+
+  public IBranch addBranch(ITag startTag)
+  {
+    IBranch branch = new Branch(name, startTag);
+    branchContainer.addElement(branch);
+    return branch;
+  }
+
+  public IBranch getBranch(int index)
+  {
+    return branchContainer.getBranch(index);
+  }
+
+  public int getBranchCount()
+  {
+    return branchContainer.getBranchCount();
+  }
+
+  public IBranch[] getBranchs()
+  {
+    return branchContainer.getBranchs();
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Branch[name={0}, startTag={1}]", name, startTag);
   }
 }

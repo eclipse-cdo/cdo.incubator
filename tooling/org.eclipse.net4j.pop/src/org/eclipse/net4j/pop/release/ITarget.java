@@ -10,12 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
+import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper
  */
-public interface ITarget extends IElement, IMerge.Container
+public interface ITarget extends IMerge.Container
 {
+  public ITag getTag();
 }

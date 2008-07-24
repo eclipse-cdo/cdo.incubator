@@ -8,16 +8,34 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.code;
+package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.pop.util.IElement;
+import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.pop.code.ITag;
 
 /**
  * @author Eike Stepper
  */
-public interface IBranchingStrategy extends IElement
+public class TagContainer extends ElementContainer<ITag> implements ITag.Container
 {
-  public IBranch getMaintenanceBranch(IBranchPoint baseline);
+  public TagContainer(Element delegator)
+  {
+    super(delegator);
+  }
 
-  public IBranch getTaskBranch(IBranchPoint baseline);
+  public ITag[] getTags()
+  {
+    return getElements(ITag.class);
+  }
+
+  public ITag getTag(int index)
+  {
+    return getElement(index);
+  }
+
+  public int getTagCount()
+  {
+    return getElementCount();
+  }
 }

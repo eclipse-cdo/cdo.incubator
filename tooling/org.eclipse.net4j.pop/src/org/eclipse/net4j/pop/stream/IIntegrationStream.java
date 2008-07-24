@@ -11,19 +11,13 @@
 package org.eclipse.net4j.pop.stream;
 
 import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
-
-import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IIntegrationStream extends IStream, ITaskStream.Container, IMerge.Container, IRelease.Container
+public interface IIntegrationStream extends IStream, ITaskStream.Container, IRelease.Container
 {
   public ITaskStream addTaskStream(IBranch branch, ITicket ticket);
-
-  public IMerge addMerge(Date mergeDate, IDelivery delivery);
 }

@@ -8,51 +8,49 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.delivery;
+package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.util.Element;
-import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.delivery.IMerge;
+import org.eclipse.net4j.pop.IPop.Strategy;
+import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ITag;
+import org.eclipse.net4j.pop.release.IVersion;
 
-import java.text.MessageFormat;
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public class Merge extends Element implements IMerge
+public class PopStrategy extends Element implements Strategy
 {
-  private Container container;
-
-  private IDelivery delivery;
-
-  private Date date;
-
-  public Merge(Container container, Date date, IDelivery delivery)
+  public PopStrategy()
   {
-    this.container = container;
-    this.date = date;
-    this.delivery = delivery;
   }
 
-  public Container getContainer()
+  public IBranch createMaintenanceBranch(ITag baseline)
   {
-    return container;
+    return null;
   }
 
-  public IDelivery getDelivery()
+  public ITag createReleaseTag(IBranch branch, IVersion version)
   {
-    return delivery;
+    return null;
   }
 
-  public Date getDate()
+  public IBranch createTaskBranch(ITag baseline)
   {
-    return date;
+    return null;
+  }
+
+  public Date getTagDate(ITag tag)
+  {
+    return null;
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("Merge[delivery={0}, date={1,date} {1,time}]", delivery, date);
+    return null;
   }
+
 }

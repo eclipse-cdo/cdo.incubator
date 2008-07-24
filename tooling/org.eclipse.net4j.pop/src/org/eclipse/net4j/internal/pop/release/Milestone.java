@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
+import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 
 import java.text.MessageFormat;
@@ -23,8 +24,9 @@ public class Milestone extends Target implements IMilestone
 
   private String name;
 
-  protected Milestone(Container container, String name)
+  protected Milestone(Container container, String name, ITag tag)
   {
+    super(tag);
     this.container = container;
     this.name = name;
   }
@@ -42,6 +44,6 @@ public class Milestone extends Target implements IMilestone
   @Override
   public String toString()
   {
-    return MessageFormat.format("Milestone[name={0}]", name);
+    return MessageFormat.format("Milestone[name={0}, tag={1}]", name, getTag());
   }
 }

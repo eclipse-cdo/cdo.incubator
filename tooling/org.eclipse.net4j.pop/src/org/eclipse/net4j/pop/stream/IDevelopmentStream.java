@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
@@ -19,9 +18,9 @@ import org.eclipse.net4j.pop.ticket.ITicket;
  */
 public interface IDevelopmentStream extends IIntegrationStream, IMaintenanceStream.Container
 {
-  public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket);
-
   public IRelease addRelease(boolean compatible, int increment);
 
   public IRelease addRelease();
+
+  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket);
 }

@@ -10,33 +10,35 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
-import org.eclipse.net4j.internal.pop.Element;
-import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.internal.pop.delivery.Merge;
+import org.eclipse.net4j.internal.pop.delivery.MergeContainer;
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.stream.IStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.core.runtime.IAdaptable;
+
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Eike Stepper
  */
 public abstract class Stream extends Element implements IStream
 {
-  private IPop pop;
-
   private IBranch branch;
 
   private ITicket ticket;
 
-  protected Stream(IPop pop, IBranch branch, ITicket ticket)
+  private MergeContainer mergeContainer = new MergeContainer(this);
+
+  protected Stream(IBranch branch, ITicket ticket)
   {
-    this.pop = pop;
     this.branch = branch;
     this.ticket = ticket;
-  }
-
-  public IPop getPop()
-  {
-    return pop == null ? (IPop)this : pop;
   }
 
   public IBranch getBranch()
@@ -47,5 +49,39 @@ public abstract class Stream extends Element implements IStream
   public ITicket getTicket()
   {
     return ticket;
+  }
+
+  public IMerge merge(Date date, IDelivery delivery)
+  {
+    IMerge merge = new Merge(this, date, delivery);
+    mergeContainer.addElement(merge);
+    return merge;
+  }
+
+  public IMerge getMerge(int index)
+  {
+    return mergeContainer.getMerge(index);
+  }
+
+  public int getMergeCount()
+  {
+    return mergeContainer.getMergeCount();
+  }
+
+  public IMerge[] getMerges()
+  {
+    return mergeContainer.getMerges();
+  }
+
+  @Override
+  protected void collectAdaptables(List<IAdaptable> adaptables)
+  {
+    super.collectAdaptables(adaptables);
+    adaptables.add(mergeContainer);
+  }
+
+  protected MergeContainer getMergeContainer()
+  {
+    return mergeContainer;
   }
 }

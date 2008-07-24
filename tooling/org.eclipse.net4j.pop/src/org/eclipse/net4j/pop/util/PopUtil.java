@@ -12,7 +12,6 @@ package org.eclipse.net4j.pop.util;
 
 import org.eclipse.net4j.internal.pop.Pop;
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.code.IBranchingStrategy;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
@@ -24,8 +23,8 @@ public final class PopUtil
   {
   }
 
-  public static IPop createPop(String name, IBranchingStrategy branchingStrategy, ITicket ticket)
+  public static IPop createPop(String name, IPop.Strategy strategy, ITicket ticket)
   {
-    return new Pop(name, branchingStrategy, ticket);
+    return new Pop(name, strategy, ticket);
   }
 }

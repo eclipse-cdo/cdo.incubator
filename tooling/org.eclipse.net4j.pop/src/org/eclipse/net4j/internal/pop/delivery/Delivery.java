@@ -10,8 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.PopElement;
+import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.stream.ITaskStream;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -19,24 +21,29 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class Delivery extends Element implements IDelivery
+public class Delivery extends PopElement implements IDelivery
 {
-  private Container container;
+  private ITaskStream taskStream;
 
   private int number;
 
   private Date date;
 
-  public Delivery(Container container, int number, Date date)
+  public Delivery(ITaskStream taskStream, int number, Date date)
   {
-    this.container = container;
+    this.taskStream = taskStream;
     this.date = date;
     this.number = number;
   }
 
-  public Container getContainer()
+  public ITaskStream getTaskStream()
   {
-    return container;
+    return taskStream;
+  }
+
+  public IPopElement getParentElement()
+  {
+    return taskStream;
   }
 
   public int getNumber()

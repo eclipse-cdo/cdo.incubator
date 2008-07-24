@@ -38,9 +38,9 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
     super(pop, branch, ticket);
   }
 
-  public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket)
+  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket)
   {
-    IMaintenanceStream maintenanceStream = new MaintenanceStream(this, branch, ticket);
+    IMaintenanceStream maintenanceStream = new MaintenanceStream(this, baseline.getTag(), ticket);
     maintenanceStreamContainer.addElement(maintenanceStream);
     return maintenanceStream;
   }

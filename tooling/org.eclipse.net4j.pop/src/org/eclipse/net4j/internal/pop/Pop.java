@@ -14,7 +14,6 @@ import org.eclipse.net4j.internal.pop.code.Committer;
 import org.eclipse.net4j.internal.pop.code.CommitterContainer;
 import org.eclipse.net4j.internal.pop.stream.DevelopmentStream;
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.code.IBranchingStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
@@ -29,13 +28,13 @@ public class Pop extends DevelopmentStream implements IPop
 
   private String name;
 
-  private IBranchingStrategy branchingStrategy;
+  private Strategy strategy;
 
-  public Pop(String name, IBranchingStrategy branchingStrategy, ITicket ticket)
+  public Pop(String name, Strategy strategy, ITicket ticket)
   {
     super(null, null, ticket);
     this.name = name;
-    this.branchingStrategy = branchingStrategy;
+    this.strategy = strategy;
   }
 
   public String getName()
@@ -43,9 +42,9 @@ public class Pop extends DevelopmentStream implements IPop
     return name;
   }
 
-  public IBranchingStrategy getBranchingStrategy()
+  public Strategy getStrategy()
   {
-    return branchingStrategy;
+    return strategy;
   }
 
   public ICommitter addCommitter(String name, String email, String ticketAccount, String codeAccount)

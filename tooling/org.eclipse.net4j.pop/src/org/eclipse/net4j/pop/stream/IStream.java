@@ -10,19 +10,19 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.ticket.ITicket;
-import org.eclipse.net4j.pop.util.IElement;
+import org.eclipse.net4j.pop.IPopElement;
+import org.eclipse.net4j.pop.code.ITag;
+import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.delivery.IMerge;
+
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IStream extends IElement
+public interface IStream extends IPopElement, IMerge.Container
 {
-  public IPop getPop();
+  public ITag getBaseline();
 
-  public IBranch getBranch();
-
-  public ITicket getTicket();
+  public IMerge merge(Date date, IDelivery delivery);
 }

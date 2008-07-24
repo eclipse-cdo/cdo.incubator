@@ -10,8 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.Element;
-import org.eclipse.net4j.internal.pop.ElementContainer;
+import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.release.IMilestone;
 
 /**

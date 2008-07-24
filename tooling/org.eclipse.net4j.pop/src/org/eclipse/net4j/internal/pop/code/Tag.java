@@ -10,30 +10,49 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public class Tag extends BranchPoint implements ITag
+public class Tag extends Element implements ITag
 {
-  private String tagName;
+  private IBranch branch;
 
-  public Tag(IBranch branch, Date date)
+  private String name;
+
+  private Date date;
+
+  public Tag(IBranch branch, String name, Date date)
   {
-    super(branch, date);
+    this.branch = branch;
+    this.name = name;
+    this.date = date;
   }
 
-  public String getTagName()
+  public IBranch getBranch()
   {
-    return tagName;
+    return branch;
   }
 
-  public void setTagName(String tagName)
+  public String getName()
   {
-    this.tagName = tagName;
+    return name;
+  }
+
+  public Date getDate()
+  {
+    return date;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Branch[branch={0}, name={1}, date={2,date} {2,time}]", branch, name, date);
   }
 }

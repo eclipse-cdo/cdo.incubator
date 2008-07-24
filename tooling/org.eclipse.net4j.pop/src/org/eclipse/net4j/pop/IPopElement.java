@@ -8,22 +8,27 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.code;
+package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.stream.IStream;
+import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.util.IElement;
-
-import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IBranchPoint extends IElement, Comparable<IBranchPoint>
+public interface IPopElement extends IElement
 {
-  public static final Date UNKNOWN = new Date(Long.MAX_VALUE);
+  public IPop getPop();
+
+  public ITicket getTicket();
 
   public IBranch getBranch();
 
-  public Date getDate();
+  public IStream getStream();
 
-  public void setDate(Date date);
+  public IStream getParentStream();
+
+  public IPopElement getParentElement();
 }

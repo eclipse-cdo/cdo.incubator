@@ -8,34 +8,35 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.delivery;
+package org.eclipse.net4j.internal.pop.code;
 
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
-import org.eclipse.net4j.pop.delivery.IMerge;
+import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.IBranchContainer;
 
 /**
  * @author Eike Stepper
  */
-public class MergeContainer extends ElementContainer<IMerge> implements IMerge.Container
+public class BranchContainer extends ElementContainer<IBranch> implements IBranchContainer
 {
-  public MergeContainer(Element delegator)
+  public BranchContainer(Element delegator)
   {
     super(delegator);
   }
 
-  public IMerge getMerge(int index)
+  public IBranch[] getBranchs()
+  {
+    return getElements(IBranch.class);
+  }
+
+  public IBranch getBranch(int index)
   {
     return getElement(index);
   }
 
-  public int getMergeCount()
+  public int getBranchCount()
   {
     return getElementCount();
-  }
-
-  public IMerge[] getMerges()
-  {
-    return getElements(IMerge.class);
   }
 }

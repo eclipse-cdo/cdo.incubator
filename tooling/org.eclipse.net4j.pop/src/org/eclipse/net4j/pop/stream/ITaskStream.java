@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public interface ITaskStream extends IStream, IDelivery.Container
 {
-  public Container getContainer();
+  public IIntegrationStream getIntegrationStream();
 
   public IDelivery addDelivery(Date deliveryDate);
 

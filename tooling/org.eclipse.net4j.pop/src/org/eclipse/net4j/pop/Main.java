@@ -24,8 +24,8 @@ public class Main
 {
   public static void main(String[] args)
   {
-    IPop pop = PopUtil.createPop("CDO", null, null);
-    ITaskStream taskStream = pop.addTaskStream(null, null);
+    IPop pop = PopUtil.createPop("CDO", null, null, null);
+    ITaskStream taskStream = pop.addTaskStream(new Date(), null);
 
     IDelivery delivery1 = taskStream.addDelivery(new Date());
     System.out.println(delivery1);
@@ -36,9 +36,9 @@ public class Main
     IDelivery delivery3 = taskStream.addDelivery(new Date());
     System.out.println(delivery3);
 
-    System.out.println(pop.addMerge(new Date(), delivery1));
-    System.out.println(pop.addMerge(new Date(), delivery2));
-    System.out.println(pop.addMerge(new Date(), delivery3));
+    System.out.println(pop.merge(new Date(), delivery1));
+    System.out.println(pop.merge(new Date(), delivery2));
+    System.out.println(pop.merge(new Date(), delivery3));
 
     System.out.println(pop.addRelease());
     System.out.println(pop.addRelease());

@@ -16,7 +16,7 @@ import org.eclipse.net4j.pop.util.IElement;
 /**
  * @author Eike Stepper
  */
-public interface IMaintenanceStream extends IStream, IRelease.Container
+public interface IMaintenanceStream extends IIntegrationStream
 {
   public Container getContainer();
 

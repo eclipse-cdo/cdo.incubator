@@ -10,12 +10,32 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.util.IElement;
+
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
-public interface ITag extends IBranchPoint
+public interface ITag extends IElement
 {
-  public String getTagName();
+  public static final Date UNKNOWN = new Date(Long.MAX_VALUE);
 
-  public void setTagName(String tagName);
+  public IBranch getBranch();
+
+  public String getName();
+
+  public Date getDate();
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface Container extends IElement
+  {
+    public int getTagCount();
+
+    public ITag getTag(int index);
+
+    public ITag[] getTags();
+  }
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.net4j.pop.util.IElement;
 import org.eclipse.net4j.util.event.Event;

@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.ticket;
 
-import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.text.MessageFormat;

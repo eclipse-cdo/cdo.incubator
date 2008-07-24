@@ -10,19 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-import org.eclipse.net4j.pop.stream.IStream;
-import org.eclipse.net4j.pop.util.IElement;
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IBranch extends IElement
+public interface IBranch extends ITag.Container, IBranchContainer
 {
-  public IStream getStream();
+  public String getName();
 
-  public String getBranchName();
+  public ITag getStartTag();
 
-  public IBranchPoint getBaseline();
+  public ITag addTag(String name, Date date);
 
-  public IBranchPoint[] getBranchPoints();
+  public IBranch addBranch(ITag startTag);
 }

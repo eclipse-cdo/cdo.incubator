@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
+import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
@@ -30,8 +31,9 @@ public class Release extends Target implements IRelease
 
   private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
 
-  public Release(Container container, IVersion version)
+  public Release(Container container, IVersion version, ITag tag)
   {
+    super(tag);
     this.container = container;
     this.version = version;
   }
@@ -71,7 +73,7 @@ public class Release extends Target implements IRelease
   @Override
   public String toString()
   {
-    return MessageFormat.format("Release[version={0}]", version);
+    return MessageFormat.format("Release[version={0}, tag={1}]", version, getTag());
   }
 
   @Override
