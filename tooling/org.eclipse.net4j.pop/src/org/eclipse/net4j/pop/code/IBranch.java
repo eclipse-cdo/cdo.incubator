@@ -10,8 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.pop.stream.IStream;
+import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper

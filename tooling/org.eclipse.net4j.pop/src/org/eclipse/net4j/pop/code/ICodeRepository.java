@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.pop.util.IElement;
 
 import org.eclipse.core.resources.IProject;
 

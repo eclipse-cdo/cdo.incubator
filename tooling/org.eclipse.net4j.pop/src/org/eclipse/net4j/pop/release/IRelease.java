@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper

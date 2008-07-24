@@ -10,9 +10,9 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.ticket.ITicket;
+import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper

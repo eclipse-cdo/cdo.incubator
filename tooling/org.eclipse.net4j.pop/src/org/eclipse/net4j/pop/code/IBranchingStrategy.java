@@ -8,33 +8,24 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.delivery.IMerge;
+import org.eclipse.net4j.pop.stream.IDevelopmentStream;
+import org.eclipse.net4j.pop.stream.IMaintenanceStream;
+import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.util.IElement;
-import org.eclipse.net4j.util.event.Event;
 
 /**
  * @author Eike Stepper
  */
-public class ElementRemovedEvent extends Event implements IElement.AddedEvent
+public interface IBranchingStrategy extends IElement
 {
-  private static final long serialVersionUID = 1L;
+  public IBranch getDevelopmentBranch(IDevelopmentStream stream);
 
-  private IElement addedElement;
+  public IBranch getMaintenanceBranch(IMaintenanceStream stream);
 
-  public ElementRemovedEvent(IElement sourceElement, IElement addedElement)
-  {
-    super(sourceElement);
-    this.addedElement = addedElement;
-  }
+  public IBranch getTaskBranch(ITaskStream stream);
 
-  public IElement getSourceElement()
-  {
-    return (IElement)getSource();
-  }
-
-  public IElement getAddedElement()
-  {
-    return addedElement;
-  }
+  public IBranch getMergeBranch(IMerge merge);
 }

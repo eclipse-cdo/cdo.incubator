@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.ticket;
 
-import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper

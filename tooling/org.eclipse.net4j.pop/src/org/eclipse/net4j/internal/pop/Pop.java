@@ -29,7 +29,7 @@ public class Pop extends DevelopmentStream implements IPop
 
   private String name;
 
-  public Pop(IBranch branch, ITicket ticket, String name)
+  public Pop(String name, ITicket ticket, IBranch branch)
   {
     super(branch, ticket);
     this.name = name;

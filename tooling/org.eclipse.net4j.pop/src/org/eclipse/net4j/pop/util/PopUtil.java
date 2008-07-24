@@ -8,20 +8,23 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop;
+package org.eclipse.net4j.pop.util;
 
-import org.eclipse.net4j.pop.task.ITask;
-
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.internal.pop.Pop;
+import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
-public interface IModule extends Comparable<IModule>, IAdaptable
+public final class PopUtil
 {
-  public String getID();
+  private PopUtil()
+  {
+  }
 
-  public ITask getTask();
-
-  public void close();
+  public static IPop createPop(String name, ITicket ticket)
+  {
+    return new Pop(name, ticket, null);
+  }
 }

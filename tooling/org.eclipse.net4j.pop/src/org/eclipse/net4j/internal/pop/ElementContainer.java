@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.pop.IElement;
+import org.eclipse.net4j.pop.util.IElement;
 
 import java.lang.reflect.Array;
 import java.text.MessageFormat;

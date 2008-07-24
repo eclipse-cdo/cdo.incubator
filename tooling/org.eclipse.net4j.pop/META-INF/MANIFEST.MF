@@ -24,4 +24,5 @@ Export-Package: org.eclipse.net4j.internal.pop;version="1.0.0";x-internal=true;x
  org.eclipse.net4j.pop.delivery;version="1.0.0",
  org.eclipse.net4j.pop.release;version="1.0.0",
  org.eclipse.net4j.pop.stream;version="1.0.0",
- org.eclipse.net4j.pop.ticket;version="1.0.0"
+ org.eclipse.net4j.pop.ticket;version="1.0.0",
+ org.eclipse.net4j.pop.util;version="1.0.0"

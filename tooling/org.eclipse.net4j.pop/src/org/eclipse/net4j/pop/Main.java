@@ -8,13 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.PopUtil;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
+import org.eclipse.net4j.pop.util.PopUtil;
 
 import java.util.Date;
 
@@ -25,7 +24,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    IPop pop = PopUtil.createPop(null, null, "CDO");
+    IPop pop = PopUtil.createPop("CDO", null);
     ITaskStream taskStream = pop.addTaskStream(null, null);
 
     IDelivery delivery1 = taskStream.addDelivery(new Date());
