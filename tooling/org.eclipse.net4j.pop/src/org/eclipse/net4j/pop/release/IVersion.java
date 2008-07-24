@@ -23,6 +23,12 @@ public interface IVersion extends IAdaptable, Comparable<IVersion>
 
   public int getMicro();
 
+  public boolean isMajor();
+
+  public boolean isMinor();
+
+  public boolean isMicro();
+
   public IVersion nextMajor(int increment);
 
   public IVersion nextMinor(int increment);

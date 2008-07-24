@@ -64,6 +64,21 @@ public class Version extends PlatformObject implements IVersion
     return micro;
   }
 
+  public boolean isMajor()
+  {
+    return !isMinor() && major != 0;
+  }
+
+  public boolean isMinor()
+  {
+    return !isMicro() && minor != 0;
+  }
+
+  public boolean isMicro()
+  {
+    return micro != 0;
+  }
+
   public IVersion nextMajor(int increment)
   {
     return new Version(major + increment, 0, 0);
