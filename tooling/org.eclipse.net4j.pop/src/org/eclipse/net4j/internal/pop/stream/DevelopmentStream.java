@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop.stream;
 import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.internal.pop.release.Version;
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
@@ -32,9 +33,9 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
 {
   private MaintenanceStreamContainer maintenanceStreamContainer = new MaintenanceStreamContainer(this);
 
-  public DevelopmentStream(IBranch branch, ITicket ticket)
+  public DevelopmentStream(IPop pop, IBranch branch, ITicket ticket)
   {
-    super(branch, ticket);
+    super(pop, branch, ticket);
   }
 
   public IMaintenanceStream addMaintenanceStream(IBranch branch, ITicket ticket)

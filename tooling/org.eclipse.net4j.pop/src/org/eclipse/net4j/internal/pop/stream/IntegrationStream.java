@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop.stream;
 import org.eclipse.net4j.internal.pop.delivery.Merge;
 import org.eclipse.net4j.internal.pop.delivery.MergeContainer;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
@@ -37,9 +38,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   private ReleaseContainer releaseContainer = new ReleaseContainer(this);
 
-  protected IntegrationStream(IBranch branch, ITicket ticket)
+  protected IntegrationStream(IPop pop, IBranch branch, ITicket ticket)
   {
-    super(branch, ticket);
+    super(pop, branch, ticket);
   }
 
   public ITaskStream addTaskStream(IBranch branch, ITicket ticket)

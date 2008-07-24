@@ -10,9 +10,9 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
-import org.eclipse.net4j.pop.stream.IMaintenanceStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.util.IElement;
 
@@ -21,9 +21,11 @@ import org.eclipse.net4j.pop.util.IElement;
  */
 public interface IBranchingStrategy extends IElement
 {
-  public IBranch getDevelopmentBranch(IDevelopmentStream stream);
+  public IBranch getDevelopmentBranch(IPop pop);
 
-  public IBranch getMaintenanceBranch(IMaintenanceStream stream);
+  public IBranch getMaintenanceBranch(IDevelopmentStream stream);
+
+  public IBranch getTaskBranch(IDevelopmentStream stream);
 
   public IBranch getTaskBranch(ITaskStream stream);
 
