@@ -10,14 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.pop.stream.IStream;
-
-import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
  */
-public interface IBranch extends IAdaptable
+public interface IBranch extends IElement
 {
   public IStream getStream();
 

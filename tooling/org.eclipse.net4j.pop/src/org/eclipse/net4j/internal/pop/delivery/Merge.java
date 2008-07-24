@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.AbstractElement;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 
@@ -19,7 +19,7 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class Merge extends AbstractElement implements IMerge
+public class Merge extends Element implements IMerge
 {
   private IDelivery delivery;
 

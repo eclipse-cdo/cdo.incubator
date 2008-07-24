@@ -23,7 +23,7 @@ public class Release extends Target implements IRelease
 
   private boolean compatible;
 
-  private IMilestone.Container milestoneContainer = new MilestoneContainer();
+  private IMilestone.Container milestoneContainer = new MilestoneContainer(this);
 
   public Release()
   {

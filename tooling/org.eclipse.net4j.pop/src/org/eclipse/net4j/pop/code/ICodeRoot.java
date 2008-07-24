@@ -10,12 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.pop.IElement;
 
 /**
  * @author Eike Stepper
  */
-public interface ICodeRoot extends IAdaptable
+public interface ICodeRoot extends IElement
 {
 
 }

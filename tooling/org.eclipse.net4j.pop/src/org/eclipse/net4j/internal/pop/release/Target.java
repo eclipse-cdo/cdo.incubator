@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.AbstractElement;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.internal.pop.delivery.MergeContainer;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.ITarget;
@@ -18,9 +18,9 @@ import org.eclipse.net4j.pop.release.ITarget;
 /**
  * @author Eike Stepper
  */
-public class Target extends AbstractElement implements ITarget
+public class Target extends Element implements ITarget
 {
-  private IMerge.Container mergeContainer = new MergeContainer();
+  private IMerge.Container mergeContainer = new MergeContainer(this);
 
   public Target()
   {

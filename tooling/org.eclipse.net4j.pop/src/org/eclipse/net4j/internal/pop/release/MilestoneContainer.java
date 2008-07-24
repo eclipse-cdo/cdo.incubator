@@ -10,16 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.AbstractContainer;
+import org.eclipse.net4j.internal.pop.DelegatedContainer;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.release.IMilestone;
 
 /**
  * @author Eike Stepper
  */
-public class MilestoneContainer extends AbstractContainer<IMilestone> implements IMilestone.Container
+public class MilestoneContainer extends DelegatedContainer<IMilestone> implements IMilestone.Container
 {
-  public MilestoneContainer()
+  public MilestoneContainer(Element notifier)
   {
+    super(notifier);
   }
 
   public IMilestone addMilestone(String name)

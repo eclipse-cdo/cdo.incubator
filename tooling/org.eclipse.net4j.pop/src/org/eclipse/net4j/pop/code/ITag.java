@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
-
 /**
  * @author Eike Stepper
  */

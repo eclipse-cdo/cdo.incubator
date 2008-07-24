@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.AbstractElement;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 
 import java.util.Date;
@@ -18,7 +18,7 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class Delivery extends AbstractElement implements IDelivery
+public class Delivery extends Element implements IDelivery
 {
   public Delivery()
   {

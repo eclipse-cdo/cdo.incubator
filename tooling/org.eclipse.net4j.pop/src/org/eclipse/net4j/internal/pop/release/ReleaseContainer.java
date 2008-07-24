@@ -10,16 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.AbstractContainer;
+import org.eclipse.net4j.internal.pop.DelegatedContainer;
+import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.pop.release.IRelease;
 
 /**
  * @author Eike Stepper
  */
-public class ReleaseContainer extends AbstractContainer<IRelease> implements IRelease.Container
+public class ReleaseContainer extends DelegatedContainer<IRelease> implements IRelease.Container
 {
-  public ReleaseContainer()
+  public ReleaseContainer(Element notifier)
   {
+    super(notifier);
   }
 
   public IRelease addRelease()

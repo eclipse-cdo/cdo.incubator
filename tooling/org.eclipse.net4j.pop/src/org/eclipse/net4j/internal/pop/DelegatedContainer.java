@@ -10,6 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
+import org.eclipse.net4j.pop.IElement;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,19 +19,37 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public abstract class AbstractContainer<ELEMENT> extends AbstractElement
+public abstract class DelegatedContainer<ELEMENT extends IElement> extends Element
 {
   private List<ELEMENT> elements = new ArrayList<ELEMENT>();
 
-  protected AbstractContainer()
+  private Element notifier;
+
+  protected DelegatedContainer(Element notifier)
   {
+    this.notifier = notifier;
   }
 
   protected void addElement(ELEMENT element)
   {
     synchronized (elements)
     {
-      elements.add(element);
+      if (!elements.contains(element))
+      {
+        elements.add(element);
+        notifier.fireEvent(new ElementAddedEvent(notifier, element));
+      }
+    }
+  }
+
+  protected void removeElement(ELEMENT element)
+  {
+    synchronized (elements)
+    {
+      if (!elements.remove(element))
+      {
+        notifier.fireEvent(new ElementRemovedEvent(notifier, element));
+      }
     }
   }
 
