@@ -29,7 +29,7 @@ public class MergeProducer extends MergeContainer implements IMerge.Producer
 
   public IMerge addMerge(Date mergeDate, IDelivery delivery)
   {
-    IMerge merge = new Merge((Container)getDelegator(), mergeDate, delivery);
+    IMerge merge = new Merge((Container)getDelegator(), delivery, mergeDate);
     addElement(merge);
     return merge;
   }

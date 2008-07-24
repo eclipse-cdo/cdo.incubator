@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
+import org.eclipse.net4j.internal.pop.delivery.Delivery;
 import org.eclipse.net4j.internal.pop.delivery.DeliveryContainer;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
@@ -44,7 +45,13 @@ public class TaskStream extends Stream implements ITaskStream
 
   public IDelivery addDelivery(Date deliveryDate)
   {
-    return deliveryContainer.addDelivery(deliveryDate);
+    List<IDelivery> elements = deliveryContainer.getElements();
+    synchronized (elements)
+    {
+      IDelivery delivery = new Delivery(this, elements.size(), deliveryDate);
+      deliveryContainer.addElement(delivery);
+      return delivery;
+    }
   }
 
   public IDelivery[] getDeliveries()

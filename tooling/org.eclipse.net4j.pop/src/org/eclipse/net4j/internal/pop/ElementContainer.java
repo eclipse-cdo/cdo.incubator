@@ -20,23 +20,23 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public abstract class ElementContainer<ELEMENT extends IElement> extends Element
+public class ElementContainer<ELEMENT extends IElement> extends Element
 {
   private List<ELEMENT> elements = new ArrayList<ELEMENT>();
 
   private Element delegator;
 
-  protected ElementContainer(Element delegator)
+  public ElementContainer(Element delegator)
   {
     this.delegator = delegator;
   }
 
-  protected Element getDelegator()
+  public Element getDelegator()
   {
     return delegator;
   }
 
-  protected void addElement(ELEMENT element)
+  public void addElement(ELEMENT element)
   {
     synchronized (elements)
     {
@@ -48,7 +48,7 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
     }
   }
 
-  protected void removeElement(ELEMENT element)
+  public void removeElement(ELEMENT element)
   {
     synchronized (elements)
     {
@@ -59,7 +59,7 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
     }
   }
 
-  protected int getElementCount()
+  public int getElementCount()
   {
     synchronized (elements)
     {
@@ -67,7 +67,7 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
     }
   }
 
-  protected ELEMENT getElement(int index)
+  public ELEMENT getElement(int index)
   {
     synchronized (elements)
     {
@@ -75,13 +75,13 @@ public abstract class ElementContainer<ELEMENT extends IElement> extends Element
     }
   }
 
-  protected List<ELEMENT> getElements()
+  public List<ELEMENT> getElements()
   {
     return elements;
   }
 
   @SuppressWarnings("unchecked")
-  protected ELEMENT[] getElements(Class<ELEMENT> componentType)
+  public ELEMENT[] getElements(Class<ELEMENT> componentType)
   {
     synchronized (elements)
     {

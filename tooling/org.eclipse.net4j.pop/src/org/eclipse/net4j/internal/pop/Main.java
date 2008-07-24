@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.stream.DevelopmentStream;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
+import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 
@@ -26,11 +27,15 @@ public class Main
   public static void main(String[] args)
   {
     IDevelopmentStream developmentStream = new DevelopmentStream(null, null);
-
     ITaskStream taskStream = developmentStream.addTaskStream(null, null);
+
     IDelivery delivery = taskStream.addDelivery(new Date());
+    System.out.println(delivery);
 
     IMerge merge = developmentStream.addMerge(new Date(), delivery);
     System.out.println(merge);
+
+    IRelease release = developmentStream.addRelease(null);
+    System.out.println(release);
   }
 }

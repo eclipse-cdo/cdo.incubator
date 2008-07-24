@@ -10,7 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
-import org.eclipse.net4j.internal.pop.delivery.MergeProducer;
+import org.eclipse.net4j.internal.pop.delivery.Merge;
+import org.eclipse.net4j.internal.pop.delivery.MergeContainer;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
@@ -33,7 +34,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 {
   private TaskStreamContainer taskStreamContainer = new TaskStreamContainer(this);
 
-  private MergeProducer mergeProducer = new MergeProducer(this);
+  private MergeContainer mergeContainer = new MergeContainer(this);
 
   private ReleaseContainer releaseContainer = new ReleaseContainer(this);
 
@@ -64,22 +65,24 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public IMerge addMerge(Date mergeDate, IDelivery delivery)
   {
-    return mergeProducer.addMerge(mergeDate, delivery);
+    IMerge merge = new Merge(this, delivery, mergeDate);
+    mergeContainer.addElement(merge);
+    return merge;
   }
 
   public IMerge getMerge(int index)
   {
-    return mergeProducer.getMerge(index);
+    return mergeContainer.getMerge(index);
   }
 
   public int getMergeCount()
   {
-    return mergeProducer.getMergeCount();
+    return mergeContainer.getMergeCount();
   }
 
   public IMerge[] getMerges()
   {
-    return mergeProducer.getMerges();
+    return mergeContainer.getMerges();
   }
 
   public IRelease addRelease(IVersion version)
@@ -107,7 +110,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     super.collectAdaptables(adaptables);
     adaptables.add(taskStreamContainer);
-    adaptables.add(mergeProducer);
+    adaptables.add(mergeContainer);
     adaptables.add(releaseContainer);
   }
 }

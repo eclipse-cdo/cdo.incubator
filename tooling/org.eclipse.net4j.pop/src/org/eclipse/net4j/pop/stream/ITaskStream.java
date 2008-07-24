@@ -15,12 +15,16 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
 public interface ITaskStream extends IStream, IDelivery.Container
 {
   public Container getContainer();
+
+  public IDelivery addDelivery(Date deliveryDate);
 
   /**
    * @author Eike Stepper

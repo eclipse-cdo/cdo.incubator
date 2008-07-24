@@ -19,19 +19,17 @@ import java.util.Date;
  */
 public interface IDelivery extends IElement
 {
-  public Date getDeliveryDate();
+  public Container getContainer();
 
-  public int getDeliveryNumber();
+  public Date getDate();
 
-  public Container getDeliveryContainer();
+  public int getNumber();
 
   /**
    * @author Eike Stepper
    */
   public interface Container extends IElement
   {
-    public IDelivery addDelivery(Date deliveryDate);
-
     public int getDeliveryCount();
 
     public IDelivery getDelivery(int index);

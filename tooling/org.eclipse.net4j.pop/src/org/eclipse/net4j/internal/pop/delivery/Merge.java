@@ -24,14 +24,14 @@ public class Merge extends Element implements IMerge
 {
   private Container container;
 
-  private Date mergeDate;
-
   private IDelivery delivery;
 
-  public Merge(Container container, Date mergeDate, IDelivery delivery)
+  private Date date;
+
+  public Merge(Container container, IDelivery delivery, Date date)
   {
     this.container = container;
-    this.mergeDate = mergeDate;
+    this.date = date;
     this.delivery = delivery;
   }
 
@@ -40,19 +40,19 @@ public class Merge extends Element implements IMerge
     return container;
   }
 
-  public Date getMergeDate()
-  {
-    return mergeDate;
-  }
-
   public IDelivery getDelivery()
   {
     return delivery;
   }
 
+  public Date getDate()
+  {
+    return date;
+  }
+
   @Override
   public String toString()
   {
-    return MessageFormat.format("Delivery[delivery={0}, mergeDate={1,date} {1,time}]", delivery, mergeDate);
+    return MessageFormat.format("Delivery[delivery={0}, date={1,date} {1,time}]", delivery, date);
   }
 }

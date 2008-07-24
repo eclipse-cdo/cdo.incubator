@@ -23,36 +23,35 @@ public class Delivery extends Element implements IDelivery
 {
   private Container container;
 
-  private Date deliveryDate;
+  private int number;
 
-  private int deliveryNumber;
+  private Date date;
 
-  public Delivery(Container container, Date deliveryDate, int deliveryNumber)
+  public Delivery(Container container, int number, Date date)
   {
     this.container = container;
-    this.deliveryDate = deliveryDate;
-    this.deliveryNumber = deliveryNumber;
+    this.date = date;
+    this.number = number;
   }
 
-  public Container getDeliveryContainer()
+  public Container getContainer()
   {
     return container;
   }
 
-  public Date getDeliveryDate()
+  public int getNumber()
   {
-    return deliveryDate;
+    return number;
   }
 
-  public int getDeliveryNumber()
+  public Date getDate()
   {
-    return deliveryNumber;
+    return date;
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("Delivery[deliveryNumber={0}, deliveryDate={1,date} {1,time}]", deliveryNumber,
-        deliveryDate);
+    return MessageFormat.format("Delivery[number={0}, date={1,date} {1,time}]", number, date);
   }
 }

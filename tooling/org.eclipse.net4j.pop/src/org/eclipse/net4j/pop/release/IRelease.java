@@ -17,18 +17,16 @@ import org.eclipse.net4j.pop.IElement;
  */
 public interface IRelease extends ITarget, IMilestone.Container
 {
-  public IVersion getVersion();
-
-  public boolean isCompatible();
-
   public Container getContainer();
+
+  public IVersion getVersion();
 
   /**
    * @author Eike Stepper
    */
   public interface Container extends IElement
   {
-    public IRelease addRelease(IVersion version, boolean compatible);
+    public IRelease addRelease(IVersion version);
 
     public int getReleaseCount();
 
