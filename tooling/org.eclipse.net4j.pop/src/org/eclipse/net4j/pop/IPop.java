@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 
 /**

@@ -8,12 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.stream;
+package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.ticket.ITicketUser;
+
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IDevelopmentStream extends IIntegrationStream, IMaintenanceStream.Container
+public interface ICommitter extends ITicketUser
 {
+  public String getCodeAccount();
+
+  public Date getEntryDate();
+
+  public Date getExitDate();
 }

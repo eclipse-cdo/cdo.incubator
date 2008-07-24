@@ -11,14 +11,11 @@
 package org.eclipse.net4j.pop.ticket;
 
 import org.eclipse.net4j.pop.IElement;
-import org.eclipse.net4j.pop.stream.IStream;
 
 /**
  * @author Eike Stepper
  */
 public interface ITicket extends IElement
 {
-  public IStream getStream();
-
   public String getTicketID();
 }

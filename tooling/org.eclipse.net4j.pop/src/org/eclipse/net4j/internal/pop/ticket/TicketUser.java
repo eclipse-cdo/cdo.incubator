@@ -11,22 +11,38 @@
 package org.eclipse.net4j.internal.pop.ticket;
 
 import org.eclipse.net4j.internal.pop.Element;
-import org.eclipse.net4j.pop.ticket.ITicket;
+import org.eclipse.net4j.pop.ticket.ITicketUser;
 
 /**
  * @author Eike Stepper
  */
-public class Ticket extends Element implements ITicket
+public class TicketUser extends Element implements ITicketUser
 {
-  private String ticketID;
+  private String name;
 
-  public Ticket(String ticketID)
+  private String email;
+
+  private String ticketAccount;
+
+  public TicketUser(String name, String email, String ticketAccount)
   {
-    this.ticketID = ticketID;
+    this.email = email;
+    this.name = name;
+    this.ticketAccount = ticketAccount;
   }
 
-  public String getTicketID()
+  public String getName()
   {
-    return ticketID;
+    return name;
+  }
+
+  public String getEmail()
+  {
+    return email;
+  }
+
+  public String getTicketAccount()
+  {
+    return ticketAccount;
   }
 }

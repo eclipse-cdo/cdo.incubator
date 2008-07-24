@@ -8,18 +8,18 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop;
+package org.eclipse.net4j.pop.ticket;
+
+import org.eclipse.net4j.pop.IElement;
 
 /**
  * @author Eike Stepper
  */
-public interface ICommitter extends IElement
+public interface ITicketUser extends IElement
 {
   public String getName();
 
   public String getEmail();
 
   public String getTicketAccount();
-
-  public String getCodeAccount();
 }

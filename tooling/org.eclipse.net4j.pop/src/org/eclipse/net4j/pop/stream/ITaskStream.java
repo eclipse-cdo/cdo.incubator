@@ -10,11 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
+import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.ticket.ITicket;
-
-import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
@@ -26,7 +25,7 @@ public interface ITaskStream extends IStream, IDelivery.Container
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IAdaptable
+  public interface Container extends IElement
   {
     public ITaskStream addTaskStream(IBranch branch, ITicket ticket);
 
