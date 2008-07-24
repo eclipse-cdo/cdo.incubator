@@ -10,11 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.stream.DevelopmentStream;
+import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.PopUtil;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 
 import java.util.Date;
@@ -26,16 +25,18 @@ public class Main
 {
   public static void main(String[] args)
   {
-    IDevelopmentStream developmentStream = new DevelopmentStream(null, null);
-    ITaskStream taskStream = developmentStream.addTaskStream(null, null);
+    IPop pop = PopUtil.createPop(null, null, "CDO");
+    ITaskStream taskStream = pop.addTaskStream(null, null);
 
     IDelivery delivery = taskStream.addDelivery(new Date());
     System.out.println(delivery);
 
-    IMerge merge = developmentStream.addMerge(new Date(), delivery);
+    IMerge merge = pop.addMerge(new Date(), delivery);
     System.out.println(merge);
 
-    IRelease release = developmentStream.addRelease();
-    System.out.println(release);
+    System.out.println(pop.addRelease());
+    System.out.println(pop.addRelease());
+    System.out.println(pop.addRelease());
+    System.out.println(pop.addRelease());
   }
 }
