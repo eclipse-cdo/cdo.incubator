@@ -14,6 +14,10 @@ import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 
+import org.eclipse.core.runtime.IAdaptable;
+
+import java.util.List;
+
 /**
  * @author Eike Stepper
  */
@@ -23,7 +27,7 @@ public class Release extends Target implements IRelease
 
   private boolean compatible;
 
-  private IMilestone.Container milestoneContainer = new MilestoneContainer(this);
+  private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
 
   public Release()
   {
@@ -65,15 +69,9 @@ public class Release extends Target implements IRelease
   }
 
   @Override
-  @SuppressWarnings("unchecked")
-  public Object getAdapter(Class adapter)
+  protected void collectAdaptables(List<IAdaptable> adaptables)
   {
-    Object result = super.getAdapter(adapter);
-    if (result != null)
-    {
-      return result;
-    }
-
-    return milestoneContainer.getAdapter(adapter);
+    super.collectAdaptables(adaptables);
+    adaptables.add(milestoneContainer);
   }
 }

@@ -17,24 +17,27 @@ import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import org.eclipse.core.runtime.IAdaptable;
+
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Eike Stepper
  */
 public class TaskStream extends Stream implements ITaskStream
 {
-  private ITaskStream.Container container;
+  private Container container;
 
-  private IDelivery.Container deliveryContainer = new DeliveryContainer(this);
+  private DeliveryContainer deliveryContainer = new DeliveryContainer(this);
 
-  public TaskStream(IPop pop, IBranch branch, ITicket ticket, ITaskStream.Container container)
+  public TaskStream(IPop pop, IBranch branch, ITicket ticket, Container container)
   {
     super(pop, branch, ticket);
     this.container = container;
   }
 
-  public ITaskStream.Container getTaskStreamContainer()
+  public Container getContainer()
   {
     return container;
   }
@@ -59,16 +62,10 @@ public class TaskStream extends Stream implements ITaskStream
     return deliveryContainer.getDeliveryCount();
   }
 
-  @SuppressWarnings("unchecked")
   @Override
-  public Object getAdapter(Class adapter)
+  protected void collectAdaptables(List<IAdaptable> adaptables)
   {
-    Object result = super.getAdapter(adapter);
-    if (result != null)
-    {
-      return result;
-    }
-
-    return deliveryContainer.getAdapter(adapter);
+    super.collectAdaptables(adaptables);
+    adaptables.add(deliveryContainer);
   }
 }

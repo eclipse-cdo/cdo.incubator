@@ -13,32 +13,22 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.pop.IElement;
 import org.eclipse.net4j.util.event.Notifier;
 
+import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Eike Stepper
  */
 public abstract class Element extends Notifier implements IElement
 {
+  private List<IAdaptable> adaptables;
+
   protected Element()
   {
   }
-
-  @SuppressWarnings("unchecked")
-  public Object getAdapter(Class adapter)
-  {
-    return Platform.getAdapterManager().getAdapter(this, adapter);
-  }
-
-  // TODO Enforce Object protocol
-  // @Override
-  // public abstract boolean equals(Object obj);
-  //
-  // @Override
-  // public abstract int hashCode();
-  //
-  // @Override
-  // public abstract String toString();
 
   protected void checkArgument(Object arg, String argName)
   {
@@ -53,6 +43,35 @@ public abstract class Element extends Notifier implements IElement
     if (!expr)
     {
       throw new IllegalArgumentException(argName);
+    }
+  }
+
+  protected void collectAdaptables(List<IAdaptable> adaptables)
+  {
+  }
+
+  @SuppressWarnings("unchecked")
+  public Object getAdapter(Class adapterType)
+  {
+    ensureAdaptables();
+    for (IAdaptable adaptable : adaptables)
+    {
+      Object adapter = adaptable.getAdapter(adapterType);
+      if (adapter != null)
+      {
+        return adapter;
+      }
+    }
+
+    return Platform.getAdapterManager().getAdapter(this, adapterType);
+  }
+
+  private synchronized void ensureAdaptables()
+  {
+    if (adaptables == null)
+    {
+      adaptables = new ArrayList<IAdaptable>();
+      collectAdaptables(adaptables);
     }
   }
 }

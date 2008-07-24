@@ -20,7 +20,7 @@ import org.eclipse.core.runtime.IAdaptable;
  */
 public interface ITaskStream extends IStream, IDelivery.Container
 {
-  public Container getTaskStreamContainer();
+  public Container getContainer();
 
   /**
    * @author Eike Stepper
