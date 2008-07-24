@@ -19,29 +19,29 @@ import java.text.MessageFormat;
  */
 public class Milestone extends Target implements IMilestone
 {
-  private IMilestone.Container milestoneContainer;
+  private Container container;
 
-  private String milestoneName;
+  private String name;
 
-  protected Milestone(IMilestone.Container milestoneContainer, String milestoneName)
+  protected Milestone(Container container, String name)
   {
-    this.milestoneContainer = milestoneContainer;
-    this.milestoneName = milestoneName;
+    this.container = container;
+    this.name = name;
   }
 
   public IMilestone.Container getMilestoneContainer()
   {
-    return milestoneContainer;
+    return container;
   }
 
-  public String getMilestoneName()
+  public String getName()
   {
-    return milestoneName;
+    return name;
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("Milestone[milestoneName={0}]", milestoneName);
+    return MessageFormat.format("Milestone[name={0}]", name);
   }
 }

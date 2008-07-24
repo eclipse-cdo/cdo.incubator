@@ -10,7 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
+import org.eclipse.net4j.internal.pop.release.Release;
+import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
+import org.eclipse.net4j.internal.pop.release.Version;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -54,6 +59,40 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
     return maintenanceStreamContainer.getMaintenanceStreams();
   }
 
+  public IRelease addRelease()
+  {
+    return addRelease(true, 1);
+  }
+
+  public IRelease addRelease(boolean compatible, int increment)
+  {
+    ReleaseContainer releaseContainer = getReleaseContainer();
+    List<IRelease> elements = releaseContainer.getElements();
+    synchronized (elements)
+    {
+      IVersion lastVersion = new Version();
+      if (!elements.isEmpty())
+      {
+        IRelease lastRelease = elements.get(elements.size() - 1);
+        lastVersion = lastRelease.getVersion();
+      }
+
+      IVersion version = null;
+      if (compatible)
+      {
+        version = lastVersion.nextMinor(increment);
+      }
+      else
+      {
+        version = lastVersion.nextMajor(increment);
+      }
+
+      IRelease release = new Release(this, version);
+      releaseContainer.addElement(release);
+      return release;
+    }
+  }
+
   @Override
   public String toString()
   {
@@ -65,5 +104,10 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
   {
     super.collectAdaptables(adaptables);
     adaptables.add(maintenanceStreamContainer);
+  }
+
+  protected MaintenanceStreamContainer getMaintenanceStreamContainer()
+  {
+    return maintenanceStreamContainer;
   }
 }

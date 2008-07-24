@@ -42,6 +42,11 @@ public class Version extends PlatformObject implements IVersion
     this(major, 0);
   }
 
+  public Version()
+  {
+    this(0);
+  }
+
   public int getMajor()
   {
     return major;

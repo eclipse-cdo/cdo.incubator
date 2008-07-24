@@ -13,8 +13,6 @@ package org.eclipse.net4j.internal.pop.release;
 import org.eclipse.net4j.internal.pop.Element;
 import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.release.IRelease.Container;
 
 /**
  * @author Eike Stepper
@@ -24,13 +22,6 @@ public class ReleaseContainer extends ElementContainer<IRelease> implements IRel
   public ReleaseContainer(Element delegator)
   {
     super(delegator);
-  }
-
-  public IRelease addRelease(IVersion version)
-  {
-    IRelease release = new Release((Container)getDelegator(), version);
-    addElement(release);
-    return release;
   }
 
   public int getReleaseCount()

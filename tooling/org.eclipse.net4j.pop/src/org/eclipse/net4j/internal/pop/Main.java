@@ -35,7 +35,7 @@ public class Main
     IMerge merge = developmentStream.addMerge(new Date(), delivery);
     System.out.println(merge);
 
-    IRelease release = developmentStream.addRelease(null);
+    IRelease release = developmentStream.addRelease();
     System.out.println(release);
   }
 }

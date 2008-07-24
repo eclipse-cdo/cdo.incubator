@@ -20,6 +20,8 @@ public interface IMaintenanceStream extends IStream, IRelease.Container
 {
   public Container getContainer();
 
+  public IRelease addRelease();
+
   /**
    * @author Eike Stepper
    */

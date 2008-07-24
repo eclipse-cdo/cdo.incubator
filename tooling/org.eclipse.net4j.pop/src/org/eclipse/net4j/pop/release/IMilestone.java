@@ -17,7 +17,7 @@ import org.eclipse.net4j.pop.IElement;
  */
 public interface IMilestone extends ITarget
 {
-  public String getMilestoneName();
+  public String getName();
 
   public Container getMilestoneContainer();
 

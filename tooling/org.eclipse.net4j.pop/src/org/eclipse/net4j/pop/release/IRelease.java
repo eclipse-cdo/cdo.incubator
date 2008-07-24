@@ -28,8 +28,6 @@ public interface IRelease extends ITarget, IMilestone.Container
    */
   public interface Container extends IElement
   {
-    public IRelease addRelease(IVersion version);
-
     public int getReleaseCount();
 
     public IRelease getRelease(int index);

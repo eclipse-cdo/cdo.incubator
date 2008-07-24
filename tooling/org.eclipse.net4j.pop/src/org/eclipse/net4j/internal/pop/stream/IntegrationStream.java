@@ -17,7 +17,6 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IIntegrationStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -87,11 +86,6 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return mergeContainer.getMerges();
   }
 
-  public IRelease addRelease(IVersion version)
-  {
-    return releaseContainer.addRelease(version);
-  }
-
   public IRelease getRelease(int index)
   {
     return releaseContainer.getRelease(index);
@@ -114,5 +108,20 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     adaptables.add(taskStreamContainer);
     adaptables.add(mergeContainer);
     adaptables.add(releaseContainer);
+  }
+
+  protected TaskStreamContainer getTaskStreamContainer()
+  {
+    return taskStreamContainer;
+  }
+
+  protected MergeContainer getMergeContainer()
+  {
+    return mergeContainer;
+  }
+
+  protected ReleaseContainer getReleaseContainer()
+  {
+    return releaseContainer;
   }
 }

@@ -10,11 +10,17 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
+import org.eclipse.net4j.internal.pop.release.Release;
+import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
+import org.eclipse.net4j.internal.pop.release.Version;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 /**
  * @author Eike Stepper
@@ -32,6 +38,26 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
   public Container getContainer()
   {
     return container;
+  }
+
+  public IRelease addRelease()
+  {
+    ReleaseContainer releaseContainer = getReleaseContainer();
+    List<IRelease> elements = releaseContainer.getElements();
+    synchronized (elements)
+    {
+      IVersion lastVersion = new Version();
+      if (!elements.isEmpty())
+      {
+        IRelease lastRelease = elements.get(elements.size() - 1);
+        lastVersion = lastRelease.getVersion();
+      }
+
+      IVersion version = lastVersion.nextMicro();
+      IRelease release = new Release(this, version);
+      releaseContainer.addElement(release);
+      return release;
+    }
   }
 
   @Override
