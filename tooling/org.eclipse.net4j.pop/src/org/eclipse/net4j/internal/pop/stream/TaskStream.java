@@ -48,7 +48,7 @@ public class TaskStream extends Stream implements ITaskStream
     List<IDelivery> elements = deliveryContainer.getElements();
     synchronized (elements)
     {
-      IDelivery delivery = new Delivery(this, elements.size(), deliveryDate);
+      IDelivery delivery = new Delivery(this, elements.size() + 1, deliveryDate);
       deliveryContainer.addElement(delivery);
       return delivery;
     }

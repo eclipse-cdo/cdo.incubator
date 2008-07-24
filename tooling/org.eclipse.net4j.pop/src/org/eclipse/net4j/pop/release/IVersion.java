@@ -15,7 +15,7 @@ import org.eclipse.core.runtime.IAdaptable;
 /**
  * @author Eike Stepper
  */
-public interface IVersion extends IAdaptable
+public interface IVersion extends IAdaptable, Comparable<IVersion>
 {
   public int getMajor();
 

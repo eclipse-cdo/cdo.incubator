@@ -14,6 +14,8 @@ import org.eclipse.net4j.pop.release.IVersion;
 
 import org.eclipse.core.runtime.PlatformObject;
 
+import java.text.MessageFormat;
+
 /**
  * @author Eike Stepper
  */
@@ -75,5 +77,17 @@ public class Version extends PlatformObject implements IVersion
   public IVersion nextMicro()
   {
     return new Version(major, minor, micro + 1);
+  }
+
+  public int compareTo(IVersion o)
+  {
+    // TODO Implement Version.compareTo(o)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("{0}.{1}.{2}", major, minor, micro);
   }
 }

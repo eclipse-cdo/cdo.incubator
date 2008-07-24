@@ -21,18 +21,27 @@ import java.util.Date;
  */
 public class Committer extends TicketUser implements ICommitter
 {
+  private Container container;
+
   private String codeAccount;
 
   private Date entryDate;
 
   private Date exitDate;
 
-  public Committer(String name, String email, String ticketAccount, String codeAccount, Date entryDate, Date exitDate)
+  public Committer(Container container, String name, String email, String ticketAccount, String codeAccount,
+      Date entryDate, Date exitDate)
   {
     super(name, email, ticketAccount);
+    this.container = container;
     this.codeAccount = codeAccount;
     this.entryDate = entryDate;
     this.exitDate = exitDate;
+  }
+
+  public Container getContainer()
+  {
+    return container;
   }
 
   public String getCodeAccount()

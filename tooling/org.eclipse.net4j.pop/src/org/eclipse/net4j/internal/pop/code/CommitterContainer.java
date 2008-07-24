@@ -8,20 +8,34 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop;
+package org.eclipse.net4j.internal.pop.code;
 
+import org.eclipse.net4j.internal.pop.Element;
+import org.eclipse.net4j.internal.pop.ElementContainer;
 import org.eclipse.net4j.pop.code.ICommitter;
-import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 
 /**
- * Represents a <em>point of process</em>, a concept similar to a <em>project</em>.
- * <p>
- * 
  * @author Eike Stepper
  */
-public interface IPop extends IDevelopmentStream, ICommitter.Container
+public class CommitterContainer extends ElementContainer<ICommitter> implements ICommitter.Container
 {
-  public String getName();
+  public CommitterContainer(Element delegator)
+  {
+    super(delegator);
+  }
 
-  public ICommitter addCommitter(String name, String email, String ticketAccount, String codeAccount);
+  public ICommitter[] getCommitters()
+  {
+    return getElements(ICommitter.class);
+  }
+
+  public ICommitter getCommitter(int index)
+  {
+    return getElement(index);
+  }
+
+  public int getCommitterCount()
+  {
+    return getElementCount();
+  }
 }

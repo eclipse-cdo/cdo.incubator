@@ -8,33 +8,23 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.code;
+package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.pop.IElement;
-import org.eclipse.net4j.pop.ticket.ITicketUser;
-
-import java.util.Date;
+import org.eclipse.net4j.internal.pop.Pop;
+import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
-public interface ICommitter extends ITicketUser
+public final class PopUtil
 {
-  public String getCodeAccount();
-
-  public Date getEntryDate();
-
-  public Date getExitDate();
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
+  private PopUtil()
   {
-    public int getCommitterCount();
+  }
 
-    public ICommitter getCommitter(int index);
-
-    public ICommitter[] getCommitters();
+  public static IPop createPop(IBranch branch, ITicket ticket, String name)
+  {
+    return new Pop(branch, ticket, name);
   }
 }

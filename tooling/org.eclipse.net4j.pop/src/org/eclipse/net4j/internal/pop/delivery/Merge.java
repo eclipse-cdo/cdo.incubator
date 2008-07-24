@@ -53,6 +53,6 @@ public class Merge extends Element implements IMerge
   @Override
   public String toString()
   {
-    return MessageFormat.format("Delivery[delivery={0}, date={1,date} {1,time}]", delivery, date);
+    return MessageFormat.format("Merge[delivery={0}, date={1,date} {1,time}]", delivery, date);
   }
 }
