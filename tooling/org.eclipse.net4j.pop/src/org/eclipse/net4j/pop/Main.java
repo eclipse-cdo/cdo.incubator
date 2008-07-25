@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.util.PopUtil;
@@ -23,7 +24,8 @@ public class Main
 {
   public static void main(String[] args)
   {
-    IPop pop = PopUtil.createPop("CDO", null, null, null);
+    IBranch rootBranch = PopUtil.createRootBranch("HEAD");
+    IPop pop = PopUtil.createPop("CDO", rootBranch, null);
     ITaskStream taskStream = pop.addTaskStream(new Date(), null);
 
     IDelivery delivery1 = taskStream.addDelivery(new Date());
