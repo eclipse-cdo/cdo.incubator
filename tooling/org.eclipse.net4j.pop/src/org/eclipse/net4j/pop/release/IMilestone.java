@@ -10,26 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.util.IElement;
-
 /**
  * @author Eike Stepper
  */
 public interface IMilestone extends ITarget
 {
+  public IRelease getRelease();
+
   public String getName();
-
-  public IRelease getParentElement();
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
-  {
-    public int getMilestoneCount();
-
-    public IMilestone getMilestone(int index);
-
-    public IMilestone[] getMilestones();
-  }
 }

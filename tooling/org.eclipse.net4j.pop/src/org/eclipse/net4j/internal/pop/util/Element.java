@@ -13,19 +13,13 @@ package org.eclipse.net4j.internal.pop.util;
 import org.eclipse.net4j.pop.util.IElement;
 import org.eclipse.net4j.util.event.Notifier;
 
-import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author Eike Stepper
  */
 public abstract class Element extends Notifier implements IElement
 {
-  private List<IAdaptable> adaptables;
-
   protected Element()
   {
   }
@@ -64,32 +58,9 @@ public abstract class Element extends Notifier implements IElement
     }
   }
 
-  protected void collectAdaptables(List<IAdaptable> adaptables)
-  {
-  }
-
   @SuppressWarnings("unchecked")
   public Object getAdapter(Class adapterType)
   {
-    ensureAdaptables();
-    for (IAdaptable adaptable : adaptables)
-    {
-      Object adapter = adaptable.getAdapter(adapterType);
-      if (adapter != null)
-      {
-        return adapter;
-      }
-    }
-
     return Platform.getAdapterManager().getAdapter(this, adapterType);
-  }
-
-  private synchronized void ensureAdaptables()
-  {
-    if (adaptables == null)
-    {
-      adaptables = new ArrayList<IAdaptable>();
-      collectAdaptables(adaptables);
-    }
   }
 }

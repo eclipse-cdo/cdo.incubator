@@ -10,71 +10,24 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.PopElement;
-import org.eclipse.net4j.internal.pop.delivery.MergeContainer;
-import org.eclipse.net4j.pop.IPopElement;
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.code.ITag;
-import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.ITarget;
-import org.eclipse.net4j.pop.stream.IIntegrationStream;
 
 /**
  * @author Eike Stepper
  */
-public abstract class Target extends PopElement implements ITarget
+public abstract class Target extends Element implements ITarget
 {
-  private IMerge.Container mergeContainer = new MergeContainer(this);
-
   private ITag tag;
 
-  protected Target(IPopElement parentElement, ITag tag)
+  protected Target(ITag tag)
   {
-    super(parentElement);
     this.tag = tag;
   }
 
   public ITag getTag()
   {
     return tag;
-  }
-
-  @Override
-  public IIntegrationStream getParentStream()
-  {
-    return (IIntegrationStream)super.getParentElement();
-  }
-
-  @Override
-  public IIntegrationStream getStream()
-  {
-    return (IIntegrationStream)super.getStream();
-  }
-
-  public IMerge getMerge(int index)
-  {
-    return mergeContainer.getMerge(index);
-  }
-
-  public int getMergeCount()
-  {
-    return mergeContainer.getMergeCount();
-  }
-
-  public IMerge[] getMerges()
-  {
-    return mergeContainer.getMerges();
-  }
-
-  @Override
-  @SuppressWarnings("unchecked")
-  public Object getAdapter(Class adapter)
-  {
-    Object result = super.getAdapter(adapter);
-    if (result != null)
-    {
-      return result;
-    }
-
-    return mergeContainer.getAdapter(adapter);
   }
 }

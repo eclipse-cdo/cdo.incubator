@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.stream;
+package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -16,13 +16,17 @@ import org.eclipse.net4j.pop.ticket.ITicket;
 /**
  * @author Eike Stepper
  */
-public interface IIntegrationStream extends IStream, ITaskStream.Container, IRelease.Container
+public interface IDevelopmentStream extends IIntegrationStream
 {
-  public IIntegrationStream getStream();
+  public IRelease addRelease(boolean compatible, int increment);
 
-  public IIntegrationStream getParentStream();
+  public IRelease addRelease();
 
-  public IIntegrationStream getParentElement();
+  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket);
 
-  public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket);
+  public int getMaintenanceStreamCount();
+
+  public IMaintenanceStream getMaintenanceStream(int index);
+
+  public IMaintenanceStream[] getMaintenanceStreams();
 }

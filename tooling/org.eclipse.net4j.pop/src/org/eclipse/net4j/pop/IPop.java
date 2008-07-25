@@ -15,9 +15,6 @@ import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.stream.IDevelopmentStream;
-import org.eclipse.net4j.pop.stream.IIntegrationStream;
-import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.util.IElement;
 

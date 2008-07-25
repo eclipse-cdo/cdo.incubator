@@ -8,22 +8,30 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.stream;
+package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.delivery.IMerge;
 
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IStream extends IPopElement, IMerge.Container
+public interface ITaskStream extends IStream
 {
-  public IStream getParentElement();
+  public IIntegrationStream getParentStream();
 
-  public IStreamBaseline getBaseline();
+  public IDelivery addDelivery(Date deliveryDate);
 
-  public IMerge merge(Date date, IDelivery delivery);
+  // /**
+  // * @author Eike Stepper
+  // */
+  // public interface Container extends IElement
+  // {
+  // public int getTaskStreamCount();
+  //
+  // public ITaskStream getTaskStream(int index);
+  //
+  // public ITaskStream[] getTaskStreams();
+  // }
 }

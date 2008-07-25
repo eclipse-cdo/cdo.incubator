@@ -29,13 +29,13 @@ import java.util.Date;
  */
 public abstract class Stream extends Element implements IStream
 {
+  protected ElementContainer<IMerge> mergeContainer = new ElementContainer<IMerge>(this);
+
   private IStreamBaseline baseline;
 
   private IBranch branch;
 
   private ITicket ticket;
-
-  private ElementContainer<IMerge> mergeContainer = new ElementContainer<IMerge>(this);
 
   protected Stream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
@@ -96,16 +96,16 @@ public abstract class Stream extends Element implements IStream
 
   public IMerge getMerge(int index)
   {
-    return mergeContainer.getMerge(index);
+    return mergeContainer.getElement(index);
   }
 
   public int getMergeCount()
   {
-    return mergeContainer.getMergeCount();
+    return mergeContainer.getElementCount();
   }
 
   public IMerge[] getMerges()
   {
-    return mergeContainer.getMerges();
+    return mergeContainer.getElements(IMerge.class);
   }
 }

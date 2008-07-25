@@ -78,17 +78,17 @@ public class Branch extends Element implements IBranch
 
   public IBranch getBranch(int index)
   {
-    return branchContainer.getBranch(index);
+    return branchContainer.getElement(index);
   }
 
   public int getBranchCount()
   {
-    return branchContainer.getBranchCount();
+    return branchContainer.getElementCount();
   }
 
   public IBranch[] getBranchs()
   {
-    return branchContainer.getBranchs();
+    return branchContainer.getElements(IBranch.class);
   }
 
   @Override

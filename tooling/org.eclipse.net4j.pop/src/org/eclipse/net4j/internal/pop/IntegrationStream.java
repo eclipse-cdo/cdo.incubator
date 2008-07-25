@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.release.Release;
+import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.ITaskStream;
@@ -25,9 +26,9 @@ import org.eclipse.net4j.pop.ticket.ITicket;
  */
 public abstract class IntegrationStream extends Stream implements IIntegrationStream
 {
-  private TaskStreamContainer taskStreamContainer = new TaskStreamContainer(this);
+  protected ElementContainer<ITaskStream> taskStreamContainer = new ElementContainer<ITaskStream>(this);
 
-  private ReleaseContainer releaseContainer = new ReleaseContainer(this);
+  protected ElementContainer<IRelease> releaseContainer = new ElementContainer<IRelease>(this);
 
   protected IntegrationStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
@@ -62,32 +63,32 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream getTaskStream(int index)
   {
-    return taskStreamContainer.getTaskStream(index);
+    return taskStreamContainer.getElement(index);
   }
 
   public int getTaskStreamCount()
   {
-    return taskStreamContainer.getTaskStreamCount();
+    return taskStreamContainer.getElementCount();
   }
 
   public ITaskStream[] getTaskStreams()
   {
-    return taskStreamContainer.getTaskStreams();
+    return taskStreamContainer.getElements(ITaskStream.class);
   }
 
   public IRelease getRelease(int index)
   {
-    return releaseContainer.getRelease(index);
+    return releaseContainer.getElement(index);
   }
 
   public int getReleaseCount()
   {
-    return releaseContainer.getReleaseCount();
+    return releaseContainer.getElementCount();
   }
 
   public IRelease[] getReleases()
   {
-    return releaseContainer.getReleases();
+    return releaseContainer.getElements(IRelease.class);
   }
 
   protected IRelease addRelease(IVersion version)

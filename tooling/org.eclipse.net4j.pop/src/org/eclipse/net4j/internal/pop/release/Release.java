@@ -10,36 +10,36 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
+import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.stream.IIntegrationStream;
-
-import org.eclipse.core.runtime.IAdaptable;
 
 import java.text.MessageFormat;
-import java.util.List;
 
 /**
  * @author Eike Stepper
  */
 public class Release extends Target implements IRelease
 {
+  protected ElementContainer<IMilestone> milestoneContainer = new ElementContainer<IMilestone>(this);
+
+  private IIntegrationStream integrationStream;
+
   private IVersion version;
 
-  private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
-
-  public Release(IIntegrationStream stream, IVersion version, ITag tag)
+  public Release(IIntegrationStream integrationStream, IVersion version, ITag tag)
   {
-    super(stream, tag);
+    super(tag);
+    this.integrationStream = integrationStream;
     this.version = version;
   }
 
-  @Override
-  public IIntegrationStream getParentElement()
+  public IIntegrationStream getStream()
   {
-    return (IIntegrationStream)super.getParentElement();
+    return integrationStream;
   }
 
   public IVersion getVersion()
@@ -49,7 +49,7 @@ public class Release extends Target implements IRelease
 
   public IMilestone addMilestone(String name)
   {
-    ITag tag = getPop().getStrategy().createMilestoneTag(this, name);
+    ITag tag = getStream().getPop().getStrategy().createMilestoneTag(this, name);
     IMilestone milestone = new Milestone(this, name, tag);
     milestoneContainer.addElement(milestone);
     return milestone;
@@ -57,29 +57,22 @@ public class Release extends Target implements IRelease
 
   public IMilestone getMilestone(int index)
   {
-    return milestoneContainer.getMilestone(index);
+    return milestoneContainer.getElement(index);
   }
 
   public int getMilestoneCount()
   {
-    return milestoneContainer.getMilestoneCount();
+    return milestoneContainer.getElementCount();
   }
 
   public IMilestone[] getMilestones()
   {
-    return milestoneContainer.getMilestones();
+    return milestoneContainer.getElements(IMilestone.class);
   }
 
   @Override
   public String toString()
   {
     return MessageFormat.format("Release[version={0}, tag={1}]", version, getTag());
-  }
-
-  @Override
-  protected void collectAdaptables(List<IAdaptable> adaptables)
-  {
-    super.collectAdaptables(adaptables);
-    adaptables.add(milestoneContainer);
   }
 }

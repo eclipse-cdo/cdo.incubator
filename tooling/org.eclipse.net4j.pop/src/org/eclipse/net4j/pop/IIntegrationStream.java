@@ -8,34 +8,33 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.release;
+package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.internal.pop.util.Element;
-import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
  * @author Eike Stepper
  */
-public class ReleaseContainer extends ElementContainer<IRelease> implements IRelease.Container
+public interface IIntegrationStream extends IStream
 {
-  public ReleaseContainer(Element delegator)
-  {
-    super(delegator);
-  }
+  public IIntegrationStream getStream();
 
-  public int getReleaseCount()
-  {
-    return getElementCount();
-  }
+  public IIntegrationStream getParentStream();
 
-  public IRelease getRelease(int index)
-  {
-    return getElement(index);
-  }
+  public IIntegrationStream getParentElement();
 
-  public IRelease[] getReleases()
-  {
-    return getElements(IRelease.class);
-  }
+  public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket);
+
+  public int getTaskStreamCount();
+
+  public ITaskStream getTaskStream(int index);
+
+  public ITaskStream[] getTaskStreams();
+
+  public int getReleaseCount();
+
+  public IRelease getRelease(int index);
+
+  public IRelease[] getReleases();
 }

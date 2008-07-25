@@ -11,8 +11,6 @@
 package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.stream.IMaintenanceStream;
-import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.util.PopUtil;
 
 import java.util.Date;

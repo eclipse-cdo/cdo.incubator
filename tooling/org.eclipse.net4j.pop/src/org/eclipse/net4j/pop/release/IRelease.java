@@ -10,30 +10,20 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.stream.IIntegrationStream;
-import org.eclipse.net4j.pop.stream.IStreamBaseline;
-import org.eclipse.net4j.pop.util.IElement;
+import org.eclipse.net4j.pop.IStreamBaseline;
 
 /**
  * @author Eike Stepper
  */
-public interface IRelease extends ITarget, IStreamBaseline, IMilestone.Container
+public interface IRelease extends ITarget, IStreamBaseline
 {
-  public IIntegrationStream getParentElement();
-
   public IVersion getVersion();
 
   public IMilestone addMilestone(String name);
 
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
-  {
-    public int getReleaseCount();
+  public int getMilestoneCount();
 
-    public IRelease getRelease(int index);
+  public IMilestone getMilestone(int index);
 
-    public IRelease[] getReleases();
-  }
+  public IMilestone[] getMilestones();
 }

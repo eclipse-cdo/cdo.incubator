@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.internal.pop.release.Version;
 import org.eclipse.net4j.pop.IDevelopmentStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
@@ -53,7 +52,6 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
 
   public IRelease addRelease()
   {
-    ReleaseContainer releaseContainer = getReleaseContainer();
     List<IRelease> elements = releaseContainer.getElements();
     synchronized (elements)
     {

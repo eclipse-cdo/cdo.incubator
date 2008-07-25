@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.util;
 
-import org.eclipse.net4j.pop.IPopElement;
+import org.eclipse.net4j.pop.util.IElement;
 
 import java.lang.reflect.Array;
 import java.text.MessageFormat;
@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public class ElementContainer<ELEMENT extends IPopElement> extends Element
+public class ElementContainer<ELEMENT extends IElement> extends Element
 {
   private List<ELEMENT> elements = new ArrayList<ELEMENT>();
 

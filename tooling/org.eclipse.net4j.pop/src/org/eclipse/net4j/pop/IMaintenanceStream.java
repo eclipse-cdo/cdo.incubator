@@ -8,10 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.stream;
+package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper
@@ -26,15 +25,15 @@ public interface IMaintenanceStream extends IIntegrationStream
 
   public IRelease addRelease();
 
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
-  {
-    public int getMaintenanceStreamCount();
-
-    public IMaintenanceStream getMaintenanceStream(int index);
-
-    public IMaintenanceStream[] getMaintenanceStreams();
-  }
+  // /**
+  // * @author Eike Stepper
+  // */
+  // public interface Container extends IElement
+  // {
+  // public int getMaintenanceStreamCount();
+  //
+  // public IMaintenanceStream getMaintenanceStream(int index);
+  //
+  // public IMaintenanceStream[] getMaintenanceStreams();
+  // }
 }

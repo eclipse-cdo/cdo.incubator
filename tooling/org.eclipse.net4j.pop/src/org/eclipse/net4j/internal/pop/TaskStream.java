@@ -28,7 +28,7 @@ import java.util.List;
  */
 public class TaskStream extends Stream implements ITaskStream
 {
-  private ElementContainer<IDelivery> deliveryContainer = new ElementContainer<IDelivery>(this);
+  protected ElementContainer<IDelivery> deliveryContainer = new ElementContainer<IDelivery>(this);
 
   public TaskStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
@@ -64,19 +64,19 @@ public class TaskStream extends Stream implements ITaskStream
     }
   }
 
-  public IDelivery[] getDeliveries()
-  {
-    return deliveryContainer.getDeliveries();
-  }
-
   public IDelivery getDelivery(int index)
   {
-    return deliveryContainer.getDelivery(index);
+    return deliveryContainer.getElement(index);
   }
 
   public int getDeliveryCount()
   {
-    return deliveryContainer.getDeliveryCount();
+    return deliveryContainer.getElementCount();
+  }
+
+  public IDelivery[] getDeliveries()
+  {
+    return deliveryContainer.getElements(IDelivery.class);
   }
 
   @Override

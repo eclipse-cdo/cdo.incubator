@@ -10,8 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.delivery;
 
-import org.eclipse.net4j.pop.IPopElement;
-import org.eclipse.net4j.pop.stream.ITaskStream;
+import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.util.IElement;
 
 import java.util.Date;
@@ -19,27 +18,11 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public interface IDelivery extends IPopElement
+public interface IDelivery extends IElement
 {
+  public ITaskStream getStream();
+
   public Date getDate();
 
   public int getNumber();
-
-  public ITaskStream getStream();
-
-  public ITaskStream getParentStream();
-
-  public ITaskStream getParentElement();
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
-  {
-    public int getDeliveryCount();
-
-    public IDelivery getDelivery(int index);
-
-    public IDelivery[] getDeliveries();
-  }
 }

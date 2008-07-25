@@ -23,7 +23,7 @@ import java.util.Date;
  */
 public class Pop extends DevelopmentStream implements IPop
 {
-  private ElementContainer<ICommitter> committerContainer = new ElementContainer<ICommitter>(this);
+  protected ElementContainer<ICommitter> committerContainer = new ElementContainer<ICommitter>(this);
 
   private String name;
 
@@ -79,17 +79,17 @@ public class Pop extends DevelopmentStream implements IPop
 
   public ICommitter getCommitter(int index)
   {
-    return committerContainer.getCommitter(index);
+    return committerContainer.getElement(index);
   }
 
   public int getCommitterCount()
   {
-    return committerContainer.getCommitterCount();
+    return committerContainer.getElementCount();
   }
 
   public ICommitter[] getCommitters()
   {
-    return committerContainer.getCommitters();
+    return committerContainer.getElements(ICommitter.class);
   }
 
 }

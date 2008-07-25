@@ -28,18 +28,12 @@ import java.util.List;
  */
 public class DevelopmentStream extends IntegrationStream implements IDevelopmentStream
 {
-  private ElementContainer<IMaintenanceStream> maintenanceStreamContainer = new ElementContainer<IMaintenanceStream>(
+  protected ElementContainer<IMaintenanceStream> maintenanceStreamContainer = new ElementContainer<IMaintenanceStream>(
       this);
 
   public DevelopmentStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
-  }
-
-  @Override
-  public IDevelopmentStream getStream()
-  {
-    return (IDevelopmentStream)super.getStream();
   }
 
   public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket)
@@ -53,17 +47,17 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
 
   public IMaintenanceStream getMaintenanceStream(int index)
   {
-    return maintenanceStreamContainer.getMaintenanceStream(index);
+    return maintenanceStreamContainer.getElement(index);
   }
 
   public int getMaintenanceStreamCount()
   {
-    return maintenanceStreamContainer.getMaintenanceStreamCount();
+    return maintenanceStreamContainer.getElementCount();
   }
 
   public IMaintenanceStream[] getMaintenanceStreams()
   {
-    return maintenanceStreamContainer.getMaintenanceStreams();
+    return maintenanceStreamContainer.getElements(IMaintenanceStream.class);
   }
 
   public IRelease addRelease()

@@ -10,19 +10,16 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.IPopElement;
+import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.code.ITag;
-import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.stream.IIntegrationStream;
+import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper
  */
-public interface ITarget extends IPopElement, IMerge.Container
+public interface ITarget extends IElement
 {
   public ITag getTag();
 
   public IIntegrationStream getStream();
-
-  public IIntegrationStream getParentStream();
 }

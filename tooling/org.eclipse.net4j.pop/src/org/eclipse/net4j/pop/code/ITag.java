@@ -27,15 +27,15 @@ public interface ITag extends IElement
 
   public Date getDate();
 
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
-  {
-    public int getTagCount();
-
-    public ITag getTag(int index);
-
-    public ITag[] getTags();
-  }
+  // /**
+  // * @author Eike Stepper
+  // */
+  // public interface Container extends IElement
+  // {
+  // public int getTagCount();
+  //
+  // public ITag getTag(int index);
+  //
+  // public ITag[] getTags();
+  // }
 }
