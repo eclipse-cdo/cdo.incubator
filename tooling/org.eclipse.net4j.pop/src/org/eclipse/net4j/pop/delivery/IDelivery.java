@@ -12,6 +12,7 @@ package org.eclipse.net4j.pop.delivery;
 
 import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.stream.ITaskStream;
+import org.eclipse.net4j.pop.util.IElement;
 
 import java.util.Date;
 
@@ -29,7 +30,7 @@ public interface IDelivery extends IPopElement
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IPopElement
+  public interface Container extends IElement
   {
     public int getDeliveryCount();
 

@@ -12,6 +12,7 @@ package org.eclipse.net4j.internal.pop.release;
 
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
+import org.eclipse.net4j.pop.release.IRelease;
 
 import java.text.MessageFormat;
 
@@ -20,20 +21,18 @@ import java.text.MessageFormat;
  */
 public class Milestone extends Target implements IMilestone
 {
-  private Container container;
-
   private String name;
 
-  protected Milestone(Container container, String name, ITag tag)
+  protected Milestone(IRelease release, String name, ITag tag)
   {
-    super(tag);
-    this.container = container;
+    super(release, tag);
     this.name = name;
   }
 
-  public IMilestone.Container getMilestoneContainer()
+  @Override
+  public IRelease getParentElement()
   {
-    return container;
+    return (IRelease)super.getParentElement();
   }
 
   public String getName()

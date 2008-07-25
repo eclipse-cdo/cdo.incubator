@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.PopElement;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.release.IMilestone;
 
@@ -19,7 +19,7 @@ import org.eclipse.net4j.pop.release.IMilestone;
  */
 public class MilestoneContainer extends ElementContainer<IMilestone> implements IMilestone.Container
 {
-  public MilestoneContainer(Element delegator)
+  public MilestoneContainer(PopElement delegator)
   {
     super(delegator);
   }

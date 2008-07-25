@@ -13,8 +13,8 @@ package org.eclipse.net4j.internal.pop.stream;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.stream.IIntegrationStream;
+import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 

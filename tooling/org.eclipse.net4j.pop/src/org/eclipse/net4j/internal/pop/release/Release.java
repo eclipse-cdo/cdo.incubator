@@ -42,18 +42,6 @@ public class Release extends Target implements IRelease
     return (IIntegrationStream)super.getParentElement();
   }
 
-  @Override
-  public IIntegrationStream getParentStream()
-  {
-    return getParentElement();
-  }
-
-  @Override
-  public IIntegrationStream getStream()
-  {
-    return getParentElement();
-  }
-
   public IVersion getVersion()
   {
     return version;

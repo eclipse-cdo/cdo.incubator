@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.IPopElement;
+import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper
@@ -19,12 +19,12 @@ public interface IMilestone extends ITarget
 {
   public String getName();
 
-  public Container getMilestoneContainer();
+  public IRelease getParentElement();
 
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IPopElement
+  public interface Container extends IElement
   {
     public int getMilestoneCount();
 

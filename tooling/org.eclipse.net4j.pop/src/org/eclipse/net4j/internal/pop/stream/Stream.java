@@ -18,8 +18,8 @@ import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.stream.IStream;
+import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.util.ImplementationError;
 

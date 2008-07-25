@@ -10,8 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.util.IElement;
 
 import java.util.Date;
 
@@ -31,7 +31,7 @@ public interface ITaskStream extends IStream, IDelivery.Container
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IPopElement
+  public interface Container extends IElement
   {
     public int getTaskStreamCount();
 

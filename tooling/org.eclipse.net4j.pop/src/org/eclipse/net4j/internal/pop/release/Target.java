@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.ITarget;
+import org.eclipse.net4j.pop.stream.IIntegrationStream;
 
 /**
  * @author Eike Stepper
@@ -35,6 +36,18 @@ public abstract class Target extends PopElement implements ITarget
   public ITag getTag()
   {
     return tag;
+  }
+
+  @Override
+  public IIntegrationStream getParentStream()
+  {
+    return (IIntegrationStream)super.getParentElement();
+  }
+
+  @Override
+  public IIntegrationStream getStream()
+  {
+    return (IIntegrationStream)super.getStream();
   }
 
   public IMerge getMerge(int index)
