@@ -8,16 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.release;
+package org.eclipse.net4j.pop.stream;
 
 import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.code.ITag;
-import org.eclipse.net4j.pop.delivery.IMerge;
 
 /**
  * @author Eike Stepper
  */
-public interface ITarget extends IPopElement, IMerge.Container
+public interface IBaseline extends IPopElement
 {
+  public IStream getStream();
+
   public ITag getTag();
 }

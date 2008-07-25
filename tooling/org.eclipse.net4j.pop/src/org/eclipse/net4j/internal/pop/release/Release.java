@@ -50,6 +50,7 @@ public class Release extends Target implements IRelease
 
   public IMilestone addMilestone(String name)
   {
+
     IMilestone milestone = new Milestone(this, name);
     milestoneContainer.addElement(milestone);
     return milestone;

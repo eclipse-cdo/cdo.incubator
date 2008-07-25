@@ -10,14 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.delivery;
 
-import org.eclipse.net4j.pop.util.IElement;
+import org.eclipse.net4j.pop.IPopElement;
 
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public interface IMerge extends IElement
+public interface IMerge extends IPopElement
 {
   public Container getContainer();
 
@@ -28,7 +28,7 @@ public interface IMerge extends IElement
   /**
    * @author Eike Stepper
    */
-  public interface Container extends IElement
+  public interface Container extends IPopElement
   {
     public int getMergeCount();
 
