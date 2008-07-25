@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
-import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.internal.pop.release.Version;
 import org.eclipse.net4j.pop.code.IBranch;
@@ -96,9 +95,7 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
         version = lastVersion.nextMajor(increment);
       }
 
-      IRelease release = new Release(this, version);
-      releaseContainer.addElement(release);
-      return release;
+      return addRelease(version);
     }
   }
 

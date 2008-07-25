@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
+import org.eclipse.net4j.pop.stream.IIntegrationStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.util.IElement;
 
@@ -61,7 +62,9 @@ public interface IPop extends IDevelopmentStream, ICommitter.Container
 
     public IBranch createTaskBranch(ITag baseline);
 
-    public ITag createReleaseTag(IBranch branch, IVersion version);
+    public ITag createReleaseTag(IIntegrationStream stream, IVersion version);
+
+    public ITag createMilestoneTag(IRelease release, String name);
 
     public Date getTagDate(ITag tag);
 

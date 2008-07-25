@@ -10,9 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.PopElement;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
+import org.eclipse.net4j.pop.stream.IStream;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -20,24 +21,17 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class Merge extends Element implements IMerge
+public class Merge extends PopElement implements IMerge
 {
-  private Container container;
-
   private IDelivery delivery;
 
   private Date date;
 
-  public Merge(Container container, Date date, IDelivery delivery)
+  public Merge(IStream stream, Date date, IDelivery delivery)
   {
-    this.container = container;
+    super(stream);
     this.date = date;
     this.delivery = delivery;
-  }
-
-  public Container getContainer()
-  {
-    return container;
   }
 
   public IDelivery getDelivery()
@@ -48,6 +42,12 @@ public class Merge extends Element implements IMerge
   public Date getDate()
   {
     return date;
+  }
+
+  @Override
+  public IStream getParentElement()
+  {
+    return (IStream)super.getParentElement();
   }
 
   @Override

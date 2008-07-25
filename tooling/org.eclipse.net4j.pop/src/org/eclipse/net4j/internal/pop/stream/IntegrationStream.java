@@ -10,9 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.stream;
 
+import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IIntegrationStream;
 import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.stream.ITaskStream;
@@ -107,5 +110,13 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   protected ReleaseContainer getReleaseContainer()
   {
     return releaseContainer;
+  }
+
+  protected IRelease addRelease(IVersion version)
+  {
+    ITag tag = getPop().getStrategy().createReleaseTag(this, version);
+    IRelease release = new Release(this, version, tag);
+    releaseContainer.addElement(release);
+    return release;
   }
 }

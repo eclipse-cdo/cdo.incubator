@@ -21,11 +21,15 @@ import java.util.Date;
  */
 public interface IDelivery extends IPopElement
 {
-  public ITaskStream getTaskStream();
-
   public Date getDate();
 
   public int getNumber();
+
+  public ITaskStream getStream();
+
+  public ITaskStream getParentStream();
+
+  public ITaskStream getParentElement();
 
   /**
    * @author Eike Stepper

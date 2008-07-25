@@ -11,6 +11,7 @@
 package org.eclipse.net4j.pop.delivery;
 
 import org.eclipse.net4j.pop.IPopElement;
+import org.eclipse.net4j.pop.stream.IStream;
 import org.eclipse.net4j.pop.util.IElement;
 
 import java.util.Date;
@@ -20,11 +21,11 @@ import java.util.Date;
  */
 public interface IMerge extends IPopElement
 {
-  public Container getContainer();
-
   public IDelivery getDelivery();
 
   public Date getDate();
+
+  public IStream getParentElement();
 
   /**
    * @author Eike Stepper
