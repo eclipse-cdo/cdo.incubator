@@ -37,6 +37,30 @@ public class Pop extends DevelopmentStream implements IPop
     this.strategy = strategy;
   }
 
+  @Override
+  public IPop getParentElement()
+  {
+    return null;
+  }
+
+  @Override
+  public IPop getParentStream()
+  {
+    return null;
+  }
+
+  @Override
+  public IPop getStream()
+  {
+    return this;
+  }
+
+  @Override
+  public IPop getPop()
+  {
+    return this;
+  }
+
   public String getName()
   {
     return name;

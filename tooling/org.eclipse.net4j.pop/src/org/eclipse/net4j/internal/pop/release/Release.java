@@ -14,6 +14,7 @@ import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
+import org.eclipse.net4j.pop.stream.IIntegrationStream;
 
 import org.eclipse.core.runtime.IAdaptable;
 
@@ -25,22 +26,32 @@ import java.util.List;
  */
 public class Release extends Target implements IRelease
 {
-  private Container container;
-
   private IVersion version;
 
   private MilestoneContainer milestoneContainer = new MilestoneContainer(this);
 
-  public Release(Container container, IVersion version, ITag tag)
+  public Release(IIntegrationStream stream, IVersion version, ITag tag)
   {
-    super(tag);
-    this.container = container;
+    super(stream, tag);
     this.version = version;
   }
 
-  public Container getContainer()
+  @Override
+  public IIntegrationStream getParentElement()
   {
-    return container;
+    return (IIntegrationStream)super.getParentElement();
+  }
+
+  @Override
+  public IIntegrationStream getParentStream()
+  {
+    return getParentElement();
+  }
+
+  @Override
+  public IIntegrationStream getStream()
+  {
+    return getParentElement();
   }
 
   public IVersion getVersion()

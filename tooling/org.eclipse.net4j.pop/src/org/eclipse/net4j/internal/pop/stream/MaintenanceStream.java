@@ -13,10 +13,12 @@ package org.eclipse.net4j.internal.pop.stream;
 import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.internal.pop.release.Version;
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
+import org.eclipse.net4j.pop.stream.IStreamBaseline;
+import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
-import org.eclipse.net4j.pop.stream.IStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.text.MessageFormat;
@@ -27,17 +29,27 @@ import java.util.List;
  */
 public class MaintenanceStream extends IntegrationStream implements IMaintenanceStream
 {
-  private Container container;
-
-  public MaintenanceStream(Container container, IRelease baseline, ITicket ticket)
+  public MaintenanceStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
-    super(((IStream)container).getPop(), branch, ticket);
-    this.container = container;
+    super(baseline, branch, ticket);
   }
 
-  public Container getContainer()
+  @Override
+  public IDevelopmentStream getParentElement()
   {
-    return container;
+    return (IDevelopmentStream)super.getParentElement();
+  }
+
+  @Override
+  public IDevelopmentStream getParentStream()
+  {
+    return (IDevelopmentStream)super.getParentStream();
+  }
+
+  @Override
+  public IMaintenanceStream getStream()
+  {
+    return this;
   }
 
   public IRelease addRelease()

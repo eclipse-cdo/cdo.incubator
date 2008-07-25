@@ -19,5 +19,11 @@ import org.eclipse.net4j.pop.ticket.ITicket;
  */
 public interface IIntegrationStream extends IStream, ITaskStream.Container, IRelease.Container
 {
+  public IIntegrationStream getStream();
+
+  public IIntegrationStream getParentStream();
+
+  public IIntegrationStream getParentElement();
+
   public ITaskStream addTaskStream(IBranch branch, ITicket ticket);
 }

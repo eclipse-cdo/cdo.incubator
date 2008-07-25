@@ -16,19 +16,22 @@ import org.eclipse.net4j.pop.IPopElement;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.stream.IStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
-import org.eclipse.net4j.util.ImplementationError;
 
 /**
  * @author Eike Stepper
  */
 public abstract class PopElement extends Element implements IPopElement
 {
-  protected PopElement()
+  private IPopElement parentElement;
+
+  protected PopElement(IPopElement parentElement)
   {
-    if (this instanceof IStream)
-    {
-      throw new ImplementationError();
-    }
+    this.parentElement = parentElement;
+  }
+
+  public IPopElement getParentElement()
+  {
+    return parentElement;
   }
 
   public IPop getPop()

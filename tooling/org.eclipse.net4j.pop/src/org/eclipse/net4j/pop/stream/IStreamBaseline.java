@@ -16,7 +16,7 @@ import org.eclipse.net4j.pop.code.ITag;
 /**
  * @author Eike Stepper
  */
-public interface IBaseline extends IPopElement
+public interface IStreamBaseline extends IPopElement
 {
   public IStream getStream();
 

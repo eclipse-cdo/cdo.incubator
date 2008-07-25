@@ -13,8 +13,10 @@ package org.eclipse.net4j.pop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.code.ITag;
+import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
+import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.util.IElement;
 
 import java.util.Date;
@@ -27,6 +29,21 @@ import java.util.Date;
  */
 public interface IPop extends IDevelopmentStream, ICommitter.Container
 {
+  /**
+   * Returns this instance.
+   */
+  public IPop getStream();
+
+  /**
+   * Returns <code>null</code>.
+   */
+  public IPop getParentStream();
+
+  /**
+   * Returns <code>null</code>.
+   */
+  public IPop getParentElement();
+
   public String getName();
 
   public Strategy getStrategy();
@@ -40,12 +57,13 @@ public interface IPop extends IDevelopmentStream, ICommitter.Container
   {
     public static final Strategy DEFAULT = new org.eclipse.net4j.internal.pop.PopStrategy();
 
-    public IBranch createMaintenanceBranch(ITag baseline);
+    public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket);
 
     public IBranch createTaskBranch(ITag baseline);
 
     public ITag createReleaseTag(IBranch branch, IVersion version);
 
     public Date getTagDate(ITag tag);
+
   }
 }

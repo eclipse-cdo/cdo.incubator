@@ -13,10 +13,10 @@ package org.eclipse.net4j.internal.pop.stream;
 import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
 import org.eclipse.net4j.internal.pop.release.Version;
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
+import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.stream.IDevelopmentStream;
 import org.eclipse.net4j.pop.stream.IMaintenanceStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -33,14 +33,22 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
 {
   private MaintenanceStreamContainer maintenanceStreamContainer = new MaintenanceStreamContainer(this);
 
-  public DevelopmentStream(IPop pop, IBranch branch, ITicket ticket)
+  public DevelopmentStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
-    super(pop, branch, ticket);
+    super(baseline, branch, ticket);
+  }
+
+  @Override
+  public IDevelopmentStream getStream()
+  {
+    return (IDevelopmentStream)super.getStream();
   }
 
   public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket)
   {
-    IMaintenanceStream maintenanceStream = new MaintenanceStream(this, baseline.getTag(), ticket);
+    checkBaseline(baseline);
+    IBranch branch = getPop().getStrategy().createMaintenanceBranch(baseline, ticket);
+    IMaintenanceStream maintenanceStream = new MaintenanceStream(baseline, branch, ticket);
     maintenanceStreamContainer.addElement(maintenanceStream);
     return maintenanceStream;
   }
@@ -110,5 +118,11 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
   protected MaintenanceStreamContainer getMaintenanceStreamContainer()
   {
     return maintenanceStreamContainer;
+  }
+
+  private void checkBaseline(IRelease baseline)
+  {
+    checkArgument(baseline, "baseline");
+    checkArgument(baseline.getStream() == this, "baseline");
   }
 }

@@ -11,9 +11,9 @@
 package org.eclipse.net4j.internal.pop.stream;
 
 import org.eclipse.net4j.internal.pop.release.ReleaseContainer;
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.stream.IStreamBaseline;
 import org.eclipse.net4j.pop.stream.IIntegrationStream;
 import org.eclipse.net4j.pop.stream.ITaskStream;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -31,9 +31,27 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   private ReleaseContainer releaseContainer = new ReleaseContainer(this);
 
-  protected IntegrationStream(IPop pop, IBranch branch, ITicket ticket)
+  protected IntegrationStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
   {
-    super(pop, branch, ticket);
+    super(baseline, branch, ticket);
+  }
+
+  @Override
+  public IIntegrationStream getParentElement()
+  {
+    return (IIntegrationStream)super.getParentElement();
+  }
+
+  @Override
+  public IIntegrationStream getParentStream()
+  {
+    return (IIntegrationStream)super.getParentStream();
+  }
+
+  @Override
+  public IIntegrationStream getStream()
+  {
+    return this;
   }
 
   public ITaskStream addTaskStream(IBranch branch, ITicket ticket)

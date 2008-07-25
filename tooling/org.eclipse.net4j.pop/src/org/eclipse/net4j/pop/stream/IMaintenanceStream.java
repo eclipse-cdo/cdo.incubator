@@ -18,7 +18,11 @@ import org.eclipse.net4j.pop.release.IRelease;
  */
 public interface IMaintenanceStream extends IIntegrationStream
 {
-  public Container getContainer();
+  public IMaintenanceStream getStream();
+
+  public IDevelopmentStream getParentStream();
+
+  public IDevelopmentStream getParentElement();
 
   public IRelease addRelease();
 

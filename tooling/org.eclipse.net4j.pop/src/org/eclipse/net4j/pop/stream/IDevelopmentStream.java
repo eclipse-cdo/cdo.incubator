@@ -18,6 +18,8 @@ import org.eclipse.net4j.pop.ticket.ITicket;
  */
 public interface IDevelopmentStream extends IIntegrationStream, IMaintenanceStream.Container
 {
+  public IDevelopmentStream getStream();
+
   public IRelease addRelease(boolean compatible, int increment);
 
   public IRelease addRelease();
