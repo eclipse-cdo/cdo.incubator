@@ -59,14 +59,9 @@ public abstract class Stream extends Element implements IStream
     return ticket;
   }
 
-  public IStream getParentElement()
-  {
-    return baseline.getStream();
-  }
-
   public IStream getParentStream()
   {
-    return getParentElement();
+    return baseline.getStream();
   }
 
   /**
@@ -80,11 +75,6 @@ public abstract class Stream extends Element implements IStream
     }
 
     return getParentStream().getPop();
-  }
-
-  public IStream getStream()
-  {
-    return null;
   }
 
   public IMerge merge(Date date, IDelivery delivery)

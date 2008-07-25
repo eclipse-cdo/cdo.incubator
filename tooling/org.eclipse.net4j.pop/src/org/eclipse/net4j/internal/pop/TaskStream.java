@@ -36,21 +36,9 @@ public class TaskStream extends Stream implements ITaskStream
   }
 
   @Override
-  public ITaskStream getStream()
-  {
-    return this;
-  }
-
-  @Override
   public IIntegrationStream getParentStream()
   {
-    return getParentElement();
-  }
-
-  @Override
-  public IIntegrationStream getParentElement()
-  {
-    return (IIntegrationStream)getBaseline().getStream();
+    return (IIntegrationStream)super.getParentStream();
   }
 
   public IDelivery addDelivery(Date deliveryDate)

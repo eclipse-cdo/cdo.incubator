@@ -11,10 +11,14 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.pop.IIntegrationStream;
+import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.IPop.Strategy;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
+import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
+import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.util.Date;
 
@@ -27,17 +31,27 @@ public class PopStrategy extends Element implements Strategy
   {
   }
 
-  public IBranch createMaintenanceBranch(ITag baseline)
+  public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket)
   {
     return null;
   }
 
-  public ITag createReleaseTag(IBranch branch, IVersion version)
+  public IBranch createTaskBranch(IStreamBaseline baseline, ITicket ticket)
   {
     return null;
   }
 
-  public IBranch createTaskBranch(ITag baseline)
+  public IStreamBaseline createTaskBaseline(Date baselineDate, ITicket ticket)
+  {
+    return null;
+  }
+
+  public ITag createMilestoneTag(IRelease release, String name)
+  {
+    return null;
+  }
+
+  public ITag createReleaseTag(IIntegrationStream stream, IVersion version)
   {
     return null;
   }
@@ -50,7 +64,6 @@ public class PopStrategy extends Element implements Strategy
   @Override
   public String toString()
   {
-    return null;
+    return "DEFAULT";
   }
-
 }

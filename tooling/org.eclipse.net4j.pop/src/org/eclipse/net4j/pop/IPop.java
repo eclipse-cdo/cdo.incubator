@@ -29,19 +29,9 @@ import java.util.Date;
 public interface IPop extends IDevelopmentStream, ICommitter.Container
 {
   /**
-   * Returns this instance.
-   */
-  public IPop getStream();
-
-  /**
    * Returns <code>null</code>.
    */
   public IPop getParentStream();
-
-  /**
-   * Returns <code>null</code>.
-   */
-  public IPop getParentElement();
 
   public String getName();
 
@@ -59,6 +49,8 @@ public interface IPop extends IDevelopmentStream, ICommitter.Container
     public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket);
 
     public IBranch createTaskBranch(IStreamBaseline baseline, ITicket ticket);
+
+    public IStreamBaseline createTaskBaseline(Date baselineDate, ITicket ticket);
 
     public ITag createReleaseTag(IIntegrationStream stream, IVersion version);
 

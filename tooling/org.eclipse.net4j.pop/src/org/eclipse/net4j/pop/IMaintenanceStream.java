@@ -17,23 +17,7 @@ import org.eclipse.net4j.pop.release.IRelease;
  */
 public interface IMaintenanceStream extends IIntegrationStream
 {
-  public IMaintenanceStream getStream();
-
   public IDevelopmentStream getParentStream();
 
-  public IDevelopmentStream getParentElement();
-
   public IRelease addRelease();
-
-  // /**
-  // * @author Eike Stepper
-  // */
-  // public interface Container extends IElement
-  // {
-  // public int getMaintenanceStreamCount();
-  //
-  // public IMaintenanceStream getMaintenanceStream(int index);
-  //
-  // public IMaintenanceStream[] getMaintenanceStreams();
-  // }
 }

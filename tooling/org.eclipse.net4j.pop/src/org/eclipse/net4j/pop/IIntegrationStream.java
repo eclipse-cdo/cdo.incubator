@@ -13,18 +13,18 @@ package org.eclipse.net4j.pop;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
 public interface IIntegrationStream extends IStream
 {
-  public IIntegrationStream getStream();
-
   public IIntegrationStream getParentStream();
 
-  public IIntegrationStream getParentElement();
-
   public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket);
+
+  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket);
 
   public int getTaskStreamCount();
 

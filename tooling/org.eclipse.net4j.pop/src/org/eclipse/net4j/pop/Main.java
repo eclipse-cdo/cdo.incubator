@@ -11,6 +11,7 @@
 package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.delivery.IDelivery;
+import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.util.PopUtil;
 
 import java.util.Date;
@@ -40,10 +41,11 @@ public class Main
 
     System.out.println(pop.addRelease());
     System.out.println(pop.addRelease());
-    System.out.println(pop.addRelease(false, 2));
+    IRelease release = pop.addRelease(false, 2);
+    System.out.println(release);
     System.out.println(pop.addRelease());
 
-    IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(null, null);
+    IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, null);
     System.out.println(maintenanceStream.addRelease());
     System.out.println(maintenanceStream.addRelease());
     System.out.println(maintenanceStream.addRelease());

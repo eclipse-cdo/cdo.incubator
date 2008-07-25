@@ -40,4 +40,5 @@ public interface IStream extends IElement
   public IMerge getMerge(int index);
 
   public IMerge[] getMerges();
+
 }

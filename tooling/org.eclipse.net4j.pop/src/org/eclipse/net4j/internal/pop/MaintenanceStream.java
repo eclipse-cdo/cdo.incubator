@@ -33,21 +33,9 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
   }
 
   @Override
-  public IDevelopmentStream getParentElement()
-  {
-    return (IDevelopmentStream)super.getParentElement();
-  }
-
-  @Override
   public IDevelopmentStream getParentStream()
   {
     return (IDevelopmentStream)super.getParentStream();
-  }
-
-  @Override
-  public IMaintenanceStream getStream()
-  {
-    return this;
   }
 
   public IRelease addRelease()

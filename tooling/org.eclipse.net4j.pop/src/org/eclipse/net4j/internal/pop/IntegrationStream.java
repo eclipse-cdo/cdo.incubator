@@ -21,6 +21,8 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
@@ -36,21 +38,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   }
 
   @Override
-  public IIntegrationStream getParentElement()
-  {
-    return (IIntegrationStream)super.getParentElement();
-  }
-
-  @Override
   public IIntegrationStream getParentStream()
   {
     return (IIntegrationStream)super.getParentStream();
-  }
-
-  @Override
-  public IIntegrationStream getStream()
-  {
-    return this;
   }
 
   public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket)
@@ -59,6 +49,12 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
     taskStreamContainer.addElement(taskStream);
     return taskStream;
+  }
+
+  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
+  {
+    IStreamBaseline baseline = getPop().getStrategy().createTaskBaseline(baselineDate, ticket);
+    return addTaskStream(baseline, ticket);
   }
 
   public ITaskStream getTaskStream(int index)

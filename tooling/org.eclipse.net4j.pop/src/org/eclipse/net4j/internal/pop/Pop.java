@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.code.Committer;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
@@ -29,29 +30,17 @@ public class Pop extends DevelopmentStream implements IPop
 
   private Strategy strategy;
 
-  public Pop(String name, Strategy strategy, ITicket ticket)
+  public Pop(String name, Strategy strategy, IBranch branch, ITicket ticket)
   {
-    super(null, null, ticket);
+    super(null, branch, ticket);
     this.name = name;
     this.strategy = strategy;
-  }
-
-  @Override
-  public IPop getParentElement()
-  {
-    return null;
   }
 
   @Override
   public IPop getParentStream()
   {
     return null;
-  }
-
-  @Override
-  public IPop getStream()
-  {
-    return this;
   }
 
   @Override
