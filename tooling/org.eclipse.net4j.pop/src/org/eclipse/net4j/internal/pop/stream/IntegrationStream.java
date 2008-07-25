@@ -57,9 +57,10 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return this;
   }
 
-  public ITaskStream addTaskStream(IBranch branch, ITicket ticket)
+  public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket)
   {
-    ITaskStream taskStream = new TaskStream(this, branch, ticket);
+    IBranch branch=getPop().getStrategy().createTaskBranch(baseline,ticket);
+    ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
     taskStreamContainer.addElement(taskStream);
     return taskStream;
   }

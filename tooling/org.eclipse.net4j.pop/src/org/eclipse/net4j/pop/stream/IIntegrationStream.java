@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.stream;
 
-import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
@@ -25,5 +24,5 @@ public interface IIntegrationStream extends IStream, ITaskStream.Container, IRel
 
   public IIntegrationStream getParentElement();
 
-  public ITaskStream addTaskStream(IBranch branch, ITicket ticket);
+  public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket);
 }
