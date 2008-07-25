@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop.code;
 
 import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
 
@@ -22,13 +23,13 @@ import java.util.Date;
  */
 public class Branch extends Element implements IBranch
 {
+  protected ElementContainer<ITag> tagContainer = new ElementContainer<ITag>(this);
+
+  protected ElementContainer<IBranch> branchContainer = new ElementContainer<IBranch>(this);
+
   private String name;
 
   private ITag startTag;
-
-  private TagContainer tagContainer = new TagContainer(this);
-
-  private BranchContainer branchContainer = new BranchContainer(this);
 
   public Branch(String name, ITag startTag)
   {

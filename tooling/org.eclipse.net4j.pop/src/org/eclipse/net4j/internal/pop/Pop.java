@@ -11,8 +11,7 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.Committer;
-import org.eclipse.net4j.internal.pop.code.CommitterContainer;
-import org.eclipse.net4j.internal.pop.stream.DevelopmentStream;
+import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.ticket.ITicket;
@@ -24,7 +23,7 @@ import java.util.Date;
  */
 public class Pop extends DevelopmentStream implements IPop
 {
-  private CommitterContainer committerContainer = new CommitterContainer(this);
+  private ElementContainer<ICommitter> committerContainer = new ElementContainer<ICommitter>(this);
 
   private String name;
 
