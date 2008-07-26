@@ -11,9 +11,9 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.release.Version;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IDevelopmentStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
@@ -27,7 +27,7 @@ import java.util.List;
  */
 public class MaintenanceStream extends IntegrationStream implements IMaintenanceStream
 {
-  public MaintenanceStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
+  public MaintenanceStream(IBaseline baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
   }

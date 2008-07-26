@@ -12,8 +12,8 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
@@ -32,7 +32,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   protected ElementContainer<IRelease> releaseContainer = new ElementContainer<IRelease>(this);
 
-  protected IntegrationStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
+  protected IntegrationStream(IBaseline baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
   }
@@ -43,9 +43,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return (IIntegrationStream)super.getParentStream();
   }
 
-  public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket)
+  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
   {
-    IBranch branch = getPop().getStrategy().createTaskBranch(baseline, ticket);
+    IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
     ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
     taskStreamContainer.addElement(taskStream);
     return taskStream;
@@ -53,7 +53,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
   {
-    IStreamBaseline baseline = getPop().getStrategy().createTaskBaseline(baselineDate, ticket);
+    IBaseline baseline = getPop().getCodeStrategy().createTaskBaseline(baselineDate, ticket);
     return addTaskStream(baseline, ticket);
   }
 
@@ -89,7 +89,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   protected IRelease addRelease(IVersion version)
   {
-    ITag tag = getPop().getStrategy().createReleaseTag(this, version);
+    ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
     IRelease release = new Release(this, version, tag);
     releaseContainer.addElement(release);
     return release;

@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.code.Committer;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
@@ -28,9 +29,9 @@ public class Pop extends DevelopmentStream implements IPop
 
   private String name;
 
-  private Strategy strategy;
+  private ICodeStrategy strategy;
 
-  public Pop(String name, Strategy strategy, IBranch branch, ITicket ticket)
+  public Pop(String name, ICodeStrategy strategy, IBranch branch, ITicket ticket)
   {
     super(null, branch, ticket);
     this.name = name;
@@ -54,7 +55,7 @@ public class Pop extends DevelopmentStream implements IPop
     return name;
   }
 
-  public Strategy getStrategy()
+  public ICodeStrategy getCodeStrategy()
   {
     return strategy;
   }

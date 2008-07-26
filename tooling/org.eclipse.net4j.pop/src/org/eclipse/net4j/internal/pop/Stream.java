@@ -13,9 +13,9 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.delivery.Merge;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
@@ -31,20 +31,20 @@ public abstract class Stream extends Element implements IStream
 {
   protected ElementContainer<IMerge> mergeContainer = new ElementContainer<IMerge>(this);
 
-  private IStreamBaseline baseline;
+  private IBaseline baseline;
 
   private IBranch branch;
 
   private ITicket ticket;
 
-  protected Stream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
+  protected Stream(IBaseline baseline, IBranch branch, ITicket ticket)
   {
     this.baseline = baseline;
     this.branch = branch;
     this.ticket = ticket;
   }
 
-  public IStreamBaseline getBaseline()
+  public IBaseline getBaseline()
   {
     return baseline;
   }

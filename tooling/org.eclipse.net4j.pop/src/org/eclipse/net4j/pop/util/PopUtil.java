@@ -11,10 +11,11 @@
 package org.eclipse.net4j.pop.util;
 
 import org.eclipse.net4j.internal.pop.Pop;
-import org.eclipse.net4j.internal.pop.PopStrategy;
 import org.eclipse.net4j.internal.pop.code.Branch;
+import org.eclipse.net4j.internal.pop.code.DefaultCodeStrategy;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 /**
@@ -33,10 +34,10 @@ public final class PopUtil
 
   public static IPop createPop(String name, IBranch branch, ITicket ticket)
   {
-    return createPop(name, branch, ticket, new PopStrategy());
+    return createPop(name, branch, ticket, new DefaultCodeStrategy());
   }
 
-  public static IPop createPop(String name, IBranch branch, ITicket ticket, IPop.Strategy strategy)
+  public static IPop createPop(String name, IBranch branch, ITicket ticket, ICodeStrategy strategy)
   {
     return new Pop(name, strategy, branch, ticket);
   }

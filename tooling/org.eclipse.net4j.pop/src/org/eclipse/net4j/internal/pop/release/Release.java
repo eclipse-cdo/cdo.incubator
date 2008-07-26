@@ -49,7 +49,7 @@ public class Release extends Target implements IRelease
 
   public IMilestone addMilestone(String name)
   {
-    ITag tag = getStream().getPop().getStrategy().createMilestoneTag(this, name);
+    ITag tag = getStream().getPop().getCodeStrategy().createMilestoneTag(this, name);
     IMilestone milestone = new Milestone(this, name, tag);
     milestoneContainer.addElement(milestone);
     return milestone;

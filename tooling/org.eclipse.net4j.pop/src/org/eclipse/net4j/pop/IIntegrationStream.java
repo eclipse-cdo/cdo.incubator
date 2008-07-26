@@ -22,7 +22,7 @@ public interface IIntegrationStream extends IStream
 {
   public IIntegrationStream getParentStream();
 
-  public ITaskStream addTaskStream(IStreamBaseline baseline, ITicket ticket);
+  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket);
 
   public ITaskStream addTaskStream(Date baselineDate, ITicket ticket);
 

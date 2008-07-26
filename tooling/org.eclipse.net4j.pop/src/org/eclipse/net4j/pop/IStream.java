@@ -27,7 +27,7 @@ public interface IStream extends IElement
 
   public IStream getParentStream();
 
-  public IStreamBaseline getBaseline();
+  public IBaseline getBaseline();
 
   public IBranch getBranch();
 
@@ -40,5 +40,4 @@ public interface IStream extends IElement
   public IMerge getMerge(int index);
 
   public IMerge[] getMerges();
-
 }

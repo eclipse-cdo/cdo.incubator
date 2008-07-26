@@ -12,8 +12,8 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.delivery.Delivery;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
@@ -30,7 +30,7 @@ public class TaskStream extends Stream implements ITaskStream
 {
   protected ElementContainer<IDelivery> deliveryContainer = new ElementContainer<IDelivery>(this);
 
-  public TaskStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
+  public TaskStream(IBaseline baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
   }

@@ -10,15 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
-import org.eclipse.net4j.pop.code.ITag;
-import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
-import org.eclipse.net4j.pop.util.IElement;
-
-import java.util.Date;
 
 /**
  * Represents a <em>point of process</em>, a concept similar to a <em>project</em>.
@@ -35,28 +28,7 @@ public interface IPop extends IDevelopmentStream, ICommitter.Container
 
   public String getName();
 
-  public Strategy getStrategy();
+  public ICodeStrategy getCodeStrategy();
 
   public ICommitter addCommitter(String name, String email, String ticketAccount, String codeAccount);
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Strategy extends IElement
-  {
-    public static final Strategy DEFAULT = new org.eclipse.net4j.internal.pop.PopStrategy();
-
-    public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket);
-
-    public IBranch createTaskBranch(IStreamBaseline baseline, ITicket ticket);
-
-    public IStreamBaseline createTaskBaseline(Date baselineDate, ITicket ticket);
-
-    public ITag createReleaseTag(IIntegrationStream stream, IVersion version);
-
-    public ITag createMilestoneTag(IRelease release, String name);
-
-    public Date getTagDate(ITag tag);
-
-  }
 }

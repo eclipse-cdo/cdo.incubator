@@ -12,8 +12,8 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.Tag;
 import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.code.ITag;
 
 import java.text.MessageFormat;
@@ -22,7 +22,7 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class StreamBaseline extends Element implements IStreamBaseline
+public class StreamBaseline extends Element implements IBaseline
 {
   private IStream stream;
 

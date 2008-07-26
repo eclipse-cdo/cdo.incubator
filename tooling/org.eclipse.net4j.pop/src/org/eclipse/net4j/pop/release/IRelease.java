@@ -10,12 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.IStreamBaseline;
+import org.eclipse.net4j.pop.IBaseline;
 
 /**
  * @author Eike Stepper
  */
-public interface IRelease extends ITarget, IStreamBaseline
+public interface IRelease extends ITarget, IBaseline
 {
   public IVersion getVersion();
 

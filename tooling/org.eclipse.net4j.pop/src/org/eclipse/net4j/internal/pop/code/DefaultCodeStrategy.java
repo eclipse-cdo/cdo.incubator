@@ -8,13 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.internal.pop.code;
 
 import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
-import org.eclipse.net4j.pop.IPop.Strategy;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
@@ -25,9 +25,9 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class PopStrategy extends Element implements Strategy
+public class DefaultCodeStrategy extends Element implements ICodeStrategy
 {
-  public PopStrategy()
+  public DefaultCodeStrategy()
   {
   }
 
@@ -36,12 +36,12 @@ public class PopStrategy extends Element implements Strategy
     return null;
   }
 
-  public IBranch createTaskBranch(IStreamBaseline baseline, ITicket ticket)
+  public IBranch createTaskBranch(IBaseline baseline, ITicket ticket)
   {
     return null;
   }
 
-  public IStreamBaseline createTaskBaseline(Date baselineDate, ITicket ticket)
+  public IBaseline createTaskBaseline(Date baselineDate, ITicket ticket)
   {
     return null;
   }

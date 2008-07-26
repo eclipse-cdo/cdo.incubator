@@ -12,9 +12,9 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.release.Version;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IDevelopmentStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
-import org.eclipse.net4j.pop.IStreamBaseline;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
@@ -31,7 +31,7 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
   protected ElementContainer<IMaintenanceStream> maintenanceStreamContainer = new ElementContainer<IMaintenanceStream>(
       this);
 
-  public DevelopmentStream(IStreamBaseline baseline, IBranch branch, ITicket ticket)
+  public DevelopmentStream(IBaseline baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
   }
@@ -39,7 +39,7 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
   public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket)
   {
     checkBaseline(baseline);
-    IBranch branch = getPop().getStrategy().createMaintenanceBranch(baseline, ticket);
+    IBranch branch = getPop().getCodeStrategy().createMaintenanceBranch(baseline, ticket);
     IMaintenanceStream maintenanceStream = new MaintenanceStream(baseline, branch, ticket);
     maintenanceStreamContainer.addElement(maintenanceStream);
     return maintenanceStream;
