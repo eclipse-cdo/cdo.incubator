@@ -30,9 +30,17 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
 
   protected ElementProxy(IPop pop, String ticketID)
   {
+    Element.checkArgument(pop, "pop");
+    Element.checkArgument(ticketID, "ticketID");
     System.out.println("--> proxy: " + this);
     this.pop = pop;
     this.ticketID = ticketID;
+  }
+
+  protected ElementProxy(IPop pop, String ticketID, ELEMENT element)
+  {
+    this(pop, ticketID);
+    cacheElement(element);
   }
 
   public IPop getPop()
@@ -106,9 +114,14 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
       throw new ImplementationError("doResolve() must not return null");
     }
 
-    cache = new WeakReference<ELEMENT>(element);
+    cacheElement(element);
     return element;
   }
 
-  protected abstract ELEMENT resolve();;
+  protected abstract ELEMENT resolve();
+
+  private void cacheElement(ELEMENT element)
+  {
+    cache = new WeakReference<ELEMENT>(element);
+  }
 }
