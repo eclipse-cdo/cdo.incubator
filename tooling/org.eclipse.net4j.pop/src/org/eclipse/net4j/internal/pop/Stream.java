@@ -61,6 +61,11 @@ public abstract class Stream extends Element implements IStream
 
   public IStream getParentStream()
   {
+    if (baseline == null)
+    {
+      return null;
+    }
+
     return baseline.getStream();
   }
 
