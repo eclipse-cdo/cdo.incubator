@@ -12,7 +12,10 @@ package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.util.IElement;
+import org.eclipse.net4j.util.ImplementationError;
 import org.eclipse.net4j.util.event.IListener;
+
+import java.lang.ref.WeakReference;
 
 /**
  * @author Eike Stepper
@@ -22,6 +25,8 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
   private IPop pop;
 
   private String ticketID;
+
+  private WeakReference<ELEMENT> cache;
 
   protected ElementProxy(IPop pop, String ticketID)
   {
@@ -63,5 +68,46 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
   public Object getAdapter(Class adapter)
   {
     return resolve().getAdapter(adapter);
-  };
+  }
+
+  @Override
+  public boolean equals(Object obj)
+  {
+    return resolve().equals(obj);
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return resolve().hashCode();
+  }
+
+  @Override
+  public String toString()
+  {
+    return resolve().toString();
+  }
+
+  public ELEMENT getElement()
+  {
+    if (cache != null)
+    {
+      ELEMENT element = cache.get();
+      if (element != null)
+      {
+        return element;
+      }
+    }
+
+    ELEMENT element = resolve();
+    if (element == null)
+    {
+      throw new ImplementationError("doResolve() must not return null");
+    }
+
+    cache = new WeakReference<ELEMENT>(element);
+    return element;
+  }
+
+  protected abstract ELEMENT resolve();;
 }

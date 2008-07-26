@@ -92,10 +92,10 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   public String toString()
   {
     return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch().getName(), getTicket()
-        .getTicketID());
+        .getID());
   }
 
-  public IMaintenanceStream resolveMaintenanceStream(MaintenanceStreamProxy proxy)
+  public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
   {
     return null;
   }

@@ -20,14 +20,13 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
-import java.text.MessageFormat;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author Eike Stepper
  */
-public class DevelopmentStream extends IntegrationStream implements IDevelopmentStream
+public abstract class DevelopmentStream extends IntegrationStream implements IDevelopmentStream
 {
   protected ElementContainer<IMaintenanceStream> maintenanceStreamContainer = new ElementContainer<IMaintenanceStream>(
       this);
@@ -90,13 +89,6 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
 
       return addRelease(date, version);
     }
-  }
-
-  @Override
-  public String toString()
-  {
-    return MessageFormat.format("DevelopmentStream[branch={0}, ticket={1}]", getBranch().getName(), getTicket()
-        .getTicketID());
   }
 
   private void checkBaseline(IRelease baseline)

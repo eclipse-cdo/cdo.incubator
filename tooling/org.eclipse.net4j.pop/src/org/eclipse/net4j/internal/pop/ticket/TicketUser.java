@@ -24,13 +24,13 @@ public class TicketUser extends Element implements ITicketUser
 
   private String email;
 
-  private String ticketAccount;
+  private String account;
 
-  public TicketUser(String name, String email, String ticketAccount)
+  public TicketUser(String name, String email, String account)
   {
     this.email = email;
     this.name = name;
-    this.ticketAccount = ticketAccount;
+    this.account = account;
   }
 
   public String getName()
@@ -43,14 +43,14 @@ public class TicketUser extends Element implements ITicketUser
     return email;
   }
 
-  public String getTicketAccount()
+  public String getAccount()
   {
-    return ticketAccount;
+    return account;
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("TicketUser[name={0}, email={1}, ticketAccount={2}]", name, email, ticketAccount);
+    return MessageFormat.format("TicketUser[name={0}, email={1}, account={2}]", name, email, account);
   }
 }

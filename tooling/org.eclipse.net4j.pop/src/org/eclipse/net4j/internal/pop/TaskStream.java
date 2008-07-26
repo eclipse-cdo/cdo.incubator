@@ -70,6 +70,6 @@ public class TaskStream extends Stream implements ITaskStream
   @Override
   public String toString()
   {
-    return MessageFormat.format("TaskStream[branch={0}, ticket={1}]", getBranch().getName(), getTicket().getTicketID());
+    return MessageFormat.format("TaskStream[branch={0}, ticket={1}]", getBranch().getName(), getTicket().getID());
   }
 }

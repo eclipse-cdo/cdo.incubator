@@ -20,21 +20,21 @@ import java.text.MessageFormat;
  */
 public class Ticket extends Element implements ITicket
 {
-  private String ticketID;
+  private String id;
 
-  public Ticket(String ticketID)
+  public Ticket(String id)
   {
-    this.ticketID = ticketID;
+    this.id = id;
   }
 
-  public String getTicketID()
+  public String getID()
   {
-    return ticketID;
+    return id;
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("Ticket[ticketID={0}]", ticketID);
+    return MessageFormat.format("Ticket[id={0}]", id);
   }
 }

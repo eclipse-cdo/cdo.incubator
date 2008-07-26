@@ -22,7 +22,6 @@ import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
-import org.eclipse.net4j.util.event.IListener;
 
 import java.util.Date;
 
@@ -38,7 +37,7 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
 
   public MaintenanceStreamProxy(IMaintenanceStream maintenanceStream)
   {
-    this(maintenanceStream.getPop(), maintenanceStream.getTicket().getTicketID());
+    this(maintenanceStream.getPop(), maintenanceStream.getTicket().getID());
   }
 
   public IElementProxy<? extends IMaintenanceStream> copy()
@@ -46,29 +45,10 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return new MaintenanceStreamProxy(getPop(), getTicketID());
   }
 
-  public IMaintenanceStream resolve()
+  @Override
+  public IPop getPop()
   {
-    return ((Pop)getPop()).resolveMaintenanceStream(this);
-  }
-
-  public IRelease addRelease(Date date)
-  {
-    return resolve().addRelease(date);
-  }
-
-  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
-  {
-    return resolve().addTaskStream(baselineDate, ticket);
-  }
-
-  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
-  {
-    return resolve().addTaskStream(baseline, ticket);
-  }
-
-  public IRelease getBaseline()
-  {
-    return resolve().getBaseline();
+    return resolve().getPop();
   }
 
   public IBranch getBranch()
@@ -76,10 +56,24 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return resolve().getBranch();
   }
 
-  @Override
-  public IListener[] getListeners()
+  public ITicket getTicket()
   {
-    return resolve().getListeners();
+    return resolve().getTicket();
+  }
+
+  public IRelease getBaseline()
+  {
+    return resolve().getBaseline();
+  }
+
+  public IDevelopmentStream getParent()
+  {
+    return resolve().getParent();
+  }
+
+  public IMerge merge(Date date, IDelivery delivery)
+  {
+    return resolve().merge(date, delivery);
   }
 
   public IMerge getMerge(int index)
@@ -97,9 +91,9 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return resolve().getMerges();
   }
 
-  public IDevelopmentStream getParent()
+  public IRelease addRelease(Date date)
   {
-    return resolve().getParent();
+    return resolve().addRelease(date);
   }
 
   public IRelease getRelease(int index)
@@ -117,6 +111,16 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return resolve().getReleases();
   }
 
+  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
+  {
+    return resolve().addTaskStream(baselineDate, ticket);
+  }
+
+  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
+  {
+    return resolve().addTaskStream(baseline, ticket);
+  }
+
   public ITaskStream getTaskStream(int index)
   {
     return resolve().getTaskStream(index);
@@ -132,13 +136,9 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return resolve().getTaskStreams();
   }
 
-  public ITicket getTicket()
+  @Override
+  protected IMaintenanceStream resolve()
   {
-    return resolve().getTicket();
-  }
-
-  public IMerge merge(Date date, IDelivery delivery)
-  {
-    return resolve().merge(date, delivery);
+    return ((Pop)getPop()).resolve(this);
   }
 }

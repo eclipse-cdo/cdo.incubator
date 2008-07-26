@@ -69,6 +69,6 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
   public String toString()
   {
     return MessageFormat.format("MaintenanceStream[branch={0}, ticket={1}]", getBranch().getName(), getTicket()
-        .getTicketID());
+        .getID());
   }
 }
