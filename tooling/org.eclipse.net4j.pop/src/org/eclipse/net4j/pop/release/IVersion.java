@@ -14,6 +14,7 @@ import org.eclipse.core.runtime.IAdaptable;
 
 /**
  * @author Eike Stepper
+ * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface IVersion extends IAdaptable, Comparable<IVersion>
 {

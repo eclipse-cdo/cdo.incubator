@@ -17,6 +17,7 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.ticket.ITicket;
+import org.eclipse.net4j.pop.ticket.ITicketUser;
 
 import java.util.Date;
 
@@ -62,9 +63,9 @@ public class Pop extends DevelopmentStream implements IPop
     return strategy;
   }
 
-  public ICommitter addCommitter(String name, String email, String ticketAccount, String codeAccount)
+  public ICommitter addCommitter(ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate)
   {
-    ICommitter committer = new Committer(this, name, email, ticketAccount, codeAccount, new Date(), null);
+    ICommitter committer = new Committer(this, ticketUser, codeAccount, entryDate, exitDate);
     committerContainer.addElement(committer);
     return committer;
   }

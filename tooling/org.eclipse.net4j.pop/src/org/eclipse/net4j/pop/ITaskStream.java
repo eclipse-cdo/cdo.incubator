@@ -16,22 +16,11 @@ import java.util.Date;
 
 /**
  * @author Eike Stepper
+ * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface ITaskStream extends IStream
 {
   public IIntegrationStream getParentStream();
 
   public IDelivery addDelivery(Date deliveryDate);
-
-  // /**
-  // * @author Eike Stepper
-  // */
-  // public interface Container extends IElement
-  // {
-  // public int getTaskStreamCount();
-  //
-  // public ITaskStream getTaskStream(int index);
-  //
-  // public ITaskStream[] getTaskStreams();
-  // }
 }

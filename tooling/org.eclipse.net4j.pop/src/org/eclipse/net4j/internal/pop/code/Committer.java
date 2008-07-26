@@ -10,8 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.ticket.TicketUser;
+import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.ICommitter;
+import org.eclipse.net4j.pop.ticket.ITicketUser;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -19,9 +21,11 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class Committer extends TicketUser implements ICommitter
+public class Committer extends Element implements ICommitter
 {
-  private Container container;
+  private IPop pop;
+
+  private ITicketUser ticketUser;
 
   private String codeAccount;
 
@@ -29,21 +33,27 @@ public class Committer extends TicketUser implements ICommitter
 
   private Date exitDate;
 
-  public Committer(Container container, String name, String email, String ticketAccount, String codeAccount,
-      Date entryDate, Date exitDate)
+  public Committer(IPop pop, ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate)
   {
-    // TODO Decouple ticket user
-    // TODO Check args
-    super(name, email, ticketAccount);
-    this.container = container;
+    checkArgument(pop, "pop");
+    checkArgument(ticketUser, "ticketUser");
+    checkArgument(codeAccount, "codeAccount");
+    checkArgument(entryDate, "entryDate");
+    this.pop = pop;
+    this.ticketUser = ticketUser;
     this.codeAccount = codeAccount;
     this.entryDate = entryDate;
     this.exitDate = exitDate;
   }
 
-  public Container getContainer()
+  public IPop getPop()
   {
-    return container;
+    return pop;
+  }
+
+  public ITicketUser getTicketUser()
+  {
+    return ticketUser;
   }
 
   public String getCodeAccount()
@@ -64,7 +74,7 @@ public class Committer extends TicketUser implements ICommitter
   @Override
   public String toString()
   {
-    return MessageFormat.format("Committer[name={0}, email={1}, ticketAccount={2}, codeAccount={3}]", getName(),
-        getEmail(), getTicketAccount(), codeAccount);
+    return MessageFormat.format("Committer[name={0}, email={1}, ticketAccount={2}, codeAccount={3}]", ticketUser
+        .getName(), ticketUser.getEmail(), ticketUser.getTicketAccount(), codeAccount);
   }
 }

@@ -16,10 +16,11 @@ import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper
+ * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface ITarget extends IElement
 {
-  public ITag getTag();
-
   public IIntegrationStream getStream();
+
+  public ITag getTag();
 }

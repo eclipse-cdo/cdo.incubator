@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.code;
 
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 import org.eclipse.net4j.pop.util.IElement;
 
@@ -17,24 +18,17 @@ import java.util.Date;
 
 /**
  * @author Eike Stepper
+ * @noimplement This interface is not intended to be implemented by clients.
  */
-public interface ICommitter extends ITicketUser
+public interface ICommitter extends IElement
 {
+  public IPop getPop();
+
+  public ITicketUser getTicketUser();
+
   public String getCodeAccount();
 
   public Date getEntryDate();
 
   public Date getExitDate();
-
-  /**
-   * @author Eike Stepper
-   */
-  public interface Container extends IElement
-  {
-    public int getCommitterCount();
-
-    public ICommitter getCommitter(int index);
-
-    public ICommitter[] getCommitters();
-  }
 }

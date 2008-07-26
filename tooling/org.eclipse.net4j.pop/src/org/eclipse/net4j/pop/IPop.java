@@ -12,14 +12,18 @@ package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
+import org.eclipse.net4j.pop.ticket.ITicketUser;
+
+import java.util.Date;
 
 /**
  * Represents a <em>point of process</em>, a concept similar to a <em>project</em>.
  * <p>
  * 
  * @author Eike Stepper
+ * @noimplement This interface is not intended to be implemented by clients.
  */
-public interface IPop extends IDevelopmentStream, ICommitter.Container
+public interface IPop extends IDevelopmentStream
 {
   /**
    * Returns <code>null</code>.
@@ -30,5 +34,11 @@ public interface IPop extends IDevelopmentStream, ICommitter.Container
 
   public ICodeStrategy getCodeStrategy();
 
-  public ICommitter addCommitter(String name, String email, String ticketAccount, String codeAccount);
+  public ICommitter addCommitter(ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate);
+
+  public int getCommitterCount();
+
+  public ICommitter getCommitter(int index);
+
+  public ICommitter[] getCommitters();
 }
