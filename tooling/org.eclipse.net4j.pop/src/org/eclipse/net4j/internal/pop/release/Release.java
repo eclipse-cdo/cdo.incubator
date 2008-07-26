@@ -26,20 +26,22 @@ public class Release extends Target implements IRelease
 {
   protected ElementContainer<IMilestone> milestoneContainer = new ElementContainer<IMilestone>(this);
 
-  private IIntegrationStream integrationStream;
+  private IIntegrationStream stream;
 
   private IVersion version;
 
-  public Release(IIntegrationStream integrationStream, IVersion version, ITag tag)
+  public Release(IIntegrationStream stream, IVersion version, ITag tag)
   {
     super(tag);
-    this.integrationStream = integrationStream;
+    checkArgument(stream, "stream");
+    checkArgument(version, "version");
+    this.stream = stream;
     this.version = version;
   }
 
   public IIntegrationStream getStream()
   {
-    return integrationStream;
+    return stream;
   }
 
   public IVersion getVersion()

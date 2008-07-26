@@ -33,7 +33,23 @@ public class Branch extends Element implements IBranch
 
   public Branch(String name, ITag startTag)
   {
+    checkArgument(name, "name");
+    checkArgument(startTag, "startTag");
     this.name = name;
+    this.startTag = startTag;
+  }
+
+  /**
+   * Only called by {@link MainBranch#MainBranch(String)}.
+   */
+  Branch(String name)
+  {
+    checkArgument(name, "name");
+    this.name = name;
+  }
+
+  void setStartTag(ITag startTag)
+  {
     this.startTag = startTag;
   }
 

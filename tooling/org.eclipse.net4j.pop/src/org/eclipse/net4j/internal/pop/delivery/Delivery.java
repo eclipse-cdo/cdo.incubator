@@ -22,15 +22,18 @@ import java.util.Date;
  */
 public class Delivery extends Element implements IDelivery
 {
-  private ITaskStream taskStream;
+  private ITaskStream stream;
 
   private int number;
 
   private Date date;
 
-  public Delivery(ITaskStream taskStream, int number, Date date)
+  public Delivery(ITaskStream stream, int number, Date date)
   {
-    this.taskStream = taskStream;
+    checkArgument(stream, "stream");
+    checkArgument(number > 0, "number");
+    checkArgument(date, "date");
+    this.stream = stream;
     this.date = date;
     this.number = number;
   }
@@ -47,7 +50,7 @@ public class Delivery extends Element implements IDelivery
 
   public ITaskStream getStream()
   {
-    return taskStream;
+    return stream;
   }
 
   @Override

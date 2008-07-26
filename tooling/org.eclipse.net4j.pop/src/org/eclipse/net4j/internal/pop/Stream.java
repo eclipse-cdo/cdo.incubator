@@ -39,6 +39,9 @@ public abstract class Stream extends Element implements IStream
 
   protected Stream(IBaseline baseline, IBranch branch, ITicket ticket)
   {
+    checkArgument(baseline != null || this instanceof IPop, "baseline");
+    checkArgument(branch, "branch");
+    checkArgument(ticket, "ticket");
     this.baseline = baseline;
     this.branch = branch;
     this.ticket = ticket;

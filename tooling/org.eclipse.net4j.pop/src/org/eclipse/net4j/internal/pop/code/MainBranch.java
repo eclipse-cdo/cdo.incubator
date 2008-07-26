@@ -8,27 +8,34 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.release;
+package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
-import org.eclipse.net4j.pop.release.ITarget;
+
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public abstract class Target extends Element implements ITarget
+public class MainBranch extends Branch implements ITag
 {
-  private ITag tag;
+  private Date startDate;
 
-  protected Target(ITag tag)
+  public MainBranch(String name, Date startDate)
   {
-    checkArgument(tag, "tag");
-    this.tag = tag;
+    super(name);
+    this.startDate = startDate;
+    setStartTag(this);
   }
 
-  public ITag getTag()
+  public IBranch getBranch()
   {
-    return tag;
+    return this;
+  }
+
+  public Date getDate()
+  {
+    return startDate;
   }
 }

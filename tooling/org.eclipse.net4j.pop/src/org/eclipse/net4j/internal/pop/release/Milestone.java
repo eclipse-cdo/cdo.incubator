@@ -29,6 +29,8 @@ public class Milestone extends Target implements IMilestone
   protected Milestone(IRelease release, String name, ITag tag)
   {
     super(tag);
+    checkArgument(release, "release");
+    checkArgument(name, "name");
     this.release = release;
     this.name = name;
   }

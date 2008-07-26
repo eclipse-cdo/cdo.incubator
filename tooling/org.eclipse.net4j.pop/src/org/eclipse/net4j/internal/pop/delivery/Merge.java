@@ -31,6 +31,9 @@ public class Merge extends Element implements IMerge
 
   public Merge(IStream stream, Date date, IDelivery delivery)
   {
+    checkArgument(stream, "stream");
+    checkArgument(date, "date");
+    checkArgument(delivery, "delivery");
     this.stream = stream;
     this.date = date;
     this.delivery = delivery;

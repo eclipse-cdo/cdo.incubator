@@ -30,6 +30,9 @@ public class Tag extends Element implements ITag
 
   public Tag(IBranch branch, String name, Date date)
   {
+    checkArgument(branch, "branch");
+    checkArgument(name, "name");
+    checkArgument(date, "date");
     this.branch = branch;
     this.name = name;
     this.date = date;

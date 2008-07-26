@@ -32,6 +32,8 @@ public class Committer extends TicketUser implements ICommitter
   public Committer(Container container, String name, String email, String ticketAccount, String codeAccount,
       Date entryDate, Date exitDate)
   {
+    // TODO Decouple ticket user
+    // TODO Check args
     super(name, email, ticketAccount);
     this.container = container;
     this.codeAccount = codeAccount;

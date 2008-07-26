@@ -11,12 +11,14 @@
 package org.eclipse.net4j.pop.util;
 
 import org.eclipse.net4j.internal.pop.Pop;
-import org.eclipse.net4j.internal.pop.code.Branch;
 import org.eclipse.net4j.internal.pop.code.DefaultCodeStrategy;
+import org.eclipse.net4j.internal.pop.code.MainBranch;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.ticket.ITicket;
+
+import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -27,9 +29,9 @@ public final class PopUtil
   {
   }
 
-  public static IBranch createRootBranch(String name)
+  public static IBranch createMainBranch(String name, Date startDate)
   {
-    return new Branch(name, null);
+    return new MainBranch(name, startDate);
   }
 
   public static IPop createPop(String name, IBranch branch, ITicket ticket)

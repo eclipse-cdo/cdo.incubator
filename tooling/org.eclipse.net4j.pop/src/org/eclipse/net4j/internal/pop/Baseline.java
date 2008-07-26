@@ -30,6 +30,9 @@ public class Baseline extends Element implements IBaseline
 
   public Baseline(IStream stream, String tagName, Date date)
   {
+    checkArgument(stream, "stream");
+    checkArgument(tagName, "tagName");
+    checkArgument(date, "date");
     this.stream = stream;
     tag = new Tag(stream.getBranch(), tagName, date);
   }

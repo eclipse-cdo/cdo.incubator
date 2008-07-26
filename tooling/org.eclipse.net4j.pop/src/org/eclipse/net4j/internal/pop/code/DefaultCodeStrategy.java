@@ -37,20 +37,15 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     checkArgument(baseline, "baseline");
     checkArgument(ticket, "ticket");
     String branchName = getMaintenanceBranchName(baseline, ticket);
-    String tagName = getStartTag(branchName);
-
-    ITag baselineTag = baseline.getTag();
-    IBranch baselineBranch = baselineTag.getBranch();
-    ITag tag = baselineBranch.addTag(tagName, baselineTag.getDate());
-    return baselineBranch.addBranch(branchName, tag);
+    return createBranch(baseline, branchName);
   }
 
   public IBranch createTaskBranch(IBaseline baseline, ITicket ticket)
   {
     checkArgument(baseline, "baseline");
     checkArgument(ticket, "ticket");
-    // TODO Implement DefaultCodeStrategy.createTaskBranch(baseline, ticket)
-    throw new UnsupportedOperationException("Not yet implemented");
+    String branchName = getTaskBranchName(baseline, ticket);
+    return createBranch(baseline, branchName);
   }
 
   public IBaseline createTaskBaseline(IIntegrationStream stream, Date date, ITicket ticket)
@@ -92,10 +87,27 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     return "DEFAULT";
   }
 
+  protected IBranch createBranch(IBaseline baseline, String branchName)
+  {
+    String tagName = getStartTag(branchName);
+
+    ITag baselineTag = baseline.getTag();
+    IBranch baselineBranch = baselineTag.getBranch();
+    ITag tag = baselineBranch.addTag(tagName, baselineTag.getDate());
+    return baselineBranch.addBranch(branchName, tag);
+  }
+
   protected String getMaintenanceBranchName(IRelease baseline, ITicket ticket)
   {
     IVersion baselineVersion = baseline.getVersion();
     return "R" + baselineVersion.getMajor() + "_" + baselineVersion.getMinor() + "_maintenance";
+  }
+
+  protected String getTaskBranchName(IBaseline baseline, ITicket ticket)
+  {
+    Date date = baseline.getTag().getDate();
+    IIntegrationStream stream = (IIntegrationStream)baseline.getStream();
+    return getTaskBranchName(stream, date, ticket);
   }
 
   @SuppressWarnings("deprecation")

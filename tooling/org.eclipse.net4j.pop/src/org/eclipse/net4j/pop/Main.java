@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.internal.pop.ticket.Ticket;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.release.IRelease;
@@ -22,24 +23,26 @@ import java.util.Date;
  */
 public class Main
 {
+  public static final long ONE_DAY = 24 * 60 * 60 * 1000;
+
   public static void main(String[] args)
   {
-    IBranch rootBranch = PopUtil.createRootBranch("HEAD");
-    IPop pop = PopUtil.createPop("CDO", rootBranch, null);
-    ITaskStream taskStream = pop.addTaskStream(new Date(), null);
+    IBranch rootBranch = PopUtil.createMainBranch("HEAD", date());
+    IPop pop = PopUtil.createPop("CDO", rootBranch, new Ticket("pop-123456"));
+    ITaskStream taskStream = pop.addTaskStream(date(), new Ticket("task-123456"));
 
-    IDelivery delivery1 = taskStream.addDelivery(new Date());
+    IDelivery delivery1 = taskStream.addDelivery(date());
     System.out.println(delivery1);
 
-    IDelivery delivery2 = taskStream.addDelivery(new Date());
+    IDelivery delivery2 = taskStream.addDelivery(date());
     System.out.println(delivery2);
 
-    IDelivery delivery3 = taskStream.addDelivery(new Date());
+    IDelivery delivery3 = taskStream.addDelivery(date());
     System.out.println(delivery3);
 
-    System.out.println(pop.merge(new Date(), delivery1));
-    System.out.println(pop.merge(new Date(), delivery2));
-    System.out.println(pop.merge(new Date(), delivery3));
+    System.out.println(pop.merge(date(), delivery1));
+    System.out.println(pop.merge(date(), delivery2));
+    System.out.println(pop.merge(date(), delivery3));
 
     System.out.println(pop.addRelease());
     System.out.println(pop.addRelease());
@@ -47,10 +50,24 @@ public class Main
     System.out.println(release);
     System.out.println(pop.addRelease());
 
-    IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, null);
+    IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, new Ticket("maintenance-123456"));
     System.out.println(maintenanceStream.addRelease());
     System.out.println(maintenanceStream.addRelease());
     System.out.println(maintenanceStream.addRelease());
     System.out.println(maintenanceStream.addRelease());
   }
+
+  private static Date date()
+  {
+    try
+    {
+      return date;
+    }
+    finally
+    {
+      date = new Date(date.getTime() + ONE_DAY);
+    }
+  }
+
+  private static Date date = new Date();
 }

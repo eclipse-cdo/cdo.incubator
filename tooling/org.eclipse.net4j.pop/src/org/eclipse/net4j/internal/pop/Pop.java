@@ -34,6 +34,8 @@ public class Pop extends DevelopmentStream implements IPop
   public Pop(String name, ICodeStrategy strategy, IBranch branch, ITicket ticket)
   {
     super(null, branch, ticket);
+    checkArgument(name, "name");
+    checkArgument(strategy, "strategy");
     this.name = name;
     this.strategy = strategy;
   }
