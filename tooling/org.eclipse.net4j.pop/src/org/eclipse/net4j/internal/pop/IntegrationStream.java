@@ -87,9 +87,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return releaseContainer.getElements(IRelease.class);
   }
 
-  protected IRelease addRelease(IVersion version)
+  protected IRelease addRelease(Date date, IVersion version)
   {
-    ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
+    ITag tag = getPop().getCodeStrategy().createReleaseTag(this, date, version);
     IRelease release = new Release(this, version, tag);
     releaseContainer.addElement(release);
     return release;

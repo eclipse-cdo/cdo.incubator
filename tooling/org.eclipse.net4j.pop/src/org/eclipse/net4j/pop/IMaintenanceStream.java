@@ -12,6 +12,8 @@ package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
@@ -19,5 +21,5 @@ public interface IMaintenanceStream extends IIntegrationStream
 {
   public IDevelopmentStream getParentStream();
 
-  public IRelease addRelease();
+  public IRelease addRelease(Date date);
 }

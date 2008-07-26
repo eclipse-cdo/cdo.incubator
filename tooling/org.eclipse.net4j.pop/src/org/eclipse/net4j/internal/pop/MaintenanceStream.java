@@ -20,6 +20,7 @@ import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.text.MessageFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,7 +39,7 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
     return (IDevelopmentStream)super.getParentStream();
   }
 
-  public IRelease addRelease()
+  public IRelease addRelease(Date date)
   {
     List<IRelease> elements = releaseContainer.getElements();
     synchronized (elements)
@@ -51,7 +52,7 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
       }
 
       IVersion version = lastVersion.nextMicro();
-      return addRelease(version);
+      return addRelease(date, version);
     }
   }
 
