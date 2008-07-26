@@ -15,6 +15,7 @@ import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
+import org.eclipse.net4j.pop.IDateBaseline;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.ITaskStream;
@@ -119,6 +120,12 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   }
 
   public IRelease resolve(ReleaseProxy proxy)
+  {
+    // TODO Implement Pop.resolve(proxy)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  public IDateBaseline resolve(DateBaselineProxy proxy)
   {
     // TODO Implement Pop.resolve(proxy)
     throw new UnsupportedOperationException("Not yet implemented");

@@ -10,51 +10,54 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.code.Tag;
-import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.util.ElementProxy;
+import org.eclipse.net4j.internal.pop.util.IElementProxy;
+import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IDateBaseline;
+import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
 
-import java.text.MessageFormat;
 import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public class DateBaseline extends Element implements IDateBaseline
+public class DateBaselineProxy extends ElementProxy<IDateBaseline> implements IDateBaseline
 {
-  private IStream stream;
-
-  private ITag tag;
-
-  public DateBaseline(IStream stream, String tagName, Date date)
+  private DateBaselineProxy(IPop pop, String ticketID)
   {
-    checkArgument(stream, "stream");
-    checkArgument(tagName, "tagName");
-    checkArgument(date, "date");
-    this.stream = stream;
-    tag = new Tag(stream.getBranch(), tagName, date);
+    super(pop, ticketID);
+  }
+
+  public DateBaselineProxy(IDateBaseline dateBaseline)
+  {
+    super(dateBaseline.getStream().getPop(), dateBaseline.getStream().getTicket().getID(), dateBaseline);
+  }
+
+  public IElementProxy<? extends IDateBaseline> copy()
+  {
+    return new DateBaselineProxy(getPop(), getTicketID());
   }
 
   public IStream getStream()
   {
-    return stream;
+    return getElement().getStream();
   }
 
   public ITag getTag()
   {
-    return tag;
+    return getElement().getTag();
   }
 
   public Date getDate()
   {
-    return tag.getDate();
+    return getElement().getDate();
   }
 
   @Override
-  public String toString()
+  protected IDateBaseline resolve()
   {
-    return MessageFormat.format("DateBaseline[stream={0}, tag={1}]", stream, tag);
+    return ((IElementResolver)getPop()).resolve(this);
   }
 }
