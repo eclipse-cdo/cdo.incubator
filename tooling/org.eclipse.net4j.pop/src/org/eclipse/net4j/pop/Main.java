@@ -10,10 +10,11 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.internal.pop.ticket.Ticket;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.ticket.ITicket;
+import org.eclipse.net4j.pop.ticket.ITicketUser;
 import org.eclipse.net4j.pop.util.PopUtil;
 
 import java.util.Date;
@@ -27,10 +28,15 @@ public class Main
 
   public static void main(String[] args)
   {
-    IBranch rootBranch = PopUtil.createMainBranch("HEAD", date());
-    IPop pop = PopUtil.createPop("CDO", rootBranch, new Ticket("pop-123456"));
-    ITaskStream taskStream = pop.addTaskStream(date(), new Ticket("task-123456"));
+    ITicketUser ticketUser = PopUtil.createTicketUser("Eike Stepper", "stepper@esc-net.de");
+    IBranch mainBranch = PopUtil.createMainBranch("HEAD", date());
 
+    ITicket popTicket = PopUtil.createTicket("pop-123456");
+    IPop pop = PopUtil.createPop("CDO", mainBranch, popTicket);
+    System.out.println(pop.addCommitter(ticketUser, "estepper", date(), null));
+
+    ITicket taskTicket = PopUtil.createTicket("task-123456");
+    ITaskStream taskStream = pop.addTaskStream(date(), taskTicket);
     IDelivery delivery1 = taskStream.addDelivery(date());
     System.out.println(delivery1);
 
@@ -50,7 +56,8 @@ public class Main
     System.out.println(release);
     System.out.println(pop.addRelease(date()));
 
-    IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, new Ticket("maintenance-123456"));
+    ITicket maintenanceTicket = PopUtil.createTicket("maintenance-123456");
+    IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, maintenanceTicket);
     System.out.println(maintenanceStream.addRelease(date()));
     System.out.println(maintenanceStream.addRelease(date()));
     System.out.println(maintenanceStream.addRelease(date()));
