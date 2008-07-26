@@ -22,7 +22,7 @@ public interface IElementProxy<ELEMENT extends IElement> extends IElement
 
   public String getTicketID();
 
-  public ELEMENT resolve();
+  public ELEMENT getElement();
 
   public IElementProxy<? extends ELEMENT> copy();
 }

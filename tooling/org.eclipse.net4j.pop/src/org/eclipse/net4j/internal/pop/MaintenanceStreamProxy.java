@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.pop.IBaseline;
@@ -33,6 +34,8 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
   private MaintenanceStreamProxy(IPop pop, String ticketID)
   {
     super(pop, ticketID);
+    Element.checkArgument(pop, "pop");
+    Element.checkArgument(ticketID, "ticketID");
   }
 
   public MaintenanceStreamProxy(IMaintenanceStream maintenanceStream)
@@ -43,12 +46,6 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
   public IElementProxy<? extends IMaintenanceStream> copy()
   {
     return new MaintenanceStreamProxy(getPop(), getTicketID());
-  }
-
-  @Override
-  public IPop getPop()
-  {
-    return resolve().getPop();
   }
 
   public IBranch getBranch()

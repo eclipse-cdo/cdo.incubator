@@ -18,5 +18,5 @@ import org.eclipse.net4j.pop.util.IElement;
  */
 public interface ITicket extends IElement
 {
-  public String getTicketID();
+  public String getID();
 }

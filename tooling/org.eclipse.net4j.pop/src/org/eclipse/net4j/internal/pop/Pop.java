@@ -97,6 +97,7 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
 
   public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
   {
-    return null;
+    // TODO Implement Pop.resolve(proxy)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 }

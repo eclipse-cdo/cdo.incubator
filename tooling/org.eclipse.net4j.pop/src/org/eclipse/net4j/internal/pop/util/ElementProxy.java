@@ -30,6 +30,7 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
 
   protected ElementProxy(IPop pop, String ticketID)
   {
+    System.out.println("--> proxy: " + this);
     this.pop = pop;
     this.ticketID = ticketID;
   }

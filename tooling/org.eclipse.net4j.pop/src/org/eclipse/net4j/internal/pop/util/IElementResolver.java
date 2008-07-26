@@ -18,5 +18,5 @@ import org.eclipse.net4j.pop.IMaintenanceStream;
  */
 public interface IElementResolver
 {
-  public IMaintenanceStream resolveMaintenanceStream(MaintenanceStreamProxy proxy);
+  public IMaintenanceStream resolve(MaintenanceStreamProxy proxy);
 }

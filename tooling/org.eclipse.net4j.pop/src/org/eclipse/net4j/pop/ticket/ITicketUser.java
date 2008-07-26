@@ -22,5 +22,5 @@ public interface ITicketUser extends IElement
 
   public String getEmail();
 
-  public String getTicketAccount();
+  public String getAccount();
 }

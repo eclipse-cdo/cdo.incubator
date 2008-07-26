@@ -34,7 +34,13 @@ public abstract class Element extends Notifier implements IElement
   @Override
   public abstract String toString();
 
-  protected void checkArgument(Object arg, String argName, Class<?> argClass)
+  @SuppressWarnings("unchecked")
+  public Object getAdapter(Class adapterType)
+  {
+    return Platform.getAdapterManager().getAdapter(this, adapterType);
+  }
+
+  public static void checkArgument(Object arg, String argName, Class<?> argClass)
   {
     if (!argClass.isInstance(arg))
     {
@@ -42,7 +48,7 @@ public abstract class Element extends Notifier implements IElement
     }
   }
 
-  protected void checkArgument(Object arg, String argName)
+  public static void checkArgument(Object arg, String argName)
   {
     if (arg == null)
     {
@@ -50,17 +56,11 @@ public abstract class Element extends Notifier implements IElement
     }
   }
 
-  protected void checkArgument(boolean expr, String argName)
+  public static void checkArgument(boolean expr, String argName)
   {
     if (!expr)
     {
       throw new IllegalArgumentException(argName);
     }
-  }
-
-  @SuppressWarnings("unchecked")
-  public Object getAdapter(Class adapterType)
-  {
-    return Platform.getAdapterManager().getAdapter(this, adapterType);
   }
 }
