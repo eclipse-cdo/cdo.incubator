@@ -15,6 +15,7 @@ import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
@@ -98,6 +99,12 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
   {
     // TODO Implement Pop.resolve(proxy)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  public ITaskStream resolve(TaskStreamProxy proxy)
+  {
+    // TODO Implement Pop.resolve(taskStreamProxy)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 }

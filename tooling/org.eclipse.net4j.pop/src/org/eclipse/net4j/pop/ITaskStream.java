@@ -23,4 +23,10 @@ public interface ITaskStream extends IStream
   public IIntegrationStream getParent();
 
   public IDelivery addDelivery(Date deliveryDate);
+
+  public int getDeliveryCount();
+
+  public IDelivery getDelivery(int index);
+
+  public IDelivery[] getDeliveries();
 }

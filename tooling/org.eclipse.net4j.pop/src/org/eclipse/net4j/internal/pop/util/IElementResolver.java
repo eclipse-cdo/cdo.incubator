@@ -11,7 +11,9 @@
 package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.net4j.internal.pop.MaintenanceStreamProxy;
+import org.eclipse.net4j.internal.pop.TaskStreamProxy;
 import org.eclipse.net4j.pop.IMaintenanceStream;
+import org.eclipse.net4j.pop.ITaskStream;
 
 /**
  * @author Eike Stepper
@@ -19,4 +21,6 @@ import org.eclipse.net4j.pop.IMaintenanceStream;
 public interface IElementResolver
 {
   public IMaintenanceStream resolve(MaintenanceStreamProxy proxy);
+
+  public ITaskStream resolve(TaskStreamProxy proxy);
 }

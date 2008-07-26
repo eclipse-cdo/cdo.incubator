@@ -47,7 +47,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
     ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
-    taskStreamContainer.addElement(taskStream);
+
+    ITaskStream proxy = new TaskStreamProxy(taskStream);
+    taskStreamContainer.addElement(proxy);
     return taskStream;
   }
 

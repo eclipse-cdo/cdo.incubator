@@ -14,14 +14,12 @@ import org.eclipse.net4j.internal.pop.util.ElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IBaseline;
-import org.eclipse.net4j.pop.IDevelopmentStream;
-import org.eclipse.net4j.pop.IMaintenanceStream;
+import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.util.Date;
@@ -29,21 +27,21 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> implements IMaintenanceStream
+public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskStream
 {
-  private MaintenanceStreamProxy(IPop pop, String ticketID)
+  private TaskStreamProxy(IPop pop, String ticketID)
   {
     super(pop, ticketID);
   }
 
-  public MaintenanceStreamProxy(IMaintenanceStream maintenanceStream)
+  public TaskStreamProxy(ITaskStream taskStream)
   {
-    super(maintenanceStream.getPop(), maintenanceStream.getTicket().getID(), maintenanceStream);
+    super(taskStream.getPop(), taskStream.getTicket().getID(), taskStream);
   }
 
-  public IElementProxy<? extends IMaintenanceStream> copy()
+  public IElementProxy<? extends ITaskStream> copy()
   {
-    return new MaintenanceStreamProxy(getPop(), getTicketID());
+    return new TaskStreamProxy(getPop(), getTicketID());
   }
 
   public IBranch getBranch()
@@ -56,12 +54,12 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getTicket();
   }
 
-  public IRelease getBaseline()
+  public IBaseline getBaseline()
   {
     return getElement().getBaseline();
   }
 
-  public IDevelopmentStream getParent()
+  public IIntegrationStream getParent()
   {
     return getElement().getParent();
   }
@@ -86,53 +84,28 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getMerges();
   }
 
-  public IRelease addRelease(Date date)
+  public IDelivery addDelivery(Date deliveryDate)
   {
-    return getElement().addRelease(date);
+    return getElement().addDelivery(deliveryDate);
   }
 
-  public IRelease getRelease(int index)
+  public IDelivery[] getDeliveries()
   {
-    return getElement().getRelease(index);
+    return getElement().getDeliveries();
   }
 
-  public int getReleaseCount()
+  public IDelivery getDelivery(int index)
   {
-    return getElement().getReleaseCount();
+    return getElement().getDelivery(index);
   }
 
-  public IRelease[] getReleases()
+  public int getDeliveryCount()
   {
-    return getElement().getReleases();
-  }
-
-  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
-  {
-    return getElement().addTaskStream(baselineDate, ticket);
-  }
-
-  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
-  {
-    return getElement().addTaskStream(baseline, ticket);
-  }
-
-  public ITaskStream getTaskStream(int index)
-  {
-    return getElement().getTaskStream(index);
-  }
-
-  public int getTaskStreamCount()
-  {
-    return getElement().getTaskStreamCount();
-  }
-
-  public ITaskStream[] getTaskStreams()
-  {
-    return getElement().getTaskStreams();
+    return getElement().getDeliveryCount();
   }
 
   @Override
-  protected IMaintenanceStream resolve()
+  protected ITaskStream resolve()
   {
     return ((IElementResolver)getPop()).resolve(this);
   }
