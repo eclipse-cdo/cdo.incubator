@@ -19,6 +19,7 @@ import org.eclipse.net4j.pop.code.ICommitter;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 
+import java.text.MessageFormat;
 import java.util.Date;
 
 /**
@@ -42,7 +43,7 @@ public class Pop extends DevelopmentStream implements IPop
   }
 
   @Override
-  public IPop getParentStream()
+  public IPop getParent()
   {
     return null;
   }
@@ -85,4 +86,9 @@ public class Pop extends DevelopmentStream implements IPop
     return committerContainer.getElements(ICommitter.class);
   }
 
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch(), getTicket());
+  }
 }

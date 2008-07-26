@@ -21,7 +21,7 @@ import java.util.Date;
  */
 public interface IIntegrationStream extends IStream
 {
-  public IIntegrationStream getParentStream();
+  public IIntegrationStream getParent();
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket);
 

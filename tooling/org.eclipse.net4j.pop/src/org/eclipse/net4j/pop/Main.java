@@ -29,14 +29,20 @@ public class Main
   public static void main(String[] args)
   {
     ITicketUser ticketUser = PopUtil.createTicketUser("Eike Stepper", "stepper@esc-net.de");
-    IBranch mainBranch = PopUtil.createMainBranch("HEAD", date());
+    System.out.println(ticketUser);
 
-    ITicket popTicket = PopUtil.createTicket("pop-123456");
+    IBranch mainBranch = PopUtil.createMainBranch("HEAD", date());
+    System.out.println(mainBranch);
+
+    ITicket popTicket = PopUtil.createTicket("100000");
     IPop pop = PopUtil.createPop("CDO", mainBranch, popTicket);
+    System.out.println(pop);
     System.out.println(pop.addCommitter(ticketUser, "estepper", date(), null));
 
-    ITicket taskTicket = PopUtil.createTicket("task-123456");
+    ITicket taskTicket = PopUtil.createTicket("200000");
     ITaskStream taskStream = pop.addTaskStream(date(), taskTicket);
+    System.out.println(taskStream);
+
     IDelivery delivery1 = taskStream.addDelivery(date());
     System.out.println(delivery1);
 
@@ -56,8 +62,10 @@ public class Main
     System.out.println(release);
     System.out.println(pop.addRelease(date()));
 
-    ITicket maintenanceTicket = PopUtil.createTicket("maintenance-123456");
+    ITicket maintenanceTicket = PopUtil.createTicket("300000");
     IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, maintenanceTicket);
+    System.out.println(maintenanceStream);
+
     System.out.println(maintenanceStream.addRelease(date()));
     System.out.println(maintenanceStream.addRelease(date()));
     System.out.println(maintenanceStream.addRelease(date()));

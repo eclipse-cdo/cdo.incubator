@@ -28,7 +28,7 @@ public interface IPop extends IDevelopmentStream
   /**
    * Returns <code>null</code>.
    */
-  public IPop getParentStream();
+  public IPop getParent();
 
   public String getName();
 

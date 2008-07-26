@@ -62,7 +62,7 @@ public abstract class Stream extends Element implements IStream
     return ticket;
   }
 
-  public IStream getParentStream()
+  public IStream getParent()
   {
     if (baseline == null)
     {
@@ -82,7 +82,7 @@ public abstract class Stream extends Element implements IStream
       throw new ImplementationError();
     }
 
-    return getParentStream().getPop();
+    return getParent().getPop();
   }
 
   public IMerge merge(Date date, IDelivery delivery)

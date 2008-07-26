@@ -20,7 +20,7 @@ import java.util.Date;
  */
 public interface IMaintenanceStream extends IIntegrationStream
 {
-  public IDevelopmentStream getParentStream();
+  public IDevelopmentStream getParent();
 
   public IRelease addRelease(Date date);
 }

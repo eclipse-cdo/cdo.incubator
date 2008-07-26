@@ -38,9 +38,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   }
 
   @Override
-  public IIntegrationStream getParentStream()
+  public IIntegrationStream getParent()
   {
-    return (IIntegrationStream)super.getParentStream();
+    return (IIntegrationStream)super.getParent();
   }
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)

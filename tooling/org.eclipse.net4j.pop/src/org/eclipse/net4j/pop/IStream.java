@@ -26,7 +26,7 @@ public interface IStream extends IElement
 {
   public IPop getPop();
 
-  public IStream getParentStream();
+  public IStream getParent();
 
   public IBaseline getBaseline();
 

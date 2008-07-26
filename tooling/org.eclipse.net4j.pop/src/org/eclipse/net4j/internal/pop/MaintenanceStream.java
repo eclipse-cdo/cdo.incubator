@@ -34,9 +34,9 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
   }
 
   @Override
-  public IDevelopmentStream getParentStream()
+  public IDevelopmentStream getParent()
   {
-    return (IDevelopmentStream)super.getParentStream();
+    return (IDevelopmentStream)super.getParent();
   }
 
   public IRelease addRelease(Date date)
@@ -59,6 +59,7 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
   @Override
   public String toString()
   {
-    return MessageFormat.format("MaintenanceStream[branch={0}, ticket={1}]", getBranch(), getTicket());
+    return MessageFormat.format("MaintenanceStream[parent={0}, branch={1}, ticket={2}]", getParent(), getBranch(),
+        getTicket());
   }
 }

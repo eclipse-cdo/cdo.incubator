@@ -95,7 +95,8 @@ public class DevelopmentStream extends IntegrationStream implements IDevelopment
   @Override
   public String toString()
   {
-    return MessageFormat.format("DevelopmentStream[branch={0}, ticket={1}]", getBranch(), getTicket());
+    return MessageFormat.format("DevelopmentStream[parent={0}, branch={1}, ticket={2}]", getParent(), getBranch(),
+        getTicket());
   }
 
   private void checkBaseline(IRelease baseline)
