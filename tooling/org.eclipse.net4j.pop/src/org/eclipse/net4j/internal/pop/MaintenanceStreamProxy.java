@@ -47,87 +47,87 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
 
   public IBranch getBranch()
   {
-    return resolve().getBranch();
+    return getElement().getBranch();
   }
 
   public ITicket getTicket()
   {
-    return resolve().getTicket();
+    return getElement().getTicket();
   }
 
   public IRelease getBaseline()
   {
-    return resolve().getBaseline();
+    return getElement().getBaseline();
   }
 
   public IDevelopmentStream getParent()
   {
-    return resolve().getParent();
+    return getElement().getParent();
   }
 
   public IMerge merge(Date date, IDelivery delivery)
   {
-    return resolve().merge(date, delivery);
+    return getElement().merge(date, delivery);
   }
 
   public IMerge getMerge(int index)
   {
-    return resolve().getMerge(index);
+    return getElement().getMerge(index);
   }
 
   public int getMergeCount()
   {
-    return resolve().getMergeCount();
+    return getElement().getMergeCount();
   }
 
   public IMerge[] getMerges()
   {
-    return resolve().getMerges();
+    return getElement().getMerges();
   }
 
   public IRelease addRelease(Date date)
   {
-    return resolve().addRelease(date);
+    return getElement().addRelease(date);
   }
 
   public IRelease getRelease(int index)
   {
-    return resolve().getRelease(index);
+    return getElement().getRelease(index);
   }
 
   public int getReleaseCount()
   {
-    return resolve().getReleaseCount();
+    return getElement().getReleaseCount();
   }
 
   public IRelease[] getReleases()
   {
-    return resolve().getReleases();
+    return getElement().getReleases();
   }
 
   public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
   {
-    return resolve().addTaskStream(baselineDate, ticket);
+    return getElement().addTaskStream(baselineDate, ticket);
   }
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
   {
-    return resolve().addTaskStream(baseline, ticket);
+    return getElement().addTaskStream(baseline, ticket);
   }
 
   public ITaskStream getTaskStream(int index)
   {
-    return resolve().getTaskStream(index);
+    return getElement().getTaskStream(index);
   }
 
   public int getTaskStreamCount()
   {
-    return resolve().getTaskStreamCount();
+    return getElement().getTaskStreamCount();
   }
 
   public ITaskStream[] getTaskStreams()
   {
-    return resolve().getTaskStreams();
+    return getElement().getTaskStreams();
   }
 
   @Override

@@ -32,7 +32,6 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
   {
     Element.checkArgument(pop, "pop");
     Element.checkArgument(ticketID, "ticketID");
-    System.out.println("--> proxy: " + this);
     this.pop = pop;
     this.ticketID = ticketID;
   }
@@ -41,6 +40,7 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
   {
     this(pop, ticketID);
     cacheElement(element);
+    System.out.println("--> proxy: " + this);
   }
 
   public IPop getPop()
@@ -55,46 +55,46 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
 
   public IListener[] getListeners()
   {
-    return resolve().getListeners();
+    return getElement().getListeners();
   }
 
   public boolean hasListeners()
   {
-    return resolve().hasListeners();
+    return getElement().hasListeners();
   }
 
   public void addListener(IListener listener)
   {
-    resolve().addListener(listener);
+    getElement().addListener(listener);
   }
 
   public void removeListener(IListener listener)
   {
-    resolve().removeListener(listener);
+    getElement().removeListener(listener);
   }
 
   @SuppressWarnings("unchecked")
   public Object getAdapter(Class adapter)
   {
-    return resolve().getAdapter(adapter);
+    return getElement().getAdapter(adapter);
   }
 
   @Override
   public boolean equals(Object obj)
   {
-    return resolve().equals(obj);
+    return getElement().equals(obj);
   }
 
   @Override
   public int hashCode()
   {
-    return resolve().hashCode();
+    return getElement().hashCode();
   }
 
   @Override
   public String toString()
   {
-    return resolve().toString();
+    return getElement().toString();
   }
 
   public ELEMENT getElement()
