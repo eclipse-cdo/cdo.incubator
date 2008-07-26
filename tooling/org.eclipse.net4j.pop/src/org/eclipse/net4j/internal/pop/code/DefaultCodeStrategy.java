@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.Baseline;
+import org.eclipse.net4j.internal.pop.DateBaseline;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
@@ -55,7 +55,7 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     checkArgument(ticket, "ticket");
     String branchName = getTaskBranchName(stream, date, ticket);
     String tagName = getStartTag(branchName);
-    return new Baseline(stream, tagName, date);
+    return new DateBaseline(stream, tagName, date);
   }
 
   public ITag createMilestoneTag(IRelease release, Date date, String name)

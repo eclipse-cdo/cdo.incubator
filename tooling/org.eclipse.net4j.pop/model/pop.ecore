@@ -17,6 +17,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="TaskStream" eSuperTypes="#//Stream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="deliveries" upperBound="-1"
         eType="#//Delivery" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
+        upperBound="-1" eType="#//Target"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DevelopmentStream" eSuperTypes="#//IntegrationStream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenanceStreams" upperBound="-1"
@@ -40,4 +42,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="Baseline"/>
   <eClassifiers xsi:type="ecore:EClass" name="Target"/>
   <eClassifiers xsi:type="ecore:EClass" name="Committer"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DateBaseline" eSuperTypes="#//Baseline"/>
 </ecore:EPackage>
