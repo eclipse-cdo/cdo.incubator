@@ -12,6 +12,8 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.Committer;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
+import org.eclipse.net4j.internal.pop.util.IElementResolver;
+import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
@@ -25,7 +27,7 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class Pop extends DevelopmentStream implements IPop
+public class Pop extends DevelopmentStream implements IPop, IElementResolver
 {
   protected ElementContainer<ICommitter> committerContainer = new ElementContainer<ICommitter>(this);
 
@@ -91,5 +93,10 @@ public class Pop extends DevelopmentStream implements IPop
   {
     return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch().getName(), getTicket()
         .getTicketID());
+  }
+
+  public IMaintenanceStream resolveMaintenanceStream(MaintenanceStreamProxy proxy)
+  {
+    return null;
   }
 }

@@ -12,7 +12,6 @@ package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.util.IElement;
-import org.eclipse.net4j.pop.util.IElementProxy;
 import org.eclipse.net4j.util.event.IListener;
 
 /**

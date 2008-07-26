@@ -8,18 +8,15 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.util;
+package org.eclipse.net4j.internal.pop.util;
 
-import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.internal.pop.MaintenanceStreamProxy;
+import org.eclipse.net4j.pop.IMaintenanceStream;
 
 /**
  * @author Eike Stepper
  */
-public interface IElementProxy<ELEMENT extends IElement> extends IElement
+public interface IElementResolver
 {
-  public IPop getPop();
-
-  public String getTicketID();
-
-  public ELEMENT resolve();
+  public IMaintenanceStream resolveMaintenanceStream(MaintenanceStreamProxy proxy);
 }
