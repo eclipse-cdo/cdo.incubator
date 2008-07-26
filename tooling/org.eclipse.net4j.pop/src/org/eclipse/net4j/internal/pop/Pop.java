@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.Committer;
+import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IMaintenanceStream;
@@ -19,6 +20,7 @@ import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
+import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 
@@ -105,6 +107,12 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   public ITaskStream resolve(TaskStreamProxy proxy)
   {
     // TODO Implement Pop.resolve(taskStreamProxy)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  public IDelivery resolve(DeliveryProxy proxy)
+  {
+    // TODO Implement Pop.resolve(proxy)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 }

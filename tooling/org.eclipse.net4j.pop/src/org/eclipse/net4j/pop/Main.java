@@ -52,9 +52,9 @@ public class Main
     IDelivery delivery3 = taskStream.addDelivery(date());
     System.out.println(delivery3);
 
-    System.out.println(pop.merge(date(), delivery1));
-    System.out.println(pop.merge(date(), delivery2));
-    System.out.println(pop.merge(date(), delivery3));
+    System.out.println(pop.addMerge(date(), delivery1));
+    System.out.println(pop.addMerge(date(), delivery2));
+    System.out.println(pop.addMerge(date(), delivery3));
 
     System.out.println(pop.addRelease(date()));
     System.out.println(pop.addRelease(date()));

@@ -34,7 +34,7 @@ public interface IStream extends IElement
 
   public ITicket getTicket();
 
-  public IMerge merge(Date date, IDelivery delivery);
+  public IMerge addMerge(Date date, IDelivery delivery);
 
   public int getMergeCount();
 

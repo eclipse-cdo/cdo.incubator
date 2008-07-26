@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
+import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.delivery.Merge;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
@@ -85,9 +86,10 @@ public abstract class Stream extends Element implements IStream
     return getParent().getPop();
   }
 
-  public IMerge merge(Date date, IDelivery delivery)
+  public IMerge addMerge(Date date, IDelivery delivery)
   {
-    IMerge merge = new Merge(this, date, delivery);
+    IDelivery proxy = new DeliveryProxy(delivery);
+    IMerge merge = new Merge(this, date, proxy);
     mergeContainer.addElement(merge);
     return merge;
   }

@@ -66,9 +66,9 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getParent();
   }
 
-  public IMerge merge(Date date, IDelivery delivery)
+  public IMerge addMerge(Date date, IDelivery delivery)
   {
-    return getElement().merge(date, delivery);
+    return getElement().addMerge(date, delivery);
   }
 
   public IMerge getMerge(int index)
