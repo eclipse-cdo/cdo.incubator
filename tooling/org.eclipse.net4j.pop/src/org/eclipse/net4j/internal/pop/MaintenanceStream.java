@@ -11,7 +11,6 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.release.Version;
-import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IDevelopmentStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.code.IBranch;
@@ -28,7 +27,7 @@ import java.util.List;
  */
 public class MaintenanceStream extends IntegrationStream implements IMaintenanceStream
 {
-  public MaintenanceStream(IBaseline baseline, IBranch branch, ITicket ticket)
+  public MaintenanceStream(IRelease baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
   }
@@ -39,13 +38,23 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
     return (IDevelopmentStream)super.getParent();
   }
 
+  @Override
+  public IRelease getBaseline()
+  {
+    return (IRelease)super.getBaseline();
+  }
+
   public IRelease addRelease(Date date)
   {
     List<IRelease> elements = releaseContainer.getElements();
     synchronized (elements)
     {
       IVersion lastVersion = new Version();
-      if (!elements.isEmpty())
+      if (elements.isEmpty())
+      {
+        lastVersion = getBaseline().getVersion();
+      }
+      else
       {
         IRelease lastRelease = elements.get(elements.size() - 1);
         lastVersion = lastRelease.getVersion();

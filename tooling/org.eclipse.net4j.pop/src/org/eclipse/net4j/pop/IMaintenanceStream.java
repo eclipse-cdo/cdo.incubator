@@ -22,5 +22,7 @@ public interface IMaintenanceStream extends IIntegrationStream
 {
   public IDevelopmentStream getParent();
 
+  public IRelease getBaseline();
+
   public IRelease addRelease(Date date);
 }

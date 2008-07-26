@@ -57,7 +57,7 @@ public class Merge extends Element implements IMerge
   @Override
   public String toString()
   {
-    return MessageFormat.format("Merge[branch={0}, date={1,date} {1,time}, delivery={2}]",
-        stream.getBranch().getName(), date, delivery);
+    return MessageFormat.format("Merge[branch={0}, date={1,date} {1,time}, delivery={2}, number={3}]", stream
+        .getBranch().getName(), date, delivery.getStream().getBranch().getName(), delivery.getNumber());
   }
 }
