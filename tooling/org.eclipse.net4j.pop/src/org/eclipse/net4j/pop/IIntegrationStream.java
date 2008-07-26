@@ -11,6 +11,7 @@
 package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.util.Date;
@@ -36,6 +37,8 @@ public interface IIntegrationStream extends IStream
   public int getReleaseCount();
 
   public IRelease getRelease(int index);
+
+  public IRelease getReleaseByVersion(IVersion version);
 
   public IRelease[] getReleases();
 }

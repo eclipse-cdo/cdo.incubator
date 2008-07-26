@@ -101,6 +101,29 @@ public class Version extends PlatformObject implements IVersion
   }
 
   @Override
+  public boolean equals(Object obj)
+  {
+    if (obj == this)
+    {
+      return true;
+    }
+
+    if (obj instanceof IVersion)
+    {
+      IVersion that = (IVersion)obj;
+      return major == that.getMajor() && minor == that.getMinor() && micro == that.getMicro();
+    }
+
+    return false;
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return major * 1000000 ^ minor * 1000 ^ micro;
+  }
+
+  @Override
   public String toString()
   {
     return MessageFormat.format("{0}.{1}.{2}", major, minor, micro);

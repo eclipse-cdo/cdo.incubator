@@ -28,5 +28,7 @@ public interface ITaskStream extends IStream
 
   public IDelivery getDelivery(int index);
 
+  public IDelivery getDeliveryByNumber(int number);
+
   public IDelivery[] getDeliveries();
 }

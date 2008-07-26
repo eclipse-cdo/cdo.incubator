@@ -94,6 +94,11 @@ public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskS
     return getElement().getDeliveries();
   }
 
+  public IDelivery getDeliveryByNumber(int number)
+  {
+    return getElement().getDeliveryByNumber(number);
+  }
+
   public IDelivery getDelivery(int index)
   {
     return getElement().getDelivery(index);

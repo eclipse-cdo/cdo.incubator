@@ -22,6 +22,7 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
 import java.util.Date;
@@ -99,6 +100,11 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
   public int getReleaseCount()
   {
     return getElement().getReleaseCount();
+  }
+
+  public IRelease getReleaseByVersion(IVersion version)
+  {
+    return getElement().getReleaseByVersion(version);
   }
 
   public IRelease[] getReleases()

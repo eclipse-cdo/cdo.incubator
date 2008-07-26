@@ -16,8 +16,10 @@ import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IDateBaseline;
+import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
@@ -26,6 +28,8 @@ import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
+import org.eclipse.net4j.util.ImplementationError;
+import org.eclipse.net4j.util.ref.ReferenceValueMap;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -40,6 +44,8 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   private String name;
 
   private ICodeStrategy strategy;
+
+  private ReferenceValueMap<String, IStream> streamCache = new ReferenceValueMap.Weak<String, IStream>();
 
   public Pop(String name, ICodeStrategy strategy, IBranch branch, ITicket ticket)
   {
@@ -103,31 +109,52 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
 
   public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
   {
-    // TODO Implement Pop.resolve(proxy)
-    throw new UnsupportedOperationException("Not yet implemented");
+    return (IMaintenanceStream)getStream(proxy.getTicketID());
   }
 
   public ITaskStream resolve(TaskStreamProxy proxy)
   {
-    // TODO Implement Pop.resolve(taskStreamProxy)
-    throw new UnsupportedOperationException("Not yet implemented");
+    return (ITaskStream)getStream(proxy.getTicketID());
   }
 
   public IDelivery resolve(DeliveryProxy proxy)
   {
-    // TODO Implement Pop.resolve(proxy)
-    throw new UnsupportedOperationException("Not yet implemented");
+    ITaskStream stream = (ITaskStream)getStream(proxy.getTicketID());
+    return stream.getDeliveryByNumber(proxy.getNumber());
   }
 
   public IRelease resolve(ReleaseProxy proxy)
   {
-    // TODO Implement Pop.resolve(proxy)
-    throw new UnsupportedOperationException("Not yet implemented");
+    IIntegrationStream stream = (IIntegrationStream)getStream(proxy.getTicketID());
+    return stream.getReleaseByVersion(proxy.getVersion());
   }
 
   public IDateBaseline resolve(DateBaselineProxy proxy)
   {
     // TODO Implement Pop.resolve(proxy)
+    throw new UnsupportedOperationException("Not yet implemented");
+  }
+
+  private IStream getStream(String ticketID)
+  {
+    IStream stream = streamCache.get(ticketID);
+    if (stream == null)
+    {
+      stream = resolveStream(ticketID);
+      if (stream == null)
+      {
+        throw new ImplementationError("resolveStream() must not return null");
+      }
+
+      streamCache.put(ticketID, stream);
+    }
+
+    return stream;
+  }
+
+  private IStream resolveStream(String ticketID)
+  {
+    // TODO Implement Pop.resolveStream(ticketID)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 }

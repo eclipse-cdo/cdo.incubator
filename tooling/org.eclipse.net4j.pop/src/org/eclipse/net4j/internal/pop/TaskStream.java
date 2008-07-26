@@ -52,6 +52,19 @@ public class TaskStream extends Stream implements ITaskStream
     }
   }
 
+  public IDelivery getDeliveryByNumber(int number)
+  {
+    for (IDelivery delivery : getDeliveries())
+    {
+      if (delivery.getNumber() == number)
+      {
+        return delivery;
+      }
+    }
+
+    return null;
+  }
+
   public IDelivery getDelivery(int index)
   {
     return deliveryContainer.getElement(index);

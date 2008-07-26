@@ -94,6 +94,25 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return releaseContainer.getElementCount();
   }
 
+  public IRelease getReleaseByVersion(IVersion version)
+  {
+    for (IRelease release : getReleases())
+    {
+      if (release.getVersion().equals(version))
+      {
+        return release;
+      }
+    }
+
+    return null;
+  }
+
+  @Override
+  public String toString()
+  {
+    return null;
+  }
+
   public IRelease[] getReleases()
   {
     return releaseContainer.getElements(IRelease.class);
