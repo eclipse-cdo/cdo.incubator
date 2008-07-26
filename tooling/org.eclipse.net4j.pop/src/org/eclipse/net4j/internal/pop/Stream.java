@@ -88,8 +88,8 @@ public abstract class Stream extends Element implements IStream
 
   public IMerge addMerge(Date date, IDelivery delivery)
   {
-    IDelivery proxy = new DeliveryProxy(delivery);
-    IMerge merge = new Merge(this, date, proxy);
+    delivery = new DeliveryProxy(delivery);
+    IMerge merge = new Merge(this, date, delivery);
     mergeContainer.addElement(merge);
     return merge;
   }

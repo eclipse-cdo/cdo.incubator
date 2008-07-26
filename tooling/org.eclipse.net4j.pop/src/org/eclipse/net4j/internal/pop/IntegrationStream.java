@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IBaseline;
+import org.eclipse.net4j.pop.IDateBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
@@ -46,11 +47,19 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
   {
+    if (baseline instanceof IRelease)
+    {
+      baseline = new ReleaseProxy((IRelease)baseline);
+    }
+    else if (baseline instanceof IDateBaseline)
+    {
+      baseline = new DateBaselineProxy((IDateBaseline)baseline);
+    }
+
     IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
     ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
-
-    ITaskStream proxy = new TaskStreamProxy(taskStream);
-    taskStreamContainer.addElement(proxy);
+    taskStream = new TaskStreamProxy(taskStream);
+    taskStreamContainer.addElement(taskStream);
     return taskStream;
   }
 
@@ -94,8 +103,8 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     ITag tag = getPop().getCodeStrategy().createReleaseTag(this, date, version);
     IRelease release = new Release(this, version, tag);
-    IRelease proxy = new ReleaseProxy(release);
-    releaseContainer.addElement(proxy);
+    release = new ReleaseProxy(release);
+    releaseContainer.addElement(release);
     return release;
   }
 }
