@@ -24,7 +24,7 @@ public interface ICodeStrategy extends IElement
 
   public ITag createReleaseTag(IIntegrationStream stream, Date date, IVersion version);
 
-  public ITag createMilestoneTag(IRelease release, String name);
+  public ITag createMilestoneTag(IRelease release, Date date, String name);
 
   public Date getTagDate(ITag tag);
 

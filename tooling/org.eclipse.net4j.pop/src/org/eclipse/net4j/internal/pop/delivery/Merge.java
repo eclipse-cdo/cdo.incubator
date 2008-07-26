@@ -25,9 +25,9 @@ public class Merge extends Element implements IMerge
 {
   private IStream stream;
 
-  private IDelivery delivery;
-
   private Date date;
+
+  private IDelivery delivery;
 
   public Merge(IStream stream, Date date, IDelivery delivery)
   {
@@ -39,9 +39,9 @@ public class Merge extends Element implements IMerge
     this.delivery = delivery;
   }
 
-  public IDelivery getDelivery()
+  public IStream getStream()
   {
-    return delivery;
+    return stream;
   }
 
   public Date getDate()
@@ -49,15 +49,15 @@ public class Merge extends Element implements IMerge
     return date;
   }
 
-  public IStream getStream()
+  public IDelivery getDelivery()
   {
-    return stream;
+    return delivery;
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("Merge[branch={0}, delivery={1}, date={2,date} {2,time}]",
-        stream.getBranch().getName(), delivery, date);
+    return MessageFormat.format("Merge[branch={0}, date={1,date} {1,time}, delivery={2}]",
+        stream.getBranch().getName(), date, delivery);
   }
 }

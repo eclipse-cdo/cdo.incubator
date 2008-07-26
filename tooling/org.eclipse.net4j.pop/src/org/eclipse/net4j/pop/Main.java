@@ -62,6 +62,12 @@ public class Main
     System.out.println(release);
     System.out.println(pop.addRelease(date()));
 
+    System.out.println(release.addMilestone(date(), "M1"));
+    System.out.println(release.addMilestone(date(), "M2"));
+    System.out.println(release.addMilestone(date(), "M3"));
+    System.out.println(release.addMilestone(date(), "RC1"));
+    System.out.println(release.addMilestone(date(), "RC2"));
+
     ITicket maintenanceTicket = PopUtil.createTicket("300000");
     IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, maintenanceTicket);
     System.out.println(maintenanceStream);

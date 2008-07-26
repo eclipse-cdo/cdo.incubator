@@ -58,12 +58,12 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     return new Baseline(stream, tagName, date);
   }
 
-  public ITag createMilestoneTag(IRelease release, String name)
+  public ITag createMilestoneTag(IRelease release, Date date, String name)
   {
     checkArgument(release, "release");
     checkArgument(name, "name");
-    // TODO Implement DefaultCodeStrategy.createMilestoneTag(release, name)
-    throw new UnsupportedOperationException("Not yet implemented");
+    String tagName = getMilestoneTagName(release, date, name);
+    return release.getStream().getBranch().addTag(tagName, date);
   }
 
   public ITag createReleaseTag(IIntegrationStream stream, Date date, IVersion version)
@@ -119,6 +119,12 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
   protected String getReleaseTagName(IIntegrationStream stream, Date date, IVersion version)
   {
     return "release_" + version.getMajor() + "_" + version.getMinor() + "_" + version.getMicro();
+  }
+
+  protected String getMilestoneTagName(IRelease release, Date date, String name)
+  {
+    String releaseTagName = getReleaseTagName(release.getStream(), release.getTag().getDate(), release.getVersion());
+    return releaseTagName + "_" + name;
   }
 
   protected String getStartTag(String branchName)
