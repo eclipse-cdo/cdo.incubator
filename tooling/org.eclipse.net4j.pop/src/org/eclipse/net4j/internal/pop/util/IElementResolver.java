@@ -10,12 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.util;
 
-import org.eclipse.net4j.internal.pop.DateBaselineProxy;
+import org.eclipse.net4j.internal.pop.BaselineProxy;
 import org.eclipse.net4j.internal.pop.MaintenanceStreamProxy;
 import org.eclipse.net4j.internal.pop.TaskStreamProxy;
 import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
-import org.eclipse.net4j.pop.IDateBaseline;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.delivery.IDelivery;
@@ -34,5 +34,5 @@ public interface IElementResolver
 
   public IRelease resolve(ReleaseProxy proxy);
 
-  public IDateBaseline resolve(DateBaselineProxy proxy);
+  public IBaseline resolve(BaselineProxy proxy);
 }

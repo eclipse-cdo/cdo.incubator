@@ -31,64 +31,50 @@ public class Main
     ITicketUser ticketUser = PopUtil.createTicketUser("Eike Stepper", "stepper@esc-net.de");
     System.out.println(ticketUser);
 
-    IBranch mainBranch = PopUtil.createMainBranch("HEAD", date());
+    IBranch mainBranch = PopUtil.createMainBranch("HEAD");
     System.out.println(mainBranch);
 
     ITicket popTicket = PopUtil.createTicket("100000");
     IPop pop = PopUtil.createPop("CDO", mainBranch, popTicket);
     System.out.println(pop);
-    System.out.println(pop.addCommitter(ticketUser, "estepper", date(), null));
+    System.out.println(pop.addCommitter(ticketUser, "estepper", new Date(), null));
 
     ITicket taskTicket = PopUtil.createTicket("200000");
-    ITaskStream taskStream = pop.addTaskStream(date(), taskTicket);
+    ITaskStream taskStream = pop.addTaskStream(pop.getBaselineByTag("TAG"), taskTicket);
     System.out.println(taskStream);
 
-    IDelivery delivery1 = taskStream.addDelivery(date());
+    IDelivery delivery1 = taskStream.addDelivery(new Date());
     System.out.println(delivery1);
 
-    IDelivery delivery2 = taskStream.addDelivery(date());
+    IDelivery delivery2 = taskStream.addDelivery(new Date());
     System.out.println(delivery2);
 
-    IDelivery delivery3 = taskStream.addDelivery(date());
+    IDelivery delivery3 = taskStream.addDelivery(new Date());
     System.out.println(delivery3);
 
-    System.out.println(pop.addMerge(date(), delivery1));
-    System.out.println(pop.addMerge(date(), delivery2));
-    System.out.println(pop.addMerge(date(), delivery3));
+    System.out.println(pop.addMerge(new Date(), delivery1));
+    System.out.println(pop.addMerge(new Date(), delivery2));
+    System.out.println(pop.addMerge(new Date(), delivery3));
 
-    System.out.println(pop.addRelease(date()));
-    System.out.println(pop.addRelease(date()));
-    IRelease release = pop.addRelease(date(), false, 2);
+    System.out.println(pop.addRelease());
+    System.out.println(pop.addRelease());
+    IRelease release = pop.addRelease(false, 2);
     System.out.println(release);
-    System.out.println(pop.addRelease(date()));
+    System.out.println(pop.addRelease());
 
-    System.out.println(release.addMilestone(date(), "M1"));
-    System.out.println(release.addMilestone(date(), "M2"));
-    System.out.println(release.addMilestone(date(), "M3"));
-    System.out.println(release.addMilestone(date(), "RC1"));
-    System.out.println(release.addMilestone(date(), "RC2"));
+    System.out.println(release.addMilestone("M1"));
+    System.out.println(release.addMilestone("M2"));
+    System.out.println(release.addMilestone("M3"));
+    System.out.println(release.addMilestone("RC1"));
+    System.out.println(release.addMilestone("RC2"));
 
     ITicket maintenanceTicket = PopUtil.createTicket("300000");
     IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, maintenanceTicket);
     System.out.println(maintenanceStream);
 
-    System.out.println(maintenanceStream.addRelease(date()));
-    System.out.println(maintenanceStream.addRelease(date()));
-    System.out.println(maintenanceStream.addRelease(date()));
-    System.out.println(maintenanceStream.addRelease(date()));
+    System.out.println(maintenanceStream.addRelease());
+    System.out.println(maintenanceStream.addRelease());
+    System.out.println(maintenanceStream.addRelease());
+    System.out.println(maintenanceStream.addRelease());
   }
-
-  private static Date date()
-  {
-    try
-    {
-      return date;
-    }
-    finally
-    {
-      date = new Date(date.getTime() + ONE_DAY);
-    }
-  }
-
-  private static Date date = new Date();
 }

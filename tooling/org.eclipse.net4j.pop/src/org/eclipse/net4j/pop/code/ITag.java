@@ -25,6 +25,4 @@ public interface ITag extends IElement
   public IBranch getBranch();
 
   public String getName();
-
-  public Date getDate();
 }

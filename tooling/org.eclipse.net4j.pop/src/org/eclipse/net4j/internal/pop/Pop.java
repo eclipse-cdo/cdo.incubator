@@ -54,6 +54,7 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
     checkArgument(strategy, "strategy");
     this.name = name;
     this.strategy = strategy;
+    putStream(this);
   }
 
   @Override

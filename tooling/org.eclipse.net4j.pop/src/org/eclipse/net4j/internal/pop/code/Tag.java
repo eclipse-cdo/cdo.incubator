@@ -15,7 +15,6 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
 
 import java.text.MessageFormat;
-import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -26,16 +25,12 @@ public class Tag extends Element implements ITag
 
   private String name;
 
-  private Date date;
-
-  public Tag(IBranch branch, String name, Date date)
+  public Tag(IBranch branch, String name)
   {
     checkArgument(branch, "branch");
     checkArgument(name, "name");
-    checkArgument(date, "date");
     this.branch = branch;
     this.name = name;
-    this.date = date;
   }
 
   public IBranch getBranch()
@@ -48,14 +43,9 @@ public class Tag extends Element implements ITag
     return name;
   }
 
-  public Date getDate()
-  {
-    return date;
-  }
-
   @Override
   public String toString()
   {
-    return MessageFormat.format("Branch[branch={0}, name={1}, date={2,date} {2,time}]", branch.getName(), name, date);
+    return MessageFormat.format("Branch[branch={0}, name={1}]", branch.getName(), name);
   }
 }

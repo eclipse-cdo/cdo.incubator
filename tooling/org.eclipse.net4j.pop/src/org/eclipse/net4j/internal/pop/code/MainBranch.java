@@ -14,19 +14,15 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
 
 import java.text.MessageFormat;
-import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
 public class MainBranch extends Branch implements ITag
 {
-  private Date startDate;
-
-  public MainBranch(String name, Date startDate)
+  public MainBranch(String name)
   {
     super(name);
-    this.startDate = startDate;
     setStartTag(this);
   }
 
@@ -35,14 +31,9 @@ public class MainBranch extends Branch implements ITag
     return this;
   }
 
-  public Date getDate()
-  {
-    return startDate;
-  }
-
   @Override
   public String toString()
   {
-    return MessageFormat.format("MainBranch[name={0}, startDate={1,date} {1,time}]", getName(), startDate);
+    return MessageFormat.format("MainBranch[name={0}]", getName());
   }
 }

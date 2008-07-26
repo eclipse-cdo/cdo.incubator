@@ -32,6 +32,7 @@ public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskS
   private TaskStreamProxy(IPop pop, String ticketID)
   {
     super(pop, ticketID);
+    ((Pop)getPop()).putStream(this);
   }
 
   public TaskStreamProxy(ITaskStream taskStream)

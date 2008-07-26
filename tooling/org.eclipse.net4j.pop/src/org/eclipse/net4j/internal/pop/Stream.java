@@ -46,8 +46,6 @@ public abstract class Stream extends Element implements IStream
     this.baseline = baseline;
     this.branch = branch;
     this.ticket = ticket;
-
-    ((Pop)getPop()).putStream(this);
   }
 
   public IBaseline getBaseline()

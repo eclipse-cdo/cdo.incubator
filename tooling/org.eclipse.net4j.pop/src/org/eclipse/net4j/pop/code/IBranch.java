@@ -12,8 +12,6 @@ package org.eclipse.net4j.pop.code;
 
 import org.eclipse.net4j.pop.util.IElement;
 
-import java.util.Date;
-
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
@@ -24,7 +22,7 @@ public interface IBranch extends IElement
 
   public ITag getStartTag();
 
-  public ITag addTag(String name, Date date);
+  public ITag addTag(String name);
 
   public int getTagCount();
 

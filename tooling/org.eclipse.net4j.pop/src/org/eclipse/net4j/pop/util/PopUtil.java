@@ -21,8 +21,6 @@ import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 
-import java.util.Date;
-
 /**
  * @author Eike Stepper
  */
@@ -47,9 +45,9 @@ public final class PopUtil
     return new TicketUser(name, email, email);
   }
 
-  public static IBranch createMainBranch(String name, Date startDate)
+  public static IBranch createMainBranch(String name)
   {
-    return new MainBranch(name, startDate);
+    return new MainBranch(name);
   }
 
   public static IPop createPop(String name, IBranch branch, ITicket ticket)

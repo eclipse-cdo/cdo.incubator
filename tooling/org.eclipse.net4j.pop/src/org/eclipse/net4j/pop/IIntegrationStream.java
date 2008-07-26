@@ -14,8 +14,6 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
-import java.util.Date;
-
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
@@ -26,13 +24,13 @@ public interface IIntegrationStream extends IStream
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket);
 
-  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket);
-
   public int getTaskStreamCount();
 
   public ITaskStream getTaskStream(int index);
 
   public ITaskStream[] getTaskStreams();
+
+  public IRelease addRelease();
 
   public int getReleaseCount();
 

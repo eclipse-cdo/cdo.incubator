@@ -12,8 +12,6 @@ package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
 
-import java.util.Date;
-
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
@@ -23,6 +21,4 @@ public interface IMaintenanceStream extends IIntegrationStream
   public IDevelopmentStream getParent();
 
   public IRelease getBaseline();
-
-  public IRelease addRelease(Date date);
 }

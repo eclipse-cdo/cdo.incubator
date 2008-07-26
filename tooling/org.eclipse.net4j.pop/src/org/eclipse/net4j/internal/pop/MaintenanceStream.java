@@ -29,6 +29,7 @@ public class MaintenanceStream extends IntegrationStream implements IMaintenance
   public MaintenanceStream(IRelease baseline, IBranch branch, ITicket ticket)
   {
     super(baseline, branch, ticket);
+    ((Pop)getPop()).putStream(this);
   }
 
   @Override

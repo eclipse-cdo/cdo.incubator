@@ -16,7 +16,6 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
 
 import java.text.MessageFormat;
-import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -63,9 +62,9 @@ public class Branch extends Element implements IBranch
     return startTag;
   }
 
-  public ITag addTag(String name, Date date)
+  public ITag addTag(String name)
   {
-    ITag tag = new Tag(this, name, date);
+    ITag tag = new Tag(this, name);
     tagContainer.addElement(tag);
     return tag;
   }

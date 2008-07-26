@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
-import org.eclipse.net4j.internal.pop.DateBaseline;
+import org.eclipse.net4j.internal.pop.Baseline;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
@@ -20,8 +20,6 @@ import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
-
-import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -48,37 +46,29 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     return createBranch(baseline, branchName);
   }
 
-  public IBaseline createTaskBaseline(IIntegrationStream stream, Date date, ITicket ticket)
+  public IBaseline createTaskBaseline(IIntegrationStream stream, ITicket ticket)
   {
     checkArgument(stream, "stream");
-    checkArgument(date, "date");
     checkArgument(ticket, "ticket");
-    String branchName = getTaskBranchName(stream, date, ticket);
+    String branchName = getTaskBranchName(stream, ticket);
     String tagName = getStartTag(branchName);
-    return new DateBaseline(stream, tagName, date);
+    return new Baseline(stream, tagName);
   }
 
-  public ITag createMilestoneTag(IRelease release, Date date, String name)
+  public ITag createMilestoneTag(IRelease release, String name)
   {
     checkArgument(release, "release");
     checkArgument(name, "name");
-    String tagName = getMilestoneTagName(release, date, name);
-    return release.getStream().getBranch().addTag(tagName, date);
+    String tagName = getMilestoneTagName(release, name);
+    return release.getStream().getBranch().addTag(tagName);
   }
 
-  public ITag createReleaseTag(IIntegrationStream stream, Date date, IVersion version)
+  public ITag createReleaseTag(IIntegrationStream stream, IVersion version)
   {
     checkArgument(stream, "stream");
     checkArgument(version, "version");
-    String tagName = getReleaseTagName(stream, date, version);
-    return stream.getBranch().addTag(tagName, date);
-  }
-
-  public Date getTagDate(ITag tag)
-  {
-    checkArgument(tag, "tag");
-    // TODO Implement DefaultCodeStrategy.getTagDate(tag)
-    throw new UnsupportedOperationException("Not yet implemented");
+    String tagName = getReleaseTagName(stream, version);
+    return stream.getBranch().addTag(tagName);
   }
 
   @Override
@@ -93,7 +83,7 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
 
     ITag baselineTag = baseline.getTag();
     IBranch baselineBranch = baselineTag.getBranch();
-    ITag tag = baselineBranch.addTag(tagName, baselineTag.getDate());
+    ITag tag = baselineBranch.addTag(tagName);
     return baselineBranch.addBranch(branchName, tag);
   }
 
@@ -105,25 +95,23 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
 
   protected String getTaskBranchName(IBaseline baseline, ITicket ticket)
   {
-    Date date = baseline.getTag().getDate();
     IIntegrationStream stream = (IIntegrationStream)baseline.getStream();
-    return getTaskBranchName(stream, date, ticket);
+    return getTaskBranchName(stream, ticket);
   }
 
-  @SuppressWarnings("deprecation")
-  protected String getTaskBranchName(IIntegrationStream stream, Date date, ITicket ticket)
+  protected String getTaskBranchName(IIntegrationStream stream, ITicket ticket)
   {
-    return "task_" + date.getYear() + date.getMonth() + date.getDay();
+    return "task_" + ticket.getID();
   }
 
-  protected String getReleaseTagName(IIntegrationStream stream, Date date, IVersion version)
+  protected String getReleaseTagName(IIntegrationStream stream, IVersion version)
   {
     return "release_" + version.getMajor() + "_" + version.getMinor() + "_" + version.getMicro();
   }
 
-  protected String getMilestoneTagName(IRelease release, Date date, String name)
+  protected String getMilestoneTagName(IRelease release, String name)
   {
-    String releaseTagName = getReleaseTagName(release.getStream(), release.getTag().getDate(), release.getVersion());
+    String releaseTagName = getReleaseTagName(release.getStream(), release.getVersion());
     return releaseTagName + "_" + name;
   }
 
