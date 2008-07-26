@@ -66,12 +66,12 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     throw new UnsupportedOperationException("Not yet implemented");
   }
 
-  public ITag createReleaseTag(IIntegrationStream stream, IVersion version)
+  public ITag createReleaseTag(IIntegrationStream stream, Date date, IVersion version)
   {
     checkArgument(stream, "stream");
     checkArgument(version, "version");
-    // TODO Implement DefaultCodeStrategy.createReleaseTag(stream, version)
-    throw new UnsupportedOperationException("Not yet implemented");
+    String tagName = getReleaseTagName(stream, date, version);
+    return stream.getBranch().addTag(tagName, date);
   }
 
   public Date getTagDate(ITag tag)
@@ -114,6 +114,11 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
   protected String getTaskBranchName(IIntegrationStream stream, Date date, ITicket ticket)
   {
     return "task_" + date.getYear() + date.getMonth() + date.getDay();
+  }
+
+  protected String getReleaseTagName(IIntegrationStream stream, Date date, IVersion version)
+  {
+    return "release_" + version.getMajor() + "_" + version.getMinor() + "_" + version.getMicro();
   }
 
   protected String getStartTag(String branchName)

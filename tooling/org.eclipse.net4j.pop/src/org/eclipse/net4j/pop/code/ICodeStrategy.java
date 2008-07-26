@@ -22,7 +22,7 @@ public interface ICodeStrategy extends IElement
 
   public IBaseline createTaskBaseline(IIntegrationStream stream, Date date, ITicket ticket);
 
-  public ITag createReleaseTag(IIntegrationStream stream, IVersion version);
+  public ITag createReleaseTag(IIntegrationStream stream, Date date, IVersion version);
 
   public ITag createMilestoneTag(IRelease release, String name);
 

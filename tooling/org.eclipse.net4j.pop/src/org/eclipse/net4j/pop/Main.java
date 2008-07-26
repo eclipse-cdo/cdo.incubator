@@ -44,17 +44,17 @@ public class Main
     System.out.println(pop.merge(date(), delivery2));
     System.out.println(pop.merge(date(), delivery3));
 
-    System.out.println(pop.addRelease(null));
-    System.out.println(pop.addRelease(null));
-    IRelease release = pop.addRelease(null, false, 2);
+    System.out.println(pop.addRelease(date()));
+    System.out.println(pop.addRelease(date()));
+    IRelease release = pop.addRelease(date(), false, 2);
     System.out.println(release);
-    System.out.println(pop.addRelease(null));
+    System.out.println(pop.addRelease(date()));
 
     IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, new Ticket("maintenance-123456"));
-    System.out.println(maintenanceStream.addRelease(null));
-    System.out.println(maintenanceStream.addRelease(null));
-    System.out.println(maintenanceStream.addRelease(null));
-    System.out.println(maintenanceStream.addRelease(null));
+    System.out.println(maintenanceStream.addRelease(date()));
+    System.out.println(maintenanceStream.addRelease(date()));
+    System.out.println(maintenanceStream.addRelease(date()));
+    System.out.println(maintenanceStream.addRelease(date()));
   }
 
   private static Date date()
