@@ -75,6 +75,7 @@ public class Release extends Target implements IRelease
   @Override
   public String toString()
   {
-    return MessageFormat.format("Release[version={0}, tag={1}]", version, getTag());
+    return MessageFormat.format("Release[branch={0}, version={1}, tag={2}]", stream.getBranch().getName(), version,
+        getTag().getName());
   }
 }

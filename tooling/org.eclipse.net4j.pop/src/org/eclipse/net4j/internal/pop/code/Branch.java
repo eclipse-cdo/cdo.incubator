@@ -110,6 +110,6 @@ public class Branch extends Element implements IBranch
   @Override
   public String toString()
   {
-    return MessageFormat.format("Branch[name={0}, startTag={1}]", name, startTag);
+    return MessageFormat.format("Branch[name={0}, startTag={1}]", name, startTag.getName());
   }
 }

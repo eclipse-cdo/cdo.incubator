@@ -53,6 +53,6 @@ public class Milestone extends Target implements IMilestone
   @Override
   public String toString()
   {
-    return MessageFormat.format("Milestone[name={0}, tag={1}]", name, getTag());
+    return MessageFormat.format("Milestone[release={0}, name={1}, tag={2}]", release, name, getTag());
   }
 }

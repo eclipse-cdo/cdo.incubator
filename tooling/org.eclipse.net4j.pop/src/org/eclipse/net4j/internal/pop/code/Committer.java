@@ -74,6 +74,7 @@ public class Committer extends Element implements ICommitter
   @Override
   public String toString()
   {
-    return MessageFormat.format("Committer[pop={0}, ticketUser={1}, codeAccount={2}]", pop, ticketUser, codeAccount);
+    return MessageFormat.format("Committer[pop={0}, ticketUser={1}, codeAccount={2}]", pop, ticketUser.getName(),
+        codeAccount);
   }
 }

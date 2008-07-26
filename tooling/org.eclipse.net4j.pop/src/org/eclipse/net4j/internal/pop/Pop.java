@@ -89,6 +89,7 @@ public class Pop extends DevelopmentStream implements IPop
   @Override
   public String toString()
   {
-    return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch(), getTicket());
+    return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch().getName(), getTicket()
+        .getTicketID());
   }
 }

@@ -56,6 +56,7 @@ public class Delivery extends Element implements IDelivery
   @Override
   public String toString()
   {
-    return MessageFormat.format("Delivery[number={0}, date={1,date} {1,time}]", number, date);
+    return MessageFormat.format("Delivery[branch={0}, number={1}, date={2,date} {2,time}]", stream.getBranch()
+        .getName(), number, date);
   }
 }
