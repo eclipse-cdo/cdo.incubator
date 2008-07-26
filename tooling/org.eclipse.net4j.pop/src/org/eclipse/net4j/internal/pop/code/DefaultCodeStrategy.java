@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.code;
 
+import org.eclipse.net4j.internal.pop.Baseline;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
@@ -33,42 +34,54 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
 
   public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket)
   {
-    IVersion baselineVersion = baseline.getVersion();
+    checkArgument(baseline, "baseline");
+    checkArgument(ticket, "ticket");
+    String branchName = getMaintenanceBranchName(baseline, ticket);
+    String tagName = getStartTag(branchName);
+
     ITag baselineTag = baseline.getTag();
     IBranch baselineBranch = baselineTag.getBranch();
-
-    String branchName = "R" + baselineVersion.getMajor() + "_" + baselineVersion.getMinor() + "_maintenance";
-    String tagName = "Root_" + branchName;
     ITag tag = baselineBranch.addTag(tagName, baselineTag.getDate());
     return baselineBranch.addBranch(branchName, tag);
   }
 
   public IBranch createTaskBranch(IBaseline baseline, ITicket ticket)
   {
+    checkArgument(baseline, "baseline");
+    checkArgument(ticket, "ticket");
     // TODO Implement DefaultCodeStrategy.createTaskBranch(baseline, ticket)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public IBaseline createTaskBaseline(IIntegrationStream stream, Date date, ITicket ticket)
   {
-    // TODO Implement DefaultCodeStrategy.createTaskBaseline(stream, date, ticket)
-    throw new UnsupportedOperationException("Not yet implemented");
+    checkArgument(stream, "stream");
+    checkArgument(date, "date");
+    checkArgument(ticket, "ticket");
+    String branchName = getTaskBranchName(stream, date, ticket);
+    String tagName = getStartTag(branchName);
+    return new Baseline(stream, tagName, date);
   }
 
   public ITag createMilestoneTag(IRelease release, String name)
   {
+    checkArgument(release, "release");
+    checkArgument(name, "name");
     // TODO Implement DefaultCodeStrategy.createMilestoneTag(release, name)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public ITag createReleaseTag(IIntegrationStream stream, IVersion version)
   {
+    checkArgument(stream, "stream");
+    checkArgument(version, "version");
     // TODO Implement DefaultCodeStrategy.createReleaseTag(stream, version)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public Date getTagDate(ITag tag)
   {
+    checkArgument(tag, "tag");
     // TODO Implement DefaultCodeStrategy.getTagDate(tag)
     throw new UnsupportedOperationException("Not yet implemented");
   }
@@ -77,5 +90,22 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
   public String toString()
   {
     return "DEFAULT";
+  }
+
+  protected String getMaintenanceBranchName(IRelease baseline, ITicket ticket)
+  {
+    IVersion baselineVersion = baseline.getVersion();
+    return "R" + baselineVersion.getMajor() + "_" + baselineVersion.getMinor() + "_maintenance";
+  }
+
+  @SuppressWarnings("deprecation")
+  protected String getTaskBranchName(IIntegrationStream stream, Date date, ITicket ticket)
+  {
+    return "task_" + date.getYear() + date.getMonth() + date.getDay();
+  }
+
+  protected String getStartTag(String branchName)
+  {
+    return "Root_" + branchName;
   }
 }
