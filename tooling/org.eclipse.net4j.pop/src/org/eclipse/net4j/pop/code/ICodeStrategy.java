@@ -20,7 +20,7 @@ public interface ICodeStrategy extends IElement
 
   public IBranch createTaskBranch(IBaseline baseline, ITicket ticket);
 
-  public IBaseline createTaskBaseline(Date baselineDate, ITicket ticket);
+  public IBaseline createTaskBaseline(IIntegrationStream stream, Date date, ITicket ticket);
 
   public ITag createReleaseTag(IIntegrationStream stream, IVersion version);
 

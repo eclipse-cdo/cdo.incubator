@@ -31,7 +31,7 @@ public interface IBranch extends IElement
 
   public ITag[] getTags();
 
-  public IBranch addBranch(ITag startTag);
+  public IBranch addBranch(String name, ITag startTag);
 
   public int getBranchCount();
 

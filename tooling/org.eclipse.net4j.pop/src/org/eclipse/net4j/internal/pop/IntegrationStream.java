@@ -53,7 +53,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
   {
-    IBaseline baseline = getPop().getCodeStrategy().createTaskBaseline(baselineDate, ticket);
+    IBaseline baseline = getPop().getCodeStrategy().createTaskBaseline(this, baselineDate, ticket);
     return addTaskStream(baseline, ticket);
   }
 

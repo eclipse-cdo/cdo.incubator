@@ -69,7 +69,7 @@ public class Branch extends Element implements IBranch
     return tagContainer.getElements(ITag.class);
   }
 
-  public IBranch addBranch(ITag startTag)
+  public IBranch addBranch(String name, ITag startTag)
   {
     IBranch branch = new Branch(name, startTag);
     branchContainer.addElement(branch);

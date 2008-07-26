@@ -33,32 +33,44 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
 
   public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket)
   {
-    return null;
+    IVersion baselineVersion = baseline.getVersion();
+    ITag baselineTag = baseline.getTag();
+    IBranch baselineBranch = baselineTag.getBranch();
+
+    String branchName = "R" + baselineVersion.getMajor() + "_" + baselineVersion.getMinor() + "_maintenance";
+    String tagName = "Root_" + branchName;
+    ITag tag = baselineBranch.addTag(tagName, baselineTag.getDate());
+    return baselineBranch.addBranch(branchName, tag);
   }
 
   public IBranch createTaskBranch(IBaseline baseline, ITicket ticket)
   {
-    return null;
+    // TODO Implement DefaultCodeStrategy.createTaskBranch(baseline, ticket)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
-  public IBaseline createTaskBaseline(Date baselineDate, ITicket ticket)
+  public IBaseline createTaskBaseline(IIntegrationStream stream, Date date, ITicket ticket)
   {
-    return null;
+    // TODO Implement DefaultCodeStrategy.createTaskBaseline(stream, date, ticket)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public ITag createMilestoneTag(IRelease release, String name)
   {
-    return null;
+    // TODO Implement DefaultCodeStrategy.createMilestoneTag(release, name)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public ITag createReleaseTag(IIntegrationStream stream, IVersion version)
   {
-    return null;
+    // TODO Implement DefaultCodeStrategy.createReleaseTag(stream, version)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   public Date getTagDate(ITag tag)
   {
-    return null;
+    // TODO Implement DefaultCodeStrategy.getTagDate(tag)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 
   @Override

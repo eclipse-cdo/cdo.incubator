@@ -22,13 +22,13 @@ import java.util.Date;
 /**
  * @author Eike Stepper
  */
-public class StreamBaseline extends Element implements IBaseline
+public class Baseline extends Element implements IBaseline
 {
   private IStream stream;
 
   private ITag tag;
 
-  public StreamBaseline(IStream stream, String tagName, Date date)
+  public Baseline(IStream stream, String tagName, Date date)
   {
     this.stream = stream;
     tag = new Tag(stream.getBranch(), tagName, date);
@@ -47,6 +47,6 @@ public class StreamBaseline extends Element implements IBaseline
   @Override
   public String toString()
   {
-    return MessageFormat.format("StreamBaseline[stream={0}, tag={1}]", stream, tag);
+    return MessageFormat.format("Baseline[stream={0}, tag={1}]", stream, tag);
   }
 }
