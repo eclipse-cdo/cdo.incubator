@@ -26,7 +26,7 @@ public interface ICommitter extends IElement
 
   public ITicketUser getTicketUser();
 
-  public String getCodeAccount();
+  public String getAccount();
 
   public Date getEntryDate();
 

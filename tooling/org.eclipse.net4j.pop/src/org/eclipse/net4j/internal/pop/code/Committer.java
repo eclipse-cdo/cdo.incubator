@@ -27,21 +27,21 @@ public class Committer extends Element implements ICommitter
 
   private ITicketUser ticketUser;
 
-  private String codeAccount;
+  private String account;
 
   private Date entryDate;
 
   private Date exitDate;
 
-  public Committer(IPop pop, ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate)
+  public Committer(IPop pop, ITicketUser ticketUser, String account, Date entryDate, Date exitDate)
   {
     checkArgument(pop, "pop");
     checkArgument(ticketUser, "ticketUser");
-    checkArgument(codeAccount, "codeAccount");
+    checkArgument(account, "account");
     checkArgument(entryDate, "entryDate");
     this.pop = pop;
     this.ticketUser = ticketUser;
-    this.codeAccount = codeAccount;
+    this.account = account;
     this.entryDate = entryDate;
     this.exitDate = exitDate;
   }
@@ -56,9 +56,9 @@ public class Committer extends Element implements ICommitter
     return ticketUser;
   }
 
-  public String getCodeAccount()
+  public String getAccount()
   {
-    return codeAccount;
+    return account;
   }
 
   public Date getEntryDate()
@@ -74,7 +74,7 @@ public class Committer extends Element implements ICommitter
   @Override
   public String toString()
   {
-    return MessageFormat.format("Committer[pop={0}, ticketUser={1}, codeAccount={2}]", pop.getName(), ticketUser
-        .getName(), codeAccount);
+    return MessageFormat.format("Committer[pop={0}, name={1}, account={2}]", pop.getName(), ticketUser.getName(),
+        account);
   }
 }
