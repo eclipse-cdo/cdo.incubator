@@ -40,7 +40,6 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
   {
     this(pop, ticketID);
     cacheElement(element);
-    System.out.println("--> proxy: " + this);
   }
 
   public IPop getPop()

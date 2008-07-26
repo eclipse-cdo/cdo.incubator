@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.release.Release;
+import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
@@ -93,7 +94,8 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     ITag tag = getPop().getCodeStrategy().createReleaseTag(this, date, version);
     IRelease release = new Release(this, version, tag);
-    releaseContainer.addElement(release);
+    IRelease proxy = new ReleaseProxy(release);
+    releaseContainer.addElement(proxy);
     return release;
   }
 }
