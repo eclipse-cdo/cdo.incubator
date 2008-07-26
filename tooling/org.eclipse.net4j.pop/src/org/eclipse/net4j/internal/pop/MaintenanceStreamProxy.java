@@ -87,9 +87,9 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getMerges();
   }
 
-  public IRelease addRelease(Date date)
+  public IRelease addRelease()
   {
-    return getElement().addRelease(date);
+    return getElement().addRelease();
   }
 
   public IRelease getRelease(int index)
@@ -112,11 +112,6 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getReleases();
   }
 
-  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
-  {
-    return getElement().addTaskStream(baselineDate, ticket);
-  }
-
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
   {
     return getElement().addTaskStream(baseline, ticket);
@@ -135,6 +130,11 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
   public ITaskStream[] getTaskStreams()
   {
     return getElement().getTaskStreams();
+  }
+
+  public IBaseline getBaselineByTag(String tagName)
+  {
+    return getElement().getBaselineByTag(tagName);
   }
 
   @Override

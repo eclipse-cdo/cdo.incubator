@@ -14,7 +14,6 @@ import org.eclipse.net4j.internal.pop.release.Release;
 import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IBaseline;
-import org.eclipse.net4j.pop.IDateBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
@@ -22,8 +21,6 @@ import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
-
-import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -49,11 +46,12 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     if (baseline instanceof IRelease)
     {
-      baseline = new ReleaseProxy((IRelease)baseline);
+      IRelease release = (IRelease)baseline;
+      baseline = new ReleaseProxy(release);
     }
-    else if (baseline instanceof IDateBaseline)
+    else
     {
-      baseline = new DateBaselineProxy((IDateBaseline)baseline);
+      baseline = new BaselineProxy(baseline, baseline.getTag().getName());
     }
 
     IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
@@ -61,12 +59,6 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     taskStream = new TaskStreamProxy(taskStream);
     taskStreamContainer.addElement(taskStream);
     return taskStream;
-  }
-
-  public ITaskStream addTaskStream(Date baselineDate, ITicket ticket)
-  {
-    IBaseline baseline = getPop().getCodeStrategy().createTaskBaseline(this, baselineDate, ticket);
-    return addTaskStream(baseline, ticket);
   }
 
   public ITaskStream getTaskStream(int index)
@@ -118,9 +110,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return releaseContainer.getElements(IRelease.class);
   }
 
-  protected IRelease addRelease(Date date, IVersion version)
+  protected IRelease addRelease(IVersion version)
   {
-    ITag tag = getPop().getCodeStrategy().createReleaseTag(this, date, version);
+    ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
     IRelease release = new Release(this, version, tag);
     release = new ReleaseProxy(release);
     releaseContainer.addElement(release);

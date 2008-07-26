@@ -46,6 +46,8 @@ public abstract class Stream extends Element implements IStream
     this.baseline = baseline;
     this.branch = branch;
     this.ticket = ticket;
+
+    ((Pop)getPop()).putStream(this);
   }
 
   public IBaseline getBaseline()
@@ -107,5 +109,10 @@ public abstract class Stream extends Element implements IStream
   public IMerge[] getMerges()
   {
     return mergeContainer.getElements(IMerge.class);
+  }
+
+  public IBaseline getBaselineByTag(String tagName)
+  {
+    return new Baseline(this, tagName);
   }
 }

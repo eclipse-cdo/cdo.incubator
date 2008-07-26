@@ -13,31 +13,33 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
-import org.eclipse.net4j.pop.IDateBaseline;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
 
-import java.util.Date;
-
 /**
  * @author Eike Stepper
  */
-public class DateBaselineProxy extends ElementProxy<IDateBaseline> implements IDateBaseline
+public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
 {
-  private DateBaselineProxy(IPop pop, String ticketID)
+  private String tagName;
+
+  private BaselineProxy(IPop pop, String ticketID, String tagName)
   {
     super(pop, ticketID);
+    this.tagName = tagName;
   }
 
-  public DateBaselineProxy(IDateBaseline dateBaseline)
+  public BaselineProxy(IBaseline baseline, String tagName)
   {
-    super(dateBaseline.getStream().getPop(), dateBaseline.getStream().getTicket().getID(), dateBaseline);
+    super(baseline.getStream().getPop(), baseline.getStream().getTicket().getID(), baseline);
+    this.tagName = tagName;
   }
 
-  public IElementProxy<? extends IDateBaseline> copy()
+  public IElementProxy<? extends IBaseline> copy()
   {
-    return new DateBaselineProxy(getPop(), getTicketID());
+    return new BaselineProxy(getPop(), getTicketID(), tagName);
   }
 
   public IStream getStream()
@@ -50,13 +52,8 @@ public class DateBaselineProxy extends ElementProxy<IDateBaseline> implements ID
     return getElement().getTag();
   }
 
-  public Date getDate()
-  {
-    return getElement().getDate();
-  }
-
   @Override
-  protected IDateBaseline resolve()
+  protected IBaseline resolve()
   {
     return ((IElementResolver)getPop()).resolve(this);
   }

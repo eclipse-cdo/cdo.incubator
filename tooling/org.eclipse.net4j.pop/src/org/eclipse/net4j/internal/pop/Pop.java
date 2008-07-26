@@ -15,7 +15,7 @@ import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
-import org.eclipse.net4j.pop.IDateBaseline;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
@@ -129,27 +129,42 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
     return stream.getReleaseByVersion(proxy.getVersion());
   }
 
-  public IDateBaseline resolve(DateBaselineProxy proxy)
+  public IBaseline resolve(BaselineProxy proxy)
   {
-    // TODO Implement Pop.resolve(proxy)
-    throw new UnsupportedOperationException("Not yet implemented");
+    IStream stream = getStream(proxy.getTicketID());
+    return stream.getBaselineByTag(null);
   }
 
-  private IStream getStream(String ticketID)
+  public void putStream(IStream stream)
   {
-    IStream stream = streamCache.get(ticketID);
-    if (stream == null)
+    synchronized (streamCache)
     {
-      stream = resolveStream(ticketID);
+      String ticketID = stream.getTicket().getID();
+      if (!streamCache.containsKey(ticketID))
+      {
+        streamCache.put(ticketID, stream);
+      }
+    }
+  }
+
+  public IStream getStream(String ticketID)
+  {
+    synchronized (streamCache)
+    {
+      IStream stream = streamCache.get(ticketID);
       if (stream == null)
       {
-        throw new ImplementationError("resolveStream() must not return null");
+        stream = resolveStream(ticketID);
+        if (stream == null)
+        {
+          throw new ImplementationError("resolveStream() must not return null");
+        }
+
+        streamCache.put(ticketID, stream);
       }
 
-      streamCache.put(ticketID, stream);
+      return stream;
     }
-
-    return stream;
   }
 
   private IStream resolveStream(String ticketID)

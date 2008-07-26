@@ -12,29 +12,27 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.Tag;
 import org.eclipse.net4j.internal.pop.util.Element;
-import org.eclipse.net4j.pop.IDateBaseline;
+import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
 
 import java.text.MessageFormat;
-import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
-public class DateBaseline extends Element implements IDateBaseline
+public class Baseline extends Element implements IBaseline
 {
   private IStream stream;
 
   private ITag tag;
 
-  public DateBaseline(IStream stream, String tagName, Date date)
+  public Baseline(IStream stream, String tagName)
   {
     checkArgument(stream, "stream");
     checkArgument(tagName, "tagName");
-    checkArgument(date, "date");
     this.stream = stream;
-    tag = new Tag(stream.getBranch(), tagName, date);
+    tag = new Tag(stream.getBranch(), tagName);
   }
 
   public IStream getStream()
@@ -47,14 +45,9 @@ public class DateBaseline extends Element implements IDateBaseline
     return tag;
   }
 
-  public Date getDate()
-  {
-    return tag.getDate();
-  }
-
   @Override
   public String toString()
   {
-    return MessageFormat.format("DateBaseline[stream={0}, tag={1}]", stream, tag);
+    return MessageFormat.format("Baseline[tag={0}]", tag.getName());
   }
 }
