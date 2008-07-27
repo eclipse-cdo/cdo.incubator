@@ -35,4 +35,6 @@ public interface IVersion extends IAdaptable, Comparable<IVersion>
   public IVersion nextMinor(int increment);
 
   public IVersion nextMicro();
+
+  public String toString(boolean forceMicro);
 }

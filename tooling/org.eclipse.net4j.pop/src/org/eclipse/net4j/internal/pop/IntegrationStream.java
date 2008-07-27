@@ -58,8 +58,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
     IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
     ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
-    taskStream = new TaskStreamProxy(taskStream);
-    taskStreamContainer.addElement(taskStream);
+    taskStreamContainer.addElement(new TaskStreamProxy(taskStream));
     return taskStream;
   }
 
@@ -125,8 +124,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
     IRelease release = new Release(this, version, tag);
-    release = new ReleaseProxy(release);
-    releaseContainer.addElement(release);
+    releaseContainer.addElement(new ReleaseProxy(release));
     return release;
   }
 }

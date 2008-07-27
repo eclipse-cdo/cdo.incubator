@@ -127,9 +127,19 @@ public class Version extends PlatformObject implements IVersion
     return major * 1000000 ^ minor * 1000 ^ micro;
   }
 
+  public String toString(boolean forceMicro)
+  {
+    if (micro != 0 || forceMicro)
+    {
+      return MessageFormat.format("{0}.{1}.{2}", major, minor, micro);
+    }
+
+    return MessageFormat.format("{0}.{1}", major, minor);
+  }
+
   @Override
   public String toString()
   {
-    return MessageFormat.format("{0}.{1}.{2}", major, minor, micro);
+    return toString(false);
   }
 }
