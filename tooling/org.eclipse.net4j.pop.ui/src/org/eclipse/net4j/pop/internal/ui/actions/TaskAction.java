@@ -41,27 +41,27 @@ public abstract class TaskAction implements IObjectActionDelegate
   {
   }
 
-  public Shell getShell()
+  public final Shell getShell()
   {
     return shell;
   }
 
-  public ISelection getSelection()
+  public final ISelection getSelection()
   {
     return selection;
   }
 
-  public void setActivePart(IAction action, IWorkbenchPart targetPart)
+  public final void setActivePart(IAction action, IWorkbenchPart targetPart)
   {
     shell = targetPart.getSite().getShell();
   }
 
-  public void selectionChanged(IAction action, ISelection selection)
+  public final void selectionChanged(IAction action, ISelection selection)
   {
     this.selection = selection;
   }
 
-  public void run(IAction action)
+  public final void run(IAction action)
   {
     try
     {
@@ -78,9 +78,14 @@ public abstract class TaskAction implements IObjectActionDelegate
     }
     catch (Exception ex)
     {
-      ex.printStackTrace();
-      MessageDialog.openInformation(shell, "Task Action", "Action failed.");
+      handleException(ex);
     }
+  }
+
+  protected void handleException(Exception ex)
+  {
+    ex.printStackTrace();
+    MessageDialog.openInformation(shell, "Task Action", "Action failed.");
   }
 
   protected abstract void run(ITask task) throws Exception;

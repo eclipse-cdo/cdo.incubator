@@ -12,40 +12,26 @@ package org.eclipse.net4j.pop.internal.ui.actions;
 
 import org.eclipse.net4j.pop.internal.ui.mylyn.EditorUtil;
 
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.mylyn.tasks.core.AbstractRepositoryConnector;
 import org.eclipse.mylyn.tasks.core.ITask;
-import org.eclipse.mylyn.tasks.core.RepositoryResponse;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
-import org.eclipse.mylyn.tasks.core.data.ITaskDataWorkingCopy;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
 import org.eclipse.mylyn.tasks.core.data.TaskAttributeMapper;
 import org.eclipse.mylyn.tasks.core.data.TaskData;
-import org.eclipse.mylyn.tasks.core.data.TaskDataModel;
 
 import java.util.List;
 
 /**
  * @author Eike Stepper
  */
-public class TestAction extends TaskAction
+public class TestAction extends TaskDataAction
 {
   public TestAction()
   {
   }
 
   @Override
-  protected void run(ITask task) throws Exception
+  protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
   {
-    ITaskDataWorkingCopy taskDataState = TASK_DATA_MANAGER.getWorkingCopy(task);
-    String connectorKind = taskDataState.getConnectorKind();
-    String repositoryUrl = taskDataState.getRepositoryUrl();
-    TaskRepository repository = REPOSITORY_MANAGER.getRepository(connectorKind, repositoryUrl);
-
-    TaskDataModel model = new TaskDataModel(repository, task, taskDataState);
-    TaskData taskData = model.getTaskData();
-
     addComment(taskData);
     taskData = postTaskData(repository, task, taskData);
     EditorUtil.synchronizeTask(repository, task);
@@ -69,36 +55,5 @@ public class TestAction extends TaskAction
     TaskAttribute root = taskData.getRoot();
     TaskAttribute commentAttribute = root.createMappedAttribute(TaskAttribute.COMMENT_NEW);
     commentAttribute.setValue("HURRAH!!!");
-  }
-
-  @SuppressWarnings("restriction")
-  private TaskData postTaskData(TaskRepository repository, ITask task, TaskData taskData) throws CoreException
-  {
-    AbstractRepositoryConnector connector = REPOSITORY_MANAGER.getRepositoryConnector(repository.getConnectorKind());
-    RepositoryResponse response = connector.getTaskDataHandler().postTaskData(repository, taskData, null,
-        new NullProgressMonitor());
-
-    String taskId = response.getTaskId();
-    TaskData updatedTaskData = connector.getTaskData(repository, taskId, new NullProgressMonitor());
-    if (taskData.isNew())
-    {
-      task = new org.eclipse.mylyn.internal.tasks.core.TaskTask(connector.getConnectorKind(), repository
-          .getRepositoryUrl(), updatedTaskData.getTaskId());
-    }
-
-    ((org.eclipse.mylyn.internal.tasks.core.data.TaskDataManager)TASK_DATA_MANAGER).putSubmittedTaskData(task,
-        updatedTaskData);
-    return updatedTaskData;
-  }
-
-  protected String getDescription(TaskData taskData)
-  {
-    TaskAttribute root = taskData.getRoot();
-    TaskAttribute attribute = root.getMappedAttribute(TaskAttribute.DESCRIPTION);
-    if (attribute == null)
-    {
-      attribute = root.getMappedAttribute(TaskAttribute.COMMENT_NEW);
-    }
-    return attribute != null ? taskData.getAttributeMapper().getValueLabel(attribute) : "";
   }
 }
