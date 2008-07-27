@@ -40,11 +40,13 @@ public class ElementContainer<ELEMENT extends IElement> extends Element
   {
     synchronized (elements)
     {
-      if (!elements.contains(element))
+      if (elements.contains(element))
       {
-        elements.add(element);
-        delegator.fireEvent(new ElementAddedEvent(delegator, element));
+        throw new IllegalStateException("Duplicate element: " + element);
       }
+
+      elements.add(element);
+      delegator.fireEvent(new ElementAddedEvent(delegator, element));
     }
   }
 

@@ -127,6 +127,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
     IRelease release = new Release(this, version, tag, date);
     releaseContainer.addElement(new ReleaseProxy(release));
+    baselineContainer.addElement(release);
     return release;
   }
 }

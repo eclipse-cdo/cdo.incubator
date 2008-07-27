@@ -55,6 +55,7 @@ public class Release extends Target implements IRelease
     ITag tag = getStream().getPop().getCodeStrategy().createMilestoneTag(this, name);
     IMilestone milestone = new Milestone(this, name, tag, date);
     milestoneContainer.addElement(milestone);
+    stream.addBaseline(milestone);
     return milestone;
   }
 
