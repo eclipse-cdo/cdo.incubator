@@ -33,6 +33,7 @@ import org.eclipse.net4j.util.ref.ReferenceValueMap;
 
 import java.text.MessageFormat;
 import java.util.Date;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  * @author Eike Stepper
@@ -41,11 +42,11 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
 {
   protected ElementContainer<ICommitter> committerContainer = new ElementContainer<ICommitter>(this);
 
+  private ConcurrentMap<String, IStream> streamCache = new ReferenceValueMap.Weak<String, IStream>();
+
   private String name;
 
   private ICodeStrategy strategy;
-
-  private ReferenceValueMap<String, IStream> streamCache = new ReferenceValueMap.Weak<String, IStream>();
 
   public Pop(String name, ICodeStrategy strategy, IBranch branch, ITicket ticket)
   {
@@ -145,10 +146,7 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
     synchronized (streamCache)
     {
       String ticketID = stream.getTicket().getID();
-      if (!streamCache.containsKey(ticketID))
-      {
-        streamCache.put(ticketID, stream);
-      }
+      streamCache.putIfAbsent(ticketID, stream);
     }
   }
 
