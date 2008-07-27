@@ -11,6 +11,7 @@
 package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.util.IElement;
 
 import org.eclipse.mylyn.tasks.core.ITask;
@@ -20,7 +21,11 @@ import org.eclipse.mylyn.tasks.core.ITask;
  */
 public interface IPopManager extends IElement
 {
+  public ITask getTask(String taskId);
+
   public IStream getStream(ITask task);
 
-  public IPop createPop(String name, IBranch branch, String taskID);
+  public IPop createPop(String name, IBranch branch, ITask task, ICodeStrategy codeStrategy);
+
+  public IPop createPop(String name, IBranch branch, ITask task);
 }

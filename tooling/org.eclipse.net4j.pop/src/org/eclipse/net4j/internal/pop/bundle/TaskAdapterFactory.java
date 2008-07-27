@@ -35,7 +35,7 @@ public class TaskAdapterFactory implements IAdapterFactory
     if (adaptableObject instanceof ITask)
     {
       ITask task = (ITask)adaptableObject;
-      String ticketID = task.getTaskId();
+      String taskID = task.getTaskId();
       if (adapterType.isAssignableFrom(ITaskStream.class))
       {
         return adaptTaskStream(task);

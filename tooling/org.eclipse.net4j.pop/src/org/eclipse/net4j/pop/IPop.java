@@ -12,7 +12,6 @@ package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
-import org.eclipse.net4j.pop.ticket.ITicketUser;
 
 import java.util.Date;
 
@@ -36,7 +35,7 @@ public interface IPop extends IDevelopmentStream
 
   public ICodeStrategy getCodeStrategy();
 
-  public ICommitter addCommitter(ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate);
+  public ICommitter addCommitter(String codeAccount, Date entryDate, Date exitDate);
 
   public int getCommitterCount();
 

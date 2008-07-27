@@ -16,8 +16,8 @@ import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
-import org.eclipse.net4j.pop.ticket.ITicket;
-import org.eclipse.net4j.pop.ticket.ITicketUser;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -35,9 +35,9 @@ public class Pop extends DevelopmentStream implements IPop
 
   private ICodeStrategy strategy;
 
-  public Pop(InternalPopManager manager, String name, ICodeStrategy strategy, IBranch branch,  ITask task)
+  public Pop(InternalPopManager manager, String name, ICodeStrategy strategy, IBranch branch, ITask task)
   {
-    super(null, branch, ticket);
+    super(null, branch, task);
     checkArgument(manager, "manager");
     checkArgument(name, "name");
     checkArgument(strategy, "strategy");
@@ -74,12 +74,11 @@ public class Pop extends DevelopmentStream implements IPop
     return strategy;
   }
 
-  public ICommitter addCommitter(ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate)
+  public ICommitter addCommitter(String codeAccount, Date entryDate, Date exitDate)
   {
-    checkArgument(ticketUser, "ticketUser");
     checkArgument(codeAccount, "codeAccount");
     checkArgument(entryDate, "entryDate");
-    ICommitter committer = new Committer(this, ticketUser, codeAccount, entryDate, exitDate);
+    ICommitter committer = new Committer(this, codeAccount, entryDate, exitDate);
     committerContainer.addElement(committer);
     return committer;
   }
@@ -103,7 +102,7 @@ public class Pop extends DevelopmentStream implements IPop
   @Override
   public String toString()
   {
-    return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch().getName(), getTicket()
-        .getID());
+    return MessageFormat.format("Pop[name={0}, branch={1}, task={2}]", name, getBranch().getName(), getTask()
+        .getTaskId());
   }
 }

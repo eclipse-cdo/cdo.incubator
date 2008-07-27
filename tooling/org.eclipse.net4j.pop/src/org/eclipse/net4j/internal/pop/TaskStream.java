@@ -17,7 +17,8 @@ import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -30,9 +31,9 @@ public class TaskStream extends Stream implements ITaskStream
 {
   protected ElementContainer<IDelivery> deliveryContainer = new ElementContainer<IDelivery>(this);
 
-  public TaskStream(IBaseline baseline, IBranch branch,  ITask task)
+  public TaskStream(IBaseline baseline, IBranch branch, ITask task)
   {
-    super(baseline, branch, ticket);
+    super(baseline, branch, task);
   }
 
   @Override
@@ -86,6 +87,6 @@ public class TaskStream extends Stream implements ITaskStream
   @Override
   public String toString()
   {
-    return MessageFormat.format("TaskStream[branch={0}, ticket={1}]", getBranch().getName(), getTicket().getID());
+    return MessageFormat.format("TaskStream[branch={0}, task={1}]", getBranch().getName(), getTask().getTaskId());
   }
 }

@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
+import org.eclipse.net4j.internal.pop.code.DefaultCodeStrategy;
 import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.Element;
@@ -20,6 +21,7 @@ import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
+import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.util.ImplementationError;
@@ -32,7 +34,7 @@ import java.util.concurrent.ConcurrentMap;
 /**
  * @author Eike Stepper
  */
-public class PopManager extends Element implements InternalPopManager
+public abstract class PopManager extends Element implements InternalPopManager
 {
   private transient ConcurrentMap<ITask, IStream> streamCache = new ReferenceValueMap.Weak<ITask, IStream>();
 
@@ -46,10 +48,14 @@ public class PopManager extends Element implements InternalPopManager
     return "PopManager";
   }
 
-  public IPop createPop(String name, IBranch branch, String taskID)
+  public IPop createPop(String name, IBranch branch, ITask task, ICodeStrategy codeStrategy)
   {
-    // TODO Implement PopManager.createPop(name, branch, taskID)
-    throw new UnsupportedOperationException("Not yet implemented");
+    return new Pop(this, name, codeStrategy, branch, task);
+  }
+
+  public IPop createPop(String name, IBranch branch, ITask task)
+  {
+    return createPop(name, branch, task, new DefaultCodeStrategy());
   }
 
   public void putStream(IStream stream)
@@ -83,7 +89,7 @@ public class PopManager extends Element implements InternalPopManager
 
   private IStream resolveStream(ITask task)
   {
-    // TODO Implement Pop.resolveStream(ticketID)
+    // TODO Implement Pop.resolveStream(taskID)
     throw new UnsupportedOperationException("Not yet implemented");
   }
 

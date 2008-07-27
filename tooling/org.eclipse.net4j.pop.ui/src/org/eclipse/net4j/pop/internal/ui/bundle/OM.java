@@ -10,9 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.bundle;
 
-import org.eclipse.net4j.internal.pop.ticket.TicketManager;
-import org.eclipse.net4j.pop.ticket.ITicketManager;
-import org.eclipse.net4j.pop.util.PopUtil;
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.log.OMLogger;
@@ -21,9 +18,6 @@ import org.eclipse.net4j.util.om.trace.OMTracer;
 import org.eclipse.net4j.util.ui.UIActivator;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.mylyn.tasks.ui.TasksUi;
-
-import org.osgi.framework.BundleContext;
 
 /**
  * The <em>Operations & Maintenance</em> class of this bundle.
@@ -57,14 +51,6 @@ public abstract class OM
     public Activator()
     {
       super(BUNDLE);
-    }
-
-    @Override
-    public void start(BundleContext context) throws Exception
-    {
-      super.start(context);
-      ITicketManager ticketManager = new TicketManager(TasksUi.getRepositoryManager(), TasksUi.getTaskDataManager());
-      PopUtil.Internal.setTicketManager(ticketManager);
     }
   }
 }

@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.mylyn.tasks.core.IRepositoryManager;
+import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.data.ITaskDataManager;
 
 /**
@@ -44,5 +45,11 @@ public class MylynPopManager extends PopManager
   public ITaskDataManager getTaskDataManager()
   {
     return taskDataManager;
+  }
+
+  public ITask getTask(String taskId)
+  {
+    // TODO Implement MylynPopManager.getTask(taskId)
+    throw new UnsupportedOperationException("Not yet implemented");
   }
 }

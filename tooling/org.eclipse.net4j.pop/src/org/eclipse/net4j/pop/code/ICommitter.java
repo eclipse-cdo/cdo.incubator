@@ -11,7 +11,6 @@
 package org.eclipse.net4j.pop.code;
 
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.ticket.ITicketUser;
 import org.eclipse.net4j.pop.util.IElement;
 
 import java.util.Date;
@@ -23,8 +22,6 @@ import java.util.Date;
 public interface ICommitter extends IElement
 {
   public IPop getPop();
-
-  public ITicketUser getTicketUser();
 
   public String getAccount();
 

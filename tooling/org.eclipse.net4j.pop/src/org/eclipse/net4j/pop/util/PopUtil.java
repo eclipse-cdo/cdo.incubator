@@ -10,53 +10,30 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.util;
 
+import org.eclipse.net4j.internal.pop.MylynPopManager;
 import org.eclipse.net4j.internal.pop.code.MainBranch;
+import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.ticket.ITicketManager;
+
+import org.eclipse.mylyn.tasks.core.IRepositoryManager;
+import org.eclipse.mylyn.tasks.core.data.ITaskDataManager;
 
 /**
  * @author Eike Stepper
  */
 public final class PopUtil
 {
-  private static ITicketManager ticketManager;
-
   private PopUtil()
   {
   }
 
-  public static ITicketManager getTicketManager()
+  public static IPopManager createManager(IRepositoryManager repositoryManager, ITaskDataManager taskDataManager)
   {
-    return ticketManager;
+    return new MylynPopManager(repositoryManager, taskDataManager);
   }
 
   public static IBranch createMainBranch(String name)
   {
     return new MainBranch(name);
-  }
-
-  // public static IPop createPop(String name, IBranch branch,  ITask task)
-  // {
-  // return createPop(name, branch, ticket, new DefaultCodeStrategy());
-  // }
-  //
-  // public static IPop createPop(String name, IBranch branch,  ITask task, ICodeStrategy strategy)
-  // {
-  // return new Pop(name, strategy, branch, ticket);
-  // }
-
-  /**
-   * @author Eike Stepper
-   */
-  public static final class Internal
-  {
-    private Internal()
-    {
-    }
-
-    public static void setTicketManager(ITicketManager ticketManager)
-    {
-      PopUtil.ticketManager = ticketManager;
-    }
   }
 }

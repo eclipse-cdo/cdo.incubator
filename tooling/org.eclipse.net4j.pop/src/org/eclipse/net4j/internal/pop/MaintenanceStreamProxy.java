@@ -23,7 +23,6 @@ import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
 
 import org.eclipse.mylyn.tasks.core.ITask;
 
@@ -124,14 +123,14 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getReleases();
   }
 
-  public ITaskStream addTaskStream(IBaseline baseline,  ITask task)
+  public ITaskStream addTaskStream(IBaseline baseline, ITask task)
   {
-    return getElement().addTaskStream(baseline, ticket);
+    return getElement().addTaskStream(baseline, task);
   }
 
-  public ITaskStream addTaskStream(String tagName,  ITask task)
+  public ITaskStream addTaskStream(String tagName, ITask task)
   {
-    return getElement().addTaskStream(tagName, ticket);
+    return getElement().addTaskStream(tagName, task);
   }
 
   public ITaskStream getTaskStream(int index)

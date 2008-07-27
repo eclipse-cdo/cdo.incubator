@@ -13,7 +13,6 @@ package org.eclipse.net4j.internal.pop.code;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.ICommitter;
-import org.eclipse.net4j.pop.ticket.ITicketUser;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -25,22 +24,18 @@ public class Committer extends Element implements ICommitter
 {
   private IPop pop;
 
-  private ITicketUser ticketUser;
-
   private String account;
 
   private Date entryDate;
 
   private Date exitDate;
 
-  public Committer(IPop pop, ITicketUser ticketUser, String account, Date entryDate, Date exitDate)
+  public Committer(IPop pop, String account, Date entryDate, Date exitDate)
   {
     checkArgument(pop, "pop");
-    checkArgument(ticketUser, "ticketUser");
     checkArgument(account, "account");
     checkArgument(entryDate, "entryDate");
     this.pop = pop;
-    this.ticketUser = ticketUser;
     this.account = account;
     this.entryDate = entryDate;
     this.exitDate = exitDate;
@@ -49,11 +44,6 @@ public class Committer extends Element implements ICommitter
   public IPop getPop()
   {
     return pop;
-  }
-
-  public ITicketUser getTicketUser()
-  {
-    return ticketUser;
   }
 
   public String getAccount()
@@ -74,7 +64,6 @@ public class Committer extends Element implements ICommitter
   @Override
   public String toString()
   {
-    return MessageFormat.format("Committer[pop={0}, name={1}, account={2}]", pop.getName(), ticketUser.getName(),
-        account);
+    return MessageFormat.format("Committer[pop={0},  account={2}]", pop.getName(), account);
   }
 }

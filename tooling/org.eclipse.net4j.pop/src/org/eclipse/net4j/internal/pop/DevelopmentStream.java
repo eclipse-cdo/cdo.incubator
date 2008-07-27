@@ -18,7 +18,6 @@ import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
 
 import org.eclipse.mylyn.tasks.core.ITask;
 
@@ -38,13 +37,13 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
     super(baseline, branch, task);
   }
 
-  public IMaintenanceStream addMaintenanceStream(IRelease baseline,  ITask task)
+  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITask task)
   {
     checkArgument(baseline, "baseline");
-    checkArgument(ticket, "ticket");
+    checkArgument(task, "task");
     checkBaseline(baseline);
-    IBranch branch = getPop().getCodeStrategy().createMaintenanceBranch(baseline, ticket);
-    IMaintenanceStream maintenanceStream = new MaintenanceStream(baseline, branch, ticket);
+    IBranch branch = getPop().getCodeStrategy().createMaintenanceBranch(baseline, task);
+    IMaintenanceStream maintenanceStream = new MaintenanceStream(baseline, branch, task);
     maintenanceStreamContainer.addElement(MaintenanceStreamProxy.proxy(maintenanceStream));
     return maintenanceStream;
   }
