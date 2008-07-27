@@ -56,25 +56,25 @@ public class Main
     System.out.println(pop.addMerge(new Date(), delivery2));
     System.out.println(pop.addMerge(new Date(), delivery3));
 
-    System.out.println(pop.addRelease());
-    System.out.println(pop.addRelease());
-    IRelease release = pop.addRelease(false, 2);
+    System.out.println(pop.addRelease(new Date()));
+    System.out.println(pop.addRelease(new Date()));
+    IRelease release = pop.addRelease(new Date(), false, 2);
     System.out.println(release);
-    System.out.println(pop.addRelease());
+    System.out.println(pop.addRelease(new Date()));
 
-    System.out.println(release.addMilestone("M1"));
-    System.out.println(release.addMilestone("M2"));
-    System.out.println(release.addMilestone("M3"));
-    System.out.println(release.addMilestone("RC1"));
-    System.out.println(release.addMilestone("RC2"));
+    System.out.println(release.addMilestone("M1", new Date()));
+    System.out.println(release.addMilestone("M2", new Date()));
+    System.out.println(release.addMilestone("M3", new Date()));
+    System.out.println(release.addMilestone("RC1", new Date()));
+    System.out.println(release.addMilestone("RC2", new Date()));
 
     ITicket maintenanceTicket = PopUtil.createTicket("300000");
     IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, maintenanceTicket);
     System.out.println(maintenanceStream);
 
-    System.out.println(maintenanceStream.addRelease());
-    System.out.println(maintenanceStream.addRelease());
-    System.out.println(maintenanceStream.addRelease());
-    System.out.println(maintenanceStream.addRelease());
+    System.out.println(maintenanceStream.addRelease(new Date()));
+    System.out.println(maintenanceStream.addRelease(new Date()));
+    System.out.println(maintenanceStream.addRelease(new Date()));
+    System.out.println(maintenanceStream.addRelease(new Date()));
   }
 }

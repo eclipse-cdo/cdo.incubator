@@ -11,8 +11,8 @@
 package org.eclipse.net4j.pop.release;
 
 import org.eclipse.net4j.pop.IBaseline;
-import org.eclipse.net4j.pop.IStream;
-import org.eclipse.net4j.pop.code.ITag;
+
+import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -20,7 +20,5 @@ import org.eclipse.net4j.pop.code.ITag;
  */
 public interface ITarget extends IBaseline
 {
-  public IStream getStream();
-
-  public ITag getTag();
+  public Date getDate();
 }

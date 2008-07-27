@@ -20,6 +20,7 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,12 +63,12 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
     return maintenanceStreamContainer.getElements(IMaintenanceStream.class);
   }
 
-  public IRelease addRelease()
+  public IRelease addRelease(Date date)
   {
-    return addRelease(true, 1);
+    return addRelease(date, true, 1);
   }
 
-  public IRelease addRelease(boolean compatible, int increment)
+  public IRelease addRelease(Date date, boolean compatible, int increment)
   {
     checkArgument(increment > 0, "increment");
     List<IRelease> elements = releaseContainer.getElements();
@@ -90,7 +91,7 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
         version = lastVersion.nextMajor(increment);
       }
 
-      return addRelease(version);
+      return addRelease(version, date);
     }
   }
 

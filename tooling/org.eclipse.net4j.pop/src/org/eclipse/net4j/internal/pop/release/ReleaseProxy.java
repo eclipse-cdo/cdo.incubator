@@ -20,6 +20,8 @@ import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
@@ -59,9 +61,14 @@ public class ReleaseProxy extends ElementProxy<IRelease> implements IRelease
     return getElement().getTag();
   }
 
-  public IMilestone addMilestone(String name)
+  public Date getDate()
   {
-    return getElement().addMilestone(name);
+    return getElement().getDate();
+  }
+
+  public IMilestone addMilestone(String name, Date date)
+  {
+    return getElement().addMilestone(name, date);
   }
 
   public IMilestone getMilestone(int index)

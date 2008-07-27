@@ -18,6 +18,7 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 
 import java.text.MessageFormat;
+import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -30,9 +31,9 @@ public class Release extends Target implements IRelease
 
   private IVersion version;
 
-  public Release(IIntegrationStream stream, IVersion version, ITag tag)
+  public Release(IIntegrationStream stream, IVersion version, ITag tag, Date date)
   {
-    super(tag);
+    super(tag, date);
     checkArgument(stream, "stream");
     checkArgument(version, "version");
     this.stream = stream;
@@ -49,10 +50,10 @@ public class Release extends Target implements IRelease
     return version;
   }
 
-  public IMilestone addMilestone(String name)
+  public IMilestone addMilestone(String name, Date date)
   {
     ITag tag = getStream().getPop().getCodeStrategy().createMilestoneTag(this, name);
-    IMilestone milestone = new Milestone(this, name, tag);
+    IMilestone milestone = new Milestone(this, name, tag, date);
     milestoneContainer.addElement(milestone);
     return milestone;
   }

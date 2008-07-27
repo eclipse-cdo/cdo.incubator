@@ -14,6 +14,8 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
@@ -32,7 +34,7 @@ public interface IIntegrationStream extends IStream
 
   public ITaskStream[] getTaskStreams();
 
-  public IRelease addRelease();
+  public IRelease addRelease(Date date);
 
   public int getReleaseCount();
 

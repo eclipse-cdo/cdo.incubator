@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 
 import java.text.MessageFormat;
+import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -26,9 +27,9 @@ public class Milestone extends Target implements IMilestone
 
   private String name;
 
-  protected Milestone(IRelease release, String name, ITag tag)
+  protected Milestone(IRelease release, String name, ITag tag, Date date)
   {
-    super(tag);
+    super(tag, date);
     checkArgument(release, "release");
     checkArgument(name, "name");
     this.release = release;

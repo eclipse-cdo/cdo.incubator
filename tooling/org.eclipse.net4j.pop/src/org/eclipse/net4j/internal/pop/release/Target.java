@@ -14,6 +14,8 @@ import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.ITarget;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
@@ -21,14 +23,22 @@ public abstract class Target extends Element implements ITarget
 {
   private ITag tag;
 
-  protected Target(ITag tag)
+  private Date date;
+
+  protected Target(ITag tag, Date date)
   {
     checkArgument(tag, "tag");
     this.tag = tag;
+    this.date = date;
   }
 
   public ITag getTag()
   {
     return tag;
+  }
+
+  public Date getDate()
+  {
+    return date;
   }
 }

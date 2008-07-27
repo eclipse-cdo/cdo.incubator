@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.code.Tag;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IStream;
@@ -32,7 +31,7 @@ public class Baseline extends Element implements IBaseline
     checkArgument(stream, "stream");
     checkArgument(tagName, "tagName");
     this.stream = stream;
-    tag = new Tag(stream.getBranch(), tagName);
+    tag = stream.getBranch().addTag(tagName);
   }
 
   public IStream getStream()

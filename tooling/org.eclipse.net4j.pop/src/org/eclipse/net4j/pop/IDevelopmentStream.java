@@ -13,13 +13,15 @@ package org.eclipse.net4j.pop;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface IDevelopmentStream extends IIntegrationStream
 {
-  public IRelease addRelease(boolean compatible, int increment);
+  public IRelease addRelease(Date date, boolean compatible, int increment);
 
   public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket);
 

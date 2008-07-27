@@ -87,9 +87,9 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getMerges();
   }
 
-  public IRelease addRelease()
+  public IRelease addRelease(Date date)
   {
-    return getElement().addRelease();
+    return getElement().addRelease(date);
   }
 
   public IRelease getRelease(int index)

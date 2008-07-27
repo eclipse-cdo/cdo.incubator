@@ -22,6 +22,8 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import java.util.Date;
+
 /**
  * @author Eike Stepper
  */
@@ -120,10 +122,10 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return releaseContainer.getElements(IRelease.class);
   }
 
-  protected IRelease addRelease(IVersion version)
+  protected IRelease addRelease(IVersion version, Date date)
   {
     ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
-    IRelease release = new Release(this, version, tag);
+    IRelease release = new Release(this, version, tag, date);
     releaseContainer.addElement(new ReleaseProxy(release));
     return release;
   }
