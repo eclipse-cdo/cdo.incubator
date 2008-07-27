@@ -42,8 +42,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="Baseline"/>
   <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="Committer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ReleaseBaseline" eSuperTypes="#//Baseline">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="release" lowerBound="1"
-        eType="#//Release"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetBaseline" eSuperTypes="#//Baseline">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PopManager">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pops" upperBound="-1" eType="#//Pop"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
