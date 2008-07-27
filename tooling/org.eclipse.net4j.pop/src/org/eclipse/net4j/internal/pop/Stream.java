@@ -92,7 +92,7 @@ public abstract class Stream extends Element implements IStream
   {
     checkArgument(date, "date");
     checkArgument(delivery, "delivery");
-    IMerge merge = new Merge(this, date, new DeliveryProxy(delivery));
+    IMerge merge = new Merge(this, date, DeliveryProxy.proxy(delivery));
     mergeContainer.addElement(merge);
     return merge;
   }
@@ -115,7 +115,7 @@ public abstract class Stream extends Element implements IStream
 
   public IBaseline addBaseline(IBaseline baseline)
   {
-    baselineContainer.addElement(new BaselineProxy(baseline));
+    baselineContainer.addElement(BaselineProxy.proxy(baseline));
     return baseline;
   }
 

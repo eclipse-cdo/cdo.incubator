@@ -11,7 +11,6 @@
 package org.eclipse.net4j.internal.pop.delivery;
 
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.ITaskStream;
@@ -32,13 +31,23 @@ public class DeliveryProxy extends ElementProxy<IDelivery> implements IDelivery
     this.number = number;
   }
 
-  public DeliveryProxy(IDelivery delivery)
+  private DeliveryProxy(IDelivery delivery)
   {
     super(delivery.getStream().getPop(), delivery.getStream().getTicket().getID(), delivery);
     number = delivery.getNumber();
   }
 
-  public IElementProxy<? extends IDelivery> copy()
+  public static DeliveryProxy proxy(IDelivery delivery)
+  {
+    if (delivery instanceof DeliveryProxy)
+    {
+      return ((DeliveryProxy)delivery).copy();
+    }
+
+    return new DeliveryProxy(delivery);
+  }
+
+  public DeliveryProxy copy()
   {
     return new DeliveryProxy(getPop(), getTicketID(), number);
   }

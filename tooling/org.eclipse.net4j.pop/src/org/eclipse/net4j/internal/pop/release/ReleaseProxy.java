@@ -11,7 +11,6 @@
 package org.eclipse.net4j.internal.pop.release;
 
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IPop;
@@ -35,13 +34,23 @@ public class ReleaseProxy extends ElementProxy<IRelease> implements IRelease
     this.version = version;
   }
 
-  public ReleaseProxy(IRelease release)
+  private ReleaseProxy(IRelease release)
   {
     super(release.getStream().getPop(), release.getStream().getTicket().getID(), release);
     version = release.getVersion();
   }
 
-  public IElementProxy<? extends IRelease> copy()
+  public static ReleaseProxy proxy(IRelease release)
+  {
+    if (release instanceof ReleaseProxy)
+    {
+      return ((ReleaseProxy)release).copy();
+    }
+
+    return new ReleaseProxy(release);
+  }
+
+  public ReleaseProxy copy()
   {
     return new ReleaseProxy(getPop(), getTicketID(), version);
   }

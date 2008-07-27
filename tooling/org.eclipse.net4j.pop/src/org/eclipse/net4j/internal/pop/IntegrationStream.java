@@ -51,16 +51,16 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     if (baseline instanceof IRelease)
     {
       IRelease release = (IRelease)baseline;
-      baseline = new ReleaseProxy(release);
+      baseline = ReleaseProxy.proxy(release);
     }
     else
     {
-      baseline = new BaselineProxy(baseline);
+      baseline = BaselineProxy.proxy(baseline);
     }
 
     IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
     ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
-    taskStreamContainer.addElement(new TaskStreamProxy(taskStream));
+    taskStreamContainer.addElement(TaskStreamProxy.proxy(taskStream));
     return taskStream;
   }
 
@@ -126,7 +126,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
   {
     ITag tag = getPop().getCodeStrategy().createReleaseTag(this, version);
     IRelease release = new Release(this, version, tag, date);
-    releaseContainer.addElement(new ReleaseProxy(release));
+    releaseContainer.addElement(ReleaseProxy.proxy(release));
     baselineContainer.addElement(release);
     return release;
   }

@@ -11,7 +11,6 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IPop;
@@ -31,13 +30,23 @@ public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
     this.tagName = tagName;
   }
 
-  public BaselineProxy(IBaseline baseline)
+  private BaselineProxy(IBaseline baseline)
   {
     super(baseline.getStream().getPop(), baseline.getStream().getTicket().getID(), baseline);
     tagName = baseline.getTag().getName();
   }
 
-  public IElementProxy<? extends IBaseline> copy()
+  public static BaselineProxy proxy(IBaseline baseline)
+  {
+    if (baseline instanceof BaselineProxy)
+    {
+      return ((BaselineProxy)baseline).copy();
+    }
+
+    return new BaselineProxy(baseline);
+  }
+
+  public BaselineProxy copy()
   {
     return new BaselineProxy(getPop(), getTicketID(), tagName);
   }

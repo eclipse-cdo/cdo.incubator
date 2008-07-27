@@ -11,7 +11,6 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
@@ -35,12 +34,22 @@ public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskS
     ((Pop)getPop()).putStream(this);
   }
 
-  public TaskStreamProxy(ITaskStream taskStream)
+  private TaskStreamProxy(ITaskStream taskStream)
   {
     super(taskStream.getPop(), taskStream.getTicket().getID(), taskStream);
   }
 
-  public IElementProxy<? extends ITaskStream> copy()
+  public static TaskStreamProxy proxy(ITaskStream taskStream)
+  {
+    if (taskStream instanceof TaskStreamProxy)
+    {
+      return ((TaskStreamProxy)taskStream).copy();
+    }
+
+    return new TaskStreamProxy(taskStream);
+  }
+
+  public TaskStreamProxy copy()
   {
     return new TaskStreamProxy(getPop(), getTicketID());
   }

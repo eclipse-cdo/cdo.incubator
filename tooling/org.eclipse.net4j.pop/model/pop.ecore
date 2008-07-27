@@ -3,12 +3,12 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pop"
     nsURI="http://pop/1.0" nsPrefix="pop">
-  <eClassifiers xsi:type="ecore:EClass" name="Stream">
+  <eClassifiers xsi:type="ecore:EClass" name="Stream" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="merges" upperBound="-1"
         eType="#//Merge" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="baseline" eType="#//Baseline"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntegrationStream" eSuperTypes="#//Stream">
+  <eClassifiers xsi:type="ecore:EClass" name="IntegrationStream" abstract="true" eSuperTypes="#//Stream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
         eType="#//Release" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskStreams" upperBound="-1"
@@ -20,7 +20,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
         upperBound="-1" eType="#//Target"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DevelopmentStream" eSuperTypes="#//IntegrationStream">
+  <eClassifiers xsi:type="ecore:EClass" name="DevelopmentStream" abstract="true" eSuperTypes="#//IntegrationStream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenanceStreams" upperBound="-1"
         eType="#//MaintenanceStream" containment="true"/>
   </eClassifiers>
@@ -40,6 +40,6 @@
         eType="#//Delivery"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Baseline"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Target" eSuperTypes="#//Baseline"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true" eSuperTypes="#//Baseline"/>
   <eClassifiers xsi:type="ecore:EClass" name="Committer"/>
 </ecore:EPackage>
