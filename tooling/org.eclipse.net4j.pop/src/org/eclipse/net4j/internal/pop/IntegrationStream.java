@@ -53,7 +53,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     }
     else
     {
-      baseline = new BaselineProxy(baseline, baseline.getTag().getName());
+      baseline = new BaselineProxy(baseline);
     }
 
     IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);

@@ -110,9 +110,24 @@ public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskS
     return getElement().getDeliveryCount();
   }
 
+  public IBaseline getBaseline(int index)
+  {
+    return getElement().getBaseline(index);
+  }
+
+  public int getBaselineCount()
+  {
+    return getElement().getBaselineCount();
+  }
+
   public IBaseline getBaselineByTagName(String tagName)
   {
     return getElement().getBaselineByTagName(tagName);
+  }
+
+  public IBaseline[] getBaselines()
+  {
+    return getElement().getBaselines();
   }
 
   @Override

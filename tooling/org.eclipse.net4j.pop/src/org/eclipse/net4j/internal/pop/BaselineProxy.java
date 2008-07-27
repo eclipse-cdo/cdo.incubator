@@ -31,10 +31,10 @@ public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
     this.tagName = tagName;
   }
 
-  public BaselineProxy(IBaseline baseline, String tagName)
+  public BaselineProxy(IBaseline baseline)
   {
     super(baseline.getStream().getPop(), baseline.getStream().getTicket().getID(), baseline);
-    this.tagName = tagName;
+    tagName = baseline.getTag().getName();
   }
 
   public IElementProxy<? extends IBaseline> copy()

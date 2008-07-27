@@ -128,7 +128,15 @@ public abstract class Stream extends Element implements IStream
   public IBaseline getBaselineByTagName(String tagName)
   {
     checkArgument(tagName, "tagName");
-    return new Baseline(this, tagName);
+    for (IBaseline baseline : getBaselines())
+    {
+      if (baseline.getTag().getName().equals(tagName))
+      {
+        return baseline;
+      }
+    }
+
+    return null;
   }
 
   public IBaseline[] getBaselines()
