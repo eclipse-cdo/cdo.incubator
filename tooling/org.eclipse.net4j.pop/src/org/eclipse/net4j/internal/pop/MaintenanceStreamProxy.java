@@ -117,6 +117,11 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().addTaskStream(baseline, ticket);
   }
 
+  public ITaskStream addTaskStream(String tagName, ITicket ticket)
+  {
+    return getElement().addTaskStream(tagName, ticket);
+  }
+
   public ITaskStream getTaskStream(int index)
   {
     return getElement().getTaskStream(index);

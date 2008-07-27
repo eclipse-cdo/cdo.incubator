@@ -119,7 +119,8 @@ public abstract class Stream extends Element implements IStream
     checkArgument(tagName, "tagName");
     IBaseline baseline = new Baseline(this, tagName);
     baseline = new BaselineProxy(baseline);
-    return null;
+    baselineContainer.addElement(baseline);
+    return baseline;
   }
 
   public IBaseline getBaseline(int index)

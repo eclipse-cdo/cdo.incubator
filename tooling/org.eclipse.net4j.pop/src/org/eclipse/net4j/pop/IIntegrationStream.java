@@ -24,6 +24,8 @@ public interface IIntegrationStream extends IStream
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket);
 
+  public ITaskStream addTaskStream(String tagName, ITicket ticket);
+
   public int getTaskStreamCount();
 
   public ITaskStream getTaskStream(int index);

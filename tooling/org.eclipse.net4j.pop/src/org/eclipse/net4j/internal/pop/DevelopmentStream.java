@@ -42,9 +42,7 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
     checkBaseline(baseline);
     IBranch branch = getPop().getCodeStrategy().createMaintenanceBranch(baseline, ticket);
     IMaintenanceStream maintenanceStream = new MaintenanceStream(baseline, branch, ticket);
-
-    maintenanceStream = new MaintenanceStreamProxy(maintenanceStream);
-    maintenanceStreamContainer.addElement(maintenanceStream);
+    maintenanceStreamContainer.addElement(new MaintenanceStreamProxy(maintenanceStream));
     return maintenanceStream;
   }
 
