@@ -13,36 +13,26 @@ package org.eclipse.net4j.pop.util;
 import org.eclipse.net4j.internal.pop.Pop;
 import org.eclipse.net4j.internal.pop.code.DefaultCodeStrategy;
 import org.eclipse.net4j.internal.pop.code.MainBranch;
-import org.eclipse.net4j.internal.pop.ticket.Ticket;
-import org.eclipse.net4j.internal.pop.ticket.TicketUser;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.ticket.ITicket;
-import org.eclipse.net4j.pop.ticket.ITicketUser;
+import org.eclipse.net4j.pop.ticket.ITicketManager;
 
 /**
  * @author Eike Stepper
  */
 public final class PopUtil
 {
+  private static ITicketManager ticketManager;
+
   private PopUtil()
   {
   }
 
-  public static ITicket createTicket(String ticketID)
+  public static ITicketManager getTicketManager()
   {
-    return new Ticket(ticketID);
-  }
-
-  public static ITicketUser createTicketUser(String name, String email, String ticketAccount)
-  {
-    return new TicketUser(name, email, ticketAccount);
-  }
-
-  public static ITicketUser createTicketUser(String name, String email)
-  {
-    return new TicketUser(name, email, email);
+    return ticketManager;
   }
 
   public static IBranch createMainBranch(String name)
@@ -58,5 +48,20 @@ public final class PopUtil
   public static IPop createPop(String name, IBranch branch, ITicket ticket, ICodeStrategy strategy)
   {
     return new Pop(name, strategy, branch, ticket);
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static final class Internal
+  {
+    private Internal()
+    {
+    }
+
+    public static void setTicketManager(ITicketManager ticketManager)
+    {
+      PopUtil.ticketManager = ticketManager;
+    }
   }
 }
