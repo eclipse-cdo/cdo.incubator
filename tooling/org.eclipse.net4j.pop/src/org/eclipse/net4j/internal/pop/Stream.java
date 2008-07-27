@@ -114,9 +114,25 @@ public abstract class Stream extends Element implements IStream
     return mergeContainer.getElements(IMerge.class);
   }
 
+  public IBaseline getBaseline(int index)
+  {
+    checkArgument(index >= 0, "index");
+    return baselineContainer.getElement(index);
+  }
+
+  public int getBaselineCount()
+  {
+    return baselineContainer.getElementCount();
+  }
+
   public IBaseline getBaselineByTagName(String tagName)
   {
     checkArgument(tagName, "tagName");
     return new Baseline(this, tagName);
+  }
+
+  public IBaseline[] getBaselines()
+  {
+    return baselineContainer.getElements(IBaseline.class);
   }
 }

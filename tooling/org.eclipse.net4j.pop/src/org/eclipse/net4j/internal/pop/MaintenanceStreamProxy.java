@@ -132,9 +132,24 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getTaskStreams();
   }
 
+  public IBaseline getBaseline(int index)
+  {
+    return getElement().getBaseline(index);
+  }
+
+  public int getBaselineCount()
+  {
+    return getElement().getBaselineCount();
+  }
+
   public IBaseline getBaselineByTagName(String tagName)
   {
     return getElement().getBaselineByTagName(tagName);
+  }
+
+  public IBaseline[] getBaselines()
+  {
+    return getElement().getBaselines();
   }
 
   @Override
