@@ -81,6 +81,9 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
 
   public ICommitter addCommitter(ITicketUser ticketUser, String codeAccount, Date entryDate, Date exitDate)
   {
+    checkArgument(ticketUser, "ticketUser");
+    checkArgument(codeAccount, "codeAccount");
+    checkArgument(entryDate, "entryDate");
     ICommitter committer = new Committer(this, ticketUser, codeAccount, entryDate, exitDate);
     committerContainer.addElement(committer);
     return committer;
@@ -88,6 +91,7 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
 
   public ICommitter getCommitter(int index)
   {
+    checkArgument(index >= 0, "index");
     return committerContainer.getElement(index);
   }
 

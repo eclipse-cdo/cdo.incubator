@@ -64,6 +64,7 @@ public class Branch extends Element implements IBranch
 
   public ITag addTag(String name)
   {
+    checkArgument(name, "name");
     ITag tag = new Tag(this, name);
     tagContainer.addElement(tag);
     return tag;

@@ -44,6 +44,8 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
   {
+    checkArgument(baseline, "baseline");
+    checkArgument(ticket, "ticket");
     if (baseline instanceof IRelease)
     {
       IRelease release = (IRelease)baseline;
@@ -63,6 +65,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public ITaskStream getTaskStream(int index)
   {
+    checkArgument(index >= 0, "index");
     return taskStreamContainer.getElement(index);
   }
 
@@ -78,6 +81,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public IRelease getRelease(int index)
   {
+    checkArgument(index >= 0, "index");
     return releaseContainer.getElement(index);
   }
 
@@ -88,6 +92,7 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   public IRelease getReleaseByVersion(IVersion version)
   {
+    checkArgument(version, "version");
     for (IRelease release : getReleases())
     {
       if (release.getVersion().equals(version))

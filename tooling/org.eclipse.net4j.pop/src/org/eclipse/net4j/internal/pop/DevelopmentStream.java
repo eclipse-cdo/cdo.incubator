@@ -37,6 +37,8 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
 
   public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket)
   {
+    checkArgument(baseline, "baseline");
+    checkArgument(ticket, "ticket");
     checkBaseline(baseline);
     IBranch branch = getPop().getCodeStrategy().createMaintenanceBranch(baseline, ticket);
     IMaintenanceStream maintenanceStream = new MaintenanceStream(baseline, branch, ticket);
@@ -48,6 +50,7 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
 
   public IMaintenanceStream getMaintenanceStream(int index)
   {
+    checkArgument(index >= 0, "index");
     return maintenanceStreamContainer.getElement(index);
   }
 
@@ -68,6 +71,7 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
 
   public IRelease addRelease(boolean compatible, int increment)
   {
+    checkArgument(increment > 0, "increment");
     List<IRelease> elements = releaseContainer.getElements();
     synchronized (elements)
     {

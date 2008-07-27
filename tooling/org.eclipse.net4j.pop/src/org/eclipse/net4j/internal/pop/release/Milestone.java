@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
-import org.eclipse.net4j.pop.IStream;
+import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
@@ -35,7 +35,7 @@ public class Milestone extends Target implements IMilestone
     this.name = name;
   }
 
-  public IStream getStream()
+  public IIntegrationStream getStream()
   {
     return release.getStream();
   }

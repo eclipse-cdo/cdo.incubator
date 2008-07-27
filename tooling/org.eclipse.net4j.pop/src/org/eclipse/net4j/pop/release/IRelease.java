@@ -10,12 +10,16 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
+import org.eclipse.net4j.pop.IIntegrationStream;
+
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
  */
 public interface IRelease extends ITarget
 {
+  public IIntegrationStream getStream();
+
   public IVersion getVersion();
 
   public IMilestone addMilestone(String name);

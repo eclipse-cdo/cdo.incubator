@@ -13,8 +13,8 @@ package org.eclipse.net4j.internal.pop.release;
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementProxy;
 import org.eclipse.net4j.internal.pop.util.IElementResolver;
+import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
@@ -49,7 +49,7 @@ public class ReleaseProxy extends ElementProxy<IRelease> implements IRelease
     return version;
   }
 
-  public IStream getStream()
+  public IIntegrationStream getStream()
   {
     return getElement().getStream();
   }

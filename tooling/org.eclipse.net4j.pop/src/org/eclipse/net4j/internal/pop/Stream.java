@@ -88,6 +88,8 @@ public abstract class Stream extends Element implements IStream
 
   public IMerge addMerge(Date date, IDelivery delivery)
   {
+    checkArgument(date, "date");
+    checkArgument(delivery, "delivery");
     delivery = new DeliveryProxy(delivery);
     IMerge merge = new Merge(this, date, delivery);
     mergeContainer.addElement(merge);
@@ -96,6 +98,7 @@ public abstract class Stream extends Element implements IStream
 
   public IMerge getMerge(int index)
   {
+    checkArgument(index >= 0, "index");
     return mergeContainer.getElement(index);
   }
 
@@ -111,6 +114,7 @@ public abstract class Stream extends Element implements IStream
 
   public IBaseline getBaselineByTag(String tagName)
   {
+    checkArgument(tagName, "tagName");
     return new Baseline(this, tagName);
   }
 }

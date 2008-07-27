@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
+import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.release.IVersion;
 
 import org.eclipse.core.runtime.PlatformObject;
@@ -29,6 +30,9 @@ public class Version extends PlatformObject implements IVersion
 
   public Version(int major, int minor, int micro)
   {
+    Element.checkArgument(major >= 0, "major");
+    Element.checkArgument(minor >= 0, "minor");
+    Element.checkArgument(micro >= 0, "micro");
     this.major = major;
     this.minor = minor;
     this.micro = micro;

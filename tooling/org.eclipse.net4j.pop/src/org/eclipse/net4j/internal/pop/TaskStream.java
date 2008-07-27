@@ -43,6 +43,7 @@ public class TaskStream extends Stream implements ITaskStream
 
   public IDelivery addDelivery(Date deliveryDate)
   {
+    checkArgument(deliveryDate, "deliveryDate");
     List<IDelivery> elements = deliveryContainer.getElements();
     synchronized (elements)
     {
@@ -54,6 +55,7 @@ public class TaskStream extends Stream implements ITaskStream
 
   public IDelivery getDeliveryByNumber(int number)
   {
+    checkArgument(number > 0, "number");
     for (IDelivery delivery : getDeliveries())
     {
       if (delivery.getNumber() == number)
@@ -67,6 +69,7 @@ public class TaskStream extends Stream implements ITaskStream
 
   public IDelivery getDelivery(int index)
   {
+    checkArgument(index >= 0, "index");
     return deliveryContainer.getElement(index);
   }
 
