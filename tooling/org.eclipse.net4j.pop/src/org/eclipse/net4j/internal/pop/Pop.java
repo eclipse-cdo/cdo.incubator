@@ -137,7 +137,7 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   public IBaseline resolve(BaselineProxy proxy)
   {
     IStream stream = getStream(proxy.getTicketID());
-    return stream.getBaseline(proxy.getTagName());
+    return stream.getBaselineByTagName(proxy.getTagName());
   }
 
   public void putStream(IStream stream)

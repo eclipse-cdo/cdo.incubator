@@ -30,6 +30,8 @@ import java.util.Date;
  */
 public abstract class Stream extends Element implements IStream
 {
+  protected ElementContainer<IBaseline> baselineContainer = new ElementContainer<IBaseline>(this);
+
   protected ElementContainer<IMerge> mergeContainer = new ElementContainer<IMerge>(this);
 
   private IBaseline baseline;
@@ -112,7 +114,7 @@ public abstract class Stream extends Element implements IStream
     return mergeContainer.getElements(IMerge.class);
   }
 
-  public IBaseline getBaseline(String tagName)
+  public IBaseline getBaselineByTagName(String tagName)
   {
     checkArgument(tagName, "tagName");
     return new Baseline(this, tagName);

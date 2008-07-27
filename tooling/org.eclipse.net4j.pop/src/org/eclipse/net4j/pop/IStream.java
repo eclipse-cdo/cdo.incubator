@@ -42,5 +42,5 @@ public interface IStream extends IElement
 
   public IMerge[] getMerges();
 
-  public IBaseline getBaseline(String tagName);
+  public IBaseline getBaselineByTagName(String tagName);
 }
