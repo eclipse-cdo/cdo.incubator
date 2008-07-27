@@ -40,7 +40,7 @@ public class Main
     System.out.println(pop.addCommitter(ticketUser, "estepper", new Date(), null));
 
     ITicket taskTicket = PopUtil.createTicket("200000");
-    ITaskStream taskStream = pop.addTaskStream(pop.getBaselineByTag("TAG"), taskTicket);
+    ITaskStream taskStream = pop.addTaskStream(pop.getBaseline("TAG"), taskTicket);
     System.out.println(taskStream);
 
     IDelivery delivery1 = taskStream.addDelivery(new Date());

@@ -39,6 +39,7 @@ public abstract class ElementProxy<ELEMENT extends IElement> implements IElement
   protected ElementProxy(IPop pop, String ticketID, ELEMENT element)
   {
     this(pop, ticketID);
+    Element.checkArgument(element, "element");
     cacheElement(element);
   }
 

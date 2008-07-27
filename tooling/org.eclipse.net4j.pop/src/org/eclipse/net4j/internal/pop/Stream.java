@@ -112,7 +112,7 @@ public abstract class Stream extends Element implements IStream
     return mergeContainer.getElements(IMerge.class);
   }
 
-  public IBaseline getBaselineByTag(String tagName)
+  public IBaseline getBaseline(String tagName)
   {
     checkArgument(tagName, "tagName");
     return new Baseline(this, tagName);

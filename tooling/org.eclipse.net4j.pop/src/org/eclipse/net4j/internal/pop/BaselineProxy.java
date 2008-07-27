@@ -42,6 +42,11 @@ public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
     return new BaselineProxy(getPop(), getTicketID(), tagName);
   }
 
+  public String getTagName()
+  {
+    return tagName;
+  }
+
   public IStream getStream()
   {
     return getElement().getStream();
