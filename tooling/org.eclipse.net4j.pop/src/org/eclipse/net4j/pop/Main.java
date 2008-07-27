@@ -10,10 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.internal.pop.ticket.TicketManager;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
+import org.eclipse.net4j.pop.ticket.ITicketManager;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 import org.eclipse.net4j.pop.util.PopUtil;
 
@@ -28,18 +30,21 @@ public class Main
 
   public static void main(String[] args)
   {
-    ITicketUser ticketUser = PopUtil.createTicketUser("Eike Stepper", "stepper@esc-net.de");
+    ITicketManager ticketManager = new TicketManager();
+    PopUtil.Internal.setTicketManager(ticketManager);
+
+    ITicketUser ticketUser = ticketManager.createTicketUser("Eike Stepper", "stepper@esc-net.de");
     System.out.println(ticketUser);
 
     IBranch mainBranch = PopUtil.createMainBranch("HEAD");
     System.out.println(mainBranch);
 
-    ITicket popTicket = PopUtil.createTicket("100000");
+    ITicket popTicket = ticketManager.createTicket("100000");
     IPop pop = PopUtil.createPop("CDO", mainBranch, popTicket);
     System.out.println(pop);
     System.out.println(pop.addCommitter(ticketUser, "estepper", new Date(), null));
 
-    ITicket taskTicket = PopUtil.createTicket("200000");
+    ITicket taskTicket = ticketManager.createTicket("200000");
     ITaskStream taskStream = pop.addTaskStream("TAG", taskTicket);
     System.out.println(taskStream);
 
@@ -68,7 +73,7 @@ public class Main
     System.out.println(release.addMilestone("RC1", new Date()));
     System.out.println(release.addMilestone("RC2", new Date()));
 
-    ITicket maintenanceTicket = PopUtil.createTicket("300000");
+    ITicket maintenanceTicket = ticketManager.createTicket("300000");
     IMaintenanceStream maintenanceStream = pop.addMaintenanceStream(release, maintenanceTicket);
     System.out.println(maintenanceStream);
 
