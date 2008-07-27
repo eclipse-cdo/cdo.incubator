@@ -15,11 +15,13 @@ import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -28,15 +30,14 @@ import java.util.Date;
  */
 public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskStream
 {
-  private TaskStreamProxy(IPop pop, String ticketID)
+  private TaskStreamProxy(IPopManager manager, ITask task)
   {
-    super(pop, ticketID);
-    ((Pop)getPop()).putStream(this);
+    super(manager, task);
   }
 
   private TaskStreamProxy(ITaskStream taskStream)
   {
-    super(taskStream.getPop(), taskStream.getTicket().getID(), taskStream);
+    super(taskStream.getPop().getManager(), taskStream.getTask(), taskStream);
   }
 
   public static TaskStreamProxy proxy(ITaskStream taskStream)
@@ -51,17 +52,17 @@ public class TaskStreamProxy extends ElementProxy<ITaskStream> implements ITaskS
 
   public TaskStreamProxy copy()
   {
-    return new TaskStreamProxy(getPop(), getTicketID());
+    return new TaskStreamProxy(getManager(), getTask());
+  }
+
+  public IPop getPop()
+  {
+    return getElement().getPop();
   }
 
   public IBranch getBranch()
   {
     return getElement().getBranch();
-  }
-
-  public ITicket getTicket()
-  {
-    return getElement().getTicket();
   }
 
   public IBaseline getBaseline()

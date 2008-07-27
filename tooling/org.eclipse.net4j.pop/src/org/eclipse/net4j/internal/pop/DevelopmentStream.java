@@ -20,6 +20,8 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import org.eclipse.mylyn.tasks.core.ITask;
+
 import java.util.Date;
 import java.util.List;
 
@@ -31,12 +33,12 @@ public abstract class DevelopmentStream extends IntegrationStream implements IDe
   protected ElementContainer<IMaintenanceStream> maintenanceStreamContainer = new ElementContainer<IMaintenanceStream>(
       this);
 
-  public DevelopmentStream(IBaseline baseline, IBranch branch, ITicket ticket)
+  protected DevelopmentStream(IBaseline baseline, IBranch branch, ITask task)
   {
-    super(baseline, branch, ticket);
+    super(baseline, branch, task);
   }
 
-  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket)
+  public IMaintenanceStream addMaintenanceStream(IRelease baseline,  ITask task)
   {
     checkArgument(baseline, "baseline");
     checkArgument(ticket, "ticket");

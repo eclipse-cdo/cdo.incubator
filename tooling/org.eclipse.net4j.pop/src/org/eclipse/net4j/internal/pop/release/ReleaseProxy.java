@@ -10,14 +10,15 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.release;
 
+import org.eclipse.net4j.internal.pop.InternalPopManager;
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IIntegrationStream;
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IMilestone;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -28,15 +29,15 @@ public class ReleaseProxy extends ElementProxy<IRelease> implements IRelease
 {
   private IVersion version;
 
-  private ReleaseProxy(IPop pop, String ticketID, IVersion version)
+  private ReleaseProxy(InternalPopManager manager, ITask task, IVersion version)
   {
-    super(pop, ticketID);
+    super(manager, task);
     this.version = version;
   }
 
   private ReleaseProxy(IRelease release)
   {
-    super(release.getStream().getPop(), release.getStream().getTicket().getID(), release);
+    super((InternalPopManager)release.getStream().getPop().getManager(), release.getStream().getTask(), release);
     version = release.getVersion();
   }
 
@@ -52,7 +53,7 @@ public class ReleaseProxy extends ElementProxy<IRelease> implements IRelease
 
   public ReleaseProxy copy()
   {
-    return new ReleaseProxy(getPop(), getTicketID(), version);
+    return new ReleaseProxy(getManager(), getTask(), version);
   }
 
   public IVersion getVersion()
@@ -98,6 +99,6 @@ public class ReleaseProxy extends ElementProxy<IRelease> implements IRelease
   @Override
   protected IRelease resolve()
   {
-    return ((IElementResolver)getPop()).resolve(this);
+    return getManager().resolve(this);
   }
 }

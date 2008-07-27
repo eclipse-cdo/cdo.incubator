@@ -8,9 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.util;
+package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.internal.pop.InternalPopManager;
+import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.util.IElement;
 
 import org.eclipse.mylyn.tasks.core.ITask;
@@ -18,13 +18,9 @@ import org.eclipse.mylyn.tasks.core.ITask;
 /**
  * @author Eike Stepper
  */
-public interface IElementProxy<ELEMENT extends IElement> extends IElement
+public interface IPopManager extends IElement
 {
-  public InternalPopManager getManager();
+  public IStream getStream(ITask task);
 
-  public ITask getTask();
-
-  public ELEMENT getElement();
-
-  public IElementProxy<? extends ELEMENT> copy();
+  public IPop createPop(String name, IBranch branch, String taskID);
 }

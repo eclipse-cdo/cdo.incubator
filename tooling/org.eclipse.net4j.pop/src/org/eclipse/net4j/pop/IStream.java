@@ -13,8 +13,9 @@ package org.eclipse.net4j.pop;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.util.IElement;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -32,7 +33,7 @@ public interface IStream extends IElement
 
   public IBranch getBranch();
 
-  public ITicket getTicket();
+  public ITask getTask();
 
   public IMerge addMerge(Date date, IDelivery delivery);
 

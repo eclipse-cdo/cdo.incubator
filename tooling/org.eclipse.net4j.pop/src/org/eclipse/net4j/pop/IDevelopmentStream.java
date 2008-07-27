@@ -11,7 +11,8 @@
 package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -23,7 +24,7 @@ public interface IDevelopmentStream extends IIntegrationStream
 {
   public IRelease addRelease(Date date, boolean compatible, int increment);
 
-  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITicket ticket);
+  public IMaintenanceStream addMaintenanceStream(IRelease baseline, ITask task);
 
   public int getMaintenanceStreamCount();
 

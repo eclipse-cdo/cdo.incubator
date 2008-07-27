@@ -16,7 +16,8 @@ import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.text.MessageFormat;
 import java.util.Date;
@@ -27,10 +28,10 @@ import java.util.List;
  */
 public class MaintenanceStream extends IntegrationStream implements IMaintenanceStream
 {
-  public MaintenanceStream(IRelease baseline, IBranch branch, ITicket ticket)
+  public MaintenanceStream(IRelease baseline, IBranch branch, ITask task)
   {
-    super(baseline, branch, ticket);
-    ((Pop)getPop()).putStream(this);
+    super(baseline, branch, task);
+    ((InternalPopManager)getPop().getManager()).putStream(this);
   }
 
   @Override

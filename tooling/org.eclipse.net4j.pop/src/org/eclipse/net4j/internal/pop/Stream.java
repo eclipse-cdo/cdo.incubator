@@ -20,8 +20,9 @@ import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
-import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.util.ImplementationError;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -38,16 +39,16 @@ public abstract class Stream extends Element implements IStream
 
   private IBranch branch;
 
-  private ITicket ticket;
+  private ITask task;
 
-  protected Stream(IBaseline baseline, IBranch branch, ITicket ticket)
+  protected Stream(IBaseline baseline, IBranch branch, ITask task)
   {
     checkArgument(baseline != null || this instanceof IPop, "baseline");
     checkArgument(branch, "branch");
-    checkArgument(ticket, "ticket");
+    checkArgument(task, "task");
     this.baseline = baseline;
     this.branch = branch;
-    this.ticket = ticket;
+    this.task = task;
   }
 
   public IBaseline getBaseline()
@@ -60,9 +61,9 @@ public abstract class Stream extends Element implements IStream
     return branch;
   }
 
-  public ITicket getTicket()
+  public ITask getTask()
   {
-    return ticket;
+    return task;
   }
 
   public IStream getParent()

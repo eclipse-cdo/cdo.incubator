@@ -30,7 +30,7 @@ public class TaskStream extends Stream implements ITaskStream
 {
   protected ElementContainer<IDelivery> deliveryContainer = new ElementContainer<IDelivery>(this);
 
-  public TaskStream(IBaseline baseline, IBranch branch, ITicket ticket)
+  public TaskStream(IBaseline baseline, IBranch branch,  ITask task)
   {
     super(baseline, branch, ticket);
   }

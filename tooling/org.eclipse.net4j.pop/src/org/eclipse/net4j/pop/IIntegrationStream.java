@@ -12,7 +12,8 @@ package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -24,9 +25,9 @@ public interface IIntegrationStream extends IStream
 {
   public IIntegrationStream getParent();
 
-  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket);
+  public ITaskStream addTaskStream(IBaseline baseline, ITask task);
 
-  public ITaskStream addTaskStream(String tagName, ITicket ticket);
+  public ITaskStream addTaskStream(String tagName, ITask task);
 
   public int getTaskStreamCount();
 

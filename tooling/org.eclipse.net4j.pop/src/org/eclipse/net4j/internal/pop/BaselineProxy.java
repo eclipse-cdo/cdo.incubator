@@ -11,11 +11,11 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementResolver;
 import org.eclipse.net4j.pop.IBaseline;
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 /**
  * @author Eike Stepper
@@ -24,15 +24,15 @@ public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
 {
   private String tagName;
 
-  private BaselineProxy(IPop pop, String ticketID, String tagName)
+  private BaselineProxy(InternalPopManager manager, ITask task, String tagName)
   {
-    super(pop, ticketID);
+    super(manager, task);
     this.tagName = tagName;
   }
 
   private BaselineProxy(IBaseline baseline)
   {
-    super(baseline.getStream().getPop(), baseline.getStream().getTicket().getID(), baseline);
+    super((InternalPopManager)baseline.getStream().getPop().getManager(), baseline.getStream().getTask(), baseline);
     tagName = baseline.getTag().getName();
   }
 
@@ -48,7 +48,7 @@ public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
 
   public BaselineProxy copy()
   {
-    return new BaselineProxy(getPop(), getTicketID(), tagName);
+    return new BaselineProxy(getManager(), getTask(), tagName);
   }
 
   public String getTagName()
@@ -69,6 +69,6 @@ public class BaselineProxy extends ElementProxy<IBaseline> implements IBaseline
   @Override
   protected IBaseline resolve()
   {
-    return ((IElementResolver)getPop()).resolve(this);
+    return getManager().resolve(this);
   }
 }

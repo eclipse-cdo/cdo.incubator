@@ -10,11 +10,12 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
+import org.eclipse.net4j.internal.pop.InternalPopManager;
 import org.eclipse.net4j.internal.pop.util.ElementProxy;
-import org.eclipse.net4j.internal.pop.util.IElementResolver;
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.delivery.IDelivery;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -25,15 +26,15 @@ public class DeliveryProxy extends ElementProxy<IDelivery> implements IDelivery
 {
   private int number;
 
-  private DeliveryProxy(IPop pop, String ticketID, int number)
+  private DeliveryProxy(InternalPopManager manager, ITask task, int number)
   {
-    super(pop, ticketID);
+    super(manager, task);
     this.number = number;
   }
 
   private DeliveryProxy(IDelivery delivery)
   {
-    super(delivery.getStream().getPop(), delivery.getStream().getTicket().getID(), delivery);
+    super((InternalPopManager)delivery.getStream().getPop().getManager(), delivery.getStream().getTask(), delivery);
     number = delivery.getNumber();
   }
 
@@ -49,7 +50,7 @@ public class DeliveryProxy extends ElementProxy<IDelivery> implements IDelivery
 
   public DeliveryProxy copy()
   {
-    return new DeliveryProxy(getPop(), getTicketID(), number);
+    return new DeliveryProxy(getManager(), getTask(), number);
   }
 
   public int getNumber()
@@ -70,6 +71,6 @@ public class DeliveryProxy extends ElementProxy<IDelivery> implements IDelivery
   @Override
   protected IDelivery resolve()
   {
-    return ((IElementResolver)getPop()).resolve(this);
+    return getManager().resolve(this);
   }
 }

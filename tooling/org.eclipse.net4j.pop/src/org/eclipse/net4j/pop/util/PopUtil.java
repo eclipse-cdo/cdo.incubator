@@ -10,13 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.util;
 
-import org.eclipse.net4j.internal.pop.Pop;
-import org.eclipse.net4j.internal.pop.code.DefaultCodeStrategy;
 import org.eclipse.net4j.internal.pop.code.MainBranch;
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.code.IBranch;
-import org.eclipse.net4j.pop.code.ICodeStrategy;
-import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketManager;
 
 /**
@@ -40,15 +35,15 @@ public final class PopUtil
     return new MainBranch(name);
   }
 
-  public static IPop createPop(String name, IBranch branch, ITicket ticket)
-  {
-    return createPop(name, branch, ticket, new DefaultCodeStrategy());
-  }
-
-  public static IPop createPop(String name, IBranch branch, ITicket ticket, ICodeStrategy strategy)
-  {
-    return new Pop(name, strategy, branch, ticket);
-  }
+  // public static IPop createPop(String name, IBranch branch,  ITask task)
+  // {
+  // return createPop(name, branch, ticket, new DefaultCodeStrategy());
+  // }
+  //
+  // public static IPop createPop(String name, IBranch branch,  ITask task, ICodeStrategy strategy)
+  // {
+  // return new Pop(name, strategy, branch, ticket);
+  // }
 
   /**
    * @author Eike Stepper

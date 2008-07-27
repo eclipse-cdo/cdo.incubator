@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IDevelopmentStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
@@ -24,6 +25,8 @@ import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
 import org.eclipse.net4j.pop.ticket.ITicket;
 
+import org.eclipse.mylyn.tasks.core.ITask;
+
 import java.util.Date;
 
 /**
@@ -31,14 +34,14 @@ import java.util.Date;
  */
 public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> implements IMaintenanceStream
 {
-  private MaintenanceStreamProxy(IPop pop, String ticketID)
+  private MaintenanceStreamProxy(IPopManager manager, ITask task)
   {
-    super(pop, ticketID);
+    super(manager, task);
   }
 
   private MaintenanceStreamProxy(IMaintenanceStream maintenanceStream)
   {
-    super(maintenanceStream.getPop(), maintenanceStream.getTicket().getID(), maintenanceStream);
+    super(maintenanceStream.getPop().getManager(), maintenanceStream.getTask(), maintenanceStream);
   }
 
   public static MaintenanceStreamProxy proxy(IMaintenanceStream maintenanceStream)
@@ -53,17 +56,17 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
 
   public MaintenanceStreamProxy copy()
   {
-    return new MaintenanceStreamProxy(getPop(), getTicketID());
+    return new MaintenanceStreamProxy(getManager(), getTask());
+  }
+
+  public IPop getPop()
+  {
+    return getElement().getPop();
   }
 
   public IBranch getBranch()
   {
     return getElement().getBranch();
-  }
-
-  public ITicket getTicket()
-  {
-    return getElement().getTicket();
   }
 
   public IRelease getBaseline()
@@ -121,12 +124,12 @@ public class MaintenanceStreamProxy extends ElementProxy<IMaintenanceStream> imp
     return getElement().getReleases();
   }
 
-  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
+  public ITaskStream addTaskStream(IBaseline baseline,  ITask task)
   {
     return getElement().addTaskStream(baseline, ticket);
   }
 
-  public ITaskStream addTaskStream(String tagName, ITicket ticket)
+  public ITaskStream addTaskStream(String tagName,  ITask task)
   {
     return getElement().addTaskStream(tagName, ticket);
   }

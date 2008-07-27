@@ -20,7 +20,8 @@ import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.util.Date;
 
@@ -33,9 +34,9 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
 
   protected ElementContainer<IRelease> releaseContainer = new ElementContainer<IRelease>(this);
 
-  protected IntegrationStream(IBaseline baseline, IBranch branch, ITicket ticket)
+  protected IntegrationStream(IBaseline baseline, IBranch branch, ITask task)
   {
-    super(baseline, branch, ticket);
+    super(baseline, branch, task);
   }
 
   @Override
@@ -44,10 +45,10 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return (IIntegrationStream)super.getParent();
   }
 
-  public ITaskStream addTaskStream(IBaseline baseline, ITicket ticket)
+  public ITaskStream addTaskStream(IBaseline baseline, ITask task)
   {
     checkArgument(baseline, "baseline");
-    checkArgument(ticket, "ticket");
+    checkArgument(task, "task");
     if (baseline instanceof IRelease)
     {
       IRelease release = (IRelease)baseline;
@@ -58,16 +59,16 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
       baseline = BaselineProxy.proxy(baseline);
     }
 
-    IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, ticket);
-    ITaskStream taskStream = new TaskStream(baseline, branch, ticket);
+    IBranch branch = getPop().getCodeStrategy().createTaskBranch(baseline, task);
+    ITaskStream taskStream = new TaskStream(baseline, branch, task);
     taskStreamContainer.addElement(TaskStreamProxy.proxy(taskStream));
     return taskStream;
   }
 
-  public ITaskStream addTaskStream(String tagName, ITicket ticket)
+  public ITaskStream addTaskStream(String tagName, ITask task)
   {
     IBaseline baseline = addBaseline(tagName);
-    return addTaskStream(baseline, ticket);
+    return addTaskStream(baseline, task);
   }
 
   public ITaskStream getTaskStream(int index)

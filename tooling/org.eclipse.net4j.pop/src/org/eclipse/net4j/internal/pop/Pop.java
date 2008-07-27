@@ -11,51 +11,45 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.Committer;
-import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
-import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
-import org.eclipse.net4j.internal.pop.util.IElementResolver;
-import org.eclipse.net4j.pop.IBaseline;
-import org.eclipse.net4j.pop.IIntegrationStream;
-import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.IStream;
-import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;
-import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
-import org.eclipse.net4j.util.ImplementationError;
-import org.eclipse.net4j.util.ref.ReferenceValueMap;
 
 import java.text.MessageFormat;
 import java.util.Date;
-import java.util.concurrent.ConcurrentMap;
 
 /**
  * @author Eike Stepper
  */
-public class Pop extends DevelopmentStream implements IPop, IElementResolver
+public class Pop extends DevelopmentStream implements IPop
 {
   protected ElementContainer<ICommitter> committerContainer = new ElementContainer<ICommitter>(this);
 
-  private ConcurrentMap<String, IStream> streamCache = new ReferenceValueMap.Weak<String, IStream>();
+  private InternalPopManager manager;
 
   private String name;
 
   private ICodeStrategy strategy;
 
-  public Pop(String name, ICodeStrategy strategy, IBranch branch, ITicket ticket)
+  public Pop(InternalPopManager manager, String name, ICodeStrategy strategy, IBranch branch,  ITask task)
   {
     super(null, branch, ticket);
+    checkArgument(manager, "manager");
     checkArgument(name, "name");
     checkArgument(strategy, "strategy");
+    this.manager = manager;
     this.name = name;
     this.strategy = strategy;
-    putStream(this);
+    manager.putStream(this);
+  }
+
+  public InternalPopManager getManager()
+  {
+    return manager;
   }
 
   @Override
@@ -111,68 +105,5 @@ public class Pop extends DevelopmentStream implements IPop, IElementResolver
   {
     return MessageFormat.format("Pop[name={0}, branch={1}, ticket={2}]", name, getBranch().getName(), getTicket()
         .getID());
-  }
-
-  public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
-  {
-    return (IMaintenanceStream)getStream(proxy.getTicketID());
-  }
-
-  public ITaskStream resolve(TaskStreamProxy proxy)
-  {
-    return (ITaskStream)getStream(proxy.getTicketID());
-  }
-
-  public IDelivery resolve(DeliveryProxy proxy)
-  {
-    ITaskStream stream = (ITaskStream)getStream(proxy.getTicketID());
-    return stream.getDeliveryByNumber(proxy.getNumber());
-  }
-
-  public IRelease resolve(ReleaseProxy proxy)
-  {
-    IIntegrationStream stream = (IIntegrationStream)getStream(proxy.getTicketID());
-    return stream.getReleaseByVersion(proxy.getVersion());
-  }
-
-  public IBaseline resolve(BaselineProxy proxy)
-  {
-    IStream stream = getStream(proxy.getTicketID());
-    return stream.getBaselineByTagName(proxy.getTagName());
-  }
-
-  public void putStream(IStream stream)
-  {
-    synchronized (streamCache)
-    {
-      String ticketID = stream.getTicket().getID();
-      streamCache.putIfAbsent(ticketID, stream);
-    }
-  }
-
-  public IStream getStream(String ticketID)
-  {
-    synchronized (streamCache)
-    {
-      IStream stream = streamCache.get(ticketID);
-      if (stream == null)
-      {
-        stream = resolveStream(ticketID);
-        if (stream == null)
-        {
-          throw new ImplementationError("resolveStream() must not return null");
-        }
-
-        streamCache.put(ticketID, stream);
-      }
-
-      return stream;
-    }
-  }
-
-  private IStream resolveStream(String ticketID)
-  {
-    // TODO Implement Pop.resolveStream(ticketID)
-    throw new UnsupportedOperationException("Not yet implemented");
   }
 }

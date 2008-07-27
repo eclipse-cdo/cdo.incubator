@@ -20,7 +20,8 @@ import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ITag;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
-import org.eclipse.net4j.pop.ticket.ITicket;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 /**
  * @author Eike Stepper
@@ -31,27 +32,27 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
   {
   }
 
-  public IBranch createMaintenanceBranch(IRelease baseline, ITicket ticket)
+  public IBranch createMaintenanceBranch(IRelease baseline, ITask task)
   {
     checkArgument(baseline, "baseline");
-    checkArgument(ticket, "ticket");
-    String branchName = getMaintenanceBranchName(baseline, ticket);
+    checkArgument(task, "task");
+    String branchName = getMaintenanceBranchName(baseline, task);
     return createBranch(baseline, branchName);
   }
 
-  public IBranch createTaskBranch(IBaseline baseline, ITicket ticket)
+  public IBranch createTaskBranch(IBaseline baseline, ITask task)
   {
     checkArgument(baseline, "baseline");
-    checkArgument(ticket, "ticket");
-    String branchName = getTaskBranchName(baseline, ticket);
+    checkArgument(task, "task");
+    String branchName = getTaskBranchName(baseline, task);
     return createBranch(baseline, branchName);
   }
 
-  public IBaseline createTaskBaseline(IIntegrationStream stream, ITicket ticket)
+  public IBaseline createTaskBaseline(IIntegrationStream stream, ITask task)
   {
     checkArgument(stream, "stream");
-    checkArgument(ticket, "ticket");
-    String branchName = getTaskBranchName(stream, ticket);
+    checkArgument(task, "task");
+    String branchName = getTaskBranchName(stream, task);
     String tagName = getStartTag(branchName);
     return new Baseline(stream, tagName);
   }
@@ -88,21 +89,21 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     return baselineBranch.addBranch(branchName, tag);
   }
 
-  protected String getMaintenanceBranchName(IRelease baseline, ITicket ticket)
+  protected String getMaintenanceBranchName(IRelease baseline, ITask task)
   {
     IVersion baselineVersion = baseline.getVersion();
     return "R" + baselineVersion.getMajor() + "_" + baselineVersion.getMinor() + "_maintenance";
   }
 
-  protected String getTaskBranchName(IBaseline baseline, ITicket ticket)
+  protected String getTaskBranchName(IBaseline baseline, ITask task)
   {
     IIntegrationStream stream = (IIntegrationStream)baseline.getStream();
-    return getTaskBranchName(stream, ticket);
+    return getTaskBranchName(stream, task);
   }
 
-  protected String getTaskBranchName(IIntegrationStream stream, ITicket ticket)
+  protected String getTaskBranchName(IIntegrationStream stream, ITask task)
   {
-    return "task_" + ticket.getID();
+    return "task_" + task.getTaskId();
   }
 
   protected String getReleaseTagName(IStream stream, IVersion version)

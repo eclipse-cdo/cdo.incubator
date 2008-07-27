@@ -10,10 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.util;
 
-import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.internal.pop.InternalPopManager;
+import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.util.IElement;
 import org.eclipse.net4j.util.ImplementationError;
 import org.eclipse.net4j.util.event.IListener;
+
+import org.eclipse.mylyn.tasks.core.ITask;
 
 import java.lang.ref.WeakReference;
 
@@ -22,35 +25,35 @@ import java.lang.ref.WeakReference;
  */
 public abstract class ElementProxy<ELEMENT extends IElement> implements IElementProxy<ELEMENT>
 {
-  private IPop pop;
+  private InternalPopManager manager;
 
-  private String ticketID;
+  private ITask task;
 
   private WeakReference<ELEMENT> cache;
 
-  protected ElementProxy(IPop pop, String ticketID)
+  protected ElementProxy(IPopManager manager, ITask task)
   {
-    Element.checkArgument(pop, "pop");
-    Element.checkArgument(ticketID, "ticketID");
-    this.pop = pop;
-    this.ticketID = ticketID;
+    Element.checkArgument(manager, "manager");
+    Element.checkArgument(task, "task");
+    this.manager = (InternalPopManager)manager;
+    this.task = task;
   }
 
-  protected ElementProxy(IPop pop, String ticketID, ELEMENT element)
+  protected ElementProxy(IPopManager manager, ITask task, ELEMENT element)
   {
-    this(pop, ticketID);
+    this(manager, task);
     Element.checkArgument(element, "element");
     cacheElement(element);
   }
 
-  public IPop getPop()
+  public InternalPopManager getManager()
   {
-    return pop;
+    return manager;
   }
 
-  public String getTicketID()
+  public ITask getTask()
   {
-    return ticketID;
+    return task;
   }
 
   public IListener[] getListeners()
