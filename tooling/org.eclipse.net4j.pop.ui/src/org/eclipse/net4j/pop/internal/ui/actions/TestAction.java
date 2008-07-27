@@ -14,79 +14,42 @@ import org.eclipse.net4j.pop.internal.ui.mylyn.EditorUtil;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.jface.action.IAction;
-import org.eclipse.jface.dialogs.MessageDialog;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.mylyn.tasks.core.AbstractRepositoryConnector;
-import org.eclipse.mylyn.tasks.core.IRepositoryManager;
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.RepositoryResponse;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
-import org.eclipse.mylyn.tasks.core.data.ITaskDataManager;
 import org.eclipse.mylyn.tasks.core.data.ITaskDataWorkingCopy;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
 import org.eclipse.mylyn.tasks.core.data.TaskAttributeMapper;
 import org.eclipse.mylyn.tasks.core.data.TaskData;
 import org.eclipse.mylyn.tasks.core.data.TaskDataModel;
-import org.eclipse.mylyn.tasks.ui.TasksUi;
-import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IObjectActionDelegate;
-import org.eclipse.ui.IWorkbenchPart;
 
 import java.util.List;
 
 /**
  * @author Eike Stepper
  */
-public class TestAction implements IObjectActionDelegate
+public class TestAction extends TaskAction
 {
-  private static final IRepositoryManager repositoryManager = TasksUi.getRepositoryManager();
-
-  private static final ITaskDataManager taskDataManager = TasksUi.getTaskDataManager();
-
-  private Shell shell;
-
-  private ISelection selection;
-
   public TestAction()
   {
   }
 
-  public void setActivePart(IAction action, IWorkbenchPart targetPart)
+  @Override
+  protected void run(ITask task) throws Exception
   {
-    shell = targetPart.getSite().getShell();
-  }
+    ITaskDataWorkingCopy taskDataState = TASK_DATA_MANAGER.getWorkingCopy(task);
+    String connectorKind = taskDataState.getConnectorKind();
+    String repositoryUrl = taskDataState.getRepositoryUrl();
+    TaskRepository repository = REPOSITORY_MANAGER.getRepository(connectorKind, repositoryUrl);
 
-  public void selectionChanged(IAction action, ISelection selection)
-  {
-    this.selection = selection;
-  }
+    TaskDataModel model = new TaskDataModel(repository, task, taskDataState);
+    TaskData taskData = model.getTaskData();
 
-  public void run(IAction action)
-  {
-    try
-    {
-      ITask task = (ITask)((IStructuredSelection)selection).getFirstElement();
-
-      ITaskDataWorkingCopy taskDataState = taskDataManager.getWorkingCopy(task);
-      String connectorKind = taskDataState.getConnectorKind();
-      String repositoryUrl = taskDataState.getRepositoryUrl();
-      TaskRepository repository = repositoryManager.getRepository(connectorKind, repositoryUrl);
-
-      TaskDataModel model = new TaskDataModel(repository, task, taskDataState);
-      TaskData taskData = model.getTaskData();
-
-      addComment(taskData);
-      taskData = postTaskData(repository, task, taskData);
-      EditorUtil.synchronizeTask(repository, task);
-      dumpComments(taskData);
-    }
-    catch (Exception ex)
-    {
-      ex.printStackTrace();
-      MessageDialog.openInformation(shell, "Mylyn Plug-in", "TEST failed.");
-    }
+    addComment(taskData);
+    taskData = postTaskData(repository, task, taskData);
+    EditorUtil.synchronizeTask(repository, task);
+    dumpComments(taskData);
   }
 
   private void dumpComments(TaskData taskData)
@@ -111,7 +74,7 @@ public class TestAction implements IObjectActionDelegate
   @SuppressWarnings("restriction")
   private TaskData postTaskData(TaskRepository repository, ITask task, TaskData taskData) throws CoreException
   {
-    AbstractRepositoryConnector connector = repositoryManager.getRepositoryConnector(repository.getConnectorKind());
+    AbstractRepositoryConnector connector = REPOSITORY_MANAGER.getRepositoryConnector(repository.getConnectorKind());
     RepositoryResponse response = connector.getTaskDataHandler().postTaskData(repository, taskData, null,
         new NullProgressMonitor());
 
@@ -123,7 +86,7 @@ public class TestAction implements IObjectActionDelegate
           .getRepositoryUrl(), updatedTaskData.getTaskId());
     }
 
-    ((org.eclipse.mylyn.internal.tasks.core.data.TaskDataManager)taskDataManager).putSubmittedTaskData(task,
+    ((org.eclipse.mylyn.internal.tasks.core.data.TaskDataManager)TASK_DATA_MANAGER).putSubmittedTaskData(task,
         updatedTaskData);
     return updatedTaskData;
   }
