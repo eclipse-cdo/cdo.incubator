@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
-import org.eclipse.net4j.pop.release.IRelease;
+import org.eclipse.net4j.pop.release.ITargetBaseline;
 
 /**
  * @author Eike Stepper
@@ -20,5 +20,5 @@ public interface IMaintenanceStream extends IIntegrationStream
 {
   public IDevelopmentStream getParent();
 
-  public IRelease getBaseline();
+  public ITargetBaseline getBaseline();
 }

@@ -8,16 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.internal.pop.util.IElementResolver;
-import org.eclipse.net4j.pop.IPopManager;
-import org.eclipse.net4j.pop.IStream;
+import org.eclipse.net4j.pop.IBaseline;
 
 /**
  * @author Eike Stepper
  */
-public interface InternalPopManager extends IPopManager, IElementResolver
+public interface ITargetBaseline extends IBaseline
 {
-  public void putStream(IStream stream);
+  public ITarget getTarget();
 }

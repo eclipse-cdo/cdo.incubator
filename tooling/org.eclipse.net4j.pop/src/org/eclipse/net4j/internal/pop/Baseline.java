@@ -16,27 +16,32 @@ import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
 
 import java.text.MessageFormat;
+import java.util.Date;
 
 /**
  * @author Eike Stepper
  */
 public class Baseline extends Element implements IBaseline
 {
-  private IStream stream;
+  private StreamProxy<IStream> stream;
 
   private ITag tag;
 
-  public Baseline(IStream stream, String tagName)
+  private Date date;
+
+  public Baseline(IStream stream, ITag tag, Date date)
   {
     checkArgument(stream, "stream");
-    checkArgument(tagName, "tagName");
-    this.stream = stream;
-    tag = stream.getBranch().addTag(tagName);
+    checkArgument(tag, "tag");
+    checkArgument(date, "date");
+    this.stream = StreamProxy.proxy(stream);
+    this.tag = tag;
+    this.date = date;
   }
 
   public IStream getStream()
   {
-    return stream;
+    return stream.unproxy();
   }
 
   public ITag getTag()
@@ -44,9 +49,14 @@ public class Baseline extends Element implements IBaseline
     return tag;
   }
 
+  public Date getDate()
+  {
+    return date;
+  }
+
   @Override
   public String toString()
   {
-    return MessageFormat.format("Baseline[tag={0}]", tag.getName());
+    return MessageFormat.format("Baseline[tag={0}, date={1,date} {1,time}]", tag.getName(), date);
   }
 }

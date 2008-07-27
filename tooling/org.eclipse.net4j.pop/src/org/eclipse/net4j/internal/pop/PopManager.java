@@ -11,19 +11,12 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.code.DefaultCodeStrategy;
-import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
-import org.eclipse.net4j.internal.pop.release.ReleaseProxy;
 import org.eclipse.net4j.internal.pop.util.Element;
-import org.eclipse.net4j.pop.IBaseline;
-import org.eclipse.net4j.pop.IIntegrationStream;
-import org.eclipse.net4j.pop.IMaintenanceStream;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
-import org.eclipse.net4j.pop.ITaskStream;
+import org.eclipse.net4j.pop.InternalPopManager;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
-import org.eclipse.net4j.pop.delivery.IDelivery;
-import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.util.ImplementationError;
 import org.eclipse.net4j.util.ref.ReferenceValueMap;
 
@@ -93,31 +86,31 @@ public abstract class PopManager extends Element implements InternalPopManager
     throw new UnsupportedOperationException("Not yet implemented");
   }
 
-  public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
-  {
-    return (IMaintenanceStream)getStream(proxy.getTask());
-  }
-
-  public ITaskStream resolve(TaskStreamProxy proxy)
-  {
-    return (ITaskStream)getStream(proxy.getTask());
-  }
-
-  public IDelivery resolve(DeliveryProxy proxy)
-  {
-    ITaskStream stream = (ITaskStream)getStream(proxy.getTask());
-    return stream.getDeliveryByNumber(proxy.getNumber());
-  }
-
-  public IRelease resolve(ReleaseProxy proxy)
-  {
-    IIntegrationStream stream = (IIntegrationStream)getStream(proxy.getTask());
-    return stream.getReleaseByVersion(proxy.getVersion());
-  }
-
-  public IBaseline resolve(BaselineProxy proxy)
-  {
-    IStream stream = getStream(proxy.getTask());
-    return stream.getBaselineByTagName(proxy.getTagName());
-  }
+  // public IMaintenanceStream resolve(MaintenanceStreamProxy proxy)
+  // {
+  // return (IMaintenanceStream)getStream(proxy.getTask());
+  // }
+  //
+  // public ITaskStream resolve(TaskStreamProxy proxy)
+  // {
+  // return (ITaskStream)getStream(proxy.getTask());
+  // }
+  //
+  // public IDelivery resolve(DeliveryProxy proxy)
+  // {
+  // ITaskStream stream = (ITaskStream)getStream(proxy.getTask());
+  // return stream.getDeliveryByNumber(proxy.getNumber());
+  // }
+  //
+  // public IRelease resolve(ReleaseProxy proxy)
+  // {
+  // IIntegrationStream stream = (IIntegrationStream)getStream(proxy.getTask());
+  // return stream.getReleaseByVersion(proxy.getVersion());
+  // }
+  //
+  // public IBaseline resolve(BaselineProxy proxy)
+  // {
+  // IStream stream = getStream(proxy.getTask());
+  // return stream.getBaselineByTagName(proxy.getTagName());
+  // }
 }

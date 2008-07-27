@@ -10,13 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.delivery.DeliveryProxy;
 import org.eclipse.net4j.internal.pop.delivery.Merge;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IStream;
+import org.eclipse.net4j.pop.InternalPopManager;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
@@ -49,6 +49,12 @@ public abstract class Stream extends Element implements IStream
     this.baseline = baseline;
     this.branch = branch;
     this.task = task;
+  }
+
+  @Deprecated
+  protected InternalPopManager getManager()
+  {
+    return (InternalPopManager)getPop().getManager();
   }
 
   public IBaseline getBaseline()
@@ -93,7 +99,7 @@ public abstract class Stream extends Element implements IStream
   {
     checkArgument(date, "date");
     checkArgument(delivery, "delivery");
-    IMerge merge = new Merge(this, date, DeliveryProxy.proxy(delivery));
+    IMerge merge = new Merge(this, date, delivery);
     mergeContainer.addElement(merge);
     return merge;
   }

@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.code.Committer;
 import org.eclipse.net4j.internal.pop.util.ElementContainer;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.InternalPopManager;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ICommitter;

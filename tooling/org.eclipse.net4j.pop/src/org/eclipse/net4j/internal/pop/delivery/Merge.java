@@ -10,8 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
+import org.eclipse.net4j.internal.pop.StreamProxy;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IStream;
+import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.delivery.IDelivery;
 import org.eclipse.net4j.pop.delivery.IMerge;
 
@@ -27,7 +29,9 @@ public class Merge extends Element implements IMerge
 
   private Date date;
 
-  private IDelivery delivery;
+  private StreamProxy<ITaskStream> deliveryStream;
+
+  private int deliveryNumber;
 
   public Merge(IStream stream, Date date, IDelivery delivery)
   {
@@ -36,7 +40,8 @@ public class Merge extends Element implements IMerge
     checkArgument(delivery, "delivery");
     this.stream = stream;
     this.date = date;
-    this.delivery = delivery;
+    deliveryStream = StreamProxy.proxy(delivery.getStream());
+    deliveryNumber = delivery.getNumber();
   }
 
   public IStream getStream()
@@ -51,13 +56,14 @@ public class Merge extends Element implements IMerge
 
   public IDelivery getDelivery()
   {
-    return delivery;
+    ITaskStream taskStream = deliveryStream.unproxy();
+    return taskStream.getDeliveryByNumber(deliveryNumber);
   }
 
   @Override
   public String toString()
   {
-    return MessageFormat.format("Merge[branch={0}, date={1,date} {1,time}, delivery={2}, number={3}]", stream
-        .getBranch().getName(), date, delivery.getStream().getBranch().getName(), delivery.getNumber());
+    return MessageFormat.format("Merge[branch={0}, date={1,date} {1,time}, task={2}, number={3}]", stream.getBranch()
+        .getName(), date, deliveryStream.getTask().getTaskId(), deliveryNumber);
   }
 }

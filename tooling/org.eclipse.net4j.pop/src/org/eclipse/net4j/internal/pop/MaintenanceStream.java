@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.release.Version;
 import org.eclipse.net4j.pop.IDevelopmentStream;
 import org.eclipse.net4j.pop.IMaintenanceStream;
+import org.eclipse.net4j.pop.InternalPopManager;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.release.IRelease;
 import org.eclipse.net4j.pop.release.IVersion;
