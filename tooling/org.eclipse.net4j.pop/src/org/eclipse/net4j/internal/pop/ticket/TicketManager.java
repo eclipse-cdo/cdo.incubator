@@ -15,13 +15,34 @@ import org.eclipse.net4j.pop.ticket.ITicket;
 import org.eclipse.net4j.pop.ticket.ITicketManager;
 import org.eclipse.net4j.pop.ticket.ITicketUser;
 
+import org.eclipse.mylyn.tasks.core.IRepositoryManager;
+import org.eclipse.mylyn.tasks.core.data.ITaskDataManager;
+
 /**
  * @author Eike Stepper
  */
 public class TicketManager extends Element implements ITicketManager
 {
-  public TicketManager()
+  private IRepositoryManager repositoryManager;
+
+  private ITaskDataManager taskDataManager;
+
+  public TicketManager(IRepositoryManager repositoryManager, ITaskDataManager taskDataManager)
   {
+    checkArgument(repositoryManager, "repositoryManager");
+    checkArgument(taskDataManager, "taskDataManager");
+    this.repositoryManager = repositoryManager;
+    this.taskDataManager = taskDataManager;
+  }
+
+  public IRepositoryManager getRepositoryManager()
+  {
+    return repositoryManager;
+  }
+
+  public ITaskDataManager getTaskDataManager()
+  {
+    return taskDataManager;
   }
 
   public ITicketUser createTicketUser(String name, String email, String ticketAccount)

@@ -39,9 +39,9 @@ import java.util.List;
  */
 public class TestAction implements IObjectActionDelegate
 {
-  private static final ITaskDataManager taskDataManager = TasksUi.getTaskDataManager();
-
   private static final IRepositoryManager repositoryManager = TasksUi.getRepositoryManager();
+
+  private static final ITaskDataManager taskDataManager = TasksUi.getTaskDataManager();
 
   private Shell shell;
 
