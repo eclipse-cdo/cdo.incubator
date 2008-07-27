@@ -30,7 +30,7 @@
         upperBound="-1" eType="#//Committer" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Delivery"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//Target #//Baseline">
+  <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//Target">
     <eStructuralFeatures xsi:type="ecore:EReference" name="milestones" upperBound="-1"
         eType="#//Milestone" containment="true"/>
   </eClassifiers>
@@ -40,7 +40,6 @@
         eType="#//Delivery"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Baseline"/>
-  <eClassifiers xsi:type="ecore:EClass" name="Target"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Target" eSuperTypes="#//Baseline"/>
   <eClassifiers xsi:type="ecore:EClass" name="Committer"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DateBaseline" eSuperTypes="#//Baseline"/>
 </ecore:EPackage>

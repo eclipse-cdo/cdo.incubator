@@ -10,13 +10,11 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.IBaseline;
-
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
  */
-public interface IRelease extends ITarget, IBaseline
+public interface IRelease extends ITarget
 {
   public IVersion getVersion();
 

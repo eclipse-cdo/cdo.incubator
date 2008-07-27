@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.Baseline;
 import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IIntegrationStream;
+import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.IBranch;
 import org.eclipse.net4j.pop.code.ICodeStrategy;
 import org.eclipse.net4j.pop.code.ITag;
@@ -104,7 +105,7 @@ public class DefaultCodeStrategy extends Element implements ICodeStrategy
     return "task_" + ticket.getID();
   }
 
-  protected String getReleaseTagName(IIntegrationStream stream, IVersion version)
+  protected String getReleaseTagName(IStream stream, IVersion version)
   {
     return "release_" + version.getMajor() + "_" + version.getMinor() + "_" + version.getMicro();
   }

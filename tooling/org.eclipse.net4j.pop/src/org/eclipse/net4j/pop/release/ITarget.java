@@ -10,17 +10,17 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.release;
 
-import org.eclipse.net4j.pop.IIntegrationStream;
+import org.eclipse.net4j.pop.IBaseline;
+import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
-import org.eclipse.net4j.pop.util.IElement;
 
 /**
  * @author Eike Stepper
  * @noimplement This interface is not intended to be implemented by clients.
  */
-public interface ITarget extends IElement
+public interface ITarget extends IBaseline
 {
-  public IIntegrationStream getStream();
+  public IStream getStream();
 
   public ITag getTag();
 }
