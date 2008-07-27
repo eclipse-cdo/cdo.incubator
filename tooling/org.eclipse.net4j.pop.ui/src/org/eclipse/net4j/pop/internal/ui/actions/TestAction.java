@@ -10,6 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.actions;
 
+import org.eclipse.net4j.pop.internal.ui.mylyn.EditorUtil;
+
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.action.IAction;
