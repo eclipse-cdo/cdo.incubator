@@ -63,6 +63,12 @@ public abstract class IntegrationStream extends Stream implements IIntegrationSt
     return taskStream;
   }
 
+  public ITaskStream addTaskStream(String tagName, ITicket ticket)
+  {
+    IBaseline baseline = addBaseline(tagName);
+    return addTaskStream(baseline, ticket);
+  }
+
   public ITaskStream getTaskStream(int index)
   {
     checkArgument(index >= 0, "index");
