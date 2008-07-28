@@ -10,8 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.actions;
 
-import org.eclipse.net4j.pop.internal.ui.mylyn.EditorUtil;
-
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
@@ -32,13 +30,13 @@ public class TestAction extends TaskDataAction
   @Override
   protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
   {
-    addComment(taskData);
-    taskData = postTaskData(repository, task, taskData);
-    EditorUtil.synchronizeTask(repository, task);
-    dumpComments(taskData);
+    // addComment(taskData);
+    // taskData = postTaskData(repository, task, taskData);
+    // EditorUtil.synchronizeTask(repository, task);
+    // dumpComments(taskData);
   }
 
-  private void dumpComments(TaskData taskData)
+  protected void dumpComments(TaskData taskData)
   {
     TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
     List<TaskAttribute> comments = attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT);
@@ -50,7 +48,7 @@ public class TestAction extends TaskDataAction
     }
   }
 
-  private void addComment(TaskData taskData)
+  protected void addComment(TaskData taskData)
   {
     TaskAttribute root = taskData.getRoot();
     TaskAttribute commentAttribute = root.createMappedAttribute(TaskAttribute.COMMENT_NEW);
