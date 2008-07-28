@@ -10,8 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.delivery;
 
-import org.eclipse.net4j.internal.pop.StreamProxy;
 import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.util.StreamProxy;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.ITaskStream;
 import org.eclipse.net4j.pop.delivery.IDelivery;

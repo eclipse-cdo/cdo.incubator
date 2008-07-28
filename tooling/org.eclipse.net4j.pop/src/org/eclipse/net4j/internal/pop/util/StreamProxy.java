@@ -8,12 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.internal.pop.util;
 
-import org.eclipse.net4j.internal.pop.util.Element;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.InternalPopManager;
 import org.eclipse.net4j.util.ImplementationError;
+import org.eclipse.net4j.util.ObjectUtil;
 
 import org.eclipse.mylyn.tasks.core.ITask;
 
@@ -23,7 +23,7 @@ import java.text.MessageFormat;
 /**
  * @author Eike Stepper
  */
-public final class StreamProxy<STREAM extends IStream>
+public final class StreamProxy<STREAM extends IStream> extends Element
 {
   private InternalPopManager manager;
 
@@ -58,6 +58,34 @@ public final class StreamProxy<STREAM extends IStream>
   public ITask getTask()
   {
     return task;
+  }
+
+  public boolean isProxyFor(STREAM stream)
+  {
+    return ObjectUtil.equals(manager, stream.getManager()) && ObjectUtil.equals(task, stream.getTask());
+  }
+
+  @Override
+  public boolean equals(Object obj)
+  {
+    if (obj == this)
+    {
+      return true;
+    }
+
+    if (obj instanceof StreamProxy)
+    {
+      StreamProxy<?> that = (StreamProxy<?>)obj;
+      return ObjectUtil.equals(manager, that.manager) && ObjectUtil.equals(task, that.task);
+    }
+
+    return false;
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return manager.hashCode() ^ task.hashCode();
   }
 
   @Override

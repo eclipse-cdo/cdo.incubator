@@ -24,8 +24,6 @@ import java.util.Date;
  */
 public interface IPop extends IDevelopmentStream
 {
-  public IPopManager getManager();
-
   /**
    * Returns <code>null</code>.
    */

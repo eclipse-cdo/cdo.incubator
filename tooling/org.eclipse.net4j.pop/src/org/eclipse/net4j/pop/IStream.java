@@ -25,6 +25,8 @@ import java.util.Date;
  */
 public interface IStream extends IElement
 {
+  public IPopManager getManager();
+
   public IPop getPop();
 
   public IStream getParent();

@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.util.Element;
+import org.eclipse.net4j.internal.pop.util.StreamProxy;
 import org.eclipse.net4j.pop.IBaseline;
 import org.eclipse.net4j.pop.IStream;
 import org.eclipse.net4j.pop.code.ITag;
