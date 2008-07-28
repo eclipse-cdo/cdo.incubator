@@ -18,6 +18,17 @@
 <plugin>
 
    <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="org.eclipse.net4j.pop.internal.ui.actions.TaskPropertyTester"
+            id="org.eclipse.net4j.pop.ui.TaskPropertyTester"
+            namespace="org.eclipse.net4j.pop"
+            properties="hasPop,hasMaintenanceStream,hasTaskStream"
+            type="org.eclipse.mylyn.tasks.core.ITask">
+      </propertyTester>
+   </extension>
+
+   <extension
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
@@ -40,6 +51,12 @@
                state="true"
                style="push">
          </action>
+         <visibility>
+           <objectState
+                 name="org.eclipse.net4j.pop.ui.hasPop"
+                 value="false">
+           </objectState>
+         </visibility>
       </objectContribution>
    </extension>
 

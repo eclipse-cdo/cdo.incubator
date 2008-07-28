@@ -72,6 +72,7 @@ public abstract class TaskDataAction extends TaskAction
     {
       attribute = root.getMappedAttribute(TaskAttribute.COMMENT_NEW);
     }
+
     return attribute != null ? taskData.getAttributeMapper().getValueLabel(attribute) : "";
   }
 
