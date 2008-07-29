@@ -23,7 +23,7 @@
             class="org.eclipse.net4j.pop.internal.ui.actions.TaskPropertyTester"
             id="org.eclipse.net4j.pop.ui.TaskPropertyTester"
             namespace="org.eclipse.net4j.pop.ui"
-            properties="hasPop,hasMaintenanceStream,hasTaskStream"
+            properties="hasPop,hasMaintenanceStream,hasTaskStream,hasNothing"
             type="org.eclipse.mylyn.tasks.core.ITask">
       </propertyTester>
    </extension>
@@ -67,11 +67,7 @@
                style="push">
          </action>
          <enablement>
-         	<and>
-         		<test property="org.eclipse.net4j.pop.ui.hasPop" value="false" forcePluginActivation="true"/>
-         		<test property="org.eclipse.net4j.pop.ui.hasMaintenanceStream" value="false" forcePluginActivation="true"/>
-         		<test property="org.eclipse.net4j.pop.ui.hasTaskStream" value="false" forcePluginActivation="true"/>
-         	</and>	
+     		<test property="org.eclipse.net4j.pop.ui.hasNothing" forcePluginActivation="true"/>
          </enablement>
       </objectContribution>
       <objectContribution

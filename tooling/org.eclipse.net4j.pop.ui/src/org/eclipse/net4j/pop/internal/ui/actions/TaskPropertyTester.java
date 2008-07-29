@@ -23,8 +23,6 @@ import org.eclipse.mylyn.tasks.core.data.TaskAttributeMapper;
 import org.eclipse.mylyn.tasks.core.data.TaskData;
 import org.eclipse.mylyn.tasks.ui.TasksUi;
 
-import java.util.List;
-
 /**
  * @author Eike Stepper
  */
@@ -61,6 +59,10 @@ public class TaskPropertyTester extends PropertyTester
       {
         return hasTaskStream(task) == value;
       }
+      else if ("hasNothing".equals(property))
+      {
+        return hasNothing(task) == value;
+      }
     }
 
     return false;
@@ -81,49 +83,38 @@ public class TaskPropertyTester extends PropertyTester
     return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_TASK_STREAM);
   }
 
+  public static boolean hasNothing(ITask task)
+  {
+    return parseOperations(task, null);
+  }
+
   @SuppressWarnings("restriction")
   private static boolean parseOperations(ITask task, String prefix)
   {
     try
     {
-      String marker = StreamManagerImpl.PREFIX_OPERATION + prefix;
+      String marker = prefix == null ? null : StreamManagerImpl.PREFIX_OPERATION + prefix;
       if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)
       {
-        String notes = ((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes();
-        if (notes.contains(marker))
-        {
-          return true;
-        }
+        testMarker(((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes(), marker);
       }
 
       TaskRepository repository = REPOSITORY_MANAGER.getRepository(task.getConnectorKind(), task.getRepositoryUrl());
       TaskData taskData = TASK_DATA_MANAGER.getTaskData(repository, task.getTaskId());
-
       if (taskData != null)
       {
         TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
-        String summary = taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY).getValue();
-        if (summary.contains(marker))
+        testMarker(taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY).getValue(), marker);
+        testMarker(taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION).getValue(), marker);
+        for (TaskAttribute commentAttribute : attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT))
         {
-          return true;
-        }
-
-        String description = taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION).getValue();
-        if (description.contains(marker))
-        {
-          return true;
-        }
-
-        List<TaskAttribute> comments = attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT);
-        for (TaskAttribute commentAttribute : comments)
-        {
-          String text = commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT).getValue();
-          if (text.contains(marker))
-          {
-            return true;
-          }
+          testMarker(commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT).getValue(), marker);
         }
       }
+    }
+    catch (ResultException ex)
+    {
+      return ex.getResult();
     }
     catch (Exception ex)
     {
@@ -132,5 +123,53 @@ public class TaskPropertyTester extends PropertyTester
     }
 
     return false;
+  }
+
+  private static void testMarker(String string, String marker) throws ResultException
+  {
+    if (marker == null)
+    {
+      if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_POP))
+      {
+        throw new ResultException(false);
+      }
+
+      if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM))
+      {
+        throw new ResultException(false);
+      }
+
+      if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_TASK_STREAM))
+      {
+        throw new ResultException(false);
+      }
+    }
+    else
+    {
+      if (string.contains(marker))
+      {
+        throw new ResultException(true);
+      }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private static final class ResultException extends Exception
+  {
+    private static final long serialVersionUID = 1L;
+
+    private boolean result;
+
+    public ResultException(boolean result)
+    {
+      this.result = result;
+    }
+
+    public boolean getResult()
+    {
+      return result;
+    }
   }
 }
