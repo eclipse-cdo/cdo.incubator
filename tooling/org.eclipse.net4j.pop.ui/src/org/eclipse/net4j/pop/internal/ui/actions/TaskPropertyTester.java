@@ -91,9 +91,10 @@ public class TaskPropertyTester extends PropertyTester
   @SuppressWarnings("restriction")
   private static boolean parseOperations(ITask task, String prefix)
   {
+    String marker = prefix == null ? null : StreamManagerImpl.PREFIX_OPERATION + prefix;
+
     try
     {
-      String marker = prefix == null ? null : StreamManagerImpl.PREFIX_OPERATION + prefix;
       if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)
       {
         testMarker(((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes(), marker);
@@ -122,7 +123,7 @@ public class TaskPropertyTester extends PropertyTester
       throw WrappedException.wrap(ex);
     }
 
-    return false;
+    return marker == null;
   }
 
   private static void testMarker(String string, String marker) throws ResultException
