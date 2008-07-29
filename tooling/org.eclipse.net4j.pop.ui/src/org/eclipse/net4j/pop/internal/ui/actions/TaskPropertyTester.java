@@ -36,52 +36,102 @@ public class TaskPropertyTester extends PropertyTester
 
   public TaskPropertyTester()
   {
+    System.out.println("TaskPropertyTester");
   }
 
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue)
   {
+    System.out.println("TESTING " + receiver);
+    if (expectedValue == null)
+    {
+      expectedValue = Boolean.TRUE;
+    }
+
     if (receiver instanceof ITask && expectedValue instanceof Boolean)
     {
       ITask task = (ITask)receiver;
       boolean value = (Boolean)expectedValue;
       if ("hasPop".equals(property))
       {
-        return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_POP) == value;
+        return hasPop(task) == value;
       }
       else if ("hasMaintenance".equals(property))
       {
-        return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM) == value;
+        return hasMainenanceStream(task, value);
       }
       else if ("hasTaskStream".equals(property))
       {
-        return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_TASK_STREAM) == value;
+        return hasTaskStream(task) == value;
       }
     }
 
     return false;
   }
 
-  private boolean parseOperations(ITask task, String prefix)
+  public static boolean hasPop(ITask task)
+  {
+    return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_POP);
+  }
+
+  public static boolean hasMainenanceStream(ITask task, boolean value)
+  {
+    return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM) == value;
+  }
+
+  public static boolean hasTaskStream(ITask task)
+  {
+    return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_TASK_STREAM);
+  }
+
+  @SuppressWarnings("restriction")
+  private static boolean parseOperations(ITask task, String prefix)
   {
     try
     {
+      if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)
+      {
+        String notes = ((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes();
+        if (notes.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+        {
+          return true;
+        }
+      }
+
       TaskRepository repository = REPOSITORY_MANAGER.getRepository(task.getConnectorKind(), task.getRepositoryUrl());
       TaskData taskData = TASK_DATA_MANAGER.getTaskData(repository, task.getTaskId());
 
-      TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
-      List<TaskAttribute> comments = attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT);
-      for (TaskAttribute commentAttribute : comments)
+      if (taskData != null)
       {
-        TaskAttribute textAttribute = commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT);
-        String text = textAttribute.getValue();
-        if (text.startsWith(StreamManagerImpl.PREFIX_OPERATION + " " + prefix))
+        TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
+        System.out.println(taskData.getRoot().getAttributes());
+
+        String summary = attributeMapper.getValue(taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY));
+        if (summary.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
         {
           return true;
+        }
+
+        String description = attributeMapper.getValue(taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION));
+        if (description.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+        {
+          return true;
+        }
+
+        List<TaskAttribute> comments = attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT);
+        for (TaskAttribute commentAttribute : comments)
+        {
+          TaskAttribute textAttribute = commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT);
+          String text = textAttribute.getValue();
+          if (text.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+          {
+            return true;
+          }
         }
       }
     }
     catch (Exception ex)
     {
+      ex.printStackTrace();
       throw WrappedException.wrap(ex);
     }
 

@@ -65,21 +65,29 @@ public abstract class TaskAction implements IObjectActionDelegate
   {
     try
     {
-      if (selection instanceof IStructuredSelection)
+      ITask task = getTask();
+      if (task != null)
       {
-        IStructuredSelection ssel = (IStructuredSelection)selection;
-        Object element = ssel.getFirstElement();
-        ITask task = AdapterUtil.adapt(element, ITask.class);
-        if (task != null)
-        {
-          run(task);
-        }
+        run(task);
       }
     }
     catch (Exception ex)
     {
       handleException(ex);
     }
+  }
+
+  protected ITask getTask()
+  {
+    if (selection instanceof IStructuredSelection)
+    {
+      IStructuredSelection ssel = (IStructuredSelection)selection;
+      Object element = ssel.getFirstElement();
+      ITask task = AdapterUtil.adapt(element, ITask.class);
+      return task;
+    }
+
+    return null;
   }
 
   protected void handleException(Exception ex)

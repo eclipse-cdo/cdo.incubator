@@ -22,7 +22,7 @@
       <propertyTester
             class="org.eclipse.net4j.pop.internal.ui.actions.TaskPropertyTester"
             id="org.eclipse.net4j.pop.ui.TaskPropertyTester"
-            namespace="org.eclipse.net4j.pop"
+            namespace="org.eclipse.net4j.pop.ui"
             properties="hasPop,hasMaintenanceStream,hasTaskStream"
             type="org.eclipse.mylyn.tasks.core.ITask">
       </propertyTester>
@@ -51,12 +51,23 @@
                state="true"
                style="push">
          </action>
+         <enablement>
+         	<test property="org.eclipse.net4j.pop.ui.hasPop" forcePluginActivation="true"/>
+         </enablement>
+         <!--
          <visibility>
            <objectState
                  name="org.eclipse.net4j.pop.ui.hasPop"
                  value="false">
            </objectState>
          </visibility>
+         -->
+         <!--
+         <filter
+               name="org.eclipse.net4j.pop.ui.hasPop"
+               value="false">
+         </filter>
+         -->
       </objectContribution>
    </extension>
 
