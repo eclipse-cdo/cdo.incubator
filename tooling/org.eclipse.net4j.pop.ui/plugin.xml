@@ -23,7 +23,7 @@
             class="org.eclipse.net4j.pop.internal.ui.actions.TaskPropertyTester"
             id="org.eclipse.net4j.pop.ui.TaskPropertyTester"
             namespace="org.eclipse.net4j.pop.ui"
-            properties="hasPop,hasMaintenanceStream,hasTaskStream,hasNothing"
+            properties="hasDevelopmentStream,hasMaintenanceStream,hasTaskStream,hasAnyStream"
             type="org.eclipse.mylyn.tasks.core.ITask">
       </propertyTester>
    </extension>
@@ -34,14 +34,6 @@
             adaptable="true"
             id="org.eclipse.net4j.pop.ui.NonPopContributions"
             objectClass="org.eclipse.mylyn.tasks.core.ITask">
-         <menu
-               label="POP"
-               path="additions"
-               id="org.eclipse.net4j.pop.ui">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
          <action
                class="org.eclipse.net4j.pop.internal.ui.actions.AssociateTaskStreamAction"
                enablesFor="1"
@@ -67,7 +59,7 @@
                style="push">
          </action>
          <enablement>
-     		<test property="org.eclipse.net4j.pop.ui.hasNothing" forcePluginActivation="true"/>
+     		<test property="org.eclipse.net4j.pop.ui.hasAnyStream" value="false" forcePluginActivation="true"/>
          </enablement>
       </objectContribution>
       <objectContribution
@@ -92,7 +84,7 @@
                style="push">
          </action>
          <enablement>
-         	<test property="org.eclipse.net4j.pop.ui.hasPop" forcePluginActivation="true"/>
+         	<test property="org.eclipse.net4j.pop.ui.hasDevelopmentStream" forcePluginActivation="true"/>
          </enablement>
       </objectContribution>
    </extension>

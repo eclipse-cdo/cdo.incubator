@@ -32,6 +32,20 @@ public class TaskPropertyTester extends PropertyTester
 
   public static final ITaskDataManager TASK_DATA_MANAGER = TasksUi.getTaskDataManager();
 
+  private static final int HAS_DEVELOPMENT_STREAM = 0x01;
+
+  private static final int HAS_MAINTENANCE_STREAM = 0x02;
+
+  private static final int HAS_TASK_STREAM = 0x04;
+
+  private static final int HAS_ANY_STREAM = HAS_DEVELOPMENT_STREAM | HAS_MAINTENANCE_STREAM | HAS_TASK_STREAM;
+
+  private ITask lastTask;
+
+  private long lastTime;
+
+  private int lastResult;
+
   public TaskPropertyTester()
   {
   }
@@ -46,58 +60,59 @@ public class TaskPropertyTester extends PropertyTester
     if (receiver instanceof ITask && expectedValue instanceof Boolean)
     {
       ITask task = (ITask)receiver;
-      boolean value = (Boolean)expectedValue;
-      if ("hasPop".equals(property))
+      long time = System.currentTimeMillis();
+      int result;
+
+      if (task == lastTask && time < lastTime + 1000L)
       {
-        return hasPop(task) == value;
+        result = lastResult;
       }
-      else if ("hasMaintenanceStream".equals(property))
+      else
       {
-        return hasMainenanceStream(task, value);
+        result = getResult(task);
+        lastTask = task;
+        lastTime = time;
+        lastResult = result;
       }
-      else if ("hasTaskStream".equals(property))
-      {
-        return hasTaskStream(task) == value;
-      }
-      else if ("hasNothing".equals(property))
-      {
-        return hasNothing(task) == value;
-      }
+
+      return testProperty(property, (Boolean)expectedValue, result);
     }
 
     return false;
   }
 
-  public static boolean hasPop(ITask task)
+  private static boolean testProperty(String property, boolean expectedValue, int actualValue)
   {
-    return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_POP);
-  }
+    int masked = 0;
+    if ("hasDevelopmentStream".equals(property))
+    {
+      masked = actualValue & HAS_DEVELOPMENT_STREAM;
+    }
+    else if ("hasMaintenanceStream".equals(property))
+    {
+      masked = actualValue & HAS_DEVELOPMENT_STREAM;
+    }
+    else if ("hasTaskStream".equals(property))
+    {
+      masked = actualValue & HAS_DEVELOPMENT_STREAM;
+    }
+    else if ("hasAnyStream".equals(property))
+    {
+      masked = actualValue & HAS_ANY_STREAM;
+    }
 
-  public static boolean hasMainenanceStream(ITask task, boolean value)
-  {
-    return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM) == value;
-  }
-
-  public static boolean hasTaskStream(ITask task)
-  {
-    return parseOperations(task, StreamManagerImpl.PREFIX_CREATED_TASK_STREAM);
-  }
-
-  public static boolean hasNothing(ITask task)
-  {
-    return parseOperations(task, null);
+    return masked != 0 == expectedValue;
   }
 
   @SuppressWarnings("restriction")
-  private static boolean parseOperations(ITask task, String prefix)
+  private static int getResult(ITask task)
   {
-    String marker = prefix == null ? null : StreamManagerImpl.PREFIX_OPERATION + prefix;
-
+    System.out.println("getResult");
     try
     {
       if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)
       {
-        testMarker(((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes(), marker);
+        parseString(((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes());
       }
 
       TaskRepository repository = REPOSITORY_MANAGER.getRepository(task.getConnectorKind(), task.getRepositoryUrl());
@@ -105,13 +120,15 @@ public class TaskPropertyTester extends PropertyTester
       if (taskData != null)
       {
         TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
-        testMarker(taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY).getValue(), marker);
-        testMarker(taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION).getValue(), marker);
+        parseString(taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY).getValue());
+        parseString(taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION).getValue());
         for (TaskAttribute commentAttribute : attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT))
         {
-          testMarker(commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT).getValue(), marker);
+          parseString(commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT).getValue());
         }
       }
+
+      return 0;
     }
     catch (ResultException ex)
     {
@@ -119,38 +136,25 @@ public class TaskPropertyTester extends PropertyTester
     }
     catch (Exception ex)
     {
-      ex.printStackTrace();
       throw WrappedException.wrap(ex);
     }
-
-    return marker == null;
   }
 
-  private static void testMarker(String string, String marker) throws ResultException
+  private static void parseString(String string) throws ResultException
   {
-    if (marker == null)
+    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_POP))
     {
-      if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_POP))
-      {
-        throw new ResultException(false);
-      }
-
-      if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM))
-      {
-        throw new ResultException(false);
-      }
-
-      if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_TASK_STREAM))
-      {
-        throw new ResultException(false);
-      }
+      throw new ResultException(HAS_DEVELOPMENT_STREAM);
     }
-    else
+
+    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM))
     {
-      if (string.contains(marker))
-      {
-        throw new ResultException(true);
-      }
+      throw new ResultException(HAS_MAINTENANCE_STREAM);
+    }
+
+    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_TASK_STREAM))
+    {
+      throw new ResultException(HAS_TASK_STREAM);
     }
   }
 
@@ -161,14 +165,14 @@ public class TaskPropertyTester extends PropertyTester
   {
     private static final long serialVersionUID = 1L;
 
-    private boolean result;
+    private int result;
 
-    public ResultException(boolean result)
+    public ResultException(int result)
     {
       this.result = result;
     }
 
-    public boolean getResult()
+    public int getResult()
     {
       return result;
     }
