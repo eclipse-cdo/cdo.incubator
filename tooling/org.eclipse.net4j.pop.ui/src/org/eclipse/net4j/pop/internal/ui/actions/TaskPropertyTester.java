@@ -36,12 +36,10 @@ public class TaskPropertyTester extends PropertyTester
 
   public TaskPropertyTester()
   {
-    System.out.println("TaskPropertyTester");
   }
 
   public boolean test(Object receiver, String property, Object[] args, Object expectedValue)
   {
-    System.out.println("TESTING " + receiver);
     if (expectedValue == null)
     {
       expectedValue = Boolean.TRUE;
@@ -88,10 +86,11 @@ public class TaskPropertyTester extends PropertyTester
   {
     try
     {
+      String marker = StreamManagerImpl.PREFIX_OPERATION + prefix;
       if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)
       {
         String notes = ((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes();
-        if (notes.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+        if (notes.contains(marker))
         {
           return true;
         }
@@ -103,16 +102,14 @@ public class TaskPropertyTester extends PropertyTester
       if (taskData != null)
       {
         TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
-        System.out.println(taskData.getRoot().getAttributes());
-
-        String summary = attributeMapper.getValue(taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY));
-        if (summary.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+        String summary = taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY).getValue();
+        if (summary.contains(marker))
         {
           return true;
         }
 
-        String description = attributeMapper.getValue(taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION));
-        if (description.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+        String description = taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION).getValue();
+        if (description.contains(marker))
         {
           return true;
         }
@@ -120,9 +117,8 @@ public class TaskPropertyTester extends PropertyTester
         List<TaskAttribute> comments = attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT);
         for (TaskAttribute commentAttribute : comments)
         {
-          TaskAttribute textAttribute = commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT);
-          String text = textAttribute.getValue();
-          if (text.contains(StreamManagerImpl.PREFIX_OPERATION + prefix))
+          String text = commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT).getValue();
+          if (text.contains(marker))
           {
             return true;
           }
