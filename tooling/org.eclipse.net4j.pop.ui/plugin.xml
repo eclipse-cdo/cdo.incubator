@@ -79,5 +79,19 @@
          </enablement>
       </objectContribution>
    </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.net4j.pop.ui"
+            name="POP Process Tooling">
+      </category>
+      <wizard
+            category="org.eclipse.net4j.pop.ui"
+            class="org.eclipse.net4j.pop.internal.ui.wizards.PopImportWizard"
+            icon="icons/sample.gif"
+            id="org.eclipse.net4j.pop.internal.ui.wizards.PopImportWizard"
+            name="Pop">
+      </wizard>
+   </extension>
 
 </plugin>
