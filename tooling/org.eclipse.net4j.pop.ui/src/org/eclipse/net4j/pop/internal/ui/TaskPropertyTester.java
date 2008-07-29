@@ -107,17 +107,18 @@ public class TaskPropertyTester extends PropertyTester
   {
     try
     {
-      String[] operations = StreamOperationExtractor.extractOperations(REPOSITORY_MANAGER, TASK_DATA_MANAGER, task);
-      for (String operation : operations)
+      int result = 0;
+      String[] ops = StreamOperationExtractor.extractOperations(REPOSITORY_MANAGER, TASK_DATA_MANAGER, task);
+      for (String operation : ops)
       {
-        parseOperation(operation);
+        result = parseOperation(operation);
+        if (result != 0)
+        {
+          break;
+        }
       }
 
-      return 0;
-    }
-    catch (ResultException ex)
-    {
-      return ex.getResult();
+      return result;
     }
     catch (Exception ex)
     {
@@ -125,41 +126,23 @@ public class TaskPropertyTester extends PropertyTester
     }
   }
 
-  private static void parseOperation(String operation) throws ResultException
+  private static int parseOperation(String operation)
   {
     if (operation.startsWith(StreamOperationExtractor.CREATED_DEVELOPMENT_STREAM))
     {
-      throw new ResultException(HAS_DEVELOPMENT_STREAM);
+      return HAS_DEVELOPMENT_STREAM;
     }
 
     if (operation.startsWith(StreamOperationExtractor.CREATED_MAINTENANCE_STREAM))
     {
-      throw new ResultException(HAS_MAINTENANCE_STREAM);
+      return HAS_MAINTENANCE_STREAM;
     }
 
     if (operation.startsWith(StreamOperationExtractor.CREATED_TASK_STREAM))
     {
-      throw new ResultException(HAS_TASK_STREAM);
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  private static final class ResultException extends Exception
-  {
-    private static final long serialVersionUID = 1L;
-
-    private int result;
-
-    public ResultException(int result)
-    {
-      this.result = result;
+      return HAS_TASK_STREAM;
     }
 
-    public int getResult()
-    {
-      return result;
-    }
+    return 0;
   }
 }

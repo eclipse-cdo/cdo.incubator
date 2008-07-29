@@ -37,24 +37,24 @@
          <action
                class="org.eclipse.net4j.pop.internal.ui.actions.CreateStreamAction$Task"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AddTaskStreamAction"
-               label="Add POP Task Stream"
+               id="org.eclipse.net4j.pop.ui.CreateTaskStreamAction"
+               label="Create POP Task Stream"
                state="true"
                style="push">
          </action>
          <action
                class="org.eclipse.net4j.pop.internal.ui.actions.CreateStreamAction$Maintenance"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AddMaintenanceStreamAction"
-               label="Add POP Maintenance Stream"
+               id="org.eclipse.net4j.pop.ui.CreateMaintenanceStreamAction"
+               label="Create POP Maintenance Stream"
                state="true"
                style="push">
          </action>
          <action
                class="org.eclipse.net4j.pop.internal.ui.actions.CreateStreamAction$Development"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AddDevelopmentStreamAction"
-               label="Add POP Development Stream"
+               id="org.eclipse.net4j.pop.ui.CreateDevelopmentStreamAction"
+               label="Create POP Development Stream"
                state="true"
                style="push">
          </action>
