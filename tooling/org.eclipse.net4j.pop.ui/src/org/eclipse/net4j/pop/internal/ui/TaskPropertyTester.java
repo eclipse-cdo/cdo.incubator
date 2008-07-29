@@ -11,16 +11,13 @@
 package org.eclipse.net4j.pop.internal.ui;
 
 import org.eclipse.net4j.pop.impl.StreamManagerImpl;
+import org.eclipse.net4j.pop.util.StreamOperationExtractor;
 import org.eclipse.net4j.util.WrappedException;
 
 import org.eclipse.core.expressions.PropertyTester;
 import org.eclipse.mylyn.tasks.core.IRepositoryManager;
 import org.eclipse.mylyn.tasks.core.ITask;
-import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.core.data.ITaskDataManager;
-import org.eclipse.mylyn.tasks.core.data.TaskAttribute;
-import org.eclipse.mylyn.tasks.core.data.TaskAttributeMapper;
-import org.eclipse.mylyn.tasks.core.data.TaskData;
 import org.eclipse.mylyn.tasks.ui.TasksUi;
 
 /**
@@ -107,27 +104,14 @@ public class TaskPropertyTester extends PropertyTester
     return masked != 0 == expectedValue;
   }
 
-  @SuppressWarnings("restriction")
   private static int getResult(ITask task)
   {
     try
     {
-      if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)
+      String[] operations = StreamOperationExtractor.extractOperations(REPOSITORY_MANAGER, TASK_DATA_MANAGER, task);
+      for (String operation : operations)
       {
-        parseString(((org.eclipse.mylyn.internal.tasks.core.AbstractTask)task).getNotes());
-      }
-
-      TaskRepository repository = REPOSITORY_MANAGER.getRepository(task.getConnectorKind(), task.getRepositoryUrl());
-      TaskData taskData = TASK_DATA_MANAGER.getTaskData(repository, task.getTaskId());
-      if (taskData != null)
-      {
-        TaskAttributeMapper attributeMapper = taskData.getAttributeMapper();
-        parseString(taskData.getRoot().getMappedAttribute(TaskAttribute.SUMMARY).getValue());
-        parseString(taskData.getRoot().getMappedAttribute(TaskAttribute.DESCRIPTION).getValue());
-        for (TaskAttribute commentAttribute : attributeMapper.getAttributesByType(taskData, TaskAttribute.TYPE_COMMENT))
-        {
-          parseString(commentAttribute.getMappedAttribute(TaskAttribute.COMMENT_TEXT).getValue());
-        }
+        parseOperation(operation);
       }
 
       return 0;
@@ -142,19 +126,19 @@ public class TaskPropertyTester extends PropertyTester
     }
   }
 
-  private static void parseString(String string) throws ResultException
+  private static void parseOperation(String operation) throws ResultException
   {
-    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_DEVELOPMENT_STREAM))
+    if (operation.startsWith(StreamManagerImpl.PREFIX_CREATED_DEVELOPMENT_STREAM))
     {
       throw new ResultException(HAS_DEVELOPMENT_STREAM);
     }
 
-    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM))
+    if (operation.startsWith(StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM))
     {
       throw new ResultException(HAS_MAINTENANCE_STREAM);
     }
 
-    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_TASK_STREAM))
+    if (operation.startsWith(StreamManagerImpl.PREFIX_CREATED_TASK_STREAM))
     {
       throw new ResultException(HAS_TASK_STREAM);
     }

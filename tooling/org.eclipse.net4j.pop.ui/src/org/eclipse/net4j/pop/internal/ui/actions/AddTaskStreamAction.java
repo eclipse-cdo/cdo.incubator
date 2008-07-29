@@ -13,15 +13,15 @@ package org.eclipse.net4j.pop.internal.ui.actions;
 /**
  * @author Eike Stepper
  */
-public class AssociateMaintenanceStreamAction extends StreamAction
+public class AddTaskStreamAction extends StreamAction
 {
-  public AssociateMaintenanceStreamAction()
+  public AddTaskStreamAction()
   {
   }
 
   @Override
   protected String getOperation()
   {
-    return "Created maintenance stream";
+    return "Created task stream";
   }
 }

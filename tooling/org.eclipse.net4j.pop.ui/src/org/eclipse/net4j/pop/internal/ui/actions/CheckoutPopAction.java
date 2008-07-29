@@ -10,18 +10,21 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.actions;
 
+import org.eclipse.mylyn.tasks.core.ITask;
+import org.eclipse.mylyn.tasks.core.TaskRepository;
+import org.eclipse.mylyn.tasks.core.data.TaskData;
+
 /**
  * @author Eike Stepper
  */
-public class AssociateTaskStreamAction extends StreamAction
+public class CheckoutPopAction extends TaskDataAction
 {
-  public AssociateTaskStreamAction()
+  public CheckoutPopAction()
   {
   }
 
   @Override
-  protected String getOperation()
+  protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
   {
-    return "Created task stream";
   }
 }

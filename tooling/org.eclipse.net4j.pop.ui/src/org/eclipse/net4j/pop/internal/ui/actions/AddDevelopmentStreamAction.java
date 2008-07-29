@@ -13,9 +13,9 @@ package org.eclipse.net4j.pop.internal.ui.actions;
 /**
  * @author Eike Stepper
  */
-public class AssociateDevelopmentStreamAction extends StreamAction
+public class AddDevelopmentStreamAction extends StreamAction
 {
-  public AssociateDevelopmentStreamAction()
+  public AddDevelopmentStreamAction()
   {
   }
 
