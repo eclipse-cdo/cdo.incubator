@@ -53,7 +53,7 @@ public class TaskPropertyTester extends PropertyTester
       {
         return hasPop(task) == value;
       }
-      else if ("hasMaintenance".equals(property))
+      else if ("hasMaintenanceStream".equals(property))
       {
         return hasMainenanceStream(task, value);
       }

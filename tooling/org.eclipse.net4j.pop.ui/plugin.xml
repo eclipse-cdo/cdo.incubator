@@ -32,7 +32,51 @@
          point="org.eclipse.ui.popupMenus">
       <objectContribution
             adaptable="true"
-            id="test.mylyn.contribution1"
+            id="org.eclipse.net4j.pop.ui.NonPopContributions"
+            objectClass="org.eclipse.mylyn.tasks.core.ITask">
+         <menu
+               label="POP"
+               path="additions"
+               id="org.eclipse.net4j.pop.ui">
+            <separator
+                  name="group1">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.net4j.pop.internal.ui.actions.AssociateTaskStreamAction"
+               enablesFor="1"
+               id="org.eclipse.net4j.pop.ui.AssociateTaskStreamAction"
+               label="Associate POP Task Stream"
+               state="true"
+               style="push">
+         </action>
+         <action
+               class="org.eclipse.net4j.pop.internal.ui.actions.AssociateMaintenanceStreamAction"
+               enablesFor="1"
+               id="org.eclipse.net4j.pop.ui.AssociateMaintenanceStreamAction"
+               label="Associate POP Maintenance Stream"
+               state="true"
+               style="push">
+         </action>
+         <action
+               class="org.eclipse.net4j.pop.internal.ui.actions.AssociatePopAction"
+               enablesFor="1"
+               id="org.eclipse.net4j.pop.ui.AssociatePopAction"
+               label="Associate POP Development Stream"
+               state="true"
+               style="push">
+         </action>
+         <enablement>
+         	<and>
+         		<test property="org.eclipse.net4j.pop.ui.hasPop" value="false" forcePluginActivation="true"/>
+         		<test property="org.eclipse.net4j.pop.ui.hasMaintenanceStream" value="false" forcePluginActivation="true"/>
+         		<test property="org.eclipse.net4j.pop.ui.hasTaskStream" value="false" forcePluginActivation="true"/>
+         	</and>	
+         </enablement>
+      </objectContribution>
+      <objectContribution
+            adaptable="true"
+            id="org.eclipse.net4j.pop.ui.PopContributions"
             objectClass="org.eclipse.mylyn.tasks.core.ITask">
          <menu
                label="POP"
@@ -45,8 +89,8 @@
          <action
                class="org.eclipse.net4j.pop.internal.ui.actions.TestAction"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.newAction"
-               label="TEST"
+               id="org.eclipse.net4j.pop.ui.AddCommitterAction"
+               label="Add Committer"
                menubarPath="org.eclipse.net4j.pop.ui/group1"
                state="true"
                style="push">
@@ -54,20 +98,6 @@
          <enablement>
          	<test property="org.eclipse.net4j.pop.ui.hasPop" forcePluginActivation="true"/>
          </enablement>
-         <!--
-         <visibility>
-           <objectState
-                 name="org.eclipse.net4j.pop.ui.hasPop"
-                 value="false">
-           </objectState>
-         </visibility>
-         -->
-         <!--
-         <filter
-               name="org.eclipse.net4j.pop.ui.hasPop"
-               value="false">
-         </filter>
-         -->
       </objectContribution>
    </extension>
 
