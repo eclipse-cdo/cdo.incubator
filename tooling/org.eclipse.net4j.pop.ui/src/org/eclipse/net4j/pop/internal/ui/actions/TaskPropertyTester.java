@@ -107,7 +107,6 @@ public class TaskPropertyTester extends PropertyTester
   @SuppressWarnings("restriction")
   private static int getResult(ITask task)
   {
-    System.out.println("getResult");
     try
     {
       if (task instanceof org.eclipse.mylyn.internal.tasks.core.AbstractTask)

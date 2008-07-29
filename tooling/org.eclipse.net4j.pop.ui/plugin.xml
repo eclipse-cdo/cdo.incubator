@@ -51,9 +51,9 @@
                style="push">
          </action>
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AssociatePopAction"
+               class="org.eclipse.net4j.pop.internal.ui.actions.AssociateDevelopmentStreamAction"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AssociatePopAction"
+               id="org.eclipse.net4j.pop.ui.AssociateDevelopmentStreamAction"
                label="Associate POP Development Stream"
                state="true"
                style="push">
