@@ -16,6 +16,7 @@ import org.eclipse.mylyn.internal.tasks.core.TaskContainerDelta;
 import org.eclipse.mylyn.internal.tasks.core.TaskList;
 import org.eclipse.mylyn.internal.tasks.ui.TasksUiPlugin;
 import org.eclipse.mylyn.tasks.core.IRepositoryElement;
+import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.ITaskContainer;
 
 import java.util.Map;
@@ -32,17 +33,14 @@ public final class TaskListUtil
     {
       for (TaskContainerDelta delta : deltas)
       {
-        System.out.println("DELTA:");
-        System.out.println();
-
-        ITaskContainer container = delta.getParent();
-        System.out.println(container);
+        TaskContainerDelta.Kind kind = delta.getKind();
+        System.out.println(kind);
 
         IRepositoryElement element = delta.getElement();
         System.out.println(element);
 
-        TaskContainerDelta.Kind kind = delta.getKind();
-        System.out.println(kind);
+        ITaskContainer container = delta.getParent();
+        System.out.println(container);
         System.out.println();
 
         switch (kind)
@@ -78,8 +76,6 @@ public final class TaskListUtil
     for (RepositoryQuery query : queries)
     {
       System.out.println("QUERY:");
-      System.out.println();
-
       String handleIdentifier = query.getHandleIdentifier();
       System.out.println(handleIdentifier);
 
@@ -99,5 +95,8 @@ public final class TaskListUtil
       System.out.println(attributes);
       System.out.println();
     }
+
+    ITask task = taskList.getTask("https://bugs.eclipse.org/bugs", "204890");
+    System.out.println(task);
   }
 }
