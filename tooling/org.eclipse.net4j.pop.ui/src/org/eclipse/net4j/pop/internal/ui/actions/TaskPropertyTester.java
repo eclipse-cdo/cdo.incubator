@@ -78,6 +78,9 @@ public class TaskPropertyTester extends PropertyTester
       return testProperty(property, (Boolean)expectedValue, result);
     }
 
+    lastTask = null;
+    lastTime = 0L;
+    lastResult = 0;
     return false;
   }
 

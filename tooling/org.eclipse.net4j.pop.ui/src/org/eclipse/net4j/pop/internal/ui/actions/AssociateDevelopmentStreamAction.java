@@ -21,9 +21,9 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public class AssociatePopAction extends TaskDataAction
+public class AssociateDevelopmentStreamAction extends TaskDataAction
 {
-  public AssociatePopAction()
+  public AssociateDevelopmentStreamAction()
   {
   }
 
