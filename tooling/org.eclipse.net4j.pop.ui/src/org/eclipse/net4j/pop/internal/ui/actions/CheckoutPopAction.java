@@ -10,26 +10,17 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.actions;
 
+import org.eclipse.net4j.pop.internal.ui.mylyn.TaskListUtil;
+
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
 import org.eclipse.mylyn.tasks.core.data.TaskData;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 
 /**
  * @author Eike Stepper
  */
 public class CheckoutPopAction extends TaskDataAction
 {
-  private static final PropertyChangeListener listener = new PropertyChangeListener()
-  {
-    public void propertyChange(PropertyChangeEvent evt)
-    {
-      System.out.println(evt);
-    }
-  };
-
   public CheckoutPopAction()
   {
   }
@@ -37,7 +28,6 @@ public class CheckoutPopAction extends TaskDataAction
   @Override
   protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
   {
-    // repository.addChangeListener(listener);
-    // ITaskDataWorkingCopy workingCopy = TasksUi.getTaskDataManager().createWorkingCopy(task, taskData);
+    TaskListUtil.test();
   }
 }

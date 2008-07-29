@@ -44,7 +44,6 @@ public abstract class TaskDataAction extends TaskAction
     run(repository, task, taskData);
   }
 
-  @SuppressWarnings("restriction")
   protected final TaskData postTaskData(TaskRepository repository, ITask task, TaskData taskData) throws CoreException
   {
     AbstractRepositoryConnector connector = REPOSITORY_MANAGER.getRepositoryConnector(repository.getConnectorKind());

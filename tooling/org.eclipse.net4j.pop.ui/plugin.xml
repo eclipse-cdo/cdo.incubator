@@ -79,8 +79,9 @@
          </enablement>
       </objectContribution>
    </extension>
+   
    <extension
-         point="org.eclipse.ui.newWizards">
+         point="org.eclipse.ui.importWizards">
       <category
             id="org.eclipse.net4j.pop.ui"
             name="POP Process Tooling">

@@ -32,9 +32,9 @@ import org.eclipse.ui.PlatformUI;
 /**
  * @author Eike Stepper
  */
-public final class EditorUtil
+public final class TaskEditorUtil
 {
-  private EditorUtil()
+  private TaskEditorUtil()
   {
   }
 
@@ -68,7 +68,6 @@ public final class EditorUtil
     return null;
   }
 
-  @SuppressWarnings("restriction")
   public static TaskEditor refreshEditorContentsIfOpen(ITask task, IEditorInput editorInput)
   {
     if (task != null)
@@ -92,7 +91,6 @@ public final class EditorUtil
     return null;
   }
 
-  @SuppressWarnings("restriction")
   public static void synchronizeTask(TaskRepository taskRepository, ITask task)
   {
     if (task instanceof org.eclipse.mylyn.internal.tasks.core.LocalTask)
@@ -108,7 +106,6 @@ public final class EditorUtil
     }
   }
 
-  @SuppressWarnings("restriction")
   public static String getTaskEditorId(final ITask task)
   {
     String taskEditorId = TaskEditor.ID_EDITOR;
@@ -127,7 +124,6 @@ public final class EditorUtil
     return taskEditorId;
   }
 
-  @SuppressWarnings("restriction")
   public static IEditorPart openEditor(IEditorInput input, String editorId, IWorkbenchPage page)
   {
     if (page == null)
