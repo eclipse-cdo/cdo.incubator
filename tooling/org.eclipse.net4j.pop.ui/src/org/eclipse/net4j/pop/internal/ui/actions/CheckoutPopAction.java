@@ -11,20 +11,18 @@
 package org.eclipse.net4j.pop.internal.ui.actions;
 
 import org.eclipse.mylyn.tasks.core.ITask;
-import org.eclipse.mylyn.tasks.core.TaskRepository;
-import org.eclipse.mylyn.tasks.core.data.TaskData;
 
 /**
  * @author Eike Stepper
  */
-public class CheckoutPopAction extends TaskDataAction
+public class CheckoutPopAction extends TaskAction
 {
   public CheckoutPopAction()
   {
   }
 
   @Override
-  protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
+  protected void run(ITask task) throws Exception
   {
   }
 }
