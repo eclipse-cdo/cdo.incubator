@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.internal.ui.actions;
+package org.eclipse.net4j.pop.internal.ui;
 
 import org.eclipse.net4j.pop.impl.StreamManagerImpl;
 import org.eclipse.net4j.util.WrappedException;

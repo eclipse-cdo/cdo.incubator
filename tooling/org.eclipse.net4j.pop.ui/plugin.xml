@@ -20,7 +20,7 @@
    <extension
          point="org.eclipse.core.expressions.propertyTesters">
       <propertyTester
-            class="org.eclipse.net4j.pop.internal.ui.actions.TaskPropertyTester"
+            class="org.eclipse.net4j.pop.internal.ui.TaskPropertyTester"
             id="org.eclipse.net4j.pop.ui.TaskPropertyTester"
             namespace="org.eclipse.net4j.pop.ui"
             properties="hasDevelopmentStream,hasMaintenanceStream,hasTaskStream,hasAnyStream"
