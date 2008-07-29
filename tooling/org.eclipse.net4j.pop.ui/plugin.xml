@@ -35,25 +35,25 @@
             id="org.eclipse.net4j.pop.ui.NonPopContributions"
             objectClass="org.eclipse.mylyn.tasks.core.ITask">
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AddTaskStreamAction"
+               class="org.eclipse.net4j.pop.internal.ui.actions.AddStreamAction.Task"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AssociateTaskStreamAction"
+               id="org.eclipse.net4j.pop.ui.AddTaskStreamAction"
                label="Add POP Task Stream"
                state="true"
                style="push">
          </action>
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AddMaintenanceStreamAction"
+               class="org.eclipse.net4j.pop.internal.ui.actions.AddStreamAction.Maintenance"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AssociateMaintenanceStreamAction"
+               id="org.eclipse.net4j.pop.ui.AddMaintenanceStreamAction"
                label="Add POP Maintenance Stream"
                state="true"
                style="push">
          </action>
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AddDevelopmentStreamAction"
+               class="org.eclipse.net4j.pop.internal.ui.actions.AddStreamAction.Development"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AssociateDevelopmentStreamAction"
+               id="org.eclipse.net4j.pop.ui.AddDevelopmentStreamAction"
                label="Add POP Development Stream"
                state="true"
                style="push">

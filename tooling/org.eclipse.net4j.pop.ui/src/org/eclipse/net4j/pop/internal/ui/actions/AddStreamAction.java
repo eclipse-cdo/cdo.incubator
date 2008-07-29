@@ -20,26 +20,42 @@ import org.eclipse.mylyn.tasks.core.data.TaskData;
 /**
  * @author Eike Stepper
  */
-public abstract class StreamAction extends TaskDataAction
+public abstract class AddStreamAction extends TaskDataAction
 {
-  protected StreamAction()
+  protected AddStreamAction()
   {
   }
 
   @Override
   protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
   {
-    String operation = getOperation();
-    addOperation(taskData, operation);
-    postTaskData(repository, task, taskData);
-  }
+    String operation = "Created " + getClass().getSimpleName().toString() + " stream";
 
-  protected void addOperation(TaskData taskData, String operation)
-  {
     TaskAttribute root = taskData.getRoot();
     TaskAttribute commentAttribute = root.createMappedAttribute(TaskAttribute.COMMENT_NEW);
     commentAttribute.setValue(StreamManagerImpl.PREFIX_OPERATION + operation);
+
+    postTaskData(repository, task, taskData);
   }
 
-  protected abstract String getOperation();
+  /**
+   * @author Eike Stepper
+   */
+  public class Development extends AddStreamAction
+  {
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public class Maintenance extends AddStreamAction
+  {
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public class Task extends AddStreamAction
+  {
+  }
 }
