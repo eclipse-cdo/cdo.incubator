@@ -144,7 +144,7 @@ public class TaskPropertyTester extends PropertyTester
 
   private static void parseString(String string) throws ResultException
   {
-    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_POP))
+    if (string.contains(StreamManagerImpl.PREFIX_OPERATION + StreamManagerImpl.PREFIX_CREATED_DEVELOPMENT_STREAM))
     {
       throw new ResultException(HAS_DEVELOPMENT_STREAM);
     }
