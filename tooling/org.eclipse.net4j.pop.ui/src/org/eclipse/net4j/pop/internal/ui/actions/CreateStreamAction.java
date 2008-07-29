@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.actions;
 
-import org.eclipse.net4j.pop.impl.StreamManagerImpl;
+import org.eclipse.net4j.pop.util.StreamOperationExtractor;
 
 import org.eclipse.mylyn.tasks.core.ITask;
 import org.eclipse.mylyn.tasks.core.TaskRepository;
@@ -20,20 +20,21 @@ import org.eclipse.mylyn.tasks.core.data.TaskData;
 /**
  * @author Eike Stepper
  */
-public abstract class AddStreamAction extends TaskDataAction
+public abstract class CreateStreamAction extends TaskDataAction
 {
-  protected AddStreamAction()
+  private String operation;
+
+  protected CreateStreamAction(String operation)
   {
+    this.operation = operation;
   }
 
   @Override
   protected void run(TaskRepository repository, ITask task, TaskData taskData) throws Exception
   {
-    String operation = "Created " + getClass().getSimpleName().toString() + " stream";
-
     TaskAttribute root = taskData.getRoot();
     TaskAttribute commentAttribute = root.createMappedAttribute(TaskAttribute.COMMENT_NEW);
-    commentAttribute.setValue(StreamManagerImpl.PREFIX_OPERATION + operation);
+    commentAttribute.setValue(StreamOperationExtractor.PREFIX_OPERATION + operation);
 
     postTaskData(repository, task, taskData);
   }
@@ -41,21 +42,33 @@ public abstract class AddStreamAction extends TaskDataAction
   /**
    * @author Eike Stepper
    */
-  public class Development extends AddStreamAction
+  public static class Development extends CreateStreamAction
   {
+    public Development()
+    {
+      super(StreamOperationExtractor.CREATED_DEVELOPMENT_STREAM);
+    }
   }
 
   /**
    * @author Eike Stepper
    */
-  public class Maintenance extends AddStreamAction
+  public static class Maintenance extends CreateStreamAction
   {
+    public Maintenance()
+    {
+      super(StreamOperationExtractor.CREATED_MAINTENANCE_STREAM);
+    }
   }
 
   /**
    * @author Eike Stepper
    */
-  public class Task extends AddStreamAction
+  public static class Task extends CreateStreamAction
   {
+    public Task()
+    {
+      super(StreamOperationExtractor.CREATED_TASK_STREAM);
+    }
   }
 }

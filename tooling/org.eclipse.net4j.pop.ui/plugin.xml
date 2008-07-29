@@ -35,7 +35,7 @@
             id="org.eclipse.net4j.pop.ui.NonPopContributions"
             objectClass="org.eclipse.mylyn.tasks.core.ITask">
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AddStreamAction.Task"
+               class="org.eclipse.net4j.pop.internal.ui.actions.CreateStreamAction$Task"
                enablesFor="1"
                id="org.eclipse.net4j.pop.ui.AddTaskStreamAction"
                label="Add POP Task Stream"
@@ -43,7 +43,7 @@
                style="push">
          </action>
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AddStreamAction.Maintenance"
+               class="org.eclipse.net4j.pop.internal.ui.actions.CreateStreamAction$Maintenance"
                enablesFor="1"
                id="org.eclipse.net4j.pop.ui.AddMaintenanceStreamAction"
                label="Add POP Maintenance Stream"
@@ -51,7 +51,7 @@
                style="push">
          </action>
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.AddStreamAction.Development"
+               class="org.eclipse.net4j.pop.internal.ui.actions.CreateStreamAction$Development"
                enablesFor="1"
                id="org.eclipse.net4j.pop.ui.AddDevelopmentStreamAction"
                label="Add POP Development Stream"
@@ -66,20 +66,11 @@
             adaptable="true"
             id="org.eclipse.net4j.pop.ui.PopContributions"
             objectClass="org.eclipse.mylyn.tasks.core.ITask">
-         <menu
-               label="POP"
-               path="additions"
-               id="org.eclipse.net4j.pop.ui">
-            <separator
-                  name="group1">
-            </separator>
-         </menu>
          <action
-               class="org.eclipse.net4j.pop.internal.ui.actions.TestAction"
+               class="org.eclipse.net4j.pop.internal.ui.actions.CheckoutPopAction"
                enablesFor="1"
-               id="org.eclipse.net4j.pop.ui.AddCommitterAction"
-               label="Add Committer"
-               menubarPath="org.eclipse.net4j.pop.ui/group1"
+               id="org.eclipse.net4j.pop.ui.CheckoutPopAction"
+               label="Checkout POP"
                state="true"
                style="push">
          </action>

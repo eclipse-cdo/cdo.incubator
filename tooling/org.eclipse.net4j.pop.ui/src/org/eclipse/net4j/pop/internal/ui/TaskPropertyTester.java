@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui;
 
-import org.eclipse.net4j.pop.impl.StreamManagerImpl;
 import org.eclipse.net4j.pop.util.StreamOperationExtractor;
 import org.eclipse.net4j.util.WrappedException;
 
@@ -128,17 +127,17 @@ public class TaskPropertyTester extends PropertyTester
 
   private static void parseOperation(String operation) throws ResultException
   {
-    if (operation.startsWith(StreamManagerImpl.PREFIX_CREATED_DEVELOPMENT_STREAM))
+    if (operation.startsWith(StreamOperationExtractor.CREATED_DEVELOPMENT_STREAM))
     {
       throw new ResultException(HAS_DEVELOPMENT_STREAM);
     }
 
-    if (operation.startsWith(StreamManagerImpl.PREFIX_CREATED_MAINTENANCE_STREAM))
+    if (operation.startsWith(StreamOperationExtractor.CREATED_MAINTENANCE_STREAM))
     {
       throw new ResultException(HAS_MAINTENANCE_STREAM);
     }
 
-    if (operation.startsWith(StreamManagerImpl.PREFIX_CREATED_TASK_STREAM))
+    if (operation.startsWith(StreamOperationExtractor.CREATED_TASK_STREAM))
     {
       throw new ResultException(HAS_TASK_STREAM);
     }
