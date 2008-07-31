@@ -27,6 +27,18 @@
       <function
             class="org.eclipse.net4j.internal.template.functions.ReplaceFunction"
             name="replace"/>
+      <function
+            class="org.eclipse.net4j.internal.template.functions.CapitalizeFunction"
+            name="capitalize"/>
+      <function
+            class="org.eclipse.net4j.internal.template.functions.UncapitalizeFunction"
+            name="uncapitalize"/>
+      <function
+            class="org.eclipse.net4j.internal.template.functions.CapitalizeAllFunction"
+            name="capitalize-all"/>
+      <function
+            class="org.eclipse.net4j.internal.template.functions.UncapitalizeAllFunction"
+            name="uncapitalize-all"/>
    </extension>
    
    <extension

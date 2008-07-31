@@ -11,20 +11,19 @@
 package org.eclipse.net4j.internal.template.functions;
 
 import org.eclipse.net4j.internal.template.TemplateFunction;
+import org.eclipse.net4j.util.StringUtil;
 
 import java.util.List;
 
-public class ReplaceFunction extends TemplateFunction
+public class UncapitalizeFunction extends TemplateFunction
 {
-  public ReplaceFunction()
+  public UncapitalizeFunction()
   {
-    super("replace");
+    super("uncapitalize");
   }
 
   public String evaluate(String referenceValue, List<String> arguments)
   {
-    CharSequence target = arguments.get(0);
-    CharSequence replacement = arguments.size() == 1 ? " " : arguments.get(1);
-    return referenceValue.replace(target, replacement);
+    return StringUtil.uncap(referenceValue);
   }
 }
