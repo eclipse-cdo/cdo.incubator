@@ -103,7 +103,7 @@ public class PropertyEntryPage extends WizardPage
     fields = new HashMap<ITemplateProperty, Text>();
     for (final ITemplateProperty property : template.getTemplateProperties())
     {
-      boolean derived = property.isExpression() && !property.isLiteral();
+      final boolean derived = property.isExpression() && !property.isLiteral();
       boolean enabled = !derived || property.isOverridden();
       final String value = StringUtil.safe(property.getValue());
 
@@ -119,11 +119,12 @@ public class PropertyEntryPage extends WizardPage
       {
         public void modifyText(ModifyEvent e)
         {
-          if (!property.isExpression() || property.isLiteral())
+          // if (!property.isExpression() || property.isLiteral())
           {
-            if (!ObjectUtil.equals(text.getText(), property.getValue()))
+            String newValue = text.getText();
+            if (!ObjectUtil.equals(newValue, property.getValue()))
             {
-              property.setValue(text.getText());
+              property.setValue(newValue);
               recalculate();
             }
           }
