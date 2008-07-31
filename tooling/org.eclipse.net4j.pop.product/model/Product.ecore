@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="product"
+    nsURI="http://www.eclipse.org/net4j/pop/product/1.0.0" nsPrefix="net4j.pop.product">
+  <eClassifiers xsi:type="ecore:EClass" name="PopProduct">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.net4j.pop.project/model/Project.ecore#//PopProject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projects" upperBound="-1"
+        eType="#//WorkspaceProject" containment="true" eOpposite="#//WorkspaceProject/workspaceSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workingSets" upperBound="-1"
+        eType="#//WorkingSet" containment="true" eOpposite="#//WorkingSet/workspaceSpec"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="configurators" upperBound="-1"
+        eType="#//WorkspaceConfigurator" containment="true" eOpposite="#//WorkspaceConfigurator/workspaceSpec"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkingSet">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="projects" upperBound="-1"
+        eType="#//WorkspaceProject" eOpposite="#//WorkspaceProject/workingSets"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workspaceSpec" lowerBound="1"
+        eType="#//PopProduct" eOpposite="#//PopProduct/workingSets"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceProject">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workingSets" upperBound="-1"
+        eType="#//WorkingSet" eOpposite="#//WorkingSet/projects"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workspaceSpec" lowerBound="1"
+        eType="#//PopProduct" eOpposite="#//PopProduct/projects"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="codeRoot" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.net4j.pop.project/model/Project.ecore#//CodeRoot"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="codePath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WorkspaceConfigurator" abstract="true">
+    <eOperations name="configureWorkspace"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="workspaceSpec" lowerBound="1"
+        eType="#//PopProduct" eOpposite="#//PopProduct/configurators"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Artifact" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//Folder"
+        eOpposite="#//Folder/members"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="File" eSuperTypes="#//Artifact"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Folder" eSuperTypes="#//Artifact">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" upperBound="-1"
+        eType="#//Artifact" containment="true" eOpposite="#//Artifact/parent"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Archive" eSuperTypes="#//File">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="content" eType="#//ArchiveContent"
+        containment="true" eOpposite="#//ArchiveContent/archive"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ArchiveContent" eSuperTypes="#//Folder">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="archive" lowerBound="1"
+        eType="#//Archive" eOpposite="#//Archive/content"/>
+  </eClassifiers>
+</ecore:EPackage>

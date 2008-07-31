@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2004 - 2008 Eike Stepper, Germany.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;   Eike Stepper - initial API and implementation"
+    modelDirectory="/org.eclipse.net4j.pop.project/src" editDirectory="/org.eclipse.net4j.pop.project/src"
+    editorDirectory="" modelPluginID="org.eclipse.net4j.pop.project" modelName="Project"
+    editPluginClass="org.eclipse.net4j.pop.project.util.ProjectActivator" updateClasspath="false"
+    nonNLSMarkers="true" codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.net4j.pop.project"
+    optimizedHasChildren="true" colorProviders="true" fontProviders="true">
+  <foreignModel>Project.ecore</foreignModel>
+  <genPackages prefix="Project" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
+      multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
+      contentTypeIdentifier="net4j.pop.project" fileExtensions="project.xml" ecorePackage="Project.ecore#/">
+    <genDataTypes ecoreDataType="Project.ecore#//Version"/>
+    <genClasses ecoreClass="Project.ecore#//PopProject">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/codeRepository"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/rootStream"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//CodeRepository">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRepository/teamProvider"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRepository/repositoryUrl"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//CodeRepository/codeRoots"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//CodeRepository/committers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//CodeRepository/mainBranch"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//CodeRepository/popProject"/>
+      <genOperations ecoreOperation="Project.ecore#//CodeRepository/addCommitter">
+        <genParameters ecoreParameter="Project.ecore#//CodeRepository/addCommitter/id"/>
+        <genParameters ecoreParameter="Project.ecore#//CodeRepository/addCommitter/name"/>
+        <genParameters ecoreParameter="Project.ecore#//CodeRepository/addCommitter/email"/>
+        <genParameters ecoreParameter="Project.ecore#//CodeRepository/addCommitter/entry"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//CodeRoot">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRoot/path"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CodeRoot/codeRepository"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Committer">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Committer/codeRepository"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/email"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/entry"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/exit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/active"/>
+      <genOperations ecoreOperation="Project.ecore#//Committer/deactivate">
+        <genParameters ecoreParameter="Project.ecore#//Committer/deactivate/exit"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//TaggedElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//TaggedElement/tag"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Tag">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Tag/branch"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Tag/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Tag/taggedElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//Branch">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Branch/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/branches"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/tags"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/stream"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//MainBranch">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//MainBranch/codeRepository"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//SubBranch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//SubBranch/parent"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//Stream">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Stream/taskId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Stream/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Stream/branch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Stream/merges"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/pop"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/parent"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/streams"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/merge">
+        <genParameters ecoreParameter="Project.ecore#//Stream/merge/date"/>
+        <genParameters ecoreParameter="Project.ecore#//Stream/merge/delivery"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//TaskStream">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//TaskStream/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//TaskStream/baseline"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//TaskStream/targets"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//TaskStream/deliveries"/>
+      <genOperations ecoreOperation="Project.ecore#//TaskStream/deliver">
+        <genParameters ecoreParameter="Project.ecore#//TaskStream/deliver/id"/>
+        <genParameters ecoreParameter="Project.ecore#//TaskStream/deliver/date"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//IntegrationStream">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//IntegrationStream/taskStreams"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//IntegrationStream/releases"/>
+      <genOperations ecoreOperation="Project.ecore#//IntegrationStream/startTask">
+        <genParameters ecoreParameter="Project.ecore#//IntegrationStream/startTask/taskId"/>
+        <genParameters ecoreParameter="Project.ecore#//IntegrationStream/startTask/baseline"/>
+      </genOperations>
+      <genOperations ecoreOperation="Project.ecore#//IntegrationStream/addRelease">
+        <genParameters ecoreParameter="Project.ecore#//IntegrationStream/addRelease/date"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//DevelopmentStream">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//DevelopmentStream/maintenanceStreams"/>
+      <genOperations ecoreOperation="Project.ecore#//DevelopmentStream/addRelease">
+        <genParameters ecoreParameter="Project.ecore#//DevelopmentStream/addRelease/date"/>
+        <genParameters ecoreParameter="Project.ecore#//DevelopmentStream/addRelease/compatible"/>
+        <genParameters ecoreParameter="Project.ecore#//DevelopmentStream/addRelease/increment"/>
+      </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//MaintenanceStream">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//MaintenanceStream/parent"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//MaintenanceStream/baseline"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//RootStream">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//RootStream/popProject"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//Target">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Target/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Target/date"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Target/streams"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Release">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Release/maintenance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Release/version"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Release/stream"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Release/milestones"/>
+      <genOperations ecoreOperation="Project.ecore#//Release/startMaintenance"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Milestone">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Milestone/release"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Milestone/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Delivery">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Delivery/stream"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/date"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Delivery/merges"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Merge">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Merge/stream"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Merge/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Merge/date"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Merge/delivery"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

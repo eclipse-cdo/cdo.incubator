@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="project"
+    nsURI="http://www.eclipse.org/pop/project/1.0" nsPrefix="pop.project">
+  <eSubpackages name="artifact" nsPrefix="pop.artifact"/>
+  <eSubpackages name="repository" nsPrefix="pop.repository"/>
+  <eSubpackages name="stream" nsPrefix="pop.stream"/>
+  <eSubpackages name="workspace" nsPrefix="pop.workspace">
+    <eSubpackages name="pde" nsPrefix="pop.workspace.pde"/>
+  </eSubpackages>
+</ecore:EPackage>
