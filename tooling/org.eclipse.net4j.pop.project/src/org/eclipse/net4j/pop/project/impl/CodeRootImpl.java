@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRootImpl.java,v 1.1 2008-07-31 12:33:19 estepper Exp $
+ * $Id: CodeRootImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getPath <em>Path</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getCodeRepository <em>Code Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getPath <em>Path</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CodeRootImpl extends EObjectImpl implements CodeRoot
@@ -49,8 +49,8 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   protected static final String PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getPath()
    * @generated
    * @ordered
@@ -59,6 +59,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected CodeRootImpl()
@@ -68,6 +69,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -78,6 +80,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getPath()
@@ -87,6 +90,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPath(String newPath)
@@ -99,50 +103,54 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public CodeRepository getCodeRepository()
+  public CodeRepository getRepository()
   {
-    if (eContainerFeatureID != ProjectPackage.CODE_ROOT__CODE_REPOSITORY) return null;
+    if (eContainerFeatureID != ProjectPackage.CODE_ROOT__REPOSITORY) return null;
     return (CodeRepository)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public NotificationChain basicSetCodeRepository(CodeRepository newCodeRepository, NotificationChain msgs)
+  public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
   {
-    msgs = eBasicSetContainer((InternalEObject)newCodeRepository, ProjectPackage.CODE_ROOT__CODE_REPOSITORY, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.CODE_ROOT__REPOSITORY, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public void setCodeRepository(CodeRepository newCodeRepository)
+  public void setRepository(CodeRepository newRepository)
   {
-    if (newCodeRepository != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.CODE_ROOT__CODE_REPOSITORY && newCodeRepository != null))
+    if (newRepository != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.CODE_ROOT__REPOSITORY && newRepository != null))
     {
-      if (EcoreUtil.isAncestor(this, newCodeRepository))
+      if (EcoreUtil.isAncestor(this, newRepository))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      if (newCodeRepository != null)
-        msgs = ((InternalEObject)newCodeRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__CODE_ROOTS,
+      if (newRepository != null)
+        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__CODE_ROOTS,
             CodeRepository.class, msgs);
-      msgs = basicSetCodeRepository(newCodeRepository, msgs);
+      msgs = basicSetRepository(newRepository, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.CODE_ROOT__CODE_REPOSITORY,
-          newCodeRepository, newCodeRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.CODE_ROOT__REPOSITORY, newRepository,
+          newRepository));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -150,15 +158,16 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetCodeRepository((CodeRepository)otherEnd, msgs);
+      return basicSetRepository((CodeRepository)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -166,14 +175,15 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
-      return basicSetCodeRepository(null, msgs);
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
+      return basicSetRepository(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -181,7 +191,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
       return eInternalContainer().eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__CODE_ROOTS,
           CodeRepository.class, msgs);
     }
@@ -190,6 +200,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -199,14 +210,15 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
     {
     case ProjectPackage.CODE_ROOT__PATH:
       return getPath();
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
-      return getCodeRepository();
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
+      return getRepository();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -217,8 +229,8 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
     case ProjectPackage.CODE_ROOT__PATH:
       setPath((String)newValue);
       return;
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)newValue);
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
+      setRepository((CodeRepository)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -226,6 +238,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -236,8 +249,8 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
     case ProjectPackage.CODE_ROOT__PATH:
       setPath(PATH_EDEFAULT);
       return;
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)null);
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
+      setRepository((CodeRepository)null);
       return;
     }
     super.eUnset(featureID);
@@ -245,6 +258,7 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -254,14 +268,15 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
     {
     case ProjectPackage.CODE_ROOT__PATH:
       return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-    case ProjectPackage.CODE_ROOT__CODE_REPOSITORY:
-      return getCodeRepository() != null;
+    case ProjectPackage.CODE_ROOT__REPOSITORY:
+      return getRepository() != null;
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchImpl.java,v 1.1 2008-07-31 12:33:20 estepper Exp $
+ * $Id: MainBranchImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,16 +28,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl#getCodeRepository <em>Code Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MainBranchImpl extends BranchImpl implements MainBranch
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MainBranchImpl()
@@ -47,6 +48,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -57,50 +59,54 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public CodeRepository getCodeRepository()
+  public CodeRepository getRepository()
   {
-    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY) return null;
+    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__REPOSITORY) return null;
     return (CodeRepository)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public NotificationChain basicSetCodeRepository(CodeRepository newCodeRepository, NotificationChain msgs)
+  public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
   {
-    msgs = eBasicSetContainer((InternalEObject)newCodeRepository, ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.MAIN_BRANCH__REPOSITORY, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public void setCodeRepository(CodeRepository newCodeRepository)
+  public void setRepository(CodeRepository newRepository)
   {
-    if (newCodeRepository != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY && newCodeRepository != null))
+    if (newRepository != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__REPOSITORY && newRepository != null))
     {
-      if (EcoreUtil.isAncestor(this, newCodeRepository))
+      if (EcoreUtil.isAncestor(this, newRepository))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      if (newCodeRepository != null)
-        msgs = ((InternalEObject)newCodeRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__MAIN_BRANCH,
+      if (newRepository != null)
+        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__MAIN_BRANCH,
             CodeRepository.class, msgs);
-      msgs = basicSetCodeRepository(newCodeRepository, msgs);
+      msgs = basicSetRepository(newRepository, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY,
-          newCodeRepository, newCodeRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAIN_BRANCH__REPOSITORY, newRepository,
+          newRepository));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -108,15 +114,16 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetCodeRepository((CodeRepository)otherEnd, msgs);
+      return basicSetRepository((CodeRepository)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -124,14 +131,15 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
-      return basicSetCodeRepository(null, msgs);
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
+      return basicSetRepository(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -139,7 +147,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
       return eInternalContainer().eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__MAIN_BRANCH,
           CodeRepository.class, msgs);
     }
@@ -148,6 +156,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -155,14 +164,15 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
-      return getCodeRepository();
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
+      return getRepository();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -170,8 +180,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)newValue);
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
+      setRepository((CodeRepository)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -179,6 +189,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -186,8 +197,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)null);
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
+      setRepository((CodeRepository)null);
       return;
     }
     super.eUnset(featureID);
@@ -195,6 +206,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -202,8 +214,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__CODE_REPOSITORY:
-      return getCodeRepository() != null;
+    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
+      return getRepository() != null;
     }
     return super.eIsSet(featureID);
   }

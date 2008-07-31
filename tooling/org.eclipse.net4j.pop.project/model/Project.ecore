@@ -22,24 +22,24 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryUrl" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="codeRoots" lowerBound="1"
-        upperBound="-1" eType="#//CodeRoot" containment="true" eOpposite="#//CodeRoot/codeRepository"/>
+        upperBound="-1" eType="#//CodeRoot" containment="true" eOpposite="#//CodeRoot/repository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="committers" lowerBound="1"
-        upperBound="-1" eType="#//Committer" containment="true" eOpposite="#//Committer/codeRepository"/>
+        upperBound="-1" eType="#//Committer" containment="true" eOpposite="#//Committer/repository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
-        eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/codeRepository"/>
+        eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/repository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" eType="#//PopProject"
         eOpposite="#//PopProject/codeRepository"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CodeRoot">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="codeRepository" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
         eType="#//CodeRepository" eOpposite="#//CodeRepository/codeRoots"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Committer">
     <eOperations name="deactivate" lowerBound="1">
       <eParameters name="exit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="codeRepository" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
         eType="#//CodeRepository" eOpposite="#//CodeRepository/committers"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
@@ -74,7 +74,7 @@
         eOpposite="#//Stream/branch"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MainBranch" eSuperTypes="#//Branch">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="codeRepository" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
         eType="#//CodeRepository" eOpposite="#//CodeRepository/mainBranch"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubBranch" eSuperTypes="#//Branch #//TaggedElement">

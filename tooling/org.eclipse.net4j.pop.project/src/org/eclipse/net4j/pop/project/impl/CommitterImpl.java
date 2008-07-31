@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.1 2008-07-31 12:33:19 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,23 +31,23 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getCodeRepository <em>Code Repository</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CommitterImpl extends EObjectImpl implements Committer
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getId()
    * @generated
    * @ordered
@@ -55,8 +55,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getId()
    * @generated
    * @ordered
@@ -74,8 +74,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -133,8 +133,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getExit()
    * @generated
    * @ordered
@@ -153,6 +153,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected CommitterImpl()
@@ -162,6 +163,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -172,50 +174,54 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public CodeRepository getCodeRepository()
+  public CodeRepository getRepository()
   {
-    if (eContainerFeatureID != ProjectPackage.COMMITTER__CODE_REPOSITORY) return null;
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY) return null;
     return (CodeRepository)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public NotificationChain basicSetCodeRepository(CodeRepository newCodeRepository, NotificationChain msgs)
+  public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
   {
-    msgs = eBasicSetContainer((InternalEObject)newCodeRepository, ProjectPackage.COMMITTER__CODE_REPOSITORY, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.COMMITTER__REPOSITORY, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public void setCodeRepository(CodeRepository newCodeRepository)
+  public void setRepository(CodeRepository newRepository)
   {
-    if (newCodeRepository != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.COMMITTER__CODE_REPOSITORY && newCodeRepository != null))
+    if (newRepository != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY && newRepository != null))
     {
-      if (EcoreUtil.isAncestor(this, newCodeRepository))
+      if (EcoreUtil.isAncestor(this, newRepository))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      if (newCodeRepository != null)
-        msgs = ((InternalEObject)newCodeRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__COMMITTERS,
+      if (newRepository != null)
+        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__COMMITTERS,
             CodeRepository.class, msgs);
-      msgs = basicSetCodeRepository(newCodeRepository, msgs);
+      msgs = basicSetRepository(newRepository, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__CODE_REPOSITORY,
-          newCodeRepository, newCodeRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__REPOSITORY, newRepository,
+          newRepository));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getId()
@@ -225,6 +231,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setId(String newId)
@@ -237,6 +244,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -246,6 +254,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -258,6 +267,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getEmail()
@@ -267,6 +277,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -279,6 +290,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getEntry()
@@ -288,6 +300,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -300,6 +313,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getExit()
@@ -309,6 +323,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -321,6 +336,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public boolean isActive()
@@ -332,6 +348,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setActive(boolean newActive)
@@ -343,6 +360,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void deactivate(Date exit)
@@ -354,6 +372,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -361,15 +380,16 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
+    case ProjectPackage.COMMITTER__REPOSITORY:
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetCodeRepository((CodeRepository)otherEnd, msgs);
+      return basicSetRepository((CodeRepository)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -377,14 +397,15 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
-      return basicSetCodeRepository(null, msgs);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      return basicSetRepository(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -392,7 +413,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
+    case ProjectPackage.COMMITTER__REPOSITORY:
       return eInternalContainer().eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__COMMITTERS,
           CodeRepository.class, msgs);
     }
@@ -401,6 +422,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -408,8 +430,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
-      return getCodeRepository();
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      return getRepository();
     case ProjectPackage.COMMITTER__ID:
       return getId();
     case ProjectPackage.COMMITTER__NAME:
@@ -428,6 +450,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -435,8 +458,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)newValue);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      setRepository((CodeRepository)newValue);
       return;
     case ProjectPackage.COMMITTER__ID:
       setId((String)newValue);
@@ -462,6 +485,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -469,8 +493,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)null);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      setRepository((CodeRepository)null);
       return;
     case ProjectPackage.COMMITTER__ID:
       setId(ID_EDEFAULT);
@@ -496,6 +520,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -503,8 +528,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__CODE_REPOSITORY:
-      return getCodeRepository() != null;
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      return getRepository() != null;
     case ProjectPackage.COMMITTER__ID:
       return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
     case ProjectPackage.COMMITTER__NAME:
@@ -523,6 +548,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

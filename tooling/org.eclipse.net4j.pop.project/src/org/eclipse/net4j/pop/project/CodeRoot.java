@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRoot.java,v 1.1 2008-07-31 12:33:19 estepper Exp $
+ * $Id: CodeRoot.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -16,15 +16,14 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Code Root</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.CodeRoot#getPath <em>Path</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.CodeRoot#getCodeRepository <em>Code Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.CodeRoot#getPath <em>Path</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.CodeRoot#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getCodeRoot()
  * @model
  * @generated
@@ -32,12 +31,12 @@ import org.eclipse.emf.ecore.EObject;
 public interface CodeRoot extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Path</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Path</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Path</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Path</em>' attribute.
    * @see #setPath(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCodeRoot_Path()
@@ -58,31 +57,32 @@ public interface CodeRoot extends EObject
   void setPath(String value);
 
   /**
-   * Returns the value of the '<em><b>Code Repository</b></em>' container reference. It is bidirectional and its
-   * opposite is '{@link org.eclipse.net4j.pop.project.CodeRepository#getCodeRoots <em>Code Roots</em>}'. <!--
-   * begin-user-doc -->
+   * Returns the value of the '<em><b>Repository</b></em>' container reference. It is bidirectional and its opposite is
+   * '{@link org.eclipse.net4j.pop.project.CodeRepository#getCodeRoots <em>Code Roots</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Code Repository</em>' container reference isn't clear, there really should be more of a
+   * If the meaning of the '<em>Repository</em>' container reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
    * 
-   * @return the value of the '<em>Code Repository</em>' container reference.
-   * @see #setCodeRepository(CodeRepository)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCodeRoot_CodeRepository()
+   * @return the value of the '<em>Repository</em>' container reference.
+   * @see #setRepository(CodeRepository)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCodeRoot_Repository()
    * @see org.eclipse.net4j.pop.project.CodeRepository#getCodeRoots
    * @model opposite="codeRoots" required="true" transient="false"
    * @generated
    */
-  CodeRepository getCodeRepository();
+  CodeRepository getRepository();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.CodeRoot#getCodeRepository <em>Code Repository</em>}' container reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Code Repository</em>' container reference.
-   * @see #getCodeRepository()
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.CodeRoot#getRepository <em>Repository</em>}' container
+   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Repository</em>' container reference.
+   * @see #getRepository()
    * @generated
    */
-  void setCodeRepository(CodeRepository value);
+  void setRepository(CodeRepository value);
 
 } // CodeRoot
