@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.10 2008-08-01 11:03:26 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.11 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -360,10 +360,11 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCommitter_Id()
+  public EAttribute getCommitter_RepositoryLogin()
   {
     return (EAttribute)committerEClass.getEStructuralFeatures().get(1);
   }
@@ -562,27 +563,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStream_TaskId()
-  {
-    return (EAttribute)streamEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getStream_Name()
-  {
-    return (EAttribute)streamEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getStream_Branch()
   {
-    return (EReference)streamEClass.getEStructuralFeatures().get(2);
+    return (EReference)streamEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -591,7 +574,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getStream_Merges()
   {
-    return (EReference)streamEClass.getEStructuralFeatures().get(3);
+    return (EReference)streamEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -604,12 +587,22 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getTaskStream_TaskId()
+  {
+    return (EAttribute)taskStreamEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public EReference getTaskStream_Parent()
   {
-    return (EReference)taskStreamEClass.getEStructuralFeatures().get(0);
+    return (EReference)taskStreamEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -618,7 +611,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EAttribute getTaskStream_Baseline()
   {
-    return (EAttribute)taskStreamEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)taskStreamEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -627,7 +620,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getTaskStream_Targets()
   {
-    return (EReference)taskStreamEClass.getEStructuralFeatures().get(2);
+    return (EReference)taskStreamEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -636,7 +629,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getTaskStream_Deliveries()
   {
-    return (EReference)taskStreamEClass.getEStructuralFeatures().get(3);
+    return (EReference)taskStreamEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -649,12 +642,22 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getIntegrationStream_Name()
+  {
+    return (EAttribute)integrationStreamEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public EReference getIntegrationStream_TaskStreams()
   {
-    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(0);
+    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -663,7 +666,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getIntegrationStream_Releases()
   {
-    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(1);
+    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -742,7 +745,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTarget_Id()
+  public EAttribute getTarget_Date()
   {
     return (EAttribute)targetEClass.getEStructuralFeatures().get(0);
   }
@@ -751,18 +754,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getTarget_Date()
-  {
-    return (EAttribute)targetEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getTarget_Streams()
   {
-    return (EReference)targetEClass.getEStructuralFeatures().get(2);
+    return (EReference)targetEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -856,10 +850,11 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDelivery_Id()
+  public EAttribute getDelivery_Number()
   {
     return (EAttribute)deliveryEClass.getEStructuralFeatures().get(1);
   }
@@ -904,7 +899,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMerge_Id()
+  public EAttribute getMerge_Date()
   {
     return (EAttribute)mergeEClass.getEStructuralFeatures().get(1);
   }
@@ -913,18 +908,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getMerge_Date()
-  {
-    return (EAttribute)mergeEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getMerge_Delivery()
   {
-    return (EReference)mergeEClass.getEStructuralFeatures().get(3);
+    return (EReference)mergeEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -969,7 +955,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     committerEClass = createEClass(COMMITTER);
     createEReference(committerEClass, COMMITTER__POP_PROJECT);
-    createEAttribute(committerEClass, COMMITTER__ID);
+    createEAttribute(committerEClass, COMMITTER__REPOSITORY_LOGIN);
     createEAttribute(committerEClass, COMMITTER__NAME);
     createEAttribute(committerEClass, COMMITTER__EMAIL);
     createEAttribute(committerEClass, COMMITTER__ENTRY);
@@ -997,18 +983,18 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(subBranchEClass, SUB_BRANCH__PARENT);
 
     streamEClass = createEClass(STREAM);
-    createEAttribute(streamEClass, STREAM__TASK_ID);
-    createEAttribute(streamEClass, STREAM__NAME);
     createEReference(streamEClass, STREAM__BRANCH);
     createEReference(streamEClass, STREAM__MERGES);
 
     taskStreamEClass = createEClass(TASK_STREAM);
+    createEAttribute(taskStreamEClass, TASK_STREAM__TASK_ID);
     createEReference(taskStreamEClass, TASK_STREAM__PARENT);
     createEAttribute(taskStreamEClass, TASK_STREAM__BASELINE);
     createEReference(taskStreamEClass, TASK_STREAM__TARGETS);
     createEReference(taskStreamEClass, TASK_STREAM__DELIVERIES);
 
     integrationStreamEClass = createEClass(INTEGRATION_STREAM);
+    createEAttribute(integrationStreamEClass, INTEGRATION_STREAM__NAME);
     createEReference(integrationStreamEClass, INTEGRATION_STREAM__TASK_STREAMS);
     createEReference(integrationStreamEClass, INTEGRATION_STREAM__RELEASES);
 
@@ -1023,7 +1009,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(rootStreamEClass, ROOT_STREAM__POP_PROJECT);
 
     targetEClass = createEClass(TARGET);
-    createEAttribute(targetEClass, TARGET__ID);
     createEAttribute(targetEClass, TARGET__DATE);
     createEReference(targetEClass, TARGET__STREAMS);
 
@@ -1039,13 +1024,12 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     deliveryEClass = createEClass(DELIVERY);
     createEReference(deliveryEClass, DELIVERY__STREAM);
-    createEAttribute(deliveryEClass, DELIVERY__ID);
+    createEAttribute(deliveryEClass, DELIVERY__NUMBER);
     createEAttribute(deliveryEClass, DELIVERY__DATE);
     createEReference(deliveryEClass, DELIVERY__MERGES);
 
     mergeEClass = createEClass(MERGE);
     createEReference(mergeEClass, MERGE__STREAM);
-    createEAttribute(mergeEClass, MERGE__ID);
     createEAttribute(mergeEClass, MERGE__DATE);
     createEReference(mergeEClass, MERGE__DELIVERY);
   }
@@ -1081,9 +1065,14 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     // Add supertypes to classes
     popProjectEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    committerEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    taggedElementEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    tagEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    branchEClass.getESuperTypes().add(theBasePackage.getPopElement());
     mainBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getTaggedElement());
+    streamEClass.getESuperTypes().add(theBasePackage.getPopElement());
     taskStreamEClass.getESuperTypes().add(this.getStream());
     integrationStreamEClass.getESuperTypes().add(this.getStream());
     developmentStreamEClass.getESuperTypes().add(this.getIntegrationStream());
@@ -1155,9 +1144,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getPopProject_Committers(),
         "popProject", null, 1, 1, Committer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getCommitter_Id(),
+        getCommitter_RepositoryLogin(),
         ecorePackage.getEString(),
-        "id", null, 1, 1, Committer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "repositoryLogin", null, 1, 1, Committer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCommitter_Name(),
         ecorePackage.getEString(),
@@ -1199,7 +1188,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEAttribute(
         getTag_Name(),
         ecorePackage.getEString(),
-        "name", null, 1, 1, Tag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "name", null, 1, 1, Tag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getTag_TaggedElement(),
         this.getTaggedElement(),
@@ -1210,7 +1199,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEAttribute(
         getBranch_Name(),
         ecorePackage.getEString(),
-        "name", null, 1, 1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "name", null, 1, 1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getBranch_Branches(),
         this.getSubBranch(),
@@ -1243,14 +1232,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(streamEClass, Stream.class, "Stream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEAttribute(
-        getStream_TaskId(),
-        ecorePackage.getEString(),
-        "taskId", null, 1, 1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getStream_Name(),
-        ecorePackage.getEString(),
-        "name", null, 1, 1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getStream_Branch(),
         this.getBranch(),
@@ -1274,6 +1255,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     initEClass(taskStreamEClass, TaskStream.class,
         "TaskStream", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(
+        getTaskStream_TaskId(),
+        ecorePackage.getEString(),
+        "taskId", null, 1, 1, TaskStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getTaskStream_Parent(),
         this.getIntegrationStream(),
@@ -1300,6 +1285,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     initEClass(integrationStreamEClass, IntegrationStream.class,
         "IntegrationStream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(
+        getIntegrationStream_Name(),
+        ecorePackage.getEString(),
+        "name", null, 1, 1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getIntegrationStream_TaskStreams(),
         this.getTaskStream(),
@@ -1354,10 +1343,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     initEClass(targetEClass, Target.class, "Target", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
-        getTarget_Id(),
-        ecorePackage.getEString(),
-        "id", null, 1, 1, Target.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
         getTarget_Date(),
         ecorePackage.getEDate(),
         "date", null, 0, 1, Target.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
@@ -1408,9 +1393,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getTaskStream_Deliveries(),
         "stream", null, 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getDelivery_Id(),
-        ecorePackage.getEString(),
-        "id", "1", 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        getDelivery_Number(),
+        ecorePackage.getEInt(),
+        "number", null, 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getDelivery_Date(),
         ecorePackage.getEDate(),
@@ -1427,10 +1412,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getStream(),
         this.getStream_Merges(),
         "stream", null, 1, 1, Merge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getMerge_Id(),
-        ecorePackage.getEString(),
-        "id", null, 1, 1, Merge.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getMerge_Date(),
         ecorePackage.getEDate(),

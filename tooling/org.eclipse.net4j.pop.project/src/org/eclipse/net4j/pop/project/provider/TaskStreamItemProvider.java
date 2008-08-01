@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: TaskStreamItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -66,11 +66,28 @@ public class TaskStreamItemProvider extends StreamItemProvider implements IEditi
     {
       super.getPropertyDescriptors(object);
 
+      addTaskIdPropertyDescriptor(object);
       addParentPropertyDescriptor(object);
       addBaselinePropertyDescriptor(object);
       addTargetsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Task Id feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTaskIdPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_TaskStream_taskId_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_TaskStream_taskId_feature", "_UI_TaskStream_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.TASK_STREAM__TASK_ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+        null, null));
   }
 
   /**
@@ -165,7 +182,7 @@ public class TaskStreamItemProvider extends StreamItemProvider implements IEditi
   @Override
   public String getText(Object object)
   {
-    String label = ((TaskStream)object).getName();
+    String label = ((TaskStream)object).getId();
     return label == null || label.length() == 0 ? getString("_UI_TaskStream_type") : //$NON-NLS-1$
         getString("_UI_TaskStream_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }
@@ -183,6 +200,7 @@ public class TaskStreamItemProvider extends StreamItemProvider implements IEditi
 
     switch (notification.getFeatureID(TaskStream.class))
     {
+    case ProjectPackage.TASK_STREAM__TASK_ID:
     case ProjectPackage.TASK_STREAM__PARENT:
     case ProjectPackage.TASK_STREAM__BASELINE:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

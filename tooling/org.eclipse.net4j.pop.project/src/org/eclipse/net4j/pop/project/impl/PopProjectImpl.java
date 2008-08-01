@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.9 2008-08-01 11:03:26 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.10 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -38,16 +38,16 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getTeamProvider <em>Team Provider</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRepositoryUrl <em>Repository Url</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCommitters <em>Committers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRoots <em>Code Roots</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getMainBranch <em>Main Branch</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getTeamProvider <em>Team Provider</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRepositoryUrl <em>Repository Url</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCommitters <em>Committers</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRoots <em>Code Roots</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getMainBranch <em>Main Branch</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PopProjectImpl extends PopElementImpl implements PopProject
@@ -63,8 +63,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -72,9 +72,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute.
-   * <!-- begin-user-doc -->
+   * The default value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getTeamProvider()
    * @generated
    * @ordered
@@ -82,9 +82,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected static final String TEAM_PROVIDER_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getTeamProvider()
    * @generated
    * @ordered
@@ -92,9 +92,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected String teamProvider = TEAM_PROVIDER_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute.
-   * <!-- begin-user-doc -->
+   * The default value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getRepositoryUrl()
    * @generated
    * @ordered
@@ -102,9 +102,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected static final String REPOSITORY_URL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getRepositoryUrl()
    * @generated
    * @ordered
@@ -112,9 +112,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected String repositoryUrl = REPOSITORY_URL_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getCommitters() <em>Committers</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getCommitters() <em>Committers</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getCommitters()
    * @generated
    * @ordered
@@ -122,9 +122,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected EList<Committer> committers;
 
   /**
-   * The cached value of the '{@link #getCodeRoots() <em>Code Roots</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getCodeRoots() <em>Code Roots</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getCodeRoots()
    * @generated
    * @ordered
@@ -132,9 +132,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected EList<CodeRoot> codeRoots;
 
   /**
-   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getMainBranch()
    * @generated
    * @ordered
@@ -142,9 +142,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected MainBranch mainBranch;
 
   /**
-   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' containment reference.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
+   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' containment reference. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getRootStream()
    * @generated
    * @ordered
@@ -153,6 +153,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopProjectImpl()
@@ -162,6 +163,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -172,6 +174,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -181,6 +184,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -192,8 +196,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getTeamProvider()
@@ -202,8 +206,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTeamProvider(String newTeamProvider)
@@ -216,8 +220,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getRepositoryUrl()
@@ -226,8 +230,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRepositoryUrl(String newRepositoryUrl)
@@ -240,8 +244,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<CodeRoot> getCodeRoots()
@@ -255,8 +259,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Committer> getCommitters()
@@ -270,8 +274,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MainBranch getMainBranch()
@@ -299,8 +303,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MainBranch basicGetMainBranch()
@@ -309,8 +313,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetMainBranch(MainBranch newMainBranch, NotificationChain msgs)
@@ -330,8 +334,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setMainBranch(MainBranch newMainBranch)
@@ -355,6 +359,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public RootStream getRootStream()
@@ -383,6 +388,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public RootStream basicGetRootStream()
@@ -392,6 +398,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetRootStream(RootStream newRootStream, NotificationChain msgs)
@@ -412,6 +419,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRootStream(RootStream newRootStream)
@@ -434,8 +442,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release addCommitter(String id, String name, String email, Date entry)
@@ -447,6 +455,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -475,6 +484,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -496,6 +506,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -525,6 +536,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -562,6 +574,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -596,6 +609,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -623,6 +637,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -641,4 +656,21 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     return result.toString();
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdType()
+  {
+    return "pop";
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdValue()
+  {
+    return getName();
+  }
 } // PopProjectImpl

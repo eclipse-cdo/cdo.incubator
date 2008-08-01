@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.11 2008-08-01 11:03:27 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.12 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -77,6 +77,15 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   int POP_PROJECT = 0;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_PROJECT__ID = BasePackage.POP_ELEMENT__ID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -194,21 +203,30 @@ public interface ProjectPackage extends EPackage
   int COMMITTER = 2;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMITTER__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Pop Project</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMITTER__POP_PROJECT = 0;
+  int COMMITTER__POP_PROJECT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Repository Login</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMITTER__ID = 1;
+  int COMMITTER__REPOSITORY_LOGIN = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -216,7 +234,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMITTER__NAME = 2;
+  int COMMITTER__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Email</b></em>' attribute.
@@ -224,7 +242,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMITTER__EMAIL = 3;
+  int COMMITTER__EMAIL = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Entry</b></em>' attribute.
@@ -232,7 +250,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMITTER__ENTRY = 4;
+  int COMMITTER__ENTRY = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Exit</b></em>' attribute.
@@ -240,7 +258,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMITTER__EXIT = 5;
+  int COMMITTER__EXIT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Active</b></em>' attribute.
@@ -248,7 +266,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMITTER__ACTIVE = 6;
+  int COMMITTER__ACTIVE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Committer</em>' class.
@@ -256,7 +274,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COMMITTER_FEATURE_COUNT = 7;
+  int COMMITTER_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl <em>Tagged Element</em>}' class.
@@ -268,12 +286,21 @@ public interface ProjectPackage extends EPackage
   int TAGGED_ELEMENT = 3;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAGGED_ELEMENT__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Tag</b></em>' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TAGGED_ELEMENT__TAG = 0;
+  int TAGGED_ELEMENT__TAG = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Tagged Element</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -282,7 +309,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TAGGED_ELEMENT_FEATURE_COUNT = 1;
+  int TAGGED_ELEMENT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TagImpl <em>Tag</em>}' class. <!--
@@ -295,12 +322,21 @@ public interface ProjectPackage extends EPackage
   int TAG = 4;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAG__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Branch</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TAG__BRANCH = 0;
+  int TAG__BRANCH = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -308,7 +344,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TAG__NAME = 1;
+  int TAG__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Tagged Element</b></em>' reference.
@@ -316,7 +352,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TAG__TAGGED_ELEMENT = 2;
+  int TAG__TAGGED_ELEMENT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Tag</em>' class.
@@ -324,7 +360,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TAG_FEATURE_COUNT = 3;
+  int TAG_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.BranchImpl <em>Branch</em>}' class. <!--
@@ -337,12 +373,21 @@ public interface ProjectPackage extends EPackage
   int BRANCH = 5;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRANCH__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BRANCH__NAME = 0;
+  int BRANCH__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Branches</b></em>' containment reference list.
@@ -351,7 +396,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BRANCH__BRANCHES = 1;
+  int BRANCH__BRANCHES = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Tags</b></em>' containment reference list. <!-- begin-user-doc --> <!-- end-user-doc
@@ -360,7 +405,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BRANCH__TAGS = 2;
+  int BRANCH__TAGS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Stream</b></em>' reference.
@@ -368,7 +413,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BRANCH__STREAM = 3;
+  int BRANCH__STREAM = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Branch</em>' class.
@@ -376,7 +421,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int BRANCH_FEATURE_COUNT = 4;
+  int BRANCH_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl <em>Main Branch</em>}' class.
@@ -386,6 +431,15 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   int MAIN_BRANCH = 6;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN_BRANCH__ID = BRANCH__ID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -447,6 +501,15 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   int SUB_BRANCH = 7;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUB_BRANCH__ID = BRANCH__ID;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -517,20 +580,13 @@ public interface ProjectPackage extends EPackage
   int STREAM = 8;
 
   /**
-   * The feature id for the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STREAM__TASK_ID = 0;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STREAM__NAME = 1;
+  int STREAM__ID = BasePackage.POP_ELEMENT__ID;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' reference.
@@ -538,7 +594,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STREAM__BRANCH = 2;
+  int STREAM__BRANCH = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Merges</b></em>' containment reference list.
@@ -547,7 +603,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STREAM__MERGES = 3;
+  int STREAM__MERGES = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Stream</em>' class.
@@ -555,7 +611,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STREAM_FEATURE_COUNT = 4;
+  int STREAM_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl <em>Task Stream</em>}' class.
@@ -567,20 +623,13 @@ public interface ProjectPackage extends EPackage
   int TASK_STREAM = 9;
 
   /**
-   * The feature id for the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STREAM__TASK_ID = STREAM__TASK_ID;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_STREAM__NAME = STREAM__NAME;
+  int TASK_STREAM__ID = STREAM__ID;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' reference.
@@ -600,12 +649,20 @@ public interface ProjectPackage extends EPackage
   int TASK_STREAM__MERGES = STREAM__MERGES;
 
   /**
+   * The feature id for the '<em><b>Task Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_STREAM__TASK_ID = STREAM_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Parent</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_STREAM__PARENT = STREAM_FEATURE_COUNT + 0;
+  int TASK_STREAM__PARENT = STREAM_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Baseline</b></em>' attribute.
@@ -613,7 +670,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_STREAM__BASELINE = STREAM_FEATURE_COUNT + 1;
+  int TASK_STREAM__BASELINE = STREAM_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Targets</b></em>' reference list.
@@ -621,7 +678,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_STREAM__TARGETS = STREAM_FEATURE_COUNT + 2;
+  int TASK_STREAM__TARGETS = STREAM_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Deliveries</b></em>' containment reference list.
@@ -630,7 +687,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_STREAM__DELIVERIES = STREAM_FEATURE_COUNT + 3;
+  int TASK_STREAM__DELIVERIES = STREAM_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Task Stream</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -639,7 +696,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_STREAM_FEATURE_COUNT = STREAM_FEATURE_COUNT + 4;
+  int TASK_STREAM_FEATURE_COUNT = STREAM_FEATURE_COUNT + 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.IntegrationStreamImpl <em>Integration Stream</em>}' class.
@@ -651,20 +708,13 @@ public interface ProjectPackage extends EPackage
   int INTEGRATION_STREAM = 10;
 
   /**
-   * The feature id for the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTEGRATION_STREAM__TASK_ID = STREAM__TASK_ID;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INTEGRATION_STREAM__NAME = STREAM__NAME;
+  int INTEGRATION_STREAM__ID = STREAM__ID;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' reference.
@@ -684,12 +734,20 @@ public interface ProjectPackage extends EPackage
   int INTEGRATION_STREAM__MERGES = STREAM__MERGES;
 
   /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGRATION_STREAM__NAME = STREAM_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Task Streams</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INTEGRATION_STREAM__TASK_STREAMS = STREAM_FEATURE_COUNT + 0;
+  int INTEGRATION_STREAM__TASK_STREAMS = STREAM_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Releases</b></em>' containment reference list.
@@ -698,7 +756,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTEGRATION_STREAM__RELEASES = STREAM_FEATURE_COUNT + 1;
+  int INTEGRATION_STREAM__RELEASES = STREAM_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Integration Stream</em>' class.
@@ -707,7 +765,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int INTEGRATION_STREAM_FEATURE_COUNT = STREAM_FEATURE_COUNT + 2;
+  int INTEGRATION_STREAM_FEATURE_COUNT = STREAM_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.DevelopmentStreamImpl <em>Development Stream</em>}' class.
@@ -719,20 +777,13 @@ public interface ProjectPackage extends EPackage
   int DEVELOPMENT_STREAM = 11;
 
   /**
-   * The feature id for the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVELOPMENT_STREAM__TASK_ID = INTEGRATION_STREAM__TASK_ID;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPMENT_STREAM__NAME = INTEGRATION_STREAM__NAME;
+  int DEVELOPMENT_STREAM__ID = INTEGRATION_STREAM__ID;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' reference.
@@ -750,6 +801,14 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int DEVELOPMENT_STREAM__MERGES = INTEGRATION_STREAM__MERGES;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPMENT_STREAM__NAME = INTEGRATION_STREAM__NAME;
 
   /**
    * The feature id for the '<em><b>Task Streams</b></em>' containment reference list.
@@ -796,20 +855,13 @@ public interface ProjectPackage extends EPackage
   int MAINTENANCE_STREAM = 12;
 
   /**
-   * The feature id for the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAINTENANCE_STREAM__TASK_ID = INTEGRATION_STREAM__TASK_ID;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAINTENANCE_STREAM__NAME = INTEGRATION_STREAM__NAME;
+  int MAINTENANCE_STREAM__ID = INTEGRATION_STREAM__ID;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' reference.
@@ -827,6 +879,14 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int MAINTENANCE_STREAM__MERGES = INTEGRATION_STREAM__MERGES;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAINTENANCE_STREAM__NAME = INTEGRATION_STREAM__NAME;
 
   /**
    * The feature id for the '<em><b>Task Streams</b></em>' containment reference list.
@@ -880,20 +940,13 @@ public interface ProjectPackage extends EPackage
   int ROOT_STREAM = 13;
 
   /**
-   * The feature id for the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_STREAM__TASK_ID = DEVELOPMENT_STREAM__TASK_ID;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__NAME = DEVELOPMENT_STREAM__NAME;
+  int ROOT_STREAM__ID = DEVELOPMENT_STREAM__ID;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' reference.
@@ -911,6 +964,14 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int ROOT_STREAM__MERGES = DEVELOPMENT_STREAM__MERGES;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOT_STREAM__NAME = DEVELOPMENT_STREAM__NAME;
 
   /**
    * The feature id for the '<em><b>Task Streams</b></em>' containment reference list.
@@ -966,6 +1027,14 @@ public interface ProjectPackage extends EPackage
   int TARGET = 14;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TARGET__ID = TAGGED_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Tag</b></em>' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -974,20 +1043,12 @@ public interface ProjectPackage extends EPackage
   int TARGET__TAG = TAGGED_ELEMENT__TAG;
 
   /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TARGET__ID = TAGGED_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
    * The feature id for the '<em><b>Date</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TARGET__DATE = TAGGED_ELEMENT_FEATURE_COUNT + 1;
+  int TARGET__DATE = TAGGED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Streams</b></em>' reference list.
@@ -995,7 +1056,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET__STREAMS = TAGGED_ELEMENT_FEATURE_COUNT + 2;
+  int TARGET__STREAMS = TAGGED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Target</em>' class.
@@ -1003,7 +1064,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TARGET_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 3;
+  int TARGET_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl <em>Release</em>}' class. <!--
@@ -1016,20 +1077,20 @@ public interface ProjectPackage extends EPackage
   int RELEASE = 15;
 
   /**
-   * The feature id for the '<em><b>Tag</b></em>' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RELEASE__TAG = TARGET__TAG;
-
-  /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int RELEASE__ID = TARGET__ID;
+
+  /**
+   * The feature id for the '<em><b>Tag</b></em>' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__TAG = TARGET__TAG;
 
   /**
    * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -1098,20 +1159,20 @@ public interface ProjectPackage extends EPackage
   int MILESTONE = 16;
 
   /**
-   * The feature id for the '<em><b>Tag</b></em>' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MILESTONE__TAG = TARGET__TAG;
-
-  /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
   int MILESTONE__ID = TARGET__ID;
+
+  /**
+   * The feature id for the '<em><b>Tag</b></em>' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MILESTONE__TAG = TARGET__TAG;
 
   /**
    * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -1164,6 +1225,14 @@ public interface ProjectPackage extends EPackage
   int DELIVERY = 17;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELIVERY__ID = TAGGED_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Tag</b></em>' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1180,12 +1249,13 @@ public interface ProjectPackage extends EPackage
   int DELIVERY__STREAM = TAGGED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Number</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DELIVERY__ID = TAGGED_ELEMENT_FEATURE_COUNT + 1;
+  int DELIVERY__NUMBER = TAGGED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Date</b></em>' attribute.
@@ -1222,6 +1292,14 @@ public interface ProjectPackage extends EPackage
   int MERGE = 18;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MERGE__ID = TAGGED_ELEMENT__ID;
+
+  /**
    * The feature id for the '<em><b>Tag</b></em>' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1238,20 +1316,12 @@ public interface ProjectPackage extends EPackage
   int MERGE__STREAM = TAGGED_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MERGE__ID = TAGGED_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Date</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MERGE__DATE = TAGGED_ELEMENT_FEATURE_COUNT + 2;
+  int MERGE__DATE = TAGGED_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Delivery</b></em>' reference.
@@ -1259,7 +1329,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MERGE__DELIVERY = TAGGED_ELEMENT_FEATURE_COUNT + 3;
+  int MERGE__DELIVERY = TAGGED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Merge</em>' class.
@@ -1267,7 +1337,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MERGE_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 4;
+  int MERGE_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.PopProject <em>Pop Project</em>}'. <!--
@@ -1408,15 +1478,15 @@ public interface ProjectPackage extends EPackage
   EReference getCommitter_PopProject();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Committer#getId <em>Id</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see org.eclipse.net4j.pop.project.Committer#getId()
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Repository Login</em>'.
+   * @see org.eclipse.net4j.pop.project.Committer#getRepositoryLogin()
    * @see #getCommitter()
    * @generated
    */
-  EAttribute getCommitter_Id();
+  EAttribute getCommitter_RepositoryLogin();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Committer#getName <em>Name</em>}'.
@@ -1631,26 +1701,6 @@ public interface ProjectPackage extends EPackage
   EClass getStream();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Stream#getTaskId <em>Task Id</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Task Id</em>'.
-   * @see org.eclipse.net4j.pop.project.Stream#getTaskId()
-   * @see #getStream()
-   * @generated
-   */
-  EAttribute getStream_TaskId();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Stream#getName <em>Name</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.eclipse.net4j.pop.project.Stream#getName()
-   * @see #getStream()
-   * @generated
-   */
-  EAttribute getStream_Name();
-
-  /**
    * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the reference '<em>Branch</em>'.
@@ -1679,6 +1729,17 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EClass getTaskStream();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.TaskStream#getTaskId <em>Task Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Task Id</em>'.
+   * @see org.eclipse.net4j.pop.project.TaskStream#getTaskId()
+   * @see #getTaskStream()
+   * @generated
+   */
+  EAttribute getTaskStream_TaskId();
 
   /**
    * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.project.TaskStream#getParent <em>Parent</em>}'.
@@ -1729,6 +1790,17 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EClass getIntegrationStream();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.IntegrationStream#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.net4j.pop.project.IntegrationStream#getName()
+   * @see #getIntegrationStream()
+   * @generated
+   */
+  EAttribute getIntegrationStream_Name();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.project.IntegrationStream#getTaskStreams <em>Task Streams</em>}'.
@@ -1831,17 +1903,6 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EClass getTarget();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Target#getId <em>Id</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see org.eclipse.net4j.pop.project.Target#getId()
-   * @see #getTarget()
-   * @generated
-   */
-  EAttribute getTarget_Id();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Target#getDate <em>Date</em>}'.
@@ -1965,15 +2026,15 @@ public interface ProjectPackage extends EPackage
   EReference getDelivery_Stream();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Delivery#getId <em>Id</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see org.eclipse.net4j.pop.project.Delivery#getId()
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Delivery#getNumber <em>Number</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Number</em>'.
+   * @see org.eclipse.net4j.pop.project.Delivery#getNumber()
    * @see #getDelivery()
    * @generated
    */
-  EAttribute getDelivery_Id();
+  EAttribute getDelivery_Number();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Delivery#getDate <em>Date</em>}'.
@@ -2014,17 +2075,6 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EReference getMerge_Stream();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Merge#getId <em>Id</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for the attribute '<em>Id</em>'.
-   * @see org.eclipse.net4j.pop.project.Merge#getId()
-   * @see #getMerge()
-   * @generated
-   */
-  EAttribute getMerge_Id();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Merge#getDate <em>Date</em>}'. <!--
@@ -2176,12 +2226,12 @@ public interface ProjectPackage extends EPackage
     EReference COMMITTER__POP_PROJECT = eINSTANCE.getCommitter_PopProject();
 
     /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
+     * The meta object literal for the '<em><b>Repository Login</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COMMITTER__ID = eINSTANCE.getCommitter_Id();
+    EAttribute COMMITTER__REPOSITORY_LOGIN = eINSTANCE.getCommitter_RepositoryLogin();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -2359,22 +2409,6 @@ public interface ProjectPackage extends EPackage
     EClass STREAM = eINSTANCE.getStream();
 
     /**
-     * The meta object literal for the '<em><b>Task Id</b></em>' attribute feature.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * @generated
-     */
-    EAttribute STREAM__TASK_ID = eINSTANCE.getStream_TaskId();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * @generated
-     */
-    EAttribute STREAM__NAME = eINSTANCE.getStream_Name();
-
-    /**
      * The meta object literal for the '<em><b>Branch</b></em>' reference feature.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -2398,6 +2432,14 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EClass TASK_STREAM = eINSTANCE.getTaskStream();
+
+    /**
+     * The meta object literal for the '<em><b>Task Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute TASK_STREAM__TASK_ID = eINSTANCE.getTaskStream_TaskId();
 
     /**
      * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
@@ -2439,6 +2481,14 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EClass INTEGRATION_STREAM = eINSTANCE.getIntegrationStream();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INTEGRATION_STREAM__NAME = eINSTANCE.getIntegrationStream_Name();
 
     /**
      * The meta object literal for the '<em><b>Task Streams</b></em>' containment reference list feature.
@@ -2523,14 +2573,6 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EClass TARGET = eINSTANCE.getTarget();
-
-    /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @generated
-     */
-    EAttribute TARGET__ID = eINSTANCE.getTarget_Id();
 
     /**
      * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
@@ -2632,12 +2674,12 @@ public interface ProjectPackage extends EPackage
     EReference DELIVERY__STREAM = eINSTANCE.getDelivery_Stream();
 
     /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
+     * The meta object literal for the '<em><b>Number</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute DELIVERY__ID = eINSTANCE.getDelivery_Id();
+    EAttribute DELIVERY__NUMBER = eINSTANCE.getDelivery_Number();
 
     /**
      * The meta object literal for the '<em><b>Date</b></em>' attribute feature.
@@ -2672,14 +2714,6 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference MERGE__STREAM = eINSTANCE.getMerge_Stream();
-
-    /**
-     * The meta object literal for the '<em><b>Id</b></em>' attribute feature. <!-- begin-user-doc --> <!-- end-user-doc
-     * -->
-     * 
-     * @generated
-     */
-    EAttribute MERGE__ID = eINSTANCE.getMerge_Id();
 
     /**
      * The meta object literal for the '<em><b>Date</b></em>' attribute feature.

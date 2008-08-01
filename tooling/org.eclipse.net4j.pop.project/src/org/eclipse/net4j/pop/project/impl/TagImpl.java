@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
+ * $Id: TagImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Tag;
@@ -22,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
@@ -30,15 +30,15 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getBranch <em>Branch</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getTaggedElement <em>Tagged Element</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getBranch <em>Branch</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getTaggedElement <em>Tagged Element</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class TagImpl extends EObjectImpl implements Tag
+public class TagImpl extends PopElementImpl implements Tag
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -51,8 +51,8 @@ public class TagImpl extends EObjectImpl implements Tag
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -60,9 +60,9 @@ public class TagImpl extends EObjectImpl implements Tag
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTaggedElement() <em>Tagged Element</em>}' reference.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTaggedElement() <em>Tagged Element</em>}' reference. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getTaggedElement()
    * @generated
    * @ordered
@@ -71,6 +71,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TagImpl()
@@ -80,6 +81,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -90,6 +92,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch getBranch()
@@ -99,8 +102,8 @@ public class TagImpl extends EObjectImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch basicGetBranch()
@@ -111,6 +114,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs)
@@ -121,6 +125,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setBranch(Branch newBranch)
@@ -142,6 +147,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -151,6 +157,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -163,6 +170,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TaggedElement getTaggedElement()
@@ -183,6 +191,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TaggedElement basicGetTaggedElement()
@@ -192,6 +201,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetTaggedElement(TaggedElement newTaggedElement, NotificationChain msgs)
@@ -212,6 +222,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTaggedElement(TaggedElement newTaggedElement)
@@ -235,6 +246,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -256,6 +268,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -273,6 +286,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -288,6 +302,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -309,6 +324,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -331,6 +347,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -353,6 +370,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -372,6 +390,7 @@ public class TagImpl extends EObjectImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -386,4 +405,21 @@ public class TagImpl extends EObjectImpl implements Tag
     return result.toString();
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdType()
+  {
+    return "tag";
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdValue()
+  {
+    return getName();
+  }
 } // TagImpl

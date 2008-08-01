@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -21,12 +21,25 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop Element</b></em>'. <!-- end-user-doc -->
  * <p>
+ * The following features are implemented:
+ * <ul>
+ * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getId <em>Id</em>}</li>
+ * </ul>
  * </p>
  * 
  * @generated
  */
-public class PopElementImpl extends EObjectImpl implements PopElement
+public abstract class PopElementImpl extends EObjectImpl implements PopElement
 {
+  /**
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @see #getId()
+   * @generated
+   * @ordered
+   */
+  protected static final String ID_EDEFAULT = null;
+
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -51,13 +64,11 @@ public class PopElementImpl extends EObjectImpl implements PopElement
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public String getDisplayString()
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    return toString();
   }
 
   /**
@@ -65,11 +76,50 @@ public class PopElementImpl extends EObjectImpl implements PopElement
    * 
    * @generated
    */
-  public String getId()
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    switch (featureID)
+    {
+    case BasePackage.POP_ELEMENT__ID:
+      return getId();
+    }
+    return super.eGet(featureID, resolve, coreType);
   }
 
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+    case BasePackage.POP_ELEMENT__ID:
+      return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public String getId()
+  {
+    return getIdType() + "_" + getIdValue();
+  }
+
+  /**
+   * @ADDED
+   */
+  public abstract String getIdType();
+
+  /**
+   * @ADDED
+   */
+  public abstract String getIdValue();
 } // PopElementImpl

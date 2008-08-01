@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
+ * $Id: StreamImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.Merge;
@@ -25,7 +26,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -37,56 +37,15 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getTaskId <em>Task Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getBranch <em>Branch</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getMerges <em>Merges</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getBranch <em>Branch</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getMerges <em>Merges</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public abstract class StreamImpl extends EObjectImpl implements Stream
+public abstract class StreamImpl extends PopElementImpl implements Stream
 {
-  /**
-   * The default value of the '{@link #getTaskId() <em>Task Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @see #getTaskId()
-   * @generated
-   * @ordered
-   */
-  protected static final String TASK_ID_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getTaskId() <em>Task Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @see #getTaskId()
-   * @generated
-   * @ordered
-   */
-  protected String taskId = TASK_ID_EDEFAULT;
-
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getBranch() <em>Branch</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
@@ -98,9 +57,9 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
   protected Branch branch;
 
   /**
-   * The cached value of the '{@link #getMerges() <em>Merges</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getMerges() <em>Merges</em>}' containment reference list. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getMerges()
    * @generated
    * @ordered
@@ -109,6 +68,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected StreamImpl()
@@ -118,6 +78,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -128,48 +89,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public String getTaskId()
-  {
-    return taskId;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTaskId(String newTaskId)
-  {
-    String oldTaskId = taskId;
-    taskId = newTaskId;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.STREAM__TASK_ID, oldTaskId, taskId));
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.STREAM__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch getBranch()
@@ -189,6 +109,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch basicGetBranch()
@@ -198,6 +119,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs)
@@ -218,6 +140,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setBranch(Branch newBranch)
@@ -238,6 +161,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Merge> getMerges()
@@ -252,6 +176,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject pop()
@@ -263,6 +188,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Stream parent()
@@ -274,6 +200,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Stream> streams()
@@ -285,6 +212,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Merge merge(Date date, Delivery delivery)
@@ -296,6 +224,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -316,6 +245,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -333,6 +263,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -340,10 +271,6 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
   {
     switch (featureID)
     {
-    case ProjectPackage.STREAM__TASK_ID:
-      return getTaskId();
-    case ProjectPackage.STREAM__NAME:
-      return getName();
     case ProjectPackage.STREAM__BRANCH:
       if (resolve) return getBranch();
       return basicGetBranch();
@@ -355,6 +282,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -363,12 +291,6 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
   {
     switch (featureID)
     {
-    case ProjectPackage.STREAM__TASK_ID:
-      setTaskId((String)newValue);
-      return;
-    case ProjectPackage.STREAM__NAME:
-      setName((String)newValue);
-      return;
     case ProjectPackage.STREAM__BRANCH:
       setBranch((Branch)newValue);
       return;
@@ -382,6 +304,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -389,12 +312,6 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
   {
     switch (featureID)
     {
-    case ProjectPackage.STREAM__TASK_ID:
-      setTaskId(TASK_ID_EDEFAULT);
-      return;
-    case ProjectPackage.STREAM__NAME:
-      setName(NAME_EDEFAULT);
-      return;
     case ProjectPackage.STREAM__BRANCH:
       setBranch((Branch)null);
       return;
@@ -407,6 +324,7 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -414,10 +332,6 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
   {
     switch (featureID)
     {
-    case ProjectPackage.STREAM__TASK_ID:
-      return TASK_ID_EDEFAULT == null ? taskId != null : !TASK_ID_EDEFAULT.equals(taskId);
-    case ProjectPackage.STREAM__NAME:
-      return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     case ProjectPackage.STREAM__BRANCH:
       return branch != null;
     case ProjectPackage.STREAM__MERGES:
@@ -427,21 +341,11 @@ public abstract class StreamImpl extends EObjectImpl implements Stream
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * @ADDED
    */
   @Override
-  public String toString()
+  public String getIdType()
   {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (taskId: "); //$NON-NLS-1$
-    result.append(taskId);
-    result.append(", name: "); //$NON-NLS-1$
-    result.append(name);
-    result.append(')');
-    return result.toString();
+    return "stream";
   }
-
 } // StreamImpl

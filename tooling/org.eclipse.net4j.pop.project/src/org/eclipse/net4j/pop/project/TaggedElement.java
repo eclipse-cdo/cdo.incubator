@@ -8,11 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaggedElement.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: TaggedElement.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.net4j.pop.base.PopElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Tagged Element</b></em>'. <!-- end-user-doc -->
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface TaggedElement extends EObject
+public interface TaggedElement extends PopElement
 {
   /**
    * Returns the value of the '<em><b>Tag</b></em>' reference.

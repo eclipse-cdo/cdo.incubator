@@ -8,17 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaggedElementItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: TaggedElementItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
+import org.eclipse.net4j.pop.base.provider.PopElementItemProvider;
 import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.TaggedElement;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 import java.util.Collection;
 import java.util.List;
@@ -38,7 +37,7 @@ import java.util.List;
  * 
  * @generated
  */
-public class TaggedElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class TaggedElementItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
     IItemColorProvider, IItemFontProvider
 {
@@ -83,16 +82,6 @@ public class TaggedElementItemProvider extends ItemProviderAdapter implements IE
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean hasChildren(Object object)
-  {
-    return hasChildren(object, true);
-  }
-
-  /**
    * This returns the label text for the adapted class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -100,7 +89,9 @@ public class TaggedElementItemProvider extends ItemProviderAdapter implements IE
   @Override
   public String getText(Object object)
   {
-    return getString("_UI_TaggedElement_type"); //$NON-NLS-1$
+    String label = ((TaggedElement)object).getId();
+    return label == null || label.length() == 0 ? getString("_UI_TaggedElement_type") : //$NON-NLS-1$
+        getString("_UI_TaggedElement_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
@@ -126,17 +117,6 @@ public class TaggedElementItemProvider extends ItemProviderAdapter implements IE
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-  }
-
-  /**
-   * Return the resource locator for this item provider's resources.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ResourceLocator getResourceLocator()
-  {
-    return ((IChildCreationExtender)adapterFactory).getResourceLocator();
   }
 
 }

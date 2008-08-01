@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
+ * $Id: TargetImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -33,7 +33,6 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getDate <em>Date</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getStreams <em>Streams</em>}</li>
  * </ul>
@@ -43,15 +42,6 @@ import java.util.Date;
  */
 public abstract class TargetImpl extends TaggedElementImpl implements Target
 {
-  /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getId()
-   * @generated
-   * @ordered
-   */
-  protected static final String ID_EDEFAULT = null;
-
   /**
    * The default value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
@@ -98,17 +88,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
   protected EClass eStaticClass()
   {
     return ProjectPackage.Literals.TARGET;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public String getId()
-  {
-    // TODO: implement this method to return the 'Id' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
   }
 
   /**
@@ -186,8 +165,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
   {
     switch (featureID)
     {
-    case ProjectPackage.TARGET__ID:
-      return getId();
     case ProjectPackage.TARGET__DATE:
       return getDate();
     case ProjectPackage.TARGET__STREAMS:
@@ -245,8 +222,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
   {
     switch (featureID)
     {
-    case ProjectPackage.TARGET__ID:
-      return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
     case ProjectPackage.TARGET__DATE:
       return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
     case ProjectPackage.TARGET__STREAMS:

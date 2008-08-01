@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: TargetItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -64,27 +64,10 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
     {
       super.getPropertyDescriptors(object);
 
-      addIdPropertyDescriptor(object);
       addDatePropertyDescriptor(object);
       addStreamsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Id feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addIdPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-            getResourceLocator(),
-            getString("_UI_Target_id_feature"), //$NON-NLS-1$
-            getString("_UI_PropertyDescriptor_description", "_UI_Target_id_feature", "_UI_Target_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.TARGET__ID, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-            null));
   }
 
   /**
@@ -141,7 +124,6 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
 
     switch (notification.getFeatureID(Target.class))
     {
-    case ProjectPackage.TARGET__ID:
     case ProjectPackage.TARGET__DATE:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;

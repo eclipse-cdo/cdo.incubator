@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackage.java,v 1.3 2008-08-01 08:34:08 estepper Exp $
+ * $Id: BasePackage.java,v 1.4 2008-08-01 18:29:06 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
@@ -25,7 +26,6 @@ import org.eclipse.emf.ecore.EPackage;
  * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.base.BaseFactory
  * @model kind="package"
  * @generated
@@ -33,36 +33,36 @@ import org.eclipse.emf.ecore.EPackage;
 public interface BasePackage extends EPackage
 {
   /**
-   * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package name.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eNAME = "base"; //$NON-NLS-1$
 
   /**
-   * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package namespace URI.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eNS_URI = "http://www.eclipse.org/pop/base/1.0.0"; //$NON-NLS-1$
 
   /**
-   * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package namespace name.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eNS_PREFIX = "pop.base"; //$NON-NLS-1$
 
   /**
-   * The package content type ID. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The package content type ID.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   String eCONTENT_TYPE = "pop.base"; //$NON-NLS-1$
 
   /**
-   * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The singleton instance of the package.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   BasePackage eINSTANCE = org.eclipse.net4j.pop.base.impl.BasePackageImpl.init();
@@ -78,13 +78,22 @@ public interface BasePackage extends EPackage
   int IDENTIFIABLE = 0;
 
   /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int IDENTIFIABLE__ID = 0;
+
+  /**
    * The number of structural features of the '<em>Identifiable</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
    * @generated
    * @ordered
    */
-  int IDENTIFIABLE_FEATURE_COUNT = 0;
+  int IDENTIFIABLE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.base.Displayable <em>Displayable</em>}' class. <!--
@@ -108,12 +117,20 @@ public interface BasePackage extends EPackage
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.base.impl.PopElementImpl <em>Pop Element</em>}' class.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see org.eclipse.net4j.pop.base.impl.PopElementImpl
    * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getPopElement()
    * @generated
    */
   int POP_ELEMENT = 2;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_ELEMENT__ID = IDENTIFIABLE__ID;
 
   /**
    * The number of structural features of the '<em>Pop Element</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -125,8 +142,8 @@ public interface BasePackage extends EPackage
   int POP_ELEMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '<em>Version</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The meta object id for the '<em>Version</em>' data type.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see org.eclipse.net4j.pop.base.Version
    * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getVersion()
    * @generated
@@ -142,6 +159,17 @@ public interface BasePackage extends EPackage
    * @generated
    */
   EClass getIdentifiable();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.base.Identifiable#getId <em>Id</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Id</em>'.
+   * @see org.eclipse.net4j.pop.base.Identifiable#getId()
+   * @see #getIdentifiable()
+   * @generated
+   */
+  EAttribute getIdentifiable_Id();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.base.Displayable <em>Displayable</em>}'. <!--
@@ -175,8 +203,8 @@ public interface BasePackage extends EPackage
   EDataType getVersion();
 
   /**
-   * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the factory that creates the instances of the model.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the factory that creates the instances of the model.
    * @generated
    */
@@ -191,7 +219,6 @@ public interface BasePackage extends EPackage
    * <li>and each data type</li>
    * </ul>
    * <!-- end-user-doc -->
-   * 
    * @generated
    */
   interface Literals
@@ -199,12 +226,19 @@ public interface BasePackage extends EPackage
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.base.Identifiable <em>Identifiable</em>}' class.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @see org.eclipse.net4j.pop.base.Identifiable
      * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getIdentifiable()
      * @generated
      */
     EClass IDENTIFIABLE = eINSTANCE.getIdentifiable();
+
+    /**
+     * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute IDENTIFIABLE__ID = eINSTANCE.getIdentifiable_Id();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.base.Displayable <em>Displayable</em>}' class. <!--
@@ -217,9 +251,8 @@ public interface BasePackage extends EPackage
     EClass DISPLAYABLE = eINSTANCE.getDisplayable();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.net4j.pop.base.impl.PopElementImpl <em>Pop Element</em>}'
-     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.base.impl.PopElementImpl <em>Pop Element</em>}' class.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.eclipse.net4j.pop.base.impl.PopElementImpl
      * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getPopElement()
      * @generated
@@ -227,8 +260,8 @@ public interface BasePackage extends EPackage
     EClass POP_ELEMENT = eINSTANCE.getPopElement();
 
     /**
-     * The meta object literal for the '<em>Version</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The meta object literal for the '<em>Version</em>' data type.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @see org.eclipse.net4j.pop.base.Version
      * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getVersion()
      * @generated

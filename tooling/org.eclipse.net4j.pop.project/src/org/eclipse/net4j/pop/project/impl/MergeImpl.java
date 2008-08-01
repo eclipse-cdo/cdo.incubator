@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: MergeImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,26 +31,16 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getStream <em>Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDate <em>Date</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDelivery <em>Delivery</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getStream <em>Stream</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDate <em>Date</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDelivery <em>Delivery</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MergeImpl extends TaggedElementImpl implements Merge
 {
-  /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getId()
-   * @generated
-   * @ordered
-   */
-  protected static final String ID_EDEFAULT = null;
-
   /**
    * The default value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
@@ -62,8 +52,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   protected static final Date DATE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getDate()
    * @generated
    * @ordered
@@ -71,9 +61,9 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   protected Date date = DATE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDelivery() <em>Delivery</em>}' reference.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getDelivery() <em>Delivery</em>}' reference. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getDelivery()
    * @generated
    * @ordered
@@ -82,6 +72,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MergeImpl()
@@ -91,6 +82,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -101,6 +93,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Stream getStream()
@@ -110,8 +103,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Stream basicGetStream()
@@ -122,6 +115,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetStream(Stream newStream, NotificationChain msgs)
@@ -132,6 +126,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setStream(Stream newStream)
@@ -153,17 +148,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public String getId()
-  {
-    // TODO: implement this method to return the 'Id' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getDate()
@@ -173,6 +158,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setDate(Date newDate)
@@ -185,6 +171,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Delivery getDelivery()
@@ -205,6 +192,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Delivery basicGetDelivery()
@@ -214,6 +202,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetDelivery(Delivery newDelivery, NotificationChain msgs)
@@ -234,6 +223,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setDelivery(Delivery newDelivery)
@@ -254,6 +244,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -274,6 +265,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -291,6 +283,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -306,6 +299,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -316,8 +310,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     case ProjectPackage.MERGE__STREAM:
       if (resolve) return getStream();
       return basicGetStream();
-    case ProjectPackage.MERGE__ID:
-      return getId();
     case ProjectPackage.MERGE__DATE:
       return getDate();
     case ProjectPackage.MERGE__DELIVERY:
@@ -329,6 +321,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -351,6 +344,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -373,6 +367,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -382,8 +377,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     {
     case ProjectPackage.MERGE__STREAM:
       return basicGetStream() != null;
-    case ProjectPackage.MERGE__ID:
-      return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
     case ProjectPackage.MERGE__DATE:
       return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT.equals(date);
     case ProjectPackage.MERGE__DELIVERY:
@@ -394,6 +387,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -408,4 +402,21 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     return result.toString();
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdType()
+  {
+    return "merge";
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdValue()
+  {
+    return ((StreamImpl)getStream()).getIdValue() + "_" + ((DeliveryImpl)getDelivery()).getIdValue();
+  }
 } // MergeImpl

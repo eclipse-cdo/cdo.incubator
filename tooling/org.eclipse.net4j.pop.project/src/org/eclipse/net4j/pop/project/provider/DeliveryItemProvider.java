@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: DeliveryItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -65,7 +65,7 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
       super.getPropertyDescriptors(object);
 
       addStreamPropertyDescriptor(object);
-      addIdPropertyDescriptor(object);
+      addNumberPropertyDescriptor(object);
       addDatePropertyDescriptor(object);
       addMergesPropertyDescriptor(object);
     }
@@ -87,18 +87,19 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Id feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Number feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  protected void addIdPropertyDescriptor(Object object)
+  protected void addNumberPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Delivery_id_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Delivery_id_feature", "_UI_Delivery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.DELIVERY__ID, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-        null));
+        getString("_UI_Delivery_number_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Delivery_number_feature", "_UI_Delivery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.DELIVERY__NUMBER, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+        null, null));
   }
 
   /**
@@ -167,7 +168,7 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
     switch (notification.getFeatureID(Delivery.class))
     {
     case ProjectPackage.DELIVERY__STREAM:
-    case ProjectPackage.DELIVERY__ID:
+    case ProjectPackage.DELIVERY__NUMBER:
     case ProjectPackage.DELIVERY__DATE:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;

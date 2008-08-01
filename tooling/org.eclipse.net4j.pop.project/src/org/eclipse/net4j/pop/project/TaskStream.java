@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStream.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: TaskStream.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -22,6 +22,7 @@ import java.util.Date;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getTaskId <em>Task Id</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getParent <em>Parent</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getBaseline <em>Baseline</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getTargets <em>Targets</em>}</li>
@@ -35,6 +36,32 @@ import java.util.Date;
  */
 public interface TaskStream extends Stream
 {
+  /**
+   * Returns the value of the '<em><b>Task Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Task Id</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Task Id</em>' attribute.
+   * @see #setTaskId(String)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream_TaskId()
+   * @model required="true"
+   * @generated
+   */
+  String getTaskId();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.TaskStream#getTaskId <em>Task Id</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Task Id</em>' attribute.
+   * @see #getTaskId()
+   * @generated
+   */
+  void setTaskId(String value);
+
   /**
    * Returns the value of the '<em><b>Parent</b></em>' container reference.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.IntegrationStream#getTaskStreams <em>Task Streams</em>}'.

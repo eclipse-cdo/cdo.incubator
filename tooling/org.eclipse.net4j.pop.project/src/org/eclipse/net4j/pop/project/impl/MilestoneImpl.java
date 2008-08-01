@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MilestoneImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: MilestoneImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getRelease <em>Release</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getRelease <em>Release</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MilestoneImpl extends TargetImpl implements Milestone
@@ -48,8 +48,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -58,6 +58,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MilestoneImpl()
@@ -67,6 +68,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -77,6 +79,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release getRelease()
@@ -86,8 +89,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release basicGetRelease()
@@ -98,6 +101,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetRelease(Release newRelease, NotificationChain msgs)
@@ -108,6 +112,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRelease(Release newRelease)
@@ -130,6 +135,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -139,6 +145,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -151,6 +158,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -167,6 +175,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -182,6 +191,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -197,6 +207,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -215,6 +226,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -234,6 +246,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -253,6 +266,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -270,6 +284,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -284,4 +299,21 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     return result.toString();
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdType()
+  {
+    return "milestone";
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdValue()
+  {
+    return ((ReleaseImpl)getRelease()).getIdValue() + "_" + getName();
+  }
 } // MilestoneImpl

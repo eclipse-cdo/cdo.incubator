@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Target.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: Target.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -22,7 +22,6 @@ import java.util.Date;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.Target#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Target#getDate <em>Date</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Target#getStreams <em>Streams</em>}</li>
  * </ul>
@@ -34,20 +33,6 @@ import java.util.Date;
  */
 public interface Target extends TaggedElement
 {
-  /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Id</em>' attribute.
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getTarget_Id()
-   * @model id="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
-   * @generated
-   */
-  String getId();
-
   /**
    * Returns the value of the '<em><b>Date</b></em>' attribute.
    * <!-- begin-user-doc -->

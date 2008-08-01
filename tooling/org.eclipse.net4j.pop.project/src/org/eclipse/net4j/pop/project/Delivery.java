@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Delivery.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: Delivery.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -23,7 +23,7 @@ import java.util.Date;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getNumber <em>Number</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getDate <em>Date</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getMerges <em>Merges</em>}</li>
  * </ul>
@@ -63,32 +63,30 @@ public interface Delivery extends TaggedElement
   void setStream(TaskStream value);
 
   /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
-   * The default value is <code>"1"</code>.
-   * <!-- begin-user-doc
-   * -->
+   * Returns the value of the '<em><b>Number</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
+   * If the meaning of the '<em>Number</em>' attribute isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Id</em>' attribute.
-   * @see #setId(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Id()
-   * @model default="1" id="true" required="true"
+   * @return the value of the '<em>Number</em>' attribute.
+   * @see #setNumber(int)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Number()
+   * @model required="true"
    * @generated
    */
-  String getId();
+  int getNumber();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Delivery#getId <em>Id</em>}' attribute. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Id</em>' attribute.
-   * @see #getId()
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Delivery#getNumber <em>Number</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Number</em>' attribute.
+   * @see #getNumber()
    * @generated
    */
-  void setId(String value);
+  void setNumber(int value);
 
   /**
    * Returns the value of the '<em><b>Date</b></em>' attribute.

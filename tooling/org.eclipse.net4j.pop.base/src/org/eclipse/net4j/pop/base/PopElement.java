@@ -8,15 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElement.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
+ * $Id: PopElement.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Pop Element</b></em>'. <!-- end-user-doc -->
- * 
+ *
+ *
  * @see org.eclipse.net4j.pop.base.BasePackage#getPopElement()
- * @model
+ * @model abstract="true"
  * @generated
  */
 public interface PopElement extends Identifiable, Displayable

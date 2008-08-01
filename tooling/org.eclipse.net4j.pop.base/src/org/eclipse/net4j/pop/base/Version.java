@@ -124,6 +124,12 @@ public final class Version implements Comparable<Version>
     return major * 1000000 ^ minor * 1000 ^ micro;
   }
 
+  public String asId()
+  {
+    // TODO Provide static helper method for producing id strings
+    return MessageFormat.format("{0}_{1}_{2}", major, minor, micro);
+  }
+
   public String toString(boolean forceMicro)
   {
     if (micro != 0 || forceMicro)

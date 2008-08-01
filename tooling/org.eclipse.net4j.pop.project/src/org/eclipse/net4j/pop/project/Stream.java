@@ -8,12 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Stream.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: Stream.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
+import org.eclipse.net4j.pop.base.PopElement;
+
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 import java.util.Date;
 
@@ -23,8 +24,6 @@ import java.util.Date;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.Stream#getTaskId <em>Task Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Stream#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}</li>
  * </ul>
@@ -34,61 +33,8 @@ import java.util.Date;
  * @model abstract="true"
  * @generated
  */
-public interface Stream extends EObject
+public interface Stream extends PopElement
 {
-  /**
-   * Returns the value of the '<em><b>Task Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Task Id</em>' attribute isn't clear, there really should be more of a description
-   * here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Task Id</em>' attribute.
-   * @see #setTaskId(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_TaskId()
-   * @model id="true" required="true"
-   * @generated
-   */
-  String getTaskId();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Stream#getTaskId <em>Task Id</em>}' attribute. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Task Id</em>' attribute.
-   * @see #getTaskId()
-   * @generated
-   */
-  void setTaskId(String value);
-
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_Name()
-   * @model required="true"
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Stream#getName <em>Name</em>}' attribute. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Branch</b></em>' reference.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}'.

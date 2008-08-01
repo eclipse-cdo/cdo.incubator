@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.9 2008-08-01 11:01:46 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.10 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -132,6 +132,9 @@ public class ProjectSwitch<T>
     {
       Committer committer = (Committer)theEObject;
       T result = caseCommitter(committer);
+      if (result == null) result = casePopElement(committer);
+      if (result == null) result = caseIdentifiable(committer);
+      if (result == null) result = caseDisplayable(committer);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -139,6 +142,9 @@ public class ProjectSwitch<T>
     {
       TaggedElement taggedElement = (TaggedElement)theEObject;
       T result = caseTaggedElement(taggedElement);
+      if (result == null) result = casePopElement(taggedElement);
+      if (result == null) result = caseIdentifiable(taggedElement);
+      if (result == null) result = caseDisplayable(taggedElement);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -146,6 +152,9 @@ public class ProjectSwitch<T>
     {
       Tag tag = (Tag)theEObject;
       T result = caseTag(tag);
+      if (result == null) result = casePopElement(tag);
+      if (result == null) result = caseIdentifiable(tag);
+      if (result == null) result = caseDisplayable(tag);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -153,6 +162,9 @@ public class ProjectSwitch<T>
     {
       Branch branch = (Branch)theEObject;
       T result = caseBranch(branch);
+      if (result == null) result = casePopElement(branch);
+      if (result == null) result = caseIdentifiable(branch);
+      if (result == null) result = caseDisplayable(branch);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -161,6 +173,9 @@ public class ProjectSwitch<T>
       MainBranch mainBranch = (MainBranch)theEObject;
       T result = caseMainBranch(mainBranch);
       if (result == null) result = caseBranch(mainBranch);
+      if (result == null) result = casePopElement(mainBranch);
+      if (result == null) result = caseIdentifiable(mainBranch);
+      if (result == null) result = caseDisplayable(mainBranch);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -170,6 +185,9 @@ public class ProjectSwitch<T>
       T result = caseSubBranch(subBranch);
       if (result == null) result = caseBranch(subBranch);
       if (result == null) result = caseTaggedElement(subBranch);
+      if (result == null) result = casePopElement(subBranch);
+      if (result == null) result = caseIdentifiable(subBranch);
+      if (result == null) result = caseDisplayable(subBranch);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -177,6 +195,9 @@ public class ProjectSwitch<T>
     {
       Stream stream = (Stream)theEObject;
       T result = caseStream(stream);
+      if (result == null) result = casePopElement(stream);
+      if (result == null) result = caseIdentifiable(stream);
+      if (result == null) result = caseDisplayable(stream);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -185,6 +206,9 @@ public class ProjectSwitch<T>
       TaskStream taskStream = (TaskStream)theEObject;
       T result = caseTaskStream(taskStream);
       if (result == null) result = caseStream(taskStream);
+      if (result == null) result = casePopElement(taskStream);
+      if (result == null) result = caseIdentifiable(taskStream);
+      if (result == null) result = caseDisplayable(taskStream);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -193,6 +217,9 @@ public class ProjectSwitch<T>
       IntegrationStream integrationStream = (IntegrationStream)theEObject;
       T result = caseIntegrationStream(integrationStream);
       if (result == null) result = caseStream(integrationStream);
+      if (result == null) result = casePopElement(integrationStream);
+      if (result == null) result = caseIdentifiable(integrationStream);
+      if (result == null) result = caseDisplayable(integrationStream);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -202,6 +229,9 @@ public class ProjectSwitch<T>
       T result = caseDevelopmentStream(developmentStream);
       if (result == null) result = caseIntegrationStream(developmentStream);
       if (result == null) result = caseStream(developmentStream);
+      if (result == null) result = casePopElement(developmentStream);
+      if (result == null) result = caseIdentifiable(developmentStream);
+      if (result == null) result = caseDisplayable(developmentStream);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -211,6 +241,9 @@ public class ProjectSwitch<T>
       T result = caseMaintenanceStream(maintenanceStream);
       if (result == null) result = caseIntegrationStream(maintenanceStream);
       if (result == null) result = caseStream(maintenanceStream);
+      if (result == null) result = casePopElement(maintenanceStream);
+      if (result == null) result = caseIdentifiable(maintenanceStream);
+      if (result == null) result = caseDisplayable(maintenanceStream);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -221,6 +254,9 @@ public class ProjectSwitch<T>
       if (result == null) result = caseDevelopmentStream(rootStream);
       if (result == null) result = caseIntegrationStream(rootStream);
       if (result == null) result = caseStream(rootStream);
+      if (result == null) result = casePopElement(rootStream);
+      if (result == null) result = caseIdentifiable(rootStream);
+      if (result == null) result = caseDisplayable(rootStream);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -229,6 +265,9 @@ public class ProjectSwitch<T>
       Target target = (Target)theEObject;
       T result = caseTarget(target);
       if (result == null) result = caseTaggedElement(target);
+      if (result == null) result = casePopElement(target);
+      if (result == null) result = caseIdentifiable(target);
+      if (result == null) result = caseDisplayable(target);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -238,6 +277,9 @@ public class ProjectSwitch<T>
       T result = caseRelease(release);
       if (result == null) result = caseTarget(release);
       if (result == null) result = caseTaggedElement(release);
+      if (result == null) result = casePopElement(release);
+      if (result == null) result = caseIdentifiable(release);
+      if (result == null) result = caseDisplayable(release);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -247,6 +289,9 @@ public class ProjectSwitch<T>
       T result = caseMilestone(milestone);
       if (result == null) result = caseTarget(milestone);
       if (result == null) result = caseTaggedElement(milestone);
+      if (result == null) result = casePopElement(milestone);
+      if (result == null) result = caseIdentifiable(milestone);
+      if (result == null) result = caseDisplayable(milestone);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -255,6 +300,9 @@ public class ProjectSwitch<T>
       Delivery delivery = (Delivery)theEObject;
       T result = caseDelivery(delivery);
       if (result == null) result = caseTaggedElement(delivery);
+      if (result == null) result = casePopElement(delivery);
+      if (result == null) result = caseIdentifiable(delivery);
+      if (result == null) result = caseDisplayable(delivery);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -263,6 +311,9 @@ public class ProjectSwitch<T>
       Merge merge = (Merge)theEObject;
       T result = caseMerge(merge);
       if (result == null) result = caseTaggedElement(merge);
+      if (result == null) result = casePopElement(merge);
+      if (result == null) result = caseIdentifiable(merge);
+      if (result == null) result = caseDisplayable(merge);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }

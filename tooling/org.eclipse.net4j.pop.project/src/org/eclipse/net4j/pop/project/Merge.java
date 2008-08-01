@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Merge.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: Merge.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -21,7 +21,6 @@ import java.util.Date;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Merge#getId <em>Id</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Merge#getDate <em>Date</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Merge#getDelivery <em>Delivery</em>}</li>
  * </ul>
@@ -59,20 +58,6 @@ public interface Merge extends TaggedElement
    * @generated
    */
   void setStream(Stream value);
-
-  /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Id</em>' attribute.
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getMerge_Id()
-   * @model id="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
-   * @generated
-   */
-  String getId();
 
   /**
    * Returns the value of the '<em><b>Date</b></em>' attribute.

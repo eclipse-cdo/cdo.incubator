@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
@@ -21,7 +22,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import java.util.Date;
@@ -31,37 +31,39 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getPopProject <em>Pop Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepositoryLogin <em>Repository Login</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
-public class CommitterImpl extends EObjectImpl implements Committer
+public class CommitterImpl extends PopElementImpl implements Committer
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getId()
+   * The default value of the '{@link #getRepositoryLogin() <em>Repository Login</em>}' attribute. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
+   * @see #getRepositoryLogin()
    * @generated
    * @ordered
    */
-  protected static final String ID_EDEFAULT = null;
+  protected static final String REPOSITORY_LOGIN_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getId()
+   * The cached value of the '{@link #getRepositoryLogin() <em>Repository Login</em>}' attribute. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
+   * @see #getRepositoryLogin()
    * @generated
    * @ordered
    */
-  protected String id = ID_EDEFAULT;
+  protected String repositoryLogin = REPOSITORY_LOGIN_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -74,8 +76,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -133,8 +135,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getExit()
    * @generated
    * @ordered
@@ -153,6 +155,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected CommitterImpl()
@@ -162,6 +165,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -171,8 +175,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject getPopProject()
@@ -182,8 +186,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -193,8 +197,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -204,8 +208,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -230,27 +234,31 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public String getId()
+  public String getRepositoryLogin()
   {
-    return id;
+    return repositoryLogin;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  public void setId(String newId)
+  public void setRepositoryLogin(String newRepositoryLogin)
   {
-    String oldId = id;
-    id = newId;
+    String oldRepositoryLogin = repositoryLogin;
+    repositoryLogin = newRepositoryLogin;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__ID, oldId, id));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__REPOSITORY_LOGIN,
+          oldRepositoryLogin, repositoryLogin));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -260,6 +268,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -272,6 +281,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getEmail()
@@ -281,6 +291,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -293,6 +304,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getEntry()
@@ -302,6 +314,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -314,6 +327,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getExit()
@@ -323,6 +337,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -335,6 +350,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public boolean isActive()
@@ -346,6 +362,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setActive(boolean newActive)
@@ -357,6 +374,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void deactivate(Date exit)
@@ -368,6 +386,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -384,6 +403,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -399,6 +419,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -414,6 +435,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -424,8 +446,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
     case ProjectPackage.COMMITTER__POP_PROJECT:
       if (resolve) return getPopProject();
       return basicGetPopProject();
-    case ProjectPackage.COMMITTER__ID:
-      return getId();
+    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
+      return getRepositoryLogin();
     case ProjectPackage.COMMITTER__NAME:
       return getName();
     case ProjectPackage.COMMITTER__EMAIL:
@@ -442,6 +464,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -452,8 +475,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
     case ProjectPackage.COMMITTER__POP_PROJECT:
       setPopProject((PopProject)newValue);
       return;
-    case ProjectPackage.COMMITTER__ID:
-      setId((String)newValue);
+    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
+      setRepositoryLogin((String)newValue);
       return;
     case ProjectPackage.COMMITTER__NAME:
       setName((String)newValue);
@@ -476,6 +499,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -486,8 +510,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
     case ProjectPackage.COMMITTER__POP_PROJECT:
       setPopProject((PopProject)null);
       return;
-    case ProjectPackage.COMMITTER__ID:
-      setId(ID_EDEFAULT);
+    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
+      setRepositoryLogin(REPOSITORY_LOGIN_EDEFAULT);
       return;
     case ProjectPackage.COMMITTER__NAME:
       setName(NAME_EDEFAULT);
@@ -510,6 +534,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -519,8 +544,9 @@ public class CommitterImpl extends EObjectImpl implements Committer
     {
     case ProjectPackage.COMMITTER__POP_PROJECT:
       return basicGetPopProject() != null;
-    case ProjectPackage.COMMITTER__ID:
-      return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
+      return REPOSITORY_LOGIN_EDEFAULT == null ? repositoryLogin != null : !REPOSITORY_LOGIN_EDEFAULT
+          .equals(repositoryLogin);
     case ProjectPackage.COMMITTER__NAME:
       return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     case ProjectPackage.COMMITTER__EMAIL:
@@ -537,6 +563,7 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -545,8 +572,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (id: "); //$NON-NLS-1$
-    result.append(id);
+    result.append(" (repositoryLogin: "); //$NON-NLS-1$
+    result.append(repositoryLogin);
     result.append(", name: "); //$NON-NLS-1$
     result.append(name);
     result.append(", email: "); //$NON-NLS-1$
@@ -559,4 +586,21 @@ public class CommitterImpl extends EObjectImpl implements Committer
     return result.toString();
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdType()
+  {
+    return "committer";
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdValue()
+  {
+    return getRepositoryLogin();
+  }
 } // CommitterImpl

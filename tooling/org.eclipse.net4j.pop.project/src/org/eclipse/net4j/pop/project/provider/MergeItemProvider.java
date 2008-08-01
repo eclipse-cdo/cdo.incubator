@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: MergeItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -65,7 +65,6 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
       super.getPropertyDescriptors(object);
 
       addStreamPropertyDescriptor(object);
-      addIdPropertyDescriptor(object);
       addDatePropertyDescriptor(object);
       addDeliveryPropertyDescriptor(object);
     }
@@ -84,22 +83,6 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
         .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Merge_stream_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_Merge_stream_feature", "_UI_Merge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         ProjectPackage.Literals.MERGE__STREAM, false, false, false, null, null, null));
-  }
-
-  /**
-   * This adds a property descriptor for the Id feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addIdPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-            getResourceLocator(),
-            getString("_UI_Merge_id_feature"), //$NON-NLS-1$
-            getString("_UI_PropertyDescriptor_description", "_UI_Merge_id_feature", "_UI_Merge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.MERGE__ID, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-            null));
   }
 
   /**
@@ -169,7 +152,6 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
     switch (notification.getFeatureID(Merge.class))
     {
     case ProjectPackage.MERGE__STREAM:
-    case ProjectPackage.MERGE__ID:
     case ProjectPackage.MERGE__DATE:
     case ProjectPackage.MERGE__DELIVERY:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

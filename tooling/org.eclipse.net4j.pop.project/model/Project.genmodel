@@ -143,8 +143,9 @@
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//Delivery">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Delivery/stream"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/number"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/date"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/id"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//Delivery/merges"/>
     </genClasses>

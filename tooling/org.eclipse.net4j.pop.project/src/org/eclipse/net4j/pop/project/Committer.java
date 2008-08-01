@@ -8,11 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Committer.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: Committer.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.net4j.pop.base.PopElement;
 
 import java.util.Date;
 
@@ -23,7 +23,7 @@ import java.util.Date;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.project.Committer#getPopProject <em>Pop Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Committer#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Committer#getEmail <em>Email</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Committer#getEntry <em>Entry</em>}</li>
@@ -36,7 +36,7 @@ import java.util.Date;
  * @model
  * @generated
  */
-public interface Committer extends EObject
+public interface Committer extends PopElement
 {
   /**
    * Returns the value of the '<em><b>Pop Project</b></em>' container reference.
@@ -67,30 +67,30 @@ public interface Committer extends EObject
   void setPopProject(PopProject value);
 
   /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
+   * Returns the value of the '<em><b>Repository Login</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
+   * If the meaning of the '<em>Repository Login</em>' attribute isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Id</em>' attribute.
-   * @see #setId(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Id()
-   * @model id="true" required="true"
+   * @return the value of the '<em>Repository Login</em>' attribute.
+   * @see #setRepositoryLogin(String)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_RepositoryLogin()
+   * @model required="true"
    * @generated
    */
-  String getId();
+  String getRepositoryLogin();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#getId <em>Id</em>}' attribute. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Id</em>' attribute.
-   * @see #getId()
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Repository Login</em>' attribute.
+   * @see #getRepositoryLogin()
    * @generated
    */
-  void setId(String value);
+  void setRepositoryLogin(String value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
