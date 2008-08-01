@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRootImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: CodeRootImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -29,11 +29,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getPath <em>Path</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getPath <em>Path</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CodeRootImpl extends EObjectImpl implements CodeRoot
@@ -49,8 +49,8 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   protected static final String PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getPath()
    * @generated
    * @ordered
@@ -59,7 +59,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CodeRootImpl()
@@ -69,7 +68,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -80,7 +78,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getPath()
@@ -90,7 +87,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPath(String newPath)
@@ -103,7 +99,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRepository getRepository()
@@ -114,7 +109,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
@@ -125,7 +119,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepository(CodeRepository newRepository)
@@ -150,7 +143,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -167,7 +159,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -183,7 +174,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -200,7 +190,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -218,7 +207,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -238,7 +226,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -258,7 +245,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -276,7 +262,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamItemProvider.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: MaintenanceStreamItemProvider.java,v 1.3 2008-08-01 07:30:31 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -41,8 +41,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public MaintenanceStreamItemProvider(AdapterFactory adapterFactory)
@@ -51,8 +51,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -69,8 +69,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Parent feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Parent feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addParentPropertyDescriptor(Object object)
@@ -85,8 +85,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Baseline feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Baseline feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addBaselinePropertyDescriptor(Object object)
@@ -101,8 +101,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns MaintenanceStream.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns MaintenanceStream.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -112,8 +112,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -125,9 +125,9 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -138,9 +138,9 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

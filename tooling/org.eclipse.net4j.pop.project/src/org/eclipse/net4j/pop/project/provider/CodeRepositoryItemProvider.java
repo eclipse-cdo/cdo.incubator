@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRepositoryItemProvider.java,v 1.2 2008-07-31 13:35:40 estepper Exp $
+ * $Id: CodeRepositoryItemProvider.java,v 1.3 2008-08-01 07:30:31 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -48,8 +48,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public CodeRepositoryItemProvider(AdapterFactory adapterFactory)
@@ -58,8 +58,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -77,8 +77,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This adds a property descriptor for the Team Provider feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Team Provider feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addTeamProviderPropertyDescriptor(Object object)
@@ -95,8 +95,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This adds a property descriptor for the Repository Url feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Repository Url feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addRepositoryUrlPropertyDescriptor(Object object)
@@ -113,8 +113,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This adds a property descriptor for the Pop Project feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Pop Project feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addPopProjectPropertyDescriptor(Object object)
@@ -129,9 +129,9 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -149,7 +149,6 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -163,7 +162,6 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -173,8 +171,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This returns CodeRepository.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns CodeRepository.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -184,8 +182,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -197,9 +195,9 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -223,9 +221,9 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -244,8 +242,8 @@ public class CodeRepositoryItemProvider extends ItemProviderAdapter implements I
   }
 
   /**
-   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Return the resource locator for this item provider's resources.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

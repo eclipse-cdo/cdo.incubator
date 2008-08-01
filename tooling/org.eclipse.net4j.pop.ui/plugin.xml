@@ -11,10 +11,11 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.16 2008-07-31 12:33:21 estepper Exp $
+ $Id: plugin.xml,v 1.17 2008-08-01 07:30:34 estepper Exp $
 -->
 
 <plugin>
+
    <extension
          point="org.eclipse.ui.actionSets">
       <actionSet

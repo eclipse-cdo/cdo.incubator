@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: MergeImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,20 +31,20 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getStream <em>Stream</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDate <em>Date</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDelivery <em>Delivery</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDate <em>Date</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MergeImpl#getDelivery <em>Delivery</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MergeImpl extends TaggedElementImpl implements Merge
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -62,8 +62,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   protected static final Date DATE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDate()
    * @generated
    * @ordered
@@ -71,9 +71,9 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   protected Date date = DATE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDelivery() <em>Delivery</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getDelivery() <em>Delivery</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getDelivery()
    * @generated
    * @ordered
@@ -82,7 +82,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected MergeImpl()
@@ -92,7 +91,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -103,7 +101,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Stream getStream()
@@ -114,7 +111,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetStream(Stream newStream, NotificationChain msgs)
@@ -125,7 +121,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setStream(Stream newStream)
@@ -147,7 +142,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getId()
@@ -159,7 +153,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getDate()
@@ -169,7 +162,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDate(Date newDate)
@@ -182,7 +174,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Delivery getDelivery()
@@ -203,7 +194,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Delivery basicGetDelivery()
@@ -213,7 +203,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetDelivery(Delivery newDelivery, NotificationChain msgs)
@@ -234,7 +223,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDelivery(Delivery newDelivery)
@@ -255,7 +243,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -276,7 +263,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -294,7 +280,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -310,7 +295,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -333,7 +317,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -356,7 +339,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -379,7 +361,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -401,7 +382,6 @@ public class MergeImpl extends TaggedElementImpl implements Merge
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

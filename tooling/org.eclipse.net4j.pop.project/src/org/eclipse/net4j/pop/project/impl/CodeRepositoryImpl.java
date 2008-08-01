@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRepositoryImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: CodeRepositoryImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -53,9 +53,9 @@ import java.util.Date;
 public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 {
   /**
-   * The default value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute. <!-- begin-user-doc -->
+   * The default value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getTeamProvider()
    * @generated
    * @ordered
@@ -63,9 +63,9 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
   protected static final String TEAM_PROVIDER_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getTeamProvider()
    * @generated
    * @ordered
@@ -73,9 +73,9 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
   protected String teamProvider = TEAM_PROVIDER_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute. <!-- begin-user-doc -->
+   * The default value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getRepositoryUrl()
    * @generated
    * @ordered
@@ -83,9 +83,9 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
   protected static final String REPOSITORY_URL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getRepositoryUrl()
    * @generated
    * @ordered
@@ -113,9 +113,9 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
   protected EList<Committer> committers;
 
   /**
-   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference. <!-- begin-user-doc
+   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getMainBranch()
    * @generated
    * @ordered
@@ -123,9 +123,9 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
   protected MainBranch mainBranch;
 
   /**
-   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPopProject()
    * @generated
    * @ordered
@@ -134,7 +134,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CodeRepositoryImpl()
@@ -144,7 +143,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -155,7 +153,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getTeamProvider()
@@ -165,7 +162,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTeamProvider(String newTeamProvider)
@@ -179,7 +175,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getRepositoryUrl()
@@ -189,7 +184,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepositoryUrl(String newRepositoryUrl)
@@ -203,7 +197,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<CodeRoot> getCodeRoots()
@@ -218,7 +211,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Committer> getCommitters()
@@ -233,7 +225,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MainBranch getMainBranch()
@@ -243,7 +234,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetMainBranch(MainBranch newMainBranch, NotificationChain msgs)
@@ -264,7 +254,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setMainBranch(MainBranch newMainBranch)
@@ -288,7 +277,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject getPopProject()
@@ -309,7 +297,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -319,7 +306,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -340,7 +326,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -364,7 +349,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release addCommitter(String id, String name, String email, Date entry)
@@ -376,7 +360,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -405,7 +388,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -427,7 +409,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -454,7 +435,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -489,7 +469,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -521,7 +500,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -547,7 +525,6 @@ public class CodeRepositoryImpl extends EObjectImpl implements CodeRepository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

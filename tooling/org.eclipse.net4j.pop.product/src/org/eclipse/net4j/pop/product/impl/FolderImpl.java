@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: FolderImpl.java,v 1.1 2008-07-31 12:33:20 estepper Exp $
+ * $Id: FolderImpl.java,v 1.2 2008-08-01 07:30:13 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -30,18 +30,18 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.product.impl.FolderImpl#getMembers <em>Members</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.FolderImpl#getMembers <em>Members</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class FolderImpl extends ArtifactImpl implements Folder
 {
   /**
-   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getMembers() <em>Members</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getMembers()
    * @generated
    * @ordered
@@ -50,7 +50,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected FolderImpl()
@@ -60,7 +59,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -71,7 +69,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Artifact> getMembers()
@@ -86,7 +83,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -103,7 +99,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -119,7 +114,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -135,7 +129,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -154,7 +147,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -171,7 +163,6 @@ public class FolderImpl extends ArtifactImpl implements Folder
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

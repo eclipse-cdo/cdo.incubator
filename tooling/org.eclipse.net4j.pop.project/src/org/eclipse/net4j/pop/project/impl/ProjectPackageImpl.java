@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -46,154 +46,132 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass popProjectEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass codeRepositoryEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass codeRootEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass committerEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taggedElementEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass tagEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass branchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass mainBranchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass subBranchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass streamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taskStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass integrationStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass developmentStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass maintenanceStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass rootStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass targetEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass releaseEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass milestoneEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass deliveryEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass mergeEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType versionEDataType = null;
@@ -218,24 +196,27 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private static boolean isInited = false;
 
   /**
-   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * Simple dependencies are satisfied by calling this method on all dependent packages before doing anything else. This
-   * method drives initialization for interdependent packages directly, in parallel with this package, itself.
-   * <p>
-   * Of this package and its interdependencies, all packages which have not yet been registered by their URI values are
-   * first created and registered. The packages are then initialized in two steps: meta-model objects for all of the
-   * packages are created before any are initialized, since one package's meta-model objects may refer to those of
-   * another.
-   * <p>
-   * Invocation of this method will not affect any packages that have already been initialized. <!-- begin-user-doc -->
+   * Creates, registers, and initializes the <b>Package</b> for this
+   * model, and for any others upon which it depends.  Simple
+   * dependencies are satisfied by calling this method on all
+   * dependent packages before doing anything else.  This method drives
+   * initialization for interdependent packages directly, in parallel
+   * with this package, itself.
+   * <p>Of this package and its interdependencies, all packages which
+   * have not yet been registered by their URI values are first created
+   * and registered.  The packages are then initialized in two steps:
+   * meta-model objects for all of the packages are created before any
+   * are initialized, since one package's meta-model objects may refer to
+   * those of another.
+   * <p>Invocation of this method will not affect any packages that have
+   * already been initialized.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #eNS_URI
    * @see #createPackageContents()
    * @see #initializePackageContents()
@@ -266,7 +247,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getPopProject()
@@ -276,7 +256,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getPopProject_Name()
@@ -286,7 +265,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPopProject_CodeRepository()
@@ -296,7 +274,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPopProject_RootStream()
@@ -306,7 +283,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCodeRepository()
@@ -316,7 +292,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCodeRepository_TeamProvider()
@@ -326,7 +301,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCodeRepository_RepositoryUrl()
@@ -336,7 +310,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCodeRepository_CodeRoots()
@@ -346,7 +319,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCodeRepository_Committers()
@@ -356,7 +328,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCodeRepository_MainBranch()
@@ -366,7 +337,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCodeRepository_PopProject()
@@ -376,7 +346,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCodeRoot()
@@ -386,7 +355,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCodeRoot_Path()
@@ -396,7 +364,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCodeRoot_Repository()
@@ -406,7 +373,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCommitter()
@@ -416,7 +382,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCommitter_Repository()
@@ -426,7 +391,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Id()
@@ -436,7 +400,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Name()
@@ -446,7 +409,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Email()
@@ -456,7 +418,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Entry()
@@ -466,7 +427,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Exit()
@@ -476,7 +436,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Active()
@@ -486,7 +445,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTaggedElement()
@@ -496,7 +454,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaggedElement_Tag()
@@ -506,7 +463,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTag()
@@ -516,7 +472,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTag_Branch()
@@ -526,7 +481,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTag_Name()
@@ -536,7 +490,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTag_TaggedElement()
@@ -546,7 +499,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getBranch()
@@ -556,7 +508,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getBranch_Name()
@@ -566,7 +517,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Branches()
@@ -576,7 +526,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Tags()
@@ -586,7 +535,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Stream()
@@ -596,7 +544,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMainBranch()
@@ -606,7 +553,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMainBranch_Repository()
@@ -616,7 +562,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getSubBranch()
@@ -626,7 +571,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getSubBranch_Parent()
@@ -636,7 +580,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getStream()
@@ -646,7 +589,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getStream_TaskId()
@@ -656,7 +598,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getStream_Name()
@@ -666,7 +607,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getStream_Branch()
@@ -676,7 +616,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getStream_Merges()
@@ -686,7 +625,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTaskStream()
@@ -696,7 +634,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskStream_Parent()
@@ -706,7 +643,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTaskStream_Baseline()
@@ -716,7 +652,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskStream_Targets()
@@ -726,7 +661,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskStream_Deliveries()
@@ -736,7 +670,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getIntegrationStream()
@@ -746,7 +679,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegrationStream_TaskStreams()
@@ -756,7 +688,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegrationStream_Releases()
@@ -766,7 +697,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDevelopmentStream()
@@ -776,7 +706,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDevelopmentStream_MaintenanceStreams()
@@ -786,7 +715,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMaintenanceStream()
@@ -796,7 +724,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMaintenanceStream_Parent()
@@ -806,7 +733,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMaintenanceStream_Baseline()
@@ -816,7 +742,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getRootStream()
@@ -826,7 +751,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRootStream_PopProject()
@@ -836,7 +760,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTarget()
@@ -846,7 +769,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTarget_Id()
@@ -856,7 +778,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTarget_Date()
@@ -866,7 +787,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTarget_Streams()
@@ -876,7 +796,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getRelease()
@@ -886,7 +805,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Maintenance()
@@ -896,7 +814,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getRelease_Version()
@@ -906,7 +823,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Stream()
@@ -916,7 +832,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Milestones()
@@ -926,7 +841,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMilestone()
@@ -936,7 +850,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMilestone_Release()
@@ -946,7 +859,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMilestone_Name()
@@ -956,7 +868,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDelivery()
@@ -966,7 +877,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDelivery_Stream()
@@ -976,7 +886,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDelivery_Id()
@@ -986,7 +895,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDelivery_Date()
@@ -996,7 +904,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDelivery_Merges()
@@ -1006,7 +913,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMerge()
@@ -1016,7 +922,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMerge_Stream()
@@ -1026,7 +931,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMerge_Id()
@@ -1036,7 +940,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMerge_Date()
@@ -1046,7 +949,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMerge_Delivery()
@@ -1056,7 +958,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getVersion()
@@ -1066,7 +967,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ProjectFactory getProjectFactory()
@@ -1076,15 +976,14 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private boolean isCreated = false;
 
   /**
-   * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
-   * first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void createPackageContents()
@@ -1198,15 +1097,14 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private boolean isInitialized = false;
 
   /**
-   * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
-   * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void initializePackageContents()

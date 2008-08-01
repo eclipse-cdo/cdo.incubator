@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Stream.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: Stream.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -19,16 +19,17 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Stream</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.Stream#getTaskId <em>Task Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Stream#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Stream#getTaskId <em>Task Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Stream#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream()
  * @model abstract="true"
  * @generated
@@ -36,13 +37,13 @@ import java.util.Date;
 public interface Stream extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Task Id</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Task Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Task Id</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Task Id</em>' attribute.
    * @see #setTaskId(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_TaskId()
@@ -63,12 +64,12 @@ public interface Stream extends EObject
   void setTaskId(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_Name()
@@ -89,13 +90,13 @@ public interface Stream extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Branch</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Branch</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Branch</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Branch</em>' reference.
    * @see #setBranch(Branch)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_Branch()
@@ -117,15 +118,15 @@ public interface Stream extends EObject
   void setBranch(Branch value);
 
   /**
-   * Returns the value of the '<em><b>Merges</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.project.Merge}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Merges</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.Merge}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Merges</em>' containment reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Merges</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_Merges()
    * @see org.eclipse.net4j.pop.project.Merge#getStream
@@ -136,7 +137,6 @@ public interface Stream extends EObject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model required="true"
    * @generated
    */
@@ -144,7 +144,6 @@ public interface Stream extends EObject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model
    * @generated
    */
@@ -152,7 +151,6 @@ public interface Stream extends EObject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model
    * @generated
    */
@@ -160,7 +158,6 @@ public interface Stream extends EObject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model required="true" dateRequired="true" deliveryRequired="true"
    * @generated
    */

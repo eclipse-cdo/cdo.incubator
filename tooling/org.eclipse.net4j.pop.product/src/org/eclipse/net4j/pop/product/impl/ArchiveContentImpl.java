@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ArchiveContentImpl.java,v 1.1 2008-07-31 12:33:20 estepper Exp $
+ * $Id: ArchiveContentImpl.java,v 1.2 2008-08-01 07:30:13 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -39,7 +39,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ArchiveContentImpl()
@@ -49,7 +48,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -60,7 +58,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Archive getArchive()
@@ -71,7 +68,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetArchive(Archive newArchive, NotificationChain msgs)
@@ -82,7 +78,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setArchive(Archive newArchive)
@@ -106,7 +101,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -123,7 +117,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -139,7 +132,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -155,7 +147,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -171,7 +162,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -188,7 +178,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -205,7 +194,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,23 +31,23 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CommitterImpl extends EObjectImpl implements Committer
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -55,8 +55,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -74,8 +74,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -133,8 +133,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getExit()
    * @generated
    * @ordered
@@ -153,7 +153,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CommitterImpl()
@@ -163,7 +162,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -174,7 +172,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRepository getRepository()
@@ -185,7 +182,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
@@ -196,7 +192,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepository(CodeRepository newRepository)
@@ -221,7 +216,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getId()
@@ -231,7 +225,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setId(String newId)
@@ -244,7 +237,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -254,7 +246,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -267,7 +258,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getEmail()
@@ -277,7 +267,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -290,7 +279,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getEntry()
@@ -300,7 +288,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -313,7 +300,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getExit()
@@ -323,7 +309,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -336,7 +321,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isActive()
@@ -348,7 +332,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setActive(boolean newActive)
@@ -360,7 +343,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void deactivate(Date exit)
@@ -372,7 +354,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -389,7 +370,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -405,7 +385,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -422,7 +401,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -450,7 +428,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -485,7 +462,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -520,7 +496,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -548,7 +523,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

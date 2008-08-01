@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProjectImpl.java,v 1.1 2008-07-31 12:33:20 estepper Exp $
+ * $Id: WorkspaceProjectImpl.java,v 1.2 2008-08-01 07:30:13 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -60,8 +60,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -69,9 +69,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getWorkingSets() <em>Working Sets</em>}' reference list. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getWorkingSets() <em>Working Sets</em>}' reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getWorkingSets()
    * @generated
    * @ordered
@@ -79,9 +79,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected EList<WorkingSet> workingSets;
 
   /**
-   * The cached value of the '{@link #getCodeRoot() <em>Code Root</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getCodeRoot() <em>Code Root</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getCodeRoot()
    * @generated
    * @ordered
@@ -89,9 +89,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected CodeRoot codeRoot;
 
   /**
-   * The default value of the '{@link #getCodePath() <em>Code Path</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getCodePath() <em>Code Path</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getCodePath()
    * @generated
    * @ordered
@@ -99,9 +99,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected static final String CODE_PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCodePath() <em>Code Path</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getCodePath() <em>Code Path</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getCodePath()
    * @generated
    * @ordered
@@ -110,7 +110,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected WorkspaceProjectImpl()
@@ -120,7 +119,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -131,7 +129,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -141,7 +138,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -154,7 +150,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkingSet> getWorkingSets()
@@ -169,7 +164,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProduct getWorkspaceSpec()
@@ -180,7 +174,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpec(PopProduct newWorkspaceSpec, NotificationChain msgs)
@@ -191,7 +184,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setWorkspaceSpec(PopProduct newWorkspaceSpec)
@@ -216,7 +208,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRoot getCodeRoot()
@@ -237,7 +228,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRoot basicGetCodeRoot()
@@ -247,7 +237,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setCodeRoot(CodeRoot newCodeRoot)
@@ -261,7 +250,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getCodePath()
@@ -271,7 +259,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setCodePath(String newCodePath)
@@ -285,7 +272,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -305,7 +291,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -323,7 +308,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -339,7 +323,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -364,7 +347,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -395,7 +377,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -424,7 +405,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -448,7 +428,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

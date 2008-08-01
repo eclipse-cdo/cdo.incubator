@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStreamImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: RootStreamImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -27,18 +27,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.RootStreamImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.RootStreamImpl#getPopProject <em>Pop Project</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 {
   /**
-   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPopProject()
    * @generated
    * @ordered
@@ -47,7 +47,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected RootStreamImpl()
@@ -57,7 +56,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -68,7 +66,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject getPopProject()
@@ -89,7 +86,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -99,7 +95,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -120,7 +115,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -144,7 +138,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -163,7 +156,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -179,7 +171,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -196,7 +187,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -213,7 +203,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -230,7 +219,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -44,9 +44,9 @@ import java.util.Date;
 public abstract class IntegrationStreamImpl extends StreamImpl implements IntegrationStream
 {
   /**
-   * The cached value of the '{@link #getTaskStreams() <em>Task Streams</em>}' reference list. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTaskStreams() <em>Task Streams</em>}' reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getTaskStreams()
    * @generated
    * @ordered
@@ -54,9 +54,9 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected EList<TaskStream> taskStreams;
 
   /**
-   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getReleases()
    * @generated
    * @ordered
@@ -65,7 +65,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected IntegrationStreamImpl()
@@ -75,7 +74,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -86,7 +84,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<TaskStream> getTaskStreams()
@@ -101,7 +98,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Release> getReleases()
@@ -116,7 +112,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TaskStream startTask(String taskId, Date baseline)
@@ -128,7 +123,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release addRelease(Date date)
@@ -140,7 +134,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -159,7 +152,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -177,7 +169,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -195,7 +186,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -218,7 +208,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -238,7 +227,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

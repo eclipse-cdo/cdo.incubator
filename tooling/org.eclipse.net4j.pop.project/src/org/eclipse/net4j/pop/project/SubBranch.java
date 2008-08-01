@@ -8,19 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranch.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: SubBranch.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Sub Branch</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getSubBranch()
  * @model
  * @generated
@@ -28,13 +29,13 @@ package org.eclipse.net4j.pop.project;
 public interface SubBranch extends Branch, TaggedElement
 {
   /**
-   * Returns the value of the '<em><b>Parent</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Parent</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parent</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Parent</em>' reference.
    * @see #setParent(Branch)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getSubBranch_Parent()

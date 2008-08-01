@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.2 2008-07-31 13:35:41 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -29,12 +29,12 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRepository <em>Code Repository</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRepository <em>Code Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PopProjectImpl extends EObjectImpl implements PopProject
@@ -50,8 +50,8 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -59,9 +59,9 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getCodeRepository() <em>Code Repository</em>}' reference. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getCodeRepository() <em>Code Repository</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getCodeRepository()
    * @generated
    * @ordered
@@ -69,9 +69,9 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
   protected CodeRepository codeRepository;
 
   /**
-   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getRootStream()
    * @generated
    * @ordered
@@ -80,7 +80,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopProjectImpl()
@@ -90,7 +89,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -101,7 +99,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -111,7 +108,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -124,7 +120,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRepository getCodeRepository()
@@ -145,7 +140,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRepository basicGetCodeRepository()
@@ -155,7 +149,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetCodeRepository(CodeRepository newCodeRepository, NotificationChain msgs)
@@ -176,7 +169,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setCodeRepository(CodeRepository newCodeRepository)
@@ -200,7 +192,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public RootStream getRootStream()
@@ -221,7 +212,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public RootStream basicGetRootStream()
@@ -231,7 +221,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRootStream(RootStream newRootStream, NotificationChain msgs)
@@ -252,7 +241,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRootStream(RootStream newRootStream)
@@ -276,7 +264,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -300,7 +287,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -318,7 +304,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -340,7 +325,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -363,7 +347,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -386,7 +369,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -406,7 +388,6 @@ public class PopProjectImpl extends EObjectImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

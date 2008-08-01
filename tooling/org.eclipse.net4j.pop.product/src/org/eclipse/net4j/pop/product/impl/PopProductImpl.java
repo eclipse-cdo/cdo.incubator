@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProductImpl.java,v 1.1 2008-07-31 12:33:20 estepper Exp $
+ * $Id: PopProductImpl.java,v 1.2 2008-08-01 07:30:13 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -36,21 +36,21 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getPopProject <em>Pop Project</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getProjects <em>Projects</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getWorkingSets <em>Working Sets</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getConfigurators <em>Configurators</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getProjects <em>Projects</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getWorkingSets <em>Working Sets</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getConfigurators <em>Configurators</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PopProductImpl extends EObjectImpl implements PopProduct
 {
   /**
-   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPopProject()
    * @generated
    * @ordered
@@ -58,9 +58,9 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
   protected PopProject popProject;
 
   /**
-   * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getProjects()
    * @generated
    * @ordered
@@ -89,7 +89,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopProductImpl()
@@ -99,7 +98,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -110,7 +108,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject getPopProject()
@@ -131,7 +128,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -141,7 +137,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -155,7 +150,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkspaceProject> getProjects()
@@ -170,7 +164,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkingSet> getWorkingSets()
@@ -185,7 +178,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkspaceConfigurator> getConfigurators()
@@ -200,7 +192,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -221,7 +212,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -241,7 +231,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -264,7 +253,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -294,7 +282,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -320,7 +307,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
