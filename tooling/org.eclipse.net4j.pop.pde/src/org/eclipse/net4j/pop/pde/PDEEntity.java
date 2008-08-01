@@ -8,11 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEEntity.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEEntity.java,v 1.3 2008-08-01 09:42:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde;
 
-import org.eclipse.net4j.pop.project.Version;
+import org.eclipse.net4j.pop.base.Version;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -72,7 +72,7 @@ public interface PDEEntity extends EObject
    * @return the value of the '<em>Version</em>' attribute.
    * @see #setVersion(Version)
    * @see org.eclipse.net4j.pop.pde.PDEPackage#getPDEEntity_Version()
-   * @model dataType="org.eclipse.net4j.pop.project.Version"
+   * @model dataType="org.eclipse.net4j.pop.base.Version"
    * @generated
    */
   Version getVersion();

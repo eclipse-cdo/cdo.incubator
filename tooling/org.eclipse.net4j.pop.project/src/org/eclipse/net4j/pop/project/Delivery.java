@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Delivery.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: Delivery.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -18,17 +18,16 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Delivery</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getDate <em>Date</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Delivery#getMerges <em>Merges</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Delivery#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Delivery#getDate <em>Date</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Delivery#getMerges <em>Merges</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery()
  * @model
  * @generated
@@ -36,14 +35,14 @@ import java.util.Date;
 public interface Delivery extends TaggedElement
 {
   /**
-   * Returns the value of the '<em><b>Stream</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.TaskStream#getDeliveries <em>Deliveries</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Stream</b></em>' container reference. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.TaskStream#getDeliveries <em>Deliveries</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Stream</em>' container reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Stream</em>' container reference.
    * @see #setStream(TaskStream)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Stream()
@@ -54,23 +53,24 @@ public interface Delivery extends TaggedElement
   TaskStream getStream();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}' container reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Stream</em>' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}' container
+   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Stream</em>' container reference.
    * @see #getStream()
    * @generated
    */
   void setStream(TaskStream value);
 
   /**
-   * Returns the value of the '<em><b>Id</b></em>' attribute.
-   * The default value is <code>"1"</code>.
-   * <!-- begin-user-doc
+   * Returns the value of the '<em><b>Id</b></em>' attribute. The default value is <code>"1"</code>. <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Id</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Id</em>' attribute.
    * @see #setId(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Id()
@@ -91,12 +91,12 @@ public interface Delivery extends TaggedElement
   void setId(String value);
 
   /**
-   * Returns the value of the '<em><b>Date</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Date</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Date</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Date</em>' attribute.
    * @see #setDate(Date)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Date()
@@ -117,15 +117,15 @@ public interface Delivery extends TaggedElement
   void setDate(Date value);
 
   /**
-   * Returns the value of the '<em><b>Merges</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.Merge}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Merge#getDelivery <em>Delivery</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Merges</b></em>' reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.project.Merge}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.Merge#getDelivery <em>Delivery</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Merges</em>' reference list isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Merges</em>' reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Merges()
    * @see org.eclipse.net4j.pop.project.Merge#getDelivery

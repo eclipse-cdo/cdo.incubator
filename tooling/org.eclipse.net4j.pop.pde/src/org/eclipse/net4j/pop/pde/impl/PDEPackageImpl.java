@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEPackageImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEPackageImpl.java,v 1.3 2008-08-01 09:42:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
+import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.jdt.JDTPackage;
 import org.eclipse.net4j.pop.pde.ApiBaseline;
 import org.eclipse.net4j.pop.pde.Feature;
@@ -571,6 +572,7 @@ public class PDEPackageImpl extends EPackageImpl implements PDEPackage
     JDTPackage theJDTPackage = (JDTPackage)EPackage.Registry.INSTANCE.getEPackage(JDTPackage.eNS_URI);
     ProductPackage theProductPackage = (ProductPackage)EPackage.Registry.INSTANCE.getEPackage(ProductPackage.eNS_URI);
     ProjectPackage theProjectPackage = (ProjectPackage)EPackage.Registry.INSTANCE.getEPackage(ProjectPackage.eNS_URI);
+    BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
 
     // Create type parameters
 
@@ -650,7 +652,7 @@ public class PDEPackageImpl extends EPackageImpl implements PDEPackage
         "id", null, 0, 1, PDEEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getPDEEntity_Version(),
-        theProjectPackage.getVersion(),
+        theBasePackage.getVersion(),
         "version", null, 0, 1, PDEEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getPDEEntity_Location(),

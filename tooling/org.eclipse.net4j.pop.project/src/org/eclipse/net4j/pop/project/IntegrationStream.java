@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStream.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: IntegrationStream.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -34,15 +34,15 @@ import java.util.Date;
 public interface IntegrationStream extends Stream
 {
   /**
-   * Returns the value of the '<em><b>Task Streams</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.TaskStream}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.TaskStream#getParent <em>Parent</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Task Streams</b></em>' reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.project.TaskStream}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.TaskStream#getParent <em>Parent</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Task Streams</em>' reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Task Streams</em>' reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getIntegrationStream_TaskStreams()
    * @see org.eclipse.net4j.pop.project.TaskStream#getParent
@@ -52,15 +52,15 @@ public interface IntegrationStream extends Stream
   EList<TaskStream> getTaskStreams();
 
   /**
-   * Returns the value of the '<em><b>Releases</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.Release}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Release#getStream <em>Stream</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Releases</b></em>' containment reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.project.Release}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.Release#getStream <em>Stream</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Releases</em>' containment reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Releases</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getIntegrationStream_Releases()
    * @see org.eclipse.net4j.pop.project.Release#getStream
@@ -71,6 +71,7 @@ public interface IntegrationStream extends Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model required="true" taskIdRequired="true" baselineRequired="true"
    * @generated
    */
@@ -78,6 +79,7 @@ public interface IntegrationStream extends Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model required="true" dateRequired="true"
    * @generated
    */

@@ -13,7 +13,6 @@
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
       childCreationExtenders="true" contentTypeIdentifier="pop.project" fileExtensions="xml"
       ecorePackage="Project.ecore#/">
-    <genDataTypes ecoreDataType="Project.ecore#//Version"/>
     <genClasses ecoreClass="Project.ecore#//PopProject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/codeRepository"/>
@@ -59,7 +58,7 @@
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//Branch">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Branch/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/branches"/>
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/branches"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/tags"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/stream"/>
     </genClasses>

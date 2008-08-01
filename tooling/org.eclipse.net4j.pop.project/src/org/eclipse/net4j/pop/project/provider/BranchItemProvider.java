@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchItemProvider.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: BranchItemProvider.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -38,9 +38,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Branch} object.
- * <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Branch} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class BranchItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -48,8 +48,8 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public BranchItemProvider(AdapterFactory adapterFactory)
@@ -58,8 +58,8 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -77,8 +77,8 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This adds a property descriptor for the Name feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -92,8 +92,8 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This adds a property descriptor for the Branches feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Branches feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addBranchesPropertyDescriptor(Object object)
@@ -105,8 +105,8 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This adds a property descriptor for the Stream feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Stream feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addStreamPropertyDescriptor(Object object)
@@ -120,9 +120,9 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -131,6 +131,7 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(ProjectPackage.Literals.BRANCH__BRANCHES);
       childrenFeatures.add(ProjectPackage.Literals.BRANCH__TAGS);
     }
     return childrenFeatures;
@@ -138,6 +139,7 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -151,6 +153,7 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -160,8 +163,8 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -173,9 +176,9 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -188,6 +191,7 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
     case ProjectPackage.BRANCH__NAME:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
+    case ProjectPackage.BRANCH__BRANCHES:
     case ProjectPackage.BRANCH__TAGS:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
@@ -196,9 +200,9 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -206,13 +210,16 @@ public class BranchItemProvider extends ItemProviderAdapter implements IEditingD
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.BRANCH__BRANCHES, ProjectFactory.eINSTANCE
+        .createSubBranch()));
+
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.BRANCH__TAGS, ProjectFactory.eINSTANCE
         .createTag()));
   }
 
   /**
-   * Return the resource locator for this item provider's resources.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
