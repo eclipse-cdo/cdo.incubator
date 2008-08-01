@@ -7,7 +7,7 @@
     updateClasspath="false" nonNLSMarkers="true" codeFormatting="true" testsDirectory=""
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
     editPluginID="org.eclipse.net4j.pop.product" optimizedHasChildren="true" colorProviders="true"
-    fontProviders="true" usedGenPackages="../../org.eclipse.net4j.pop.project/model/Project.genmodel#//project">
+    fontProviders="true" usedGenPackages="../../org.eclipse.net4j.pop.base/model/Base.genmodel#//base ../../org.eclipse.net4j.pop.project/model/Project.genmodel#//project">
   <foreignModel>Product.ecore</foreignModel>
   <genPackages prefix="Product" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"

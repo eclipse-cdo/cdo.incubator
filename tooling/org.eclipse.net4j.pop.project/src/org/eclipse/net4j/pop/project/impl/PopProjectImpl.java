@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
@@ -22,7 +23,6 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop Project</b></em>'. <!-- end-user-doc -->
@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * 
  * @generated
  */
-public class PopProjectImpl extends EObjectImpl implements PopProject
+public class PopProjectImpl extends PopElementImpl implements PopProject
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc

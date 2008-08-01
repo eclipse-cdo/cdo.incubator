@@ -8,9 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectActivator.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
+ * $Id: ProjectActivator.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
+
+import org.eclipse.net4j.pop.base.util.BasePlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
@@ -43,7 +45,7 @@ public final class ProjectActivator extends EMFPlugin
    */
   public ProjectActivator()
   {
-    super(new ResourceLocator[] {});
+    super(new ResourceLocator[] { BasePlugin.INSTANCE, });
   }
 
   /**

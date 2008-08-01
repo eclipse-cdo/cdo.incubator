@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEActivator.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEActivator.java,v 1.3 2008-08-01 08:41:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.util;
 
+import org.eclipse.net4j.pop.base.util.BasePlugin;
 import org.eclipse.net4j.pop.jdt.util.JDTActivator;
 import org.eclipse.net4j.pop.product.util.ProductPlugin;
 import org.eclipse.net4j.pop.project.util.ProjectActivator;
@@ -47,7 +48,8 @@ public final class PDEActivator extends EMFPlugin
    */
   public PDEActivator()
   {
-    super(new ResourceLocator[] { ProductPlugin.INSTANCE, ProjectActivator.INSTANCE, JDTActivator.INSTANCE, });
+    super(new ResourceLocator[] { BasePlugin.INSTANCE, ProductPlugin.INSTANCE, ProjectActivator.INSTANCE,
+        JDTActivator.INSTANCE, });
   }
 
   /**

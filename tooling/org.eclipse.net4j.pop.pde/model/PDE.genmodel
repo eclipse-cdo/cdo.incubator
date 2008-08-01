@@ -6,7 +6,7 @@
     editorDirectory="" modelPluginID="org.eclipse.net4j.pop.pde" modelName="PDE" editPluginClass="org.eclipse.net4j.pop.pde.util.PDEActivator"
     nonNLSMarkers="true" codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.net4j.pop.pde"
-    optimizedHasChildren="true" colorProviders="true" fontProviders="true" usedGenPackages="../../org.eclipse.net4j.pop.product/model/Product.genmodel#//product ../../org.eclipse.net4j.pop.project/model/Project.genmodel#//project ../../org.eclipse.net4j.pop.jdt/model/JDT.genmodel#//jdt">
+    optimizedHasChildren="true" colorProviders="true" fontProviders="true" usedGenPackages="../../org.eclipse.net4j.pop.base/model/Base.genmodel#//base ../../org.eclipse.net4j.pop.product/model/Product.genmodel#//product ../../org.eclipse.net4j.pop.project/model/Project.genmodel#//project ../../org.eclipse.net4j.pop.jdt/model/JDT.genmodel#//jdt">
   <foreignModel>PDE.ecore</foreignModel>
   <genPackages prefix="PDE" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"

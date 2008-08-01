@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductEditor.java,v 1.2 2008-08-01 08:14:50 estepper Exp $
+ * $Id: ProductEditor.java,v 1.3 2008-08-01 08:41:07 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.editor;
 
+import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
 import org.eclipse.net4j.pop.product.provider.ProductItemProviderAdapterFactory;
 import org.eclipse.net4j.pop.project.provider.ProjectItemProviderAdapterFactory;
 
@@ -652,6 +653,7 @@ public class ProductEditor extends MultiPageEditorPart implements IEditingDomain
 
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ProductItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ProjectItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 

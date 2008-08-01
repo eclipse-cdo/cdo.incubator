@@ -3,7 +3,7 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="project"
     nsURI="http://www.eclipse.org/pop/project/1.0.0" nsPrefix="pop.project">
-  <eClassifiers xsi:type="ecore:EClass" name="PopProject">
+  <eClassifiers xsi:type="ecore:EClass" name="PopProject" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="codeRepository" lowerBound="1"
         eType="#//CodeRepository" eOpposite="#//CodeRepository/popProject"/>

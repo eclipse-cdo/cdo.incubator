@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
@@ -251,6 +252,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         : new ProjectPackageImpl());
 
     isInited = true;
+
+    // Initialize simple dependencies
+    BasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theProjectPackage.createPackageContents();
@@ -1219,11 +1223,15 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     setNsPrefix(eNS_PREFIX);
     setNsURI(eNS_URI);
 
+    // Obtain other dependent packages
+    BasePackage theBasePackage = (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+
     // Create type parameters
 
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    popProjectEClass.getESuperTypes().add(theBasePackage.getPopElement());
     mainBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getTaggedElement());

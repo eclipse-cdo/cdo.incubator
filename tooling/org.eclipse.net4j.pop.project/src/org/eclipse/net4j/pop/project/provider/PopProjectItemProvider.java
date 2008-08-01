@@ -8,18 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectItemProvider.java,v 1.4 2008-08-01 08:15:15 estepper Exp $
+ * $Id: PopProjectItemProvider.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
+import org.eclipse.net4j.pop.base.provider.PopElementItemProvider;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -29,7 +28,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
@@ -41,7 +39,7 @@ import java.util.List;
  * 
  * @generated
  */
-public class PopProjectItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class PopProjectItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
     IItemColorProvider, IItemFontProvider
 {
@@ -118,17 +116,6 @@ public class PopProjectItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  @Override
-  public boolean hasChildren(Object object)
-  {
-    return hasChildren(object, true);
-  }
-
-  /**
    * This returns PopProject.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -182,17 +169,6 @@ public class PopProjectItemProvider extends ItemProviderAdapter implements IEdit
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-  }
-
-  /**
-   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  @Override
-  public ResourceLocator getResourceLocator()
-  {
-    return ((IChildCreationExtender)adapterFactory).getResourceLocator();
   }
 
 }

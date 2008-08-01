@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTActivator.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ * $Id: JDTActivator.java,v 1.3 2008-08-01 08:41:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.util;
 
+import org.eclipse.net4j.pop.base.util.BasePlugin;
 import org.eclipse.net4j.pop.product.util.ProductPlugin;
 import org.eclipse.net4j.pop.project.util.ProjectActivator;
 
@@ -46,7 +47,7 @@ public final class JDTActivator extends EMFPlugin
    */
   public JDTActivator()
   {
-    super(new ResourceLocator[] { ProductPlugin.INSTANCE, ProjectActivator.INSTANCE, });
+    super(new ResourceLocator[] { BasePlugin.INSTANCE, ProductPlugin.INSTANCE, ProjectActivator.INSTANCE, });
   }
 
   /**

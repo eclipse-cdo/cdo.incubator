@@ -8,9 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectEditorPlugin.java,v 1.3 2008-08-01 08:34:37 estepper Exp $
+ * $Id: ProjectEditorPlugin.java,v 1.4 2008-08-01 08:41:31 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.editor;
+
+import org.eclipse.net4j.pop.base.util.BasePlugin;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
@@ -44,7 +46,7 @@ public final class ProjectEditorPlugin extends EMFPlugin
    */
   public ProjectEditorPlugin()
   {
-    super(new ResourceLocator[] {});
+    super(new ResourceLocator[] { BasePlugin.INSTANCE, });
   }
 
   /**

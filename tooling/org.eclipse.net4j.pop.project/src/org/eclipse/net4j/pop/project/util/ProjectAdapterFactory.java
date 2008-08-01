@@ -8,10 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectAdapterFactory.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
+ * $Id: ProjectAdapterFactory.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
+import org.eclipse.net4j.pop.base.Displayable;
+import org.eclipse.net4j.pop.base.Identifiable;
+import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
@@ -215,6 +218,24 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
     public Adapter caseMerge(Merge object)
     {
       return createMergeAdapter();
+    }
+
+    @Override
+    public Adapter caseIdentifiable(Identifiable object)
+    {
+      return createIdentifiableAdapter();
+    }
+
+    @Override
+    public Adapter caseDisplayable(Displayable object)
+    {
+      return createDisplayableAdapter();
+    }
+
+    @Override
+    public Adapter casePopElement(PopElement object)
+    {
+      return createPopElementAdapter();
     }
 
     @Override
@@ -517,6 +538,48 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMergeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.Identifiable <em>Identifiable</em>}
+   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.base.Identifiable
+   * @generated
+   */
+  public Adapter createIdentifiableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.Displayable <em>Displayable</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.base.Displayable
+   * @generated
+   */
+  public Adapter createDisplayableAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.PopElement <em>Pop Element</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.base.PopElement
+   * @generated
+   */
+  public Adapter createPopElementAdapter()
   {
     return null;
   }

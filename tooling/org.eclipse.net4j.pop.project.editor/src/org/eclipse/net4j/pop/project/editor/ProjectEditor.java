@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectEditor.java,v 1.3 2008-08-01 08:34:37 estepper Exp $
+ * $Id: ProjectEditor.java,v 1.4 2008-08-01 08:41:31 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.editor;
 
+import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
 import org.eclipse.net4j.pop.project.provider.ProjectItemProviderAdapterFactory;
 
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -651,6 +652,7 @@ public class ProjectEditor extends MultiPageEditorPart implements IEditingDomain
 
     adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ProjectItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
 
     // Create the command stack that will notify this editor as commands are executed.

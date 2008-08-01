@@ -8,9 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.5 2008-08-01 08:34:23 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.6 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
+
+import org.eclipse.net4j.pop.base.BasePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -85,7 +87,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP_PROJECT__NAME = 0;
+  int POP_PROJECT__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Code Repository</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -93,7 +95,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP_PROJECT__CODE_REPOSITORY = 1;
+  int POP_PROJECT__CODE_REPOSITORY = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Root Stream</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -101,7 +103,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP_PROJECT__ROOT_STREAM = 2;
+  int POP_PROJECT__ROOT_STREAM = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Pop Project</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
@@ -110,7 +112,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP_PROJECT_FEATURE_COUNT = 3;
+  int POP_PROJECT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CodeRepositoryImpl <em>Code Repository</em>}'

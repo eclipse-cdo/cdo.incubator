@@ -8,11 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProject.java,v 1.4 2008-08-01 08:15:15 estepper Exp $
+ * $Id: PopProject.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.net4j.pop.base.PopElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Pop Project</b></em>'. <!-- end-user-doc -->
@@ -29,7 +29,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface PopProject extends EObject
+public interface PopProject extends PopElement
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->

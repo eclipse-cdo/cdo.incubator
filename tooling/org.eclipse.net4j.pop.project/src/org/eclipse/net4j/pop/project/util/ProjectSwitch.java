@@ -8,10 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
+import org.eclipse.net4j.pop.base.Displayable;
+import org.eclipse.net4j.pop.base.Identifiable;
+import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
@@ -117,6 +120,9 @@ public class ProjectSwitch<T>
     {
       PopProject popProject = (PopProject)theEObject;
       T result = casePopProject(popProject);
+      if (result == null) result = casePopElement(popProject);
+      if (result == null) result = caseIdentifiable(popProject);
+      if (result == null) result = caseDisplayable(popProject);
       if (result == null) result = defaultCase(theEObject);
       return result;
     }
@@ -573,6 +579,51 @@ public class ProjectSwitch<T>
    * @generated
    */
   public T caseMerge(Merge object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'. <!-- begin-user-doc -->
+   * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+   * 
+   * @param object
+   *          the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIdentifiable(Identifiable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Displayable</em>'. <!-- begin-user-doc -->
+   * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+   * 
+   * @param object
+   *          the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Displayable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDisplayable(Displayable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pop Element</em>'. <!-- begin-user-doc -->
+   * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
+   * 
+   * @param object
+   *          the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pop Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePopElement(PopElement object)
   {
     return null;
   }

@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductEditorPlugin.java,v 1.2 2008-08-01 08:14:50 estepper Exp $
+ * $Id: ProductEditorPlugin.java,v 1.3 2008-08-01 08:41:07 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.editor;
 
+import org.eclipse.net4j.pop.base.util.BasePlugin;
 import org.eclipse.net4j.pop.project.util.ProjectActivator;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -46,7 +47,7 @@ public final class ProductEditorPlugin extends EMFPlugin
    */
   public ProductEditorPlugin()
   {
-    super(new ResourceLocator[] { ProjectActivator.INSTANCE, });
+    super(new ResourceLocator[] { BasePlugin.INSTANCE, ProjectActivator.INSTANCE, });
   }
 
   /**
