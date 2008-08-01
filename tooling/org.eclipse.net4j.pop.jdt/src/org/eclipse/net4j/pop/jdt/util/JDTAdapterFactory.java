@@ -8,43 +8,39 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTAdapterFactory.java,v 1.1 2008-08-01 07:53:48 estepper Exp $
+ * $Id: JDTAdapterFactory.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.util;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notifier;
-
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.net4j.pop.jdt.*;
-
+import org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator;
+import org.eclipse.net4j.pop.jdt.JDTPackage;
+import org.eclipse.net4j.pop.jdt.JREChecker;
 import org.eclipse.net4j.pop.product.WorkspaceConfigurator;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+import org.eclipse.emf.ecore.EObject;
+
 /**
- * <!-- begin-user-doc -->
- * The <b>Adapter Factory</b> for the model.
- * It provides an adapter <code>createXXX</code> method for each class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
+ * method for each class of the model. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.jdt.JDTPackage
  * @generated
  */
 public class JDTAdapterFactory extends AdapterFactoryImpl
 {
   /**
-   * The cached model package.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected static JDTPackage modelPackage;
 
   /**
-   * Creates an instance of the adapter factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public JDTAdapterFactory()
@@ -56,10 +52,10 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Returns whether this factory is applicable for the type of the object.
-   * <!-- begin-user-doc -->
-   * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-   * <!-- end-user-doc -->
+   * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This implementation
+   * returns <code>true</code> if the object is either the model's package or is an instance object of the model. <!--
+   * end-user-doc -->
+   * 
    * @return whether this factory is applicable for the type of the object.
    * @generated
    */
@@ -78,9 +74,8 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * The switch that delegates to the <code>createXXX</code> methods.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected JDTSwitch<Adapter> modelSwitch = new JDTSwitch<Adapter>()
@@ -111,10 +106,10 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
   };
 
   /**
-   * Creates an adapter for the <code>target</code>.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param target the object to adapt.
+   * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param target
+   *          the object to adapt.
    * @return the adapter for the <code>target</code>.
    * @generated
    */
@@ -126,10 +121,9 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
 
   /**
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.jdt.JREChecker <em>JRE Checker</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.jdt.JREChecker
    * @generated
@@ -140,11 +134,11 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator <em>Formatter Profile Configurator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator
+   * <em>Formatter Profile Configurator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that
+   * we can easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator
    * @generated
@@ -155,11 +149,11 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.product.WorkspaceConfigurator <em>Workspace Configurator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.product.WorkspaceConfigurator
+   * <em>Workspace Configurator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.product.WorkspaceConfigurator
    * @generated
@@ -170,10 +164,9 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for the default case.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @generated
    */
@@ -182,4 +175,4 @@ public class JDTAdapterFactory extends AdapterFactoryImpl
     return null;
   }
 
-} //JDTAdapterFactory
+} // JDTAdapterFactory

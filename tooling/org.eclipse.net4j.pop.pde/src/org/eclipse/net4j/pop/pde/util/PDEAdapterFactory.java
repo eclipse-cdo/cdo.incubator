@@ -8,46 +8,52 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEAdapterFactory.java,v 1.1 2008-08-01 07:53:46 estepper Exp $
+ * $Id: PDEAdapterFactory.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.util;
 
-import org.eclipse.emf.common.notify.Adapter;
-import org.eclipse.emf.common.notify.Notifier;
-
-import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
 import org.eclipse.net4j.pop.jdt.JREChecker;
-
-import org.eclipse.net4j.pop.pde.*;
-
+import org.eclipse.net4j.pop.pde.ApiBaseline;
+import org.eclipse.net4j.pop.pde.Feature;
+import org.eclipse.net4j.pop.pde.Fragment;
+import org.eclipse.net4j.pop.pde.PDEConfigurator;
+import org.eclipse.net4j.pop.pde.PDEDistribution;
+import org.eclipse.net4j.pop.pde.PDEEntity;
+import org.eclipse.net4j.pop.pde.PDEPackage;
+import org.eclipse.net4j.pop.pde.PDEProject;
+import org.eclipse.net4j.pop.pde.Plugin;
+import org.eclipse.net4j.pop.pde.PluginEntity;
+import org.eclipse.net4j.pop.pde.PopDistribution;
+import org.eclipse.net4j.pop.pde.TargetPlatform;
+import org.eclipse.net4j.pop.pde.TargetPlatformChecker;
+import org.eclipse.net4j.pop.pde.ZipDistribution;
 import org.eclipse.net4j.pop.product.WorkspaceConfigurator;
 import org.eclipse.net4j.pop.product.WorkspaceProject;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notifier;
+import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+import org.eclipse.emf.ecore.EObject;
+
 /**
- * <!-- begin-user-doc -->
- * The <b>Adapter Factory</b> for the model.
- * It provides an adapter <code>createXXX</code> method for each class of the model.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
+ * method for each class of the model. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.pde.PDEPackage
  * @generated
  */
 public class PDEAdapterFactory extends AdapterFactoryImpl
 {
   /**
-   * The cached model package.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected static PDEPackage modelPackage;
 
   /**
-   * Creates an instance of the adapter factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEAdapterFactory()
@@ -59,10 +65,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Returns whether this factory is applicable for the type of the object.
-   * <!-- begin-user-doc -->
-   * This implementation returns <code>true</code> if the object is either the model's package or is an instance object of the model.
-   * <!-- end-user-doc -->
+   * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This implementation
+   * returns <code>true</code> if the object is either the model's package or is an instance object of the model. <!--
+   * end-user-doc -->
+   * 
    * @return whether this factory is applicable for the type of the object.
    * @generated
    */
@@ -81,9 +87,8 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * The switch that delegates to the <code>createXXX</code> methods.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PDESwitch<Adapter> modelSwitch = new PDESwitch<Adapter>()
@@ -192,10 +197,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   };
 
   /**
-   * Creates an adapter for the <code>target</code>.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param target the object to adapt.
+   * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param target
+   *          the object to adapt.
    * @return the adapter for the <code>target</code>.
    * @generated
    */
@@ -206,11 +211,11 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.TargetPlatformChecker <em>Target Platform Checker</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.TargetPlatformChecker
+   * <em>Target Platform Checker</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.TargetPlatformChecker
    * @generated
@@ -221,11 +226,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEConfigurator <em>Configurator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEConfigurator
+   * <em>Configurator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.PDEConfigurator
    * @generated
@@ -237,10 +241,9 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
 
   /**
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.ApiBaseline <em>Api Baseline</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.ApiBaseline
    * @generated
@@ -251,11 +254,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.TargetPlatform <em>Target Platform</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.TargetPlatform
+   * <em>Target Platform</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.TargetPlatform
    * @generated
@@ -266,11 +268,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEProject <em>Project</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEProject <em>Project</em>}'. <!--
+   * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.PDEProject
    * @generated
@@ -281,11 +282,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEDistribution <em>Distribution</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEDistribution
+   * <em>Distribution</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.PDEDistribution
    * @generated
@@ -296,11 +296,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEEntity <em>Entity</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PDEEntity <em>Entity</em>}'. <!--
+   * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.PDEEntity
    * @generated
@@ -311,11 +310,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.Feature <em>Feature</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.Feature <em>Feature</em>}'. <!--
+   * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.Feature
    * @generated
@@ -326,11 +324,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PluginEntity <em>Plugin Entity</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PluginEntity <em>Plugin Entity</em>}
+   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.PluginEntity
    * @generated
@@ -341,11 +338,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.Plugin <em>Plugin</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.Plugin <em>Plugin</em>}'. <!--
+   * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.Plugin
    * @generated
@@ -356,11 +352,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.Fragment <em>Fragment</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.Fragment <em>Fragment</em>}'. <!--
+   * begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.Fragment
    * @generated
@@ -371,11 +366,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.ZipDistribution <em>Zip Distribution</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.ZipDistribution
+   * <em>Zip Distribution</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.ZipDistribution
    * @generated
@@ -386,11 +380,10 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PopDistribution <em>Pop Distribution</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.pde.PopDistribution
+   * <em>Pop Distribution</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.pde.PopDistribution
    * @generated
@@ -401,11 +394,11 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.product.WorkspaceConfigurator <em>Workspace Configurator</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.product.WorkspaceConfigurator
+   * <em>Workspace Configurator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.product.WorkspaceConfigurator
    * @generated
@@ -417,10 +410,9 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
 
   /**
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.jdt.JREChecker <em>JRE Checker</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
+   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.jdt.JREChecker
    * @generated
@@ -431,11 +423,11 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.product.WorkspaceProject <em>Workspace Project</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.product.WorkspaceProject
+   * <em>Workspace Project</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.product.WorkspaceProject
    * @generated
@@ -446,10 +438,9 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for the default case.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null.
-   * <!-- end-user-doc -->
+   * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null. <!--
+   * end-user-doc -->
+   * 
    * @return the new adapter.
    * @generated
    */
@@ -458,4 +449,4 @@ public class PDEAdapterFactory extends AdapterFactoryImpl
     return null;
   }
 
-} //PDEAdapterFactory
+} // PDEAdapterFactory

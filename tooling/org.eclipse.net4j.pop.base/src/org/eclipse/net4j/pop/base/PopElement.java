@@ -8,16 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElement.java,v 1.1 2008-08-01 07:05:44 estepper Exp $
+ * $Id: PopElement.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Pop Element</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Pop Element</b></em>'. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.base.BasePackage#getPopElement()
  * @model
  * @generated

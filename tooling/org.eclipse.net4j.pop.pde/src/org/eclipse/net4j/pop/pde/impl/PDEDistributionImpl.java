@@ -8,52 +8,46 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEDistributionImpl.java,v 1.1 2008-08-01 07:53:35 estepper Exp $
+ * $Id: PDEDistributionImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.net4j.pop.pde.PDEDistribution;
 import org.eclipse.net4j.pop.pde.PDEEntity;
 import org.eclipse.net4j.pop.pde.PDEPackage;
 import org.eclipse.net4j.pop.pde.TargetPlatform;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import java.util.Collection;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Distribution</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Distribution</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getEntities <em>Entities</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getTargetPlatform <em>Target Platform</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getEntities <em>Entities</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getTargetPlatform <em>Target Platform</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDistribution
 {
   /**
-   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getEntities()
    * @generated
    * @ordered
@@ -61,8 +55,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   protected EList<PDEEntity> entities;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PDEDistributionImpl()
@@ -71,8 +65,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -82,8 +76,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<PDEEntity> getEntities()
@@ -97,8 +91,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatform getTargetPlatform()
@@ -108,8 +102,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetTargetPlatform(TargetPlatform newTargetPlatform, NotificationChain msgs)
@@ -119,8 +113,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTargetPlatform(TargetPlatform newTargetPlatform)
@@ -144,8 +138,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -164,8 +158,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -182,8 +176,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -199,8 +193,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -217,8 +211,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -239,8 +233,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -259,8 +253,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -276,4 +270,4 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
     return super.eIsSet(featureID);
   }
 
-} //PDEDistributionImpl
+} // PDEDistributionImpl

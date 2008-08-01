@@ -8,32 +8,31 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTFactoryImpl.java,v 1.1 2008-08-01 07:53:47 estepper Exp $
+ * $Id: JDTFactoryImpl.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.impl;
+
+import org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator;
+import org.eclipse.net4j.pop.jdt.JDTFactory;
+import org.eclipse.net4j.pop.jdt.JDTPackage;
+import org.eclipse.net4j.pop.jdt.JREChecker;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.eclipse.net4j.pop.jdt.*;
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static JDTFactory init()
@@ -55,9 +54,8 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
   }
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public JDTFactoryImpl()
@@ -66,8 +64,8 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -85,8 +83,8 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public JREChecker createJREChecker()
@@ -96,8 +94,8 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public FormatterProfileConfigurator createFormatterProfileConfigurator()
@@ -107,8 +105,8 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public JDTPackage getJDTPackage()
@@ -117,8 +115,8 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @deprecated
    * @generated
    */
@@ -128,4 +126,4 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
     return JDTPackage.eINSTANCE;
   }
 
-} //JDTFactoryImpl
+} // JDTFactoryImpl

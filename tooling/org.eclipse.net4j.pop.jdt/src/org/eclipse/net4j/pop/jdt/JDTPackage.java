@@ -8,26 +8,25 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTPackage.java,v 1.1 2008-08-01 07:53:22 estepper Exp $
+ * $Id: JDTPackage.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt;
+
+import org.eclipse.net4j.pop.product.ProductPackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 
-import org.eclipse.net4j.pop.product.ProductPackage;
-
 /**
- * <!-- begin-user-doc -->
- * The <b>Package</b> for the model.
- * It contains accessors for the meta objects to represent
+ * <!-- begin-user-doc --> The <b>Package</b> for the model. It contains accessors for the meta objects to represent
  * <ul>
- *   <li>each class,</li>
- *   <li>each feature of each class,</li>
- *   <li>each enum,</li>
- *   <li>and each data type</li>
+ * <li>each class,</li>
+ * <li>each feature of each class,</li>
+ * <li>each enum,</li>
+ * <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.jdt.JDTFactory
  * @model kind="package"
  * @generated
@@ -35,49 +34,44 @@ import org.eclipse.net4j.pop.product.ProductPackage;
 public interface JDTPackage extends EPackage
 {
   /**
-   * The package name.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The package name. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   String eNAME = "jdt"; //$NON-NLS-1$
 
   /**
-   * The package namespace URI.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The package namespace URI. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   String eNS_URI = "http://www.eclipse.org/net4j/pop/product/jdt/1.0.0"; //$NON-NLS-1$
 
   /**
-   * The package namespace name.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  String eNS_PREFIX = "net4j.pop.product.jdt"; //$NON-NLS-1$
+  String eNS_PREFIX = "net4j.pop.jdt"; //$NON-NLS-1$
 
   /**
-   * The package content type ID.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The package content type ID. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  String eCONTENT_TYPE = "net4j.pop.product.jdt"; //$NON-NLS-1$
+  String eCONTENT_TYPE = "net4j.pop.jdt"; //$NON-NLS-1$
 
   /**
-   * The singleton instance of the package.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   JDTPackage eINSTANCE = org.eclipse.net4j.pop.jdt.impl.JDTPackageImpl.init();
 
   /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.jdt.impl.JRECheckerImpl <em>JRE Checker</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The meta object id for the '{@link org.eclipse.net4j.pop.jdt.impl.JRECheckerImpl <em>JRE Checker</em>}' class. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see org.eclipse.net4j.pop.jdt.impl.JRECheckerImpl
    * @see org.eclipse.net4j.pop.jdt.impl.JDTPackageImpl#getJREChecker()
    * @generated
@@ -85,27 +79,27 @@ public interface JDTPackage extends EPackage
   int JRE_CHECKER = 0;
 
   /**
-   * The feature id for the '<em><b>Workspace Spec</b></em>' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The feature id for the '<em><b>Workspace Spec</b></em>' container reference. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    * @ordered
    */
   int JRE_CHECKER__WORKSPACE_SPEC = ProductPackage.WORKSPACE_CONFIGURATOR__WORKSPACE_SPEC;
 
   /**
-   * The number of structural features of the '<em>JRE Checker</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The number of structural features of the '<em>JRE Checker</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @generated
    * @ordered
    */
   int JRE_CHECKER_FEATURE_COUNT = ProductPackage.WORKSPACE_CONFIGURATOR_FEATURE_COUNT + 0;
 
   /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.jdt.impl.FormatterProfileConfiguratorImpl <em>Formatter Profile Configurator</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The meta object id for the '{@link org.eclipse.net4j.pop.jdt.impl.FormatterProfileConfiguratorImpl
+   * <em>Formatter Profile Configurator</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see org.eclipse.net4j.pop.jdt.impl.FormatterProfileConfiguratorImpl
    * @see org.eclipse.net4j.pop.jdt.impl.JDTPackageImpl#getFormatterProfileConfigurator()
    * @generated
@@ -113,27 +107,27 @@ public interface JDTPackage extends EPackage
   int FORMATTER_PROFILE_CONFIGURATOR = 1;
 
   /**
-   * The feature id for the '<em><b>Workspace Spec</b></em>' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The feature id for the '<em><b>Workspace Spec</b></em>' container reference. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    * @ordered
    */
   int FORMATTER_PROFILE_CONFIGURATOR__WORKSPACE_SPEC = ProductPackage.WORKSPACE_CONFIGURATOR__WORKSPACE_SPEC;
 
   /**
-   * The number of structural features of the '<em>Formatter Profile Configurator</em>' class.
-   * <!-- begin-user-doc -->
+   * The number of structural features of the '<em>Formatter Profile Configurator</em>' class. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @generated
    * @ordered
    */
   int FORMATTER_PROFILE_CONFIGURATOR_FEATURE_COUNT = ProductPackage.WORKSPACE_CONFIGURATOR_FEATURE_COUNT + 0;
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.net4j.pop.jdt.JREChecker <em>JRE Checker</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Returns the meta object for class '{@link org.eclipse.net4j.pop.jdt.JREChecker <em>JRE Checker</em>}'. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @return the meta object for class '<em>JRE Checker</em>'.
    * @see org.eclipse.net4j.pop.jdt.JREChecker
    * @generated
@@ -141,9 +135,9 @@ public interface JDTPackage extends EPackage
   EClass getJREChecker();
 
   /**
-   * Returns the meta object for class '{@link org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator <em>Formatter Profile Configurator</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Returns the meta object for class '{@link org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator
+   * <em>Formatter Profile Configurator</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @return the meta object for class '<em>Formatter Profile Configurator</em>'.
    * @see org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator
    * @generated
@@ -151,32 +145,31 @@ public interface JDTPackage extends EPackage
   EClass getFormatterProfileConfigurator();
 
   /**
-   * Returns the factory that creates the instances of the model.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @return the factory that creates the instances of the model.
    * @generated
    */
   JDTFactory getJDTFactory();
 
   /**
-   * <!-- begin-user-doc -->
-   * Defines literals for the meta objects that represent
+   * <!-- begin-user-doc --> Defines literals for the meta objects that represent
    * <ul>
-   *   <li>each class,</li>
-   *   <li>each feature of each class,</li>
-   *   <li>each enum,</li>
-   *   <li>and each data type</li>
+   * <li>each class,</li>
+   * <li>each feature of each class,</li>
+   * <li>each enum,</li>
+   * <li>and each data type</li>
    * </ul>
    * <!-- end-user-doc -->
+   * 
    * @generated
    */
   interface Literals
   {
     /**
-     * The meta object literal for the '{@link org.eclipse.net4j.pop.jdt.impl.JRECheckerImpl <em>JRE Checker</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.jdt.impl.JRECheckerImpl <em>JRE Checker</em>}'
+     * class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.net4j.pop.jdt.impl.JRECheckerImpl
      * @see org.eclipse.net4j.pop.jdt.impl.JDTPackageImpl#getJREChecker()
      * @generated
@@ -184,9 +177,9 @@ public interface JDTPackage extends EPackage
     EClass JRE_CHECKER = eINSTANCE.getJREChecker();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.net4j.pop.jdt.impl.FormatterProfileConfiguratorImpl <em>Formatter Profile Configurator</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.jdt.impl.FormatterProfileConfiguratorImpl
+     * <em>Formatter Profile Configurator</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @see org.eclipse.net4j.pop.jdt.impl.FormatterProfileConfiguratorImpl
      * @see org.eclipse.net4j.pop.jdt.impl.JDTPackageImpl#getFormatterProfileConfigurator()
      * @generated
@@ -195,4 +188,4 @@ public interface JDTPackage extends EPackage
 
   }
 
-} //JDTPackage
+} // JDTPackage

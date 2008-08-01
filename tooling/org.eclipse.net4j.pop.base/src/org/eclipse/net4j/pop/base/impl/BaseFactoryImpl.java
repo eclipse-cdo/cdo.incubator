@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseFactoryImpl.java,v 1.1 2008-08-01 07:05:44 estepper Exp $
+ * $Id: BaseFactoryImpl.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -25,17 +25,15 @@ import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static BaseFactory init()
@@ -57,9 +55,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public BaseFactoryImpl()
@@ -68,8 +65,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -85,8 +82,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -102,8 +99,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -119,8 +116,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopElement createPopElement()
@@ -130,8 +127,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Version createVersionFromString(EDataType eDataType, String initialValue)
@@ -140,8 +137,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertVersionToString(EDataType eDataType, Object instanceValue)
@@ -150,8 +147,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public BasePackage getBasePackage()
@@ -160,8 +157,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @deprecated
    * @generated
    */
@@ -171,4 +168,4 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
     return BasePackage.eINSTANCE;
   }
 
-} //BaseFactoryImpl
+} // BaseFactoryImpl

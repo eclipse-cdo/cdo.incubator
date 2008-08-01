@@ -10,7 +10,7 @@
   <foreignModel>PDE.ecore</foreignModel>
   <genPackages prefix="PDE" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
-      contentTypeIdentifier="net4j.pop.product.pde" fileExtensions="pde.xml" ecorePackage="PDE.ecore#/">
+      contentTypeIdentifier="net4j.pop.pde" fileExtensions="pde.xml" ecorePackage="PDE.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="PDE.ecore#//Location">
       <genEnumLiterals ecoreEnumLiteral="PDE.ecore#//Location/WORKSPACE"/>
       <genEnumLiterals ecoreEnumLiteral="PDE.ecore#//Location/EXTERNAL"/>

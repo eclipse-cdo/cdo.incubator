@@ -8,16 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetPlatformCheckerItemProvider.java,v 1.1 2008-08-01 07:53:40 estepper Exp $
+ * $Id: TargetPlatformCheckerItemProvider.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.provider;
 
-import java.util.Collection;
-import java.util.List;
+import org.eclipse.net4j.pop.jdt.provider.JRECheckerItemProvider;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -27,12 +25,13 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 
-import org.eclipse.net4j.pop.jdt.provider.JRECheckerItemProvider;
+import java.util.Collection;
+import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatformChecker} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatformChecker} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider implements IEditingDomainItemProvider,
@@ -40,9 +39,8 @@ public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider im
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatformCheckerItemProvider(AdapterFactory adapterFactory)
@@ -51,9 +49,8 @@ public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider im
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -68,9 +65,8 @@ public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider im
   }
 
   /**
-   * This returns TargetPlatformChecker.gif.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns TargetPlatformChecker.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -80,9 +76,8 @@ public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider im
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -92,10 +87,9 @@ public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider im
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -106,10 +100,9 @@ public class TargetPlatformCheckerItemProvider extends JRECheckerItemProvider im
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

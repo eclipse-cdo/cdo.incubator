@@ -8,45 +8,41 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetPlatformImpl.java,v 1.1 2008-08-01 07:53:35 estepper Exp $
+ * $Id: TargetPlatformImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.net4j.pop.pde.PDEDistribution;
 import org.eclipse.net4j.pop.pde.PDEPackage;
 import org.eclipse.net4j.pop.pde.TargetPlatform;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import java.util.Collection;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Target Platform</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Target Platform</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.TargetPlatformImpl#getDistributions <em>Distributions</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.TargetPlatformImpl#getDistributions <em>Distributions</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPlatform
 {
   /**
-   * The cached value of the '{@link #getDistributions() <em>Distributions</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getDistributions() <em>Distributions</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getDistributions()
    * @generated
    * @ordered
@@ -54,8 +50,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   protected EList<PDEDistribution> distributions;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TargetPlatformImpl()
@@ -64,8 +60,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -75,8 +71,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<PDEDistribution> getDistributions()
@@ -90,8 +86,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -107,8 +103,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -123,8 +119,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -139,8 +135,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -158,8 +154,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -175,8 +171,8 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -190,4 +186,4 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
     return super.eIsSet(featureID);
   }
 
-} //TargetPlatformImpl
+} // TargetPlatformImpl

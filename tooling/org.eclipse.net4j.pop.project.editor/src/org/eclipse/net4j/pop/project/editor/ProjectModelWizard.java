@@ -8,9 +8,57 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectModelWizard.java,v 1.1 2008-08-01 07:30:19 estepper Exp $
+ * $Id: ProjectModelWizard.java,v 1.2 2008-08-01 08:15:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.editor;
+
+import org.eclipse.net4j.pop.project.ProjectFactory;
+import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.util.ProjectActivator;
+
+import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
+
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.jface.wizard.WizardPage;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.ModifyEvent;
+import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.INewWizard;
+import org.eclipse.ui.IWorkbench;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
+import org.eclipse.ui.part.FileEditorInput;
+import org.eclipse.ui.part.ISetSelectionTarget;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,162 +70,82 @@ import java.util.Map;
 import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
-import org.eclipse.emf.common.CommonPlugin;
-
-import org.eclipse.emf.common.util.URI;
-
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-
-import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.ecore.xmi.XMLResource;
-
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
-
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
-
-import org.eclipse.core.runtime.IProgressMonitor;
-
-import org.eclipse.jface.dialogs.MessageDialog;
-
-import org.eclipse.jface.viewers.IStructuredSelection;
-
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.jface.wizard.WizardPage;
-
-import org.eclipse.swt.SWT;
-
-import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.ModifyEvent;
-
-import org.eclipse.swt.layout.GridData;
-import org.eclipse.swt.layout.GridLayout;
-
-import org.eclipse.swt.widgets.Combo;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
-
-import org.eclipse.ui.INewWizard;
-import org.eclipse.ui.IWorkbench;
-
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-
-import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
-
-import org.eclipse.ui.part.FileEditorInput;
-import org.eclipse.ui.part.ISetSelectionTarget;
-
-import org.eclipse.net4j.pop.project.ProjectFactory;
-import org.eclipse.net4j.pop.project.ProjectPackage;
-import org.eclipse.net4j.pop.project.util.ProjectActivator;
-
-import org.eclipse.core.runtime.Path;
-
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.IWorkbenchWindow;
-import org.eclipse.ui.PartInitException;
-
 /**
- * This is a simple wizard for creating a new model file.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ProjectModelWizard extends Wizard implements INewWizard
 {
   /**
-   * The supported extensions for created files.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
       .asList(ProjectEditorPlugin.INSTANCE.getString("_UI_ProjectEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * A formatted list of supported file extensions, suitable for display.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static final String FORMATTED_FILE_EXTENSIONS = ProjectEditorPlugin.INSTANCE.getString(
       "_UI_ProjectEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
   /**
-   * This caches an instance of the model package.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ProjectPackage projectPackage = ProjectPackage.eINSTANCE;
 
   /**
-   * This caches an instance of the model factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ProjectFactory projectFactory = projectPackage.getProjectFactory();
 
   /**
-   * This is the file creation page.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ProjectModelWizardNewFileCreationPage newFileCreationPage;
 
   /**
-   * This is the initial object creation page.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ProjectModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
   /**
-   * Remember the selection during initialization for populating the default container.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Remember the selection during initialization for populating the default container. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    */
   protected IStructuredSelection selection;
 
   /**
-   * Remember the workbench during initialization.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IWorkbench workbench;
 
   /**
-   * Caches the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected List<String> initialObjectNames;
 
   /**
-   * This just records the information.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void init(IWorkbench workbench, IStructuredSelection selection)
@@ -190,9 +158,9 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Returns the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Returns the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @generated
    */
   protected Collection<String> getInitialObjectNames()
@@ -217,9 +185,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Create a new model.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected EObject createInitialModel()
@@ -230,9 +197,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Do the work after everything is specified.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -333,17 +299,15 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the one page of the wizard.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public class ProjectModelWizardNewFileCreationPage extends WizardNewFileCreationPage
   {
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ProjectModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection)
@@ -352,9 +316,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * The framework calls this to see if the file is correct.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The framework calls this to see if the file is correct. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -375,8 +338,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public IFile getModelFile()
@@ -386,38 +349,34 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the page where the type of object to create is selected.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public class ProjectModelWizardInitialObjectCreationPage extends WizardPage
   {
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Combo initialObjectField;
 
     /**
-     * @generated
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * @generated <!-- begin-user-doc --> <!-- end-user-doc -->
      */
     protected List<String> encodings;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Combo encodingField;
 
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ProjectModelWizardInitialObjectCreationPage(String pageId)
@@ -426,8 +385,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void createControl(Composite parent)
@@ -503,8 +462,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ModifyListener validator = new ModifyListener()
@@ -516,8 +475,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     };
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected boolean validatePage()
@@ -526,8 +485,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -550,8 +509,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getInitialObjectName()
@@ -569,8 +528,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getEncoding()
@@ -579,9 +538,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * Returns the label for the specified type name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected String getLabel(String typeName)
@@ -598,8 +556,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Collection<String> getEncodings()
@@ -618,9 +576,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * The framework calls this to create the contents of the wizard.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -682,9 +639,8 @@ public class ProjectModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Get the file from the page.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IFile getModelFile()

@@ -10,7 +10,7 @@
   <foreignModel>JDT.ecore</foreignModel>
   <genPackages prefix="JDT" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
-      contentTypeIdentifier="net4j.pop.product.jdt" fileExtensions="jdt.xml" ecorePackage="JDT.ecore#/">
+      contentTypeIdentifier="net4j.pop.jdt" fileExtensions="jdt.xml" ecorePackage="JDT.ecore#/">
     <genClasses ecoreClass="JDT.ecore#//JREChecker"/>
     <genClasses ecoreClass="JDT.ecore#//FormatterProfileConfigurator"/>
   </genPackages>

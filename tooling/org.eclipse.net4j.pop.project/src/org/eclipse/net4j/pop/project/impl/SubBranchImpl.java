@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.3 2008-08-01 07:30:32 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -29,18 +29,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getTag <em>Tag</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getTag <em>Tag</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SubBranchImpl extends BranchImpl implements SubBranch
 {
   /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getTag()
    * @generated
    * @ordered
@@ -59,6 +59,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected SubBranchImpl()
@@ -68,6 +69,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -78,6 +80,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Tag getTag()
@@ -97,6 +100,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Tag basicGetTag()
@@ -106,6 +110,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetTag(Tag newTag, NotificationChain msgs)
@@ -126,6 +131,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTag(Tag newTag)
@@ -146,6 +152,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch getParent()
@@ -166,6 +173,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch basicGetParent()
@@ -175,6 +183,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetParent(Branch newParent, NotificationChain msgs)
@@ -195,6 +204,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParent(Branch newParent)
@@ -215,6 +225,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -236,6 +247,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -253,6 +265,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -272,6 +285,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -291,6 +305,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -310,6 +325,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -327,6 +343,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -347,6 +364,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

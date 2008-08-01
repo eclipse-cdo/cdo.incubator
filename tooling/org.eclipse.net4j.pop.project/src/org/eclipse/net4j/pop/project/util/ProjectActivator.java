@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectActivator.java,v 1.3 2008-08-01 07:30:33 estepper Exp $
+ * $Id: ProjectActivator.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -16,29 +16,29 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Project edit plugin.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
+ * This is the central singleton for the Project edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public final class ProjectActivator extends EMFPlugin
 {
   /**
-   * Keep track of the singleton.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static final ProjectActivator INSTANCE = new ProjectActivator();
 
   /**
-   * Keep track of the singleton.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   private static Implementation plugin;
 
   /**
-   * Create the instance.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ProjectActivator()
@@ -47,8 +47,8 @@ public final class ProjectActivator extends EMFPlugin
   }
 
   /**
-   * Returns the singleton instance of the Eclipse plugin.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @return the singleton instance.
    * @generated
    */
@@ -59,8 +59,8 @@ public final class ProjectActivator extends EMFPlugin
   }
 
   /**
-   * Returns the singleton instance of the Eclipse plugin.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @return the singleton instance.
    * @generated
    */
@@ -70,15 +70,15 @@ public final class ProjectActivator extends EMFPlugin
   }
 
   /**
-   * The actual implementation of the Eclipse <b>Plugin</b>.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static class Implementation extends EclipsePlugin
   {
     /**
-     * Creates an instance.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Implementation()

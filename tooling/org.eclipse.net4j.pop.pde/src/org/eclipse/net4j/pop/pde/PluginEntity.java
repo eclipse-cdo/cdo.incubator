@@ -8,16 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PluginEntity.java,v 1.1 2008-08-01 07:53:27 estepper Exp $
+ * $Id: PluginEntity.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Plugin Entity</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Plugin Entity</b></em>'. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.pde.PDEPackage#getPluginEntity()
  * @model abstract="true"
  * @generated

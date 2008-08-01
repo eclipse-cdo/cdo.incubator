@@ -8,31 +8,29 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: FormatterProfileConfiguratorImpl.java,v 1.1 2008-08-01 07:53:48 estepper Exp $
+ * $Id: FormatterProfileConfiguratorImpl.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.impl;
 
-import org.eclipse.emf.ecore.EClass;
-
 import org.eclipse.net4j.pop.jdt.FormatterProfileConfigurator;
 import org.eclipse.net4j.pop.jdt.JDTPackage;
-
 import org.eclipse.net4j.pop.product.impl.WorkspaceConfiguratorImpl;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Formatter Profile Configurator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Formatter Profile Configurator</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class FormatterProfileConfiguratorImpl extends WorkspaceConfiguratorImpl implements FormatterProfileConfigurator
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected FormatterProfileConfiguratorImpl()
@@ -41,8 +39,8 @@ public class FormatterProfileConfiguratorImpl extends WorkspaceConfiguratorImpl 
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -51,4 +49,4 @@ public class FormatterProfileConfiguratorImpl extends WorkspaceConfiguratorImpl 
     return JDTPackage.Literals.FORMATTER_PROFILE_CONFIGURATOR;
   }
 
-} //FormatterProfileConfiguratorImpl
+} // FormatterProfileConfiguratorImpl

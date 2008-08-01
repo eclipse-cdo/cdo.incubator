@@ -8,29 +8,27 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: FeatureImpl.java,v 1.1 2008-08-01 07:53:35 estepper Exp $
+ * $Id: FeatureImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
-
-import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.net4j.pop.pde.Feature;
 import org.eclipse.net4j.pop.pde.PDEPackage;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Feature</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Feature</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class FeatureImpl extends PDEEntityImpl implements Feature
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected FeatureImpl()
@@ -39,8 +37,8 @@ public class FeatureImpl extends PDEEntityImpl implements Feature
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -49,4 +47,4 @@ public class FeatureImpl extends PDEEntityImpl implements Feature
     return PDEPackage.Literals.FEATURE;
   }
 
-} //FeatureImpl
+} // FeatureImpl

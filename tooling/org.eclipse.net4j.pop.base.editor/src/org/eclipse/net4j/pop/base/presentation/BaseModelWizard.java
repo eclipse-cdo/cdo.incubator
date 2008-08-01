@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseModelWizard.java,v 1.1 2008-08-01 07:05:44 estepper Exp $
+ * $Id: BaseModelWizard.java,v 1.2 2008-08-01 08:14:48 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.presentation;
 
@@ -71,91 +71,81 @@ import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
 /**
- * This is a simple wizard for creating a new model file.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class BaseModelWizard extends Wizard implements INewWizard
 {
   /**
-   * The supported extensions for created files.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
       .asList(BaseEditorPlugin.INSTANCE.getString("_UI_BaseEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * A formatted list of supported file extensions, suitable for display.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static final String FORMATTED_FILE_EXTENSIONS = BaseEditorPlugin.INSTANCE.getString(
       "_UI_BaseEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
   /**
-   * This caches an instance of the model package.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected BasePackage basePackage = BasePackage.eINSTANCE;
 
   /**
-   * This caches an instance of the model factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected BaseFactory baseFactory = basePackage.getBaseFactory();
 
   /**
-   * This is the file creation page.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected BaseModelWizardNewFileCreationPage newFileCreationPage;
 
   /**
-   * This is the initial object creation page.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected BaseModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
   /**
-   * Remember the selection during initialization for populating the default container.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Remember the selection during initialization for populating the default container. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    */
   protected IStructuredSelection selection;
 
   /**
-   * Remember the workbench during initialization.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IWorkbench workbench;
 
   /**
-   * Caches the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected List<String> initialObjectNames;
 
   /**
-   * This just records the information.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void init(IWorkbench workbench, IStructuredSelection selection)
@@ -168,9 +158,9 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Returns the names of the types that can be created as the root object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Returns the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @generated
    */
   protected Collection<String> getInitialObjectNames()
@@ -195,9 +185,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Create a new model.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected EObject createInitialModel()
@@ -208,9 +197,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Do the work after everything is specified.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -311,17 +299,15 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the one page of the wizard.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public class BaseModelWizardNewFileCreationPage extends WizardNewFileCreationPage
   {
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public BaseModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection)
@@ -330,9 +316,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * The framework calls this to see if the file is correct.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The framework calls this to see if the file is correct. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -353,8 +338,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public IFile getModelFile()
@@ -364,38 +349,34 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the page where the type of object to create is selected.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public class BaseModelWizardInitialObjectCreationPage extends WizardPage
   {
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Combo initialObjectField;
 
     /**
-     * @generated
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * @generated <!-- begin-user-doc --> <!-- end-user-doc -->
      */
     protected List<String> encodings;
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Combo encodingField;
 
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public BaseModelWizardInitialObjectCreationPage(String pageId)
@@ -404,8 +385,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void createControl(Composite parent)
@@ -481,8 +462,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ModifyListener validator = new ModifyListener()
@@ -494,8 +475,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     };
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected boolean validatePage()
@@ -504,8 +485,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -528,8 +509,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getInitialObjectName()
@@ -547,8 +528,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getEncoding()
@@ -557,9 +538,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * Returns the label for the specified type name.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected String getLabel(String typeName)
@@ -576,8 +556,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Collection<String> getEncodings()
@@ -596,9 +576,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * The framework calls this to create the contents of the wizard.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -659,9 +638,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Get the file from the page.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IFile getModelFile()

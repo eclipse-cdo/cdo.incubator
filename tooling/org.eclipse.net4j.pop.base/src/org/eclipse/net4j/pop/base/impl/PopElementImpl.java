@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.1 2008-08-01 07:05:44 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -19,19 +19,17 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Pop Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class PopElementImpl extends EObjectImpl implements PopElement
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopElementImpl()
@@ -40,8 +38,8 @@ public class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -51,8 +49,8 @@ public class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getDisplayString()
@@ -63,8 +61,8 @@ public class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getId()
@@ -74,4 +72,4 @@ public class PopElementImpl extends EObjectImpl implements PopElement
     throw new UnsupportedOperationException();
   }
 
-} //PopElementImpl
+} // PopElementImpl

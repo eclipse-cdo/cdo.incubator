@@ -8,18 +8,15 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JREChecker.java,v 1.1 2008-08-01 07:53:22 estepper Exp $
+ * $Id: JREChecker.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt;
 
 import org.eclipse.net4j.pop.product.WorkspaceConfigurator;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>JRE Checker</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>JRE Checker</b></em>'. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.jdt.JDTPackage#getJREChecker()
  * @model
  * @generated

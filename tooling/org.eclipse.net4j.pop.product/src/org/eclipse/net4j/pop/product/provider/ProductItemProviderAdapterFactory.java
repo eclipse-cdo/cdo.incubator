@@ -8,15 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductItemProviderAdapterFactory.java,v 1.2 2008-08-01 07:30:13 estepper Exp $
+ * $Id: ProductItemProviderAdapterFactory.java,v 1.3 2008-08-01 08:14:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.provider;
 
 import org.eclipse.net4j.pop.product.ProductPackage;
-import org.eclipse.net4j.pop.product.util.ProductActivator;
 import org.eclipse.net4j.pop.product.util.ProductAdapterFactory;
-
 import org.eclipse.net4j.pop.product.util.ProductPlugin;
+
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.Notifier;
@@ -54,24 +53,24 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
     IChangeNotifier, IDisposable, IChildCreationExtender
 {
   /**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc --> <!--
+   * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc --> <!--
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-   * This helps manage the child creation extenders.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This helps manage the child creation extenders. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
@@ -86,8 +85,8 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
-   * This constructs an instance.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ProductItemProviderAdapterFactory()
@@ -110,9 +109,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   protected PopProductItemProvider popProductItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.PopProduct}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.PopProduct}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -135,9 +134,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   protected WorkingSetItemProvider workingSetItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.WorkingSet}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.WorkingSet}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -154,14 +153,15 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   /**
    * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.product.WorkspaceProject} instances.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected WorkspaceProjectItemProvider workspaceProjectItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.WorkspaceProject}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.WorkspaceProject}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -209,9 +209,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   protected FolderItemProvider folderItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.Folder}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.Folder}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -234,9 +234,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   protected ArchiveItemProvider archiveItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.Archive}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.Archive}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -253,14 +253,15 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   /**
    * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.product.ArchiveContent} instances.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ArchiveContentItemProvider archiveContentItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.ArchiveContent}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.product.ArchiveContent}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -275,8 +276,8 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ComposeableAdapterFactory getRootAdapterFactory()
@@ -285,8 +286,8 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
@@ -296,6 +297,7 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -305,9 +307,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc --> <!--
+   * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -318,6 +320,7 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -337,6 +340,7 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public List<IChildCreationExtender> getChildCreationExtenders()
@@ -346,6 +350,7 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain)
@@ -355,6 +360,7 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ResourceLocator getResourceLocator()
@@ -363,8 +369,8 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This adds a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void addListener(INotifyChangedListener notifyChangedListener)
@@ -373,8 +379,8 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This removes a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void removeListener(INotifyChangedListener notifyChangedListener)
@@ -383,9 +389,9 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc --> <!--
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   public void fireNotifyChanged(Notification notification)
@@ -399,8 +405,8 @@ public class ProductItemProviderAdapterFactory extends ProductAdapterFactory imp
   }
 
   /**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void dispose()
