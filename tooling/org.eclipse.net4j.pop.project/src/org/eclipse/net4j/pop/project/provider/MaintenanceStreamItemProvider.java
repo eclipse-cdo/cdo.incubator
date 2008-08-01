@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamItemProvider.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: MaintenanceStreamItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
 import java.util.List;
@@ -41,8 +42,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public MaintenanceStreamItemProvider(AdapterFactory adapterFactory)
@@ -51,8 +52,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -69,8 +70,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Parent feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Parent feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addParentPropertyDescriptor(Object object)
@@ -81,12 +82,12 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
             getString("_UI_MaintenanceStream_parent_feature"), //$NON-NLS-1$
             getString(
                 "_UI_PropertyDescriptor_description", "_UI_MaintenanceStream_parent_feature", "_UI_MaintenanceStream_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.MAINTENANCE_STREAM__PARENT, true, false, true, null, null, null));
+            ProjectPackage.Literals.MAINTENANCE_STREAM__PARENT, false, false, true, null, null, null));
   }
 
   /**
-   * This adds a property descriptor for the Baseline feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Baseline feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addBaselinePropertyDescriptor(Object object)
@@ -101,8 +102,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns MaintenanceStream.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns MaintenanceStream.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -112,8 +113,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -125,22 +126,29 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
   public void notifyChanged(Notification notification)
   {
     updateChildren(notification);
+
+    switch (notification.getFeatureID(MaintenanceStream.class))
+    {
+    case ProjectPackage.MAINTENANCE_STREAM__PARENT:
+      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+      return;
+    }
     super.notifyChanged(notification);
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

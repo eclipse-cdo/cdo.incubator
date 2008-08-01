@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagItemProvider.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: TagItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Tag} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Tag} object.
+ * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class TagItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public TagItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -67,6 +67,7 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
     {
       super.getPropertyDescriptors(object);
 
+      addBranchPropertyDescriptor(object);
       addNamePropertyDescriptor(object);
       addTaggedElementPropertyDescriptor(object);
     }
@@ -74,8 +75,22 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Branch feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addBranchPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Tag_branch_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Tag_branch_feature", "_UI_Tag_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.TAG__BRANCH, false, false, false, null, null, null));
+  }
+
+  /**
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -87,8 +102,8 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This adds a property descriptor for the Tagged Element feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Tagged Element feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addTaggedElementPropertyDescriptor(Object object)
@@ -96,12 +111,11 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Tag_taggedElement_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_Tag_taggedElement_feature", "_UI_Tag_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.TAG__TAGGED_ELEMENT, true, false, true, null, null, null));
+        ProjectPackage.Literals.TAG__TAGGED_ELEMENT, false, false, true, null, null, null));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -111,8 +125,8 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This returns Tag.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Tag.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -122,8 +136,8 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -135,9 +149,9 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -147,6 +161,7 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
 
     switch (notification.getFeatureID(Tag.class))
     {
+    case ProjectPackage.TAG__BRANCH:
     case ProjectPackage.TAG__NAME:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
@@ -155,9 +170,9 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -167,8 +182,8 @@ public class TagItemProvider extends ItemProviderAdapter implements IEditingDoma
   }
 
   /**
-   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Return the resource locator for this item provider's resources.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

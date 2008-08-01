@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.7 2008-08-01 09:46:27 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.8 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -30,18 +30,18 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getTag <em>Tag</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SubBranchImpl extends BranchImpl implements SubBranch
 {
   /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getTag()
    * @generated
    * @ordered
@@ -50,7 +50,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected SubBranchImpl()
@@ -60,7 +59,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -71,7 +69,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag getTag()
@@ -91,7 +88,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag basicGetTag()
@@ -101,7 +97,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetTag(Tag newTag, NotificationChain msgs)
@@ -122,7 +117,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTag(Tag newTag)
@@ -143,7 +137,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch getParent()
@@ -153,8 +146,18 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Branch basicGetParent()
+  {
+    if (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT) return null;
+    return (Branch)eInternalContainer();
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(Branch newParent, NotificationChain msgs)
@@ -165,7 +168,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(Branch newParent)
@@ -188,7 +190,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -209,7 +210,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -227,7 +227,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -243,7 +242,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -255,14 +253,14 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       if (resolve) return getTag();
       return basicGetTag();
     case ProjectPackage.SUB_BRANCH__PARENT:
-      return getParent();
+      if (resolve) return getParent();
+      return basicGetParent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -282,7 +280,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -302,7 +299,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -313,14 +309,13 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     case ProjectPackage.SUB_BRANCH__TAG:
       return tag != null;
     case ProjectPackage.SUB_BRANCH__PARENT:
-      return getParent() != null;
+      return basicGetParent() != null;
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -341,7 +336,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

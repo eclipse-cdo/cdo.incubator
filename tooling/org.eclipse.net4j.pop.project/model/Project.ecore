@@ -4,43 +4,38 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="project"
     nsURI="http://www.eclipse.org/pop/project/1.0.0" nsPrefix="pop.project">
   <eClassifiers xsi:type="ecore:EClass" name="PopProject" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="codeRepository" lowerBound="1"
-        eType="#//CodeRepository" eOpposite="#//CodeRepository/popProject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rootStream" lowerBound="1"
-        eType="#//RootStream" eOpposite="#//RootStream/popProject"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CodeRepository">
     <eOperations name="addCommitter" lowerBound="1" eType="#//Release">
       <eParameters name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="email" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
       <eParameters name="entry" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="teamProvider" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryUrl" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="codeRoots" lowerBound="1"
-        upperBound="-1" eType="#//CodeRoot" containment="true" eOpposite="#//CodeRoot/repository"/>
+        upperBound="-1" eType="#//CodeRoot" containment="true" eOpposite="#//CodeRoot/popProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="committers" lowerBound="1"
-        upperBound="-1" eType="#//Committer" containment="true" eOpposite="#//Committer/repository"/>
+        upperBound="-1" eType="#//Committer" containment="true" eOpposite="#//Committer/popProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
-        eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/repository"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" eType="#//PopProject"
-        eOpposite="#//PopProject/codeRepository"/>
+        eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/popProject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rootStream" lowerBound="1"
+        eType="#//RootStream" containment="true" eOpposite="#//RootStream/popProject"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CodeRoot">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
-        eType="#//CodeRepository" eOpposite="#//CodeRepository/codeRoots"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="#//PopProject" eOpposite="#//PopProject/codeRoots"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Committer">
     <eOperations name="deactivate" lowerBound="1">
       <eParameters name="exit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
-        eType="#//CodeRepository" eOpposite="#//CodeRepository/committers"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="#//PopProject" eOpposite="#//PopProject/committers"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -74,8 +69,8 @@
         eOpposite="#//Stream/branch"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MainBranch" eSuperTypes="#//Branch">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
-        eType="#//CodeRepository" eOpposite="#//CodeRepository/mainBranch"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="#//PopProject" eOpposite="#//PopProject/mainBranch"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SubBranch" eSuperTypes="#//Branch #//TaggedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
@@ -120,7 +115,7 @@
       <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskStreams" upperBound="-1"
-        eType="#//TaskStream" eOpposite="#//TaskStream/parent"/>
+        eType="#//TaskStream" containment="true" eOpposite="#//TaskStream/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
         eType="#//Release" containment="true" eOpposite="#//Release/stream"/>
   </eClassifiers>
@@ -131,7 +126,7 @@
       <eParameters name="increment" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenanceStreams" upperBound="-1"
-        eType="#//MaintenanceStream" eOpposite="#//MaintenanceStream/parent"/>
+        eType="#//MaintenanceStream" containment="true" eOpposite="#//MaintenanceStream/parent"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MaintenanceStream" eSuperTypes="#//IntegrationStream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"

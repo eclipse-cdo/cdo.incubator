@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryItemProvider.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: DeliveryItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -33,9 +33,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Delivery} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Delivery} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class DeliveryItemProvider extends TaggedElementItemProvider implements IEditingDomainItemProvider,
@@ -43,8 +43,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public DeliveryItemProvider(AdapterFactory adapterFactory)
@@ -53,8 +53,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -64,6 +64,7 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
     {
       super.getPropertyDescriptors(object);
 
+      addStreamPropertyDescriptor(object);
       addIdPropertyDescriptor(object);
       addDatePropertyDescriptor(object);
       addMergesPropertyDescriptor(object);
@@ -72,8 +73,22 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Stream feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addStreamPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Delivery_stream_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Delivery_stream_feature", "_UI_Delivery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.DELIVERY__STREAM, false, false, false, null, null, null));
+  }
+
+  /**
+   * This adds a property descriptor for the Id feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addIdPropertyDescriptor(Object object)
@@ -87,8 +102,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Date feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Date feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addDatePropertyDescriptor(Object object)
@@ -102,8 +117,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Merges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Merges feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addMergesPropertyDescriptor(Object object)
@@ -111,12 +126,12 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Delivery_merges_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_Delivery_merges_feature", "_UI_Delivery_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.DELIVERY__MERGES, true, false, true, null, null, null));
+        ProjectPackage.Literals.DELIVERY__MERGES, false, false, true, null, null, null));
   }
 
   /**
-   * This returns Delivery.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Delivery.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -126,8 +141,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -139,9 +154,9 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -151,6 +166,7 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
 
     switch (notification.getFeatureID(Delivery.class))
     {
+    case ProjectPackage.DELIVERY__STREAM:
     case ProjectPackage.DELIVERY__ID:
     case ProjectPackage.DELIVERY__DATE:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
@@ -160,9 +176,9 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

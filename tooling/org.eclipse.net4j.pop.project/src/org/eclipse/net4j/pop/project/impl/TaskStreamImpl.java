@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamImpl.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: TaskStreamImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -36,31 +37,21 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getParent <em>Parent</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getBaseline <em>Baseline</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getTargets <em>Targets</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getDeliveries <em>Deliveries</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getBaseline <em>Baseline</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getTargets <em>Targets</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getDeliveries <em>Deliveries</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TaskStreamImpl extends StreamImpl implements TaskStream
 {
   /**
-   * The cached value of the '{@link #getParent() <em>Parent</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @see #getParent()
-   * @generated
-   * @ordered
-   */
-  protected IntegrationStream parent;
-
-  /**
-   * The default value of the '{@link #getBaseline() <em>Baseline</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getBaseline() <em>Baseline</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -68,9 +59,9 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   protected static final Date BASELINE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -78,9 +69,9 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   protected Date baseline = BASELINE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getTargets()
    * @generated
    * @ordered
@@ -99,7 +90,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected TaskStreamImpl()
@@ -109,7 +99,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -120,69 +109,47 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IntegrationStream getParent()
   {
-    if (parent != null && parent.eIsProxy())
-    {
-      InternalEObject oldParent = (InternalEObject)parent;
-      parent = (IntegrationStream)eResolveProxy(oldParent);
-      if (parent != oldParent)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.TASK_STREAM__PARENT, oldParent,
-              parent));
-      }
-    }
-    return parent;
+    if (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT) return null;
+    return (IntegrationStream)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IntegrationStream basicGetParent()
   {
-    return parent;
+    if (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT) return null;
+    return (IntegrationStream)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(IntegrationStream newParent, NotificationChain msgs)
   {
-    IntegrationStream oldParent = parent;
-    parent = newParent;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          ProjectPackage.TASK_STREAM__PARENT, oldParent, newParent);
-      if (msgs == null)
-        msgs = notification;
-      else
-        msgs.add(notification);
-    }
+    msgs = eBasicSetContainer((InternalEObject)newParent, ProjectPackage.TASK_STREAM__PARENT, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(IntegrationStream newParent)
   {
-    if (newParent != parent)
+    if (newParent != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT && newParent != null))
     {
+      if (EcoreUtil.isAncestor(this, newParent))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS,
-            IntegrationStream.class, msgs);
+      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
       if (newParent != null)
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS,
             IntegrationStream.class, msgs);
@@ -195,7 +162,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getBaseline()
@@ -205,7 +171,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBaseline(Date newBaseline)
@@ -218,7 +183,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Target> getTargets()
@@ -233,14 +197,13 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Delivery> getDeliveries()
   {
     if (deliveries == null)
     {
-      deliveries = new EObjectContainmentWithInverseEList<Delivery>(Delivery.class, this,
+      deliveries = new EObjectContainmentWithInverseEList.Resolving<Delivery>(Delivery.class, this,
           ProjectPackage.TASK_STREAM__DELIVERIES, ProjectPackage.DELIVERY__STREAM);
     }
     return deliveries;
@@ -248,7 +211,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Delivery deliver(String id, Date date)
@@ -260,7 +222,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -270,9 +231,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
     switch (featureID)
     {
     case ProjectPackage.TASK_STREAM__PARENT:
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS,
-            IntegrationStream.class, msgs);
+      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
       return basicSetParent((IntegrationStream)otherEnd, msgs);
     case ProjectPackage.TASK_STREAM__TARGETS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTargets()).basicAdd(otherEnd, msgs);
@@ -284,7 +243,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -303,8 +261,24 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID)
+    {
+    case ProjectPackage.TASK_STREAM__PARENT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS,
+          IntegrationStream.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -327,7 +301,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -356,7 +329,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -382,7 +354,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -391,7 +362,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
     switch (featureID)
     {
     case ProjectPackage.TASK_STREAM__PARENT:
-      return parent != null;
+      return basicGetParent() != null;
     case ProjectPackage.TASK_STREAM__BASELINE:
       return BASELINE_EDEFAULT == null ? baseline != null : !BASELINE_EDEFAULT.equals(baseline);
     case ProjectPackage.TASK_STREAM__TARGETS:
@@ -404,7 +375,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

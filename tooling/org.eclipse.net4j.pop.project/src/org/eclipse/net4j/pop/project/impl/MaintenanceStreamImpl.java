@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamImpl.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: MaintenanceStreamImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Maintenance Stream</b></em>'. <!-- end-user-doc
@@ -39,19 +40,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class MaintenanceStreamImpl extends IntegrationStreamImpl implements MaintenanceStream
 {
   /**
-   * The cached value of the '{@link #getParent() <em>Parent</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @see #getParent()
-   * @generated
-   * @ordered
-   */
-  protected DevelopmentStream parent;
-
-  /**
-   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -60,7 +51,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected MaintenanceStreamImpl()
@@ -70,7 +60,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -81,69 +70,47 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public DevelopmentStream getParent()
   {
-    if (parent != null && parent.eIsProxy())
-    {
-      InternalEObject oldParent = (InternalEObject)parent;
-      parent = (DevelopmentStream)eResolveProxy(oldParent);
-      if (parent != oldParent)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.MAINTENANCE_STREAM__PARENT,
-              oldParent, parent));
-      }
-    }
-    return parent;
+    if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT) return null;
+    return (DevelopmentStream)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public DevelopmentStream basicGetParent()
   {
-    return parent;
+    if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT) return null;
+    return (DevelopmentStream)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(DevelopmentStream newParent, NotificationChain msgs)
   {
-    DevelopmentStream oldParent = parent;
-    parent = newParent;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          ProjectPackage.MAINTENANCE_STREAM__PARENT, oldParent, newParent);
-      if (msgs == null)
-        msgs = notification;
-      else
-        msgs.add(notification);
-    }
+    msgs = eBasicSetContainer((InternalEObject)newParent, ProjectPackage.MAINTENANCE_STREAM__PARENT, msgs);
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(DevelopmentStream newParent)
   {
-    if (newParent != parent)
+    if (newParent != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT && newParent != null))
     {
+      if (EcoreUtil.isAncestor(this, newParent))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS,
-            DevelopmentStream.class, msgs);
+      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
       if (newParent != null)
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS,
             DevelopmentStream.class, msgs);
@@ -157,7 +124,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release getBaseline()
@@ -178,7 +144,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release basicGetBaseline()
@@ -188,7 +153,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetBaseline(Release newBaseline, NotificationChain msgs)
@@ -209,7 +173,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBaseline(Release newBaseline)
@@ -233,7 +196,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -242,9 +204,7 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     switch (featureID)
     {
     case ProjectPackage.MAINTENANCE_STREAM__PARENT:
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS,
-            DevelopmentStream.class, msgs);
+      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
       return basicSetParent((DevelopmentStream)otherEnd, msgs);
     case ProjectPackage.MAINTENANCE_STREAM__BASELINE:
       if (baseline != null)
@@ -257,7 +217,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -274,8 +233,24 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID)
+    {
+    case ProjectPackage.MAINTENANCE_STREAM__PARENT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS,
+          DevelopmentStream.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -295,7 +270,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -315,7 +289,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -335,7 +308,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -344,7 +316,7 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     switch (featureID)
     {
     case ProjectPackage.MAINTENANCE_STREAM__PARENT:
-      return parent != null;
+      return basicGetParent() != null;
     case ProjectPackage.MAINTENANCE_STREAM__BASELINE:
       return baseline != null;
     }

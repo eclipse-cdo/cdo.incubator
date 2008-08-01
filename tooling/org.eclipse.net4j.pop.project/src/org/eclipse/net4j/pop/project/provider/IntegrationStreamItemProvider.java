@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamItemProvider.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: IntegrationStreamItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -19,7 +19,6 @@ import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -44,8 +43,8 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public IntegrationStreamItemProvider(AdapterFactory adapterFactory)
@@ -54,8 +53,8 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -65,33 +64,16 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
     {
       super.getPropertyDescriptors(object);
 
-      addTaskStreamsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Task Streams feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  protected void addTaskStreamsPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-            getResourceLocator(),
-            getString("_UI_IntegrationStream_taskStreams_feature"), //$NON-NLS-1$
-            getString(
-                "_UI_PropertyDescriptor_description", "_UI_IntegrationStream_taskStreams_feature", "_UI_IntegrationStream_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.INTEGRATION_STREAM__TASK_STREAMS, true, false, true, null, null, null));
-  }
-
-  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -100,6 +82,7 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(ProjectPackage.Literals.INTEGRATION_STREAM__TASK_STREAMS);
       childrenFeatures.add(ProjectPackage.Literals.INTEGRATION_STREAM__RELEASES);
     }
     return childrenFeatures;
@@ -107,7 +90,6 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -120,8 +102,8 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -133,9 +115,9 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -145,6 +127,7 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
 
     switch (notification.getFeatureID(IntegrationStream.class))
     {
+    case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
     case ProjectPackage.INTEGRATION_STREAM__RELEASES:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
@@ -153,15 +136,18 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
+
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.INTEGRATION_STREAM__TASK_STREAMS,
+        ProjectFactory.eINSTANCE.createTaskStream()));
 
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.INTEGRATION_STREAM__RELEASES,
         ProjectFactory.eINSTANCE.createRelease()));

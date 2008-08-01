@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaggedElementImpl.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: TaggedElementImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,17 +28,17 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl#getTag <em>Tag</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TaggedElementImpl extends EObjectImpl implements TaggedElement
 {
   /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getTag()
    * @generated
    * @ordered
@@ -47,7 +47,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected TaggedElementImpl()
@@ -57,7 +56,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -68,7 +66,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag getTag()
@@ -88,7 +85,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag basicGetTag()
@@ -98,7 +94,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetTag(Tag newTag, NotificationChain msgs)
@@ -119,7 +114,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTag(Tag newTag)
@@ -140,7 +134,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -158,7 +151,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -174,7 +166,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -191,7 +182,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -208,7 +198,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -225,7 +214,6 @@ public abstract class TaggedElementImpl extends EObjectImpl implements TaggedEle
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

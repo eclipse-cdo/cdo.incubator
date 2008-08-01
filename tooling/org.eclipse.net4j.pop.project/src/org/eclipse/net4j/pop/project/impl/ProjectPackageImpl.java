@@ -8,13 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.8 2008-08-01 09:46:27 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.9 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.project.Branch;
-import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
@@ -45,147 +44,120 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass popProjectEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  private EClass codeRepositoryEClass = null;
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass codeRootEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass committerEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taggedElementEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass tagEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass branchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass mainBranchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass subBranchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass streamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taskStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass integrationStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass developmentStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass maintenanceStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass rootStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass targetEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass releaseEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass milestoneEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass deliveryEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass mergeEClass = null;
@@ -210,24 +182,27 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private static boolean isInited = false;
 
   /**
-   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * Simple dependencies are satisfied by calling this method on all dependent packages before doing anything else. This
-   * method drives initialization for interdependent packages directly, in parallel with this package, itself.
-   * <p>
-   * Of this package and its interdependencies, all packages which have not yet been registered by their URI values are
-   * first created and registered. The packages are then initialized in two steps: meta-model objects for all of the
-   * packages are created before any are initialized, since one package's meta-model objects may refer to those of
-   * another.
-   * <p>
-   * Invocation of this method will not affect any packages that have already been initialized. <!-- begin-user-doc -->
+   * Creates, registers, and initializes the <b>Package</b> for this
+   * model, and for any others upon which it depends.  Simple
+   * dependencies are satisfied by calling this method on all
+   * dependent packages before doing anything else.  This method drives
+   * initialization for interdependent packages directly, in parallel
+   * with this package, itself.
+   * <p>Of this package and its interdependencies, all packages which
+   * have not yet been registered by their URI values are first created
+   * and registered.  The packages are then initialized in two steps:
+   * meta-model objects for all of the packages are created before any
+   * are initialized, since one package's meta-model objects may refer to
+   * those of another.
+   * <p>Invocation of this method will not affect any packages that have
+   * already been initialized.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #eNS_URI
    * @see #createPackageContents()
    * @see #initializePackageContents()
@@ -261,7 +236,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getPopProject()
@@ -271,7 +245,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getPopProject_Name()
@@ -280,98 +253,66 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPopProject_CodeRepository()
+  public EAttribute getPopProject_TeamProvider()
   {
-    return (EReference)popProjectEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)popProjectEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPopProject_RepositoryUrl()
+  {
+    return (EAttribute)popProjectEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPopProject_CodeRoots()
+  {
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPopProject_Committers()
+  {
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPopProject_MainBranch()
+  {
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(5);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPopProject_RootStream()
   {
-    return (EReference)popProjectEClass.getEStructuralFeatures().get(2);
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(6);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EClass getCodeRepository()
-  {
-    return codeRepositoryEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EAttribute getCodeRepository_TeamProvider()
-  {
-    return (EAttribute)codeRepositoryEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EAttribute getCodeRepository_RepositoryUrl()
-  {
-    return (EAttribute)codeRepositoryEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EReference getCodeRepository_CodeRoots()
-  {
-    return (EReference)codeRepositoryEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EReference getCodeRepository_Committers()
-  {
-    return (EReference)codeRepositoryEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EReference getCodeRepository_MainBranch()
-  {
-    return (EReference)codeRepositoryEClass.getEStructuralFeatures().get(4);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EReference getCodeRepository_PopProject()
-  {
-    return (EReference)codeRepositoryEClass.getEStructuralFeatures().get(5);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCodeRoot()
@@ -380,28 +321,27 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getCodeRoot_Path()
+  public EReference getCodeRoot_PopProject()
   {
-    return (EAttribute)codeRootEClass.getEStructuralFeatures().get(0);
+    return (EReference)codeRootEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCodeRoot_RootPath()
+  {
+    return (EAttribute)codeRootEClass.getEStructuralFeatures().get(1);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public EReference getCodeRoot_Repository()
-  {
-    return (EReference)codeRootEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCommitter()
@@ -410,18 +350,17 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCommitter_Repository()
+  public EReference getCommitter_PopProject()
   {
     return (EReference)committerEClass.getEStructuralFeatures().get(0);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Id()
@@ -431,7 +370,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Name()
@@ -441,7 +379,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Email()
@@ -451,7 +388,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Entry()
@@ -461,7 +397,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Exit()
@@ -471,7 +406,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCommitter_Active()
@@ -481,7 +415,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTaggedElement()
@@ -491,7 +424,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaggedElement_Tag()
@@ -501,7 +433,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTag()
@@ -511,7 +442,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTag_Branch()
@@ -521,7 +451,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTag_Name()
@@ -531,7 +460,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTag_TaggedElement()
@@ -541,7 +469,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getBranch()
@@ -551,7 +478,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getBranch_Name()
@@ -561,7 +487,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Branches()
@@ -571,7 +496,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Tags()
@@ -581,7 +505,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Stream()
@@ -591,7 +514,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMainBranch()
@@ -600,18 +522,17 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getMainBranch_Repository()
+  public EReference getMainBranch_PopProject()
   {
     return (EReference)mainBranchEClass.getEStructuralFeatures().get(0);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getSubBranch()
@@ -621,7 +542,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getSubBranch_Parent()
@@ -631,7 +551,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getStream()
@@ -641,7 +560,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getStream_TaskId()
@@ -651,7 +569,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getStream_Name()
@@ -661,7 +578,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getStream_Branch()
@@ -671,7 +587,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getStream_Merges()
@@ -681,7 +596,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTaskStream()
@@ -691,7 +605,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskStream_Parent()
@@ -701,7 +614,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTaskStream_Baseline()
@@ -711,7 +623,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskStream_Targets()
@@ -721,7 +632,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskStream_Deliveries()
@@ -731,7 +641,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getIntegrationStream()
@@ -741,7 +650,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegrationStream_TaskStreams()
@@ -751,7 +659,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegrationStream_Releases()
@@ -761,7 +668,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDevelopmentStream()
@@ -771,7 +677,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDevelopmentStream_MaintenanceStreams()
@@ -781,7 +686,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMaintenanceStream()
@@ -791,7 +695,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMaintenanceStream_Parent()
@@ -801,7 +704,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMaintenanceStream_Baseline()
@@ -811,7 +713,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getRootStream()
@@ -821,7 +722,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRootStream_PopProject()
@@ -831,7 +731,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTarget()
@@ -841,7 +740,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTarget_Id()
@@ -851,7 +749,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTarget_Date()
@@ -861,7 +758,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTarget_Streams()
@@ -871,7 +767,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getRelease()
@@ -881,7 +776,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Maintenance()
@@ -891,7 +785,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getRelease_Version()
@@ -901,7 +794,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Stream()
@@ -911,7 +803,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Milestones()
@@ -921,7 +812,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMilestone()
@@ -931,7 +821,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMilestone_Release()
@@ -941,7 +830,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMilestone_Name()
@@ -951,7 +839,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDelivery()
@@ -961,7 +848,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDelivery_Stream()
@@ -971,7 +857,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDelivery_Id()
@@ -981,7 +866,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDelivery_Date()
@@ -991,7 +875,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDelivery_Merges()
@@ -1001,7 +884,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMerge()
@@ -1011,7 +893,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMerge_Stream()
@@ -1021,7 +902,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMerge_Id()
@@ -1031,7 +911,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMerge_Date()
@@ -1041,7 +920,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMerge_Delivery()
@@ -1051,7 +929,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ProjectFactory getProjectFactory()
@@ -1061,15 +938,14 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private boolean isCreated = false;
 
   /**
-   * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
-   * first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void createPackageContents()
@@ -1080,23 +956,19 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     // Create classes and their features
     popProjectEClass = createEClass(POP_PROJECT);
     createEAttribute(popProjectEClass, POP_PROJECT__NAME);
-    createEReference(popProjectEClass, POP_PROJECT__CODE_REPOSITORY);
+    createEAttribute(popProjectEClass, POP_PROJECT__TEAM_PROVIDER);
+    createEAttribute(popProjectEClass, POP_PROJECT__REPOSITORY_URL);
+    createEReference(popProjectEClass, POP_PROJECT__CODE_ROOTS);
+    createEReference(popProjectEClass, POP_PROJECT__COMMITTERS);
+    createEReference(popProjectEClass, POP_PROJECT__MAIN_BRANCH);
     createEReference(popProjectEClass, POP_PROJECT__ROOT_STREAM);
 
-    codeRepositoryEClass = createEClass(CODE_REPOSITORY);
-    createEAttribute(codeRepositoryEClass, CODE_REPOSITORY__TEAM_PROVIDER);
-    createEAttribute(codeRepositoryEClass, CODE_REPOSITORY__REPOSITORY_URL);
-    createEReference(codeRepositoryEClass, CODE_REPOSITORY__CODE_ROOTS);
-    createEReference(codeRepositoryEClass, CODE_REPOSITORY__COMMITTERS);
-    createEReference(codeRepositoryEClass, CODE_REPOSITORY__MAIN_BRANCH);
-    createEReference(codeRepositoryEClass, CODE_REPOSITORY__POP_PROJECT);
-
     codeRootEClass = createEClass(CODE_ROOT);
-    createEAttribute(codeRootEClass, CODE_ROOT__PATH);
-    createEReference(codeRootEClass, CODE_ROOT__REPOSITORY);
+    createEReference(codeRootEClass, CODE_ROOT__POP_PROJECT);
+    createEAttribute(codeRootEClass, CODE_ROOT__ROOT_PATH);
 
     committerEClass = createEClass(COMMITTER);
-    createEReference(committerEClass, COMMITTER__REPOSITORY);
+    createEReference(committerEClass, COMMITTER__POP_PROJECT);
     createEAttribute(committerEClass, COMMITTER__ID);
     createEAttribute(committerEClass, COMMITTER__NAME);
     createEAttribute(committerEClass, COMMITTER__EMAIL);
@@ -1119,7 +991,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(branchEClass, BRANCH__STREAM);
 
     mainBranchEClass = createEClass(MAIN_BRANCH);
-    createEReference(mainBranchEClass, MAIN_BRANCH__REPOSITORY);
+    createEReference(mainBranchEClass, MAIN_BRANCH__POP_PROJECT);
 
     subBranchEClass = createEClass(SUB_BRANCH);
     createEReference(subBranchEClass, SUB_BRANCH__PARENT);
@@ -1180,15 +1052,14 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private boolean isInitialized = false;
 
   /**
-   * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
-   * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void initializePackageContents()
@@ -1231,71 +1102,58 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getPopProject_Name(),
         ecorePackage.getEString(),
         "name", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getPopProject_TeamProvider(),
+        ecorePackage.getEString(),
+        "teamProvider", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getPopProject_RepositoryUrl(),
+        ecorePackage.getEString(),
+        "repositoryUrl", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getPopProject_CodeRepository(),
-        this.getCodeRepository(),
-        this.getCodeRepository_PopProject(),
-        "codeRepository", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getPopProject_CodeRoots(),
+        this.getCodeRoot(),
+        this.getCodeRoot_PopProject(),
+        "codeRoots", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getPopProject_Committers(),
+        this.getCommitter(),
+        this.getCommitter_PopProject(),
+        "committers", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getPopProject_MainBranch(),
+        this.getMainBranch(),
+        this.getMainBranch_PopProject(),
+        "mainBranch", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getPopProject_RootStream(),
         this.getRootStream(),
         this.getRootStream_PopProject(),
-        "rootStream", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "rootStream", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(codeRepositoryEClass, CodeRepository.class,
-        "CodeRepository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEAttribute(
-        getCodeRepository_TeamProvider(),
-        ecorePackage.getEString(),
-        "teamProvider", null, 1, 1, CodeRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getCodeRepository_RepositoryUrl(),
-        ecorePackage.getEString(),
-        "repositoryUrl", null, 1, 1, CodeRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getCodeRepository_CodeRoots(),
-        this.getCodeRoot(),
-        this.getCodeRoot_Repository(),
-        "codeRoots", null, 1, -1, CodeRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getCodeRepository_Committers(),
-        this.getCommitter(),
-        this.getCommitter_Repository(),
-        "committers", null, 1, -1, CodeRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getCodeRepository_MainBranch(),
-        this.getMainBranch(),
-        this.getMainBranch_Repository(),
-        "mainBranch", null, 1, 1, CodeRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getCodeRepository_PopProject(),
-        this.getPopProject(),
-        this.getPopProject_CodeRepository(),
-        "popProject", null, 0, 1, CodeRepository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    EOperation op = addEOperation(codeRepositoryEClass, this.getRelease(), "addCommitter", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    EOperation op = addEOperation(popProjectEClass, this.getRelease(), "addCommitter", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEString(), "id", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEString(), "email", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "entry", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(codeRootEClass, CodeRoot.class, "CodeRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEAttribute(
-        getCodeRoot_Path(),
-        ecorePackage.getEString(),
-        "path", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getCodeRoot_Repository(),
-        this.getCodeRepository(),
-        this.getCodeRepository_CodeRoots(),
-        "repository", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getCodeRoot_PopProject(),
+        this.getPopProject(),
+        this.getPopProject_CodeRoots(),
+        "popProject", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getCodeRoot_RootPath(),
+        ecorePackage.getEString(),
+        "rootPath", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(committerEClass, Committer.class, "Committer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getCommitter_Repository(),
-        this.getCodeRepository(),
-        this.getCodeRepository_Committers(),
-        "repository", null, 1, 1, Committer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getCommitter_PopProject(),
+        this.getPopProject(),
+        this.getPopProject_Committers(),
+        "popProject", null, 1, 1, Committer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCommitter_Id(),
         ecorePackage.getEString(),
@@ -1337,7 +1195,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getTag_Branch(),
         this.getBranch(),
         this.getBranch_Tags(),
-        "branch", null, 1, 1, Tag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "branch", null, 1, 1, Tag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getTag_Name(),
         ecorePackage.getEString(),
@@ -1357,12 +1215,12 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getBranch_Branches(),
         this.getSubBranch(),
         this.getSubBranch_Parent(),
-        "branches", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "branches", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getBranch_Tags(),
         this.getTag(),
         this.getTag_Branch(),
-        "tags", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "tags", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getBranch_Stream(),
         this.getStream(),
@@ -1372,17 +1230,17 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEClass(mainBranchEClass, MainBranch.class,
         "MainBranch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getMainBranch_Repository(),
-        this.getCodeRepository(),
-        this.getCodeRepository_MainBranch(),
-        "repository", null, 1, 1, MainBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getMainBranch_PopProject(),
+        this.getPopProject(),
+        this.getPopProject_MainBranch(),
+        "popProject", null, 1, 1, MainBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(subBranchEClass, SubBranch.class, "SubBranch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getSubBranch_Parent(),
         this.getBranch(),
         this.getBranch_Branches(),
-        "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(streamEClass, Stream.class, "Stream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
@@ -1402,7 +1260,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getStream_Merges(),
         this.getMerge(),
         this.getMerge_Stream(),
-        "merges", null, 0, -1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "merges", null, 0, -1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(streamEClass, this.getPopProject(), "pop", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
@@ -1434,7 +1292,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getTaskStream_Deliveries(),
         this.getDelivery(),
         this.getDelivery_Stream(),
-        "deliveries", null, 0, -1, TaskStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "deliveries", null, 0, -1, TaskStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     op = addEOperation(taskStreamEClass, this.getDelivery(), "deliver", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEString(), "id", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -1446,12 +1304,12 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getIntegrationStream_TaskStreams(),
         this.getTaskStream(),
         this.getTaskStream_Parent(),
-        "taskStreams", null, 0, -1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "taskStreams", null, 0, -1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getIntegrationStream_Releases(),
         this.getRelease(),
         this.getRelease_Stream(),
-        "releases", null, 0, -1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "releases", null, 0, -1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     op = addEOperation(integrationStreamEClass, this.getTaskStream(), "startTask", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEString(), "taskId", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -1466,7 +1324,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getDevelopmentStream_MaintenanceStreams(),
         this.getMaintenanceStream(),
         this.getMaintenanceStream_Parent(),
-        "maintenanceStreams", null, 0, -1, DevelopmentStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "maintenanceStreams", null, 0, -1, DevelopmentStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     op = addEOperation(developmentStreamEClass, this.getRelease(), "addRelease", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -1523,12 +1381,12 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getRelease_Stream(),
         this.getIntegrationStream(),
         this.getIntegrationStream_Releases(),
-        "stream", null, 1, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "stream", null, 1, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getRelease_Milestones(),
         this.getMilestone(),
         this.getMilestone_Release(),
-        "milestones", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "milestones", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(releaseEClass, this.getMaintenanceStream(), "startMaintenance", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
@@ -1537,7 +1395,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getMilestone_Release(),
         this.getRelease(),
         this.getRelease_Milestones(),
-        "release", null, 1, 1, Milestone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "release", null, 1, 1, Milestone.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getMilestone_Name(),
         ecorePackage.getEString(),
@@ -1548,7 +1406,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getDelivery_Stream(),
         this.getTaskStream(),
         this.getTaskStream_Deliveries(),
-        "stream", null, 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "stream", null, 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getDelivery_Id(),
         ecorePackage.getEString(),
@@ -1568,7 +1426,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getMerge_Stream(),
         this.getStream(),
         this.getStream_Merges(),
-        "stream", null, 1, 1, Merge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "stream", null, 1, 1, Merge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getMerge_Id(),
         ecorePackage.getEString(),

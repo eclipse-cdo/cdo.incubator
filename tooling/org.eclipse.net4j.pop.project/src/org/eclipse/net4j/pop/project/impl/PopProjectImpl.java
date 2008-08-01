@@ -8,33 +8,46 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.7 2008-08-01 09:46:28 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.8 2008-08-01 11:01:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
-import org.eclipse.net4j.pop.project.CodeRepository;
+import org.eclipse.net4j.pop.project.CodeRoot;
+import org.eclipse.net4j.pop.project.Committer;
+import org.eclipse.net4j.pop.project.MainBranch;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.Release;
 import org.eclipse.net4j.pop.project.RootStream;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop Project</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRepository <em>Code Repository</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getTeamProvider <em>Team Provider</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRepositoryUrl <em>Repository Url</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRoots <em>Code Roots</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCommitters <em>Committers</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getMainBranch <em>Main Branch</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PopProjectImpl extends PopElementImpl implements PopProject
@@ -50,8 +63,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -59,19 +72,79 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getCodeRepository() <em>Code Repository</em>}' reference. <!-- begin-user-doc -->
+   * The default value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
-   * @see #getCodeRepository()
+   * @see #getTeamProvider()
    * @generated
    * @ordered
    */
-  protected CodeRepository codeRepository;
+  protected static final String TEAM_PROVIDER_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTeamProvider() <em>Team Provider</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTeamProvider()
+   * @generated
+   * @ordered
+   */
+  protected String teamProvider = TEAM_PROVIDER_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRepositoryUrl()
+   * @generated
+   * @ordered
+   */
+  protected static final String REPOSITORY_URL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getRepositoryUrl() <em>Repository Url</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRepositoryUrl()
+   * @generated
+   * @ordered
+   */
+  protected String repositoryUrl = REPOSITORY_URL_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getCodeRoots() <em>Code Roots</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCodeRoots()
+   * @generated
+   * @ordered
+   */
+  protected EList<CodeRoot> codeRoots;
+
+  /**
+   * The cached value of the '{@link #getCommitters() <em>Committers</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCommitters()
+   * @generated
+   * @ordered
+   */
+  protected EList<Committer> committers;
+
+  /**
+   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getMainBranch()
+   * @generated
+   * @ordered
+   */
+  protected MainBranch mainBranch;
+
+  /**
+   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' containment reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getRootStream()
    * @generated
    * @ordered
@@ -80,7 +153,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopProjectImpl()
@@ -90,7 +162,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -101,7 +172,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -111,7 +181,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -123,49 +192,135 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRepository getCodeRepository()
+  public String getTeamProvider()
   {
-    if (codeRepository != null && codeRepository.eIsProxy())
+    return teamProvider;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setTeamProvider(String newTeamProvider)
+  {
+    String oldTeamProvider = teamProvider;
+    teamProvider = newTeamProvider;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__TEAM_PROVIDER, oldTeamProvider,
+          teamProvider));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getRepositoryUrl()
+  {
+    return repositoryUrl;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRepositoryUrl(String newRepositoryUrl)
+  {
+    String oldRepositoryUrl = repositoryUrl;
+    repositoryUrl = newRepositoryUrl;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__REPOSITORY_URL,
+          oldRepositoryUrl, repositoryUrl));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<CodeRoot> getCodeRoots()
+  {
+    if (codeRoots == null)
     {
-      InternalEObject oldCodeRepository = (InternalEObject)codeRepository;
-      codeRepository = (CodeRepository)eResolveProxy(oldCodeRepository);
-      if (codeRepository != oldCodeRepository)
+      codeRoots = new EObjectContainmentWithInverseEList.Resolving<CodeRoot>(CodeRoot.class, this,
+          ProjectPackage.POP_PROJECT__CODE_ROOTS, ProjectPackage.CODE_ROOT__POP_PROJECT);
+    }
+    return codeRoots;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Committer> getCommitters()
+  {
+    if (committers == null)
+    {
+      committers = new EObjectContainmentWithInverseEList.Resolving<Committer>(Committer.class, this,
+          ProjectPackage.POP_PROJECT__COMMITTERS, ProjectPackage.COMMITTER__POP_PROJECT);
+    }
+    return committers;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MainBranch getMainBranch()
+  {
+    if (mainBranch != null && mainBranch.eIsProxy())
+    {
+      InternalEObject oldMainBranch = (InternalEObject)mainBranch;
+      mainBranch = (MainBranch)eResolveProxy(oldMainBranch);
+      if (mainBranch != oldMainBranch)
       {
+        InternalEObject newMainBranch = (InternalEObject)mainBranch;
+        NotificationChain msgs = oldMainBranch.eInverseRemove(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT,
+            MainBranch.class, null);
+        if (newMainBranch.eInternalContainer() == null)
+        {
+          msgs = newMainBranch.eInverseAdd(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT, MainBranch.class, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__CODE_REPOSITORY,
-              oldCodeRepository, codeRepository));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__MAIN_BRANCH,
+              oldMainBranch, mainBranch));
       }
     }
-    return codeRepository;
+    return mainBranch;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRepository basicGetCodeRepository()
+  public MainBranch basicGetMainBranch()
   {
-    return codeRepository;
+    return mainBranch;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCodeRepository(CodeRepository newCodeRepository, NotificationChain msgs)
+  public NotificationChain basicSetMainBranch(MainBranch newMainBranch, NotificationChain msgs)
   {
-    CodeRepository oldCodeRepository = codeRepository;
-    codeRepository = newCodeRepository;
+    MainBranch oldMainBranch = mainBranch;
+    mainBranch = newMainBranch;
     if (eNotificationRequired())
     {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
-          ProjectPackage.POP_PROJECT__CODE_REPOSITORY, oldCodeRepository, newCodeRepository);
+          ProjectPackage.POP_PROJECT__MAIN_BRANCH, oldMainBranch, newMainBranch);
       if (msgs == null)
         msgs = notification;
       else
@@ -175,32 +330,31 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setCodeRepository(CodeRepository newCodeRepository)
+  public void setMainBranch(MainBranch newMainBranch)
   {
-    if (newCodeRepository != codeRepository)
+    if (newMainBranch != mainBranch)
     {
       NotificationChain msgs = null;
-      if (codeRepository != null)
-        msgs = ((InternalEObject)codeRepository).eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__POP_PROJECT,
-            CodeRepository.class, msgs);
-      if (newCodeRepository != null)
-        msgs = ((InternalEObject)newCodeRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__POP_PROJECT,
-            CodeRepository.class, msgs);
-      msgs = basicSetCodeRepository(newCodeRepository, msgs);
+      if (mainBranch != null)
+        msgs = ((InternalEObject)mainBranch).eInverseRemove(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT,
+            MainBranch.class, msgs);
+      if (newMainBranch != null)
+        msgs = ((InternalEObject)newMainBranch).eInverseAdd(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT,
+            MainBranch.class, msgs);
+      msgs = basicSetMainBranch(newMainBranch, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__CODE_REPOSITORY,
-          newCodeRepository, newCodeRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__MAIN_BRANCH, newMainBranch,
+          newMainBranch));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public RootStream getRootStream()
@@ -211,6 +365,14 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       rootStream = (RootStream)eResolveProxy(oldRootStream);
       if (rootStream != oldRootStream)
       {
+        InternalEObject newRootStream = (InternalEObject)rootStream;
+        NotificationChain msgs = oldRootStream.eInverseRemove(this, ProjectPackage.ROOT_STREAM__POP_PROJECT,
+            RootStream.class, null);
+        if (newRootStream.eInternalContainer() == null)
+        {
+          msgs = newRootStream.eInverseAdd(this, ProjectPackage.ROOT_STREAM__POP_PROJECT, RootStream.class, msgs);
+        }
+        if (msgs != null) msgs.dispatch();
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__ROOT_STREAM,
               oldRootStream, rootStream));
@@ -221,7 +383,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public RootStream basicGetRootStream()
@@ -231,7 +392,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRootStream(RootStream newRootStream, NotificationChain msgs)
@@ -252,7 +412,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRootStream(RootStream newRootStream)
@@ -275,24 +434,40 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
+  public Release addCommitter(String id, String name, String email, Date entry)
+  {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
     switch (featureID)
     {
-    case ProjectPackage.POP_PROJECT__CODE_REPOSITORY:
-      if (codeRepository != null)
-        msgs = ((InternalEObject)codeRepository).eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__POP_PROJECT,
-            CodeRepository.class, msgs);
-      return basicSetCodeRepository((CodeRepository)otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getCodeRoots()).basicAdd(otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__COMMITTERS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getCommitters()).basicAdd(otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+      if (mainBranch != null)
+        msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+            - ProjectPackage.POP_PROJECT__MAIN_BRANCH, null, msgs);
+      return basicSetMainBranch((MainBranch)otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       if (rootStream != null)
-        msgs = ((InternalEObject)rootStream).eInverseRemove(this, ProjectPackage.ROOT_STREAM__POP_PROJECT,
-            RootStream.class, msgs);
+        msgs = ((InternalEObject)rootStream).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+            - ProjectPackage.POP_PROJECT__ROOT_STREAM, null, msgs);
       return basicSetRootStream((RootStream)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -300,7 +475,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -308,8 +482,12 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   {
     switch (featureID)
     {
-    case ProjectPackage.POP_PROJECT__CODE_REPOSITORY:
-      return basicSetCodeRepository(null, msgs);
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return ((InternalEList<?>)getCodeRoots()).basicRemove(otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__COMMITTERS:
+      return ((InternalEList<?>)getCommitters()).basicRemove(otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+      return basicSetMainBranch(null, msgs);
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       return basicSetRootStream(null, msgs);
     }
@@ -318,7 +496,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -328,9 +505,17 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     {
     case ProjectPackage.POP_PROJECT__NAME:
       return getName();
-    case ProjectPackage.POP_PROJECT__CODE_REPOSITORY:
-      if (resolve) return getCodeRepository();
-      return basicGetCodeRepository();
+    case ProjectPackage.POP_PROJECT__TEAM_PROVIDER:
+      return getTeamProvider();
+    case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
+      return getRepositoryUrl();
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return getCodeRoots();
+    case ProjectPackage.POP_PROJECT__COMMITTERS:
+      return getCommitters();
+    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+      if (resolve) return getMainBranch();
+      return basicGetMainBranch();
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       if (resolve) return getRootStream();
       return basicGetRootStream();
@@ -340,9 +525,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -351,8 +536,22 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     case ProjectPackage.POP_PROJECT__NAME:
       setName((String)newValue);
       return;
-    case ProjectPackage.POP_PROJECT__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)newValue);
+    case ProjectPackage.POP_PROJECT__TEAM_PROVIDER:
+      setTeamProvider((String)newValue);
+      return;
+    case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
+      setRepositoryUrl((String)newValue);
+      return;
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      getCodeRoots().clear();
+      getCodeRoots().addAll((Collection<? extends CodeRoot>)newValue);
+      return;
+    case ProjectPackage.POP_PROJECT__COMMITTERS:
+      getCommitters().clear();
+      getCommitters().addAll((Collection<? extends Committer>)newValue);
+      return;
+    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+      setMainBranch((MainBranch)newValue);
       return;
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       setRootStream((RootStream)newValue);
@@ -363,7 +562,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -374,8 +572,20 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     case ProjectPackage.POP_PROJECT__NAME:
       setName(NAME_EDEFAULT);
       return;
-    case ProjectPackage.POP_PROJECT__CODE_REPOSITORY:
-      setCodeRepository((CodeRepository)null);
+    case ProjectPackage.POP_PROJECT__TEAM_PROVIDER:
+      setTeamProvider(TEAM_PROVIDER_EDEFAULT);
+      return;
+    case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
+      setRepositoryUrl(REPOSITORY_URL_EDEFAULT);
+      return;
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      getCodeRoots().clear();
+      return;
+    case ProjectPackage.POP_PROJECT__COMMITTERS:
+      getCommitters().clear();
+      return;
+    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+      setMainBranch((MainBranch)null);
       return;
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       setRootStream((RootStream)null);
@@ -386,7 +596,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -396,8 +605,16 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     {
     case ProjectPackage.POP_PROJECT__NAME:
       return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-    case ProjectPackage.POP_PROJECT__CODE_REPOSITORY:
-      return codeRepository != null;
+    case ProjectPackage.POP_PROJECT__TEAM_PROVIDER:
+      return TEAM_PROVIDER_EDEFAULT == null ? teamProvider != null : !TEAM_PROVIDER_EDEFAULT.equals(teamProvider);
+    case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
+      return REPOSITORY_URL_EDEFAULT == null ? repositoryUrl != null : !REPOSITORY_URL_EDEFAULT.equals(repositoryUrl);
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return codeRoots != null && !codeRoots.isEmpty();
+    case ProjectPackage.POP_PROJECT__COMMITTERS:
+      return committers != null && !committers.isEmpty();
+    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+      return mainBranch != null;
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       return rootStream != null;
     }
@@ -406,7 +623,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -417,6 +633,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$
     result.append(name);
+    result.append(", teamProvider: "); //$NON-NLS-1$
+    result.append(teamProvider);
+    result.append(", repositoryUrl: "); //$NON-NLS-1$
+    result.append(repositoryUrl);
     result.append(')');
     return result.toString();
   }

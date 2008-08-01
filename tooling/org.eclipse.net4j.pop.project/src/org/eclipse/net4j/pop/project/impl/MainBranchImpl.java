@@ -8,12 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchImpl.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: MainBranchImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
-import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.MainBranch;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -28,17 +28,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl#getPopProject <em>Pop Project</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MainBranchImpl extends BranchImpl implements MainBranch
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected MainBranchImpl()
@@ -48,7 +47,6 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -58,55 +56,65 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRepository getRepository()
+  public PopProject getPopProject()
   {
-    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__REPOSITORY) return null;
-    return (CodeRepository)eContainer();
+    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT) return null;
+    return (PopProject)eContainer();
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
+  public PopProject basicGetPopProject()
   {
-    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.MAIN_BRANCH__REPOSITORY, msgs);
+    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT) return null;
+    return (PopProject)eInternalContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newPopProject, ProjectPackage.MAIN_BRANCH__POP_PROJECT, msgs);
     return msgs;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setRepository(CodeRepository newRepository)
+  public void setPopProject(PopProject newPopProject)
   {
-    if (newRepository != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__REPOSITORY && newRepository != null))
+    if (newPopProject != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT && newPopProject != null))
     {
-      if (EcoreUtil.isAncestor(this, newRepository))
+      if (EcoreUtil.isAncestor(this, newPopProject))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      if (newRepository != null)
-        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__MAIN_BRANCH,
-            CodeRepository.class, msgs);
-      msgs = basicSetRepository(newRepository, msgs);
+      if (newPopProject != null)
+        msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__MAIN_BRANCH,
+            PopProject.class, msgs);
+      msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAIN_BRANCH__REPOSITORY, newRepository,
-          newRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAIN_BRANCH__POP_PROJECT, newPopProject,
+          newPopProject));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -114,16 +122,15 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetRepository((CodeRepository)otherEnd, msgs);
+      return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -131,15 +138,14 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
-      return basicSetRepository(null, msgs);
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
+      return basicSetPopProject(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -147,16 +153,14 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
-      return eInternalContainer().eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__MAIN_BRANCH,
-          CodeRepository.class, msgs);
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.POP_PROJECT__MAIN_BRANCH, PopProject.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -164,15 +168,15 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
-      return getRepository();
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
+      if (resolve) return getPopProject();
+      return basicGetPopProject();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -180,8 +184,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
-      setRepository((CodeRepository)newValue);
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
+      setPopProject((PopProject)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -189,7 +193,6 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -197,8 +200,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
-      setRepository((CodeRepository)null);
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
+      setPopProject((PopProject)null);
       return;
     }
     super.eUnset(featureID);
@@ -206,7 +209,6 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -214,8 +216,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   {
     switch (featureID)
     {
-    case ProjectPackage.MAIN_BRANCH__REPOSITORY:
-      return getRepository() != null;
+    case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
+      return basicGetPopProject() != null;
     }
     return super.eIsSet(featureID);
   }

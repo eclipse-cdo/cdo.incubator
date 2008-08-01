@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryImpl.java,v 1.6 2008-08-01 09:46:28 estepper Exp $
+ * $Id: DeliveryImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -35,20 +35,20 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getStream <em>Stream</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getDate <em>Date</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getMerges <em>Merges</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getDate <em>Date</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.DeliveryImpl#getMerges <em>Merges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DeliveryImpl extends TaggedElementImpl implements Delivery
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -56,8 +56,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
   protected static final String ID_EDEFAULT = "1"; //$NON-NLS-1$
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -75,8 +75,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
   protected static final Date DATE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDate()
    * @generated
    * @ordered
@@ -84,9 +84,9 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
   protected Date date = DATE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMerges() <em>Merges</em>}' reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getMerges() <em>Merges</em>}' reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getMerges()
    * @generated
    * @ordered
@@ -95,7 +95,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DeliveryImpl()
@@ -105,7 +104,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -116,7 +114,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TaskStream getStream()
@@ -126,8 +123,18 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public TaskStream basicGetStream()
+  {
+    if (eContainerFeatureID != ProjectPackage.DELIVERY__STREAM) return null;
+    return (TaskStream)eInternalContainer();
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetStream(TaskStream newStream, NotificationChain msgs)
@@ -138,7 +145,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setStream(TaskStream newStream)
@@ -162,7 +168,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getId()
@@ -172,7 +177,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setId(String newId)
@@ -185,7 +189,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getDate()
@@ -195,7 +198,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDate(Date newDate)
@@ -208,7 +210,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Merge> getMerges()
@@ -223,7 +224,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -243,7 +243,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -261,7 +260,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -277,7 +275,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -286,7 +283,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
     switch (featureID)
     {
     case ProjectPackage.DELIVERY__STREAM:
-      return getStream();
+      if (resolve) return getStream();
+      return basicGetStream();
     case ProjectPackage.DELIVERY__ID:
       return getId();
     case ProjectPackage.DELIVERY__DATE:
@@ -299,7 +297,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -327,7 +324,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -353,7 +349,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -362,7 +357,7 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
     switch (featureID)
     {
     case ProjectPackage.DELIVERY__STREAM:
-      return getStream() != null;
+      return basicGetStream() != null;
     case ProjectPackage.DELIVERY__ID:
       return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
     case ProjectPackage.DELIVERY__DATE:
@@ -375,7 +370,6 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.7 2008-08-01 09:46:27 estepper Exp $
+ * $Id: BranchImpl.java,v 1.8 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,25 +31,27 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import java.util.Collection;
 
 /**
- * <!-- begin-user-doc --> An implementation of the model object '<em><b>Branch</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Branch</b></em>'.
+ * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getBranches <em>Branches</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getTags <em>Tags</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getBranches <em>Branches</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getStream <em>Stream</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class BranchImpl extends EObjectImpl implements Branch
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -57,8 +59,9 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -66,9 +69,9 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @see #getBranches()
    * @generated
    * @ordered
@@ -76,9 +79,9 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   protected EList<SubBranch> branches;
 
   /**
-   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
+   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @see #getTags()
    * @generated
    * @ordered
@@ -86,9 +89,9 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   protected EList<Tag> tags;
 
   /**
-   * The cached value of the '{@link #getStream() <em>Stream</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
+   * The cached value of the '{@link #getStream() <em>Stream</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @see #getStream()
    * @generated
    * @ordered
@@ -96,8 +99,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   protected Stream stream;
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   protected BranchImpl()
@@ -106,8 +109,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -117,8 +120,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public String getName()
@@ -127,8 +130,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public void setName(String newName)
@@ -140,38 +143,38 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public EList<SubBranch> getBranches()
   {
     if (branches == null)
     {
-      branches = new EObjectContainmentWithInverseEList<SubBranch>(SubBranch.class, this,
+      branches = new EObjectContainmentWithInverseEList.Resolving<SubBranch>(SubBranch.class, this,
           ProjectPackage.BRANCH__BRANCHES, ProjectPackage.SUB_BRANCH__PARENT);
     }
     return branches;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public EList<Tag> getTags()
   {
     if (tags == null)
     {
-      tags = new EObjectContainmentWithInverseEList<Tag>(Tag.class, this, ProjectPackage.BRANCH__TAGS,
+      tags = new EObjectContainmentWithInverseEList.Resolving<Tag>(Tag.class, this, ProjectPackage.BRANCH__TAGS,
           ProjectPackage.TAG__BRANCH);
     }
     return tags;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public Stream getStream()
@@ -190,8 +193,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public Stream basicGetStream()
@@ -200,8 +203,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public NotificationChain basicSetStream(Stream newStream, NotificationChain msgs)
@@ -221,8 +224,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   public void setStream(Stream newStream)
@@ -242,8 +245,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -265,8 +268,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -285,8 +288,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -308,8 +311,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -337,8 +340,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -363,8 +366,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -385,8 +388,8 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -401,4 +404,4 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
     return result.toString();
   }
 
-} // BranchImpl
+} //BranchImpl

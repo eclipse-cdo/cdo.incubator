@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeItemProvider.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: MergeItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -33,9 +33,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Merge} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Merge} object.
+ * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class MergeItemProvider extends TaggedElementItemProvider implements IEditingDomainItemProvider,
@@ -43,8 +43,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public MergeItemProvider(AdapterFactory adapterFactory)
@@ -53,8 +53,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -64,6 +64,7 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
     {
       super.getPropertyDescriptors(object);
 
+      addStreamPropertyDescriptor(object);
       addIdPropertyDescriptor(object);
       addDatePropertyDescriptor(object);
       addDeliveryPropertyDescriptor(object);
@@ -72,8 +73,22 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds a property descriptor for the Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Stream feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addStreamPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Merge_stream_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Merge_stream_feature", "_UI_Merge_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.MERGE__STREAM, false, false, false, null, null, null));
+  }
+
+  /**
+   * This adds a property descriptor for the Id feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addIdPropertyDescriptor(Object object)
@@ -88,8 +103,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds a property descriptor for the Date feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Date feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addDatePropertyDescriptor(Object object)
@@ -104,8 +119,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds a property descriptor for the Delivery feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Delivery feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addDeliveryPropertyDescriptor(Object object)
@@ -117,8 +132,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This returns Merge.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Merge.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -128,8 +143,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -141,9 +156,9 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -153,8 +168,10 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
 
     switch (notification.getFeatureID(Merge.class))
     {
+    case ProjectPackage.MERGE__STREAM:
     case ProjectPackage.MERGE__ID:
     case ProjectPackage.MERGE__DATE:
+    case ProjectPackage.MERGE__DELIVERY:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }
@@ -162,9 +179,9 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

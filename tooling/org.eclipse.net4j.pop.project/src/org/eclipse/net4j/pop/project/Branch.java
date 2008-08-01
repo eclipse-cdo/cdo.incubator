@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Branch.java,v 1.7 2008-08-01 09:46:27 estepper Exp $
+ * $Id: Branch.java,v 1.8 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -16,17 +16,20 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc --> A representation of the model object '<em><b>Branch</b></em>'. <!-- end-user-doc -->
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Branch</b></em>'.
+ * <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.Branch#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Branch#getTags <em>Tags</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Branch#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Branch#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getBranch()
  * @model abstract="true"
  * @generated
@@ -34,12 +37,13 @@ import org.eclipse.emf.ecore.EObject;
 public interface Branch extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
+   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getBranch_Name()
@@ -49,60 +53,60 @@ public interface Branch extends EObject
   String getName();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Branch#getName <em>Name</em>}' attribute. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Branch#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Branches</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.project.SubBranch}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Branches</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.SubBranch}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Branches</em>' reference list isn't clear, there really should be more of a description
-   * here...
+   * If the meaning of the '<em>Branches</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Branches</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getBranch_Branches()
    * @see org.eclipse.net4j.pop.project.SubBranch#getParent
-   * @model opposite="parent" containment="true"
+   * @model opposite="parent" containment="true" resolveProxies="true"
    * @generated
    */
   EList<SubBranch> getBranches();
 
   /**
-   * Returns the value of the '<em><b>Tags</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.project.Tag}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Tag#getBranch <em>Branch</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Tags</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.Tag}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Tag#getBranch <em>Branch</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Tags</em>' containment reference list isn't clear, there really should be more of a
-   * description here...
+   * If the meaning of the '<em>Tags</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Tags</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getBranch_Tags()
    * @see org.eclipse.net4j.pop.project.Tag#getBranch
-   * @model opposite="branch" containment="true"
+   * @model opposite="branch" containment="true" resolveProxies="true"
    * @generated
    */
   EList<Tag> getTags();
 
   /**
-   * Returns the value of the '<em><b>Stream</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Stream</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Stream</em>' reference isn't clear, there really should be more of a description here...
+   * If the meaning of the '<em>Stream</em>' reference isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Stream</em>' reference.
    * @see #setStream(Stream)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getBranch_Stream()
@@ -113,11 +117,10 @@ public interface Branch extends EObject
   Stream getStream();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}' reference. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Stream</em>' reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Stream</em>' reference.
    * @see #getStream()
    * @generated
    */

@@ -8,12 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRootImpl.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: CodeRootImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
-import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -29,37 +29,37 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getPath <em>Path</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl#getRootPath <em>Root Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CodeRootImpl extends EObjectImpl implements CodeRoot
 {
   /**
-   * The default value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @see #getPath()
+   * The default value of the '{@link #getRootPath() <em>Root Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRootPath()
    * @generated
    * @ordered
    */
-  protected static final String PATH_EDEFAULT = null;
+  protected static final String ROOT_PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getPath() <em>Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @see #getPath()
+   * The cached value of the '{@link #getRootPath() <em>Root Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRootPath()
    * @generated
    * @ordered
    */
-  protected String path = PATH_EDEFAULT;
+  protected String rootPath = ROOT_PATH_EDEFAULT;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CodeRootImpl()
@@ -69,7 +69,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -79,78 +78,88 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public String getPath()
+  public PopProject getPopProject()
   {
-    return path;
+    if (eContainerFeatureID != ProjectPackage.CODE_ROOT__POP_PROJECT) return null;
+    return (PopProject)eContainer();
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setPath(String newPath)
+  public PopProject basicGetPopProject()
   {
-    String oldPath = path;
-    path = newPath;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.CODE_ROOT__PATH, oldPath, path));
+    if (eContainerFeatureID != ProjectPackage.CODE_ROOT__POP_PROJECT) return null;
+    return (PopProject)eInternalContainer();
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRepository getRepository()
+  public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
   {
-    if (eContainerFeatureID != ProjectPackage.CODE_ROOT__REPOSITORY) return null;
-    return (CodeRepository)eContainer();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
-  {
-    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.CODE_ROOT__REPOSITORY, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newPopProject, ProjectPackage.CODE_ROOT__POP_PROJECT, msgs);
     return msgs;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setRepository(CodeRepository newRepository)
+  public void setPopProject(PopProject newPopProject)
   {
-    if (newRepository != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.CODE_ROOT__REPOSITORY && newRepository != null))
+    if (newPopProject != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.CODE_ROOT__POP_PROJECT && newPopProject != null))
     {
-      if (EcoreUtil.isAncestor(this, newRepository))
+      if (EcoreUtil.isAncestor(this, newPopProject))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      if (newRepository != null)
-        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__CODE_ROOTS,
-            CodeRepository.class, msgs);
-      msgs = basicSetRepository(newRepository, msgs);
+      if (newPopProject != null)
+        msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__CODE_ROOTS,
+            PopProject.class, msgs);
+      msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.CODE_ROOT__REPOSITORY, newRepository,
-          newRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.CODE_ROOT__POP_PROJECT, newPopProject,
+          newPopProject));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getRootPath()
+  {
+    return rootPath;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRootPath(String newRootPath)
+  {
+    String oldRootPath = rootPath;
+    rootPath = newRootPath;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.CODE_ROOT__ROOT_PATH, oldRootPath, rootPath));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -158,16 +167,15 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetRepository((CodeRepository)otherEnd, msgs);
+      return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -175,15 +183,14 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
-      return basicSetRepository(null, msgs);
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
+      return basicSetPopProject(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -191,16 +198,14 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
-      return eInternalContainer().eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__CODE_ROOTS,
-          CodeRepository.class, msgs);
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.POP_PROJECT__CODE_ROOTS, PopProject.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -208,17 +213,17 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__PATH:
-      return getPath();
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
-      return getRepository();
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
+      if (resolve) return getPopProject();
+      return basicGetPopProject();
+    case ProjectPackage.CODE_ROOT__ROOT_PATH:
+      return getRootPath();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -226,11 +231,11 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__PATH:
-      setPath((String)newValue);
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
+      setPopProject((PopProject)newValue);
       return;
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
-      setRepository((CodeRepository)newValue);
+    case ProjectPackage.CODE_ROOT__ROOT_PATH:
+      setRootPath((String)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -238,7 +243,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -246,11 +250,11 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__PATH:
-      setPath(PATH_EDEFAULT);
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
+      setPopProject((PopProject)null);
       return;
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
-      setRepository((CodeRepository)null);
+    case ProjectPackage.CODE_ROOT__ROOT_PATH:
+      setRootPath(ROOT_PATH_EDEFAULT);
       return;
     }
     super.eUnset(featureID);
@@ -258,7 +262,6 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -266,17 +269,16 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
   {
     switch (featureID)
     {
-    case ProjectPackage.CODE_ROOT__PATH:
-      return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
-    case ProjectPackage.CODE_ROOT__REPOSITORY:
-      return getRepository() != null;
+    case ProjectPackage.CODE_ROOT__POP_PROJECT:
+      return basicGetPopProject() != null;
+    case ProjectPackage.CODE_ROOT__ROOT_PATH:
+      return ROOT_PATH_EDEFAULT == null ? rootPath != null : !ROOT_PATH_EDEFAULT.equals(rootPath);
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -285,8 +287,8 @@ public class CodeRootImpl extends EObjectImpl implements CodeRoot
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (path: "); //$NON-NLS-1$
-    result.append(path);
+    result.append(" (rootPath: "); //$NON-NLS-1$
+    result.append(rootPath);
     result.append(')');
     return result.toString();
   }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.6 2008-08-01 09:46:28 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -54,7 +54,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DevelopmentStreamImpl()
@@ -64,7 +63,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -75,22 +73,20 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<MaintenanceStream> getMaintenanceStreams()
   {
     if (maintenanceStreams == null)
     {
-      maintenanceStreams = new EObjectWithInverseResolvingEList<MaintenanceStream>(MaintenanceStream.class, this,
-          ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS, ProjectPackage.MAINTENANCE_STREAM__PARENT);
+      maintenanceStreams = new EObjectContainmentWithInverseEList.Resolving<MaintenanceStream>(MaintenanceStream.class,
+          this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS, ProjectPackage.MAINTENANCE_STREAM__PARENT);
     }
     return maintenanceStreams;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release addRelease(Date date, boolean compatible, int increment)
@@ -102,7 +98,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -119,7 +114,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -135,7 +129,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -151,7 +144,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -170,7 +162,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -187,7 +178,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

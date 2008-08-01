@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MilestoneImpl.java,v 1.6 2008-08-01 09:46:27 estepper Exp $
+ * $Id: MilestoneImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getRelease <em>Release</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getRelease <em>Release</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.MilestoneImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MilestoneImpl extends TargetImpl implements Milestone
@@ -48,8 +48,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -58,7 +58,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected MilestoneImpl()
@@ -68,7 +67,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -79,7 +77,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release getRelease()
@@ -89,8 +86,18 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Release basicGetRelease()
+  {
+    if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE) return null;
+    return (Release)eInternalContainer();
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRelease(Release newRelease, NotificationChain msgs)
@@ -101,7 +108,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRelease(Release newRelease)
@@ -124,7 +130,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -134,7 +139,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -147,7 +151,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -164,7 +167,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -180,7 +182,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -196,7 +197,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -205,7 +205,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     switch (featureID)
     {
     case ProjectPackage.MILESTONE__RELEASE:
-      return getRelease();
+      if (resolve) return getRelease();
+      return basicGetRelease();
     case ProjectPackage.MILESTONE__NAME:
       return getName();
     }
@@ -214,7 +215,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -234,7 +234,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -254,7 +253,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -263,7 +261,7 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     switch (featureID)
     {
     case ProjectPackage.MILESTONE__RELEASE:
-      return getRelease() != null;
+      return basicGetRelease() != null;
     case ProjectPackage.MILESTONE__NAME:
       return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
@@ -272,7 +270,6 @@ public class MilestoneImpl extends TargetImpl implements Milestone
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

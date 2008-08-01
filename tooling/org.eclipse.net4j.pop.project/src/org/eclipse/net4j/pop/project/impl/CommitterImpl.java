@@ -8,12 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.6 2008-08-01 09:46:28 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
-import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.Committer;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,23 +31,23 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CommitterImpl extends EObjectImpl implements Committer
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -55,8 +55,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -74,8 +74,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -133,8 +133,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getExit()
    * @generated
    * @ordered
@@ -153,7 +153,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CommitterImpl()
@@ -163,7 +162,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -173,55 +171,65 @@ public class CommitterImpl extends EObjectImpl implements Committer
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRepository getRepository()
+  public PopProject getPopProject()
   {
-    if (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY) return null;
-    return (CodeRepository)eContainer();
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT) return null;
+    return (PopProject)eContainer();
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRepository(CodeRepository newRepository, NotificationChain msgs)
+  public PopProject basicGetPopProject()
   {
-    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.COMMITTER__REPOSITORY, msgs);
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT) return null;
+    return (PopProject)eInternalContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newPopProject, ProjectPackage.COMMITTER__POP_PROJECT, msgs);
     return msgs;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setRepository(CodeRepository newRepository)
+  public void setPopProject(PopProject newPopProject)
   {
-    if (newRepository != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY && newRepository != null))
+    if (newPopProject != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT && newPopProject != null))
     {
-      if (EcoreUtil.isAncestor(this, newRepository))
+      if (EcoreUtil.isAncestor(this, newPopProject))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      if (newRepository != null)
-        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.CODE_REPOSITORY__COMMITTERS,
-            CodeRepository.class, msgs);
-      msgs = basicSetRepository(newRepository, msgs);
+      if (newPopProject != null)
+        msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__COMMITTERS,
+            PopProject.class, msgs);
+      msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__REPOSITORY, newRepository,
-          newRepository));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__POP_PROJECT, newPopProject,
+          newPopProject));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getId()
@@ -231,7 +239,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setId(String newId)
@@ -244,7 +251,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -254,7 +260,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -267,7 +272,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getEmail()
@@ -277,7 +281,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -290,7 +293,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getEntry()
@@ -300,7 +302,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -313,7 +314,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getExit()
@@ -323,7 +323,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -336,7 +335,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isActive()
@@ -348,7 +346,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setActive(boolean newActive)
@@ -360,7 +357,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void deactivate(Date exit)
@@ -372,7 +368,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -380,16 +375,15 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
+    case ProjectPackage.COMMITTER__POP_PROJECT:
       if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetRepository((CodeRepository)otherEnd, msgs);
+      return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -397,15 +391,14 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
-      return basicSetRepository(null, msgs);
+    case ProjectPackage.COMMITTER__POP_PROJECT:
+      return basicSetPopProject(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -413,16 +406,14 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
-      return eInternalContainer().eInverseRemove(this, ProjectPackage.CODE_REPOSITORY__COMMITTERS,
-          CodeRepository.class, msgs);
+    case ProjectPackage.COMMITTER__POP_PROJECT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.POP_PROJECT__COMMITTERS, PopProject.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -430,8 +421,9 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
-      return getRepository();
+    case ProjectPackage.COMMITTER__POP_PROJECT:
+      if (resolve) return getPopProject();
+      return basicGetPopProject();
     case ProjectPackage.COMMITTER__ID:
       return getId();
     case ProjectPackage.COMMITTER__NAME:
@@ -450,7 +442,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -458,8 +449,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
-      setRepository((CodeRepository)newValue);
+    case ProjectPackage.COMMITTER__POP_PROJECT:
+      setPopProject((PopProject)newValue);
       return;
     case ProjectPackage.COMMITTER__ID:
       setId((String)newValue);
@@ -485,7 +476,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -493,8 +483,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
-      setRepository((CodeRepository)null);
+    case ProjectPackage.COMMITTER__POP_PROJECT:
+      setPopProject((PopProject)null);
       return;
     case ProjectPackage.COMMITTER__ID:
       setId(ID_EDEFAULT);
@@ -520,7 +510,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -528,8 +517,8 @@ public class CommitterImpl extends EObjectImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__REPOSITORY:
-      return getRepository() != null;
+    case ProjectPackage.COMMITTER__POP_PROJECT:
+      return basicGetPopProject() != null;
     case ProjectPackage.COMMITTER__ID:
       return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
     case ProjectPackage.COMMITTER__NAME:
@@ -548,7 +537,6 @@ public class CommitterImpl extends EObjectImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
