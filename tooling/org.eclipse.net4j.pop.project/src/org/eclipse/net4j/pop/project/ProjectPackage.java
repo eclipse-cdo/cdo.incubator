@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.10 2008-08-01 11:01:45 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.11 2008-08-01 11:03:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -105,22 +105,22 @@ public interface ProjectPackage extends EPackage
   int POP_PROJECT__REPOSITORY_URL = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Code Roots</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POP_PROJECT__CODE_ROOTS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
    * The feature id for the '<em><b>Committers</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POP_PROJECT__COMMITTERS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+  int POP_PROJECT__COMMITTERS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Code Roots</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_PROJECT__CODE_ROOTS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Main Branch</b></em>' containment reference.

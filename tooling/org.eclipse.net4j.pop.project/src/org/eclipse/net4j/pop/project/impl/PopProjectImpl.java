@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.8 2008-08-01 11:01:46 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.9 2008-08-01 11:03:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -41,8 +41,8 @@ import java.util.Date;
  *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getTeamProvider <em>Team Provider</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRepositoryUrl <em>Repository Url</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRoots <em>Code Roots</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCommitters <em>Committers</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getCodeRoots <em>Code Roots</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getMainBranch <em>Main Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.PopProjectImpl#getRootStream <em>Root Stream</em>}</li>
  * </ul>
@@ -112,16 +112,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   protected String repositoryUrl = REPOSITORY_URL_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getCodeRoots() <em>Code Roots</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCodeRoots()
-   * @generated
-   * @ordered
-   */
-  protected EList<CodeRoot> codeRoots;
-
-  /**
    * The cached value of the '{@link #getCommitters() <em>Committers</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -130,6 +120,16 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
    * @ordered
    */
   protected EList<Committer> committers;
+
+  /**
+   * The cached value of the '{@link #getCodeRoots() <em>Code Roots</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCodeRoots()
+   * @generated
+   * @ordered
+   */
+  protected EList<CodeRoot> codeRoots;
 
   /**
    * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
@@ -455,10 +455,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   {
     switch (featureID)
     {
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
-      return ((InternalEList<InternalEObject>)(InternalEList<?>)getCodeRoots()).basicAdd(otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__COMMITTERS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getCommitters()).basicAdd(otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getCodeRoots()).basicAdd(otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       if (mainBranch != null)
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -482,10 +482,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   {
     switch (featureID)
     {
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
-      return ((InternalEList<?>)getCodeRoots()).basicRemove(otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__COMMITTERS:
       return ((InternalEList<?>)getCommitters()).basicRemove(otherEnd, msgs);
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return ((InternalEList<?>)getCodeRoots()).basicRemove(otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       return basicSetMainBranch(null, msgs);
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
@@ -509,10 +509,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       return getTeamProvider();
     case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
       return getRepositoryUrl();
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
-      return getCodeRoots();
     case ProjectPackage.POP_PROJECT__COMMITTERS:
       return getCommitters();
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return getCodeRoots();
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       if (resolve) return getMainBranch();
       return basicGetMainBranch();
@@ -542,13 +542,13 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
       setRepositoryUrl((String)newValue);
       return;
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
-      getCodeRoots().clear();
-      getCodeRoots().addAll((Collection<? extends CodeRoot>)newValue);
-      return;
     case ProjectPackage.POP_PROJECT__COMMITTERS:
       getCommitters().clear();
       getCommitters().addAll((Collection<? extends Committer>)newValue);
+      return;
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      getCodeRoots().clear();
+      getCodeRoots().addAll((Collection<? extends CodeRoot>)newValue);
       return;
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       setMainBranch((MainBranch)newValue);
@@ -578,11 +578,11 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
       setRepositoryUrl(REPOSITORY_URL_EDEFAULT);
       return;
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
-      getCodeRoots().clear();
-      return;
     case ProjectPackage.POP_PROJECT__COMMITTERS:
       getCommitters().clear();
+      return;
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      getCodeRoots().clear();
       return;
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       setMainBranch((MainBranch)null);
@@ -609,10 +609,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       return TEAM_PROVIDER_EDEFAULT == null ? teamProvider != null : !TEAM_PROVIDER_EDEFAULT.equals(teamProvider);
     case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
       return REPOSITORY_URL_EDEFAULT == null ? repositoryUrl != null : !REPOSITORY_URL_EDEFAULT.equals(repositoryUrl);
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
-      return codeRoots != null && !codeRoots.isEmpty();
     case ProjectPackage.POP_PROJECT__COMMITTERS:
       return committers != null && !committers.isEmpty();
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+      return codeRoots != null && !codeRoots.isEmpty();
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       return mainBranch != null;
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.9 2008-08-01 11:01:45 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.10 2008-08-01 11:03:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -279,7 +279,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getPopProject_CodeRoots()
   {
-    return (EReference)popProjectEClass.getEStructuralFeatures().get(3);
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -289,7 +289,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getPopProject_Committers()
   {
-    return (EReference)popProjectEClass.getEStructuralFeatures().get(4);
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -958,8 +958,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(popProjectEClass, POP_PROJECT__NAME);
     createEAttribute(popProjectEClass, POP_PROJECT__TEAM_PROVIDER);
     createEAttribute(popProjectEClass, POP_PROJECT__REPOSITORY_URL);
-    createEReference(popProjectEClass, POP_PROJECT__CODE_ROOTS);
     createEReference(popProjectEClass, POP_PROJECT__COMMITTERS);
+    createEReference(popProjectEClass, POP_PROJECT__CODE_ROOTS);
     createEReference(popProjectEClass, POP_PROJECT__MAIN_BRANCH);
     createEReference(popProjectEClass, POP_PROJECT__ROOT_STREAM);
 
@@ -1111,15 +1111,15 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         ecorePackage.getEString(),
         "repositoryUrl", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getPopProject_CodeRoots(),
-        this.getCodeRoot(),
-        this.getCodeRoot_PopProject(),
-        "codeRoots", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
         getPopProject_Committers(),
         this.getCommitter(),
         this.getCommitter_PopProject(),
         "committers", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getPopProject_CodeRoots(),
+        this.getCodeRoot(),
+        this.getCodeRoot_PopProject(),
+        "codeRoots", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getPopProject_MainBranch(),
         this.getMainBranch(),

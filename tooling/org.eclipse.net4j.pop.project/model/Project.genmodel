@@ -17,10 +17,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/teamProvider"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/repositoryUrl"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/codeRoots"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/committers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/codeRoots"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/mainBranch"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/rootStream"/>
+      <genFeatures property="None" children="true" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference Project.ecore#//PopProject/rootStream"/>
       <genOperations ecoreOperation="Project.ecore#//PopProject/addCommitter">
         <genParameters ecoreParameter="Project.ecore#//PopProject/addCommitter/id"/>
         <genParameters ecoreParameter="Project.ecore#//PopProject/addCommitter/name"/>

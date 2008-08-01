@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProject.java,v 1.8 2008-08-01 11:01:45 estepper Exp $
+ * $Id: PopProject.java,v 1.9 2008-08-01 11:03:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -27,8 +27,8 @@ import java.util.Date;
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getTeamProvider <em>Team Provider</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getRepositoryUrl <em>Repository Url</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCodeRoots <em>Code Roots</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCommitters <em>Committers</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCodeRoots <em>Code Roots</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getMainBranch <em>Main Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getRootStream <em>Root Stream</em>}</li>
  * </ul>

@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.8 2008-08-01 09:46:28 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.9 2008-08-01 11:01:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
-import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
@@ -37,14 +36,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 {
   /**
-   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static ProjectFactory init()
@@ -66,8 +64,8 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   }
 
   /**
-   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProjectFactoryImpl()
@@ -77,7 +75,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -87,8 +84,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
     {
     case ProjectPackage.POP_PROJECT:
       return createPopProject();
-    case ProjectPackage.CODE_REPOSITORY:
-      return createCodeRepository();
     case ProjectPackage.CODE_ROOT:
       return createCodeRoot();
     case ProjectPackage.COMMITTER:
@@ -120,7 +115,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject createPopProject()
@@ -131,18 +125,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public CodeRepository createCodeRepository()
-  {
-    CodeRepositoryImpl codeRepository = new CodeRepositoryImpl();
-    return codeRepository;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRoot createCodeRoot()
@@ -153,7 +135,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Committer createCommitter()
@@ -164,7 +145,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag createTag()
@@ -175,7 +155,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MainBranch createMainBranch()
@@ -186,7 +165,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public SubBranch createSubBranch()
@@ -197,7 +175,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TaskStream createTaskStream()
@@ -208,7 +185,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MaintenanceStream createMaintenanceStream()
@@ -219,7 +195,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public RootStream createRootStream()
@@ -230,7 +205,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release createRelease()
@@ -241,7 +215,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Milestone createMilestone()
@@ -252,7 +225,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Delivery createDelivery()
@@ -263,7 +235,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Merge createMerge()
@@ -274,7 +245,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ProjectPackage getProjectPackage()
@@ -284,7 +254,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @deprecated
    * @generated
    */

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectItemProvider.java,v 1.8 2008-08-01 11:01:45 estepper Exp $
+ * $Id: PopProjectItemProvider.java,v 1.9 2008-08-01 11:03:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -70,7 +70,6 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
       addNamePropertyDescriptor(object);
       addTeamProviderPropertyDescriptor(object);
       addRepositoryUrlPropertyDescriptor(object);
-      addRootStreamPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -123,19 +122,6 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This adds a property descriptor for the Root Stream feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRootStreamPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_PopProject_rootStream_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_PopProject_rootStream_feature", "_UI_PopProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.POP_PROJECT__ROOT_STREAM, true, false, true, null, null, null));
-  }
-
-  /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
    * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -149,9 +135,10 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__CODE_ROOTS);
       childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__COMMITTERS);
+      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__CODE_ROOTS);
       childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__MAIN_BRANCH);
+      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__ROOT_STREAM);
     }
     return childrenFeatures;
   }
@@ -212,9 +199,10 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
     case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
     case ProjectPackage.POP_PROJECT__COMMITTERS:
+    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+    case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
     }
@@ -232,14 +220,17 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__CODE_ROOTS,
-        ProjectFactory.eINSTANCE.createCodeRoot()));
-
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__COMMITTERS,
         ProjectFactory.eINSTANCE.createCommitter()));
 
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__CODE_ROOTS,
+        ProjectFactory.eINSTANCE.createCodeRoot()));
+
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__MAIN_BRANCH,
         ProjectFactory.eINSTANCE.createMainBranch()));
+
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__ROOT_STREAM,
+        ProjectFactory.eINSTANCE.createRootStream()));
   }
 
 }
