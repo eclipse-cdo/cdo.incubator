@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamImpl.java,v 1.9 2008-08-01 19:10:41 estepper Exp $
+ * $Id: MaintenanceStreamImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -75,7 +75,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
    */
   public DevelopmentStream getParent()
   {
-    if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT) return null;
+    if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT)
+      return null;
     return (DevelopmentStream)eContainer();
   }
 
@@ -85,7 +86,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
    */
   public DevelopmentStream basicGetParent()
   {
-    if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT) return null;
+    if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT)
+      return null;
     return (DevelopmentStream)eInternalContainer();
   }
 
@@ -111,12 +113,14 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
       if (EcoreUtil.isAncestor(this, newParent))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newParent != null)
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS,
             DevelopmentStream.class, msgs);
       msgs = basicSetParent(newParent, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAINTENANCE_STREAM__PARENT, newParent,
@@ -188,7 +192,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
         msgs = ((InternalEObject)newBaseline).eInverseAdd(this, ProjectPackage.RELEASE__MAINTENANCE, Release.class,
             msgs);
       msgs = basicSetBaseline(newBaseline, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAINTENANCE_STREAM__BASELINE, newBaseline,
@@ -205,7 +210,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     switch (featureID)
     {
     case ProjectPackage.MAINTENANCE_STREAM__PARENT:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetParent((DevelopmentStream)otherEnd, msgs);
     case ProjectPackage.MAINTENANCE_STREAM__BASELINE:
       if (baseline != null)
@@ -259,10 +265,12 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     switch (featureID)
     {
     case ProjectPackage.MAINTENANCE_STREAM__PARENT:
-      if (resolve) return getParent();
+      if (resolve)
+        return getParent();
       return basicGetParent();
     case ProjectPackage.MAINTENANCE_STREAM__BASELINE:
-      if (resolve) return getBaseline();
+      if (resolve)
+        return getBaseline();
       return basicGetBaseline();
     }
     return super.eGet(featureID, resolve, coreType);

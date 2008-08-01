@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.10 2008-08-01 19:10:41 estepper Exp $
+ * $Id: StreamImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -148,7 +148,8 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
       if (newBranch != null)
         msgs = ((InternalEObject)newBranch).eInverseAdd(this, ProjectPackage.BRANCH__STREAM, Branch.class, msgs);
       msgs = basicSetBranch(newBranch, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.STREAM__BRANCH, newBranch, newBranch));
@@ -257,7 +258,8 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
     switch (featureID)
     {
     case ProjectPackage.STREAM__BRANCH:
-      if (resolve) return getBranch();
+      if (resolve)
+        return getBranch();
       return basicGetBranch();
     case ProjectPackage.STREAM__MERGES:
       return getMerges();

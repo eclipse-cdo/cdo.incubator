@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: TagImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -94,7 +94,8 @@ public class TagImpl extends PopElementImpl implements Tag
    */
   public Branch getBranch()
   {
-    if (eContainerFeatureID != ProjectPackage.TAG__BRANCH) return null;
+    if (eContainerFeatureID != ProjectPackage.TAG__BRANCH)
+      return null;
     return (Branch)eContainer();
   }
 
@@ -104,7 +105,8 @@ public class TagImpl extends PopElementImpl implements Tag
    */
   public Branch basicGetBranch()
   {
-    if (eContainerFeatureID != ProjectPackage.TAG__BRANCH) return null;
+    if (eContainerFeatureID != ProjectPackage.TAG__BRANCH)
+      return null;
     return (Branch)eInternalContainer();
   }
 
@@ -129,11 +131,13 @@ public class TagImpl extends PopElementImpl implements Tag
       if (EcoreUtil.isAncestor(this, newBranch))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newBranch != null)
         msgs = ((InternalEObject)newBranch).eInverseAdd(this, ProjectPackage.BRANCH__TAGS, Branch.class, msgs);
       msgs = basicSetBranch(newBranch, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__BRANCH, newBranch, newBranch));
@@ -225,7 +229,8 @@ public class TagImpl extends PopElementImpl implements Tag
         msgs = ((InternalEObject)newTaggedElement).eInverseAdd(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
       msgs = basicSetTaggedElement(newTaggedElement, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__TAGGED_ELEMENT, newTaggedElement,
@@ -242,7 +247,8 @@ public class TagImpl extends PopElementImpl implements Tag
     switch (featureID)
     {
     case ProjectPackage.TAG__BRANCH:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetBranch((Branch)otherEnd, msgs);
     case ProjectPackage.TAG__TAGGED_ELEMENT:
       if (taggedElement != null)
@@ -295,12 +301,14 @@ public class TagImpl extends PopElementImpl implements Tag
     switch (featureID)
     {
     case ProjectPackage.TAG__BRANCH:
-      if (resolve) return getBranch();
+      if (resolve)
+        return getBranch();
       return basicGetBranch();
     case ProjectPackage.TAG__NAME:
       return getName();
     case ProjectPackage.TAG__TAGGED_ELEMENT:
-      if (resolve) return getTaggedElement();
+      if (resolve)
+        return getTaggedElement();
       return basicGetTaggedElement();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -376,7 +384,8 @@ public class TagImpl extends PopElementImpl implements Tag
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.12 2008-08-01 18:49:05 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.13 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -210,7 +210,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public static ProjectPackage init()
   {
-    if (isInited) return (ProjectPackage)EPackage.Registry.INSTANCE.getEPackage(ProjectPackage.eNS_URI);
+    if (isInited)
+      return (ProjectPackage)EPackage.Registry.INSTANCE.getEPackage(ProjectPackage.eNS_URI);
 
     // Obtain or create and register package
     ProjectPackageImpl theProjectPackage = (ProjectPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof ProjectPackageImpl ? EPackage.Registry.INSTANCE
@@ -936,7 +937,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public void createPackageContents()
   {
-    if (isCreated) return;
+    if (isCreated)
+      return;
     isCreated = true;
 
     // Create classes and their features
@@ -1048,7 +1050,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public void initializePackageContents()
   {
-    if (isInitialized) return;
+    if (isInitialized)
+      return;
     isInitialized = true;
 
     // Initialize package
@@ -1395,7 +1398,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEAttribute(
         getDelivery_Number(),
         ecorePackage.getEInt(),
-        "number", null, 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "number", "1", 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
     initEAttribute(
         getDelivery_Date(),
         ecorePackage.getEDate(),

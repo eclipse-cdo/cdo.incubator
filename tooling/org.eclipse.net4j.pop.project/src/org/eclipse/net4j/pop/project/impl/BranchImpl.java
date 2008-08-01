@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.10 2008-08-01 18:49:05 estepper Exp $
+ * $Id: BranchImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -225,7 +225,8 @@ public abstract class BranchImpl extends PopElementImpl implements Branch
       if (newStream != null)
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
       msgs = basicSetStream(newStream, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__STREAM, newStream, newStream));
@@ -288,7 +289,8 @@ public abstract class BranchImpl extends PopElementImpl implements Branch
     case ProjectPackage.BRANCH__TAGS:
       return getTags();
     case ProjectPackage.BRANCH__STREAM:
-      if (resolve) return getStream();
+      if (resolve)
+        return getStream();
       return basicGetStream();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -375,7 +377,8 @@ public abstract class BranchImpl extends PopElementImpl implements Branch
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: DeliveryImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -54,7 +54,7 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
    * @generated
    * @ordered
    */
-  protected static final int NUMBER_EDEFAULT = 0;
+  protected static final int NUMBER_EDEFAULT = 1;
 
   /**
    * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -120,7 +120,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
    */
   public TaskStream getStream()
   {
-    if (eContainerFeatureID != ProjectPackage.DELIVERY__STREAM) return null;
+    if (eContainerFeatureID != ProjectPackage.DELIVERY__STREAM)
+      return null;
     return (TaskStream)eContainer();
   }
 
@@ -130,7 +131,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
    */
   public TaskStream basicGetStream()
   {
-    if (eContainerFeatureID != ProjectPackage.DELIVERY__STREAM) return null;
+    if (eContainerFeatureID != ProjectPackage.DELIVERY__STREAM)
+      return null;
     return (TaskStream)eInternalContainer();
   }
 
@@ -156,12 +158,14 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
       if (EcoreUtil.isAncestor(this, newStream))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newStream != null)
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.TASK_STREAM__DELIVERIES, TaskStream.class,
             msgs);
       msgs = basicSetStream(newStream, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.DELIVERY__STREAM, newStream, newStream));
@@ -234,7 +238,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
     switch (featureID)
     {
     case ProjectPackage.DELIVERY__STREAM:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetStream((TaskStream)otherEnd, msgs);
     case ProjectPackage.DELIVERY__MERGES:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getMerges()).basicAdd(otherEnd, msgs);
@@ -284,7 +289,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
     switch (featureID)
     {
     case ProjectPackage.DELIVERY__STREAM:
-      if (resolve) return getStream();
+      if (resolve)
+        return getStream();
       return basicGetStream();
     case ProjectPackage.DELIVERY__NUMBER:
       return new Integer(getNumber());
@@ -376,7 +382,8 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (number: "); //$NON-NLS-1$

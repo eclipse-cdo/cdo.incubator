@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ReleaseImpl.java,v 1.10 2008-08-01 18:49:05 estepper Exp $
+ * $Id: ReleaseImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -171,7 +171,8 @@ public class ReleaseImpl extends TargetImpl implements Release
         msgs = ((InternalEObject)newMaintenance).eInverseAdd(this, ProjectPackage.MAINTENANCE_STREAM__BASELINE,
             MaintenanceStream.class, msgs);
       msgs = basicSetMaintenance(newMaintenance, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.RELEASE__MAINTENANCE, newMaintenance,
@@ -205,7 +206,8 @@ public class ReleaseImpl extends TargetImpl implements Release
    */
   public IntegrationStream getStream()
   {
-    if (eContainerFeatureID != ProjectPackage.RELEASE__STREAM) return null;
+    if (eContainerFeatureID != ProjectPackage.RELEASE__STREAM)
+      return null;
     return (IntegrationStream)eContainer();
   }
 
@@ -215,7 +217,8 @@ public class ReleaseImpl extends TargetImpl implements Release
    */
   public IntegrationStream basicGetStream()
   {
-    if (eContainerFeatureID != ProjectPackage.RELEASE__STREAM) return null;
+    if (eContainerFeatureID != ProjectPackage.RELEASE__STREAM)
+      return null;
     return (IntegrationStream)eInternalContainer();
   }
 
@@ -241,12 +244,14 @@ public class ReleaseImpl extends TargetImpl implements Release
       if (EcoreUtil.isAncestor(this, newStream))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newStream != null)
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.INTEGRATION_STREAM__RELEASES,
             IntegrationStream.class, msgs);
       msgs = basicSetStream(newStream, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.RELEASE__STREAM, newStream, newStream));
@@ -293,7 +298,8 @@ public class ReleaseImpl extends TargetImpl implements Release
             MaintenanceStream.class, msgs);
       return basicSetMaintenance((MaintenanceStream)otherEnd, msgs);
     case ProjectPackage.RELEASE__STREAM:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetStream((IntegrationStream)otherEnd, msgs);
     case ProjectPackage.RELEASE__MILESTONES:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getMilestones()).basicAdd(otherEnd, msgs);
@@ -346,12 +352,14 @@ public class ReleaseImpl extends TargetImpl implements Release
     switch (featureID)
     {
     case ProjectPackage.RELEASE__MAINTENANCE:
-      if (resolve) return getMaintenance();
+      if (resolve)
+        return getMaintenance();
       return basicGetMaintenance();
     case ProjectPackage.RELEASE__VERSION:
       return getVersion();
     case ProjectPackage.RELEASE__STREAM:
-      if (resolve) return getStream();
+      if (resolve)
+        return getStream();
       return basicGetStream();
     case ProjectPackage.RELEASE__MILESTONES:
       return getMilestones();
@@ -439,7 +447,8 @@ public class ReleaseImpl extends TargetImpl implements Release
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (version: "); //$NON-NLS-1$

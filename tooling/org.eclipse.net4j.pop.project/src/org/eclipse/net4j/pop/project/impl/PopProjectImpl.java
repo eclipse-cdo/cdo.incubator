@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.11 2008-08-01 18:49:05 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.12 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -282,7 +282,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
         {
           msgs = newMainBranch.eInverseAdd(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT, MainBranch.class, msgs);
         }
-        if (msgs != null) msgs.dispatch();
+        if (msgs != null)
+          msgs.dispatch();
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__MAIN_BRANCH,
               oldMainBranch, mainBranch));
@@ -336,7 +337,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
         msgs = ((InternalEObject)newMainBranch).eInverseAdd(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT,
             MainBranch.class, msgs);
       msgs = basicSetMainBranch(newMainBranch, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__MAIN_BRANCH, newMainBranch,
@@ -362,7 +364,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
         {
           msgs = newRootStream.eInverseAdd(this, ProjectPackage.ROOT_STREAM__POP_PROJECT, RootStream.class, msgs);
         }
-        if (msgs != null) msgs.dispatch();
+        if (msgs != null)
+          msgs.dispatch();
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__ROOT_STREAM,
               oldRootStream, rootStream));
@@ -416,7 +419,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
         msgs = ((InternalEObject)newRootStream).eInverseAdd(this, ProjectPackage.ROOT_STREAM__POP_PROJECT,
             RootStream.class, msgs);
       msgs = basicSetRootStream(newRootStream, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__ROOT_STREAM, newRootStream,
@@ -503,10 +507,12 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     case ProjectPackage.POP_PROJECT__CODE_ROOTS:
       return getCodeRoots();
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
-      if (resolve) return getMainBranch();
+      if (resolve)
+        return getMainBranch();
       return basicGetMainBranch();
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
-      if (resolve) return getRootStream();
+      if (resolve)
+        return getRootStream();
       return basicGetRootStream();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -617,7 +623,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

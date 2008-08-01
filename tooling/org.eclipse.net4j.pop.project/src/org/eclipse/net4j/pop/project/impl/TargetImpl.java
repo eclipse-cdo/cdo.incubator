@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: TargetImpl.java,v 1.9 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -237,7 +237,8 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (date: "); //$NON-NLS-1$

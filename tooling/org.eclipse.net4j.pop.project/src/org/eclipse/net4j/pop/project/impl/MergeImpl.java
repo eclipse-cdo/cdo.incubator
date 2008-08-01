@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: MergeImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -95,7 +95,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
    */
   public Stream getStream()
   {
-    if (eContainerFeatureID != ProjectPackage.MERGE__STREAM) return null;
+    if (eContainerFeatureID != ProjectPackage.MERGE__STREAM)
+      return null;
     return (Stream)eContainer();
   }
 
@@ -105,7 +106,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
    */
   public Stream basicGetStream()
   {
-    if (eContainerFeatureID != ProjectPackage.MERGE__STREAM) return null;
+    if (eContainerFeatureID != ProjectPackage.MERGE__STREAM)
+      return null;
     return (Stream)eInternalContainer();
   }
 
@@ -130,11 +132,13 @@ public class MergeImpl extends TaggedElementImpl implements Merge
       if (EcoreUtil.isAncestor(this, newStream))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newStream != null)
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.STREAM__MERGES, Stream.class, msgs);
       msgs = basicSetStream(newStream, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MERGE__STREAM, newStream, newStream));
@@ -224,7 +228,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
       if (newDelivery != null)
         msgs = ((InternalEObject)newDelivery).eInverseAdd(this, ProjectPackage.DELIVERY__MERGES, Delivery.class, msgs);
       msgs = basicSetDelivery(newDelivery, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MERGE__DELIVERY, newDelivery, newDelivery));
@@ -240,7 +245,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     switch (featureID)
     {
     case ProjectPackage.MERGE__STREAM:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetStream((Stream)otherEnd, msgs);
     case ProjectPackage.MERGE__DELIVERY:
       if (delivery != null)
@@ -292,12 +298,14 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     switch (featureID)
     {
     case ProjectPackage.MERGE__STREAM:
-      if (resolve) return getStream();
+      if (resolve)
+        return getStream();
       return basicGetStream();
     case ProjectPackage.MERGE__DATE:
       return getDate();
     case ProjectPackage.MERGE__DELIVERY:
-      if (resolve) return getDelivery();
+      if (resolve)
+        return getDelivery();
       return basicGetDelivery();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -373,7 +381,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (date: "); //$NON-NLS-1$

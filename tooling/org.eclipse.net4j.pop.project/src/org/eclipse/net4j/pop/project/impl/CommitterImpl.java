@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -178,7 +178,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
    */
   public PopProject getPopProject()
   {
-    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT) return null;
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT)
+      return null;
     return (PopProject)eContainer();
   }
 
@@ -188,7 +189,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
    */
   public PopProject basicGetPopProject()
   {
-    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT) return null;
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT)
+      return null;
     return (PopProject)eInternalContainer();
   }
 
@@ -214,12 +216,14 @@ public class CommitterImpl extends PopElementImpl implements Committer
       if (EcoreUtil.isAncestor(this, newPopProject))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newPopProject != null)
         msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__COMMITTERS,
             PopProject.class, msgs);
       msgs = basicSetPopProject(newPopProject, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__POP_PROJECT, newPopProject,
@@ -363,7 +367,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
     switch (featureID)
     {
     case ProjectPackage.COMMITTER__POP_PROJECT:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -409,7 +414,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
     switch (featureID)
     {
     case ProjectPackage.COMMITTER__POP_PROJECT:
-      if (resolve) return getPopProject();
+      if (resolve)
+        return getPopProject();
       return basicGetPopProject();
     case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
       return getRepositoryLogin();
@@ -524,7 +530,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (repositoryLogin: "); //$NON-NLS-1$

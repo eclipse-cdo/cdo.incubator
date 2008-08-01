@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamImpl.java,v 1.10 2008-08-01 19:10:41 estepper Exp $
+ * $Id: TaskStreamImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -157,7 +157,8 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
    */
   public IntegrationStream getParent()
   {
-    if (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT) return null;
+    if (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT)
+      return null;
     return (IntegrationStream)eContainer();
   }
 
@@ -167,7 +168,8 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
    */
   public IntegrationStream basicGetParent()
   {
-    if (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT) return null;
+    if (eContainerFeatureID != ProjectPackage.TASK_STREAM__PARENT)
+      return null;
     return (IntegrationStream)eInternalContainer();
   }
 
@@ -193,12 +195,14 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
       if (EcoreUtil.isAncestor(this, newParent))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newParent != null)
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS,
             IntegrationStream.class, msgs);
       msgs = basicSetParent(newParent, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TASK_STREAM__PARENT, newParent, newParent));
@@ -275,7 +279,8 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
     switch (featureID)
     {
     case ProjectPackage.TASK_STREAM__PARENT:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetParent((IntegrationStream)otherEnd, msgs);
     case ProjectPackage.TASK_STREAM__TARGETS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTargets()).basicAdd(otherEnd, msgs);
@@ -332,7 +337,8 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
     case ProjectPackage.TASK_STREAM__TASK_ID:
       return getTaskId();
     case ProjectPackage.TASK_STREAM__PARENT:
-      if (resolve) return getParent();
+      if (resolve)
+        return getParent();
       return basicGetParent();
     case ProjectPackage.TASK_STREAM__BASELINE:
       return getBaseline();
@@ -433,7 +439,8 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (taskId: "); //$NON-NLS-1$

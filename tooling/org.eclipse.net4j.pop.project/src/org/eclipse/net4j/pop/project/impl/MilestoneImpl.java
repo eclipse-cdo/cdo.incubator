@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MilestoneImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: MilestoneImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -81,7 +81,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
    */
   public Release getRelease()
   {
-    if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE) return null;
+    if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE)
+      return null;
     return (Release)eContainer();
   }
 
@@ -91,7 +92,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
    */
   public Release basicGetRelease()
   {
-    if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE) return null;
+    if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE)
+      return null;
     return (Release)eInternalContainer();
   }
 
@@ -117,11 +119,13 @@ public class MilestoneImpl extends TargetImpl implements Milestone
       if (EcoreUtil.isAncestor(this, newRelease))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newRelease != null)
         msgs = ((InternalEObject)newRelease).eInverseAdd(this, ProjectPackage.RELEASE__MILESTONES, Release.class, msgs);
       msgs = basicSetRelease(newRelease, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MILESTONE__RELEASE, newRelease, newRelease));
@@ -158,7 +162,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     switch (featureID)
     {
     case ProjectPackage.MILESTONE__RELEASE:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetRelease((Release)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -204,7 +209,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     switch (featureID)
     {
     case ProjectPackage.MILESTONE__RELEASE:
-      if (resolve) return getRelease();
+      if (resolve)
+        return getRelease();
       return basicGetRelease();
     case ProjectPackage.MILESTONE__NAME:
       return getName();
@@ -274,7 +280,8 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

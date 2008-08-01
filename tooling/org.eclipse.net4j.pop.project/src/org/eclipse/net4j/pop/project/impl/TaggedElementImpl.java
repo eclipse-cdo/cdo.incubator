@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaggedElementImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: TaggedElementImpl.java,v 1.9 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -126,7 +126,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
       if (newTag != null)
         msgs = ((InternalEObject)newTag).eInverseAdd(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
       msgs = basicSetTag(newTag, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAGGED_ELEMENT__TAG, newTag, newTag));
@@ -174,7 +175,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
     switch (featureID)
     {
     case ProjectPackage.TAGGED_ELEMENT__TAG:
-      if (resolve) return getTag();
+      if (resolve)
+        return getTag();
       return basicGetTag();
     }
     return super.eGet(featureID, resolve, coreType);

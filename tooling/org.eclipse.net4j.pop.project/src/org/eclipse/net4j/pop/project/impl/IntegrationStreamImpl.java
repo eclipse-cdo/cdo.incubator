@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.10 2008-08-01 19:10:41 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -301,7 +301,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

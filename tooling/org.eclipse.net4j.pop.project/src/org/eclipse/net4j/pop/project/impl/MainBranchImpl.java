@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchImpl.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: MainBranchImpl.java,v 1.8 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -62,7 +62,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
    */
   public PopProject getPopProject()
   {
-    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT) return null;
+    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT)
+      return null;
     return (PopProject)eContainer();
   }
 
@@ -73,7 +74,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
    */
   public PopProject basicGetPopProject()
   {
-    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT) return null;
+    if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT)
+      return null;
     return (PopProject)eInternalContainer();
   }
 
@@ -101,12 +103,14 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
       if (EcoreUtil.isAncestor(this, newPopProject))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newPopProject != null)
         msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__MAIN_BRANCH,
             PopProject.class, msgs);
       msgs = basicSetPopProject(newPopProject, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAIN_BRANCH__POP_PROJECT, newPopProject,
@@ -123,7 +127,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
     switch (featureID)
     {
     case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -169,7 +174,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
     switch (featureID)
     {
     case ProjectPackage.MAIN_BRANCH__POP_PROJECT:
-      if (resolve) return getPopProject();
+      if (resolve)
+        return getPopProject();
       return basicGetPopProject();
     }
     return super.eGet(featureID, resolve, coreType);

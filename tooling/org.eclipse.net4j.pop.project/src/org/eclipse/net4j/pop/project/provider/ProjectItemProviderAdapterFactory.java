@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectItemProviderAdapterFactory.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: ProjectItemProviderAdapterFactory.java,v 1.8 2008-08-01 20:05:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -555,19 +555,32 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
    */
   public void dispose()
   {
-    if (popProjectItemProvider != null) popProjectItemProvider.dispose();
-    if (codeRootItemProvider != null) codeRootItemProvider.dispose();
-    if (committerItemProvider != null) committerItemProvider.dispose();
-    if (tagItemProvider != null) tagItemProvider.dispose();
-    if (mainBranchItemProvider != null) mainBranchItemProvider.dispose();
-    if (subBranchItemProvider != null) subBranchItemProvider.dispose();
-    if (taskStreamItemProvider != null) taskStreamItemProvider.dispose();
-    if (maintenanceStreamItemProvider != null) maintenanceStreamItemProvider.dispose();
-    if (rootStreamItemProvider != null) rootStreamItemProvider.dispose();
-    if (releaseItemProvider != null) releaseItemProvider.dispose();
-    if (milestoneItemProvider != null) milestoneItemProvider.dispose();
-    if (deliveryItemProvider != null) deliveryItemProvider.dispose();
-    if (mergeItemProvider != null) mergeItemProvider.dispose();
+    if (popProjectItemProvider != null)
+      popProjectItemProvider.dispose();
+    if (codeRootItemProvider != null)
+      codeRootItemProvider.dispose();
+    if (committerItemProvider != null)
+      committerItemProvider.dispose();
+    if (tagItemProvider != null)
+      tagItemProvider.dispose();
+    if (mainBranchItemProvider != null)
+      mainBranchItemProvider.dispose();
+    if (subBranchItemProvider != null)
+      subBranchItemProvider.dispose();
+    if (taskStreamItemProvider != null)
+      taskStreamItemProvider.dispose();
+    if (maintenanceStreamItemProvider != null)
+      maintenanceStreamItemProvider.dispose();
+    if (rootStreamItemProvider != null)
+      rootStreamItemProvider.dispose();
+    if (releaseItemProvider != null)
+      releaseItemProvider.dispose();
+    if (milestoneItemProvider != null)
+      milestoneItemProvider.dispose();
+    if (deliveryItemProvider != null)
+      deliveryItemProvider.dispose();
+    if (mergeItemProvider != null)
+      mergeItemProvider.dispose();
   }
 
 }
