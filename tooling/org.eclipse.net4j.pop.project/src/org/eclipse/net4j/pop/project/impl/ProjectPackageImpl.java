@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.6 2008-08-01 09:36:25 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.7 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -35,11 +35,9 @@ import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaggedElement;
 import org.eclipse.net4j.pop.project.Target;
 import org.eclipse.net4j.pop.project.TaskStream;
-import org.eclipse.net4j.pop.project.Version;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -170,12 +168,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * @generated
    */
   private EClass mergeEClass = null;
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  private EDataType versionEDataType = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -964,15 +956,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EDataType getVersion()
-  {
-    return versionEDataType;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
   public ProjectFactory getProjectFactory()
   {
     return (ProjectFactory)getEFactoryInstance();
@@ -1094,9 +1077,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(mergeEClass, MERGE__ID);
     createEAttribute(mergeEClass, MERGE__DATE);
     createEReference(mergeEClass, MERGE__DELIVERY);
-
-    // Create data types
-    versionEDataType = createEDataType(VERSION);
   }
 
   /**
@@ -1277,7 +1257,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getBranch_Branches(),
         this.getSubBranch(),
         this.getSubBranch_Parent(),
-        "branches", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "branches", null, 0, -1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getBranch_Tags(),
         this.getTag(),
@@ -1302,7 +1282,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getSubBranch_Parent(),
         this.getBranch(),
         this.getBranch_Branches(),
-        "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(streamEClass, Stream.class, "Stream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
@@ -1437,7 +1417,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         "maintenance", null, 0, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getRelease_Version(),
-        this.getVersion(),
+        theBasePackage.getVersion(),
         "version", null, 1, 1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getRelease_Stream(),
@@ -1502,9 +1482,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getDelivery(),
         this.getDelivery_Merges(),
         "delivery", null, 1, 1, Merge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    // Initialize data types
-    initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     // Create resource
     createResource(eNS_URI);

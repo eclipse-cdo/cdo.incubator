@@ -8,9 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Release.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: Release.java,v 1.6 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
+
+import org.eclipse.net4j.pop.base.Version;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -71,7 +73,7 @@ public interface Release extends Target
    * @return the value of the '<em>Version</em>' attribute.
    * @see #setVersion(Version)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getRelease_Version()
-   * @model dataType="org.eclipse.net4j.pop.project.Version" required="true"
+   * @model dataType="org.eclipse.net4j.pop.base.Version" required="true"
    * @generated
    */
   Version getVersion();

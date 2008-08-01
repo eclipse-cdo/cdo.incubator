@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.6 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sub Branch</b></em>'. <!-- end-user-doc -->
@@ -46,16 +47,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
    * @ordered
    */
   protected Tag tag;
-
-  /**
-   * The cached value of the '{@link #getParent() <em>Parent</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @see #getParent()
-   * @generated
-   * @ordered
-   */
-  protected Branch parent;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -150,27 +141,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
    */
   public Branch getParent()
   {
-    if (parent != null && parent.eIsProxy())
-    {
-      InternalEObject oldParent = (InternalEObject)parent;
-      parent = (Branch)eResolveProxy(oldParent);
-      if (parent != oldParent)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.SUB_BRANCH__PARENT, oldParent,
-              parent));
-      }
-    }
-    return parent;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public Branch basicGetParent()
-  {
-    return parent;
+    if (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT) return null;
+    return (Branch)eContainer();
   }
 
   /**
@@ -179,17 +151,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
    */
   public NotificationChain basicSetParent(Branch newParent, NotificationChain msgs)
   {
-    Branch oldParent = parent;
-    parent = newParent;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__PARENT,
-          oldParent, newParent);
-      if (msgs == null)
-        msgs = notification;
-      else
-        msgs.add(notification);
-    }
+    msgs = eBasicSetContainer((InternalEObject)newParent, ProjectPackage.SUB_BRANCH__PARENT, msgs);
     return msgs;
   }
 
@@ -199,11 +161,13 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
    */
   public void setParent(Branch newParent)
   {
-    if (newParent != parent)
+    if (newParent != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT && newParent != null))
     {
+      if (EcoreUtil.isAncestor(this, newParent))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, ProjectPackage.BRANCH__BRANCHES, Branch.class, msgs);
+      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
       if (newParent != null)
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.BRANCH__BRANCHES, Branch.class, msgs);
       msgs = basicSetParent(newParent, msgs);
@@ -227,8 +191,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
         msgs = ((InternalEObject)tag).eInverseRemove(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
       return basicSetTag((Tag)otherEnd, msgs);
     case ProjectPackage.SUB_BRANCH__PARENT:
-      if (parent != null)
-        msgs = ((InternalEObject)parent).eInverseRemove(this, ProjectPackage.BRANCH__BRANCHES, Branch.class, msgs);
+      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
       return basicSetParent((Branch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -252,6 +215,22 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID)
+    {
+    case ProjectPackage.SUB_BRANCH__PARENT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.BRANCH__BRANCHES, Branch.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -264,8 +243,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       if (resolve) return getTag();
       return basicGetTag();
     case ProjectPackage.SUB_BRANCH__PARENT:
-      if (resolve) return getParent();
-      return basicGetParent();
+      return getParent();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -320,7 +298,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     case ProjectPackage.SUB_BRANCH__TAG:
       return tag != null;
     case ProjectPackage.SUB_BRANCH__PARENT:
-      return parent != null;
+      return getParent() != null;
     }
     return super.eIsSet(featureID);
   }

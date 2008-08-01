@@ -67,7 +67,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
-        eType="#//SubBranch" eOpposite="#//SubBranch/parent"/>
+        eType="#//SubBranch" containment="true" eOpposite="#//SubBranch/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tags" upperBound="-1" eType="#//Tag"
         containment="true" eOpposite="#//Tag/branch"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stream" eType="#//Stream"
@@ -143,7 +143,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
         eType="#//PopProject" eOpposite="#//PopProject/rootStream"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.eclipse.net4j.pop.project.Version"/>
   <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true" eSuperTypes="#//TaggedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         changeable="false" volatile="true" transient="true" derived="true" iD="true"/>
@@ -156,7 +155,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenance" eType="#//MaintenanceStream"
         eOpposite="#//MaintenanceStream/baseline"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
-        eType="#//Version"/>
+        eType="ecore:EDataType ../../org.eclipse.net4j.pop.base/model/Base.ecore#//Version"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="stream" lowerBound="1"
         eType="#//IntegrationStream" eOpposite="#//IntegrationStream/releases"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="milestones" upperBound="-1"

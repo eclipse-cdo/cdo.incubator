@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Branch.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: Branch.java,v 1.6 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -61,7 +61,7 @@ public interface Branch extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Branches</b></em>' reference list.
+   * Returns the value of the '<em><b>Branches</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.net4j.pop.project.SubBranch}.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}'.
    * <!-- begin-user-doc -->
@@ -70,10 +70,10 @@ public interface Branch extends EObject
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Branches</em>' reference list.
+   * @return the value of the '<em>Branches</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getBranch_Branches()
    * @see org.eclipse.net4j.pop.project.SubBranch#getParent
-   * @model opposite="parent"
+   * @model opposite="parent" containment="true"
    * @generated
    */
   EList<SubBranch> getBranches();

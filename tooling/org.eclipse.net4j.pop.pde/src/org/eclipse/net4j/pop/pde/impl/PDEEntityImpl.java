@@ -8,16 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEEntityImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEEntityImpl.java,v 1.3 2008-08-01 09:42:55 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
+import org.eclipse.net4j.pop.base.Version;
 import org.eclipse.net4j.pop.pde.Location;
 import org.eclipse.net4j.pop.pde.PDEDistribution;
 import org.eclipse.net4j.pop.pde.PDEEntity;
 import org.eclipse.net4j.pop.pde.PDEPackage;
 import org.eclipse.net4j.pop.pde.PDEProject;
-import org.eclipse.net4j.pop.project.Version;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;

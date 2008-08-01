@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.6 2008-08-01 09:36:25 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.7 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,15 +28,12 @@ import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.SubBranch;
 import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaskStream;
-import org.eclipse.net4j.pop.project.Version;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.net4j.pop.project.*;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -116,38 +113,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
       return createMerge();
     default:
       throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object createFromString(EDataType eDataType, String initialValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-    case ProjectPackage.VERSION:
-      return createVersionFromString(eDataType, initialValue);
-    default:
-      throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
-    }
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String convertToString(EDataType eDataType, Object instanceValue)
-  {
-    switch (eDataType.getClassifierID())
-    {
-    case ProjectPackage.VERSION:
-      return convertVersionToString(eDataType, instanceValue);
-    default:
-      throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
   }
 
@@ -289,24 +254,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   {
     MergeImpl merge = new MergeImpl();
     return merge;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public Version createVersionFromString(EDataType eDataType, String initialValue)
-  {
-    return (Version)super.createFromString(eDataType, initialValue);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public String convertVersionToString(EDataType eDataType, Object instanceValue)
-  {
-    return super.convertToString(eDataType, instanceValue);
   }
 
   /**

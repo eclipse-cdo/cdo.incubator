@@ -8,14 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.6 2008-08-01 09:36:25 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.7 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
 import org.eclipse.net4j.pop.base.Displayable;
 import org.eclipse.net4j.pop.base.Identifiable;
 import org.eclipse.net4j.pop.base.PopElement;
-import org.eclipse.net4j.pop.project.*;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;

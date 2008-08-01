@@ -8,16 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ReleaseImpl.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: ReleaseImpl.java,v 1.6 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.base.Version;
 import org.eclipse.net4j.pop.project.IntegrationStream;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.Milestone;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
-import org.eclipse.net4j.pop.project.Version;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;

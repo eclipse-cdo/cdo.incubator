@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.7 2008-08-01 09:36:24 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.8 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -16,7 +16,6 @@ import org.eclipse.net4j.pop.base.BasePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -377,7 +376,7 @@ public interface ProjectPackage extends EPackage
   int BRANCH__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Branches</b></em>' reference list.
+   * The feature id for the '<em><b>Branches</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
@@ -427,7 +426,7 @@ public interface ProjectPackage extends EPackage
   int MAIN_BRANCH__NAME = BRANCH__NAME;
 
   /**
-   * The feature id for the '<em><b>Branches</b></em>' reference list.
+   * The feature id for the '<em><b>Branches</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
@@ -487,7 +486,7 @@ public interface ProjectPackage extends EPackage
   int SUB_BRANCH__NAME = BRANCH__NAME;
 
   /**
-   * The feature id for the '<em><b>Branches</b></em>' reference list.
+   * The feature id for the '<em><b>Branches</b></em>' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
@@ -520,7 +519,7 @@ public interface ProjectPackage extends EPackage
   int SUB_BRANCH__TAG = BRANCH_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Parent</b></em>' reference.
+   * The feature id for the '<em><b>Parent</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
@@ -1299,15 +1298,6 @@ public interface ProjectPackage extends EPackage
   int MERGE_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 4;
 
   /**
-   * The meta object id for the '<em>Version</em>' data type.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see org.eclipse.net4j.pop.project.Version
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getVersion()
-   * @generated
-   */
-  int VERSION = 20;
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.PopProject <em>Pop Project</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -1611,9 +1601,9 @@ public interface ProjectPackage extends EPackage
   EAttribute getBranch_Name();
 
   /**
-   * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Branches</em>'.
+   * @return the meta object for the containment reference list '<em>Branches</em>'.
    * @see org.eclipse.net4j.pop.project.Branch#getBranches()
    * @see #getBranch()
    * @generated
@@ -1671,9 +1661,9 @@ public interface ProjectPackage extends EPackage
   EClass getSubBranch();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}'.
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.project.SubBranch#getParent <em>Parent</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Parent</em>'.
+   * @return the meta object for the container reference '<em>Parent</em>'.
    * @see org.eclipse.net4j.pop.project.SubBranch#getParent()
    * @see #getSubBranch()
    * @generated
@@ -2108,17 +2098,6 @@ public interface ProjectPackage extends EPackage
   EReference getMerge_Delivery();
 
   /**
-   * Returns the meta object for data type '{@link org.eclipse.net4j.pop.project.Version <em>Version</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for data type '<em>Version</em>'.
-   * @see org.eclipse.net4j.pop.project.Version
-   * @model instanceClass="org.eclipse.net4j.pop.project.Version"
-   * @generated
-   */
-  EDataType getVersion();
-
-  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the factory that creates the instances of the model.
@@ -2388,7 +2367,7 @@ public interface ProjectPackage extends EPackage
     EAttribute BRANCH__NAME = eINSTANCE.getBranch_Name();
 
     /**
-     * The meta object literal for the '<em><b>Branches</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Branches</b></em>' containment reference list feature.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * @generated
@@ -2438,7 +2417,7 @@ public interface ProjectPackage extends EPackage
     EClass SUB_BRANCH = eINSTANCE.getSubBranch();
 
     /**
-     * The meta object literal for the '<em><b>Parent</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * @generated
@@ -2792,15 +2771,6 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference MERGE__DELIVERY = eINSTANCE.getMerge_Delivery();
-
-    /**
-     * The meta object literal for the '<em>Version</em>' data type.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @see org.eclipse.net4j.pop.project.Version
-     * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getVersion()
-     * @generated
-     */
-    EDataType VERSION = eINSTANCE.getVersion();
 
   }
 

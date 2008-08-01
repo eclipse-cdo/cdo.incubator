@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranch.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: SubBranch.java,v 1.6 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -29,18 +29,18 @@ package org.eclipse.net4j.pop.project;
 public interface SubBranch extends Branch, TaggedElement
 {
   /**
-   * Returns the value of the '<em><b>Parent</b></em>' reference.
+   * Returns the value of the '<em><b>Parent</b></em>' container reference.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Branch#getBranches <em>Branches</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parent</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Parent</em>' reference.
+   * @return the value of the '<em>Parent</em>' container reference.
    * @see #setParent(Branch)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getSubBranch_Parent()
    * @see org.eclipse.net4j.pop.project.Branch#getBranches
-   * @model opposite="branches" required="true"
+   * @model opposite="branches" required="true" transient="false"
    * @generated
    */
   Branch getParent();

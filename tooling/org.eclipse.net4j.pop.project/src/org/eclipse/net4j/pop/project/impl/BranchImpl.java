@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.5 2008-08-01 09:36:24 estepper Exp $
+ * $Id: BranchImpl.java,v 1.6 2008-08-01 09:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -67,7 +66,7 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getBranches() <em>Branches</em>}' reference list.
+   * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
    * <!-- begin-user-doc --> <!--
    * end-user-doc -->
    * @see #getBranches()
@@ -144,7 +143,7 @@ public abstract class BranchImpl extends EObjectImpl implements Branch
   {
     if (branches == null)
     {
-      branches = new EObjectWithInverseResolvingEList<SubBranch>(SubBranch.class, this,
+      branches = new EObjectContainmentWithInverseEList<SubBranch>(SubBranch.class, this,
           ProjectPackage.BRANCH__BRANCHES, ProjectPackage.SUB_BRANCH__PARENT);
     }
     return branches;
