@@ -13,6 +13,7 @@ package org.eclipse.net4j.pop.base;
 import org.eclipse.net4j.pop.base.util.Argument;
 
 import java.text.MessageFormat;
+import java.util.StringTokenizer;
 
 /**
  * @author Eike Stepper
@@ -48,6 +49,34 @@ public final class Version implements Comparable<Version>
   public Version()
   {
     this(0);
+  }
+
+  public Version(String version)
+  {
+    StringTokenizer tokenizer = new StringTokenizer(version, ".");
+    if (!tokenizer.hasMoreTokens())
+    {
+      return;
+    }
+
+    major = Integer.parseInt(tokenizer.nextToken());
+    if (!tokenizer.hasMoreTokens())
+    {
+      return;
+    }
+
+    minor = Integer.parseInt(tokenizer.nextToken());
+    if (!tokenizer.hasMoreTokens())
+    {
+      return;
+    }
+
+    micro = Integer.parseInt(tokenizer.nextToken());
+  }
+
+  public static Version parseVersion(String version)
+  {
+    return new Version(version);
   }
 
   public int getMajor()
