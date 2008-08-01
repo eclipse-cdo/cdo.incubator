@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.1 2008-08-01 07:30:19 estepper Exp $
+ $Id: plugin.xml,v 1.2 2008-08-01 08:34:37 estepper Exp $
 -->
 
 <plugin>
@@ -38,7 +38,7 @@
             icon="icons/full/obj16/ProjectModelFile.gif"
             class="org.eclipse.net4j.pop.project.editor.ProjectEditor"
             contributorClass="org.eclipse.net4j.pop.project.editor.ProjectActionBarContributor">
-         <contentTypeBinding contentTypeId="net4j.pop.project"/>
+         <contentTypeBinding contentTypeId="pop.project"/>
       </editor>
    </extension>
 

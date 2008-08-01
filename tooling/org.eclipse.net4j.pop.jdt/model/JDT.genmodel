@@ -9,8 +9,9 @@
     fontProviders="true" usedGenPackages="../../org.eclipse.net4j.pop.product/model/Product.genmodel#//product ../../org.eclipse.net4j.pop.project/model/Project.genmodel#//project">
   <foreignModel>JDT.ecore</foreignModel>
   <genPackages prefix="JDT" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
-      multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
-      contentTypeIdentifier="net4j.pop.jdt" fileExtensions="jdt.xml" ecorePackage="JDT.ecore#/">
+      presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
+      childCreationExtenders="true" contentTypeIdentifier="pop.jdt" fileExtensions="pop.xml"
+      ecorePackage="JDT.ecore#/">
     <genClasses ecoreClass="JDT.ecore#//JREChecker"/>
     <genClasses ecoreClass="JDT.ecore#//FormatterProfileConfigurator"/>
   </genPackages>

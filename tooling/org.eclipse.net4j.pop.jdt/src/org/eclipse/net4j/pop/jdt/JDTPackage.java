@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTPackage.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ * $Id: JDTPackage.java,v 1.3 2008-08-01 08:34:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt;
 
@@ -45,21 +45,21 @@ public interface JDTPackage extends EPackage
    * 
    * @generated
    */
-  String eNS_URI = "http://www.eclipse.org/net4j/pop/product/jdt/1.0.0"; //$NON-NLS-1$
+  String eNS_URI = "http://www.eclipse.org/pop/jdt/1.0.0"; //$NON-NLS-1$
 
   /**
    * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  String eNS_PREFIX = "net4j.pop.jdt"; //$NON-NLS-1$
+  String eNS_PREFIX = "pop.jdt"; //$NON-NLS-1$
 
   /**
    * The package content type ID. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  String eCONTENT_TYPE = "net4j.pop.jdt"; //$NON-NLS-1$
+  String eCONTENT_TYPE = "pop.jdt"; //$NON-NLS-1$
 
   /**
    * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectActionBarContributor.java,v 1.2 2008-08-01 08:15:20 estepper Exp $
+ * $Id: ProjectActionBarContributor.java,v 1.3 2008-08-01 08:34:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.editor;
 

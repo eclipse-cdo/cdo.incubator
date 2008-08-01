@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductPackage.java,v 1.3 2008-08-01 08:14:44 estepper Exp $
+ * $Id: ProductPackage.java,v 1.4 2008-08-01 08:34:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 
@@ -45,21 +45,21 @@ public interface ProductPackage extends EPackage
    * 
    * @generated
    */
-  String eNS_URI = "http://www.eclipse.org/net4j/pop/product/1.0.0"; //$NON-NLS-1$
+  String eNS_URI = "http://www.eclipse.org/pop/product/1.0.0"; //$NON-NLS-1$
 
   /**
    * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  String eNS_PREFIX = "net4j.pop.product"; //$NON-NLS-1$
+  String eNS_PREFIX = "pop.product"; //$NON-NLS-1$
 
   /**
    * The package content type ID. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  String eCONTENT_TYPE = "net4j.pop.product"; //$NON-NLS-1$
+  String eCONTENT_TYPE = "pop.product"; //$NON-NLS-1$
 
   /**
    * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.4 2008-08-01 08:15:16 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.5 2008-08-01 08:34:23 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -54,7 +54,7 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
     try
     {
       ProjectFactory theProjectFactory = (ProjectFactory)EPackage.Registry.INSTANCE
-          .getEFactory("http://www.eclipse.org/net4j/pop/project/1.0.0"); //$NON-NLS-1$ 
+          .getEFactory("http://www.eclipse.org/pop/project/1.0.0"); //$NON-NLS-1$ 
       if (theProjectFactory != null)
       {
         return theProjectFactory;

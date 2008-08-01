@@ -11,7 +11,7 @@
   <foreignModel>Project.ecore</foreignModel>
   <genPackages prefix="Project" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
-      childCreationExtenders="true" contentTypeIdentifier="net4j.pop.project" fileExtensions="project.xml"
+      childCreationExtenders="true" contentTypeIdentifier="pop.project" fileExtensions="pop.xml"
       ecorePackage="Project.ecore#/">
     <genDataTypes ecoreDataType="Project.ecore#//Version"/>
     <genClasses ecoreClass="Project.ecore#//PopProject">

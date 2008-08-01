@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="product"
-    nsURI="http://www.eclipse.org/net4j/pop/product/1.0.0" nsPrefix="net4j.pop.product">
+    nsURI="http://www.eclipse.org/pop/product/1.0.0" nsPrefix="pop.product">
   <eClassifiers xsi:type="ecore:EClass" name="PopProduct">
     <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
         eType="ecore:EClass ../../org.eclipse.net4j.pop.project/model/Project.ecore#//PopProject"/>

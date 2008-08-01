@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductFactoryImpl.java,v 1.3 2008-08-01 08:14:45 estepper Exp $
+ * $Id: ProductFactoryImpl.java,v 1.4 2008-08-01 08:34:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -45,7 +45,7 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
     try
     {
       ProductFactory theProductFactory = (ProductFactory)EPackage.Registry.INSTANCE
-          .getEFactory("http://www.eclipse.org/net4j/pop/product/1.0.0"); //$NON-NLS-1$ 
+          .getEFactory("http://www.eclipse.org/pop/product/1.0.0"); //$NON-NLS-1$ 
       if (theProductFactory != null)
       {
         return theProductFactory;

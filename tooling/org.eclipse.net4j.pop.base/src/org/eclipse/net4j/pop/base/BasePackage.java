@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackage.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
+ * $Id: BasePackage.java,v 1.3 2008-08-01 08:34:08 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
@@ -44,21 +44,21 @@ public interface BasePackage extends EPackage
    * 
    * @generated
    */
-  String eNS_URI = "http://www.eclipse.org/net4j/pop/base/1.0.0"; //$NON-NLS-1$
+  String eNS_URI = "http://www.eclipse.org/pop/base/1.0.0"; //$NON-NLS-1$
 
   /**
    * The package namespace name. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  String eNS_PREFIX = "net4j.pop.base"; //$NON-NLS-1$
+  String eNS_PREFIX = "pop.base"; //$NON-NLS-1$
 
   /**
    * The package content type ID. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  String eCONTENT_TYPE = "net4j.pop.base"; //$NON-NLS-1$
+  String eCONTENT_TYPE = "pop.base"; //$NON-NLS-1$
 
   /**
    * The singleton instance of the package. <!-- begin-user-doc --> <!-- end-user-doc -->

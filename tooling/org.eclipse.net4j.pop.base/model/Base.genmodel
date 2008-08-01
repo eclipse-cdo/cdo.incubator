@@ -9,8 +9,9 @@
     fontProviders="true">
   <foreignModel>Base.ecore</foreignModel>
   <genPackages prefix="Base" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
-      multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
-      contentTypeIdentifier="net4j.pop.base" fileExtensions="base.xml" ecorePackage="Base.ecore#/">
+      presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
+      childCreationExtenders="true" contentTypeIdentifier="pop.base" fileExtensions="pop.xml"
+      ecorePackage="Base.ecore#/">
     <genDataTypes ecoreDataType="Base.ecore#//Version"/>
     <genClasses image="false" ecoreClass="Base.ecore#//Identifiable">
       <genOperations ecoreOperation="Base.ecore#//Identifiable/getId"/>
@@ -18,5 +19,6 @@
     <genClasses image="false" ecoreClass="Base.ecore#//Displayable">
       <genOperations ecoreOperation="Base.ecore#//Displayable/getDisplayString"/>
     </genClasses>
+    <genClasses ecoreClass="Base.ecore#//PopElement"/>
   </genPackages>
 </genmodel:GenModel>

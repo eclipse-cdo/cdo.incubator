@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.1 2008-08-01 07:30:19 estepper Exp $
+ $Id: plugin.xml,v 1.2 2008-08-01 08:34:10 estepper Exp $
 -->
 
 <plugin>
@@ -38,7 +38,7 @@
             icon="icons/full/obj16/ProductModelFile.gif"
             class="org.eclipse.net4j.pop.product.editor.ProductEditor"
             contributorClass="org.eclipse.net4j.pop.product.editor.ProductActionBarContributor">
-         <contentTypeBinding contentTypeId="net4j.pop.product"/>
+         <contentTypeBinding contentTypeId="pop.product"/>
       </editor>
    </extension>
 

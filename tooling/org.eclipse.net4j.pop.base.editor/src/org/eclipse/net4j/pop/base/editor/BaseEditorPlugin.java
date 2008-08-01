@@ -8,9 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseEditorPlugin.java,v 1.2 2008-08-01 08:14:48 estepper Exp $
+ * $Id: BaseEditorPlugin.java,v 1.1 2008-08-01 08:34:03 estepper Exp $
  */
-package org.eclipse.net4j.pop.base.presentation;
+package org.eclipse.net4j.pop.base.editor;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;

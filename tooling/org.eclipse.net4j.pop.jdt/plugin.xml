@@ -11,14 +11,14 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ $Id: plugin.xml,v 1.3 2008-08-01 08:34:12 estepper Exp $
 -->
 
 <plugin>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="http://www.eclipse.org/net4j/pop/product/jdt/1.0.0"
+            uri="http://www.eclipse.org/pop/jdt/1.0.0"
             class="org.eclipse.net4j.pop.jdt.provider.JDTItemProviderAdapterFactory"
             supportedTypes=
               "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
@@ -32,32 +32,32 @@
 
    <extension point="org.eclipse.emf.edit.childCreationExtenders">
       <extender
-            uri="http://www.eclipse.org/net4j/pop/product/1.0.0"
+            uri="http://www.eclipse.org/pop/product/1.0.0"
             class="org.eclipse.net4j.pop.jdt.provider.JDTItemProviderAdapterFactory$ProductChildCreationExtender"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.generated_package">
       <package
-            uri="http://www.eclipse.org/net4j/pop/product/jdt/1.0.0"
+            uri="http://www.eclipse.org/pop/jdt/1.0.0"
             class="org.eclipse.net4j.pop.jdt.JDTPackage"
             genModel="model/JDT.genmodel"/>
    </extension>
 
    <extension point="org.eclipse.emf.ecore.content_parser">
       <parser
-            contentTypeIdentifier="net4j.pop.jdt"
+            contentTypeIdentifier="pop.jdt"
             class="org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl"/>
    </extension>
 
    <extension point="org.eclipse.core.runtime.contentTypes">
       <content-type
             base-type="org.eclipse.emf.ecore.xmi"
-            file-extensions="jdt.xml"
-            id="net4j.pop.jdt"
+            file-extensions="pop.xml"
+            id="pop.jdt"
             name="%_UI_JDT_content_type"
             priority="normal">
          <describer class="org.eclipse.emf.ecore.xmi.impl.RootXMLContentHandlerImpl$Describer">
-            <parameter name="namespace" value="http://www.eclipse.org/net4j/pop/product/jdt/1.0.0"/>
+            <parameter name="namespace" value="http://www.eclipse.org/pop/jdt/1.0.0"/>
             <parameter name="kind" value="xmi"/>
          </describer>
       </content-type>

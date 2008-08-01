@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTFactoryImpl.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ * $Id: JDTFactoryImpl.java,v 1.3 2008-08-01 08:34:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.impl;
 
@@ -40,7 +40,7 @@ public class JDTFactoryImpl extends EFactoryImpl implements JDTFactory
     try
     {
       JDTFactory theJDTFactory = (JDTFactory)EPackage.Registry.INSTANCE
-          .getEFactory("http://www.eclipse.org/net4j/pop/product/jdt/1.0.0"); //$NON-NLS-1$ 
+          .getEFactory("http://www.eclipse.org/pop/jdt/1.0.0"); //$NON-NLS-1$ 
       if (theJDTFactory != null)
       {
         return theJDTFactory;

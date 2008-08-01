@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0"
     xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pde"
-    nsURI="http://www.eclipse.org/net4j/pop/product/pde/1.0.0" nsPrefix="net4j.pop.pde">
+    nsURI="http://www.eclipse.org/pop/pde/1.0.0" nsPrefix="pop.pde">
   <eClassifiers xsi:type="ecore:EClass" name="TargetPlatformChecker" eSuperTypes="../../org.eclipse.net4j.pop.jdt/model/JDT.ecore#//JREChecker"/>
   <eClassifiers xsi:type="ecore:EClass" name="PDEConfigurator" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.product/model/Product.ecore#//WorkspaceConfigurator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="allEntities" upperBound="-1"

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseFactoryImpl.java,v 1.2 2008-08-01 08:14:34 estepper Exp $
+ * $Id: BaseFactoryImpl.java,v 1.3 2008-08-01 08:34:08 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -41,7 +41,7 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
     try
     {
       BaseFactory theBaseFactory = (BaseFactory)EPackage.Registry.INSTANCE
-          .getEFactory("http://www.eclipse.org/net4j/pop/base/1.0.0"); //$NON-NLS-1$ 
+          .getEFactory("http://www.eclipse.org/pop/base/1.0.0"); //$NON-NLS-1$ 
       if (theBaseFactory != null)
       {
         return theBaseFactory;

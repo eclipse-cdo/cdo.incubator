@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEFactoryImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEFactoryImpl.java,v 1.3 2008-08-01 08:34:29 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -49,7 +49,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
     try
     {
       PDEFactory thePDEFactory = (PDEFactory)EPackage.Registry.INSTANCE
-          .getEFactory("http://www.eclipse.org/net4j/pop/product/pde/1.0.0"); //$NON-NLS-1$ 
+          .getEFactory("http://www.eclipse.org/pop/pde/1.0.0"); //$NON-NLS-1$ 
       if (thePDEFactory != null)
       {
         return thePDEFactory;
