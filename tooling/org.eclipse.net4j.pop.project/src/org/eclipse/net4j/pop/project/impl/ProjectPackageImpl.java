@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.11 2008-08-01 18:29:00 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.12 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -1166,7 +1166,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEAttribute(
         getCommitter_Active(),
         ecorePackage.getEBoolean(),
-        "active", null, 1, 1, Committer.class, IS_TRANSIENT, IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "active", null, 1, 1, Committer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     op = addEOperation(committerEClass, null, "deactivate", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "exit", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -1243,11 +1243,11 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getMerge_Stream(),
         "merges", null, 0, -1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    addEOperation(streamEClass, this.getPopProject(), "pop", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEOperation(streamEClass, this.getPopProject(), "getPopProject", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-    addEOperation(streamEClass, this.getStream(), "parent", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEOperation(streamEClass, this.getStream(), "getParent", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-    addEOperation(streamEClass, this.getStream(), "streams", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEOperation(streamEClass, this.getStream(), "getStreams", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     op = addEOperation(streamEClass, this.getMerge(), "merge", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$

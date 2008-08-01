@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Committer.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: Committer.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -204,23 +204,11 @@ public interface Committer extends PopElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Active</em>' attribute.
-   * @see #setActive(boolean)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Active()
-   * @model required="true" transient="true" volatile="true" derived="true"
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   boolean isActive();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#isActive <em>Active</em>}' attribute. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Active</em>' attribute.
-   * @see #isActive()
-   * @generated
-   */
-  void setActive(boolean value);
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->

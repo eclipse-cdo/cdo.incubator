@@ -8,13 +8,15 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: TaskStreamImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.IntegrationStream;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.Target;
 import org.eclipse.net4j.pop.project.TaskStream;
 
@@ -266,12 +268,11 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public Delivery deliver(String id, Date date)
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
+    // TODO: implement TaskStreamImpl.deliver(id, date)
     throw new UnsupportedOperationException();
   }
 
@@ -471,4 +472,23 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   {
     return getTaskId();
   }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public PopProject getPopProject()
+  {
+    return getParent().getPopProject();
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public void collectStreams(EList<Stream> streams)
+  {
+    // Do nothing
+  }
+
 } // TaskStreamImpl

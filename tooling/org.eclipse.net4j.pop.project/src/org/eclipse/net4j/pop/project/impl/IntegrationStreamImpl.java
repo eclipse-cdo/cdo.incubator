@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.IntegrationStream;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.TaskStream;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -160,24 +161,22 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public TaskStream startTask(String taskId, Date baseline)
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
+    // TODO: implement IntegrationStreamImpl.startTask(taskId, baseline)
     throw new UnsupportedOperationException();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public Release addRelease(Date date)
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
+    // TODO: implement IntegrationStreamImpl.addRelease(date)
     throw new UnsupportedOperationException();
   }
 
@@ -331,5 +330,14 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   public String getIdValue()
   {
     return getName();
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public void collectStreams(EList<Stream> streams)
+  {
+    streams.addAll(getTaskStreams());
   }
 } // IntegrationStreamImpl

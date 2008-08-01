@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: StreamImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -22,6 +22,7 @@ import org.eclipse.net4j.pop.project.Stream;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -177,48 +178,42 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public PopProject pop()
-  {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
+  public abstract PopProject getPopProject();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public Stream parent()
-  {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
+  public abstract Stream getParent();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public EList<Stream> streams()
+  public EList<Stream> getStreams()
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    EList<Stream> streams = new BasicEList<Stream>();
+    collectStreams(streams);
+    return streams;
   }
+
+  /**
+   * @ADDED
+   */
+  public abstract void collectStreams(EList<Stream> streams);
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public Merge merge(Date date, Delivery delivery)
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
+    // TODO: implement StreamImpl.merge(date, delivery)
     throw new UnsupportedOperationException();
   }
 

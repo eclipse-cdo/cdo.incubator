@@ -43,8 +43,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="entry" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="exit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" volatile="true"
-        transient="true" derived="true"/>
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaggedElement" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tag" lowerBound="1" eType="#//Tag"
@@ -75,9 +75,9 @@
         eType="#//Branch" eOpposite="#//Branch/branches"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stream" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
-    <eOperations name="pop" lowerBound="1" eType="#//PopProject"/>
-    <eOperations name="parent" eType="#//Stream"/>
-    <eOperations name="streams" upperBound="-1" eType="#//Stream"/>
+    <eOperations name="getPopProject" lowerBound="1" eType="#//PopProject"/>
+    <eOperations name="getParent" eType="#//Stream"/>
+    <eOperations name="getStreams" upperBound="-1" eType="#//Stream"/>
     <eOperations name="merge" lowerBound="1" eType="#//Merge">
       <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
       <eParameters name="delivery" lowerBound="1" eType="#//Delivery"/>

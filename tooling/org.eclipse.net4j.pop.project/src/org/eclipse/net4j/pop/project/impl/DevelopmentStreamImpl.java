@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.7 2008-08-01 11:01:46 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.8 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.project.DevelopmentStream;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.Stream;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -54,6 +55,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected DevelopmentStreamImpl()
@@ -63,6 +65,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -73,6 +76,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<MaintenanceStream> getMaintenanceStreams()
@@ -87,17 +91,18 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * 
+   * @generated NOT
    */
   public Release addRelease(Date date, boolean compatible, int increment)
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
+    // TODO: implement DevelopmentStreamImpl.addRelease(date, compatible, increment)
     throw new UnsupportedOperationException();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -114,6 +119,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -129,6 +135,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -144,6 +151,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -162,6 +170,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -178,6 +187,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -191,4 +201,22 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
     return super.eIsSet(featureID);
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public Stream getParent()
+  {
+    return null;
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public void collectStreams(EList<Stream> streams)
+  {
+    streams.addAll(getMaintenanceStreams());
+    super.collectStreams(streams);
+  }
 } // DevelopmentStreamImpl

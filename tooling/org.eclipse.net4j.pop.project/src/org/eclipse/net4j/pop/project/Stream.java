@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Stream.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: Stream.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -82,25 +82,28 @@ public interface Stream extends PopElement
   EList<Merge> getMerges();
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true"
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation" required="true"
    * @generated
    */
-  PopProject pop();
+  PopProject getPopProject();
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
    * @generated
    */
-  Stream parent();
+  Stream getParent();
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
    * @generated
    */
-  EList<Stream> streams();
+  EList<Stream> getStreams();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
