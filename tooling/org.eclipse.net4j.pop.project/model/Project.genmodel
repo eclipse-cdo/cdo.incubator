@@ -11,7 +11,7 @@
   <foreignModel>Project.ecore</foreignModel>
   <genPackages prefix="Project" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
-      childCreationExtenders="true" contentTypeIdentifier="pop.project" fileExtensions="pop.xml"
+      childCreationExtenders="true" contentTypeIdentifier="pop.project" fileExtensions="xml"
       ecorePackage="Project.ecore#/">
     <genDataTypes ecoreDataType="Project.ecore#//Version"/>
     <genClasses ecoreClass="Project.ecore#//PopProject">
@@ -19,7 +19,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/codeRepository"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/rootStream"/>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//CodeRepository">
+    <genClasses ecoreClass="Project.ecore#//CodeRepository" labelFeature="#//project/CodeRepository/repositoryUrl">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRepository/teamProvider"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRepository/repositoryUrl"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//CodeRepository/codeRoots"/>

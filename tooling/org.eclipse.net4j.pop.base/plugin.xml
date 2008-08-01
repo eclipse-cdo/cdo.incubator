@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.2 2008-08-01 08:34:08 estepper Exp $
+ $Id: plugin.xml,v 1.3 2008-08-01 09:36:09 estepper Exp $
 -->
 
 <plugin>
@@ -46,7 +46,7 @@
    <extension point="org.eclipse.core.runtime.contentTypes">
       <content-type
             base-type="org.eclipse.emf.ecore.xmi"
-            file-extensions="pop.xml"
+            file-extensions="xml"
             id="pop.base"
             name="%_UI_Base_content_type"
             priority="normal">

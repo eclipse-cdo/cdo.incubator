@@ -10,7 +10,7 @@
   <foreignModel>Base.ecore</foreignModel>
   <genPackages prefix="Base" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
-      childCreationExtenders="true" contentTypeIdentifier="pop.base" fileExtensions="pop.xml"
+      childCreationExtenders="true" contentTypeIdentifier="pop.base" fileExtensions="xml"
       ecorePackage="Base.ecore#/">
     <genDataTypes ecoreDataType="Base.ecore#//Version"/>
     <genClasses image="false" ecoreClass="Base.ecore#//Identifiable">

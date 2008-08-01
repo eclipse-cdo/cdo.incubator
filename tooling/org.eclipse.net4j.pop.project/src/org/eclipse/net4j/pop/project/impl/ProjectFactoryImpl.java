@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.5 2008-08-01 08:34:23 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.6 2008-08-01 09:36:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -36,17 +36,17 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+import org.eclipse.net4j.pop.project.*;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 {
   /**
-   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static ProjectFactory init()
@@ -68,8 +68,8 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   }
 
   /**
-   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProjectFactoryImpl()
@@ -79,7 +79,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -122,7 +121,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -139,7 +137,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -156,7 +153,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject createPopProject()
@@ -167,7 +163,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRepository createCodeRepository()
@@ -178,7 +173,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CodeRoot createCodeRoot()
@@ -189,7 +183,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Committer createCommitter()
@@ -200,7 +193,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag createTag()
@@ -211,7 +203,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MainBranch createMainBranch()
@@ -222,7 +213,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public SubBranch createSubBranch()
@@ -233,7 +223,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TaskStream createTaskStream()
@@ -244,7 +233,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MaintenanceStream createMaintenanceStream()
@@ -255,7 +243,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public RootStream createRootStream()
@@ -266,7 +253,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release createRelease()
@@ -277,7 +263,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Milestone createMilestone()
@@ -288,7 +273,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Delivery createDelivery()
@@ -299,7 +283,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Merge createMerge()
@@ -310,7 +293,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Version createVersionFromString(EDataType eDataType, String initialValue)
@@ -320,7 +302,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String convertVersionToString(EDataType eDataType, Object instanceValue)
@@ -330,7 +311,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ProjectPackage getProjectPackage()
@@ -340,7 +320,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @deprecated
    * @generated
    */

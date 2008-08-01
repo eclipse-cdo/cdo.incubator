@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseModelWizard.java,v 1.1 2008-08-01 08:34:03 estepper Exp $
+ * $Id: BaseModelWizard.java,v 1.2 2008-08-01 09:36:08 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.editor;
 
-import org.eclipse.net4j.pop.base.BaseFactory;
 import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.base.util.BasePlugin;
 
@@ -20,7 +19,9 @@ import org.eclipse.emf.common.CommonPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EFactory;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -61,7 +62,6 @@ import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.ISetSelectionTarget;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -80,32 +80,30 @@ public class BaseModelWizard extends Wizard implements INewWizard
   /**
    * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
-      .asList(BaseEditorPlugin.INSTANCE.getString("_UI_BaseEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
+  private List<String> FILE_EXTENSIONS;
 
   /**
    * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public static final String FORMATTED_FILE_EXTENSIONS = BaseEditorPlugin.INSTANCE.getString(
-      "_UI_BaseEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
+  private String FORMATTED_FILE_EXTENSIONS;
 
   /**
    * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  protected BasePackage basePackage = BasePackage.eINSTANCE;
+  protected EPackage basePackage;
 
   /**
    * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  protected BaseFactory baseFactory = basePackage.getBaseFactory();
+  protected EFactory baseFactory;
 
   /**
    * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -144,6 +142,17 @@ public class BaseModelWizard extends Wizard implements INewWizard
   protected List<String> initialObjectNames;
 
   /**
+   * @ADDED
+   */
+  protected BaseModelWizard(EPackage ePackage, List<String> fileExtensions, String formattedFileExtensions)
+  {
+    basePackage = ePackage;
+    baseFactory = ePackage.getEFactoryInstance();
+    FILE_EXTENSIONS = fileExtensions;
+    FORMATTED_FILE_EXTENSIONS = formattedFileExtensions;
+  }
+
+  /**
    * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -161,27 +170,35 @@ public class BaseModelWizard extends Wizard implements INewWizard
    * Returns the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
-   * @generated
+   * @generated NOI
    */
-  protected Collection<String> getInitialObjectNames()
+  protected final Collection<String> getInitialObjectNames()
   {
     if (initialObjectNames == null)
     {
       initialObjectNames = new ArrayList<String>();
-      for (EClassifier eClassifier : basePackage.getEClassifiers())
-      {
-        if (eClassifier instanceof EClass)
-        {
-          EClass eClass = (EClass)eClassifier;
-          if (!eClass.isAbstract())
-          {
-            initialObjectNames.add(eClass.getName());
-          }
-        }
-      }
+      collectInitialObjectNames();
       Collections.sort(initialObjectNames, CommonPlugin.INSTANCE.getComparator());
     }
     return initialObjectNames;
+  }
+
+  /**
+   * @ADDED
+   */
+  protected void collectInitialObjectNames()
+  {
+    for (EClassifier eClassifier : basePackage.getEClassifiers())
+    {
+      if (eClassifier instanceof EClass)
+      {
+        EClass eClass = (EClass)eClassifier;
+        if (!eClass.isAbstract())
+        {
+          initialObjectNames.add(eClass.getName());
+        }
+      }
+    }
   }
 
   /**

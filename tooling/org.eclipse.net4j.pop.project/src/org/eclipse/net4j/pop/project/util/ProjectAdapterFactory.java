@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectAdapterFactory.java,v 1.5 2008-08-01 08:41:19 estepper Exp $
+ * $Id: ProjectAdapterFactory.java,v 1.6 2008-08-01 09:36:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
 import org.eclipse.net4j.pop.base.Displayable;
 import org.eclipse.net4j.pop.base.Identifiable;
 import org.eclipse.net4j.pop.base.PopElement;
+import org.eclipse.net4j.pop.project.*;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.CodeRepository;
 import org.eclipse.net4j.pop.project.CodeRoot;
@@ -45,22 +46,21 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
  * method for each class of the model. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage
  * @generated
  */
 public class ProjectAdapterFactory extends AdapterFactoryImpl
 {
   /**
-   * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached model package.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected static ProjectPackage modelPackage;
 
   /**
-   * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the adapter factory.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProjectAdapterFactory()
@@ -72,10 +72,10 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This implementation
+   * Returns whether this factory is applicable for the type of the object.
+   * <!-- begin-user-doc --> This implementation
    * returns <code>true</code> if the object is either the model's package or is an instance object of the model. <!--
    * end-user-doc -->
-   * 
    * @return whether this factory is applicable for the type of the object.
    * @generated
    */
@@ -94,8 +94,8 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The switch that delegates to the <code>createXXX</code> methods.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected ProjectSwitch<Adapter> modelSwitch = new ProjectSwitch<Adapter>()
@@ -246,10 +246,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   };
 
   /**
-   * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param target
-   *          the object to adapt.
+   * Creates an adapter for the <code>target</code>.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param target the object to adapt.
    * @return the adapter for the <code>target</code>.
    * @generated
    */
@@ -260,10 +259,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.PopProject <em>Pop Project</em>}
-   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.PopProject <em>Pop Project</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.PopProject
    * @generated
@@ -274,10 +272,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.CodeRepository
-   * <em>Code Repository</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.CodeRepository <em>Code Repository</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily
    * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.CodeRepository
    * @generated
@@ -291,7 +288,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.CodeRoot <em>Code Root</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.CodeRoot
    * @generated
@@ -305,7 +301,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.Committer <em>Committer</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.Committer
    * @generated
@@ -316,10 +311,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.TaggedElement
-   * <em>Tagged Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.TaggedElement <em>Tagged Element</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily
    * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.TaggedElement
    * @generated
@@ -358,10 +352,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.MainBranch <em>Main Branch</em>}
-   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.MainBranch <em>Main Branch</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.MainBranch
    * @generated
@@ -375,7 +368,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.SubBranch <em>Sub Branch</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.SubBranch
    * @generated
@@ -400,10 +392,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.TaskStream <em>Task Stream</em>}
-   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.TaskStream <em>Task Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.TaskStream
    * @generated
@@ -414,11 +405,10 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.IntegrationStream
-   * <em>Integration Stream</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.IntegrationStream <em>Integration Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.IntegrationStream
    * @generated
@@ -429,11 +419,10 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.DevelopmentStream
-   * <em>Development Stream</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.DevelopmentStream <em>Development Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.DevelopmentStream
    * @generated
@@ -444,11 +433,10 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.MaintenanceStream
-   * <em>Maintenance Stream</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.MaintenanceStream <em>Maintenance Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.MaintenanceStream
    * @generated
@@ -459,10 +447,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.RootStream <em>Root Stream</em>}
-   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.RootStream <em>Root Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.RootStream
    * @generated
@@ -504,7 +491,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.Milestone <em>Milestone</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.Milestone
    * @generated
@@ -518,7 +504,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.Delivery <em>Delivery</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.project.Delivery
    * @generated
@@ -543,10 +528,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.Identifiable <em>Identifiable</em>}
-   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.Identifiable <em>Identifiable</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.base.Identifiable
    * @generated
@@ -560,7 +544,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.Displayable <em>Displayable</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.base.Displayable
    * @generated
@@ -574,7 +557,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.base.PopElement <em>Pop Element</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.base.PopElement
    * @generated
@@ -585,9 +567,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null. <!--
+   * Creates a new adapter for the default case.
+   * <!-- begin-user-doc --> This default implementation returns null. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @generated
    */

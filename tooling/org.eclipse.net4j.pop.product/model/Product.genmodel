@@ -11,7 +11,7 @@
   <foreignModel>Product.ecore</foreignModel>
   <genPackages prefix="Product" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
-      childCreationExtenders="true" contentTypeIdentifier="pop.product" fileExtensions="pop.xml"
+      childCreationExtenders="true" contentTypeIdentifier="pop.product" fileExtensions="xml"
       ecorePackage="Product.ecore#/">
     <genClasses ecoreClass="Product.ecore#//PopProduct">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//PopProduct/popProject"/>
