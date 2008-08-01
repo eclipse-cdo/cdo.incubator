@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: TaskStreamItemProvider.java,v 1.9 2008-08-01 19:10:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -182,7 +182,7 @@ public class TaskStreamItemProvider extends StreamItemProvider implements IEditi
   @Override
   public String getText(Object object)
   {
-    String label = ((TaskStream)object).getId();
+    String label = ((TaskStream)object).getTaskId();
     return label == null || label.length() == 0 ? getString("_UI_TaskStream_type") : //$NON-NLS-1$
         getString("_UI_TaskStream_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }

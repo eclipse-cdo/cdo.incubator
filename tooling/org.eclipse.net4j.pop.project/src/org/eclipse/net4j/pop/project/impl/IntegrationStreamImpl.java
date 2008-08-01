@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.10 2008-08-01 19:10:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -56,8 +56,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -75,9 +75,9 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected EList<TaskStream> taskStreams;
 
   /**
-   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getReleases()
    * @generated
    * @ordered
@@ -86,7 +86,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected IntegrationStreamImpl()
@@ -96,7 +95,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -107,7 +105,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -117,7 +114,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -130,7 +126,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<TaskStream> getTaskStreams()
@@ -145,7 +140,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Release> getReleases()
@@ -182,7 +176,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -201,7 +194,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -219,7 +211,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -239,7 +230,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -265,7 +255,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -288,7 +277,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -308,7 +296,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

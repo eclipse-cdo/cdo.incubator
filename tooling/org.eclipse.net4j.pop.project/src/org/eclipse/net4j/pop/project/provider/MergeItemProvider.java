@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: MergeItemProvider.java,v 1.9 2008-08-01 19:10:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -30,6 +30,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -133,7 +134,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   @Override
   public String getText(Object object)
   {
-    String label = ((Merge)object).getId();
+    Date labelValue = ((Merge)object).getDate();
+    String label = labelValue == null ? null : labelValue.toString();
     return label == null || label.length() == 0 ? getString("_UI_Merge_type") : //$NON-NLS-1$
         getString("_UI_Merge_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }

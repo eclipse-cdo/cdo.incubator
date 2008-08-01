@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ReleaseItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: ReleaseItemProvider.java,v 1.8 2008-08-01 19:10:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
+import org.eclipse.net4j.pop.base.Version;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
@@ -166,7 +167,8 @@ public class ReleaseItemProvider extends TargetItemProvider implements IEditingD
   @Override
   public String getText(Object object)
   {
-    String label = ((Release)object).getId();
+    Version labelValue = ((Release)object).getVersion();
+    String label = labelValue == null ? null : labelValue.toString();
     return label == null || label.length() == 0 ? getString("_UI_Release_type") : //$NON-NLS-1$
         getString("_UI_Release_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }

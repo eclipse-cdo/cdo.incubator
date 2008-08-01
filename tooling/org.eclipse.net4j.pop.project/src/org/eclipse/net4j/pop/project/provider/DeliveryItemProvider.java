@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryItemProvider.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: DeliveryItemProvider.java,v 1.9 2008-08-01 19:10:41 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -149,9 +149,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   @Override
   public String getText(Object object)
   {
-    String label = ((Delivery)object).getId();
-    return label == null || label.length() == 0 ? getString("_UI_Delivery_type") : //$NON-NLS-1$
-        getString("_UI_Delivery_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+    Delivery delivery = (Delivery)object;
+    return getString("_UI_Delivery_type") + " " + delivery.getNumber(); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**

@@ -35,7 +35,7 @@
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//Committer">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Committer/popProject"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/repositoryLogin"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/email"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/entry"/>
@@ -70,19 +70,18 @@
           ecoreFeature="ecore:EReference Project.ecore#//SubBranch/parent"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//Stream">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Stream/taskId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Stream/name"/>
       <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Stream/branch"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Stream/merges"/>
-      <genOperations ecoreOperation="Project.ecore#//Stream/pop"/>
-      <genOperations ecoreOperation="Project.ecore#//Stream/parent"/>
-      <genOperations ecoreOperation="Project.ecore#//Stream/streams"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/getPopProject"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/getParent"/>
+      <genOperations ecoreOperation="Project.ecore#//Stream/getStreams"/>
       <genOperations ecoreOperation="Project.ecore#//Stream/merge">
         <genParameters ecoreParameter="Project.ecore#//Stream/merge/date"/>
         <genParameters ecoreParameter="Project.ecore#//Stream/merge/delivery"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//TaskStream">
+    <genClasses ecoreClass="Project.ecore#//TaskStream" labelFeature="#//project/TaskStream/taskId">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//TaskStream/taskId"/>
       <genFeatures property="Readonly" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//TaskStream/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//TaskStream/baseline"/>
@@ -94,6 +93,7 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//IntegrationStream">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//IntegrationStream/name"/>
       <genFeatures property="None" children="true" createChild="true" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//IntegrationStream/taskStreams"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//IntegrationStream/releases"/>
@@ -123,13 +123,12 @@
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//RootStream/popProject"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="Project.ecore#//Target">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Target/id"/>
+    <genClasses image="false" ecoreClass="Project.ecore#//Target" labelFeature="#//project/Target/date">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Target/date"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//Target/streams"/>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//Release">
+    <genClasses ecoreClass="Project.ecore#//Release" labelFeature="#//project/Release/version">
       <genFeatures property="Readonly" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//Release/maintenance"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Release/version"/>
@@ -141,17 +140,15 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Milestone/release"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Milestone/name"/>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//Delivery">
+    <genClasses ecoreClass="Project.ecore#//Delivery" labelFeature="#//project/Delivery/number">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Delivery/stream"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/number"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/date"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Delivery/id"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//Delivery/merges"/>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//Merge">
+    <genClasses ecoreClass="Project.ecore#//Merge" labelFeature="#//project/Merge/date">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Merge/stream"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Merge/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Merge/date"/>
       <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Merge/delivery"/>
     </genClasses>
