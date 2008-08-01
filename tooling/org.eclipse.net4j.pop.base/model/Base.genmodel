@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2004 - 2008 Eike Stepper, Germany.&#xD;&#xA;All rights reserved. This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v1.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;http://www.eclipse.org/legal/epl-v10.html&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;   Eike Stepper - initial API and implementation"
+    modelDirectory="/org.eclipse.net4j.pop.base/src" editDirectory="/org.eclipse.net4j.pop.base/src"
+    modelPluginID="org.eclipse.net4j.pop.base" modelName="Base" editPluginClass="org.eclipse.net4j.pop.base.util.BasePlugin"
+    updateClasspath="false" nonNLSMarkers="true" codeFormatting="true" testsDirectory=""
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    editPluginID="org.eclipse.net4j.pop.base" optimizedHasChildren="true" colorProviders="true"
+    fontProviders="true">
+  <foreignModel>Base.ecore</foreignModel>
+  <genPackages prefix="Base" basePackage="org.eclipse.net4j.pop" disposableProviderFactory="true"
+      multipleEditorPages="false" extensibleProviderFactory="true" childCreationExtenders="true"
+      contentTypeIdentifier="net4j.pop.base" fileExtensions="base.xml" ecorePackage="Base.ecore#/">
+    <genDataTypes ecoreDataType="Base.ecore#//Version"/>
+    <genClasses image="false" ecoreClass="Base.ecore#//Identifiable">
+      <genOperations ecoreOperation="Base.ecore#//Identifiable/getId"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Base.ecore#//Displayable">
+      <genOperations ecoreOperation="Base.ecore#//Displayable/getDisplayString"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
