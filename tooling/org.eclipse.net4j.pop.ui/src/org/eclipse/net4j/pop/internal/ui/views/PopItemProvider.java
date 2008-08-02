@@ -14,18 +14,23 @@ import org.eclipse.net4j.internal.pop.Pop;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.provider.ProjectItemProviderAdapterFactory;
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 import org.eclipse.net4j.util.ui.actions.LongRunningAction;
 import org.eclipse.net4j.util.ui.views.ContainerItemProvider;
 import org.eclipse.net4j.util.ui.views.ContainerView;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
 
 import java.util.ArrayList;
@@ -139,8 +144,69 @@ public class PopItemProvider extends ContainerItemProvider<IContainer<Object>>
   }
 
   @Override
+  public TreeViewer getViewer()
+  {
+    return (TreeViewer)super.getViewer();
+  }
+
+  @Override
+  protected void refreshSynced(Object element, boolean updateLabels)
+  {
+    TreeViewer viewer = getViewer();
+    Object[] expandedElements = viewer.getExpandedElements();
+    super.refreshSynced(element, updateLabels);
+    for (Object expandedElement : expandedElements)
+    {
+      if (expandedElement instanceof IPop)
+      {
+        viewer.setExpandedState(expandedElement, true);
+      }
+      else if (expandedElement instanceof EObject)
+      {
+        EObject object = getEObject((EObject)expandedElement);
+        if (object != null)
+        {
+          viewer.setExpandedState(object, true);
+        }
+      }
+    }
+  }
+
+  @Override
   protected void handleInactiveElement(Iterator<Node> it, Node child)
   {
+  }
+
+  private EObject getEObject(EObject object)
+  {
+    URI uri = object.eResource().getURI();
+    String id = EcoreUtil.getID(object);
+    return getEObject(uri, id, getInput());
+  }
+
+  private EObject getEObject(URI uri, String id, Object element)
+  {
+    if (element instanceof EObject)
+    {
+      EObject elementObject = (EObject)element;
+      URI elementURI = elementObject.eResource().getURI();
+      String elementID = EcoreUtil.getID(elementObject);
+      if (ObjectUtil.equals(elementURI, uri) && ObjectUtil.equals(elementID, id))
+      {
+        return elementObject;
+      }
+    }
+
+    for (Object childObject : getChildren(element))
+    {
+      EObject result = getEObject(uri, id, childObject);
+      if (result != null)
+      {
+        return result;
+      }
+    }
+
+    return null;
   }
 
   /**
