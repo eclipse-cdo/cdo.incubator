@@ -15,7 +15,7 @@ import org.eclipse.core.resources.IProject;
 /**
  * @author Eike Stepper
  */
-public class PopProjectNature extends AbstractNature
+public class PopProjectNature extends Nature
 {
   public static final String NATURE_ID = "org.eclipse.net4j.pop.PopProjectNature";
 

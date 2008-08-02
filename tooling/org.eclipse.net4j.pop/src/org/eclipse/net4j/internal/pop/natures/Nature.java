@@ -28,9 +28,9 @@ import java.util.List;
 /**
  * @author Eike Stepper
  */
-public abstract class AbstractNature implements IProjectNature
+public abstract class Nature implements IProjectNature
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, AbstractNature.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, Nature.class);
 
   private static final IWorkspaceRoot ROOT = ResourcesPlugin.getWorkspace().getRoot();
 
@@ -38,7 +38,7 @@ public abstract class AbstractNature implements IProjectNature
 
   private String natureID;
 
-  protected AbstractNature(String natureID)
+  protected Nature(String natureID)
   {
     this.natureID = natureID;
   }
