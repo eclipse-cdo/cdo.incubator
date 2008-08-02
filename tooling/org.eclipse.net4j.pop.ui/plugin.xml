@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.18 2008-08-02 06:10:24 estepper Exp $
+ $Id: plugin.xml,v 1.19 2008-08-02 08:04:48 estepper Exp $
 -->
 
 <plugin>
@@ -41,6 +41,21 @@
       </actionSet>
    </extension>
 
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.eclipse.net4j.pop"
+            name="POP Process Tooling">
+      </category>
+      <view
+            category="org.eclipse.net4j.pop"
+            class="org.eclipse.net4j.pop.internal.ui.views.PopsView"
+            icon="icons/full/view16/acceptors.gif"
+            id="org.eclipse.net4j.pop.PopsView"
+            name="Pops">
+      </view>
+   </extension>
+   
    <extension
          point="org.eclipse.ui.decorators">
       <decorator
