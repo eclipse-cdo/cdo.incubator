@@ -11,6 +11,7 @@
 package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
+import org.eclipse.net4j.internal.pop.util.ModelEvent.Kind;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -139,7 +140,7 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     {
       secondaryPaths.clear();
       available = false;
-      fireEvent(new ModelEvent(this, ModelEvent.Kind.MODEL_UNAVAILABLE));
+      fireModelEvent(ModelEvent.Kind.MODEL_UNAVAILABLE);
     }
   }
 
@@ -158,12 +159,12 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
 
     if (available)
     {
-      fireEvent(new ModelEvent(this, ModelEvent.Kind.MODEL_REFRESHED));
+      fireModelEvent(ModelEvent.Kind.MODEL_REFRESHED);
     }
     else
     {
       available = true;
-      fireEvent(new ModelEvent(this, ModelEvent.Kind.MODEL_AVAILABLE));
+      fireModelEvent(ModelEvent.Kind.MODEL_AVAILABLE);
     }
   }
 
@@ -214,6 +215,16 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     }
 
     return result;
+  }
+
+  private void fireModelEvent(Kind kind)
+  {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Event {0} for primary path {1}", kind, primaryPath);
+    }
+
+    fireEvent(new ModelEvent(this, kind));
   }
 
   private static ResourceSet createResourceSet()
