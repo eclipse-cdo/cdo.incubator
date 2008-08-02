@@ -39,37 +39,7 @@ public class PopManager extends Container<IPop> implements IPopManager
 
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, Nature.class);
 
-  private NatureManager projectNatures = new NatureManager(PopProjectNature.NATURE_ID)
-  {
-    @Override
-    protected void projectAdded(IProject project)
-    {
-      try
-      {
-        super.projectAdded(project);
-        projectNatureAdded(project);
-      }
-      catch (Exception ex)
-      {
-        OM.LOG.error(ex);
-      }
-    }
-
-    @Override
-    protected void projectRemoved(IProject project)
-    {
-      try
-      {
-        super.projectRemoved(project);
-        projectNatureRemoved(project);
-      }
-      catch (Exception ex)
-      {
-        OM.LOG.error(ex);
-      }
-
-    }
-  };
+  private NatureManager projectNatures = new ProjectNatures();
 
   private NatureManager productNaturess = new NatureManager(PopProductNature.NATURE_ID);
 
@@ -187,5 +157,44 @@ public class PopManager extends Container<IPop> implements IPopManager
   protected void projectNatureRemoved(IProject project)
   {
     removePop(project);
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ProjectNatures extends NatureManager
+  {
+    public ProjectNatures()
+    {
+      super(PopProjectNature.NATURE_ID);
+    }
+
+    @Override
+    protected void projectAdded(IProject project)
+    {
+      try
+      {
+        super.projectAdded(project);
+        projectNatureAdded(project);
+      }
+      catch (Exception ex)
+      {
+        OM.LOG.error(ex);
+      }
+    }
+
+    @Override
+    protected void projectRemoved(IProject project)
+    {
+      try
+      {
+        super.projectRemoved(project);
+        projectNatureRemoved(project);
+      }
+      catch (Exception ex)
+      {
+        OM.LOG.error(ex);
+      }
+    }
   }
 }

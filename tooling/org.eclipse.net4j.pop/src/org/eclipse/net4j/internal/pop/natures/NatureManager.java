@@ -23,6 +23,7 @@ import org.eclipse.core.resources.IResourceChangeListener;
 import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -132,19 +133,19 @@ public class NatureManager extends Container<IProject> implements IResourceChang
     super.doDeactivate();
   }
 
-  protected void projectRemoved(IProject project)
-  {
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Removed project {0} from nature manager: {2}", project.getName(), natureID);
-    }
-  }
-
   protected void projectAdded(IProject project)
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("Added project {0} to nature manager: {2}", project.getName(), natureID);
+      TRACER.format("Added project to nature manager: {0} --> {1}", natureID, project.getName());
+    }
+  }
+
+  protected void projectRemoved(IProject project)
+  {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Removed project from nature manager: {0} --> {1}", natureID, project.getName());
     }
   }
 
@@ -170,15 +171,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
       if (resource instanceof IProject)
       {
         IProject project = (IProject)resource;
-        if (Nature.hasNature(project, natureID))
-        {
-          if (projects.remove(project))
-          {
-            event.addDelta(project, IContainerDelta.Kind.REMOVED);
-            projectRemoved(project);
-          }
-        }
-        else
+        if (project.exists() && Nature.hasNature(project, natureID))
         {
           if (projects.add(project))
           {
@@ -186,9 +179,17 @@ public class NatureManager extends Container<IProject> implements IResourceChang
             projectAdded(project);
           }
         }
+        else
+        {
+          if (projects.remove(project))
+          {
+            event.addDelta(project, IContainerDelta.Kind.REMOVED);
+            projectRemoved(project);
+          }
+        }
       }
 
-      return false;
+      return resource instanceof IWorkspaceRoot;
     }
   }
 }
