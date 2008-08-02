@@ -11,12 +11,25 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.StringUtil;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
+
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Eike Stepper
@@ -27,11 +40,13 @@ public class Pop extends Lifecycle implements IPop
 
   private String name;
 
+  private PopProject popProject;
+
+  private Set<IPath> projectFiles = new HashSet<IPath>();
+
   public Pop(IProject project)
   {
     this.project = project;
-    refresh();
-    name = project.getName();
   }
 
   public IProject getProject()
@@ -41,7 +56,22 @@ public class Pop extends Lifecycle implements IPop
 
   public String getName()
   {
+    if (name == null)
+    {
+      refresh();
+    }
+
     return name;
+  }
+
+  public PopProject getPopProject()
+  {
+    if (popProject == null)
+    {
+      refresh();
+    }
+
+    return popProject;
   }
 
   public int compareTo(IPop o)
@@ -63,10 +93,10 @@ public class Pop extends Lifecycle implements IPop
       return true;
     }
 
-    if (obj instanceof IPop)
+    if (obj instanceof Pop)
     {
-      IPop that = (IPop)obj;
-      return ObjectUtil.equals(name, that.getName());
+      Pop that = (Pop)obj;
+      return ObjectUtil.equals(name, that.name);
     }
 
     return false;
@@ -81,11 +111,20 @@ public class Pop extends Lifecycle implements IPop
   @Override
   public String toString()
   {
-    return name;
+    return getName();
   }
 
   private void refresh()
   {
+    ResourceSet resourceSet = new ResourceSetImpl();
+    Map<String, Object> map = resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
+    map.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 
+    IFile file = project.getFile("project.xml");
+    if (file.exists())
+    {
+      URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), false);
+      Resource resource = resourceSet.getResource(uri, true);
+    }
   }
 }
