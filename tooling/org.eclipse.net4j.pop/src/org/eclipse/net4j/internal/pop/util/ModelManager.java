@@ -211,20 +211,22 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     }
 
     List<IPath> result = new ArrayList<IPath>();
-    if (delta.findMember(primaryPath) instanceof IFile)
-    {
-      result.add(primaryPath);
-    }
-
+    getAffectedPath(delta, primaryPath, result);
     for (IPath path : secondaryPaths)
     {
-      if (delta.findMember(path) instanceof IFile)
-      {
-        result.add(path);
-      }
+      getAffectedPath(delta, path, result);
     }
 
     return result;
+  }
+
+  private void getAffectedPath(IResourceDelta delta, IPath path, List<IPath> result)
+  {
+    IResourceDelta member = delta.findMember(path);
+    if (member != null && member.getResource() instanceof IFile)
+    {
+      result.add(path);
+    }
   }
 
   private static ResourceSet createResourceSet()

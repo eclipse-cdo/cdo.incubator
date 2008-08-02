@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop;
 
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.util.event.INotifier;
 
 import org.eclipse.core.resources.IProject;
@@ -21,4 +22,6 @@ import org.eclipse.core.runtime.IAdaptable;
 public interface IPop extends Comparable<IPop>, IAdaptable, INotifier
 {
   public IProject getProject();
+
+  public PopProject getPopProject();
 }

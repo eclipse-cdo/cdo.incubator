@@ -88,6 +88,11 @@ public class Pop extends Lifecycle implements IPop
     return (PopProject)contents.get(0);
   }
 
+  public ModelManager getModelManager()
+  {
+    return modelManager;
+  }
+
   public int compareTo(IPop o)
   {
     return StringUtil.compare(project.getName(), o.getProject().getName());

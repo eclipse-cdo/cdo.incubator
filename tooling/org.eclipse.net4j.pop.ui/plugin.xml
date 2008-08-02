@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.19 2008-08-02 08:04:48 estepper Exp $
+ $Id: plugin.xml,v 1.20 2008-08-02 20:35:44 estepper Exp $
 -->
 
 <plugin>
@@ -50,7 +50,7 @@
       <view
             category="org.eclipse.net4j.pop"
             class="org.eclipse.net4j.pop.internal.ui.views.PopsView"
-            icon="icons/full/view16/acceptors.gif"
+            icon="icons/sample.gif"
             id="org.eclipse.net4j.pop.PopsView"
             name="Pops">
       </view>
