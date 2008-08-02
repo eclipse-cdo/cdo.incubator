@@ -107,14 +107,19 @@ public abstract class Nature implements IProjectNature
   {
   }
 
-  protected static IProject[] getProjects(String natureID)
+  public static boolean hasNature(IProject project, String natureID) throws CoreException
+  {
+    return project.isOpen() && project.hasNature(natureID);
+  }
+
+  public static IProject[] getProjects(String natureID)
   {
     try
     {
       List<IProject> result = new ArrayList<IProject>();
       for (IProject project : ROOT.getProjects())
       {
-        if (project.hasNature(natureID))
+        if (hasNature(project, natureID))
         {
           result.add(project);
         }

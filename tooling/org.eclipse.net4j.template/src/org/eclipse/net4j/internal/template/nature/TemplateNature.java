@@ -57,7 +57,7 @@ public class TemplateNature implements IProjectNature
     IProject[] projects = root.getProjects();
     for (IProject project : projects)
     {
-      if (project.hasNature(NATURE_ID))
+      if (project.isOpen() && project.hasNature(NATURE_ID))
       {
         result.add(project);
       }

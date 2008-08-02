@@ -18,8 +18,6 @@ import org.eclipse.net4j.util.om.log.OMLogger;
 import org.eclipse.net4j.util.om.pref.OMPreferences;
 import org.eclipse.net4j.util.om.trace.OMTracer;
 
-import org.osgi.framework.BundleContext;
-
 /**
  * The <em>Operations & Maintenance</em> class of this bundle.
  * 
@@ -48,17 +46,15 @@ public abstract class OM
     }
 
     @Override
-    public void start(BundleContext context) throws Exception
+    protected void doStart() throws Exception
     {
-      super.start(context);
       TemplateManager.INSTANCE.activate();
     }
 
     @Override
-    public void stop(BundleContext context) throws Exception
+    protected void doStop() throws Exception
     {
       TemplateManager.INSTANCE.deactivate();
-      super.stop(context);
     }
   }
 }

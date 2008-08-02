@@ -28,6 +28,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -60,7 +61,6 @@ public class NatureManager extends Container<IProject> implements IResourceChang
 
   public IProject[] getElements()
   {
-    checkActive();
     synchronized (projects)
     {
       List<IProject> list = new ArrayList<IProject>(projects);
@@ -80,6 +80,12 @@ public class NatureManager extends Container<IProject> implements IResourceChang
   public Object getAdapter(Class adapter)
   {
     return Platform.getAdapterManager().getAdapter(this, adapter);
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("NatureManager[{0}]", natureID);
   }
 
   public void resourceChanged(IResourceChangeEvent event)
@@ -164,7 +170,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
       if (resource instanceof IProject)
       {
         IProject project = (IProject)resource;
-        if (project.exists() && project.hasNature(natureID))
+        if (Nature.hasNature(project, natureID))
         {
           if (projects.remove(project))
           {
