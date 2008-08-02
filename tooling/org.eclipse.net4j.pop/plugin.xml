@@ -18,7 +18,7 @@
 <plugin>
 
    <extension
-         id="eclipse"
+         id="PopProjectNature"
          name="POP Project Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
@@ -29,7 +29,7 @@
    </extension>
 
    <extension
-         id="eclipse"
+         id="PopProductNature"
          name="POP Product Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>

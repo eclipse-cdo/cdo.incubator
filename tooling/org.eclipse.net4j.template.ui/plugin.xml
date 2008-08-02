@@ -125,6 +125,7 @@
          </enablement>
       </decorator>
    </extension>
+   
    <extension
          point="org.eclipse.ui.newWizards">
       <category

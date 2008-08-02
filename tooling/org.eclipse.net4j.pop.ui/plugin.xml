@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.17 2008-08-01 07:30:34 estepper Exp $
+ $Id: plugin.xml,v 1.18 2008-08-02 06:10:24 estepper Exp $
 -->
 
 <plugin>
@@ -39,6 +39,50 @@
                tooltip="Hello, Eclipse world">
          </action>
       </actionSet>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.decorators">
+      <decorator
+            adaptable="true"
+            icon="icons/pop_project_ovr.gif"
+            id="org.eclipse.net4j.pop.ui.PopProjectDecorator"
+            label="POP Projects"
+            lightweight="true"
+            location="TOP_RIGHT"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IProject">
+               </objectClass>
+               <objectState
+                     name="projectNature"
+                     value="org.eclipse.net4j.pop.PopProjectNature">
+               </objectState>
+            </and>
+         </enablement>
+      </decorator>
+      <decorator
+            adaptable="true"
+            icon="icons/pop_product_ovr.gif"
+            id="org.eclipse.net4j.pop.ui.PopProductDecorator"
+            label="POP Products"
+            lightweight="true"
+            location="TOP_RIGHT"
+            state="true">
+         <enablement>
+            <and>
+               <objectClass
+                     name="org.eclipse.core.resources.IProject">
+               </objectClass>
+               <objectState
+                     name="projectNature"
+                     value="org.eclipse.net4j.pop.PopProductNature">
+               </objectState>
+            </and>
+         </enablement>
+      </decorator>
    </extension>
 
 </plugin>
