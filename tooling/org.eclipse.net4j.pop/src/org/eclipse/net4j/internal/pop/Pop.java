@@ -14,6 +14,7 @@ import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.StringUtil;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.PlatformObject;
 
 /**
@@ -21,21 +22,29 @@ import org.eclipse.core.runtime.PlatformObject;
  */
 public class Pop extends PlatformObject implements IPop
 {
-  private String id;
+  private IProject project;
 
-  public Pop(String id)
+  private String name;
+
+  public Pop(IProject project)
   {
-    this.id = id;
+    this.project = project;
+    name = project.getName();
   }
 
-  public String getID()
+  public IProject getProject()
   {
-    return id;
+    return project;
+  }
+
+  public String getName()
+  {
+    return name;
   }
 
   public int compareTo(IPop o)
   {
-    return StringUtil.compare(id, o.getID());
+    return StringUtil.compare(name, o.getName());
   }
 
   @Override
@@ -49,7 +58,7 @@ public class Pop extends PlatformObject implements IPop
     if (obj instanceof IPop)
     {
       IPop that = (IPop)obj;
-      return ObjectUtil.equals(id, that.getID());
+      return ObjectUtil.equals(name, that.getName());
     }
 
     return false;
@@ -58,12 +67,12 @@ public class Pop extends PlatformObject implements IPop
   @Override
   public int hashCode()
   {
-    return ObjectUtil.hashCode(id);
+    return ObjectUtil.hashCode(name);
   }
 
   @Override
   public String toString()
   {
-    return id;
+    return name;
   }
 }

@@ -21,7 +21,7 @@ public interface IPopManager extends IContainer<IPop>, IAdaptable
 {
   IPopManager INSTANCE = org.eclipse.net4j.internal.pop.PopManager.INSTANCE;
 
-  public IPop getPop(String id);
+  public IPop getPop(String name);
 
   public IPop[] getPops();
 }

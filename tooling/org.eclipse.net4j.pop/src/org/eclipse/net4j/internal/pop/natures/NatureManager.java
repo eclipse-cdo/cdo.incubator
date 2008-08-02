@@ -110,7 +110,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
     for (IProject project : Nature.getProjects(natureID))
     {
       projects.add(project);
-      traceAdded(project);
+      projectAdded(project);
     }
 
     WS.addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
@@ -126,7 +126,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
     super.doDeactivate();
   }
 
-  protected void traceRemoved(IProject project)
+  protected void projectRemoved(IProject project)
   {
     if (TRACER.isEnabled())
     {
@@ -134,7 +134,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
     }
   }
 
-  protected void traceAdded(IProject project)
+  protected void projectAdded(IProject project)
   {
     if (TRACER.isEnabled())
     {
@@ -169,7 +169,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
           if (projects.remove(project))
           {
             event.addDelta(project, IContainerDelta.Kind.REMOVED);
-            traceRemoved(project);
+            projectRemoved(project);
           }
         }
         else
@@ -177,7 +177,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
           if (projects.add(project))
           {
             event.addDelta(project, IContainerDelta.Kind.ADDED);
-            traceAdded(project);
+            projectAdded(project);
           }
         }
       }
