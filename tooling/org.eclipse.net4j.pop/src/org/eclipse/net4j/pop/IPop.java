@@ -21,6 +21,4 @@ import org.eclipse.core.runtime.IAdaptable;
 public interface IPop extends Comparable<IPop>, IAdaptable, INotifier
 {
   public IProject getProject();
-
-  public String getName();
 }

@@ -26,7 +26,6 @@ import org.eclipse.core.runtime.Platform;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -41,9 +40,9 @@ public class PopManager extends Container<IPop> implements IPopManager
 
   private NatureManager projectNatures = new ProjectNatures();
 
-  private NatureManager productNaturess = new NatureManager(PopProductNature.NATURE_ID);
+  private NatureManager productNatures = new NatureManager(PopProductNature.NATURE_ID);
 
-  private Map<String, Pop> pops = new HashMap<String, Pop>();
+  private Map<IProject, Pop> pops = new HashMap<IProject, Pop>();
 
   private PopManager()
   {
@@ -51,15 +50,15 @@ public class PopManager extends Container<IPop> implements IPopManager
 
   public void addPop(IPop pop)
   {
-    String name = pop.getName();
+    IProject project = pop.getProject();
     synchronized (pops)
     {
-      if (pops.containsKey(name))
+      if (pops.containsKey(project))
       {
-        throw new IllegalStateException("Duplicate  ID: " + name);
+        throw new IllegalStateException("Duplicate  ID: " + project);
       }
 
-      pops.put(name, (Pop)pop);
+      pops.put(project, (Pop)pop);
       if (TRACER.isEnabled())
       {
         TRACER.trace("Added POP: " + pop);
@@ -76,25 +75,21 @@ public class PopManager extends Container<IPop> implements IPopManager
   {
     synchronized (pops)
     {
-      for (Iterator<Map.Entry<String, Pop>> it = pops.entrySet().iterator(); it.hasNext();)
+      Pop pop = pops.remove(project);
+      if (pop != null)
       {
-        Map.Entry<String, Pop> entry = it.next();
-        Pop pop = entry.getValue();
-        if (pop.getProject().equals(project))
+        pop.dispose();
+        if (TRACER.isEnabled())
         {
-          it.remove();
-          if (TRACER.isEnabled())
-          {
-            TRACER.trace("Removed POP: " + pop);
-          }
-
-          if (isActive())
-          {
-            fireElementRemovedEvent(pop);
-          }
-
-          return pop;
+          TRACER.trace("Removed POP: " + pop);
         }
+
+        if (isActive())
+        {
+          fireElementRemovedEvent(pop);
+        }
+
+        return pop;
       }
     }
 
@@ -137,13 +132,13 @@ public class PopManager extends Container<IPop> implements IPopManager
   {
     super.doActivate();
     projectNatures.activate();
-    productNaturess.activate();
+    productNatures.activate();
   }
 
   @Override
   protected void doDeactivate() throws Exception
   {
-    productNaturess.deactivate();
+    productNatures.deactivate();
     projectNatures.deactivate();
     pops.clear();
     super.doDeactivate();

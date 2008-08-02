@@ -101,6 +101,16 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     }
   }
 
+  protected void fireModelEvent(Kind kind)
+  {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Event {0} for primary path {1}", kind, primaryPath);
+    }
+
+    fireEvent(new ModelEvent(this, kind));
+  }
+
   @Override
   protected void doActivate() throws Exception
   {
@@ -215,16 +225,6 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     }
 
     return result;
-  }
-
-  private void fireModelEvent(Kind kind)
-  {
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Event {0} for primary path {1}", kind, primaryPath);
-    }
-
-    fireEvent(new ModelEvent(this, kind));
   }
 
   private static ResourceSet createResourceSet()

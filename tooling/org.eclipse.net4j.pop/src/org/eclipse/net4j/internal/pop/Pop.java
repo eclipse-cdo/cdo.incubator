@@ -10,26 +10,23 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
+import org.eclipse.net4j.internal.pop.util.ModelEvent;
+import org.eclipse.net4j.internal.pop.util.ModelManager;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.StringUtil;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
-import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.text.MessageFormat;
 
 /**
  * @author Eike Stepper
@@ -38,15 +35,35 @@ public class Pop extends Lifecycle implements IPop
 {
   private IProject project;
 
-  private String name;
-
-  private PopProject popProject;
-
-  private Set<IPath> projectFiles = new HashSet<IPath>();
+  private ModelManager modelManager;
 
   public Pop(IProject project)
   {
     this.project = project;
+    IPath modelPath = project.getFullPath().append("project.xml");
+    modelManager = new ModelManager(modelPath)
+    {
+      @Override
+      protected void fireModelEvent(ModelEvent.Kind kind)
+      {
+        super.fireModelEvent(kind);
+        if (kind == ModelEvent.Kind.MODEL_UNAVAILABLE)
+        {
+          Pop.this.deactivate();
+        }
+        else
+        {
+          Pop.this.activate();
+        }
+      }
+    };
+
+    modelManager.activate();
+  }
+
+  public void dispose()
+  {
+    modelManager.deactivate();
   }
 
   public IProject getProject()
@@ -54,29 +71,26 @@ public class Pop extends Lifecycle implements IPop
     return project;
   }
 
-  public String getName()
-  {
-    if (name == null)
-    {
-      refresh();
-    }
-
-    return name;
-  }
-
   public PopProject getPopProject()
   {
-    if (popProject == null)
+    EList<Resource> resources = modelManager.getResourceSet().getResources();
+    if (resources.isEmpty())
     {
-      refresh();
+      return null;
     }
 
-    return popProject;
+    EList<EObject> contents = resources.get(0).getContents();
+    if (contents.isEmpty())
+    {
+      return null;
+    }
+
+    return (PopProject)contents.get(0);
   }
 
   public int compareTo(IPop o)
   {
-    return StringUtil.compare(name, o.getName());
+    return StringUtil.compare(project.getName(), o.getProject().getName());
   }
 
   @SuppressWarnings("unchecked")
@@ -96,7 +110,7 @@ public class Pop extends Lifecycle implements IPop
     if (obj instanceof Pop)
     {
       Pop that = (Pop)obj;
-      return ObjectUtil.equals(name, that.name);
+      return ObjectUtil.equals(project, that.project);
     }
 
     return false;
@@ -105,26 +119,12 @@ public class Pop extends Lifecycle implements IPop
   @Override
   public int hashCode()
   {
-    return ObjectUtil.hashCode(name);
+    return ObjectUtil.hashCode(project);
   }
 
   @Override
   public String toString()
   {
-    return getName();
-  }
-
-  private void refresh()
-  {
-    ResourceSet resourceSet = new ResourceSetImpl();
-    Map<String, Object> map = resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
-    map.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
-
-    IFile file = project.getFile("project.xml");
-    if (file.exists())
-    {
-      URI uri = URI.createPlatformResourceURI(file.getFullPath().toString(), false);
-      Resource resource = resourceSet.getResource(uri, true);
-    }
+    return MessageFormat.format("POP[{0}]", project.getName());
   }
 }
