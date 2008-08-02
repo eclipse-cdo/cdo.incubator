@@ -13,14 +13,15 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.StringUtil;
+import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.PlatformObject;
+import org.eclipse.core.runtime.Platform;
 
 /**
  * @author Eike Stepper
  */
-public class Pop extends PlatformObject implements IPop
+public class Pop extends Lifecycle implements IPop
 {
   private IProject project;
 
@@ -29,6 +30,7 @@ public class Pop extends PlatformObject implements IPop
   public Pop(IProject project)
   {
     this.project = project;
+    refresh();
     name = project.getName();
   }
 
@@ -45,6 +47,12 @@ public class Pop extends PlatformObject implements IPop
   public int compareTo(IPop o)
   {
     return StringUtil.compare(name, o.getName());
+  }
+
+  @SuppressWarnings("unchecked")
+  public Object getAdapter(Class adapter)
+  {
+    return Platform.getAdapterManager().getAdapter(this, adapter);
   }
 
   @Override
@@ -74,5 +82,10 @@ public class Pop extends PlatformObject implements IPop
   public String toString()
   {
     return name;
+  }
+
+  private void refresh()
+  {
+
   }
 }

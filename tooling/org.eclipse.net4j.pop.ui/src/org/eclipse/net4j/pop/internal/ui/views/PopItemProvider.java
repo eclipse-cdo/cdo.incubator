@@ -20,6 +20,8 @@ import org.eclipse.net4j.util.ui.views.IElementFilter;
 
 import org.eclipse.swt.graphics.Image;
 
+import java.util.Iterator;
+
 /**
  * @author Eike Stepper
  */
@@ -32,6 +34,11 @@ public class PopItemProvider extends ContainerItemProvider<IContainer<Object>>
   public PopItemProvider(IElementFilter rootElementFilter)
   {
     super(rootElementFilter);
+  }
+
+  @Override
+  protected void handleInactiveElement(Iterator<Node> it, Node child)
+  {
   }
 
   @Override
