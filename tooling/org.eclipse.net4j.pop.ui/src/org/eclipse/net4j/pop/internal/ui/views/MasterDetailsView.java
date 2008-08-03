@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
+import org.eclipse.net4j.pop.internal.ui.bundle.OM;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.ui.widgets.SashComposite;
 
@@ -79,7 +80,20 @@ public abstract class MasterDetailsView extends MultiViewersView
     {
       public void selectionChanged(SelectionChangedEvent event)
       {
-        masterSelectionChanged(event);
+        try
+        {
+          masterSelectionChanged(event);
+        }
+        catch (Error ex)
+        {
+          OM.LOG.error(ex);
+          throw ex;
+        }
+        catch (RuntimeException ex)
+        {
+          OM.LOG.error(ex);
+          throw ex;
+        }
       }
     });
 
@@ -101,7 +115,8 @@ public abstract class MasterDetailsView extends MultiViewersView
     }
 
     // Temporarily remember old values
-    String oldDetailTitle = detailItems == null ? null : detailItems[currentDetailIndex].getText();
+    String oldDetailTitle = detailItems == null || currentDetailIndex < 0 ? null : detailItems[currentDetailIndex]
+        .getText();
     StructuredViewer[] oldDetails = details;
     CTabItem[] oldDetailItems = detailItems;
 
@@ -151,11 +166,13 @@ public abstract class MasterDetailsView extends MultiViewersView
 
     if (currentDetailIndex != -1)
     {
+      details[currentDetailIndex].setInput(masterElement);
       details[currentDetailIndex].refresh();
       detailsFolder.setSelection(currentDetailIndex);
     }
 
     detailsFolder.layout();
+    currentMasterElement = masterElement;
   }
 
   protected abstract StructuredViewer createMaster(Composite parent);

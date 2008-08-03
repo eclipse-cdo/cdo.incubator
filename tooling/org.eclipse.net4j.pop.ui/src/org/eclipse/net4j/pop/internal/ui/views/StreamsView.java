@@ -10,15 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
-import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
-import org.eclipse.net4j.pop.project.Stream;
+import org.eclipse.net4j.pop.project.MaintenanceStream;
+import org.eclipse.net4j.pop.project.RootStream;
+import org.eclipse.net4j.pop.project.TaskStream;
 import org.eclipse.net4j.pop.project.provider.ProjectItemProviderAdapterFactory;
+import org.eclipse.net4j.util.ObjectUtil;
 
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
+import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -29,11 +32,21 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class StreamsView extends MasterDetailsView
 {
-  private static final String[] ALL_TITLES = { "Targets", "Deliveries", "Merges", "Checkouts" };
+  private static final String COMMITTERS = "Committers";
 
-  private static final String[] STREAM_DETAIL_TITLES = { "Targets", "Deliveries", "Merges" };
+  private static final String TARGETS = "Targets";
 
-  private static final String[] POP_DETAIL_TITLES = { "Merges", "Checkouts" };
+  private static final String DELIVERIES = "Deliveries";
+
+  private static final String MERGES = "Merges";
+
+  private static final String CHECKOUTS = "Checkouts";
+
+  private static final String[] ROOT_STREAM_DETAILS = { COMMITTERS, TARGETS, MERGES, CHECKOUTS };
+
+  private static final String[] MAINTENANCE_STREAM_DETAILS = { TARGETS, MERGES, CHECKOUTS };
+
+  private static final String[] TASK_STREAM_DETAILS = { DELIVERIES, MERGES, CHECKOUTS };
 
   private ComposedAdapterFactory adapterFactory;
 
@@ -49,7 +62,7 @@ public class StreamsView extends MasterDetailsView
   protected StructuredViewer createMaster(Composite parent)
   {
     TreeViewer viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-    viewer.setContentProvider(new PopContentProvider(adapterFactory));
+    viewer.setContentProvider(new PopContentProvider.Streams(adapterFactory));
     viewer.setLabelProvider(new PopLabelProvider(adapterFactory));
     viewer.setInput(IPopManager.INSTANCE);
     return viewer;
@@ -58,32 +71,60 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected StructuredViewer createDetail(Composite parent, String title)
   {
-    StructuredViewer result = createViewer(parent);
-    return result;
+    if (ObjectUtil.equals(title, COMMITTERS))
+    {
+      return createViewer(parent, new PopContentProvider(adapterFactory));
+    }
+
+    if (ObjectUtil.equals(title, TARGETS))
+    {
+      return createViewer(parent, new PopContentProvider.Targets(adapterFactory));
+    }
+
+    if (ObjectUtil.equals(title, DELIVERIES))
+    {
+      return createViewer(parent, new PopContentProvider(adapterFactory));
+    }
+
+    if (ObjectUtil.equals(title, MERGES))
+    {
+      return createViewer(parent, new PopContentProvider(adapterFactory));
+    }
+
+    if (ObjectUtil.equals(title, CHECKOUTS))
+    {
+      return createViewer(parent, new PopContentProvider(adapterFactory));
+    }
+
+    throw new IllegalArgumentException("title: " + title);
   }
 
   @Override
   protected String[] getDetailTitles(Object masterElement)
   {
-    if (masterElement instanceof IPop)
+    if (masterElement instanceof RootStream)
     {
-      return POP_DETAIL_TITLES;
+      return ROOT_STREAM_DETAILS;
     }
 
-    if (masterElement instanceof Stream)
+    if (masterElement instanceof MaintenanceStream)
     {
-      return STREAM_DETAIL_TITLES;
+      return MAINTENANCE_STREAM_DETAILS;
     }
 
-    return ALL_TITLES;
+    if (masterElement instanceof TaskStream)
+    {
+      return TASK_STREAM_DETAILS;
+    }
+
+    return new String[0];
   }
 
-  private StructuredViewer createViewer(Composite parent)
+  private StructuredViewer createViewer(Composite parent, IContentProvider contentProvider)
   {
     TreeViewer viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-    viewer.setContentProvider(new PopContentProvider(adapterFactory));
+    viewer.setContentProvider(contentProvider);
     viewer.setLabelProvider(new PopLabelProvider(adapterFactory));
-    viewer.setInput(IPopManager.INSTANCE);
     return viewer;
   }
 }
