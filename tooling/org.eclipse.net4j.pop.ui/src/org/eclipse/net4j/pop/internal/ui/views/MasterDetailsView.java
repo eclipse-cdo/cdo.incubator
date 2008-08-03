@@ -23,6 +23,9 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
+/**
+ * @author Eike Stepper
+ */
 public abstract class MasterDetailsView extends MultiViewersView
 {
   private StructuredViewer master;

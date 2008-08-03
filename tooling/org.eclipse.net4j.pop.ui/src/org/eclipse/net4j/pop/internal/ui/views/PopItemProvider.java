@@ -12,6 +12,7 @@ package org.eclipse.net4j.pop.internal.ui.views;
 
 import org.eclipse.net4j.internal.pop.Pop;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.provider.ProjectItemProviderAdapterFactory;
 import org.eclipse.net4j.util.ObjectUtil;
@@ -26,7 +27,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
@@ -53,9 +53,10 @@ public class PopItemProvider extends ContainerItemProvider<IContainer<Object>>
   public PopItemProvider()
   {
     adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
-    adapterFactory.addAdapterFactory(new ResourceItemProviderAdapterFactory());
+    adapterFactory.addAdapterFactory(new BaseItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ProjectItemProviderAdapterFactory());
     adapterFactory.addAdapterFactory(new ReflectiveItemProviderAdapterFactory());
+
     contentProvider = new AdapterFactoryContentProvider(adapterFactory);
     labelProvider = new AdapterFactoryLabelProvider(adapterFactory);
   }

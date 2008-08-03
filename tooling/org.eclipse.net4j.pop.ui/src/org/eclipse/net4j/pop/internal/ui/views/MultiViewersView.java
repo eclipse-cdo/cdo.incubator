@@ -34,6 +34,9 @@ import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ISetSelectionTarget;
 import org.eclipse.ui.part.ViewPart;
 
+/**
+ * @author Eike Stepper
+ */
 public abstract class MultiViewersView extends ViewPart implements ISetSelectionTarget
 {
   private Shell shell;
