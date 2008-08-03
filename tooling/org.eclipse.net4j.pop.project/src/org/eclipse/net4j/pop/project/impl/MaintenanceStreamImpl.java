@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamImpl.java,v 1.11 2008-08-03 17:31:34 estepper Exp $
+ * $Id: MaintenanceStreamImpl.java,v 1.12 2008-08-03 18:27:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -400,13 +400,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   @Override
   public String getIdValue()
   {
-    try
-    {
-      return getBaseline().getVersion().asId() + "_maintenance";
-    }
-    catch (Exception ex)
-    {
-      return EcoreUtil.generateUUID();
-    }
+    return getBaseline().getVersion().asId() + "_maintenance";
   }
 } // MaintenanceStreamImpl

@@ -8,15 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.5 2008-08-03 18:27:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
 import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.base.PopElement;
+import org.eclipse.net4j.pop.base.util.BasePlugin;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop Element</b></em>'. <!-- end-user-doc -->
@@ -125,7 +127,42 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
    */
   public String getId()
   {
-    return getIdType() + "_" + getIdValue();
+    String idValue = null;
+
+    try
+    {
+      idValue = getIdValue();
+    }
+    catch (Exception ex)
+    {
+      BasePlugin.INSTANCE.log(ex);
+    }
+
+    if (idValue == null)
+    {
+      return EcoreUtil.generateUUID();
+    }
+
+    StringBuilder builder = new StringBuilder();
+    builder.append(getIdType());
+    builder.append("_");
+    builder.append(idValue);
+
+    for (int i = 0; i < builder.length(); i++)
+    {
+      char c = builder.charAt(i);
+      if (!Character.isLetterOrDigit(c))
+      {
+        builder.setCharAt(i, '_');
+      }
+    }
+
+    if (Character.isDigit(builder.charAt(0)))
+    {
+      builder.insert(0, '_');
+    }
+
+    return builder.toString();
   }
 
   /**
