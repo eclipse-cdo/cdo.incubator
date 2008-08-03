@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectModelWizard.java,v 1.4 2008-08-01 09:36:30 estepper Exp $
+ * $Id: ProjectModelWizard.java,v 1.5 2008-08-03 08:56:54 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.editor;
 
@@ -20,30 +20,19 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
  * @generated NOT
  */
 public class ProjectModelWizard extends BaseModelWizard
 {
-  /**
-   * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
   public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
       .asList(ProjectEditorPlugin.INSTANCE.getString("_UI_ProjectEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
-  /**
-   * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
   public static final String FORMATTED_FILE_EXTENSIONS = ProjectEditorPlugin.INSTANCE.getString(
       "_UI_ProjectEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
   public ProjectModelWizard()
   {
     super(ProjectPackage.eINSTANCE, FILE_EXTENSIONS, FORMATTED_FILE_EXTENSIONS);
+    // plugin = ProjectEditorPlugin.INSTANCE;
   }
 }

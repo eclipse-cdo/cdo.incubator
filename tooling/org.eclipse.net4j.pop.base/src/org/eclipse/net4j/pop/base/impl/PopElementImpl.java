@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
  * 
@@ -39,6 +40,16 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
    * @ordered
    */
   protected static final String ID_EDEFAULT = null;
+
+  /**
+   * The default value of the '{@link #getClass_() <em>Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
+   * @see #getClass_()
+   * @generated
+   * @ordered
+   */
+  protected static final String CLASS_EDEFAULT = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -83,6 +94,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
     {
     case BasePackage.POP_ELEMENT__ID:
       return getId();
+    case BasePackage.POP_ELEMENT__CLASS:
+      return getClass_();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -99,6 +112,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
     {
     case BasePackage.POP_ELEMENT__ID:
       return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+    case BasePackage.POP_ELEMENT__CLASS:
+      return CLASS_EDEFAULT == null ? getClass_() != null : !CLASS_EDEFAULT.equals(getClass_());
     }
     return super.eIsSet(featureID);
   }
@@ -111,6 +126,16 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   public String getId()
   {
     return getIdType() + "_" + getIdValue();
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public String getClass_()
+  {
+    return eClass().getName();
   }
 
   /**

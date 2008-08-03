@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementItemProvider.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
+ * $Id: PopElementItemProvider.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.provider;
 
@@ -18,6 +18,7 @@ import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -27,6 +28,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -65,8 +67,25 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
     {
       super.getPropertyDescriptors(object);
 
+      addClassPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Class feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addClassPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_PopElement_class_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_PopElement_class_feature", "_UI_PopElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        BasePackage.Literals.POP_ELEMENT__CLASS, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+        null));
   }
 
   /**
@@ -117,6 +136,7 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
     switch (notification.getFeatureID(PopElement.class))
     {
     case BasePackage.POP_ELEMENT__ID:
+    case BasePackage.POP_ELEMENT__CLASS:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }

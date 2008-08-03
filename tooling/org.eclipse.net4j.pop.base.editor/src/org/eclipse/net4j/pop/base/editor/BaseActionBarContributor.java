@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseActionBarContributor.java,v 1.2 2008-08-01 18:29:03 estepper Exp $
+ * $Id: BaseActionBarContributor.java,v 1.3 2008-08-03 08:56:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.editor;
 
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.domain.IEditingDomainProvider;
@@ -46,33 +47,37 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * This is the action bar contributor for the Base model editor.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
- * @generated
+ * This is the action bar contributor for the Base model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
+ * @generated NOT
  */
 public class BaseActionBarContributor extends EditingDomainActionBarContributor implements ISelectionChangedListener
 {
   /**
-   * This keeps track of the active editor.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @ADDED
+   */
+  protected EMFPlugin plugin = BaseEditorPlugin.INSTANCE;
+
+  /**
+   * This keeps track of the active editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IEditorPart activeEditorPart;
 
   /**
-   * This keeps track of the current selection provider.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This keeps track of the current selection provider. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ISelectionProvider selectionProvider;
 
   /**
-   * This action opens the Properties view.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This action opens the Properties view. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  protected IAction showPropertiesViewAction = new Action(BaseEditorPlugin.INSTANCE
-      .getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
+  protected IAction showPropertiesViewAction = new Action(plugin.getString("_UI_ShowPropertiesView_menu_item")) //$NON-NLS-1$
   {
     @Override
     public void run()
@@ -83,18 +88,18 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
       }
       catch (PartInitException exception)
       {
-        BaseEditorPlugin.INSTANCE.log(exception);
+        plugin.log(exception);
       }
     }
   };
 
   /**
-   * This action refreshes the viewer of the current editor if the editor
-   * implements {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This action refreshes the viewer of the current editor if the editor implements
+   * {@link org.eclipse.emf.common.ui.viewer.IViewerProvider}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  protected IAction refreshViewerAction = new Action(BaseEditorPlugin.INSTANCE.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
+  protected IAction refreshViewerAction = new Action(plugin.getString("_UI_RefreshViewer_menu_item")) //$NON-NLS-1$
   {
     @Override
     public boolean isEnabled()
@@ -118,8 +123,8 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
 
   /**
    * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateChildAction} corresponding to each descriptor
-   * generated for the current selection by the item provider.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * generated for the current selection by the item provider. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected Collection<IAction> createChildActions;
@@ -134,8 +139,8 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
 
   /**
    * This will contain one {@link org.eclipse.emf.edit.ui.action.CreateSiblingAction} corresponding to each descriptor
-   * generated for the current selection by the item provider.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * generated for the current selection by the item provider. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected Collection<IAction> createSiblingActions;
@@ -149,8 +154,8 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
   protected IMenuManager createSiblingMenuManager;
 
   /**
-   * This creates an instance of the contributor.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an instance of the contributor. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public BaseActionBarContributor()
@@ -162,8 +167,8 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
   }
 
   /**
-   * This adds Separators for editor additions to the tool bar.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds Separators for editor additions to the tool bar. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -174,9 +179,9 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
   }
 
   /**
-   * This adds to the menu bar a menu and some separators for editor additions,
-   * as well as the sub-menus for object creation items.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds to the menu bar a menu and some separators for editor additions, as well as the sub-menus for object
+   * creation items. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -185,7 +190,7 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
     super.contributeToMenu(menuManager);
 
     IMenuManager submenuManager = new MenuManager(
-        BaseEditorPlugin.INSTANCE.getString("_UI_BaseEditor_menu"), "org.eclipse.net4j.pop.baseMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
+        plugin.getString("_UI_BaseEditor_menu"), "org.eclipse.net4j.pop.baseMenuID"); //$NON-NLS-1$ //$NON-NLS-2$
     menuManager.insertAfter("additions", submenuManager); //$NON-NLS-1$
     submenuManager.add(new Separator("settings")); //$NON-NLS-1$
     submenuManager.add(new Separator("actions")); //$NON-NLS-1$
@@ -194,12 +199,12 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
 
     // Prepare for CreateChild item addition or removal.
     //
-    createChildMenuManager = new MenuManager(BaseEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+    createChildMenuManager = new MenuManager(plugin.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
     submenuManager.insertBefore("additions", createChildMenuManager); //$NON-NLS-1$
 
     // Prepare for CreateSibling item addition or removal.
     //
-    createSiblingMenuManager = new MenuManager(BaseEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+    createSiblingMenuManager = new MenuManager(plugin.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
     submenuManager.insertBefore("additions", createSiblingMenuManager); //$NON-NLS-1$
 
     // Force an update because Eclipse hides empty menus now.
@@ -252,10 +257,10 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
   }
 
   /**
-   * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener},
-   * handling {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings
-   * that can be added to the selected object and updating the menus accordingly.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This implements {@link org.eclipse.jface.viewers.ISelectionChangedListener}, handling
+   * {@link org.eclipse.jface.viewers.SelectionChangedEvent}s by querying for the children and siblings that can be
+   * added to the selected object and updating the menus accordingly. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void selectionChanged(SelectionChangedEvent event)
@@ -346,10 +351,10 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
 
   /**
    * This populates the specified <code>manager</code> with {@link org.eclipse.jface.action.ActionContributionItem}s
-   * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection,
-   * by inserting them before the specified contribution item <code>contributionID</code>.
-   * If <code>contributionID</code> is <code>null</code>, they are simply added.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * based on the {@link org.eclipse.jface.action.IAction}s contained in the <code>actions</code> collection, by
+   * inserting them before the specified contribution item <code>contributionID</code>. If <code>contributionID</code>
+   * is <code>null</code>, they are simply added. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void populateManager(IContributionManager manager, Collection<? extends IAction> actions,
@@ -408,8 +413,8 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
   }
 
   /**
-   * This populates the pop-up menu before it appears.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This populates the pop-up menu before it appears. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -418,18 +423,18 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
     super.menuAboutToShow(menuManager);
     MenuManager submenuManager = null;
 
-    submenuManager = new MenuManager(BaseEditorPlugin.INSTANCE.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
+    submenuManager = new MenuManager(plugin.getString("_UI_CreateChild_menu_item")); //$NON-NLS-1$
     populateManager(submenuManager, createChildActions, null);
     menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
 
-    submenuManager = new MenuManager(BaseEditorPlugin.INSTANCE.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
+    submenuManager = new MenuManager(plugin.getString("_UI_CreateSibling_menu_item")); //$NON-NLS-1$
     populateManager(submenuManager, createSiblingActions, null);
     menuManager.insertBefore("edit", submenuManager); //$NON-NLS-1$
   }
 
   /**
-   * This inserts global actions before the "additions-end" separator.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This inserts global actions before the "additions-end" separator. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -445,9 +450,9 @@ public class BaseActionBarContributor extends EditingDomainActionBarContributor 
   }
 
   /**
-   * This ensures that a delete action will clean up all references to deleted objects.
-   * <!-- begin-user-doc --> <!--
+   * This ensures that a delete action will clean up all references to deleted objects. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override

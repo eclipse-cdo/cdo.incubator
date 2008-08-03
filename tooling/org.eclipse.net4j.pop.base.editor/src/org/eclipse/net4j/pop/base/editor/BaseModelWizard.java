@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseModelWizard.java,v 1.3 2008-08-01 18:29:04 estepper Exp $
+ * $Id: BaseModelWizard.java,v 1.4 2008-08-03 08:56:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.editor;
 
@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.base.util.BasePlugin;
 
 import org.eclipse.emf.common.CommonPlugin;
+import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
@@ -71,12 +72,17 @@ import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
 /**
- * This is a simple wizard for creating a new model file.
- * <!-- begin-user-doc --> <!-- end-user-doc -->
- * @generated
+ * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
+ * 
+ * @generated NOT
  */
 public class BaseModelWizard extends Wizard implements INewWizard
 {
+  /**
+   * @ADDED
+   */
+  protected EMFPlugin plugin = BaseEditorPlugin.INSTANCE;
+
   /**
    * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -106,37 +112,37 @@ public class BaseModelWizard extends Wizard implements INewWizard
   protected EFactory baseFactory;
 
   /**
-   * This is the file creation page.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected BaseModelWizardNewFileCreationPage newFileCreationPage;
 
   /**
-   * This is the initial object creation page.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected BaseModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
   /**
-   * Remember the selection during initialization for populating the default container.
-   * <!-- begin-user-doc --> <!--
+   * Remember the selection during initialization for populating the default container. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected IStructuredSelection selection;
 
   /**
-   * Remember the workbench during initialization.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IWorkbench workbench;
 
   /**
-   * Caches the names of the types that can be created as the root object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected List<String> initialObjectNames;
@@ -153,16 +159,16 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This just records the information.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void init(IWorkbench workbench, IStructuredSelection selection)
   {
     this.workbench = workbench;
     this.selection = selection;
-    setWindowTitle(BaseEditorPlugin.INSTANCE.getString("_UI_Wizard_label")); //$NON-NLS-1$
-    setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(BaseEditorPlugin.INSTANCE
+    setWindowTitle(plugin.getString("_UI_Wizard_label")); //$NON-NLS-1$
+    setDefaultPageImageDescriptor(ExtendedImageRegistry.INSTANCE.getImageDescriptor(plugin
         .getImage("full/wizban/NewBase"))); //$NON-NLS-1$
   }
 
@@ -202,8 +208,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Create a new model.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected EObject createInitialModel()
@@ -214,8 +220,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Do the work after everything is specified.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -264,7 +270,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
           }
           catch (Exception exception)
           {
-            BaseEditorPlugin.INSTANCE.log(exception);
+            plugin.log(exception);
           }
           finally
           {
@@ -301,8 +307,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
       }
       catch (PartInitException exception)
       {
-        MessageDialog.openError(workbenchWindow.getShell(), BaseEditorPlugin.INSTANCE
-            .getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
+        MessageDialog.openError(workbenchWindow.getShell(),
+            plugin.getString("_UI_OpenEditorError_label"), exception.getMessage()); //$NON-NLS-1$
         return false;
       }
 
@@ -310,21 +316,21 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
     catch (Exception exception)
     {
-      BaseEditorPlugin.INSTANCE.log(exception);
+      plugin.log(exception);
       return false;
     }
   }
 
   /**
-   * This is the one page of the wizard.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public class BaseModelWizardNewFileCreationPage extends WizardNewFileCreationPage
   {
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public BaseModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection)
@@ -333,8 +339,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * The framework calls this to see if the file is correct.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The framework calls this to see if the file is correct. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -346,7 +352,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
         if (extension == null || !FILE_EXTENSIONS.contains(extension))
         {
           String key = FILE_EXTENSIONS.size() > 1 ? "_WARN_FilenameExtensions" : "_WARN_FilenameExtension"; //$NON-NLS-1$ //$NON-NLS-2$
-          setErrorMessage(BaseEditorPlugin.INSTANCE.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
+          setErrorMessage(plugin.getString(key, new Object[] { FORMATTED_FILE_EXTENSIONS }));
           return false;
         }
         return true;
@@ -356,6 +362,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public IFile getModelFile()
@@ -365,14 +372,15 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the page where the type of object to create is selected.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public class BaseModelWizardInitialObjectCreationPage extends WizardPage
   {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Combo initialObjectField;
@@ -384,13 +392,14 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Combo encodingField;
 
     /**
-     * Pass in the selection.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public BaseModelWizardInitialObjectCreationPage(String pageId)
@@ -400,6 +409,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public void createControl(Composite parent)
@@ -420,7 +430,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
       Label containerLabel = new Label(composite, SWT.LEFT);
       {
-        containerLabel.setText(BaseEditorPlugin.INSTANCE.getString("_UI_ModelObject")); //$NON-NLS-1$
+        containerLabel.setText(plugin.getString("_UI_ModelObject")); //$NON-NLS-1$
 
         GridData data = new GridData();
         data.horizontalAlignment = GridData.FILL;
@@ -448,7 +458,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
       Label encodingLabel = new Label(composite, SWT.LEFT);
       {
-        encodingLabel.setText(BaseEditorPlugin.INSTANCE.getString("_UI_XMLEncoding")); //$NON-NLS-1$
+        encodingLabel.setText(plugin.getString("_UI_XMLEncoding")); //$NON-NLS-1$
 
         GridData data = new GridData();
         data.horizontalAlignment = GridData.FILL;
@@ -476,6 +486,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected ModifyListener validator = new ModifyListener()
@@ -488,6 +499,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected boolean validatePage()
@@ -497,6 +509,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     @Override
@@ -520,6 +533,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getInitialObjectName()
@@ -538,6 +552,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public String getEncoding()
@@ -546,8 +561,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * Returns the label for the specified type name.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected String getLabel(String typeName)
@@ -558,13 +573,14 @@ public class BaseModelWizard extends Wizard implements INewWizard
       }
       catch (MissingResourceException mre)
       {
-        BaseEditorPlugin.INSTANCE.log(mre);
+        plugin.log(mre);
       }
       return typeName;
     }
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     protected Collection<String> getEncodings()
@@ -572,8 +588,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
       if (encodings == null)
       {
         encodings = new ArrayList<String>();
-        for (StringTokenizer stringTokenizer = new StringTokenizer(BaseEditorPlugin.INSTANCE
-            .getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
+        for (StringTokenizer stringTokenizer = new StringTokenizer(plugin.getString("_UI_XMLEncodingChoices")); stringTokenizer.hasMoreTokens();) //$NON-NLS-1$
         {
           encodings.add(stringTokenizer.nextToken());
         }
@@ -583,8 +598,8 @@ public class BaseModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * The framework calls this to create the contents of the wizard.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -593,10 +608,10 @@ public class BaseModelWizard extends Wizard implements INewWizard
     // Create a page, set the title, and the initial model file name.
     //
     newFileCreationPage = new BaseModelWizardNewFileCreationPage("Whatever", selection); //$NON-NLS-1$
-    newFileCreationPage.setTitle(BaseEditorPlugin.INSTANCE.getString("_UI_BaseModelWizard_label")); //$NON-NLS-1$
-    newFileCreationPage.setDescription(BaseEditorPlugin.INSTANCE.getString("_UI_BaseModelWizard_description")); //$NON-NLS-1$
+    newFileCreationPage.setTitle(plugin.getString("_UI_BaseModelWizard_label")); //$NON-NLS-1$
+    newFileCreationPage.setDescription(plugin.getString("_UI_BaseModelWizard_description")); //$NON-NLS-1$
     newFileCreationPage
-        .setFileName(BaseEditorPlugin.INSTANCE.getString("_UI_BaseEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
+        .setFileName(plugin.getString("_UI_BaseEditorFilenameDefaultBase") + "." + FILE_EXTENSIONS.get(0)); //$NON-NLS-1$ //$NON-NLS-2$
     addPage(newFileCreationPage);
 
     // Try and get the resource selection to determine a current directory for the file dialog.
@@ -626,7 +641,7 @@ public class BaseModelWizard extends Wizard implements INewWizard
 
           // Make up a unique new name here.
           //
-          String defaultModelBaseFilename = BaseEditorPlugin.INSTANCE.getString("_UI_BaseEditorFilenameDefaultBase"); //$NON-NLS-1$
+          String defaultModelBaseFilename = plugin.getString("_UI_BaseEditorFilenameDefaultBase"); //$NON-NLS-1$
           String defaultModelFilenameExtension = FILE_EXTENSIONS.get(0);
           String modelFilename = defaultModelBaseFilename + "." + defaultModelFilenameExtension; //$NON-NLS-1$
           for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i)
@@ -638,15 +653,14 @@ public class BaseModelWizard extends Wizard implements INewWizard
       }
     }
     initialObjectCreationPage = new BaseModelWizardInitialObjectCreationPage("Whatever2"); //$NON-NLS-1$
-    initialObjectCreationPage.setTitle(BaseEditorPlugin.INSTANCE.getString("_UI_BaseModelWizard_label")); //$NON-NLS-1$
-    initialObjectCreationPage.setDescription(BaseEditorPlugin.INSTANCE
-        .getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
+    initialObjectCreationPage.setTitle(plugin.getString("_UI_BaseModelWizard_label")); //$NON-NLS-1$
+    initialObjectCreationPage.setDescription(plugin.getString("_UI_Wizard_initial_object_description")); //$NON-NLS-1$
     addPage(initialObjectCreationPage);
   }
 
   /**
-   * Get the file from the page.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IFile getModelFile()

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackage.java,v 1.4 2008-08-01 18:29:06 estepper Exp $
+ * $Id: BasePackage.java,v 1.5 2008-08-03 08:56:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
@@ -133,13 +133,22 @@ public interface BasePackage extends EPackage
   int POP_ELEMENT__ID = IDENTIFIABLE__ID;
 
   /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_ELEMENT__CLASS = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+  /**
    * The number of structural features of the '<em>Pop Element</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
    * @generated
    * @ordered
    */
-  int POP_ELEMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 0;
+  int POP_ELEMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '<em>Version</em>' data type.
@@ -190,6 +199,17 @@ public interface BasePackage extends EPackage
    * @generated
    */
   EClass getPopElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.base.PopElement#getClass_ <em>Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Class</em>'.
+   * @see org.eclipse.net4j.pop.base.PopElement#getClass_()
+   * @see #getPopElement()
+   * @generated
+   */
+  EAttribute getPopElement_Class();
 
   /**
    * Returns the meta object for data type '{@link org.eclipse.net4j.pop.base.Version <em>Version</em>}'. <!--
@@ -258,6 +278,14 @@ public interface BasePackage extends EPackage
      * @generated
      */
     EClass POP_ELEMENT = eINSTANCE.getPopElement();
+
+    /**
+     * The meta object literal for the '<em><b>Class</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POP_ELEMENT__CLASS = eINSTANCE.getPopElement_Class();
 
     /**
      * The meta object literal for the '<em>Version</em>' data type.

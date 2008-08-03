@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseSwitch.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
+ * $Id: BaseSwitch.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.util;
 
@@ -96,23 +96,28 @@ public class BaseSwitch<T>
     {
       Identifiable identifiable = (Identifiable)theEObject;
       T result = caseIdentifiable(identifiable);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case BasePackage.DISPLAYABLE:
     {
       Displayable displayable = (Displayable)theEObject;
       T result = caseDisplayable(displayable);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case BasePackage.POP_ELEMENT:
     {
       PopElement popElement = (PopElement)theEObject;
       T result = casePopElement(popElement);
-      if (result == null) result = caseIdentifiable(popElement);
-      if (result == null) result = caseDisplayable(popElement);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = caseIdentifiable(popElement);
+      if (result == null)
+        result = caseDisplayable(popElement);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     default:

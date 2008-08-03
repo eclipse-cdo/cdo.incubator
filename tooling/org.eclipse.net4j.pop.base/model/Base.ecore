@@ -10,6 +10,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="Displayable" abstract="true" interface="true">
     <eOperations name="getDisplayString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PopElement" abstract="true" eSuperTypes="#//Identifiable #//Displayable"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PopElement" abstract="true" eSuperTypes="#//Identifiable #//Displayable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.eclipse.net4j.pop.base.Version"/>
 </ecore:EPackage>

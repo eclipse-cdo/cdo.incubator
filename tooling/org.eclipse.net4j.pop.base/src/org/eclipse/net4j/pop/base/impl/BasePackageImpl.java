@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackageImpl.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
+ * $Id: BasePackageImpl.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -103,7 +103,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
    */
   public static BasePackage init()
   {
-    if (isInited) return (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
+    if (isInited)
+      return (BasePackage)EPackage.Registry.INSTANCE.getEPackage(BasePackage.eNS_URI);
 
     // Obtain or create and register package
     BasePackageImpl theBasePackage = (BasePackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof BasePackageImpl ? EPackage.Registry.INSTANCE
@@ -162,6 +163,16 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getPopElement_Class()
+  {
+    return (EAttribute)popElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -193,7 +204,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
    */
   public void createPackageContents()
   {
-    if (isCreated) return;
+    if (isCreated)
+      return;
     isCreated = true;
 
     // Create classes and their features
@@ -203,6 +215,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
     displayableEClass = createEClass(DISPLAYABLE);
 
     popElementEClass = createEClass(POP_ELEMENT);
+    createEAttribute(popElementEClass, POP_ELEMENT__CLASS);
 
     // Create data types
     versionEDataType = createEDataType(VERSION);
@@ -222,7 +235,8 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
    */
   public void initializePackageContents()
   {
-    if (isInitialized) return;
+    if (isInitialized)
+      return;
     isInitialized = true;
 
     // Initialize package
@@ -253,6 +267,10 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
 
     initEClass(popElementEClass, PopElement.class,
         "PopElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(
+        getPopElement_Class(),
+        ecorePackage.getEString(),
+        "class", null, 1, 1, PopElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     // Initialize data types
     initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
