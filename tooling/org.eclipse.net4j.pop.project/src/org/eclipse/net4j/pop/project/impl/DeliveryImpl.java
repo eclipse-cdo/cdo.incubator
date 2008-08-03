@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
+ * $Id: DeliveryImpl.java,v 1.11 2008-08-03 18:55:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -54,7 +54,7 @@ public class DeliveryImpl extends TaggedElementImpl implements Delivery
    * @generated
    * @ordered
    */
-  protected static final int NUMBER_EDEFAULT = 1;
+  protected static final int NUMBER_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getNumber() <em>Number</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc

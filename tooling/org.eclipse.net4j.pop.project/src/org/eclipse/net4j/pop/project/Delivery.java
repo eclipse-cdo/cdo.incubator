@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Delivery.java,v 1.9 2008-08-01 20:05:23 estepper Exp $
+ * $Id: Delivery.java,v 1.10 2008-08-03 18:55:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -64,7 +64,6 @@ public interface Delivery extends TaggedElement
 
   /**
    * Returns the value of the '<em><b>Number</b></em>' attribute.
-   * The default value is <code>"1"</code>.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Number</em>' attribute isn't clear,
@@ -74,7 +73,7 @@ public interface Delivery extends TaggedElement
    * @return the value of the '<em>Number</em>' attribute.
    * @see #setNumber(int)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDelivery_Number()
-   * @model default="1" required="true"
+   * @model required="true"
    * @generated
    */
   int getNumber();

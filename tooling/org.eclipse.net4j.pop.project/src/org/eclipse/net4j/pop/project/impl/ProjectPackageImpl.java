@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.14 2008-08-03 17:31:34 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.15 2008-08-03 18:55:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -1383,7 +1383,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEAttribute(
         getDelivery_Number(),
         ecorePackage.getEInt(),
-        "number", "1", 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        "number", null, 1, 1, Delivery.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getDelivery_Date(),
         ecorePackage.getEDate(),
