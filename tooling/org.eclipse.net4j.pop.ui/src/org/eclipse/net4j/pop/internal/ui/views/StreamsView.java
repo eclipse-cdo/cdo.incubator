@@ -12,6 +12,7 @@ package org.eclipse.net4j.pop.internal.ui.views;
 
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IPopManager;
+import org.eclipse.net4j.pop.project.Stream;
 
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -20,6 +21,8 @@ import org.eclipse.swt.widgets.Composite;
 
 public class StreamsView extends MasterDetailsView
 {
+  private static final String[] ALL_TITLES = { "Targets", "Deliveries", "Merges", "Checkouts" };
+
   private static final String[] STREAM_DETAIL_TITLES = { "Targets", "Deliveries", "Merges" };
 
   private static final String[] POP_DETAIL_TITLES = { "Merges", "Checkouts" };
@@ -54,7 +57,12 @@ public class StreamsView extends MasterDetailsView
       return POP_DETAIL_TITLES;
     }
 
-    return STREAM_DETAIL_TITLES;
+    if (masterElement instanceof Stream)
+    {
+      return STREAM_DETAIL_TITLES;
+    }
+
+    return ALL_TITLES;
   }
 
   private StructuredViewer createViewer(Composite parent)
