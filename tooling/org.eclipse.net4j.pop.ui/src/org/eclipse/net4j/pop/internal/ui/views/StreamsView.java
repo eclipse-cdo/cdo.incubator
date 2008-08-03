@@ -73,7 +73,7 @@ public class StreamsView extends MasterDetailsView
   {
     if (ObjectUtil.equals(title, COMMITTERS))
     {
-      return createViewer(parent, new PopContentProvider(adapterFactory));
+      return createViewer(parent, new PopContentProvider.Committers(adapterFactory));
     }
 
     if (ObjectUtil.equals(title, TARGETS))
@@ -83,12 +83,12 @@ public class StreamsView extends MasterDetailsView
 
     if (ObjectUtil.equals(title, DELIVERIES))
     {
-      return createViewer(parent, new PopContentProvider(adapterFactory));
+      return createViewer(parent, new PopContentProvider.Deliveries(adapterFactory));
     }
 
     if (ObjectUtil.equals(title, MERGES))
     {
-      return createViewer(parent, new PopContentProvider(adapterFactory));
+      return createViewer(parent, new PopContentProvider.Merges(adapterFactory));
     }
 
     if (ObjectUtil.equals(title, CHECKOUTS))
