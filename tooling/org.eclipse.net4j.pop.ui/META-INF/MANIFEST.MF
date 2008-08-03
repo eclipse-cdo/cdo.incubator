@@ -13,7 +13,4 @@ Require-Bundle: org.eclipse.net4j.pop;bundle-version="[1.0.0,2.0.0)";visibility:
  org.eclipse.net4j.pop.base.editor;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
  org.eclipse.net4j.pop.project.editor;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
  org.eclipse.net4j.pop.product.editor;bundle-version="[1.0.0,2.0.0)";visibility:=reexport
-Export-Package: org.eclipse.net4j.pop.internal.ui;version="1.0.0";x-internal=true,
- org.eclipse.net4j.pop.internal.ui.bundle;version="1.0.0";x-internal=true,
- org.eclipse.net4j.pop.ui;version="1.0.0",
- org.eclipse.net4j.pop.ui.actions;version="1.0.0"
+Export-Package: org.eclipse.net4j.pop.internal.ui.bundle;version="1.0.0";x-internal=true

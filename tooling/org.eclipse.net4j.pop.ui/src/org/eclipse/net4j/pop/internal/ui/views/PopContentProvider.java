@@ -10,6 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
+import org.eclipse.net4j.internal.pop.Pop;
+import org.eclipse.net4j.internal.pop.PopManager;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.internal.ui.bundle.OM;
@@ -23,18 +25,26 @@ import org.eclipse.net4j.pop.project.Release;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.TaskStream;
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.event.IEvent;
 import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.ui.UIUtil;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.swt.widgets.Display;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -164,12 +174,76 @@ public class PopContentProvider extends AdapterFactoryContentProvider
     }
   }
 
-  /**
-   * @since 2.0
-   */
   protected void refreshSynced()
   {
-    viewer.refresh();
+    TreeViewer treeViewer = (TreeViewer)viewer;
+    Object[] expandedElements = treeViewer.getExpandedElements();
+    IStructuredSelection selection = (IStructuredSelection)treeViewer.getSelection();
+
+    treeViewer.refresh();
+    for (Object expandedElement : expandedElements)
+    {
+      if (expandedElement instanceof EObject)
+      {
+        EObject object = getEObject((EObject)expandedElement);
+        if (object != null)
+        {
+          treeViewer.setExpandedState(object, true);
+        }
+      }
+    }
+
+    List<Object> list = new ArrayList<Object>();
+    for (Iterator<?> it = selection.iterator(); it.hasNext();)
+    {
+      Object selectedOjbect = it.next();
+      if (selectedOjbect instanceof EObject)
+      {
+        EObject object = getEObject((EObject)selectedOjbect);
+        if (object != null)
+        {
+          list.add(object);
+        }
+      }
+    }
+
+    viewer.setSelection(new StructuredSelection(list));
+  }
+
+  protected EObject getEObject(EObject object)
+  {
+    URI uri = getEObjectURI(object);
+    Object element = input;
+    return getEObject(uri, element);
+  }
+
+  protected EObject getEObject(URI uri, Object element)
+  {
+    if (element instanceof EObject)
+    {
+      EObject elementObject = (EObject)element;
+      URI elementURI = getEObjectURI(elementObject);
+      if (ObjectUtil.equals(elementURI, uri))
+      {
+        return elementObject;
+      }
+    }
+
+    for (Object childObject : getChildren(element))
+    {
+      EObject result = getEObject(uri, childObject);
+      if (result != null)
+      {
+        return result;
+      }
+    }
+
+    return null;
+  }
+
+  protected URI getEObjectURI(EObject object)
+  {
+    return object.eResource().getURI().appendFragment(EcoreUtil.getID(object));
   }
 
   protected Display getDisplay()
@@ -188,27 +262,24 @@ public class PopContentProvider extends AdapterFactoryContentProvider
    */
   public static class Streams extends PopContentProvider implements IListener
   {
+    private List<Pop> pops = new ArrayList<Pop>();
+
     public Streams(AdapterFactory adapterFactory)
     {
       super(adapterFactory);
     }
 
     @Override
+    public void dispose()
+    {
+      removeListeners();
+      super.dispose();
+    }
+
+    @Override
     protected boolean checkInput(Object input)
     {
-      return input instanceof IPopManager;
-    }
-
-    @Override
-    protected void connectInput()
-    {
-      ((IPopManager)input).addListener(this);
-    }
-
-    @Override
-    protected void disconnectInput()
-    {
-      ((IPopManager)input).removeListener(this);
+      return input instanceof PopManager;
     }
 
     public void notifyEvent(IEvent event)
@@ -219,12 +290,15 @@ public class PopContentProvider extends AdapterFactoryContentProvider
     @Override
     public Object[] getChildren(Object object)
     {
-      if (object instanceof IPopManager)
+      if (object instanceof PopManager)
       {
-        IPopManager manager = (IPopManager)object;
+        PopManager manager = (PopManager)object;
+        removeListeners();
+
         List<Object> result = new ArrayList<Object>();
-        for (IPop pop : manager.getPops())
+        for (Pop pop : manager.getPops())
         {
+
           PopProject popProject = pop.getPopProject();
           if (popProject != null)
           {
@@ -232,6 +306,8 @@ public class PopContentProvider extends AdapterFactoryContentProvider
             if (rootStream != null)
             {
               result.add(rootStream);
+              pop.getModelManager().addListener(this);
+              pops.add(pop);
             }
           }
         }
@@ -265,6 +341,17 @@ public class PopContentProvider extends AdapterFactoryContentProvider
 
       return super.doGetParent(object);
     }
+
+    private void removeListeners()
+    {
+      for (Pop pop : pops)
+      {
+        pop.getModelManager().removeListener(this);
+      }
+
+      pops.clear();
+    }
+
   }
 
   /**

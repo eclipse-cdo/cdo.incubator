@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseEditor.java,v 1.3 2008-08-03 08:56:56 estepper Exp $
+ * $Id: BaseEditor.java,v 1.4 2008-08-03 16:41:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.editor;
 
@@ -1210,7 +1210,6 @@ public class BaseEditor extends MultiPageEditorPart implements IEditingDomainPro
             @Override
             public void sort(IPropertySheetEntry[] entries)
             {
-              System.out.println("sort");
               // Do nothing
             }
           });

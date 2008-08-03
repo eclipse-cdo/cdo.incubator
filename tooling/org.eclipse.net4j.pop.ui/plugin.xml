@@ -11,35 +11,10 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.22 2008-08-03 16:41:54 estepper Exp $
+ $Id: plugin.xml,v 1.23 2008-08-03 16:45:27 estepper Exp $
 -->
 
 <plugin>
-
-   <extension
-         point="org.eclipse.ui.actionSets">
-      <actionSet
-            id="org.eclipse.net4j.pop.ui.actionSet"
-            label="Sample Action Set"
-            visible="true">
-         <menu
-               id="sampleMenu"
-               label="Sample &amp;Menu">
-            <separator
-                  name="sampleGroup">
-            </separator>
-         </menu>
-         <action
-               class="org.eclipse.net4j.pop.ui.actions.SampleAction"
-               icon="icons/sample.gif"
-               id="org.eclipse.net4j.pop.ui.actions.SampleAction"
-               label="&amp;Sample Action"
-               menubarPath="sampleMenu/sampleGroup"
-               toolbarPath="sampleGroup"
-               tooltip="Hello, Eclipse world">
-         </action>
-      </actionSet>
-   </extension>
 
    <extension
          point="org.eclipse.ui.views">
