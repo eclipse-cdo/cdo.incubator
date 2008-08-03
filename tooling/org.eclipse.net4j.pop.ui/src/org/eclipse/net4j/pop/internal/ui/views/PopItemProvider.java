@@ -179,19 +179,18 @@ public class PopItemProvider extends ContainerItemProvider<IContainer<Object>>
 
   private EObject getEObject(EObject object)
   {
-    URI uri = object.eResource().getURI();
-    String id = EcoreUtil.getID(object);
-    return getEObject(uri, id, getInput());
+    URI uri = getEObjectURI(object);
+    Object element = getInput();
+    return getEObject(uri, element);
   }
 
-  private EObject getEObject(URI uri, String id, Object element)
+  private EObject getEObject(URI uri, Object element)
   {
     if (element instanceof EObject)
     {
       EObject elementObject = (EObject)element;
-      URI elementURI = elementObject.eResource().getURI();
-      String elementID = EcoreUtil.getID(elementObject);
-      if (ObjectUtil.equals(elementURI, uri) && ObjectUtil.equals(elementID, id))
+      URI elementURI = getEObjectURI(elementObject);
+      if (ObjectUtil.equals(elementURI, uri))
       {
         return elementObject;
       }
@@ -199,7 +198,7 @@ public class PopItemProvider extends ContainerItemProvider<IContainer<Object>>
 
     for (Object childObject : getChildren(element))
     {
-      EObject result = getEObject(uri, id, childObject);
+      EObject result = getEObject(uri, childObject);
       if (result != null)
       {
         return result;
@@ -207,6 +206,11 @@ public class PopItemProvider extends ContainerItemProvider<IContainer<Object>>
     }
 
     return null;
+  }
+
+  private URI getEObjectURI(EObject object)
+  {
+    return object.eResource().getURI().appendFragment(EcoreUtil.getID(object));
   }
 
   /**

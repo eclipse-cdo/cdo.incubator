@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeItemProvider.java,v 1.9 2008-08-01 19:10:41 estepper Exp $
+ * $Id: MergeItemProvider.java,v 1.10 2008-08-03 07:19:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -34,9 +34,9 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Merge} object.
- * <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Merge} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MergeItemProvider extends TaggedElementItemProvider implements IEditingDomainItemProvider,
@@ -44,8 +44,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MergeItemProvider(AdapterFactory adapterFactory)
@@ -54,8 +54,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -73,9 +73,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds a property descriptor for the Stream feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Stream feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addStreamPropertyDescriptor(Object object)
@@ -87,8 +86,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds a property descriptor for the Date feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Date feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addDatePropertyDescriptor(Object object)
@@ -103,8 +102,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds a property descriptor for the Delivery feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Delivery feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addDeliveryPropertyDescriptor(Object object)
@@ -116,8 +115,8 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This returns Merge.gif.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns Merge.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -127,9 +126,9 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
   @Override
   public String getText(Object object)
@@ -137,13 +136,13 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
     Date labelValue = ((Merge)object).getDate();
     String label = labelValue == null ? null : labelValue.toString();
     return label == null || label.length() == 0 ? getString("_UI_Merge_type") : //$NON-NLS-1$
-        getString("_UI_Merge_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -163,9 +162,9 @@ public class MergeItemProvider extends TaggedElementItemProvider implements IEdi
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: MaintenanceStreamItemProvider.java,v 1.8 2008-08-03 07:19:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -42,8 +42,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MaintenanceStreamItemProvider(AdapterFactory adapterFactory)
@@ -52,8 +52,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -70,8 +70,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Parent feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Parent feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addParentPropertyDescriptor(Object object)
@@ -86,8 +86,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Baseline feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Baseline feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addBaselinePropertyDescriptor(Object object)
@@ -102,8 +102,8 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns MaintenanceStream.gif.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns MaintenanceStream.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -113,22 +113,22 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
   @Override
   public String getText(Object object)
   {
     String label = ((MaintenanceStream)object).getName();
     return label == null || label.length() == 0 ? getString("_UI_MaintenanceStream_type") : //$NON-NLS-1$
-        getString("_UI_MaintenanceStream_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -146,9 +146,9 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

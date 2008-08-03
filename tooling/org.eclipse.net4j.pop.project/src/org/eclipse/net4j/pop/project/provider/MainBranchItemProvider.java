@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchItemProvider.java,v 1.7 2008-08-01 11:01:45 estepper Exp $
+ * $Id: MainBranchItemProvider.java,v 1.8 2008-08-03 07:19:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -31,9 +31,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.MainBranch} object.
- * <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.MainBranch} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class MainBranchItemProvider extends BranchItemProvider implements IEditingDomainItemProvider,
@@ -41,8 +41,8 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MainBranchItemProvider(AdapterFactory adapterFactory)
@@ -51,8 +51,8 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -68,9 +68,8 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
   }
 
   /**
-   * This adds a property descriptor for the Pop Project feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Pop Project feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addPopProjectPropertyDescriptor(Object object)
@@ -82,8 +81,8 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
   }
 
   /**
-   * This returns MainBranch.gif.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns MainBranch.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -93,22 +92,22 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
   @Override
   public String getText(Object object)
   {
     String label = ((MainBranch)object).getName();
     return label == null || label.length() == 0 ? getString("_UI_MainBranch_type") : //$NON-NLS-1$
-        getString("_UI_MainBranch_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -119,9 +118,9 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
