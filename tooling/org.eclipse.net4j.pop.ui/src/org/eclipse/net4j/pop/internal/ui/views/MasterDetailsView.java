@@ -141,12 +141,17 @@ public abstract class MasterDetailsView extends MultiViewersView
     }
 
     currentDetailIndex = indexOf(detailItems, oldDetailTitle);
-    if (currentDetailIndex == -1)
+    if (currentDetailIndex == -1 && details.length > 0)
     {
       currentDetailIndex = 0;
     }
 
-    detailsFolder.setSelection(currentDetailIndex);
+    if (currentDetailIndex != -1)
+    {
+      details[currentDetailIndex].refresh();
+      detailsFolder.setSelection(currentDetailIndex);
+    }
+
     detailsFolder.layout();
   }
 
