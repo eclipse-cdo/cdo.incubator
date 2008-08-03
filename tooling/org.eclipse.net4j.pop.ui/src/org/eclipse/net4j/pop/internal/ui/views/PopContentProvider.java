@@ -23,12 +23,16 @@ import org.eclipse.net4j.pop.project.Release;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.TaskStream;
+import org.eclipse.net4j.util.event.IEvent;
+import org.eclipse.net4j.util.event.IListener;
+import org.eclipse.net4j.util.ui.UIUtil;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.swt.widgets.Display;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +52,11 @@ public class PopContentProvider extends AdapterFactoryContentProvider
   @Override
   public void inputChanged(Viewer viewer, Object oldInput, Object newInput)
   {
+    if (oldInput != newInput && oldInput != null)
+    {
+      disconnectInput();
+    }
+
     if (newInput != null && !checkInput(newInput))
     {
       String msg = "Invalid input for " + getClass().getSimpleName() + ": " + newInput;
@@ -58,6 +67,18 @@ public class PopContentProvider extends AdapterFactoryContentProvider
 
     super.inputChanged(viewer, oldInput, newInput);
     input = newInput;
+    if (input != null)
+    {
+      connectInput();
+    }
+  }
+
+  protected void connectInput()
+  {
+  }
+
+  protected void disconnectInput()
+  {
   }
 
   @Override
@@ -120,10 +141,52 @@ public class PopContentProvider extends AdapterFactoryContentProvider
     return true;
   }
 
+  protected void refresh()
+  {
+    try
+    {
+      getDisplay().syncExec(new Runnable()
+      {
+        public void run()
+        {
+          try
+          {
+            refreshSynced();
+          }
+          catch (RuntimeException ignore)
+          {
+          }
+        }
+      });
+    }
+    catch (RuntimeException ignore)
+    {
+    }
+  }
+
+  /**
+   * @since 2.0
+   */
+  protected void refreshSynced()
+  {
+    viewer.refresh();
+  }
+
+  protected Display getDisplay()
+  {
+    Display display = viewer.getControl().getDisplay();
+    if (display == null)
+    {
+      display = UIUtil.getDisplay();
+    }
+
+    return display;
+  }
+
   /**
    * @author Eike Stepper
    */
-  public static class Streams extends PopContentProvider
+  public static class Streams extends PopContentProvider implements IListener
   {
     public Streams(AdapterFactory adapterFactory)
     {
@@ -134,6 +197,23 @@ public class PopContentProvider extends AdapterFactoryContentProvider
     protected boolean checkInput(Object input)
     {
       return input instanceof IPopManager;
+    }
+
+    @Override
+    protected void connectInput()
+    {
+      ((IPopManager)input).addListener(this);
+    }
+
+    @Override
+    protected void disconnectInput()
+    {
+      ((IPopManager)input).removeListener(this);
+    }
+
+    public void notifyEvent(IEvent event)
+    {
+      refresh();
     }
 
     @Override
