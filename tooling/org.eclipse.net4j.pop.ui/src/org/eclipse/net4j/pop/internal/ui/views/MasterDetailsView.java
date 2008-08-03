@@ -31,13 +31,13 @@ public abstract class MasterDetailsView extends MultiViewersView
 
   private Object currentMasterElement = new Object();
 
-  private String currentDetailTitle;
-
   private String[] detailTitles;
 
   private CTabItem[] detailItems;
 
   private StructuredViewer[] details;
+
+  private int currentDetailIndex;
 
   public MasterDetailsView()
   {
@@ -97,8 +97,12 @@ public abstract class MasterDetailsView extends MultiViewersView
       return;
     }
 
+    // Temporarily remember old values
+    String oldDetailTitle = detailItems == null ? null : detailItems[currentDetailIndex].getText();
     StructuredViewer[] oldDetails = details;
     CTabItem[] oldDetailItems = detailItems;
+
+    // Initialize new values
     detailTitles = getDetailTitles(masterElement);
     details = new StructuredViewer[detailTitles.length];
     detailItems = new CTabItem[detailTitles.length];
@@ -136,15 +140,14 @@ public abstract class MasterDetailsView extends MultiViewersView
       }
     }
 
-    int selection = indexOf(detailItems, currentDetailTitle);
-    if (selection == -1)
+    currentDetailIndex = indexOf(detailItems, oldDetailTitle);
+    if (currentDetailIndex == -1)
     {
-      selection = 0;
+      currentDetailIndex = 0;
     }
 
-    detailsFolder.setSelection(selection);
+    detailsFolder.setSelection(currentDetailIndex);
     detailsFolder.layout();
-    currentDetailTitle = detailsFolder.getSelection().getText();
   }
 
   protected abstract StructuredViewer createMaster(Composite parent);
