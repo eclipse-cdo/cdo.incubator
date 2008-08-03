@@ -21,6 +21,8 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.custom.CTabItem;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
@@ -41,7 +43,7 @@ public abstract class MasterDetailsView extends MultiViewersView
 
   private StructuredViewer[] details;
 
-  private int currentDetailIndex;
+  private int currentIndex;
 
   public MasterDetailsView()
   {
@@ -71,6 +73,16 @@ public abstract class MasterDetailsView extends MultiViewersView
         // Styles: CLOSE, TOP, BOTTOM, FLAT, BORDER, SINGLE, MULTI
         detailsFolder = new CTabFolder(parent, SWT.BOTTOM | SWT.FLAT);
         adjustDetails(null);
+        detailsFolder.addSelectionListener(new SelectionAdapter()
+        {
+          @Override
+          public void widgetSelected(SelectionEvent e)
+          {
+            String title = detailsFolder.getSelection().getText();
+            currentIndex = indexOf(detailItems, title);
+          }
+        });
+
         return detailsFolder;
       }
     };
@@ -107,7 +119,13 @@ public abstract class MasterDetailsView extends MultiViewersView
     adjustDetails(masterElement);
   }
 
-  protected void adjustDetails(Object masterElement)
+  protected abstract StructuredViewer createMaster(Composite parent);
+
+  protected abstract String[] getDetailTitles(Object masterElement);
+
+  protected abstract StructuredViewer createDetail(Composite parent, String title);
+
+  private void adjustDetails(Object masterElement)
   {
     if (ObjectUtil.equals(masterElement, currentMasterElement))
     {
@@ -115,8 +133,7 @@ public abstract class MasterDetailsView extends MultiViewersView
     }
 
     // Temporarily remember old values
-    String oldDetailTitle = detailItems == null || currentDetailIndex < 0 ? null : detailItems[currentDetailIndex]
-        .getText();
+    String oldDetailTitle = detailItems == null || currentIndex < 0 ? null : detailItems[currentIndex].getText();
     StructuredViewer[] oldDetails = details;
     CTabItem[] oldDetailItems = detailItems;
 
@@ -158,30 +175,28 @@ public abstract class MasterDetailsView extends MultiViewersView
       }
     }
 
-    currentDetailIndex = indexOf(detailItems, oldDetailTitle);
-    if (currentDetailIndex == -1 && details.length > 0)
+    if (currentMasterElement != masterElement)
     {
-      currentDetailIndex = 0;
+      currentMasterElement = masterElement;
+      for (StructuredViewer viewer : details)
+      {
+        viewer.setInput(masterElement);
+      }
     }
 
-    if (currentDetailIndex != -1)
+    currentIndex = indexOf(detailItems, oldDetailTitle);
+    if (currentIndex == -1 && details.length > 0)
     {
-      details[currentDetailIndex].setInput(masterElement);
-      details[currentDetailIndex].refresh();
-      detailsFolder.setSelection(currentDetailIndex);
+      currentIndex = 0;
     }
 
-    detailsFolder.layout();
-    currentMasterElement = masterElement;
+    if (currentIndex != -1)
+    {
+      detailsFolder.setSelection(currentIndex);
+    }
   }
 
-  protected abstract StructuredViewer createMaster(Composite parent);
-
-  protected abstract String[] getDetailTitles(Object masterElement);
-
-  protected abstract StructuredViewer createDetail(Composite parent, String title);
-
-  protected static int indexOf(CTabItem[] items, String title)
+  public static int indexOf(CTabItem[] items, String title)
   {
     if (items != null)
     {

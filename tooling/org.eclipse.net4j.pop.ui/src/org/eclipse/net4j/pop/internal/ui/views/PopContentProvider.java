@@ -48,9 +48,10 @@ public class PopContentProvider extends AdapterFactoryContentProvider
   @Override
   public void inputChanged(Viewer viewer, Object oldInput, Object newInput)
   {
-    if (!checkInput(newInput))
+    if (newInput != null && !checkInput(newInput))
     {
-      RuntimeException ex = new IllegalArgumentException("input: " + newInput);
+      String msg = "Invalid input for " + getClass().getSimpleName() + ": " + newInput;
+      RuntimeException ex = new IllegalArgumentException(msg);
       OM.LOG.error(ex);
       throw ex;
     }
