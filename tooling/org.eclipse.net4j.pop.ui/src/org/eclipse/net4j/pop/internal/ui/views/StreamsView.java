@@ -17,6 +17,7 @@ import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.TaskStream;
 import org.eclipse.net4j.pop.project.provider.ProjectItemProviderAdapterFactory;
 import org.eclipse.net4j.util.ObjectUtil;
+import org.eclipse.net4j.util.ui.views.MasterDetailsView;
 
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
