@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamItemProvider.java,v 1.9 2008-08-03 07:19:09 estepper Exp $
+ * $Id: IntegrationStreamItemProvider.java,v 1.10 2008-08-03 17:31:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -19,7 +19,6 @@ import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -28,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
@@ -66,25 +64,8 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
     {
       super.getPropertyDescriptors(object);
 
-      addNamePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  protected void addNamePropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_IntegrationStream_name_feature"), //$NON-NLS-1$
-        getString(
-            "_UI_PropertyDescriptor_description", "_UI_IntegrationStream_name_feature", "_UI_IntegrationStream_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.INTEGRATION_STREAM__NAME, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
   /**
@@ -129,9 +110,7 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   @Override
   public String getText(Object object)
   {
-    String label = ((IntegrationStream)object).getName();
-    return label == null || label.length() == 0 ? getString("_UI_IntegrationStream_type") : //$NON-NLS-1$
-        label;
+    throw new UnsupportedOperationException();
   }
 
   /**
@@ -147,9 +126,6 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
 
     switch (notification.getFeatureID(IntegrationStream.class))
     {
-    case ProjectPackage.INTEGRATION_STREAM__NAME:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
     case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
     case ProjectPackage.INTEGRATION_STREAM__RELEASES:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));

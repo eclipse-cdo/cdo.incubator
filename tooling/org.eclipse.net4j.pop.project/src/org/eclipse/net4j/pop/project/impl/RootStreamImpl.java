@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStreamImpl.java,v 1.8 2008-08-01 20:05:23 estepper Exp $
+ * $Id: RootStreamImpl.java,v 1.9 2008-08-03 17:31:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,16 +28,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RootStreamImpl#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RootStreamImpl#getPopProject <em>Pop Project</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected RootStreamImpl()
@@ -47,6 +48,7 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -57,28 +59,36 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
+  @Override
   public PopProject getPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT)
+    {
       return null;
+    }
     return (PopProject)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject basicGetPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT)
+    {
       return null;
+    }
     return (PopProject)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -89,32 +99,44 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
   {
-    if (newPopProject != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT && newPopProject != null))
+    if (newPopProject != eInternalContainer() || eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT
+        && newPopProject != null)
     {
       if (EcoreUtil.isAncestor(this, newPopProject))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newPopProject != null)
+      {
         msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__ROOT_STREAM,
             PopProject.class, msgs);
+      }
       msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.ROOT_STREAM__POP_PROJECT, newPopProject,
           newPopProject));
+    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -124,7 +146,9 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
     {
     case ProjectPackage.ROOT_STREAM__POP_PROJECT:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -132,6 +156,7 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -146,8 +171,8 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -163,6 +188,7 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -172,7 +198,9 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
     {
     case ProjectPackage.ROOT_STREAM__POP_PROJECT:
       if (resolve)
+      {
         return getPopProject();
+      }
       return basicGetPopProject();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -180,6 +208,7 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -196,6 +225,7 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -212,6 +242,7 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -225,4 +256,12 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
     return super.eIsSet(featureID);
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public String getIdValue()
+  {
+    return getPopProject().getName();
+  }
 } // RootStreamImpl

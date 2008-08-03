@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.12 2008-08-03 17:31:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -18,12 +18,10 @@ import org.eclipse.net4j.pop.project.Release;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.TaskStream;
 
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -46,25 +44,6 @@ import java.util.Date;
 public abstract class IntegrationStreamImpl extends StreamImpl implements IntegrationStream
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
-  /**
    * The cached value of the '{@link #getTaskStreams() <em>Task Streams</em>}' containment reference list. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -75,9 +54,9 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected EList<TaskStream> taskStreams;
 
   /**
-   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
-   * <!-- begin-user-doc
+   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list. <!-- begin-user-doc
    * --> <!-- end-user-doc -->
+   * 
    * @see #getReleases()
    * @generated
    * @ordered
@@ -86,6 +65,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IntegrationStreamImpl()
@@ -95,6 +75,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -105,27 +86,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.INTEGRATION_STREAM__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<TaskStream> getTaskStreams()
@@ -140,6 +101,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Release> getReleases()
@@ -176,6 +138,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -194,6 +157,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -211,6 +175,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -218,8 +183,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   {
     switch (featureID)
     {
-    case ProjectPackage.INTEGRATION_STREAM__NAME:
-      return getName();
     case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
       return getTaskStreams();
     case ProjectPackage.INTEGRATION_STREAM__RELEASES:
@@ -230,6 +193,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -238,9 +202,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   {
     switch (featureID)
     {
-    case ProjectPackage.INTEGRATION_STREAM__NAME:
-      setName((String)newValue);
-      return;
     case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
       getTaskStreams().clear();
       getTaskStreams().addAll((Collection<? extends TaskStream>)newValue);
@@ -255,6 +216,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -262,9 +224,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   {
     switch (featureID)
     {
-    case ProjectPackage.INTEGRATION_STREAM__NAME:
-      setName(NAME_EDEFAULT);
-      return;
     case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
       getTaskStreams().clear();
       return;
@@ -277,6 +236,7 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -284,40 +244,12 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   {
     switch (featureID)
     {
-    case ProjectPackage.INTEGRATION_STREAM__NAME:
-      return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
       return taskStreams != null && !taskStreams.isEmpty();
     case ProjectPackage.INTEGRATION_STREAM__RELEASES:
       return releases != null && !releases.isEmpty();
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy())
-      return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: "); //$NON-NLS-1$
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return getName();
   }
 
   /**

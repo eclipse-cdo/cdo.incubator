@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CodeRootItemProvider.java,v 1.8 2008-08-03 07:19:09 estepper Exp $
+ * $Id: CodeRootItemProvider.java,v 1.9 2008-08-03 17:31:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.CodeRoot} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.CodeRoot} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class CodeRootItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public CodeRootItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -74,8 +74,8 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * This adds a property descriptor for the Pop Project feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Pop Project feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addPopProjectPropertyDescriptor(Object object)
@@ -87,8 +87,8 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * This adds a property descriptor for the Root Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Root Path feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addRootPathPropertyDescriptor(Object object)
@@ -103,7 +103,6 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -113,8 +112,8 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * This returns CodeRoot.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns CodeRoot.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -137,9 +136,9 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -157,9 +156,9 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -169,8 +168,8 @@ public class CodeRootItemProvider extends ItemProviderAdapter implements IEditin
   }
 
   /**
-   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Return the resource locator for this item provider's resources.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

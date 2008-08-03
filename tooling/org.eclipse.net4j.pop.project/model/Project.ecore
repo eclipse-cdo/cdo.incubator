@@ -111,7 +111,6 @@
     <eOperations name="addRelease" lowerBound="1" eType="#//Release">
       <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     </eOperations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskStreams" upperBound="-1"
         eType="#//TaskStream" containment="true" eOpposite="#//TaskStream/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"

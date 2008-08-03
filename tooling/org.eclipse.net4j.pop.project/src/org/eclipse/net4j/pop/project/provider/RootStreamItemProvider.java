@@ -8,12 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStreamItemProvider.java,v 1.8 2008-08-03 07:19:08 estepper Exp $
+ * $Id: RootStreamItemProvider.java,v 1.9 2008-08-03 17:31:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
 import org.eclipse.net4j.pop.project.ProjectPackage;
-import org.eclipse.net4j.pop.project.RootStream;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -99,9 +98,7 @@ public class RootStreamItemProvider extends DevelopmentStreamItemProvider implem
   @Override
   public String getText(Object object)
   {
-    String label = ((RootStream)object).getName();
-    return label == null || label.length() == 0 ? getString("_UI_RootStream_type") : //$NON-NLS-1$
-        label;
+    return super.getText(object);
   }
 
   /**

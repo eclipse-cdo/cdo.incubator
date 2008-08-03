@@ -8,11 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamItemProvider.java,v 1.9 2008-08-03 07:19:09 estepper Exp $
+ * $Id: DevelopmentStreamItemProvider.java,v 1.10 2008-08-03 17:31:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
 import org.eclipse.net4j.pop.project.DevelopmentStream;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
@@ -109,9 +110,10 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
   @Override
   public String getText(Object object)
   {
-    String label = ((DevelopmentStream)object).getName();
+    PopProject popProject = ((DevelopmentStream)object).getPopProject();
+    String label = popProject == null ? null : popProject.getName();
     return label == null || label.length() == 0 ? getString("_UI_DevelopmentStream_type") : //$NON-NLS-1$
-        label;
+        label + " Development"; //$NON-NLS-1$
   }
 
   /**

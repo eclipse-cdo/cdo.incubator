@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.13 2008-08-01 20:05:23 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.14 2008-08-03 17:31:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -643,22 +643,12 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getIntegrationStream_Name()
-  {
-    return (EAttribute)integrationStreamEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public EReference getIntegrationStream_TaskStreams()
   {
-    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(1);
+    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -667,7 +657,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getIntegrationStream_Releases()
   {
-    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(2);
+    return (EReference)integrationStreamEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -996,7 +986,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(taskStreamEClass, TASK_STREAM__DELIVERIES);
 
     integrationStreamEClass = createEClass(INTEGRATION_STREAM);
-    createEAttribute(integrationStreamEClass, INTEGRATION_STREAM__NAME);
     createEReference(integrationStreamEClass, INTEGRATION_STREAM__TASK_STREAMS);
     createEReference(integrationStreamEClass, INTEGRATION_STREAM__RELEASES);
 
@@ -1288,10 +1277,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     initEClass(integrationStreamEClass, IntegrationStream.class,
         "IntegrationStream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEAttribute(
-        getIntegrationStream_Name(),
-        ecorePackage.getEString(),
-        "name", null, 1, 1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getIntegrationStream_TaskStreams(),
         this.getTaskStream(),
