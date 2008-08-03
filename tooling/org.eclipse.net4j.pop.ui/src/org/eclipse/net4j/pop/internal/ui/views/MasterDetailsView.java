@@ -23,25 +23,22 @@ import org.eclipse.swt.custom.CTabItem;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
-import java.util.List;
-
 public abstract class MasterDetailsView extends MultiViewersView
 {
   private StructuredViewer master;
 
   private CTabFolder detailsFolder;
 
-  private Object currentMasterElement;
+  private Object currentMasterElement = new Object();
 
   private String[] detailTitles;
 
+  private CTabItem[] detailItems;
+
   private StructuredViewer[] details;
 
-  private List<StructuredViewer> currentDetails;
-
-  public MasterDetailsView(String[] detailTitles)
+  public MasterDetailsView()
   {
-    this.detailTitles = detailTitles;
   }
 
   public StructuredViewer getMaster()
@@ -49,16 +46,12 @@ public abstract class MasterDetailsView extends MultiViewersView
     return master;
   }
 
-  public List<StructuredViewer> getCurrentDetails()
-  {
-    return currentDetails;
-  }
-
   @Override
   protected Control createUI(Composite parent)
   {
     SashComposite sash = new SashComposite(parent, SWT.NONE, 10, 50, false)
     {
+
       @Override
       protected Control createControl1(Composite parent)
       {
@@ -70,18 +63,8 @@ public abstract class MasterDetailsView extends MultiViewersView
       protected Control createControl2(Composite parent)
       {
         // Styles: CLOSE, TOP, BOTTOM, FLAT, BORDER, SINGLE, MULTI
-        detailsFolder = new CTabFolder(parent, SWT.BOTTOM);
-        details = new StructuredViewer[detailTitles.length];
-        for (int i = 0; i < detailTitles.length; i++)
-        {
-          StructuredViewer detail = createDetail(detailsFolder, i);
-          details[i] = detail;
-
-          CTabItem detailItem = new CTabItem(detailsFolder, SWT.NONE);
-          detailItem.setText(detailTitles[i]);
-          detailItem.setControl(detail.getControl());
-        }
-
+        detailsFolder = new CTabFolder(parent, SWT.BOTTOM | SWT.FLAT);
+        adjustDetails(null);
         return detailsFolder;
       }
     };
@@ -94,6 +77,7 @@ public abstract class MasterDetailsView extends MultiViewersView
         masterSelectionChanged(event);
       }
     });
+
     return sash;
   }
 
@@ -111,13 +95,31 @@ public abstract class MasterDetailsView extends MultiViewersView
       return;
     }
 
-    // List<StructuredViewer> details = getDetails(masterElement);
-    // for (StructuredViewer detail : details)
-    // {
-    // }
+    for (Control child : detailsFolder.getChildren())
+    {
+      child.dispose();
+    }
+
+    detailTitles = getDetailTitles(masterElement);
+    detailItems = new CTabItem[detailTitles.length];
+    details = new StructuredViewer[detailTitles.length];
+
+    for (int i = 0; i < detailTitles.length; i++)
+    {
+      StructuredViewer detail = createDetail(detailsFolder, detailTitles[i]);
+      details[i] = detail;
+
+      detailItems[i] = new CTabItem(detailsFolder, SWT.NONE);
+      detailItems[i].setText(detailTitles[i]);
+      detailItems[i].setControl(detail.getControl());
+    }
+
+    detailsFolder.layout();
   }
 
   protected abstract StructuredViewer createMaster(Composite parent);
 
-  protected abstract StructuredViewer createDetail(Composite parent, int index);
+  protected abstract String[] getDetailTitles(Object masterElement);
+
+  protected abstract StructuredViewer createDetail(Composite parent, String title);
 }

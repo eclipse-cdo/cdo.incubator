@@ -10,6 +10,9 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
+import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.IPopManager;
+
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
@@ -17,11 +20,12 @@ import org.eclipse.swt.widgets.Composite;
 
 public class StreamsView extends MasterDetailsView
 {
-  private static final String[] DETAIL_TITLES = { "Targets", "Deliveries", "Merges", "Checkouts" };
+  private static final String[] STREAM_DETAIL_TITLES = { "Targets", "Deliveries", "Merges" };
+
+  private static final String[] POP_DETAIL_TITLES = { "Merges", "Checkouts" };
 
   public StreamsView()
   {
-    super(DETAIL_TITLES);
   }
 
   @Override
@@ -31,23 +35,26 @@ public class StreamsView extends MasterDetailsView
     TreeViewer viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
     viewer.setContentProvider(itemProvider);
     viewer.setLabelProvider(itemProvider);
+    viewer.setInput(IPopManager.INSTANCE);
     return viewer;
   }
 
   @Override
-  protected StructuredViewer createDetail(Composite parent, int index)
+  protected StructuredViewer createDetail(Composite parent, String title)
   {
-    StructuredViewer result = null;
-    switch (index)
-    {
-    case 0:
-    case 1:
-    case 2:
-    case 3:
-      result = createViewer(parent);
-      break;
-    }
+    StructuredViewer result = createViewer(parent);
     return result;
+  }
+
+  @Override
+  protected String[] getDetailTitles(Object masterElement)
+  {
+    if (masterElement instanceof IPop)
+    {
+      return POP_DETAIL_TITLES;
+    }
+
+    return STREAM_DETAIL_TITLES;
   }
 
   private StructuredViewer createViewer(Composite parent)
@@ -56,6 +63,7 @@ public class StreamsView extends MasterDetailsView
     TreeViewer viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
     viewer.setContentProvider(itemProvider);
     viewer.setLabelProvider(itemProvider);
+    viewer.setInput(IPopManager.INSTANCE);
     return viewer;
   }
 }
