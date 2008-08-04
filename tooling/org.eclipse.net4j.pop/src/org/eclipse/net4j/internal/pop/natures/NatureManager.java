@@ -94,18 +94,15 @@ public class NatureManager extends Container<IProject> implements IResourceChang
     IResourceDelta delta = event.getDelta();
     if (delta != null)
     {
-      synchronized (projects)
+      try
       {
-        try
-        {
-          DeltaHandler handler = new DeltaHandler();
-          delta.accept(handler);
-          handler.fireContainerEvent();
-        }
-        catch (CoreException ex)
-        {
-          OM.LOG.error(ex);
-        }
+        DeltaHandler handler = new DeltaHandler();
+        delta.accept(handler);
+        handler.fireContainerEvent();
+      }
+      catch (CoreException ex)
+      {
+        OM.LOG.error(ex);
       }
     }
   }
@@ -173,17 +170,35 @@ public class NatureManager extends Container<IProject> implements IResourceChang
         IProject project = (IProject)resource;
         if (project.exists() && Nature.hasNature(project, natureID))
         {
-          if (projects.add(project))
+          boolean added = false;
+          synchronized (projects)
           {
-            event.addDelta(project, IContainerDelta.Kind.ADDED);
+            added = projects.add(project);
+            if (added)
+            {
+              event.addDelta(project, IContainerDelta.Kind.ADDED);
+            }
+          }
+
+          if (added)
+          {
             projectAdded(project);
           }
         }
         else
         {
-          if (projects.remove(project))
+          boolean removed = false;
+          synchronized (projects)
           {
-            event.addDelta(project, IContainerDelta.Kind.REMOVED);
+            removed = projects.remove(project);
+            if (removed)
+            {
+              event.addDelta(project, IContainerDelta.Kind.REMOVED);
+            }
+          }
+
+          if (removed)
+          {
             projectRemoved(project);
           }
         }

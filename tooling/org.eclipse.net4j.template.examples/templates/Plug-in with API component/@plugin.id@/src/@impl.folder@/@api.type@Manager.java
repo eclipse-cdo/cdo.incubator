@@ -45,10 +45,11 @@ public class @api.type@Manager extends Container<I@api.type@> implements I@api.t
       }
 
       elements.put(id, (@api.type@)element);
-      if (isActive())
-      {
-        fireElementAddedEvent(element);
-      }
+    }
+    
+    if (isActive())
+    {
+      fireElementAddedEvent(element);
     }
   }
   

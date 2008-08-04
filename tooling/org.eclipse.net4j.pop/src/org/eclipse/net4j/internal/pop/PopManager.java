@@ -59,38 +59,41 @@ public class PopManager extends Container<IPop> implements IPopManager
       }
 
       pops.put(project, (Pop)pop);
-      if (TRACER.isEnabled())
-      {
-        TRACER.trace("Added POP: " + pop);
-      }
+    }
 
-      if (isActive())
-      {
-        fireElementAddedEvent(pop);
-      }
+    if (TRACER.isEnabled())
+    {
+      TRACER.trace("Added POP: " + pop);
+    }
+
+    if (isActive())
+    {
+      fireElementAddedEvent(pop);
     }
   }
 
   public Pop removePop(IProject project)
   {
+    Pop pop = null;
     synchronized (pops)
     {
-      Pop pop = pops.remove(project);
-      if (pop != null)
+      pop = pops.remove(project);
+    }
+
+    if (pop != null)
+    {
+      pop.dispose();
+      if (TRACER.isEnabled())
       {
-        pop.dispose();
-        if (TRACER.isEnabled())
-        {
-          TRACER.trace("Removed POP: " + pop);
-        }
-
-        if (isActive())
-        {
-          fireElementRemovedEvent(pop);
-        }
-
-        return pop;
+        TRACER.trace("Removed POP: " + pop);
       }
+
+      if (isActive())
+      {
+        fireElementRemovedEvent(pop);
+      }
+
+      return pop;
     }
 
     return null;
