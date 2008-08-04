@@ -69,7 +69,9 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected StructuredViewer createMaster(Composite parent)
   {
-    TreeViewer viewer = createViewer(parent, new PopContentProvider.Streams(adapterFactory));
+    int style = SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL;
+    PopContentProvider.Streams contentProvider = new PopContentProvider.Streams(adapterFactory);
+    TreeViewer viewer = createViewer(parent, style, contentProvider);
     viewer.setInput(IPopManager.INSTANCE);
     return viewer;
   }
@@ -169,7 +171,12 @@ public class StreamsView extends MasterDetailsView
 
   private TreeViewer createViewer(Composite parent, IContentProvider contentProvider)
   {
-    TreeViewer viewer = new TreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+    return createViewer(parent, SWT.H_SCROLL | SWT.V_SCROLL, contentProvider);
+  }
+
+  private TreeViewer createViewer(Composite parent, int style, IContentProvider contentProvider)
+  {
+    TreeViewer viewer = new TreeViewer(parent, style);
     viewer.setContentProvider(contentProvider);
     viewer.setLabelProvider(new PopLabelProvider(adapterFactory));
     return viewer;
