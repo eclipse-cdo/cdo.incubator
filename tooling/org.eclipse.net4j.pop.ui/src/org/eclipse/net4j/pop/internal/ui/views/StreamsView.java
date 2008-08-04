@@ -12,7 +12,7 @@ package org.eclipse.net4j.pop.internal.ui.views;
 
 import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
-import org.eclipse.net4j.pop.project.Branch;
+import org.eclipse.net4j.pop.internal.ui.actions.NewCheckoutAction;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
@@ -57,6 +57,8 @@ public class StreamsView extends MasterDetailsView
 
   private ComposedAdapterFactory adapterFactory;
 
+  private TreeViewer checkoutsViewer;
+
   private TreeViewer branchesViewer;
 
   public StreamsView()
@@ -78,9 +80,9 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected StructuredViewer createDetail(Composite parent, String title)
   {
-    if (ObjectUtil.equals(title, COMMITTERS))
+    if (ObjectUtil.equals(title, CHECKOUTS))
     {
-      return createViewer(parent, new PopContentProvider.Committers(adapterFactory));
+      return createViewer(parent, new PopContentProvider(adapterFactory));
     }
 
     if (ObjectUtil.equals(title, BRANCHES))
@@ -99,6 +101,11 @@ public class StreamsView extends MasterDetailsView
       return branchesViewer;
     }
 
+    if (ObjectUtil.equals(title, MERGES))
+    {
+      return createViewer(parent, new PopContentProvider.Merges(adapterFactory));
+    }
+
     if (ObjectUtil.equals(title, TARGETS))
     {
       return createViewer(parent, new PopContentProvider.Targets(adapterFactory));
@@ -109,14 +116,9 @@ public class StreamsView extends MasterDetailsView
       return createViewer(parent, new PopContentProvider.Deliveries(adapterFactory));
     }
 
-    if (ObjectUtil.equals(title, MERGES))
+    if (ObjectUtil.equals(title, COMMITTERS))
     {
-      return createViewer(parent, new PopContentProvider.Merges(adapterFactory));
-    }
-
-    if (ObjectUtil.equals(title, CHECKOUTS))
-    {
-      return createViewer(parent, new PopContentProvider(adapterFactory));
+      return createViewer(parent, new PopContentProvider.Committers(adapterFactory));
     }
 
     throw new IllegalArgumentException("title: " + title);
@@ -146,20 +148,13 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected void setDetailInput(StructuredViewer viewer, Object input)
   {
-    if (viewer == branchesViewer && input instanceof Stream)
+    if (input instanceof Stream)
     {
       Stream stream = (Stream)input;
-      super.setDetailInput(viewer, stream.getPopProject());
-
-      Branch branch = stream.getBranch();
-      if (branch != null)
+      if (viewer == branchesViewer)
       {
-        branchesViewer.expandToLevel(branch, 0);
-        branchesViewer.setSelection(new StructuredSelection(branch));
-      }
-      else
-      {
-        branchesViewer.setSelection(StructuredSelection.EMPTY);
+        super.setDetailInput(viewer, stream.getPopProject());
+        selectAndReveal(viewer, stream.getBranch());
       }
     }
     else
@@ -171,9 +166,26 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected void fillCoolBar(IContributionManager manager)
   {
-    if (ObjectUtil.equals(getCurrentDetailTitle(), COMMITTERS))
+    if (ObjectUtil.equals(getCurrentDetailTitle(), CHECKOUTS))
     {
-      manager.add(new RefreshAction());
+      manager.add(new NewCheckoutAction(getSite().getPage()));
+    }
+  }
+
+  private void selectAndReveal(StructuredViewer viewer, Object object)
+  {
+    if (object != null)
+    {
+      if (viewer instanceof TreeViewer)
+      {
+        ((TreeViewer)viewer).expandToLevel(object, 0);
+      }
+
+      viewer.setSelection(new StructuredSelection(object));
+    }
+    else
+    {
+      viewer.setSelection(StructuredSelection.EMPTY);
     }
   }
 
