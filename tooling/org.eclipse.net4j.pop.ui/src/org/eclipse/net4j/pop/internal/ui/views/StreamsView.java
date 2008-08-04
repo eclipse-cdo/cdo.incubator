@@ -24,6 +24,7 @@ import org.eclipse.net4j.util.ui.views.MasterDetailsView;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
+import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
@@ -164,6 +165,15 @@ public class StreamsView extends MasterDetailsView
     else
     {
       super.setDetailInput(viewer, input);
+    }
+  }
+
+  @Override
+  protected void fillCoolBar(IContributionManager manager)
+  {
+    if (ObjectUtil.equals(getCurrentDetailTitle(), COMMITTERS))
+    {
+      manager.add(new RefreshAction());
     }
   }
 
