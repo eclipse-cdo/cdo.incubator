@@ -15,15 +15,18 @@ import org.eclipse.net4j.internal.pop.PopManager;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.internal.ui.bundle.OM;
+import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.IntegrationStream;
+import org.eclipse.net4j.pop.project.MainBranch;
 import org.eclipse.net4j.pop.project.Merge;
 import org.eclipse.net4j.pop.project.Milestone;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.Release;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
+import org.eclipse.net4j.pop.project.SubBranch;
 import org.eclipse.net4j.pop.project.TaskStream;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.event.IEvent;
@@ -298,6 +301,8 @@ public class PopContentProvider extends AdapterFactoryContentProvider
         List<Object> result = new ArrayList<Object>();
         for (Pop pop : manager.getPops())
         {
+          pop.getModelManager().addListener(this);
+          pops.add(pop);
 
           PopProject popProject = pop.getPopProject();
           if (popProject != null)
@@ -306,8 +311,6 @@ public class PopContentProvider extends AdapterFactoryContentProvider
             if (rootStream != null)
             {
               result.add(rootStream);
-              pop.getModelManager().addListener(this);
-              pops.add(pop);
             }
           }
         }
@@ -390,6 +393,60 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       {
         Committer obj = (Committer)object;
         return obj.getPopProject().getRootStream();
+      }
+
+      return null;
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Branches extends PopContentProvider
+  {
+    public Branches(AdapterFactory adapterFactory)
+    {
+      super(adapterFactory);
+    }
+
+    @Override
+    protected boolean checkInput(Object input)
+    {
+      return input instanceof PopProject;
+    }
+
+    @Override
+    public Object[] getChildren(Object object)
+    {
+      if (object instanceof PopProject)
+      {
+        PopProject obj = (PopProject)object;
+        return new Object[] { obj.getMainBranch() };
+      }
+
+      if (object instanceof Branch)
+      {
+        Branch obj = (Branch)object;
+        EList<SubBranch> result = obj.getBranches();
+        return result.toArray(new Object[result.size()]);
+      }
+
+      return new Object[0];
+    }
+
+    @Override
+    protected Object doGetParent(Object object)
+    {
+      if (object instanceof SubBranch)
+      {
+        SubBranch obj = (SubBranch)object;
+        return obj.getParent();
+      }
+
+      if (object instanceof MainBranch)
+      {
+        MainBranch obj = (MainBranch)object;
+        return obj.getStream().getPopProject();
       }
 
       return null;
