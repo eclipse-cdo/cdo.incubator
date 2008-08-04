@@ -285,6 +285,18 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       return input instanceof PopManager;
     }
 
+    @Override
+    protected void connectInput()
+    {
+      ((PopManager)input).addListener(this);
+    }
+
+    @Override
+    protected void disconnectInput()
+    {
+      ((PopManager)input).removeListener(this);
+    }
+
     public void notifyEvent(IEvent event)
     {
       refresh();
@@ -299,7 +311,8 @@ public class PopContentProvider extends AdapterFactoryContentProvider
         removeListeners();
 
         List<Object> result = new ArrayList<Object>();
-        for (Pop pop : manager.getPops())
+        Pop[] pops2 = manager.getPops();
+        for (Pop pop : pops2)
         {
           pop.getModelManager().addListener(this);
           pops.add(pop);
