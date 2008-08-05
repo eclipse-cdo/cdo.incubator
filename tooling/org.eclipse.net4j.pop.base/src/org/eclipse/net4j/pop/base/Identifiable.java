@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Identifiable.java,v 1.3 2008-08-01 18:29:06 estepper Exp $
+ * $Id: Identifiable.java,v 1.4 2008-08-05 18:39:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
@@ -35,7 +35,7 @@ public interface Identifiable extends EObject
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the value of the '<em>Id</em>' attribute.
    * @see org.eclipse.net4j.pop.base.BasePackage#getIdentifiable_Id()
-   * @model id="true" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   String getId();

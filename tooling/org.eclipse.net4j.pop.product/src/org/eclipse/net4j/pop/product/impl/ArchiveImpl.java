@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ArchiveImpl.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
+ * $Id: ArchiveImpl.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -27,18 +27,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.product.impl.ArchiveImpl#getContent <em>Content</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.impl.ArchiveImpl#getContent <em>Content</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ArchiveImpl extends FileImpl implements Archive
 {
   /**
-   * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getContent()
    * @generated
    * @ordered
@@ -47,6 +47,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ArchiveImpl()
@@ -56,6 +57,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -66,6 +68,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ArchiveContent getContent()
@@ -75,6 +78,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetContent(ArchiveContent newContent, NotificationChain msgs)
@@ -95,6 +99,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setContent(ArchiveContent newContent)
@@ -118,6 +123,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -136,6 +142,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -151,6 +158,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -166,6 +174,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -182,6 +191,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -198,6 +208,7 @@ public class ArchiveImpl extends FileImpl implements Archive
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryModuleImpl.java,v 1.2 2008-08-05 15:16:24 estepper Exp $
+ * $Id: RepositoryModuleImpl.java,v 1.3 2008-08-05 18:39:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -74,24 +74,24 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected String adapterType = ADAPTER_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getAdapterDescriptor() <em>Adapter Descriptor</em>}' attribute. <!--
+   * The default value of the '{@link #getRepositoryDescriptor() <em>Repository Descriptor</em>}' attribute. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @see #getAdapterDescriptor()
+   * @see #getRepositoryDescriptor()
    * @generated
    * @ordered
    */
-  protected static final String ADAPTER_DESCRIPTOR_EDEFAULT = null;
+  protected static final String REPOSITORY_DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAdapterDescriptor() <em>Adapter Descriptor</em>}' attribute. <!--
+   * The cached value of the '{@link #getRepositoryDescriptor() <em>Repository Descriptor</em>}' attribute. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @see #getAdapterDescriptor()
+   * @see #getRepositoryDescriptor()
    * @generated
    * @ordered
    */
-  protected String adapterDescriptor = ADAPTER_DESCRIPTOR_EDEFAULT;
+  protected String repositoryDescriptor = REPOSITORY_DESCRIPTOR_EDEFAULT;
 
   /**
    * The default value of the '{@link #getModuleDescriptor() <em>Module Descriptor</em>}' attribute. <!-- begin-user-doc
@@ -147,9 +147,7 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   public PopProject getPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT)
-    {
       return null;
-    }
     return (PopProject)eContainer();
   }
 
@@ -161,9 +159,7 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   public PopProject basicGetPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT)
-    {
       return null;
-    }
     return (PopProject)eInternalContainer();
   }
 
@@ -185,34 +181,24 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
    */
   public void setPopProject(PopProject newPopProject)
   {
-    if (newPopProject != eInternalContainer() || eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT
-        && newPopProject != null)
+    if (newPopProject != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT && newPopProject != null))
     {
       if (EcoreUtil.isAncestor(this, newPopProject))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newPopProject != null)
-      {
         msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__PRIMARY_MODULE,
             PopProject.class, msgs);
-      }
       msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__POP_PROJECT,
           newPopProject, newPopProject));
-    }
   }
 
   /**
@@ -271,9 +257,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
    * 
    * @generated
    */
-  public String getAdapterDescriptor()
+  public String getRepositoryDescriptor()
   {
-    return adapterDescriptor;
+    return repositoryDescriptor;
   }
 
   /**
@@ -281,15 +267,13 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
    * 
    * @generated
    */
-  public void setAdapterDescriptor(String newAdapterDescriptor)
+  public void setRepositoryDescriptor(String newRepositoryDescriptor)
   {
-    String oldAdapterDescriptor = adapterDescriptor;
-    adapterDescriptor = newAdapterDescriptor;
+    String oldRepositoryDescriptor = repositoryDescriptor;
+    repositoryDescriptor = newRepositoryDescriptor;
     if (eNotificationRequired())
-    {
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__ADAPTER_DESCRIPTOR,
-          oldAdapterDescriptor, adapterDescriptor));
-    }
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR,
+          oldRepositoryDescriptor, repositoryDescriptor));
   }
 
   /**
@@ -312,10 +296,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     String oldModuleDescriptor = moduleDescriptor;
     moduleDescriptor = newModuleDescriptor;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR,
           oldModuleDescriptor, moduleDescriptor));
-    }
   }
 
   /**
@@ -330,9 +312,7 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     {
     case ProjectPackage.REPOSITORY_MODULE__POP_PROJECT:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -383,16 +363,14 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     {
     case ProjectPackage.REPOSITORY_MODULE__POP_PROJECT:
       if (resolve)
-      {
         return getPopProject();
-      }
       return basicGetPopProject();
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER:
       return getAdapter();
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER_TYPE:
       return getAdapterType();
-    case ProjectPackage.REPOSITORY_MODULE__ADAPTER_DESCRIPTOR:
-      return getAdapterDescriptor();
+    case ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR:
+      return getRepositoryDescriptor();
     case ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR:
       return getModuleDescriptor();
     }
@@ -415,8 +393,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER_TYPE:
       setAdapterType((String)newValue);
       return;
-    case ProjectPackage.REPOSITORY_MODULE__ADAPTER_DESCRIPTOR:
-      setAdapterDescriptor((String)newValue);
+    case ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR:
+      setRepositoryDescriptor((String)newValue);
       return;
     case ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR:
       setModuleDescriptor((String)newValue);
@@ -441,8 +419,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER_TYPE:
       setAdapterType(ADAPTER_TYPE_EDEFAULT);
       return;
-    case ProjectPackage.REPOSITORY_MODULE__ADAPTER_DESCRIPTOR:
-      setAdapterDescriptor(ADAPTER_DESCRIPTOR_EDEFAULT);
+    case ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR:
+      setRepositoryDescriptor(REPOSITORY_DESCRIPTOR_EDEFAULT);
       return;
     case ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR:
       setModuleDescriptor(MODULE_DESCRIPTOR_EDEFAULT);
@@ -467,9 +445,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
       return ADAPTER_EDEFAULT == null ? getAdapter() != null : !ADAPTER_EDEFAULT.equals(getAdapter());
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER_TYPE:
       return ADAPTER_TYPE_EDEFAULT == null ? adapterType != null : !ADAPTER_TYPE_EDEFAULT.equals(adapterType);
-    case ProjectPackage.REPOSITORY_MODULE__ADAPTER_DESCRIPTOR:
-      return ADAPTER_DESCRIPTOR_EDEFAULT == null ? adapterDescriptor != null : !ADAPTER_DESCRIPTOR_EDEFAULT
-          .equals(adapterDescriptor);
+    case ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR:
+      return REPOSITORY_DESCRIPTOR_EDEFAULT == null ? repositoryDescriptor != null : !REPOSITORY_DESCRIPTOR_EDEFAULT
+          .equals(repositoryDescriptor);
     case ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR:
       return MODULE_DESCRIPTOR_EDEFAULT == null ? moduleDescriptor != null : !MODULE_DESCRIPTOR_EDEFAULT
           .equals(moduleDescriptor);
@@ -486,15 +464,13 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (adapterType: "); //$NON-NLS-1$
     result.append(adapterType);
-    result.append(", adapterDescriptor: "); //$NON-NLS-1$
-    result.append(adapterDescriptor);
+    result.append(", repositoryDescriptor: "); //$NON-NLS-1$
+    result.append(repositoryDescriptor);
     result.append(", moduleDescriptor: "); //$NON-NLS-1$
     result.append(moduleDescriptor);
     result.append(')');

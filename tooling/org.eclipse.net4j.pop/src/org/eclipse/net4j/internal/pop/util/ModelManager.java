@@ -12,6 +12,7 @@ package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.internal.pop.util.ModelEvent.Kind;
+import org.eclipse.net4j.pop.base.util.EMFUtil;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -40,7 +40,6 @@ import org.eclipse.core.runtime.jobs.Job;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 /**
@@ -229,11 +228,10 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     }
   }
 
-  private static ResourceSet createResourceSet()
+  public static ResourceSet createResourceSet()
   {
     ResourceSet resourceSet = new ResourceSetImpl();
-    Map<String, Object> map = resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
-    map.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
+    EMFUtil.prepareSupportForUUIDs(resourceSet);
     return resourceSet;
   }
 }

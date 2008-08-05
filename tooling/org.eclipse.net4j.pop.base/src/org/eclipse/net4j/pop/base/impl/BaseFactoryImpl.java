@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseFactoryImpl.java,v 1.7 2008-08-05 07:50:12 estepper Exp $
+ * $Id: BaseFactoryImpl.java,v 1.8 2008-08-05 18:39:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -135,8 +135,7 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public IPath createPathFromString(EDataType eDataType, String initialValue)
@@ -145,8 +144,7 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public String convertPathToString(EDataType eDataType, Object instanceValue)

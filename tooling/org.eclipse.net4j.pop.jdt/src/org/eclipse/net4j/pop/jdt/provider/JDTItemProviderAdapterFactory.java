@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTItemProviderAdapterFactory.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ * $Id: JDTItemProviderAdapterFactory.java,v 1.3 2008-08-05 18:39:30 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.provider;
 
@@ -292,8 +292,10 @@ public class JDTItemProviderAdapterFactory extends JDTAdapterFactory implements 
    */
   public void dispose()
   {
-    if (jreCheckerItemProvider != null) jreCheckerItemProvider.dispose();
-    if (formatterProfileConfiguratorItemProvider != null) formatterProfileConfiguratorItemProvider.dispose();
+    if (jreCheckerItemProvider != null)
+      jreCheckerItemProvider.dispose();
+    if (formatterProfileConfiguratorItemProvider != null)
+      formatterProfileConfiguratorItemProvider.dispose();
   }
 
   /**

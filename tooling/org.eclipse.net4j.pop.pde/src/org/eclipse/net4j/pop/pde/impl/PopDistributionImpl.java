@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopDistributionImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
+ * $Id: PopDistributionImpl.java,v 1.4 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -29,6 +29,7 @@ public class PopDistributionImpl extends PDEDistributionImpl implements PopDistr
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopDistributionImpl()
@@ -38,6 +39,7 @@ public class PopDistributionImpl extends PDEDistributionImpl implements PopDistr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

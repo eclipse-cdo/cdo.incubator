@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementItemProvider.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
+ * $Id: PopElementItemProvider.java,v 1.5 2008-08-05 18:39:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.provider;
 
@@ -67,15 +67,31 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
     {
       super.getPropertyDescriptors(object);
 
+      addIdPropertyDescriptor(object);
       addClassPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Class feature.
+   * This adds a property descriptor for the Id feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addIdPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_Identifiable_id_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_id_feature", "_UI_Identifiable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        BasePackage.Literals.IDENTIFIABLE__ID, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+        null));
+  }
+
+  /**
+   * This adds a property descriptor for the Class feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addClassPropertyDescriptor(Object object)

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ApiBaseline.java,v 1.3 2008-08-05 14:47:45 estepper Exp $
+ * $Id: ApiBaseline.java,v 1.4 2008-08-05 18:38:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde;
 
@@ -16,15 +16,14 @@ import org.eclipse.net4j.pop.project.Release;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Api Baseline</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.ApiBaseline#getTargetPlatform <em>Target Platform</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.ApiBaseline#getRelease <em>Release</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.ApiBaseline#getTargetPlatform <em>Target Platform</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.ApiBaseline#getRelease <em>Release</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.pde.PDEPackage#getApiBaseline()
  * @model
  * @generated
@@ -32,13 +31,13 @@ import org.eclipse.net4j.pop.project.Release;
 public interface ApiBaseline extends PDEConfigurator
 {
   /**
-   * Returns the value of the '<em><b>Target Platform</b></em>' reference.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Target Platform</b></em>' reference. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Target Platform</em>' reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Target Platform</em>' reference.
    * @see #setTargetPlatform(TargetPlatform)
    * @see org.eclipse.net4j.pop.pde.PDEPackage#getApiBaseline_TargetPlatform()
@@ -48,22 +47,24 @@ public interface ApiBaseline extends PDEConfigurator
   TargetPlatform getTargetPlatform();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.pde.ApiBaseline#getTargetPlatform <em>Target Platform</em>}' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Target Platform</em>' reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.pde.ApiBaseline#getTargetPlatform <em>Target Platform</em>}'
+   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Target Platform</em>' reference.
    * @see #getTargetPlatform()
    * @generated
    */
   void setTargetPlatform(TargetPlatform value);
 
   /**
-   * Returns the value of the '<em><b>Release</b></em>' reference.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Release</b></em>' reference. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Release</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Release</em>' reference.
    * @see #setRelease(Release)
    * @see org.eclipse.net4j.pop.pde.PDEPackage#getApiBaseline_Release()

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorImpl.java,v 1.6 2008-08-05 14:48:09 estepper Exp $
+ * $Id: CheckoutDiscriminatorImpl.java,v 1.7 2008-08-05 18:39:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -26,16 +26,17 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl#getCheckout <em>Checkout</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl#getCheckout <em>Checkout</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implements CheckoutDiscriminator
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected CheckoutDiscriminatorImpl()
@@ -45,6 +46,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -60,7 +62,13 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
    */
   public Checkout getCheckout()
   {
-    return getCheckoutManager().getCheckout(this);
+    ICheckoutManager checkoutManager = getCheckoutManager();
+    if (checkoutManager == null)
+    {
+      return null;
+    }
+
+    return checkoutManager.getCheckout(this);
   }
 
   /**
@@ -82,6 +90,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -97,6 +106,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

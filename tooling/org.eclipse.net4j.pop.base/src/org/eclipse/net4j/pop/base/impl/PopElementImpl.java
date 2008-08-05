@@ -8,35 +8,36 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.6 2008-08-05 07:50:12 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.7 2008-08-05 18:39:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
 import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.base.PopElement;
-import org.eclipse.net4j.pop.base.util.BasePlugin;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PopElementImpl extends EObjectImpl implements PopElement
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getId()
    * @generated
    * @ordered
@@ -55,6 +56,7 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopElementImpl()
@@ -64,12 +66,30 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
   protected EClass eStaticClass()
   {
     return BasePackage.Literals.POP_ELEMENT;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public String getId()
+  {
+    Resource resource = eResource();
+    if (resource instanceof XMLResource)
+    {
+      XMLResource xmlResource = (XMLResource)resource;
+      return xmlResource.getID(this);
+    }
+
+    return null;
   }
 
   /**
@@ -84,6 +104,7 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -101,6 +122,7 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -121,7 +143,7 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
    * 
    * @generated NOT
    */
-  public String getId()
+  public String getId_()
   {
     String idValue = null;
 
@@ -129,9 +151,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
     {
       idValue = getIdValue();
     }
-    catch (Exception ex)
+    catch (Exception ignore)
     {
-      BasePlugin.INSTANCE.log(ex);
     }
 
     if (idValue == null)
@@ -170,14 +191,4 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   {
     return eClass().getName();
   }
-
-  /**
-   * @ADDED
-   */
-  public abstract String getIdType();
-
-  /**
-   * @ADDED
-   */
-  public abstract String getIdValue();
 } // PopElementImpl

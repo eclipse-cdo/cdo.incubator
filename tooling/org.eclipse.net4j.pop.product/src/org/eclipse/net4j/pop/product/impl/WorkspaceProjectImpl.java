@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProjectImpl.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
+ * $Id: WorkspaceProjectImpl.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -60,8 +60,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -69,9 +69,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getWorkingSets() <em>Working Sets</em>}' reference list.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getWorkingSets() <em>Working Sets</em>}' reference list. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getWorkingSets()
    * @generated
    * @ordered
@@ -79,9 +79,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected EList<WorkingSet> workingSets;
 
   /**
-   * The cached value of the '{@link #getRepositoryModule() <em>Repository Module</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getRepositoryModule() <em>Repository Module</em>}' reference. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getRepositoryModule()
    * @generated
    * @ordered
@@ -89,9 +89,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected RepositoryModule repositoryModule;
 
   /**
-   * The default value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute.
-   * <!-- begin-user-doc -->
+   * The default value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getRepositoryPath()
    * @generated
    * @ordered
@@ -99,9 +99,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected static final String REPOSITORY_PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getRepositoryPath()
    * @generated
    * @ordered
@@ -110,6 +110,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected WorkspaceProjectImpl()
@@ -119,6 +120,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -129,6 +131,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -138,6 +141,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -150,6 +154,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<WorkingSet> getWorkingSets()
@@ -164,6 +169,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProduct getWorkspaceSpec()
@@ -175,6 +181,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpec(PopProduct newWorkspaceSpec, NotificationChain msgs)
@@ -185,6 +192,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setWorkspaceSpec(PopProduct newWorkspaceSpec)
@@ -210,8 +218,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public RepositoryModule getRepositoryModule()
@@ -231,8 +239,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public RepositoryModule basicGetRepositoryModule()
@@ -241,8 +249,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRepositoryModule(RepositoryModule newRepositoryModule)
@@ -255,8 +263,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getRepositoryPath()
@@ -265,8 +273,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRepositoryPath(String newRepositoryPath)
@@ -280,6 +288,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -300,6 +309,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -317,6 +327,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -332,6 +343,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -357,6 +369,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -387,6 +400,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -415,6 +429,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -439,6 +454,7 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

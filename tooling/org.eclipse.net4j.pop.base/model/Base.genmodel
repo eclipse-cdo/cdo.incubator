@@ -14,12 +14,15 @@
       childCreationExtenders="true" contentTypeIdentifier="pop.base" fileExtensions="xml"
       ecorePackage="Base.ecore#/">
     <genDataTypes ecoreDataType="Base.ecore#//Version"/>
+    <genDataTypes ecoreDataType="Base.ecore#//Path"/>
     <genClasses image="false" ecoreClass="Base.ecore#//Identifiable">
-      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Identifiable/id"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//Identifiable/id"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Base.ecore#//Displayable">
       <genOperations ecoreOperation="Base.ecore#//Displayable/getDisplayString"/>
     </genClasses>
-    <genClasses ecoreClass="Base.ecore#//PopElement"/>
+    <genClasses ecoreClass="Base.ecore#//PopElement">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Base.ecore#//PopElement/class"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

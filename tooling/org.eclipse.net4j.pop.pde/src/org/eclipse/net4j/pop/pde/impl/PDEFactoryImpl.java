@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEFactoryImpl.java,v 1.4 2008-08-05 14:47:44 estepper Exp $
+ * $Id: PDEFactoryImpl.java,v 1.5 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -34,13 +34,14 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static PDEFactory init()
@@ -62,8 +63,8 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
   }
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEFactoryImpl()
@@ -73,6 +74,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -105,6 +107,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -121,6 +124,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -137,6 +141,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatformChecker createTargetPlatformChecker()
@@ -147,6 +152,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ApiBaseline createApiBaseline()
@@ -157,6 +163,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatform createTargetPlatform()
@@ -167,6 +174,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEProject createPDEProject()
@@ -177,6 +185,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Feature createFeature()
@@ -187,6 +196,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Plugin createPlugin()
@@ -197,6 +207,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Fragment createFragment()
@@ -207,6 +218,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ZipDistribution createZipDistribution()
@@ -217,6 +229,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopDistribution createPopDistribution()
@@ -227,6 +240,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Location createLocationFromString(EDataType eDataType, String initialValue)
@@ -240,6 +254,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertLocationToString(EDataType eDataType, Object instanceValue)
@@ -249,6 +264,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEPackage getPDEPackage()
@@ -258,6 +274,7 @@ public class PDEFactoryImpl extends EFactoryImpl implements PDEFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @deprecated
    * @generated
    */

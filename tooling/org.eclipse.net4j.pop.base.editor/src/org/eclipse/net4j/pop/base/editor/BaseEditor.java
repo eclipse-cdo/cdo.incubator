@@ -8,11 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseEditor.java,v 1.4 2008-08-03 16:41:56 estepper Exp $
+ * $Id: BaseEditor.java,v 1.5 2008-08-05 18:38:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.editor;
 
 import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
+import org.eclipse.net4j.pop.base.util.EMFUtil;
 
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.command.BasicCommandStack;
@@ -907,23 +908,27 @@ public class BaseEditor extends MultiPageEditorPart implements IEditingDomainPro
    * This is the method called to load a resource into the editing domain's resource set based on the editor's input.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public void createModel()
   {
     URI resourceURI = EditUIUtil.getURI(getEditorInput());
     Exception exception = null;
     Resource resource = null;
+
+    ResourceSet resourceSet = editingDomain.getResourceSet();
+    EMFUtil.prepareSupportForUUIDs(resourceSet);
+
     try
     {
       // Load the resource through the editing domain.
       //
-      resource = editingDomain.getResourceSet().getResource(resourceURI, true);
+      resource = resourceSet.getResource(resourceURI, true);
     }
     catch (Exception e)
     {
       exception = e;
-      resource = editingDomain.getResourceSet().getResource(resourceURI, false);
+      resource = resourceSet.getResource(resourceURI, false);
     }
 
     Diagnostic diagnostic = analyzeResourceProblems(resource, exception);
@@ -931,7 +936,7 @@ public class BaseEditor extends MultiPageEditorPart implements IEditingDomainPro
     {
       resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
     }
-    editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
+    resourceSet.eAdapters().add(problemIndicationAdapter);
   }
 
   /**

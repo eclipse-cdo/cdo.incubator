@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEConfiguratorImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
+ * $Id: PDEConfiguratorImpl.java,v 1.4 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -25,16 +25,17 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEConfiguratorImpl#getAllEntities <em>All Entities</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEConfiguratorImpl#getAllEntities <em>All Entities</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PDEConfiguratorImpl extends WorkspaceConfiguratorImpl implements PDEConfigurator
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PDEConfiguratorImpl()
@@ -44,6 +45,7 @@ public abstract class PDEConfiguratorImpl extends WorkspaceConfiguratorImpl impl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -54,19 +56,22 @@ public abstract class PDEConfiguratorImpl extends WorkspaceConfiguratorImpl impl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<PDEEntity> getAllEntities()
   {
     // TODO: implement this method to return the 'All Entities' reference list
     // Ensure that you remove @generated or mark it @generated NOT
-    // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
+    // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
+    // org.eclipse.emf.ecore.EStructuralFeature.Setting
     // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
     throw new UnsupportedOperationException();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -82,6 +87,7 @@ public abstract class PDEConfiguratorImpl extends WorkspaceConfiguratorImpl impl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

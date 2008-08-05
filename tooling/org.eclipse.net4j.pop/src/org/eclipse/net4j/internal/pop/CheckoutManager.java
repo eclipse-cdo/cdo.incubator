@@ -11,17 +11,18 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
-import org.eclipse.net4j.pop.IRepositoryAdapter;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
+import org.eclipse.net4j.pop.project.RepositoryModule;
 import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl;
 import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
 import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -49,7 +50,6 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
   public CheckoutManager(Pop pop)
   {
     this.pop = pop;
-    init();
   }
 
   public Pop getPop()
@@ -130,7 +130,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   public Checkout checkout(CheckoutDiscriminator discriminator)
   {
-    IPath location = doCheckout(discriminator);
+    IPath location = checkoutPrimaryModule(discriminator);
     return createCheckout(discriminator, location);
   }
 
@@ -158,18 +158,36 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     init();
   }
 
+  @Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    init();
+  }
+
+  @Override
+  protected void doDeactivate() throws Exception
+  {
+    checkouts.clear();
+    super.doDeactivate();
+  }
+
   private void init()
   {
     PopProject popProject = pop.getPopProject();
     location = PopManager.INSTANCE.getCheckoutLocation().append(popProject.getName());
-    for (File folder : location.toFile().listFiles())
+    File locationFolder = location.toFile();
+    if (locationFolder.exists() && locationFolder.isDirectory())
     {
-      String checkoutName = folder.getName();
-      PopElement popElement = pop.getPopElement(checkoutName);
-      if (popElement instanceof CheckoutDiscriminator)
+      for (File folder : locationFolder.listFiles())
       {
-        CheckoutDiscriminator discriminator = (CheckoutDiscriminator)popElement;
-        createCheckout(discriminator, getCheckoutLocation(discriminator));
+        String checkoutName = folder.getName();
+        PopElement popElement = pop.getPopElement(checkoutName);
+        if (popElement instanceof CheckoutDiscriminator)
+        {
+          CheckoutDiscriminator discriminator = (CheckoutDiscriminator)popElement;
+          createCheckout(discriminator, getCheckoutLocation(discriminator));
+        }
       }
     }
   }
@@ -190,25 +208,26 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     return checkout;
   }
 
-  private IPath doCheckout(CheckoutDiscriminator discriminator)
+  private IPath checkoutPrimaryModule(CheckoutDiscriminator discriminator)
   {
-    IPath checkoutLocation = getCheckoutLocation(discriminator);
-    IRepositoryAdapter repositoryAdapter = pop.getRepositoryAdapter();
+    IPath target = getCheckoutLocation(discriminator);
+    RepositoryModule module = discriminator.getPopProject().getPrimaryModule();
+    IRepositoryAdapter adapter = module.getAdapter();
     if (discriminator instanceof Branch)
     {
-      String branchName = ((Branch)discriminator).getName();
-      repositoryAdapter.checkoutBranch(branchName, checkoutLocation);
+      String branch = ((Branch)discriminator).getName();
+      adapter.checkoutBranch(target, module.getRepositoryDescriptor(), module.getModuleDescriptor(), branch);
     }
     else if (discriminator instanceof Tag)
     {
-      String tagName = ((Tag)discriminator).getName();
-      repositoryAdapter.checkoutTag(tagName, checkoutLocation);
+      String tag = ((Tag)discriminator).getName();
+      adapter.checkoutTag(target, module.getRepositoryDescriptor(), module.getModuleDescriptor(), tag);
     }
     else
     {
       throw new IllegalArgumentException("Unrecognized checkout discriminator: " + discriminator);
     }
 
-    return checkoutLocation;
+    return target;
   }
 }

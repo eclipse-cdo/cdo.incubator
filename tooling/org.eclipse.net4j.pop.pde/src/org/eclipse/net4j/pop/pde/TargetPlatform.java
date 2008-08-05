@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetPlatform.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
+ * $Id: TargetPlatform.java,v 1.4 2008-08-05 18:38:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde;
 
@@ -16,14 +16,13 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Target Platform</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.TargetPlatform#getDistributions <em>Distributions</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.TargetPlatform#getDistributions <em>Distributions</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.pde.PDEPackage#getTargetPlatform()
  * @model
  * @generated
@@ -31,16 +30,16 @@ import org.eclipse.emf.common.util.EList;
 public interface TargetPlatform extends PDEConfigurator
 {
   /**
-   * Returns the value of the '<em><b>Distributions</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.pde.PDEDistribution}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.pde.PDEDistribution#getTargetPlatform <em>Target Platform</em>}'.
-   * <!-- begin-user-doc
+   * Returns the value of the '<em><b>Distributions</b></em>' containment reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.pde.PDEDistribution}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.pde.PDEDistribution#getTargetPlatform <em>Target Platform</em>}'. <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Distributions</em>' containment reference list isn't clear, there really should be more
    * of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Distributions</em>' containment reference list.
    * @see org.eclipse.net4j.pop.pde.PDEPackage#getTargetPlatform_Distributions()
    * @see org.eclipse.net4j.pop.pde.PDEDistribution#getTargetPlatform

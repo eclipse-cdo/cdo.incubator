@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceConfiguratorImpl.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
+ * $Id: WorkspaceConfiguratorImpl.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -30,16 +30,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceConfiguratorImpl#getWorkspaceSpec <em>Workspace Spec</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceConfiguratorImpl#getWorkspaceSpec <em>Workspace Spec</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements WorkspaceConfigurator
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected WorkspaceConfiguratorImpl()
@@ -49,6 +50,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -59,6 +61,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProduct getWorkspaceSpec()
@@ -70,6 +73,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpec(PopProduct newWorkspaceSpec, NotificationChain msgs)
@@ -81,6 +85,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setWorkspaceSpec(PopProduct newWorkspaceSpec)
@@ -107,6 +112,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void configureWorkspace()
@@ -118,6 +124,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -135,6 +142,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -150,6 +158,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -166,6 +175,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -181,6 +191,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -197,6 +208,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -213,6 +225,7 @@ public abstract class WorkspaceConfiguratorImpl extends EObjectImpl implements W
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

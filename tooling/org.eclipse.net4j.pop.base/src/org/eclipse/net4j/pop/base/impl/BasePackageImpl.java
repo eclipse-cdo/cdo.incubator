@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackageImpl.java,v 1.5 2008-08-05 07:50:12 estepper Exp $
+ * $Id: BasePackageImpl.java,v 1.6 2008-08-05 18:39:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -58,8 +58,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
   private EDataType versionEDataType = null;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private EDataType pathEDataType = null;
@@ -144,8 +143,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public EAttribute getIdentifiable_Id()
@@ -172,8 +170,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public EAttribute getPopElement_Class()
@@ -191,8 +188,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public EDataType getPath()
@@ -278,7 +274,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
     initEAttribute(
         getIdentifiable_Id(),
         ecorePackage.getEString(),
-        "id", null, 1, 1, Identifiable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "id", null, 1, 1, Identifiable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(displayableEClass, Displayable.class,
         "Displayable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

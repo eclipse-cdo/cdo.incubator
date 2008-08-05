@@ -155,12 +155,11 @@ public class StreamsView extends MasterDetailsView
       {
         super.setDetailInput(viewer, stream.getPopProject());
         selectAndReveal(viewer, stream.getBranch());
+        return;
       }
     }
-    else
-    {
-      super.setDetailInput(viewer, input);
-    }
+
+    super.setDetailInput(viewer, input);
   }
 
   @Override

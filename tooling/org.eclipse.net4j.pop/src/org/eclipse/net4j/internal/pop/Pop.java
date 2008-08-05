@@ -13,7 +13,6 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.util.ModelEvent;
 import org.eclipse.net4j.internal.pop.util.ModelManager;
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.IRepositoryAdapter;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.impl.PopProjectImpl;
@@ -43,8 +42,6 @@ public class Pop extends Lifecycle implements IPop
 
   private CheckoutManager checkoutManager = new CheckoutManager(this);
 
-  private IRepositoryAdapter repositoryAdapter;
-
   public Pop(IProject project)
   {
     this.project = project;
@@ -61,13 +58,20 @@ public class Pop extends Lifecycle implements IPop
         }
         else
         {
-          Pop.this.activate();
+          PopProject popProject = getPopProject();
+          if (!StringUtil.isEmpty(popProject.getName()))
+          {
+            Pop.this.activate();
+          }
+          else
+          {
+            Pop.this.deactivate();
+          }
         }
       }
     };
 
     modelManager.activate();
-    checkoutManager.activate();
   }
 
   public void dispose()
@@ -135,16 +139,6 @@ public class Pop extends Lifecycle implements IPop
     return checkoutManager;
   }
 
-  public IRepositoryAdapter getRepositoryAdapter()
-  {
-    return repositoryAdapter;
-  }
-
-  public void setRepositoryAdapter(IRepositoryAdapter repositoryAdapter)
-  {
-    this.repositoryAdapter = repositoryAdapter;
-  }
-
   public int compareTo(IPop o)
   {
     return StringUtil.compare(project.getName(), o.getProject().getName());
@@ -190,9 +184,25 @@ public class Pop extends Lifecycle implements IPop
   {
     super.doActivate();
     PopProjectImpl popProject = (PopProjectImpl)getPopProject();
+    if (popProject == null)
+    {
+      throw new IllegalStateException("POP project not available");
+    }
+
+    checkoutManager.activate();
+    popProject.setCheckoutManager(checkoutManager);
+  }
+
+  @Override
+  protected void doDeactivate() throws Exception
+  {
+    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
     if (popProject != null)
     {
-      popProject.setCheckoutManager(checkoutManager);
+      popProject.setCheckoutManager(null);
     }
+
+    checkoutManager.deactivate();
+    super.doDeactivate();
   }
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTPackageImpl.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ * $Id: JDTPackageImpl.java,v 1.3 2008-08-05 18:39:30 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.impl;
 
@@ -88,7 +88,8 @@ public class JDTPackageImpl extends EPackageImpl implements JDTPackage
    */
   public static JDTPackage init()
   {
-    if (isInited) return (JDTPackage)EPackage.Registry.INSTANCE.getEPackage(JDTPackage.eNS_URI);
+    if (isInited)
+      return (JDTPackage)EPackage.Registry.INSTANCE.getEPackage(JDTPackage.eNS_URI);
 
     // Obtain or create and register package
     JDTPackageImpl theJDTPackage = (JDTPackageImpl)(EPackage.Registry.INSTANCE.getEPackage(eNS_URI) instanceof JDTPackageImpl ? EPackage.Registry.INSTANCE
@@ -157,7 +158,8 @@ public class JDTPackageImpl extends EPackageImpl implements JDTPackage
    */
   public void createPackageContents()
   {
-    if (isCreated) return;
+    if (isCreated)
+      return;
     isCreated = true;
 
     // Create classes and their features
@@ -181,7 +183,8 @@ public class JDTPackageImpl extends EPackageImpl implements JDTPackage
    */
   public void initializePackageContents()
   {
-    if (isInitialized) return;
+    if (isInitialized)
+      return;
     isInitialized = true;
 
     // Initialize package

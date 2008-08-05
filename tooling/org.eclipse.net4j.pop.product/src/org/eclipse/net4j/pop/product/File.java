@@ -8,14 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: File.java,v 1.4 2008-08-05 14:47:58 estepper Exp $
+ * $Id: File.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>File</b></em>'. <!-- end-user-doc -->
- *
- *
+ * 
  * @see org.eclipse.net4j.pop.product.ProductPackage#getFile()
  * @model
  * @generated

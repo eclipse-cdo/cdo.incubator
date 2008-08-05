@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEEntityImpl.java,v 1.4 2008-08-05 14:47:44 estepper Exp $
+ * $Id: PDEEntityImpl.java,v 1.5 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -32,21 +32,21 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getVersion <em>Version</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getLocation <em>Location</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getProject <em>Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getDistribution <em>Distribution</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getVersion <em>Version</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getLocation <em>Location</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getProject <em>Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getDistribution <em>Distribution</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getId()
    * @generated
    * @ordered
@@ -54,8 +54,8 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getId()
    * @generated
    * @ordered
@@ -63,9 +63,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected String id = ID_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getVersion()
    * @generated
    * @ordered
@@ -73,9 +73,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected static final Version VERSION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getVersion()
    * @generated
    * @ordered
@@ -83,9 +83,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected Version version = VERSION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getLocation()
    * @generated
    * @ordered
@@ -93,9 +93,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected static final Location LOCATION_EDEFAULT = Location.WORKSPACE;
 
   /**
-   * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getLocation()
    * @generated
    * @ordered
@@ -104,6 +104,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PDEEntityImpl()
@@ -113,6 +114,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -123,6 +125,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getId()
@@ -132,6 +135,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setId(String newId)
@@ -144,6 +148,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Version getVersion()
@@ -153,6 +158,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setVersion(Version newVersion)
@@ -165,6 +171,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Location getLocation()
@@ -174,6 +181,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setLocation(Location newLocation)
@@ -186,6 +194,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEProject getProject()
@@ -197,6 +206,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setProject(PDEProject newProject)
@@ -208,6 +218,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEDistribution getDistribution()
@@ -219,6 +230,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetDistribution(PDEDistribution newDistribution, NotificationChain msgs)
@@ -229,6 +241,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setDistribution(PDEDistribution newDistribution)
@@ -255,6 +268,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -272,6 +286,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -287,6 +302,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -305,6 +321,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -328,6 +345,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -356,6 +374,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -384,6 +403,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -407,6 +427,7 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

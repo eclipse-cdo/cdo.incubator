@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ApiBaselineImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
+ * $Id: ApiBaselineImpl.java,v 1.4 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -27,19 +27,19 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.ApiBaselineImpl#getTargetPlatform <em>Target Platform</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.pde.impl.ApiBaselineImpl#getRelease <em>Release</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.ApiBaselineImpl#getTargetPlatform <em>Target Platform</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.pde.impl.ApiBaselineImpl#getRelease <em>Release</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 {
   /**
-   * The cached value of the '{@link #getTargetPlatform() <em>Target Platform</em>}' reference.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTargetPlatform() <em>Target Platform</em>}' reference. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getTargetPlatform()
    * @generated
    * @ordered
@@ -47,9 +47,9 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
   protected TargetPlatform targetPlatform;
 
   /**
-   * The cached value of the '{@link #getRelease() <em>Release</em>}' reference.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getRelease() <em>Release</em>}' reference. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getRelease()
    * @generated
    * @ordered
@@ -58,6 +58,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ApiBaselineImpl()
@@ -67,6 +68,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -77,6 +79,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatform getTargetPlatform()
@@ -97,6 +100,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatform basicGetTargetPlatform()
@@ -106,6 +110,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTargetPlatform(TargetPlatform newTargetPlatform)
@@ -119,6 +124,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release getRelease()
@@ -139,6 +145,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release basicGetRelease()
@@ -148,6 +155,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRelease(Release newRelease)
@@ -160,6 +168,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -181,6 +190,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -200,6 +210,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -219,6 +230,7 @@ public class ApiBaselineImpl extends PDEConfiguratorImpl implements ApiBaseline
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

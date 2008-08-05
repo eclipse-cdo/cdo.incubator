@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: JDTSwitch.java,v 1.2 2008-08-01 08:14:55 estepper Exp $
+ * $Id: JDTSwitch.java,v 1.3 2008-08-05 18:39:30 estepper Exp $
  */
 package org.eclipse.net4j.pop.jdt.util;
 
@@ -100,16 +100,20 @@ public class JDTSwitch<T>
     {
       JREChecker jreChecker = (JREChecker)theEObject;
       T result = caseJREChecker(jreChecker);
-      if (result == null) result = caseWorkspaceConfigurator(jreChecker);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = caseWorkspaceConfigurator(jreChecker);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case JDTPackage.FORMATTER_PROFILE_CONFIGURATOR:
     {
       FormatterProfileConfigurator formatterProfileConfigurator = (FormatterProfileConfigurator)theEObject;
       T result = caseFormatterProfileConfigurator(formatterProfileConfigurator);
-      if (result == null) result = caseWorkspaceConfigurator(formatterProfileConfigurator);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = caseWorkspaceConfigurator(formatterProfileConfigurator);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     default:

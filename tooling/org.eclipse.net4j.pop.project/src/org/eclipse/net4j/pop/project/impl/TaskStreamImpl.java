@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
+ * $Id: TaskStreamImpl.java,v 1.12 2008-08-05 18:39:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -39,22 +39,22 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getTaskId <em>Task Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getBaseline <em>Baseline</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getTargets <em>Targets</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getDeliveries <em>Deliveries</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getTaskId <em>Task Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getParent <em>Parent</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getBaseline <em>Baseline</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getTargets <em>Targets</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.TaskStreamImpl#getDeliveries <em>Deliveries</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TaskStreamImpl extends StreamImpl implements TaskStream
 {
   /**
-   * The default value of the '{@link #getTaskId() <em>Task Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getTaskId() <em>Task Id</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getTaskId()
    * @generated
    * @ordered
@@ -62,9 +62,9 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   protected static final String TASK_ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getTaskId() <em>Task Id</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTaskId() <em>Task Id</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getTaskId()
    * @generated
    * @ordered
@@ -72,9 +72,9 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   protected String taskId = TASK_ID_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getBaseline() <em>Baseline</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getBaseline() <em>Baseline</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -82,9 +82,9 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   protected static final Date BASELINE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -92,9 +92,9 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
   protected Date baseline = BASELINE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getTargets()
    * @generated
    * @ordered
@@ -113,6 +113,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TaskStreamImpl()
@@ -122,6 +123,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -132,6 +134,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getTaskId()
@@ -141,6 +144,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTaskId(String newTaskId)
@@ -153,6 +157,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IntegrationStream getParent()
@@ -164,6 +169,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IntegrationStream basicGetParent()
@@ -175,6 +181,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetParent(IntegrationStream newParent, NotificationChain msgs)
@@ -185,6 +192,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParent(IntegrationStream newParent)
@@ -210,6 +218,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getBaseline()
@@ -219,6 +228,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setBaseline(Date newBaseline)
@@ -231,6 +241,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Target> getTargets()
@@ -245,6 +256,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Delivery> getDeliveries()
@@ -270,6 +282,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -292,6 +305,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -311,6 +325,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -327,6 +342,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -352,6 +368,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -383,6 +400,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -411,6 +429,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -434,6 +453,7 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

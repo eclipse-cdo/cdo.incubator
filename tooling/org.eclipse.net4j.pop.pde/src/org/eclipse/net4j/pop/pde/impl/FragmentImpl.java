@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: FragmentImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
+ * $Id: FragmentImpl.java,v 1.4 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -21,13 +21,14 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Fragment</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class FragmentImpl extends PluginEntityImpl implements Fragment
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected FragmentImpl()
@@ -37,6 +38,7 @@ public class FragmentImpl extends PluginEntityImpl implements Fragment
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

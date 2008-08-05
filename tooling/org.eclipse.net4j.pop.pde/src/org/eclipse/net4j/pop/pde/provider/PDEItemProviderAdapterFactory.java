@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEItemProviderAdapterFactory.java,v 1.3 2008-08-05 14:47:45 estepper Exp $
+ * $Id: PDEItemProviderAdapterFactory.java,v 1.4 2008-08-05 18:38:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.provider;
 
@@ -59,24 +59,24 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
     IChangeNotifier, IDisposable, IChildCreationExtender
 {
   /**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc --> <!--
+   * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc --> <!--
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-   * This helps manage the child creation extenders.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This helps manage the child creation extenders. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
@@ -91,8 +91,8 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
-   * This constructs an instance.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PDEItemProviderAdapterFactory()
@@ -109,14 +109,15 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   /**
    * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.pde.TargetPlatformChecker} instances.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TargetPlatformCheckerItemProvider targetPlatformCheckerItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatformChecker}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatformChecker}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -139,9 +140,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   protected ApiBaselineItemProvider apiBaselineItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.ApiBaseline}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.ApiBaseline}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -164,9 +165,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   protected TargetPlatformItemProvider targetPlatformItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatform}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatform}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -189,9 +190,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   protected PDEProjectItemProvider pdeProjectItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.PDEProject}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.PDEProject}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -289,9 +290,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   protected ZipDistributionItemProvider zipDistributionItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.ZipDistribution}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.ZipDistribution}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -314,9 +315,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   protected PopDistributionItemProvider popDistributionItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.PopDistribution}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.pde.PopDistribution}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -331,8 +332,8 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ComposeableAdapterFactory getRootAdapterFactory()
@@ -341,8 +342,8 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
@@ -352,6 +353,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -361,9 +363,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc --> <!--
+   * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -374,6 +376,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -393,6 +396,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public List<IChildCreationExtender> getChildCreationExtenders()
@@ -402,6 +406,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain)
@@ -411,6 +416,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ResourceLocator getResourceLocator()
@@ -419,8 +425,8 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This adds a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void addListener(INotifyChangedListener notifyChangedListener)
@@ -429,8 +435,8 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This removes a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void removeListener(INotifyChangedListener notifyChangedListener)
@@ -439,9 +445,9 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc --> <!--
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   public void fireNotifyChanged(Notification notification)
@@ -455,8 +461,8 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void dispose()
@@ -482,38 +488,38 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
   }
 
   /**
-   * A child creation extender for the {@link ProductPackage}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * A child creation extender for the {@link ProductPackage}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static class ProductChildCreationExtender implements IChildCreationExtender
   {
     /**
-     * The switch for creating child descriptors specific to each extended class.
-     * <!-- begin-user-doc --> <!--
+     * The switch for creating child descriptors specific to each extended class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
+     * 
      * @generated
      */
     protected static class CreationSwitch extends ProductSwitch<Object>
     {
       /**
-       * The child descriptors being populated.
-       * <!-- begin-user-doc --> <!-- end-user-doc -->
+       * The child descriptors being populated. <!-- begin-user-doc --> <!-- end-user-doc -->
+       * 
        * @generated
        */
       protected List<Object> newChildDescriptors;
 
       /**
-       * The domain in which to create the children.
-       * <!-- begin-user-doc --> <!-- end-user-doc -->
+       * The domain in which to create the children. <!-- begin-user-doc --> <!-- end-user-doc -->
+       * 
        * @generated
        */
       protected EditingDomain editingDomain;
 
       /**
-       * Creates the a switch for populating child descriptors in the given domain.
-       * <!-- begin-user-doc --> <!--
+       * Creates the a switch for populating child descriptors in the given domain. <!-- begin-user-doc --> <!--
        * end-user-doc -->
+       * 
        * @generated
        */
       CreationSwitch(List<Object> newChildDescriptors, EditingDomain editingDomain)
@@ -524,6 +530,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
       /**
        * <!-- begin-user-doc --> <!-- end-user-doc -->
+       * 
        * @generated
        */
       @Override
@@ -546,6 +553,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
       /**
        * <!-- begin-user-doc --> <!-- end-user-doc -->
+       * 
        * @generated
        */
       protected CommandParameter createChildParameter(Object feature, Object child)
@@ -557,6 +565,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain)
@@ -568,6 +577,7 @@ public class PDEItemProviderAdapterFactory extends PDEAdapterFactory implements 
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * 
      * @generated
      */
     public ResourceLocator getResourceLocator()

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorItemProvider.java,v 1.3 2008-08-05 08:20:18 estepper Exp $
+ * $Id: CheckoutDiscriminatorItemProvider.java,v 1.4 2008-08-05 18:39:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -32,9 +32,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.CheckoutDiscriminator} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.CheckoutDiscriminator} object. <!--
+ * begin-user-doc --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
@@ -42,9 +42,8 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public CheckoutDiscriminatorItemProvider(AdapterFactory adapterFactory)
@@ -53,9 +52,8 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -71,9 +69,8 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   }
 
   /**
-   * This adds a property descriptor for the Checkout feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Checkout feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addCheckoutPropertyDescriptor(Object object)
@@ -88,9 +85,8 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -102,10 +98,9 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -116,10 +111,9 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

@@ -24,11 +24,11 @@ public interface IRepositoryAdapter extends IAdaptable
 {
   public String getType();
 
-  public void checkoutBranch(String branchName, IPath location);
+  public void checkoutBranch(IPath target, String repository, String module, String branch);
 
-  public void checkoutDate(Date date, IPath location);
+  public void checkoutTag(IPath target, String repository, String module, String tag);
 
-  public void checkoutTag(String tagName, IPath location);
+  public void checkoutDate(IPath target, String repository, String module, Date date);
 
   /**
    * @author Eike Stepper
@@ -37,4 +37,5 @@ public interface IRepositoryAdapter extends IAdaptable
   {
     Registry INSTANCE = org.eclipse.net4j.pop.internal.repository.RepositoryAdapterFactory.INSTANCE;
   }
+
 }

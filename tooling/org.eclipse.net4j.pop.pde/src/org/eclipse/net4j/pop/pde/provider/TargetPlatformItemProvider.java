@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetPlatformItemProvider.java,v 1.3 2008-08-05 14:47:45 estepper Exp $
+ * $Id: TargetPlatformItemProvider.java,v 1.4 2008-08-05 18:38:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.provider;
 
@@ -33,9 +33,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatform} object.
- * <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.pde.TargetPlatform} object. <!-- begin-user-doc
  * --> <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider implements IEditingDomainItemProvider,
@@ -43,8 +43,8 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TargetPlatformItemProvider(AdapterFactory adapterFactory)
@@ -53,8 +53,8 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -71,9 +71,9 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -89,6 +89,7 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -101,8 +102,8 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
   }
 
   /**
-   * This returns TargetPlatform.gif.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns TargetPlatform.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -112,8 +113,8 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -123,9 +124,9 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -143,9 +144,9 @@ public class TargetPlatformItemProvider extends PDEConfiguratorItemProvider impl
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

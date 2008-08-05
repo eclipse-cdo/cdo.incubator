@@ -405,7 +405,11 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof Committer)
       {
         Committer obj = (Committer)object;
-        return obj.getPopProject().getRootStream();
+        PopProject popProject = obj.getPopProject();
+        if (popProject != null)
+        {
+          return popProject.getRootStream();
+        }
       }
 
       return null;
@@ -434,7 +438,11 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof PopProject)
       {
         PopProject obj = (PopProject)object;
-        return new Object[] { obj.getMainBranch() };
+        MainBranch mainBranch = obj.getMainBranch();
+        if (mainBranch != null)
+        {
+          return new Object[] { mainBranch };
+        }
       }
 
       if (object instanceof Branch)
@@ -459,7 +467,11 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof MainBranch)
       {
         MainBranch obj = (MainBranch)object;
-        return obj.getStream().getPopProject();
+        Stream stream = obj.getStream();
+        if (stream != null)
+        {
+          return stream.getPopProject();
+        }
       }
 
       return null;

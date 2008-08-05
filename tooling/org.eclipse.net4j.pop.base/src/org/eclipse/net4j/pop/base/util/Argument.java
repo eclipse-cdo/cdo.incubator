@@ -15,7 +15,7 @@ package org.eclipse.net4j.pop.base.util;
  */
 public final class Argument
 {
-  protected Argument()
+  private Argument()
   {
   }
 

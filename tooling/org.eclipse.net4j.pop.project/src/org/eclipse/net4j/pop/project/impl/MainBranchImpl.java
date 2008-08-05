@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchImpl.java,v 1.9 2008-08-05 06:45:17 estepper Exp $
+ * $Id: MainBranchImpl.java,v 1.10 2008-08-05 18:39:27 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -29,16 +29,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl#getPopProject <em>Pop Project</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MainBranchImpl extends BranchImpl implements MainBranch
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MainBranchImpl()
@@ -48,6 +49,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -58,6 +60,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -70,6 +73,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -81,6 +85,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -91,6 +96,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -117,6 +123,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -134,6 +141,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -149,6 +157,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -164,6 +173,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -181,6 +191,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -197,6 +208,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -213,6 +225,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

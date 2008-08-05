@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Committer.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: Committer.java,v 1.10 2008-08-05 18:39:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -18,20 +18,19 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Committer</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getPopProject <em>Pop Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getEmail <em>Email</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getEntry <em>Entry</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#getExit <em>Exit</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Committer#isActive <em>Active</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#getEmail <em>Email</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#getEntry <em>Entry</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#getExit <em>Exit</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Committer#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter()
  * @model
  * @generated
@@ -39,14 +38,14 @@ import java.util.Date;
 public interface Committer extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Pop Project</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.PopProject#getCommitters <em>Committers</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop Project</b></em>' container reference. It is bidirectional and its opposite is
+   * '{@link org.eclipse.net4j.pop.project.PopProject#getCommitters <em>Committers</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Pop Project</em>' container reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Pop Project</em>' container reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Pop Project</em>' container reference.
    * @see #setPopProject(PopProject)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_PopProject()
@@ -57,23 +56,24 @@ public interface Committer extends PopElement
   PopProject getPopProject();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#getPopProject <em>Pop Project</em>}' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pop Project</em>' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#getPopProject <em>Pop Project</em>}'
+   * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Pop Project</em>' container reference.
    * @see #getPopProject()
    * @generated
    */
   void setPopProject(PopProject value);
 
   /**
-   * Returns the value of the '<em><b>Repository Login</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Repository Login</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Repository Login</em>' attribute isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Repository Login</em>' attribute isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Repository Login</em>' attribute.
    * @see #setRepositoryLogin(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_RepositoryLogin()
@@ -83,22 +83,23 @@ public interface Committer extends PopElement
   String getRepositoryLogin();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Repository Login</em>' attribute.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Committer#getRepositoryLogin <em>Repository Login</em>}
+   * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Repository Login</em>' attribute.
    * @see #getRepositoryLogin()
    * @generated
    */
   void setRepositoryLogin(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Name()
@@ -119,12 +120,12 @@ public interface Committer extends PopElement
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Email</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Email</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Email</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Email</em>' attribute.
    * @see #setEmail(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Email()
@@ -145,12 +146,12 @@ public interface Committer extends PopElement
   void setEmail(String value);
 
   /**
-   * Returns the value of the '<em><b>Entry</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Entry</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Entry</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Entry</em>' attribute.
    * @see #setEntry(Date)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Entry()
@@ -171,12 +172,12 @@ public interface Committer extends PopElement
   void setEntry(Date value);
 
   /**
-   * Returns the value of the '<em><b>Exit</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Exit</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Exit</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Exit</em>' attribute.
    * @see #setExit(Date)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Exit()
@@ -197,12 +198,12 @@ public interface Committer extends PopElement
   void setExit(Date value);
 
   /**
-   * Returns the value of the '<em><b>Active</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Active</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Active</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Active</em>' attribute.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCommitter_Active()
    * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
@@ -212,6 +213,7 @@ public interface Committer extends PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model exitRequired="true"
    * @generated
    */

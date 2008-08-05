@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamItemProvider.java,v 1.11 2008-08-05 05:54:19 estepper Exp $
+ * $Id: DevelopmentStreamItemProvider.java,v 1.12 2008-08-05 18:39:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -44,8 +44,8 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DevelopmentStreamItemProvider(AdapterFactory adapterFactory)
@@ -54,8 +54,8 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -72,9 +72,9 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -90,6 +90,7 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -116,9 +117,9 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -136,9 +137,9 @@ public class DevelopmentStreamItemProvider extends IntegrationStreamItemProvider
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

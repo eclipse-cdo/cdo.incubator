@@ -5,7 +5,7 @@
     nsURI="http://www.eclipse.org/pop/base/1.0.0" nsPrefix="pop.base">
   <eClassifiers xsi:type="ecore:EClass" name="Identifiable" abstract="true" interface="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        changeable="false" volatile="true" transient="true" derived="true" iD="true"/>
+        changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Displayable" abstract="true" interface="true">
     <eOperations name="getDisplayString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

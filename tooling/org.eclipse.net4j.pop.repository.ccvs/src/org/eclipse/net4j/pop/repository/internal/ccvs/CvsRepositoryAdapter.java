@@ -12,6 +12,7 @@ package org.eclipse.net4j.pop.repository.internal.ccvs;
 
 import org.eclipse.net4j.pop.internal.repository.RepositoryAdapter;
 import org.eclipse.net4j.pop.repository.ccvs.ICvsRepositoryAdapter;
+import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.ui.UIUtil;
 
 import org.eclipse.core.resources.IContainer;
@@ -40,21 +41,29 @@ public class CvsRepositoryAdapter extends RepositoryAdapter implements ICvsRepos
   }
 
   @Override
-  public void checkoutBranch(String branchName, IPath location)
+  public void checkoutBranch(IPath target, String repository, String module, String branch)
   {
-    ICVSRemoteFolder remoteFolder = null;
+    ICVSRemoteFolder remoteFolder =CVSProviderPlugin.getPlugin().
     IContainer localFolder = null;
-    TeamOperation operation = new CheckoutIntoOperation(getPart(), remoteFolder, localFolder, true);
-    operation.run();
+
+    try
+    {
+      TeamOperation operation = new CheckoutIntoOperation(getPart(), remoteFolder, localFolder, true);
+      operation.run();
+    }
+    catch (Exception ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
   }
 
   @Override
-  public void checkoutDate(Date date, IPath location)
+  public void checkoutTag(IPath target, String repository, String module, String tag)
   {
   }
 
   @Override
-  public void checkoutTag(String tagName, IPath location)
+  public void checkoutDate(IPath target, String repository, String module, Date date)
   {
   }
 

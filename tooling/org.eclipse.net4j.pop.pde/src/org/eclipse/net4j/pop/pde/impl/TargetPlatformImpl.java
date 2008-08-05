@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetPlatformImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
+ * $Id: TargetPlatformImpl.java,v 1.4 2008-08-05 18:38:56 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -51,6 +51,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TargetPlatformImpl()
@@ -60,6 +61,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -70,6 +72,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<PDEDistribution> getDistributions()
@@ -84,6 +87,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -100,6 +104,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -115,6 +120,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -130,6 +136,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -148,6 +155,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -164,6 +172,7 @@ public class TargetPlatformImpl extends PDEConfiguratorImpl implements TargetPla
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

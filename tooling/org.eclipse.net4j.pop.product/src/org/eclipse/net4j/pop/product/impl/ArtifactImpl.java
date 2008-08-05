@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
+ * $Id: ArtifactImpl.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -29,16 +29,17 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.product.impl.ArtifactImpl#getParent <em>Parent</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.impl.ArtifactImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ArtifactImpl()
@@ -48,6 +49,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -58,6 +60,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Folder getParent()
@@ -69,6 +72,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetParent(Folder newParent, NotificationChain msgs)
@@ -79,6 +83,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParent(Folder newParent)
@@ -103,6 +108,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -120,6 +126,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -135,6 +142,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -150,6 +158,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -165,6 +174,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -181,6 +191,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -197,6 +208,7 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

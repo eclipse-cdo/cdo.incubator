@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Stream.java,v 1.9 2008-08-01 18:49:05 estepper Exp $
+ * $Id: Stream.java,v 1.10 2008-08-05 18:39:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -20,15 +20,14 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Stream</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Stream#getBranch <em>Branch</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream()
  * @model abstract="true"
  * @generated
@@ -36,13 +35,13 @@ import java.util.Date;
 public interface Stream extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Branch</b></em>' reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Branch</b></em>' reference. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.Branch#getStream <em>Stream</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Branch</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Branch</em>' reference.
    * @see #setBranch(Branch)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_Branch()
@@ -64,15 +63,15 @@ public interface Stream extends PopElement
   void setBranch(Branch value);
 
   /**
-   * Returns the value of the '<em><b>Merges</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.Merge}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Merges</b></em>' containment reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.project.Merge}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Merges</em>' containment reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Merges</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getStream_Merges()
    * @see org.eclipse.net4j.pop.project.Merge#getStream
@@ -82,24 +81,24 @@ public interface Stream extends PopElement
   EList<Merge> getMerges();
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model kind="operation" required="true"
    * @generated
    */
   PopProject getPopProject();
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model kind="operation"
    * @generated
    */
   Stream getParent();
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model kind="operation"
    * @generated
    */
@@ -107,6 +106,7 @@ public interface Stream extends PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model required="true" dateRequired="true" deliveryRequired="true"
    * @generated
    */

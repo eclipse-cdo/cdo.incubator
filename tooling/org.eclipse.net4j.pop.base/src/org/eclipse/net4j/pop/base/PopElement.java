@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElement.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
+ * $Id: PopElement.java,v 1.5 2008-08-05 18:39:32 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
@@ -33,8 +33,7 @@ public interface PopElement extends Identifiable, Displayable
    * Returns the value of the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Class</em>' attribute isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Class</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Class</em>' attribute.
