@@ -11,15 +11,20 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
+import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
+import org.eclipse.net4j.pop.project.ProjectFactory;
+import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
 import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 
+import java.io.File;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,11 +38,14 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private Pop pop;
 
+  private IPath location;
+
   private Map<CheckoutDiscriminator, Checkout> checkouts = new HashMap<CheckoutDiscriminator, Checkout>();
 
   public CheckoutManager(Pop pop)
   {
     this.pop = pop;
+    init();
   }
 
   public Pop getPop()
@@ -135,5 +143,26 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   public void checkoutLocationChanged()
   {
+    // TODO fire clear event
+    checkouts.clear();
+    init();
+  }
+
+  private void init()
+  {
+    PopProject popProject = pop.getPopProject();
+    location = PopManager.INSTANCE.getCheckoutLocation().append(popProject.getName());
+    for (File folder : location.toFile().listFiles())
+    {
+      String checkoutName = folder.getName();
+      PopElement popElement = pop.getPopElement(checkoutName);
+      if (popElement instanceof CheckoutDiscriminator)
+      {
+        CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
+        checkout.setPopProject(popProject);
+        checkout.setDiscriminator((CheckoutDiscriminator)popElement);
+        addCheckout(checkout);
+      }
+    }
   }
 }

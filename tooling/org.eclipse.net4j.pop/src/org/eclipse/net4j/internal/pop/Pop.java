@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.util.ModelEvent;
 import org.eclipse.net4j.internal.pop.util.ModelManager;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.impl.PopProjectImpl;
 import org.eclipse.net4j.util.ObjectUtil;
@@ -22,6 +23,7 @@ import org.eclipse.net4j.util.lifecycle.Lifecycle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
@@ -77,19 +79,47 @@ public class Pop extends Lifecycle implements IPop
 
   public PopProject getPopProject()
   {
-    EList<Resource> resources = modelManager.getResourceSet().getResources();
-    if (resources.isEmpty())
+    Resource resource = getPopResource();
+    if (resource == null)
     {
       return null;
     }
 
-    EList<EObject> contents = resources.get(0).getContents();
+    EList<EObject> contents = resource.getContents();
     if (contents.isEmpty())
     {
       return null;
     }
 
     return (PopProject)contents.get(0);
+  }
+
+  public PopElement getPopElement(String id)
+  {
+    Resource resource = getPopResource();
+    if (resource == null)
+    {
+      return null;
+    }
+
+    return (PopElement)resource.getEObject(id);
+  }
+
+  public Resource getPopResource()
+  {
+    ResourceSet resourceSet = modelManager.getResourceSet();
+    if (resourceSet == null)
+    {
+      return null;
+    }
+
+    EList<Resource> resources = resourceSet.getResources();
+    if (resources.isEmpty())
+    {
+      return null;
+    }
+
+    return resources.get(0);
   }
 
   public ModelManager getModelManager()
