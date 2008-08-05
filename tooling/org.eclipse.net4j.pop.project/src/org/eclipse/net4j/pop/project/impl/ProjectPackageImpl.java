@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.18 2008-08-05 07:01:36 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.19 2008-08-05 07:23:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -326,6 +326,16 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   public EReference getPopProject_RootStream()
   {
     return (EReference)popProjectEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getPopProject_Checkouts()
+  {
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(7);
   }
 
   /**
@@ -1006,6 +1016,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(popProjectEClass, POP_PROJECT__CODE_ROOTS);
     createEReference(popProjectEClass, POP_PROJECT__MAIN_BRANCH);
     createEReference(popProjectEClass, POP_PROJECT__ROOT_STREAM);
+    createEReference(popProjectEClass, POP_PROJECT__CHECKOUTS);
 
     committerEClass = createEClass(COMMITTER);
     createEReference(committerEClass, COMMITTER__POP_PROJECT);
@@ -1186,6 +1197,11 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getRootStream(),
         this.getRootStream_PopProject(),
         "rootStream", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getPopProject_Checkouts(),
+        this.getCheckout(),
+        null,
+        "checkouts", null, 0, -1, PopProject.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     EOperation op = addEOperation(popProjectEClass, this.getRelease(), "addCommitter", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEString(), "id", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$

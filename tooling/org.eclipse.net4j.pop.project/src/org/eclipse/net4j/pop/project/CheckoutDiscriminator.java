@@ -8,13 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminator.java,v 1.3 2008-08-05 07:01:36 estepper Exp $
+ * $Id: CheckoutDiscriminator.java,v 1.4 2008-08-05 07:23:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 import org.eclipse.net4j.pop.base.PopElement;
-
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->

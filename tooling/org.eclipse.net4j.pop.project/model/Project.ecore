@@ -23,6 +23,9 @@
         eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/popProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootStream" lowerBound="1"
         eType="#//RootStream" containment="true" eOpposite="#//RootStream/popProject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkouts" upperBound="-1"
+        eType="#//Checkout" changeable="false" volatile="true" transient="true" derived="true"
+        resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Committer" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eOperations name="deactivate" lowerBound="1">

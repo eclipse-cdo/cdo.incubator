@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProject.java,v 1.9 2008-08-01 11:03:27 estepper Exp $
+ * $Id: PopProject.java,v 1.10 2008-08-05 07:23:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -31,6 +31,7 @@ import java.util.Date;
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCodeRoots <em>Code Roots</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getMainBranch <em>Main Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getRootStream <em>Root Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCheckouts <em>Checkouts</em>}</li>
  * </ul>
  * </p>
  *
@@ -208,6 +209,22 @@ public interface PopProject extends PopElement
    * @generated
    */
   void setRootStream(RootStream value);
+
+  /**
+   * Returns the value of the '<em><b>Checkouts</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.Checkout}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Checkouts</em>' reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Checkouts</em>' reference list.
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getPopProject_Checkouts()
+   * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
+   * @generated
+   */
+  EList<Checkout> getCheckouts();
 
   /**
    * <!-- begin-user-doc -->

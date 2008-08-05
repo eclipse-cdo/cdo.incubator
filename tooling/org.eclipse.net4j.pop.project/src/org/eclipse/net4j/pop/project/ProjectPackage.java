@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.16 2008-08-05 07:01:36 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.17 2008-08-05 07:23:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -158,13 +158,22 @@ public interface ProjectPackage extends EPackage
   int POP_PROJECT__ROOT_STREAM = BasePackage.POP_ELEMENT_FEATURE_COUNT + 6;
 
   /**
+   * The feature id for the '<em><b>Checkouts</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_PROJECT__CHECKOUTS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 7;
+
+  /**
    * The number of structural features of the '<em>Pop Project</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
    * @generated
    * @ordered
    */
-  int POP_PROJECT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 7;
+  int POP_PROJECT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl <em>Code Root</em>}' class. <!--
@@ -1692,6 +1701,17 @@ public interface ProjectPackage extends EPackage
   EReference getPopProject_RootStream();
 
   /**
+   * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.project.PopProject#getCheckouts <em>Checkouts</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Checkouts</em>'.
+   * @see org.eclipse.net4j.pop.project.PopProject#getCheckouts()
+   * @see #getPopProject()
+   * @generated
+   */
+  EReference getPopProject_Checkouts();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.CodeRoot <em>Code Root</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -2491,6 +2511,14 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference POP_PROJECT__ROOT_STREAM = eINSTANCE.getPopProject_RootStream();
+
+    /**
+     * The meta object literal for the '<em><b>Checkouts</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POP_PROJECT__CHECKOUTS = eINSTANCE.getPopProject_Checkouts();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl <em>Code Root</em>}' class.

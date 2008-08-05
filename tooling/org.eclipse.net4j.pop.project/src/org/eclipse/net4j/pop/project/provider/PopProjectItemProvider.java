@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectItemProvider.java,v 1.11 2008-08-03 17:31:34 estepper Exp $
+ * $Id: PopProjectItemProvider.java,v 1.12 2008-08-05 07:23:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -70,6 +70,7 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
       addNamePropertyDescriptor(object);
       addTeamProviderPropertyDescriptor(object);
       addRepositoryUrlPropertyDescriptor(object);
+      addCheckoutsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -117,6 +118,20 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
         getString("_UI_PropertyDescriptor_description", "_UI_PopProject_repositoryUrl_feature", "_UI_PopProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         ProjectPackage.Literals.POP_PROJECT__REPOSITORY_URL, true, false, false,
         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+  }
+
+  /**
+   * This adds a property descriptor for the Checkouts feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addCheckoutsPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_PopProject_checkouts_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_PopProject_checkouts_feature", "_UI_PopProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.POP_PROJECT__CHECKOUTS, false, false, false, null, null, null));
   }
 
   /**

@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.util.ModelEvent;
 import org.eclipse.net4j.internal.pop.util.ModelManager;
 import org.eclipse.net4j.pop.IPop;
 import org.eclipse.net4j.pop.project.PopProject;
+import org.eclipse.net4j.pop.project.impl.PopProjectImpl;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.StringUtil;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
@@ -139,5 +140,16 @@ public class Pop extends Lifecycle implements IPop
   public String toString()
   {
     return MessageFormat.format("POP[{0}]", project.getName());
+  }
+
+  @Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
+    if (popProject != null)
+    {
+      popProject.setCheckoutManager(checkoutManager);
+    }
   }
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.11 2008-08-05 07:01:36 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.12 2008-08-05 07:23:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.net4j.pop.project.*;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
