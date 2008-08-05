@@ -13,6 +13,7 @@ package org.eclipse.net4j.internal.pop;
 import org.eclipse.net4j.internal.pop.util.ModelEvent;
 import org.eclipse.net4j.internal.pop.util.ModelManager;
 import org.eclipse.net4j.pop.IPop;
+import org.eclipse.net4j.pop.IRepositoryAdapter;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.impl.PopProjectImpl;
@@ -41,6 +42,8 @@ public class Pop extends Lifecycle implements IPop
   private ModelManager modelManager;
 
   private CheckoutManager checkoutManager = new CheckoutManager(this);
+
+  private IRepositoryAdapter repositoryAdapter;
 
   public Pop(IProject project)
   {
@@ -130,6 +133,16 @@ public class Pop extends Lifecycle implements IPop
   public CheckoutManager getCheckoutManager()
   {
     return checkoutManager;
+  }
+
+  public IRepositoryAdapter getRepositoryAdapter()
+  {
+    return repositoryAdapter;
+  }
+
+  public void setRepositoryAdapter(IRepositoryAdapter repositoryAdapter)
+  {
+    this.repositoryAdapter = repositoryAdapter;
   }
 
   public int compareTo(IPop o)

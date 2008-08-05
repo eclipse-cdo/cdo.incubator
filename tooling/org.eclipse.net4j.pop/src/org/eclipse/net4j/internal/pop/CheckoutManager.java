@@ -11,15 +11,17 @@
 package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
+import org.eclipse.net4j.pop.IRepositoryAdapter;
 import org.eclipse.net4j.pop.base.PopElement;
+import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
+import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl;
 import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
 import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
-import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -128,7 +130,8 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   public Checkout checkout(CheckoutDiscriminator discriminator)
   {
-    return createCheckout((CheckoutDiscriminatorImpl)discriminator);
+    IPath location = doCheckout(discriminator);
+    return createCheckout(discriminator, location);
   }
 
   public Checkout[] getElements()
@@ -165,25 +168,47 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
       PopElement popElement = pop.getPopElement(checkoutName);
       if (popElement instanceof CheckoutDiscriminator)
       {
-        CheckoutDiscriminatorImpl discriminator = (CheckoutDiscriminatorImpl)popElement;
-        if (ObjectUtil.equals(discriminator.getIdValue(), checkoutName))
-        {
-          createCheckout(discriminator);
-        }
+        CheckoutDiscriminator discriminator = (CheckoutDiscriminator)popElement;
+        createCheckout(discriminator, getCheckoutLocation(discriminator));
       }
     }
   }
 
-  private CheckoutImpl createCheckout(CheckoutDiscriminatorImpl discriminator)
+  private IPath getCheckoutLocation(CheckoutDiscriminator discriminator)
   {
-    String checkoutName = discriminator.getIdValue();
-    IPath checkoutLocation = location.append(checkoutName);
+    String checkoutName = ((CheckoutDiscriminatorImpl)discriminator).getIdValue();
+    return location.append(checkoutName);
+  }
 
+  private Checkout createCheckout(CheckoutDiscriminator discriminator, IPath checkoutLocation)
+  {
     CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
     checkout.setDiscriminator(discriminator);
     checkout.setLocation(checkoutLocation);
 
     addCheckout(checkout);
     return checkout;
+  }
+
+  private IPath doCheckout(CheckoutDiscriminator discriminator)
+  {
+    IPath checkoutLocation = getCheckoutLocation(discriminator);
+    IRepositoryAdapter repositoryAdapter = pop.getRepositoryAdapter();
+    if (discriminator instanceof Branch)
+    {
+      String branchName = ((Branch)discriminator).getName();
+      repositoryAdapter.checkoutBranch(branchName, checkoutLocation);
+    }
+    else if (discriminator instanceof Tag)
+    {
+      String tagName = ((Tag)discriminator).getName();
+      repositoryAdapter.checkoutTag(tagName, checkoutLocation);
+    }
+    else
+    {
+      throw new IllegalArgumentException("Unrecognized checkout discriminator: " + discriminator);
+    }
+
+    return checkoutLocation;
   }
 }
