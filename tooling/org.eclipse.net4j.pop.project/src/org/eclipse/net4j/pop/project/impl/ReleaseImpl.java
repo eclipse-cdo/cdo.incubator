@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ReleaseImpl.java,v 1.12 2008-08-05 18:39:27 estepper Exp $
+ * $Id: ReleaseImpl.java,v 1.13 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -122,8 +122,10 @@ public class ReleaseImpl extends TargetImpl implements Release
       if (maintenance != oldMaintenance)
       {
         if (eNotificationRequired())
+        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.RELEASE__MAINTENANCE,
               oldMaintenance, maintenance));
+        }
       }
     }
     return maintenance;
@@ -153,9 +155,13 @@ public class ReleaseImpl extends TargetImpl implements Release
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.RELEASE__MAINTENANCE, oldMaintenance, newMaintenance);
       if (msgs == null)
+      {
         msgs = notification;
+      }
       else
+      {
         msgs.add(notification);
+      }
     }
     return msgs;
   }
@@ -171,18 +177,26 @@ public class ReleaseImpl extends TargetImpl implements Release
     {
       NotificationChain msgs = null;
       if (maintenance != null)
+      {
         msgs = ((InternalEObject)maintenance).eInverseRemove(this, ProjectPackage.MAINTENANCE_STREAM__BASELINE,
             MaintenanceStream.class, msgs);
+      }
       if (newMaintenance != null)
+      {
         msgs = ((InternalEObject)newMaintenance).eInverseAdd(this, ProjectPackage.MAINTENANCE_STREAM__BASELINE,
             MaintenanceStream.class, msgs);
+      }
       msgs = basicSetMaintenance(newMaintenance, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.RELEASE__MAINTENANCE, newMaintenance,
           newMaintenance));
+    }
   }
 
   /**
@@ -205,7 +219,9 @@ public class ReleaseImpl extends TargetImpl implements Release
     Version oldVersion = version;
     version = newVersion;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.RELEASE__VERSION, oldVersion, version));
+    }
   }
 
   /**
@@ -216,7 +232,9 @@ public class ReleaseImpl extends TargetImpl implements Release
   public IntegrationStream getStream()
   {
     if (eContainerFeatureID != ProjectPackage.RELEASE__STREAM)
+    {
       return null;
+    }
     return (IntegrationStream)eContainer();
   }
 
@@ -228,7 +246,9 @@ public class ReleaseImpl extends TargetImpl implements Release
   public IntegrationStream basicGetStream()
   {
     if (eContainerFeatureID != ProjectPackage.RELEASE__STREAM)
+    {
       return null;
+    }
     return (IntegrationStream)eInternalContainer();
   }
 
@@ -250,23 +270,32 @@ public class ReleaseImpl extends TargetImpl implements Release
    */
   public void setStream(IntegrationStream newStream)
   {
-    if (newStream != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.RELEASE__STREAM && newStream != null))
+    if (newStream != eInternalContainer() || eContainerFeatureID != ProjectPackage.RELEASE__STREAM && newStream != null)
     {
       if (EcoreUtil.isAncestor(this, newStream))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newStream != null)
+      {
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.INTEGRATION_STREAM__RELEASES,
             IntegrationStream.class, msgs);
+      }
       msgs = basicSetStream(newStream, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.RELEASE__STREAM, newStream, newStream));
+    }
   }
 
   /**
@@ -308,12 +337,16 @@ public class ReleaseImpl extends TargetImpl implements Release
     {
     case ProjectPackage.RELEASE__MAINTENANCE:
       if (maintenance != null)
+      {
         msgs = ((InternalEObject)maintenance).eInverseRemove(this, ProjectPackage.MAINTENANCE_STREAM__BASELINE,
             MaintenanceStream.class, msgs);
+      }
       return basicSetMaintenance((MaintenanceStream)otherEnd, msgs);
     case ProjectPackage.RELEASE__STREAM:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetStream((IntegrationStream)otherEnd, msgs);
     case ProjectPackage.RELEASE__MILESTONES:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getMilestones()).basicAdd(otherEnd, msgs);
@@ -370,13 +403,17 @@ public class ReleaseImpl extends TargetImpl implements Release
     {
     case ProjectPackage.RELEASE__MAINTENANCE:
       if (resolve)
+      {
         return getMaintenance();
+      }
       return basicGetMaintenance();
     case ProjectPackage.RELEASE__VERSION:
       return getVersion();
     case ProjectPackage.RELEASE__STREAM:
       if (resolve)
+      {
         return getStream();
+      }
       return basicGetStream();
     case ProjectPackage.RELEASE__MILESTONES:
       return getMilestones();
@@ -469,7 +506,9 @@ public class ReleaseImpl extends TargetImpl implements Release
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (version: "); //$NON-NLS-1$
@@ -478,21 +517,4 @@ public class ReleaseImpl extends TargetImpl implements Release
     return result.toString();
   }
 
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdType()
-  {
-    return "release";
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return ((StreamImpl)getStream()).getIdValue() + "_" + getVersion().asId();
-  }
 } // ReleaseImpl

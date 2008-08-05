@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStreamImpl.java,v 1.11 2008-08-05 18:39:27 estepper Exp $
+ * $Id: RootStreamImpl.java,v 1.12 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -66,7 +66,9 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
   public PopProject getPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT)
+    {
       return null;
+    }
     return (PopProject)eContainer();
   }
 
@@ -78,7 +80,9 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
   public PopProject basicGetPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT)
+    {
       return null;
+    }
     return (PopProject)eInternalContainer();
   }
 
@@ -100,24 +104,34 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
    */
   public void setPopProject(PopProject newPopProject)
   {
-    if (newPopProject != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT && newPopProject != null))
+    if (newPopProject != eInternalContainer() || eContainerFeatureID != ProjectPackage.ROOT_STREAM__POP_PROJECT
+        && newPopProject != null)
     {
       if (EcoreUtil.isAncestor(this, newPopProject))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newPopProject != null)
+      {
         msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__ROOT_STREAM,
             PopProject.class, msgs);
+      }
       msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.ROOT_STREAM__POP_PROJECT, newPopProject,
           newPopProject));
+    }
   }
 
   /**
@@ -132,7 +146,9 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
     {
     case ProjectPackage.ROOT_STREAM__POP_PROJECT:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -182,7 +198,9 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
     {
     case ProjectPackage.ROOT_STREAM__POP_PROJECT:
       if (resolve)
+      {
         return getPopProject();
+      }
       return basicGetPopProject();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -236,14 +254,5 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
       return basicGetPopProject() != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return getPopProject().getName();
   }
 } // RootStreamImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementItemProvider.java,v 1.5 2008-08-05 18:39:32 estepper Exp $
+ * $Id: PopElementItemProvider.java,v 1.6 2008-08-05 18:42:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.base.PopElement} object.
- * <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.base.PopElement} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class PopElementItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopElementItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -74,9 +74,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This adds a property descriptor for the Id feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addIdPropertyDescriptor(Object object)
@@ -90,8 +89,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This adds a property descriptor for the Class feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Class feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addClassPropertyDescriptor(Object object)
@@ -106,6 +105,7 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -115,8 +115,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This returns PopElement.gif.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns PopElement.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -126,8 +126,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -139,9 +139,9 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -160,9 +160,9 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -172,8 +172,8 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * Return the resource locator for this item provider's resources.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.12 2008-08-05 18:39:27 estepper Exp $
+ * $Id: StreamImpl.java,v 1.13 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -102,7 +102,9 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
       if (branch != oldBranch)
       {
         if (eNotificationRequired())
+        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.STREAM__BRANCH, oldBranch, branch));
+        }
       }
     }
     return branch;
@@ -132,9 +134,13 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.STREAM__BRANCH,
           oldBranch, newBranch);
       if (msgs == null)
+      {
         msgs = notification;
+      }
       else
+      {
         msgs.add(notification);
+      }
     }
     return msgs;
   }
@@ -150,15 +156,23 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
     {
       NotificationChain msgs = null;
       if (branch != null)
+      {
         msgs = ((InternalEObject)branch).eInverseRemove(this, ProjectPackage.BRANCH__STREAM, Branch.class, msgs);
+      }
       if (newBranch != null)
+      {
         msgs = ((InternalEObject)newBranch).eInverseAdd(this, ProjectPackage.BRANCH__STREAM, Branch.class, msgs);
+      }
       msgs = basicSetBranch(newBranch, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.STREAM__BRANCH, newBranch, newBranch));
+    }
   }
 
   /**
@@ -231,7 +245,9 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
     {
     case ProjectPackage.STREAM__BRANCH:
       if (branch != null)
+      {
         msgs = ((InternalEObject)branch).eInverseRemove(this, ProjectPackage.BRANCH__STREAM, Branch.class, msgs);
+      }
       return basicSetBranch((Branch)otherEnd, msgs);
     case ProjectPackage.STREAM__MERGES:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getMerges()).basicAdd(otherEnd, msgs);
@@ -269,7 +285,9 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
     {
     case ProjectPackage.STREAM__BRANCH:
       if (resolve)
+      {
         return getBranch();
+      }
       return basicGetBranch();
     case ProjectPackage.STREAM__MERGES:
       return getMerges();
@@ -337,12 +355,4 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
     return super.eIsSet(featureID);
   }
 
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdType()
-  {
-    return "stream";
-  }
 } // StreamImpl

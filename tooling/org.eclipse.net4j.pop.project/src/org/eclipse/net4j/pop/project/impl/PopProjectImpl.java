@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.17 2008-08-05 18:39:27 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.18 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -833,24 +833,6 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     result.append(repositoryUrl);
     result.append(')');
     return result.toString();
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdType()
-  {
-    return "pop";
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return getName();
   }
 
   /**

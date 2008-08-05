@@ -194,7 +194,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private IPath getCheckoutLocation(CheckoutDiscriminator discriminator)
   {
-    String checkoutName = ((CheckoutDiscriminatorImpl)discriminator).getIdValue();
+    String checkoutName = ((CheckoutDiscriminatorImpl)discriminator).getId();
     return location.append(checkoutName);
   }
 

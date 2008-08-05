@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MilestoneImpl.java,v 1.11 2008-08-05 18:39:27 estepper Exp $
+ * $Id: MilestoneImpl.java,v 1.12 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -85,7 +85,9 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   public Release getRelease()
   {
     if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE)
+    {
       return null;
+    }
     return (Release)eContainer();
   }
 
@@ -97,7 +99,9 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   public Release basicGetRelease()
   {
     if (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE)
+    {
       return null;
+    }
     return (Release)eInternalContainer();
   }
 
@@ -119,22 +123,32 @@ public class MilestoneImpl extends TargetImpl implements Milestone
    */
   public void setRelease(Release newRelease)
   {
-    if (newRelease != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE && newRelease != null))
+    if (newRelease != eInternalContainer() || eContainerFeatureID != ProjectPackage.MILESTONE__RELEASE
+        && newRelease != null)
     {
       if (EcoreUtil.isAncestor(this, newRelease))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newRelease != null)
+      {
         msgs = ((InternalEObject)newRelease).eInverseAdd(this, ProjectPackage.RELEASE__MILESTONES, Release.class, msgs);
+      }
       msgs = basicSetRelease(newRelease, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MILESTONE__RELEASE, newRelease, newRelease));
+    }
   }
 
   /**
@@ -157,7 +171,9 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MILESTONE__NAME, oldName, name));
+    }
   }
 
   /**
@@ -172,7 +188,9 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     {
     case ProjectPackage.MILESTONE__RELEASE:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetRelease((Release)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -222,7 +240,9 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     {
     case ProjectPackage.MILESTONE__RELEASE:
       if (resolve)
+      {
         return getRelease();
+      }
       return basicGetRelease();
     case ProjectPackage.MILESTONE__NAME:
       return getName();
@@ -297,7 +317,9 @@ public class MilestoneImpl extends TargetImpl implements Milestone
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$
@@ -306,21 +328,4 @@ public class MilestoneImpl extends TargetImpl implements Milestone
     return result.toString();
   }
 
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdType()
-  {
-    return "milestone";
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return ((ReleaseImpl)getRelease()).getIdValue() + "_" + getName();
-  }
 } // MilestoneImpl

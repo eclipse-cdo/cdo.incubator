@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.13 2008-08-05 18:39:27 estepper Exp $
+ * $Id: TagImpl.java,v 1.14 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -98,7 +98,9 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   public Branch getBranch()
   {
     if (eContainerFeatureID != ProjectPackage.TAG__BRANCH)
+    {
       return null;
+    }
     return (Branch)eContainer();
   }
 
@@ -110,7 +112,9 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   public Branch basicGetBranch()
   {
     if (eContainerFeatureID != ProjectPackage.TAG__BRANCH)
+    {
       return null;
+    }
     return (Branch)eInternalContainer();
   }
 
@@ -132,21 +136,31 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
    */
   public void setBranch(Branch newBranch)
   {
-    if (newBranch != eInternalContainer() || (eContainerFeatureID != ProjectPackage.TAG__BRANCH && newBranch != null))
+    if (newBranch != eInternalContainer() || eContainerFeatureID != ProjectPackage.TAG__BRANCH && newBranch != null)
     {
       if (EcoreUtil.isAncestor(this, newBranch))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newBranch != null)
+      {
         msgs = ((InternalEObject)newBranch).eInverseAdd(this, ProjectPackage.BRANCH__TAGS, Branch.class, msgs);
+      }
       msgs = basicSetBranch(newBranch, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__BRANCH, newBranch, newBranch));
+    }
   }
 
   /**
@@ -169,7 +183,9 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__NAME, oldName, name));
+    }
   }
 
   /**
@@ -186,8 +202,10 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
       if (taggedElement != oldTaggedElement)
       {
         if (eNotificationRequired())
+        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.TAG__TAGGED_ELEMENT,
               oldTaggedElement, taggedElement));
+        }
       }
     }
     return taggedElement;
@@ -217,9 +235,13 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.TAG__TAGGED_ELEMENT, oldTaggedElement, newTaggedElement);
       if (msgs == null)
+      {
         msgs = notification;
+      }
       else
+      {
         msgs.add(notification);
+      }
     }
     return msgs;
   }
@@ -235,18 +257,26 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     {
       NotificationChain msgs = null;
       if (taggedElement != null)
+      {
         msgs = ((InternalEObject)taggedElement).eInverseRemove(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
+      }
       if (newTaggedElement != null)
+      {
         msgs = ((InternalEObject)newTaggedElement).eInverseAdd(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
+      }
       msgs = basicSetTaggedElement(newTaggedElement, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__TAGGED_ELEMENT, newTaggedElement,
           newTaggedElement));
+    }
   }
 
   /**
@@ -261,12 +291,16 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     {
     case ProjectPackage.TAG__BRANCH:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetBranch((Branch)otherEnd, msgs);
     case ProjectPackage.TAG__TAGGED_ELEMENT:
       if (taggedElement != null)
+      {
         msgs = ((InternalEObject)taggedElement).eInverseRemove(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
+      }
       return basicSetTaggedElement((TaggedElement)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -318,13 +352,17 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     {
     case ProjectPackage.TAG__BRANCH:
       if (resolve)
+      {
         return getBranch();
+      }
       return basicGetBranch();
     case ProjectPackage.TAG__NAME:
       return getName();
     case ProjectPackage.TAG__TAGGED_ELEMENT:
       if (resolve)
+      {
         return getTaggedElement();
+      }
       return basicGetTaggedElement();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -405,31 +443,15 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$
     result.append(name);
     result.append(')');
     return result.toString();
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdType()
-  {
-    return "tag";
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return getName();
   }
 
   /**

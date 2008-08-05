@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.7 2008-08-05 18:39:27 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.8 2008-08-05 18:42:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -162,24 +162,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
       return LOCATION_EDEFAULT == null ? getLocation() != null : !LOCATION_EDEFAULT.equals(getLocation());
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdType()
-  {
-    return "checkout";
-  }
-
-  /**
-   * @ADDED
-   */
-  @Override
-  public String getIdValue()
-  {
-    return ((CheckoutDiscriminatorImpl)getDiscriminator()).getIdValue();
   }
 
 } // CheckoutImpl
