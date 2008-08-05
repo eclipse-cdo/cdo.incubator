@@ -10,6 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.repository;
 
+import org.eclipse.net4j.util.registry.IRegistry;
+
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
 
@@ -20,9 +22,19 @@ import java.util.Date;
  */
 public interface IRepositoryAdapter extends IAdaptable
 {
+  public String getType();
+
   public void checkoutBranch(String branchName, IPath location);
 
   public void checkoutDate(Date date, IPath location);
 
   public void checkoutTag(String tagName, IPath location);
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface Registry extends IRegistry<String, IRepositoryAdapter>
+  {
+    Registry INSTANCE = org.eclipse.net4j.pop.internal.repository.RepositoryAdapterFactory.INSTANCE;
+  }
 }

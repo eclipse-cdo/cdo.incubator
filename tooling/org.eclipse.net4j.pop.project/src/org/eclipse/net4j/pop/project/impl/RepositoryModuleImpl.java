@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryModuleImpl.java,v 1.1 2008-08-05 14:48:09 estepper Exp $
+ * $Id: RepositoryModuleImpl.java,v 1.2 2008-08-05 15:16:24 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -26,28 +26,27 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Repository Module</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Repository Module</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getPopProject <em>Pop Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getAdapter <em>Adapter</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getAdapterType <em>Adapter Type</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getAdapterDescriptor <em>Adapter Descriptor</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getModuleDescriptor <em>Module Descriptor</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getAdapter <em>Adapter</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getAdapterType <em>Adapter Type</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getAdapterDescriptor <em>Adapter Descriptor</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl#getModuleDescriptor <em>Module Descriptor</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class RepositoryModuleImpl extends PopElementImpl implements RepositoryModule
 {
   /**
-   * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getAdapter()
    * @generated
    * @ordered
@@ -55,9 +54,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected static final IRepositoryAdapter ADAPTER_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getAdapterType()
    * @generated
    * @ordered
@@ -65,9 +64,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected static final String ADAPTER_TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getAdapterType()
    * @generated
    * @ordered
@@ -75,9 +74,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected String adapterType = ADAPTER_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getAdapterDescriptor() <em>Adapter Descriptor</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getAdapterDescriptor() <em>Adapter Descriptor</em>}' attribute. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getAdapterDescriptor()
    * @generated
    * @ordered
@@ -85,9 +84,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected static final String ADAPTER_DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAdapterDescriptor() <em>Adapter Descriptor</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getAdapterDescriptor() <em>Adapter Descriptor</em>}' attribute. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getAdapterDescriptor()
    * @generated
    * @ordered
@@ -95,9 +94,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected String adapterDescriptor = ADAPTER_DESCRIPTOR_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getModuleDescriptor() <em>Module Descriptor</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getModuleDescriptor() <em>Module Descriptor</em>}' attribute. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getModuleDescriptor()
    * @generated
    * @ordered
@@ -105,9 +104,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected static final String MODULE_DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getModuleDescriptor() <em>Module Descriptor</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getModuleDescriptor() <em>Module Descriptor</em>}' attribute. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getModuleDescriptor()
    * @generated
    * @ordered
@@ -115,8 +114,13 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   protected String moduleDescriptor = MODULE_DESCRIPTOR_EDEFAULT;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * @ADDED
+   */
+  private IRepositoryAdapter adapter;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected RepositoryModuleImpl()
@@ -125,8 +129,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -136,32 +140,36 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject getPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT)
+    {
       return null;
+    }
     return (PopProject)eContainer();
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject basicGetPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT)
+    {
       return null;
+    }
     return (PopProject)eInternalContainer();
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -171,47 +179,64 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
   {
-    if (newPopProject != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT && newPopProject != null))
+    if (newPopProject != eInternalContainer() || eContainerFeatureID != ProjectPackage.REPOSITORY_MODULE__POP_PROJECT
+        && newPopProject != null)
     {
       if (EcoreUtil.isAncestor(this, newPopProject))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newPopProject != null)
+      {
         msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__PRIMARY_MODULE,
             PopProject.class, msgs);
+      }
       msgs = basicSetPopProject(newPopProject, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__POP_PROJECT,
           newPopProject, newPopProject));
+    }
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
-  public IRepositoryAdapter getAdapter()
+  public synchronized IRepositoryAdapter getAdapter()
   {
-    // TODO: implement this method to return the 'Adapter' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    if (adapter == null)
+    {
+      adapter = IRepositoryAdapter.Registry.INSTANCE.get(adapterType);
+      if (adapter == null)
+      {
+        throw new IllegalStateException("Unrecognized repository adapter type");
+      }
+    }
+
+    return adapter;
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getAdapterType()
@@ -220,22 +245,30 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
   public void setAdapterType(String newAdapterType)
   {
-    String oldAdapterType = adapterType;
-    adapterType = newAdapterType;
+    String oldAdapterType = null;
+    synchronized (this)
+    {
+      oldAdapterType = adapterType;
+      adapterType = newAdapterType;
+      adapter = null;
+    }
+
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__ADAPTER_TYPE,
           oldAdapterType, adapterType));
+    }
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getAdapterDescriptor()
@@ -244,8 +277,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setAdapterDescriptor(String newAdapterDescriptor)
@@ -253,13 +286,15 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     String oldAdapterDescriptor = adapterDescriptor;
     adapterDescriptor = newAdapterDescriptor;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__ADAPTER_DESCRIPTOR,
           oldAdapterDescriptor, adapterDescriptor));
+    }
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getModuleDescriptor()
@@ -268,8 +303,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setModuleDescriptor(String newModuleDescriptor)
@@ -277,13 +312,15 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     String oldModuleDescriptor = moduleDescriptor;
     moduleDescriptor = newModuleDescriptor;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR,
           oldModuleDescriptor, moduleDescriptor));
+    }
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -293,15 +330,17 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     {
     case ProjectPackage.REPOSITORY_MODULE__POP_PROJECT:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetPopProject((PopProject)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -316,8 +355,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -333,8 +372,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -344,7 +383,9 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     {
     case ProjectPackage.REPOSITORY_MODULE__POP_PROJECT:
       if (resolve)
+      {
         return getPopProject();
+      }
       return basicGetPopProject();
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER:
       return getAdapter();
@@ -359,8 +400,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -385,8 +426,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -411,8 +452,8 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -437,15 +478,17 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (adapterType: "); //$NON-NLS-1$
@@ -458,4 +501,4 @@ public abstract class RepositoryModuleImpl extends PopElementImpl implements Rep
     return result.toString();
   }
 
-} //RepositoryModuleImpl
+} // RepositoryModuleImpl

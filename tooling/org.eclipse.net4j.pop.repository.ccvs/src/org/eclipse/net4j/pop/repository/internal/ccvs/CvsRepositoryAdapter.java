@@ -16,6 +16,7 @@ import org.eclipse.net4j.util.ui.UIUtil;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.team.internal.ccvs.core.CVSProviderPlugin;
 import org.eclipse.team.internal.ccvs.core.ICVSRemoteFolder;
 import org.eclipse.team.internal.ccvs.ui.operations.CheckoutIntoOperation;
 import org.eclipse.team.ui.TeamOperation;
@@ -30,6 +31,12 @@ public class CvsRepositoryAdapter extends RepositoryAdapter implements ICvsRepos
 {
   public CvsRepositoryAdapter()
   {
+  }
+
+  @Override
+  public String getType()
+  {
+    return CVSProviderPlugin.getTypeId();
   }
 
   @Override
