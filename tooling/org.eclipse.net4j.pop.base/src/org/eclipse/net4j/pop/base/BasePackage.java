@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackage.java,v 1.5 2008-08-03 08:56:59 estepper Exp $
+ * $Id: BasePackage.java,v 1.6 2008-08-05 07:50:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.base;
 
@@ -160,6 +160,16 @@ public interface BasePackage extends EPackage
   int VERSION = 3;
 
   /**
+   * The meta object id for the '<em>Path</em>' data type.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.core.runtime.IPath
+   * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getPath()
+   * @generated
+   */
+  int PATH = 4;
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.base.Identifiable <em>Identifiable</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -221,6 +231,17 @@ public interface BasePackage extends EPackage
    * @generated
    */
   EDataType getVersion();
+
+  /**
+   * Returns the meta object for data type '{@link org.eclipse.core.runtime.IPath <em>Path</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for data type '<em>Path</em>'.
+   * @see org.eclipse.core.runtime.IPath
+   * @model instanceClass="org.eclipse.core.runtime.IPath"
+   * @generated
+   */
+  EDataType getPath();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -295,6 +316,16 @@ public interface BasePackage extends EPackage
      * @generated
      */
     EDataType VERSION = eINSTANCE.getVersion();
+
+    /**
+     * The meta object literal for the '<em>Path</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.core.runtime.IPath
+     * @see org.eclipse.net4j.pop.base.impl.BasePackageImpl#getPath()
+     * @generated
+     */
+    EDataType PATH = eINSTANCE.getPath();
 
   }
 

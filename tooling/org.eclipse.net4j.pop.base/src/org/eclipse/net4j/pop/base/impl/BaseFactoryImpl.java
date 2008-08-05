@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseFactoryImpl.java,v 1.6 2008-08-03 08:56:59 estepper Exp $
+ * $Id: BaseFactoryImpl.java,v 1.7 2008-08-05 07:50:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -22,6 +22,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
+
+import org.eclipse.core.runtime.IPath;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -87,6 +89,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
     {
     case BasePackage.VERSION:
       return createVersionFromString(eDataType, initialValue);
+    case BasePackage.PATH:
+      return createPathFromString(eDataType, initialValue);
     default:
       throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -103,6 +107,8 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
     {
     case BasePackage.VERSION:
       return convertVersionToString(eDataType, instanceValue);
+    case BasePackage.PATH:
+      return convertPathToString(eDataType, instanceValue);
     default:
       throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -126,6 +132,26 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
   public String convertVersionToString(EDataType eDataType, Object instanceValue)
   {
     return ((Version)instanceValue).toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IPath createPathFromString(EDataType eDataType, String initialValue)
+  {
+    return (IPath)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertPathToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
   }
 
   /**

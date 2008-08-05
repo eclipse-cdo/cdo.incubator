@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutItemProvider.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
+ * $Id: CheckoutItemProvider.java,v 1.3 2008-08-05 07:50:21 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -27,6 +27,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
@@ -68,6 +69,7 @@ public class CheckoutItemProvider extends PopElementItemProvider implements IEdi
 
       addPopProjectPropertyDescriptor(object);
       addDiscriminatorPropertyDescriptor(object);
+      addLocationPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -98,6 +100,22 @@ public class CheckoutItemProvider extends PopElementItemProvider implements IEdi
         .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Checkout_discriminator_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_Checkout_discriminator_feature", "_UI_Checkout_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         ProjectPackage.Literals.CHECKOUT__DISCRIMINATOR, false, false, false, null, null, null));
+  }
+
+  /**
+   * This adds a property descriptor for the Location feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addLocationPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_Checkout_location_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Checkout_location_feature", "_UI_Checkout_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.CHECKOUT__LOCATION, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+        null, null));
   }
 
   /**
@@ -141,6 +159,7 @@ public class CheckoutItemProvider extends PopElementItemProvider implements IEdi
     switch (notification.getFeatureID(Checkout.class))
     {
     case ProjectPackage.CHECKOUT__DISCRIMINATOR:
+    case ProjectPackage.CHECKOUT__LOCATION:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }

@@ -161,6 +161,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
         CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
         checkout.setPopProject(popProject);
         checkout.setDiscriminator((CheckoutDiscriminator)popElement);
+        checkout.setLocation(location.append(checkoutName));
         addCheckout(checkout);
       }
     }

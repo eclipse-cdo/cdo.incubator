@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.19 2008-08-05 07:23:04 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.20 2008-08-05 07:50:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -395,6 +395,16 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   public EReference getCheckout_Discriminator()
   {
     return (EReference)checkoutEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getCheckout_Location()
+  {
+    return (EAttribute)checkoutEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1034,6 +1044,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     checkoutEClass = createEClass(CHECKOUT);
     createEReference(checkoutEClass, CHECKOUT__POP_PROJECT);
     createEReference(checkoutEClass, CHECKOUT__DISCRIMINATOR);
+    createEAttribute(checkoutEClass, CHECKOUT__LOCATION);
 
     checkoutDiscriminatorEClass = createEClass(CHECKOUT_DISCRIMINATOR);
     createEReference(checkoutDiscriminatorEClass, CHECKOUT_DISCRIMINATOR__CHECKOUT);
@@ -1265,6 +1276,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getCheckoutDiscriminator(),
         null,
         "discriminator", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getCheckout_Location(),
+        theBasePackage.getPath(),
+        "location", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(checkoutDiscriminatorEClass, CheckoutDiscriminator.class,
         "CheckoutDiscriminator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

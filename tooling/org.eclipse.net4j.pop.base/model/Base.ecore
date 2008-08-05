@@ -15,4 +15,5 @@
         changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.eclipse.net4j.pop.base.Version"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="Path" instanceClassName="org.eclipse.core.runtime.IPath"/>
 </ecore:EPackage>

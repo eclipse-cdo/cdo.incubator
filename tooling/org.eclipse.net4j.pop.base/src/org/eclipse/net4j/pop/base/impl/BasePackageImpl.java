@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackageImpl.java,v 1.4 2008-08-03 08:56:59 estepper Exp $
+ * $Id: BasePackageImpl.java,v 1.5 2008-08-05 07:50:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -24,6 +24,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
+
+import org.eclipse.core.runtime.IPath;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
@@ -54,6 +56,13 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
    * @generated
    */
   private EDataType versionEDataType = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EDataType pathEDataType = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -182,6 +191,16 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EDataType getPath()
+  {
+    return pathEDataType;
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -219,6 +238,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
 
     // Create data types
     versionEDataType = createEDataType(VERSION);
+    pathEDataType = createEDataType(PATH);
   }
 
   /**
@@ -274,6 +294,7 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
 
     // Initialize data types
     initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(pathEDataType, IPath.class, "Path", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     // Create resource
     createResource(eNS_URI);

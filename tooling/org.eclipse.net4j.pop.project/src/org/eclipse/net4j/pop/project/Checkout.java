@@ -8,11 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Checkout.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
+ * $Id: Checkout.java,v 1.3 2008-08-05 07:50:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 import org.eclipse.net4j.pop.base.PopElement;
+
+import org.eclipse.core.runtime.IPath;
 
 /**
  * <!-- begin-user-doc -->
@@ -24,6 +26,7 @@ import org.eclipse.net4j.pop.base.PopElement;
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getPopProject <em>Pop Project</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getDiscriminator <em>Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
  *
@@ -62,5 +65,20 @@ public interface Checkout extends PopElement
    * @generated
    */
   CheckoutDiscriminator getDiscriminator();
+
+  /**
+   * Returns the value of the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Location</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Location</em>' attribute.
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout_Location()
+   * @model dataType="org.eclipse.net4j.pop.base.Path" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @generated
+   */
+  IPath getLocation();
 
 } // Checkout

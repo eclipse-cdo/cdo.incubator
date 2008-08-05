@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.5 2008-08-03 18:27:34 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.6 2008-08-05 07:50:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -25,18 +25,18 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.base.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PopElementImpl extends EObjectImpl implements PopElement
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -55,7 +55,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopElementImpl()
@@ -65,7 +64,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -86,7 +84,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -104,7 +101,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

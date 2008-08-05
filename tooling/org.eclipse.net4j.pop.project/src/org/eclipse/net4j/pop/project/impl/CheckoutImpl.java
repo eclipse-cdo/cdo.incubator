@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.3 2008-08-05 07:01:36 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.4 2008-08-05 07:50:21 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -20,20 +20,33 @@ import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.core.runtime.IPath;
+
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Checkout</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getPopProject <em>Pop Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CheckoutImpl extends PopElementImpl implements Checkout
 {
+  /**
+   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
+   * @see #getLocation()
+   * @generated
+   * @ordered
+   */
+  protected static final IPath LOCATION_EDEFAULT = null;
+
   /**
    * @ADDED
    */
@@ -45,7 +58,13 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   private CheckoutDiscriminator discriminator;
 
   /**
+   * @ADDED
+   */
+  private IPath location;
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected CheckoutImpl()
@@ -55,6 +74,7 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -92,6 +112,24 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   }
 
   /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public IPath getLocation()
+  {
+    return location;
+  }
+
+  /**
+   * @ADDED
+   */
+  public void setLocation(IPath location)
+  {
+    this.location = location;
+  }
+
+  /**
    * @ADDED
    */
   public void setDiscriminator(CheckoutDiscriminator discriminator)
@@ -101,6 +139,7 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -112,12 +151,15 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
       return getPopProject();
     case ProjectPackage.CHECKOUT__DISCRIMINATOR:
       return getDiscriminator();
+    case ProjectPackage.CHECKOUT__LOCATION:
+      return getLocation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -129,6 +171,8 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
       return getPopProject() != null;
     case ProjectPackage.CHECKOUT__DISCRIMINATOR:
       return getDiscriminator() != null;
+    case ProjectPackage.CHECKOUT__LOCATION:
+      return LOCATION_EDEFAULT == null ? getLocation() != null : !LOCATION_EDEFAULT.equals(getLocation());
     }
     return super.eIsSet(featureID);
   }

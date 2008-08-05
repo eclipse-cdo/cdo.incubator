@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.17 2008-08-05 07:23:04 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.18 2008-08-05 07:50:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -360,13 +360,22 @@ public interface ProjectPackage extends EPackage
   int CHECKOUT__DISCRIMINATOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__LOCATION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
    * The number of structural features of the '<em>Checkout</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHECKOUT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
+  int CHECKOUT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1776,6 +1785,17 @@ public interface ProjectPackage extends EPackage
   EReference getCheckout_Discriminator();
 
   /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Checkout#getLocation <em>Location</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Location</em>'.
+   * @see org.eclipse.net4j.pop.project.Checkout#getLocation()
+   * @see #getCheckout()
+   * @generated
+   */
+  EAttribute getCheckout_Location();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator <em>Checkout Discriminator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2570,6 +2590,14 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference CHECKOUT__DISCRIMINATOR = eINSTANCE.getCheckout_Discriminator();
+
+    /**
+     * The meta object literal for the '<em><b>Location</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CHECKOUT__LOCATION = eINSTANCE.getCheckout_Location();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl <em>Checkout Discriminator</em>}' class.
