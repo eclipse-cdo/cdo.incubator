@@ -18,6 +18,9 @@ import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
+import org.eclipse.core.runtime.Platform;
+
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,18 +31,23 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
 
-  private PopProject popProject;
+  private Pop pop;
 
   private Map<CheckoutDiscriminator, Checkout> checkouts = new HashMap<CheckoutDiscriminator, Checkout>();
 
-  public CheckoutManager(PopProject popProject)
+  public CheckoutManager(Pop pop)
   {
-    this.popProject = popProject;
+    this.pop = pop;
+  }
+
+  public Pop getPop()
+  {
+    return pop;
   }
 
   public PopProject getPopProject()
   {
-    return popProject;
+    return pop.getPopProject();
   }
 
   public void addCheckout(Checkout checkout)
@@ -111,5 +119,21 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
   public Checkout[] getElements()
   {
     return getCheckouts();
+  }
+
+  @SuppressWarnings("unchecked")
+  public Object getAdapter(Class adapter)
+  {
+    return Platform.getAdapterManager().getAdapter(this, adapter);
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("CheckoutManager[{0}]", pop.getProject().getName());
+  }
+
+  public void checkoutLocationChanged()
+  {
   }
 }

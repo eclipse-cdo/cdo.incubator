@@ -21,6 +21,8 @@ import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 
 import java.util.ArrayList;
@@ -44,8 +46,12 @@ public class PopManager extends Container<IPop> implements IPopManager
 
   private Map<IProject, Pop> pops = new HashMap<IProject, Pop>();
 
+  private IPath checkoutLocation;
+
   private PopManager()
   {
+    IPath root = ResourcesPlugin.getWorkspace().getRoot().getLocation();
+    checkoutLocation = root.removeLastSegments(1).append("checkouts");
   }
 
   public void addPop(IPop pop)
@@ -122,6 +128,20 @@ public class PopManager extends Container<IPop> implements IPopManager
   public Pop[] getElements()
   {
     return getPops();
+  }
+
+  public IPath getCheckoutLocation()
+  {
+    return checkoutLocation;
+  }
+
+  public void setCheckoutLocation(IPath checkoutLocation)
+  {
+    this.checkoutLocation = checkoutLocation;
+    for (Pop pop : getPops())
+    {
+      pop.getCheckoutManager().checkoutLocationChanged();
+    }
   }
 
   @SuppressWarnings("unchecked")

@@ -37,6 +37,8 @@ public class Pop extends Lifecycle implements IPop
 
   private ModelManager modelManager;
 
+  private CheckoutManager checkoutManager = new CheckoutManager(this);
+
   public Pop(IProject project)
   {
     this.project = project;
@@ -59,6 +61,7 @@ public class Pop extends Lifecycle implements IPop
     };
 
     modelManager.activate();
+    checkoutManager.activate();
   }
 
   public void dispose()
@@ -91,6 +94,11 @@ public class Pop extends Lifecycle implements IPop
   public ModelManager getModelManager()
   {
     return modelManager;
+  }
+
+  public CheckoutManager getCheckoutManager()
+  {
+    return checkoutManager;
   }
 
   public int compareTo(IPop o)

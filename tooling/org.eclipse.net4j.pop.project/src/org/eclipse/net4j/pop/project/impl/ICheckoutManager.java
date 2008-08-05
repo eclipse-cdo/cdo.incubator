@@ -15,10 +15,12 @@ import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.util.container.IContainer;
 
+import org.eclipse.core.runtime.IAdaptable;
+
 /**
  * @author Eike Stepper
  */
-public interface ICheckoutManager extends IContainer<Checkout>
+public interface ICheckoutManager extends IContainer<Checkout>, IAdaptable
 {
   public PopProject getPopProject();
 

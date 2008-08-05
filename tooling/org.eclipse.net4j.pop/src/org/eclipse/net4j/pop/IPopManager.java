@@ -13,6 +13,7 @@ package org.eclipse.net4j.pop;
 import org.eclipse.net4j.util.container.IContainer;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IPath;
 
 /**
  * @author Eike Stepper
@@ -24,4 +25,6 @@ public interface IPopManager extends IContainer<IPop>, IAdaptable
   public IPop getPop(String name);
 
   public IPop[] getPops();
+
+  public IPath getCheckoutLocation();
 }
