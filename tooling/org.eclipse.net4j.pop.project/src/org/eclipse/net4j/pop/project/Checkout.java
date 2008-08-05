@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Checkout.java,v 1.1 2008-08-05 05:54:20 estepper Exp $
+ * $Id: Checkout.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -22,6 +22,7 @@ import org.eclipse.net4j.pop.base.PopElement;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getPopProject <em>Pop Project</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getDiscriminator <em>Discriminator</em>}</li>
  * </ul>
  * </p>
@@ -33,8 +34,22 @@ import org.eclipse.net4j.pop.base.PopElement;
 public interface Checkout extends PopElement
 {
   /**
+   * Returns the value of the '<em><b>Pop Project</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pop Project</em>' reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pop Project</em>' reference.
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout_PopProject()
+   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @generated
+   */
+  PopProject getPopProject();
+
+  /**
    * Returns the value of the '<em><b>Discriminator</b></em>' reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckouts <em>Checkouts</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Discriminator</em>' reference isn't clear,
@@ -43,8 +58,7 @@ public interface Checkout extends PopElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Discriminator</em>' reference.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout_Discriminator()
-   * @see org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckouts
-   * @model opposite="checkouts" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   CheckoutDiscriminator getDiscriminator();

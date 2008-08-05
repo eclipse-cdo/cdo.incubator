@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.14 2008-08-05 05:54:20 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.15 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -333,13 +333,22 @@ public interface ProjectPackage extends EPackage
   int CHECKOUT__CLASS = BasePackage.POP_ELEMENT__CLASS;
 
   /**
+   * The feature id for the '<em><b>Pop Project</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__POP_PROJECT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Discriminator</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHECKOUT__DISCRIMINATOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+  int CHECKOUT__DISCRIMINATOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Checkout</em>' class.
@@ -348,7 +357,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CHECKOUT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
+  int CHECKOUT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1725,6 +1734,17 @@ public interface ProjectPackage extends EPackage
   EClass getCheckout();
 
   /**
+   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.project.Checkout#getPopProject <em>Pop Project</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Pop Project</em>'.
+   * @see org.eclipse.net4j.pop.project.Checkout#getPopProject()
+   * @see #getCheckout()
+   * @generated
+   */
+  EReference getCheckout_PopProject();
+
+  /**
    * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.project.Checkout#getDiscriminator <em>Discriminator</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2506,6 +2526,14 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EClass CHECKOUT = eINSTANCE.getCheckout();
+
+    /**
+     * The meta object literal for the '<em><b>Pop Project</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CHECKOUT__POP_PROJECT = eINSTANCE.getCheckout_PopProject();
 
     /**
      * The meta object literal for the '<em><b>Discriminator</b></em>' reference feature.

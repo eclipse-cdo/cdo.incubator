@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutItemProvider.java,v 1.1 2008-08-05 05:54:19 estepper Exp $
+ * $Id: CheckoutItemProvider.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -66,9 +66,24 @@ public class CheckoutItemProvider extends PopElementItemProvider implements IEdi
     {
       super.getPropertyDescriptors(object);
 
+      addPopProjectPropertyDescriptor(object);
       addDiscriminatorPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Pop Project feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addPopProjectPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Checkout_popProject_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Checkout_popProject_feature", "_UI_Checkout_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.CHECKOUT__POP_PROJECT, false, false, false, null, null, null));
   }
 
   /**

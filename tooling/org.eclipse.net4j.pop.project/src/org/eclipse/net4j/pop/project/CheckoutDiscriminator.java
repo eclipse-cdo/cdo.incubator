@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminator.java,v 1.1 2008-08-05 05:54:20 estepper Exp $
+ * $Id: CheckoutDiscriminator.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -37,7 +37,6 @@ public interface CheckoutDiscriminator extends PopElement
   /**
    * Returns the value of the '<em><b>Checkouts</b></em>' reference list.
    * The list contents are of type {@link org.eclipse.net4j.pop.project.Checkout}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Checkout#getDiscriminator <em>Discriminator</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Checkouts</em>' reference list isn't clear,
@@ -46,10 +45,17 @@ public interface CheckoutDiscriminator extends PopElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Checkouts</em>' reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckoutDiscriminator_Checkouts()
-   * @see org.eclipse.net4j.pop.project.Checkout#getDiscriminator
-   * @model opposite="discriminator" transient="true" changeable="false" volatile="true" derived="true"
+   * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   EList<Checkout> getCheckouts();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation" required="true"
+   * @generated
+   */
+  PopProject getPopProject();
 
 } // CheckoutDiscriminator

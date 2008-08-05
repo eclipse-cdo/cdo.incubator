@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Branch.java,v 1.10 2008-08-05 05:54:20 estepper Exp $
+ * $Id: Branch.java,v 1.11 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -124,5 +124,21 @@ public interface Branch extends CheckoutDiscriminator
    * @generated
    */
   void setStream(Stream value);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation" required="true"
+   * @generated
+   */
+  MainBranch getMainBranch();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model kind="operation"
+   * @generated
+   */
+  Branch getParent();
 
 } // Branch

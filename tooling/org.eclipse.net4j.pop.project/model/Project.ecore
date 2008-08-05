@@ -47,15 +47,19 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="#//PopProject" changeable="false" volatile="true" transient="true"
+        derived="true" resolveProxies="false"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminator" lowerBound="1"
         eType="#//CheckoutDiscriminator" changeable="false" volatile="true" transient="true"
-        derived="true" eOpposite="#//CheckoutDiscriminator/checkouts"/>
+        derived="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckoutDiscriminator" abstract="true"
       eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+    <eOperations name="getPopProject" lowerBound="1" eType="#//PopProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkouts" upperBound="-1"
         eType="#//Checkout" changeable="false" volatile="true" transient="true" derived="true"
-        eOpposite="#//Checkout/discriminator"/>
+        resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaggedElement" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tag" lowerBound="1" eType="#//Tag"
@@ -69,6 +73,8 @@
         eOpposite="#//TaggedElement/tag"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Branch" abstract="true" eSuperTypes="#//CheckoutDiscriminator">
+    <eOperations name="getMainBranch" lowerBound="1" eType="#//MainBranch"/>
+    <eOperations name="getParent" eType="#//Branch"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
         eType="#//SubBranch" containment="true" eOpposite="#//SubBranch/parent"/>

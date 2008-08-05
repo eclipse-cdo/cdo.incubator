@@ -8,11 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.12 2008-08-05 05:54:19 estepper Exp $
+ * $Id: BranchImpl.java,v 1.13 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.Branch;
+import org.eclipse.net4j.pop.project.MainBranch;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
@@ -229,6 +231,29 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__STREAM, newStream, newStream));
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public abstract MainBranch getMainBranch();
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public abstract Branch getParent();
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public PopProject getPopProject()
+  {
+    return getMainBranch().getPopProject();
   }
 
   /**

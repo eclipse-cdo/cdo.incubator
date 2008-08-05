@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchImpl.java,v 1.8 2008-08-01 20:05:23 estepper Exp $
+ * $Id: MainBranchImpl.java,v 1.9 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.MainBranch;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
@@ -56,10 +57,10 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
+  @Override
   public PopProject getPopProject()
   {
     if (eContainerFeatureID != ProjectPackage.MAIN_BRANCH__POP_PROJECT)
@@ -68,8 +69,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -80,8 +80,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -91,8 +90,7 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -228,4 +226,21 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
     return super.eIsSet(featureID);
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public MainBranch getMainBranch()
+  {
+    return this;
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public Branch getParent()
+  {
+    return null;
+  }
 } // MainBranchImpl

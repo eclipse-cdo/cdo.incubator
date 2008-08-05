@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.12 2008-08-01 20:05:23 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.13 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -150,6 +150,11 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
    * @ordered
    */
   protected RootStream rootStream;
+
+  /**
+   * @ADDED
+   */
+  private ICheckoutManager checkoutManager;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -653,5 +658,21 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   public String getIdValue()
   {
     return getName();
+  }
+
+  /**
+   * @ADDED
+   */
+  public ICheckoutManager getCheckoutManager()
+  {
+    return checkoutManager;
+  }
+
+  /**
+   * @ADDED
+   */
+  public void setCheckoutManager(ICheckoutManager checkoutManager)
+  {
+    this.checkoutManager = checkoutManager;
   }
 } // PopProjectImpl

@@ -8,11 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.11 2008-08-05 05:54:20 estepper Exp $
+ * $Id: TagImpl.java,v 1.12 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.Branch;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaggedElement;
@@ -409,5 +410,14 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   public String getIdValue()
   {
     return getName();
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public PopProject getPopProject()
+  {
+    return getBranch().getPopProject();
   }
 } // TagImpl

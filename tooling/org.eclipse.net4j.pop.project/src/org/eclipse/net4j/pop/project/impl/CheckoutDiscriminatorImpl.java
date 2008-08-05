@@ -8,22 +8,22 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorImpl.java,v 1.1 2008-08-05 05:54:19 estepper Exp $
+ * $Id: CheckoutDiscriminatorImpl.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
+import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Checkout Discriminator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Checkout Discriminator</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -36,8 +36,7 @@ import org.eclipse.emf.ecore.EClass;
 public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implements CheckoutDiscriminator
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected CheckoutDiscriminatorImpl()
@@ -46,8 +45,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -57,22 +55,26 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
   public EList<Checkout> getCheckouts()
   {
-    // TODO: implement this method to return the 'Checkouts' reference list
-    // Ensure that you remove @generated or mark it @generated NOT
-    // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and org.eclipse.emf.ecore.EStructuralFeature.Setting
-    // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-    throw new UnsupportedOperationException();
+    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
+    ICheckoutManager checkoutManager = popProject.getCheckoutManager();
+    return checkoutManager.getCheckouts(this);
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public abstract PopProject getPopProject();
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -87,8 +89,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -102,4 +103,4 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
     return super.eIsSet(featureID);
   }
 
-} //CheckoutDiscriminatorImpl
+} // CheckoutDiscriminatorImpl

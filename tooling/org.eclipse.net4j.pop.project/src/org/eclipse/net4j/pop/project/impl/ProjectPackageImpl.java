@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.16 2008-08-05 05:54:19 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.17 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -372,9 +372,19 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCheckout_Discriminator()
+  public EReference getCheckout_PopProject()
   {
     return (EReference)checkoutEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCheckout_Discriminator()
+  {
+    return (EReference)checkoutEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1011,6 +1021,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(codeRootEClass, CODE_ROOT__ROOT_PATH);
 
     checkoutEClass = createEClass(CHECKOUT);
+    createEReference(checkoutEClass, CHECKOUT__POP_PROJECT);
     createEReference(checkoutEClass, CHECKOUT__DISCRIMINATOR);
 
     checkoutDiscriminatorEClass = createEClass(CHECKOUT_DISCRIMINATOR);
@@ -1229,18 +1240,25 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
+        getCheckout_PopProject(),
+        this.getPopProject(),
+        null,
+        "popProject", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
         getCheckout_Discriminator(),
         this.getCheckoutDiscriminator(),
-        this.getCheckoutDiscriminator_Checkouts(),
-        "discriminator", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        null,
+        "discriminator", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(checkoutDiscriminatorEClass, CheckoutDiscriminator.class,
         "CheckoutDiscriminator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getCheckoutDiscriminator_Checkouts(),
         this.getCheckout(),
-        this.getCheckout_Discriminator(),
-        "checkouts", null, 0, -1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        null,
+        "checkouts", null, 0, -1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    addEOperation(checkoutDiscriminatorEClass, this.getPopProject(), "getPopProject", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(taggedElementEClass, TaggedElement.class,
         "TaggedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1286,6 +1304,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getStream(),
         this.getStream_Branch(),
         "stream", null, 0, 1, Branch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    addEOperation(branchEClass, this.getMainBranch(), "getMainBranch", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    addEOperation(branchEClass, this.getBranch(), "getParent", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(mainBranchEClass, MainBranch.class,
         "MainBranch", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

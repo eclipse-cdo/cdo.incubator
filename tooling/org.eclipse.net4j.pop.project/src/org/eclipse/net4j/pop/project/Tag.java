@@ -8,10 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Tag.java,v 1.9 2008-08-05 05:54:20 estepper Exp $
+ * $Id: Tag.java,v 1.10 2008-08-05 06:45:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
-
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Tag</b></em>'. <!-- end-user-doc -->
