@@ -46,10 +46,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRoot/rootPath"/>
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//Checkout">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Checkout/popProject"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Checkout/discriminator"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//CheckoutDiscriminator">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CheckoutDiscriminator/checkouts"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CheckoutDiscriminator/checkout"/>
+      <genOperations ecoreOperation="Project.ecore#//CheckoutDiscriminator/getPopProject"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//TaggedElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//TaggedElement/tag"/>
@@ -67,6 +69,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Branch/tags"/>
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//Branch/stream"/>
+      <genOperations ecoreOperation="Project.ecore#//Branch/getMainBranch"/>
+      <genOperations ecoreOperation="Project.ecore#//Branch/getParent"/>
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//MainBranch">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//MainBranch/popProject"/>

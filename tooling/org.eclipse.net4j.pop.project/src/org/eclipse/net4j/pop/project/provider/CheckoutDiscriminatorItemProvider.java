@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorItemProvider.java,v 1.1 2008-08-05 05:54:19 estepper Exp $
+ * $Id: CheckoutDiscriminatorItemProvider.java,v 1.2 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -66,26 +66,26 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
     {
       super.getPropertyDescriptors(object);
 
-      addCheckoutsPropertyDescriptor(object);
+      addCheckoutPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Checkouts feature.
+   * This adds a property descriptor for the Checkout feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addCheckoutsPropertyDescriptor(Object object)
+  protected void addCheckoutPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors
         .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
             getResourceLocator(),
-            getString("_UI_CheckoutDiscriminator_checkouts_feature"), //$NON-NLS-1$
+            getString("_UI_CheckoutDiscriminator_checkout_feature"), //$NON-NLS-1$
             getString(
-                "_UI_PropertyDescriptor_description", "_UI_CheckoutDiscriminator_checkouts_feature", "_UI_CheckoutDiscriminator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.CHECKOUT_DISCRIMINATOR__CHECKOUTS, false, false, false, null, null, null));
+                "_UI_PropertyDescriptor_description", "_UI_CheckoutDiscriminator_checkout_feature", "_UI_CheckoutDiscriminator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            ProjectPackage.Literals.CHECKOUT_DISCRIMINATOR__CHECKOUT, false, false, false, null, null, null));
   }
 
   /**
@@ -116,7 +116,7 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
 
     switch (notification.getFeatureID(CheckoutDiscriminator.class))
     {
-    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUTS:
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUT:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }

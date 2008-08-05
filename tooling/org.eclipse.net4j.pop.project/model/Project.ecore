@@ -57,9 +57,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="CheckoutDiscriminator" abstract="true"
       eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eOperations name="getPopProject" lowerBound="1" eType="#//PopProject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="checkouts" upperBound="-1"
-        eType="#//Checkout" changeable="false" volatile="true" transient="true" derived="true"
-        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkout" eType="#//Checkout"
+        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaggedElement" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tag" lowerBound="1" eType="#//Tag"

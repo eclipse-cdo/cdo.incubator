@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.17 2008-08-05 06:45:17 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.18 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -402,7 +402,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getCheckoutDiscriminator_Checkouts()
+  public EReference getCheckoutDiscriminator_Checkout()
   {
     return (EReference)checkoutDiscriminatorEClass.getEStructuralFeatures().get(0);
   }
@@ -1025,7 +1025,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(checkoutEClass, CHECKOUT__DISCRIMINATOR);
 
     checkoutDiscriminatorEClass = createEClass(CHECKOUT_DISCRIMINATOR);
-    createEReference(checkoutDiscriminatorEClass, CHECKOUT_DISCRIMINATOR__CHECKOUTS);
+    createEReference(checkoutDiscriminatorEClass, CHECKOUT_DISCRIMINATOR__CHECKOUT);
 
     taggedElementEClass = createEClass(TAGGED_ELEMENT);
     createEReference(taggedElementEClass, TAGGED_ELEMENT__TAG);
@@ -1253,10 +1253,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEClass(checkoutDiscriminatorEClass, CheckoutDiscriminator.class,
         "CheckoutDiscriminator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getCheckoutDiscriminator_Checkouts(),
+        getCheckoutDiscriminator_Checkout(),
         this.getCheckout(),
         null,
-        "checkouts", null, 0, -1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "checkout", null, 0, 1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(checkoutDiscriminatorEClass, this.getPopProject(), "getPopProject", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 

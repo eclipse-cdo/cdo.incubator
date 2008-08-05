@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.3 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getPopProject <em>Pop Project</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CheckoutImpl extends PopElementImpl implements Checkout
@@ -40,8 +40,12 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   private PopProject popProject;
 
   /**
+   * @ADDED
+   */
+  private CheckoutDiscriminator discriminator;
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CheckoutImpl()
@@ -51,7 +55,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -85,14 +88,19 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
    */
   public CheckoutDiscriminator getDiscriminator()
   {
-    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
-    ICheckoutManager checkoutManager = popProject.getCheckoutManager();
-    return checkoutManager.getCheckoutDiscriminator(this);
+    return discriminator;
+  }
+
+  /**
+   * @ADDED
+   */
+  public void setDiscriminator(CheckoutDiscriminator discriminator)
+  {
+    this.discriminator = discriminator;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -110,7 +118,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

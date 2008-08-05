@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.15 2008-08-05 06:45:17 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.16 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -378,13 +378,13 @@ public interface ProjectPackage extends EPackage
   int CHECKOUT_DISCRIMINATOR__CLASS = BasePackage.POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Checkouts</b></em>' reference list.
+   * The feature id for the '<em><b>Checkout</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CHECKOUT_DISCRIMINATOR__CHECKOUTS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+  int CHECKOUT_DISCRIMINATOR__CHECKOUT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Checkout Discriminator</em>' class.
@@ -468,13 +468,13 @@ public interface ProjectPackage extends EPackage
   int TAG__CLASS = CHECKOUT_DISCRIMINATOR__CLASS;
 
   /**
-   * The feature id for the '<em><b>Checkouts</b></em>' reference list.
+   * The feature id for the '<em><b>Checkout</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TAG__CHECKOUTS = CHECKOUT_DISCRIMINATOR__CHECKOUTS;
+  int TAG__CHECKOUT = CHECKOUT_DISCRIMINATOR__CHECKOUT;
 
   /**
    * The feature id for the '<em><b>Branch</b></em>' container reference.
@@ -537,13 +537,13 @@ public interface ProjectPackage extends EPackage
   int BRANCH__CLASS = CHECKOUT_DISCRIMINATOR__CLASS;
 
   /**
-   * The feature id for the '<em><b>Checkouts</b></em>' reference list.
+   * The feature id for the '<em><b>Checkout</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int BRANCH__CHECKOUTS = CHECKOUT_DISCRIMINATOR__CHECKOUTS;
+  int BRANCH__CHECKOUT = CHECKOUT_DISCRIMINATOR__CHECKOUT;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -615,13 +615,13 @@ public interface ProjectPackage extends EPackage
   int MAIN_BRANCH__CLASS = BRANCH__CLASS;
 
   /**
-   * The feature id for the '<em><b>Checkouts</b></em>' reference list.
+   * The feature id for the '<em><b>Checkout</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MAIN_BRANCH__CHECKOUTS = BRANCH__CHECKOUTS;
+  int MAIN_BRANCH__CHECKOUT = BRANCH__CHECKOUT;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -703,13 +703,13 @@ public interface ProjectPackage extends EPackage
   int SUB_BRANCH__CLASS = BRANCH__CLASS;
 
   /**
-   * The feature id for the '<em><b>Checkouts</b></em>' reference list.
+   * The feature id for the '<em><b>Checkout</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUB_BRANCH__CHECKOUTS = BRANCH__CHECKOUTS;
+  int SUB_BRANCH__CHECKOUT = BRANCH__CHECKOUT;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1766,15 +1766,15 @@ public interface ProjectPackage extends EPackage
   EClass getCheckoutDiscriminator();
 
   /**
-   * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckouts <em>Checkouts</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckout <em>Checkout</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Checkouts</em>'.
-   * @see org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckouts()
+   * @return the meta object for the reference '<em>Checkout</em>'.
+   * @see org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckout()
    * @see #getCheckoutDiscriminator()
    * @generated
    */
-  EReference getCheckoutDiscriminator_Checkouts();
+  EReference getCheckoutDiscriminator_Checkout();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.Committer <em>Committer</em>}'. <!--
@@ -2554,12 +2554,12 @@ public interface ProjectPackage extends EPackage
     EClass CHECKOUT_DISCRIMINATOR = eINSTANCE.getCheckoutDiscriminator();
 
     /**
-     * The meta object literal for the '<em><b>Checkouts</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Checkout</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference CHECKOUT_DISCRIMINATOR__CHECKOUTS = eINSTANCE.getCheckoutDiscriminator_Checkouts();
+    EReference CHECKOUT_DISCRIMINATOR__CHECKOUT = eINSTANCE.getCheckoutDiscriminator_Checkout();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.CommitterImpl <em>Committer</em>}' class.

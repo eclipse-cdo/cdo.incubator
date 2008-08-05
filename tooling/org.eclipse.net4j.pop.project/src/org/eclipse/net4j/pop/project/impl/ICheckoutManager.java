@@ -13,17 +13,16 @@ package org.eclipse.net4j.pop.project.impl;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
-
-import org.eclipse.emf.common.util.EList;
+import org.eclipse.net4j.util.container.IContainer;
 
 /**
  * @author Eike Stepper
  */
-public interface ICheckoutManager
+public interface ICheckoutManager extends IContainer<Checkout>
 {
   public PopProject getPopProject();
 
-  public EList<Checkout> getCheckouts(CheckoutDiscriminator discriminator);
+  public Checkout[] getCheckouts();
 
-  public CheckoutDiscriminator getCheckoutDiscriminator(Checkout checkout);
+  public Checkout getCheckout(CheckoutDiscriminator discriminator);
 }

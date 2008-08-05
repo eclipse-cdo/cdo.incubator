@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeItemProvider.java,v 1.13 2008-08-05 05:54:19 estepper Exp $
+ * $Id: MergeItemProvider.java,v 1.14 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**

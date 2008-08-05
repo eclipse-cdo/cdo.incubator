@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorImpl.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
+ * $Id: CheckoutDiscriminatorImpl.java,v 1.3 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -18,7 +18,6 @@ import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 /**
@@ -27,16 +26,17 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl#getCheckouts <em>Checkouts</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl#getCheckout <em>Checkout</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implements CheckoutDiscriminator
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected CheckoutDiscriminatorImpl()
@@ -46,6 +46,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -59,11 +60,11 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
    * 
    * @generated NOT
    */
-  public EList<Checkout> getCheckouts()
+  public Checkout getCheckout()
   {
     PopProjectImpl popProject = (PopProjectImpl)getPopProject();
     ICheckoutManager checkoutManager = popProject.getCheckoutManager();
-    return checkoutManager.getCheckouts(this);
+    return checkoutManager.getCheckout(this);
   }
 
   /**
@@ -75,6 +76,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -82,14 +84,15 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   {
     switch (featureID)
     {
-    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUTS:
-      return getCheckouts();
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUT:
+      return getCheckout();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -97,8 +100,8 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   {
     switch (featureID)
     {
-    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUTS:
-      return !getCheckouts().isEmpty();
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUT:
+      return getCheckout() != null;
     }
     return super.eIsSet(featureID);
   }

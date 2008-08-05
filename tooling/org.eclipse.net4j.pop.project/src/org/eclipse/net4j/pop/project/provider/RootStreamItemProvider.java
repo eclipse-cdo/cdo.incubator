@@ -8,12 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStreamItemProvider.java,v 1.10 2008-08-05 05:54:19 estepper Exp $
+ * $Id: RootStreamItemProvider.java,v 1.11 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
+import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;

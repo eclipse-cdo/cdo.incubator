@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminator.java,v 1.2 2008-08-05 06:45:17 estepper Exp $
+ * $Id: CheckoutDiscriminator.java,v 1.3 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckouts <em>Checkouts</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckout <em>Checkout</em>}</li>
  * </ul>
  * </p>
  *
@@ -35,20 +35,19 @@ import org.eclipse.emf.common.util.EList;
 public interface CheckoutDiscriminator extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Checkouts</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.Checkout}.
+   * Returns the value of the '<em><b>Checkout</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Checkouts</em>' reference list isn't clear,
+   * If the meaning of the '<em>Checkout</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Checkouts</em>' reference list.
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckoutDiscriminator_Checkouts()
+   * @return the value of the '<em>Checkout</em>' reference.
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckoutDiscriminator_Checkout()
    * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
-  EList<Checkout> getCheckouts();
+  Checkout getCheckout();
 
   /**
    * <!-- begin-user-doc -->

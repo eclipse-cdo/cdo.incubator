@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectAdapterFactory.java,v 1.10 2008-08-05 05:54:20 estepper Exp $
+ * $Id: ProjectAdapterFactory.java,v 1.11 2008-08-05 07:01:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
 import org.eclipse.net4j.pop.base.Displayable;
 import org.eclipse.net4j.pop.base.Identifiable;
 import org.eclipse.net4j.pop.base.PopElement;
+import org.eclipse.net4j.pop.project.*;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
