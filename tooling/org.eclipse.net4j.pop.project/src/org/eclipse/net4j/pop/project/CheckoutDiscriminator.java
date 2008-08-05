@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminator.java,v 1.4 2008-08-05 07:23:04 estepper Exp $
+ * $Id: CheckoutDiscriminator.java,v 1.5 2008-08-05 08:20:18 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -54,5 +54,13 @@ public interface CheckoutDiscriminator extends PopElement
    * @generated
    */
   PopProject getPopProject();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model required="true"
+   * @generated
+   */
+  Checkout checkout();
 
 } // CheckoutDiscriminator

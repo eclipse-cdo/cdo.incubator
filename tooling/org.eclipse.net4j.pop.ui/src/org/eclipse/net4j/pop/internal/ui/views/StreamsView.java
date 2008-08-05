@@ -12,7 +12,7 @@ package org.eclipse.net4j.pop.internal.ui.views;
 
 import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
-import org.eclipse.net4j.pop.internal.ui.actions.NewCheckoutAction;
+import org.eclipse.net4j.pop.internal.ui.actions.CheckoutAction;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
@@ -168,7 +168,7 @@ public class StreamsView extends MasterDetailsView
   {
     if (ObjectUtil.equals(getCurrentDetailTitle(), CHECKOUTS))
     {
-      manager.add(new NewCheckoutAction(getSite().getPage()));
+      manager.add(new CheckoutAction(getSite().getPage()));
     }
   }
 

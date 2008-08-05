@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.20 2008-08-05 07:50:20 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.21 2008-08-05 08:20:18 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -1290,6 +1290,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         "checkout", null, 0, 1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(checkoutDiscriminatorEClass, this.getPopProject(), "getPopProject", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    addEOperation(checkoutDiscriminatorEClass, this.getCheckout(), "checkout", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(taggedElementEClass, TaggedElement.class,
         "TaggedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

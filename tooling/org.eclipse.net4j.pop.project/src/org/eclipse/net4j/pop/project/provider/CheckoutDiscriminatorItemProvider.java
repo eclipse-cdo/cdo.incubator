@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorItemProvider.java,v 1.2 2008-08-05 07:01:36 estepper Exp $
+ * $Id: CheckoutDiscriminatorItemProvider.java,v 1.3 2008-08-05 08:20:18 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -27,7 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
 import java.util.List;
@@ -113,13 +112,6 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   public void notifyChanged(Notification notification)
   {
     updateChildren(notification);
-
-    switch (notification.getFeatureID(CheckoutDiscriminator.class))
-    {
-    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUT:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
-    }
     super.notifyChanged(notification);
   }
 

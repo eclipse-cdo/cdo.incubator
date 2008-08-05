@@ -126,6 +126,11 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     }
   }
 
+  public Checkout checkout(CheckoutDiscriminator discriminator)
+  {
+    return createCheckout((CheckoutDiscriminatorImpl)discriminator);
+  }
+
   public Checkout[] getElements()
   {
     return getCheckouts();
@@ -163,12 +168,22 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
         CheckoutDiscriminatorImpl discriminator = (CheckoutDiscriminatorImpl)popElement;
         if (ObjectUtil.equals(discriminator.getIdValue(), checkoutName))
         {
-          CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
-          checkout.setDiscriminator(discriminator);
-          checkout.setLocation(location.append(checkoutName));
-          addCheckout(checkout);
+          createCheckout(discriminator);
         }
       }
     }
+  }
+
+  private CheckoutImpl createCheckout(CheckoutDiscriminatorImpl discriminator)
+  {
+    String checkoutName = discriminator.getIdValue();
+    IPath checkoutLocation = location.append(checkoutName);
+
+    CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
+    checkout.setDiscriminator(discriminator);
+    checkout.setLocation(checkoutLocation);
+
+    addCheckout(checkout);
+    return checkout;
   }
 }
