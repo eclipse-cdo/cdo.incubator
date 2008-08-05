@@ -17,8 +17,8 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="committers" lowerBound="1"
         upperBound="-1" eType="#//Committer" containment="true" eOpposite="#//Committer/popProject"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="codeRoots" lowerBound="1"
-        upperBound="-1" eType="#//CodeRoot" containment="true" eOpposite="#//CodeRoot/popProject"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="primaryModule" lowerBound="1"
+        eType="#//RepositoryModule" containment="true" eOpposite="#//RepositoryModule/popProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
         eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/popProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootStream" lowerBound="1"
@@ -43,10 +43,17 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
         volatile="true" transient="true" derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CodeRoot">
+  <eClassifiers xsi:type="ecore:EClass" name="RepositoryModule" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
-        eType="#//PopProject" eOpposite="#//PopProject/codeRoots"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootPath" lowerBound="1"
+        eType="#//PopProject" eOpposite="#//PopProject/primaryModule"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adapter" lowerBound="1"
+        eType="#//RepositoryAdapter" changeable="false" volatile="true" transient="true"
+        derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adapterType" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adapterDescriptor" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moduleDescriptor" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
@@ -195,4 +202,5 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="delivery" lowerBound="1"
         eType="#//Delivery" eOpposite="#//Delivery/merges"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="RepositoryAdapter" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryAdapter"/>
 </ecore:EPackage>

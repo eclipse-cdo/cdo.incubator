@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEProjectImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEProjectImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -26,17 +26,16 @@ import org.eclipse.emf.ecore.InternalEObject;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEProjectImpl#getEntity <em>Entity</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEProjectImpl#getEntity <em>Entity</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PDEProjectImpl()
@@ -46,7 +45,6 @@ public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -57,7 +55,6 @@ public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PDEEntity getEntity()
@@ -69,7 +66,6 @@ public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetEntity(PDEEntity newEntity, NotificationChain msgs)
@@ -77,15 +73,13 @@ public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
     // TODO: implement this method to set the contained 'Entity' containment reference
     // -> this method is automatically invoked to keep the containment relationship in synch
     // -> do not modify other features
-    // -> return msgs, after adding any generated Notification to it (if it is null, a NotificationChain object must be
-    // created first)
+    // -> return msgs, after adding any generated Notification to it (if it is null, a NotificationChain object must be created first)
     // Ensure that you remove @generated or mark it @generated NOT
     throw new UnsupportedOperationException();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -101,7 +95,6 @@ public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -117,7 +110,6 @@ public class PDEProjectImpl extends WorkspaceProjectImpl implements PDEProject
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

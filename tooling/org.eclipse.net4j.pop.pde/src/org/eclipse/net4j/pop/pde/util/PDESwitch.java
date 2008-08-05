@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDESwitch.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDESwitch.java,v 1.3 2008-08-05 14:47:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.util;
 
@@ -40,22 +40,21 @@ import java.util.List;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.pde.PDEPackage
  * @generated
  */
 public class PDESwitch<T>
 {
   /**
-   * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached model package
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected static PDEPackage modelPackage;
 
   /**
-   * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PDESwitch()
@@ -69,7 +68,6 @@ public class PDESwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -81,7 +79,6 @@ public class PDESwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -101,7 +98,6 @@ public class PDESwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -113,107 +109,136 @@ public class PDESwitch<T>
     {
       TargetPlatformChecker targetPlatformChecker = (TargetPlatformChecker)theEObject;
       T result = caseTargetPlatformChecker(targetPlatformChecker);
-      if (result == null) result = caseJREChecker(targetPlatformChecker);
-      if (result == null) result = caseWorkspaceConfigurator(targetPlatformChecker);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = caseJREChecker(targetPlatformChecker);
+      if (result == null)
+        result = caseWorkspaceConfigurator(targetPlatformChecker);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.PDE_CONFIGURATOR:
     {
       PDEConfigurator pdeConfigurator = (PDEConfigurator)theEObject;
       T result = casePDEConfigurator(pdeConfigurator);
-      if (result == null) result = caseWorkspaceConfigurator(pdeConfigurator);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = caseWorkspaceConfigurator(pdeConfigurator);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.API_BASELINE:
     {
       ApiBaseline apiBaseline = (ApiBaseline)theEObject;
       T result = caseApiBaseline(apiBaseline);
-      if (result == null) result = casePDEConfigurator(apiBaseline);
-      if (result == null) result = caseWorkspaceConfigurator(apiBaseline);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePDEConfigurator(apiBaseline);
+      if (result == null)
+        result = caseWorkspaceConfigurator(apiBaseline);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.TARGET_PLATFORM:
     {
       TargetPlatform targetPlatform = (TargetPlatform)theEObject;
       T result = caseTargetPlatform(targetPlatform);
-      if (result == null) result = casePDEConfigurator(targetPlatform);
-      if (result == null) result = caseWorkspaceConfigurator(targetPlatform);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePDEConfigurator(targetPlatform);
+      if (result == null)
+        result = caseWorkspaceConfigurator(targetPlatform);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.PDE_PROJECT:
     {
       PDEProject pdeProject = (PDEProject)theEObject;
       T result = casePDEProject(pdeProject);
-      if (result == null) result = caseWorkspaceProject(pdeProject);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = caseWorkspaceProject(pdeProject);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.PDE_DISTRIBUTION:
     {
       PDEDistribution pdeDistribution = (PDEDistribution)theEObject;
       T result = casePDEDistribution(pdeDistribution);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.PDE_ENTITY:
     {
       PDEEntity pdeEntity = (PDEEntity)theEObject;
       T result = casePDEEntity(pdeEntity);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.FEATURE:
     {
       Feature feature = (Feature)theEObject;
       T result = caseFeature(feature);
-      if (result == null) result = casePDEEntity(feature);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePDEEntity(feature);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.PLUGIN_ENTITY:
     {
       PluginEntity pluginEntity = (PluginEntity)theEObject;
       T result = casePluginEntity(pluginEntity);
-      if (result == null) result = casePDEEntity(pluginEntity);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePDEEntity(pluginEntity);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.PLUGIN:
     {
       Plugin plugin = (Plugin)theEObject;
       T result = casePlugin(plugin);
-      if (result == null) result = casePluginEntity(plugin);
-      if (result == null) result = casePDEEntity(plugin);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePluginEntity(plugin);
+      if (result == null)
+        result = casePDEEntity(plugin);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.FRAGMENT:
     {
       Fragment fragment = (Fragment)theEObject;
       T result = caseFragment(fragment);
-      if (result == null) result = casePluginEntity(fragment);
-      if (result == null) result = casePDEEntity(fragment);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePluginEntity(fragment);
+      if (result == null)
+        result = casePDEEntity(fragment);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.ZIP_DISTRIBUTION:
     {
       ZipDistribution zipDistribution = (ZipDistribution)theEObject;
       T result = caseZipDistribution(zipDistribution);
-      if (result == null) result = casePDEDistribution(zipDistribution);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePDEDistribution(zipDistribution);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     case PDEPackage.POP_DISTRIBUTION:
     {
       PopDistribution popDistribution = (PopDistribution)theEObject;
       T result = casePopDistribution(popDistribution);
-      if (result == null) result = casePDEDistribution(popDistribution);
-      if (result == null) result = defaultCase(theEObject);
+      if (result == null)
+        result = casePDEDistribution(popDistribution);
+      if (result == null)
+        result = defaultCase(theEObject);
       return result;
     }
     default:
@@ -238,11 +263,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Configurator</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Configurator</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Configurator</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -253,11 +277,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Api Baseline</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Api Baseline</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Api Baseline</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -268,11 +291,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Target Platform</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Target Platform</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Target Platform</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -283,11 +305,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Project</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Project</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Project</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -298,11 +319,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Distribution</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Distribution</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Distribution</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -313,11 +333,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Entity</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Entity</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -328,11 +347,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Feature</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -343,11 +361,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Plugin Entity</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Plugin Entity</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Plugin Entity</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -358,11 +375,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Plugin</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Plugin</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Plugin</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -373,11 +389,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Fragment</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Fragment</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Fragment</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -388,11 +403,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Zip Distribution</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Zip Distribution</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Zip Distribution</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -403,11 +417,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Pop Distribution</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Pop Distribution</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Pop Distribution</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -434,11 +447,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>JRE Checker</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>JRE Checker</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>JRE Checker</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -449,11 +461,10 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Workspace Project</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Workspace Project</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Workspace Project</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -464,12 +475,11 @@ public class PDESwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
    * anyway. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject)
    * @generated

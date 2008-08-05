@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEActivator.java,v 1.3 2008-08-01 08:41:25 estepper Exp $
+ * $Id: PDEActivator.java,v 1.4 2008-08-05 14:47:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.util;
 
@@ -21,29 +21,29 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the PDE edit plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the central singleton for the PDE edit plugin.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public final class PDEActivator extends EMFPlugin
 {
   /**
-   * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Keep track of the singleton.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static final PDEActivator INSTANCE = new PDEActivator();
 
   /**
-   * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Keep track of the singleton.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private static Implementation plugin;
 
   /**
-   * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Create the instance.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PDEActivator()
@@ -53,8 +53,8 @@ public final class PDEActivator extends EMFPlugin
   }
 
   /**
-   * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the singleton instance.
    * @generated
    */
@@ -65,8 +65,8 @@ public final class PDEActivator extends EMFPlugin
   }
 
   /**
-   * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the singleton instance.
    * @generated
    */
@@ -76,15 +76,15 @@ public final class PDEActivator extends EMFPlugin
   }
 
   /**
-   * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The actual implementation of the Eclipse <b>Plugin</b>.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static class Implementation extends EclipsePlugin
   {
     /**
-     * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Creates an instance.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public Implementation()

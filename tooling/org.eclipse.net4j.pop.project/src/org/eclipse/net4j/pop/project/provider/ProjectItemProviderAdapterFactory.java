@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectItemProviderAdapterFactory.java,v 1.9 2008-08-05 05:54:19 estepper Exp $
+ * $Id: ProjectItemProviderAdapterFactory.java,v 1.10 2008-08-05 14:48:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -123,31 +123,6 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
     }
 
     return popProjectItemProvider;
-  }
-
-  /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.CodeRoot} instances. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  protected CodeRootItemProvider codeRootItemProvider;
-
-  /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.CodeRoot}.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Adapter createCodeRootAdapter()
-  {
-    if (codeRootItemProvider == null)
-    {
-      codeRootItemProvider = new CodeRootItemProvider(this);
-    }
-
-    return codeRootItemProvider;
   }
 
   /**
@@ -584,8 +559,6 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
       popProjectItemProvider.dispose();
     if (committerItemProvider != null)
       committerItemProvider.dispose();
-    if (codeRootItemProvider != null)
-      codeRootItemProvider.dispose();
     if (checkoutItemProvider != null)
       checkoutItemProvider.dispose();
     if (tagItemProvider != null)

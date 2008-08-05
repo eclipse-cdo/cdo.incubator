@@ -13,15 +13,17 @@
       presentationPackageSuffix="editor" multipleEditorPages="false" extensibleProviderFactory="true"
       childCreationExtenders="true" contentTypeIdentifier="pop.project" fileExtensions="xml"
       ecorePackage="Project.ecore#/">
+    <genDataTypes ecoreDataType="Project.ecore#//RepositoryAdapter"/>
     <genClasses ecoreClass="Project.ecore#//PopProject">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/teamProvider"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//PopProject/repositoryUrl"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/committers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/codeRoots"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/primaryModule"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//PopProject/mainBranch"/>
       <genFeatures property="None" children="true" createChild="true" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//PopProject/rootStream"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//PopProject/checkouts"/>
       <genOperations ecoreOperation="Project.ecore#//PopProject/addCommitter">
         <genParameters ecoreParameter="Project.ecore#//PopProject/addCommitter/id"/>
         <genParameters ecoreParameter="Project.ecore#//PopProject/addCommitter/name"/>
@@ -41,17 +43,22 @@
         <genParameters ecoreParameter="Project.ecore#//Committer/deactivate/exit"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//CodeRoot">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CodeRoot/popProject"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRoot/rootPath"/>
+    <genClasses image="false" ecoreClass="Project.ecore#//RepositoryModule">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//RepositoryModule/popProject"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//RepositoryModule/adapter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//RepositoryModule/adapterType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//RepositoryModule/adapterDescriptor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//RepositoryModule/moduleDescriptor"/>
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//Checkout">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Checkout/popProject"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Checkout/discriminator"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Checkout/location"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//CheckoutDiscriminator">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CheckoutDiscriminator/checkout"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CheckoutDiscriminator/checkout.1"/>
       <genOperations ecoreOperation="Project.ecore#//CheckoutDiscriminator/getPopProject"/>
+      <genOperations ecoreOperation="Project.ecore#//CheckoutDiscriminator/checkout"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//TaggedElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//TaggedElement/tag"/>

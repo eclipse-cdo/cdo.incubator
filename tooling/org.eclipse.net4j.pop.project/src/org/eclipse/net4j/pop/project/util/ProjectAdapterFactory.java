@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectAdapterFactory.java,v 1.12 2008-08-05 07:23:04 estepper Exp $
+ * $Id: ProjectAdapterFactory.java,v 1.13 2008-08-05 14:48:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -18,7 +18,6 @@ import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
-import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.DevelopmentStream;
@@ -30,6 +29,7 @@ import org.eclipse.net4j.pop.project.Milestone;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.RepositoryModule;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
@@ -113,9 +113,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
     }
 
     @Override
-    public Adapter caseCodeRoot(CodeRoot object)
+    public Adapter caseRepositoryModule(RepositoryModule object)
     {
-      return createCodeRootAdapter();
+      return createRepositoryModuleAdapter();
     }
 
     @Override
@@ -278,19 +278,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.CodeRoot <em>Code Root</em>}'.
-   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
-   * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.net4j.pop.project.CodeRoot
-   * @generated
-   */
-  public Adapter createCodeRootAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.Checkout <em>Checkout</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -329,6 +316,21 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCommitterAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.RepositoryModule <em>Repository Module</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule
+   * @generated
+   */
+  public Adapter createRepositoryModuleAdapter()
   {
     return null;
   }

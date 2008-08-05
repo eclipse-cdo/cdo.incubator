@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactory.java,v 1.8 2008-08-05 05:54:20 estepper Exp $
+ * $Id: ProjectFactory.java,v 1.9 2008-08-05 14:48:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -36,14 +36,6 @@ public interface ProjectFactory extends EFactory
    * @generated
    */
   PopProject createPopProject();
-
-  /**
-   * Returns a new object of class '<em>Code Root</em>'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Code Root</em>'.
-   * @generated
-   */
-  CodeRoot createCodeRoot();
 
   /**
    * Returns a new object of class '<em>Checkout</em>'.

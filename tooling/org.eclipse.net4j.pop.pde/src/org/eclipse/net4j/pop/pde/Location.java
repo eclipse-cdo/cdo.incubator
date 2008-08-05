@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Location.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: Location.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde;
 
@@ -21,7 +21,6 @@ import java.util.List;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Location</b></em>', and utility
  * methods for working with them. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.pde.PDEPackage#getLocation()
  * @model
  * @generated
@@ -29,8 +28,8 @@ import java.util.List;
 public enum Location implements Enumerator
 {
   /**
-   * The '<em><b>WORKSPACE</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The '<em><b>WORKSPACE</b></em>' literal object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #WORKSPACE_VALUE
    * @generated
    * @ordered
@@ -38,8 +37,8 @@ public enum Location implements Enumerator
   WORKSPACE(0, "WORKSPACE", "WORKSPACE"), //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * The '<em><b>EXTERNAL</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The '<em><b>EXTERNAL</b></em>' literal object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #EXTERNAL_VALUE
    * @generated
    * @ordered
@@ -47,13 +46,13 @@ public enum Location implements Enumerator
   EXTERNAL(1, "EXTERNAL", "EXTERNAL"); //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * The '<em><b>WORKSPACE</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>WORKSPACE</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>WORKSPACE</b></em>' literal object isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #WORKSPACE
    * @model
    * @generated
@@ -62,13 +61,13 @@ public enum Location implements Enumerator
   public static final int WORKSPACE_VALUE = 0;
 
   /**
-   * The '<em><b>EXTERNAL</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>EXTERNAL</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>EXTERNAL</b></em>' literal object isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #EXTERNAL
    * @model
    * @generated
@@ -77,24 +76,24 @@ public enum Location implements Enumerator
   public static final int EXTERNAL_VALUE = 1;
 
   /**
-   * An array of all the '<em><b>Location</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * An array of all the '<em><b>Location</b></em>' enumerators.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private static final Location[] VALUES_ARRAY = new Location[] { WORKSPACE, EXTERNAL, };
 
   /**
-   * A public read-only list of all the '<em><b>Location</b></em>' enumerators. <!-- begin-user-doc --> <!--
+   * A public read-only list of all the '<em><b>Location</b></em>' enumerators.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static final List<Location> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
   /**
-   * Returns the '<em><b>Location</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
+   * Returns the '<em><b>Location</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static Location get(String literal)
@@ -130,9 +129,9 @@ public enum Location implements Enumerator
   }
 
   /**
-   * Returns the '<em><b>Location</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
+   * Returns the '<em><b>Location</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static Location get(int value)
@@ -149,28 +148,25 @@ public enum Location implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final int value;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final String name;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final String literal;
 
   /**
-   * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Only this class can construct instances.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private Location(int value, String name, String literal)
@@ -182,7 +178,6 @@ public enum Location implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getValue()
@@ -192,7 +187,6 @@ public enum Location implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -202,7 +196,6 @@ public enum Location implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getLiteral()
@@ -211,9 +204,9 @@ public enum Location implements Enumerator
   }
 
   /**
-   * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override

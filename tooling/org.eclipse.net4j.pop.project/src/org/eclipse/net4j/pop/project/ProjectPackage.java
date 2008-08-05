@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.18 2008-08-05 07:50:20 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.19 2008-08-05 14:48:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.base.BasePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -132,13 +133,13 @@ public interface ProjectPackage extends EPackage
   int POP_PROJECT__COMMITTERS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Code Roots</b></em>' containment reference list.
+   * The feature id for the '<em><b>Primary Module</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POP_PROJECT__CODE_ROOTS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+  int POP_PROJECT__PRIMARY_MODULE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Main Branch</b></em>' containment reference.
@@ -174,16 +175,6 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int POP_PROJECT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 8;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl <em>Code Root</em>}' class. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @see org.eclipse.net4j.pop.project.impl.CodeRootImpl
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getCodeRoot()
-   * @generated
-   */
-  int CODE_ROOT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl <em>Checkout</em>}' class.
@@ -298,30 +289,86 @@ public interface ProjectPackage extends EPackage
   int COMMITTER_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 7;
 
   /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl <em>Repository Module</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getRepositoryModule()
+   * @generated
+   */
+  int REPOSITORY_MODULE = 2;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_MODULE__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_MODULE__CLASS = BasePackage.POP_ELEMENT__CLASS;
+
+  /**
    * The feature id for the '<em><b>Pop Project</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CODE_ROOT__POP_PROJECT = 0;
+  int REPOSITORY_MODULE__POP_PROJECT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Root Path</b></em>' attribute.
+   * The feature id for the '<em><b>Adapter</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CODE_ROOT__ROOT_PATH = 1;
+  int REPOSITORY_MODULE__ADAPTER = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The number of structural features of the '<em>Code Root</em>' class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Adapter Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CODE_ROOT_FEATURE_COUNT = 2;
+  int REPOSITORY_MODULE__ADAPTER_TYPE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Adapter Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_MODULE__ADAPTER_DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Module Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_MODULE__MODULE_DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The number of structural features of the '<em>Repository Module</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_MODULE_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1625,6 +1672,16 @@ public interface ProjectPackage extends EPackage
   int MERGE_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The meta object id for the '<em>Repository Adapter</em>' data type.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.repository.IRepositoryAdapter
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getRepositoryAdapter()
+   * @generated
+   */
+  int REPOSITORY_ADAPTER = 21;
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.PopProject <em>Pop Project</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -1667,17 +1724,6 @@ public interface ProjectPackage extends EPackage
   EAttribute getPopProject_RepositoryUrl();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.project.PopProject#getCodeRoots <em>Code Roots</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Code Roots</em>'.
-   * @see org.eclipse.net4j.pop.project.PopProject#getCodeRoots()
-   * @see #getPopProject()
-   * @generated
-   */
-  EReference getPopProject_CodeRoots();
-
-  /**
    * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.project.PopProject#getCommitters <em>Committers</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1687,6 +1733,17 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EReference getPopProject_Committers();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.net4j.pop.project.PopProject#getPrimaryModule <em>Primary Module</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Primary Module</em>'.
+   * @see org.eclipse.net4j.pop.project.PopProject#getPrimaryModule()
+   * @see #getPopProject()
+   * @generated
+   */
+  EReference getPopProject_PrimaryModule();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.net4j.pop.project.PopProject#getMainBranch <em>Main Branch</em>}'.
@@ -1719,38 +1776,6 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EReference getPopProject_Checkouts();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.CodeRoot <em>Code Root</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for class '<em>Code Root</em>'.
-   * @see org.eclipse.net4j.pop.project.CodeRoot
-   * @generated
-   */
-  EClass getCodeRoot();
-
-  /**
-   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.project.CodeRoot#getPopProject <em>Pop Project</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the container reference '<em>Pop Project</em>'.
-   * @see org.eclipse.net4j.pop.project.CodeRoot#getPopProject()
-   * @see #getCodeRoot()
-   * @generated
-   */
-  EReference getCodeRoot_PopProject();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.CodeRoot#getRootPath <em>Root Path</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Root Path</em>'.
-   * @see org.eclipse.net4j.pop.project.CodeRoot#getRootPath()
-   * @see #getCodeRoot()
-   * @generated
-   */
-  EAttribute getCodeRoot_RootPath();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.Checkout <em>Checkout</em>}'.
@@ -1897,6 +1922,71 @@ public interface ProjectPackage extends EPackage
    * @generated
    */
   EAttribute getCommitter_Active();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.RepositoryModule <em>Repository Module</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Repository Module</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule
+   * @generated
+   */
+  EClass getRepositoryModule();
+
+  /**
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.project.RepositoryModule#getPopProject <em>Pop Project</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Pop Project</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getPopProject()
+   * @see #getRepositoryModule()
+   * @generated
+   */
+  EReference getRepositoryModule_PopProject();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.RepositoryModule#getAdapter <em>Adapter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Adapter</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getAdapter()
+   * @see #getRepositoryModule()
+   * @generated
+   */
+  EAttribute getRepositoryModule_Adapter();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.RepositoryModule#getAdapterType <em>Adapter Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Adapter Type</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getAdapterType()
+   * @see #getRepositoryModule()
+   * @generated
+   */
+  EAttribute getRepositoryModule_AdapterType();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.RepositoryModule#getAdapterDescriptor <em>Adapter Descriptor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Adapter Descriptor</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getAdapterDescriptor()
+   * @see #getRepositoryModule()
+   * @generated
+   */
+  EAttribute getRepositoryModule_AdapterDescriptor();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescriptor <em>Module Descriptor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Module Descriptor</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescriptor()
+   * @see #getRepositoryModule()
+   * @generated
+   */
+  EAttribute getRepositoryModule_ModuleDescriptor();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.TaggedElement <em>Tagged Element</em>}'.
@@ -2447,6 +2537,17 @@ public interface ProjectPackage extends EPackage
   EReference getMerge_Delivery();
 
   /**
+   * Returns the meta object for data type '{@link org.eclipse.net4j.pop.repository.IRepositoryAdapter <em>Repository Adapter</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for data type '<em>Repository Adapter</em>'.
+   * @see org.eclipse.net4j.pop.repository.IRepositoryAdapter
+   * @model instanceClass="org.eclipse.net4j.pop.repository.IRepositoryAdapter"
+   * @generated
+   */
+  EDataType getRepositoryAdapter();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the factory that creates the instances of the model.
@@ -2501,20 +2602,20 @@ public interface ProjectPackage extends EPackage
     EAttribute POP_PROJECT__REPOSITORY_URL = eINSTANCE.getPopProject_RepositoryUrl();
 
     /**
-     * The meta object literal for the '<em><b>Code Roots</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference POP_PROJECT__CODE_ROOTS = eINSTANCE.getPopProject_CodeRoots();
-
-    /**
      * The meta object literal for the '<em><b>Committers</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference POP_PROJECT__COMMITTERS = eINSTANCE.getPopProject_Committers();
+
+    /**
+     * The meta object literal for the '<em><b>Primary Module</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POP_PROJECT__PRIMARY_MODULE = eINSTANCE.getPopProject_PrimaryModule();
 
     /**
      * The meta object literal for the '<em><b>Main Branch</b></em>' containment reference feature.
@@ -2539,31 +2640,6 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference POP_PROJECT__CHECKOUTS = eINSTANCE.getPopProject_Checkouts();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.CodeRootImpl <em>Code Root</em>}' class.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * @see org.eclipse.net4j.pop.project.impl.CodeRootImpl
-     * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getCodeRoot()
-     * @generated
-     */
-    EClass CODE_ROOT = eINSTANCE.getCodeRoot();
-
-    /**
-     * The meta object literal for the '<em><b>Pop Project</b></em>' container reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference CODE_ROOT__POP_PROJECT = eINSTANCE.getCodeRoot_PopProject();
-
-    /**
-     * The meta object literal for the '<em><b>Root Path</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CODE_ROOT__ROOT_PATH = eINSTANCE.getCodeRoot_RootPath();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl <em>Checkout</em>}' class.
@@ -2681,6 +2757,56 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EAttribute COMMITTER__ACTIVE = eINSTANCE.getCommitter_Active();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl <em>Repository Module</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.net4j.pop.project.impl.RepositoryModuleImpl
+     * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getRepositoryModule()
+     * @generated
+     */
+    EClass REPOSITORY_MODULE = eINSTANCE.getRepositoryModule();
+
+    /**
+     * The meta object literal for the '<em><b>Pop Project</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REPOSITORY_MODULE__POP_PROJECT = eINSTANCE.getRepositoryModule_PopProject();
+
+    /**
+     * The meta object literal for the '<em><b>Adapter</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REPOSITORY_MODULE__ADAPTER = eINSTANCE.getRepositoryModule_Adapter();
+
+    /**
+     * The meta object literal for the '<em><b>Adapter Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REPOSITORY_MODULE__ADAPTER_TYPE = eINSTANCE.getRepositoryModule_AdapterType();
+
+    /**
+     * The meta object literal for the '<em><b>Adapter Descriptor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REPOSITORY_MODULE__ADAPTER_DESCRIPTOR = eINSTANCE.getRepositoryModule_AdapterDescriptor();
+
+    /**
+     * The meta object literal for the '<em><b>Module Descriptor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REPOSITORY_MODULE__MODULE_DESCRIPTOR = eINSTANCE.getRepositoryModule_ModuleDescriptor();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl <em>Tagged Element</em>}' class.
@@ -3131,6 +3257,16 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference MERGE__DELIVERY = eINSTANCE.getMerge_Delivery();
+
+    /**
+     * The meta object literal for the '<em>Repository Adapter</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.net4j.pop.repository.IRepositoryAdapter
+     * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getRepositoryAdapter()
+     * @generated
+     */
+    EDataType REPOSITORY_ADAPTER = eINSTANCE.getRepositoryAdapter();
 
   }
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEEntityImpl.java,v 1.3 2008-08-01 09:42:55 estepper Exp $
+ * $Id: PDEEntityImpl.java,v 1.4 2008-08-05 14:47:44 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -32,21 +32,21 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getVersion <em>Version</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getLocation <em>Location</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getProject <em>Project</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getDistribution <em>Distribution</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getProject <em>Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEEntityImpl#getDistribution <em>Distribution</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -54,8 +54,8 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -63,9 +63,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected String id = ID_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getVersion()
    * @generated
    * @ordered
@@ -73,9 +73,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected static final Version VERSION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getVersion()
    * @generated
    * @ordered
@@ -83,9 +83,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected Version version = VERSION_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getLocation()
    * @generated
    * @ordered
@@ -93,9 +93,9 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
   protected static final Location LOCATION_EDEFAULT = Location.WORKSPACE;
 
   /**
-   * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getLocation() <em>Location</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getLocation()
    * @generated
    * @ordered
@@ -104,7 +104,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PDEEntityImpl()
@@ -114,7 +113,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -125,7 +123,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getId()
@@ -135,7 +132,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setId(String newId)
@@ -148,7 +144,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Version getVersion()
@@ -158,7 +153,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setVersion(Version newVersion)
@@ -171,7 +165,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Location getLocation()
@@ -181,7 +174,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setLocation(Location newLocation)
@@ -194,7 +186,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PDEProject getProject()
@@ -206,7 +197,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setProject(PDEProject newProject)
@@ -218,18 +208,17 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PDEDistribution getDistribution()
   {
-    if (eContainerFeatureID != PDEPackage.PDE_ENTITY__DISTRIBUTION) return null;
+    if (eContainerFeatureID != PDEPackage.PDE_ENTITY__DISTRIBUTION)
+      return null;
     return (PDEDistribution)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetDistribution(PDEDistribution newDistribution, NotificationChain msgs)
@@ -240,7 +229,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDistribution(PDEDistribution newDistribution)
@@ -251,12 +239,14 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
       if (EcoreUtil.isAncestor(this, newDistribution))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newDistribution != null)
         msgs = ((InternalEObject)newDistribution).eInverseAdd(this, PDEPackage.PDE_DISTRIBUTION__ENTITIES,
             PDEDistribution.class, msgs);
       msgs = basicSetDistribution(newDistribution, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PDEPackage.PDE_ENTITY__DISTRIBUTION, newDistribution,
@@ -265,7 +255,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -274,7 +263,8 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
     switch (featureID)
     {
     case PDEPackage.PDE_ENTITY__DISTRIBUTION:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetDistribution((PDEDistribution)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -282,7 +272,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -298,7 +287,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -317,7 +305,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -341,7 +328,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -370,7 +356,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -399,7 +384,6 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -423,13 +407,13 @@ public abstract class PDEEntityImpl extends EObjectImpl implements PDEEntity
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (id: "); //$NON-NLS-1$

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ArtifactImpl.java,v 1.3 2008-08-01 08:14:45 estepper Exp $
+ * $Id: ArtifactImpl.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -29,17 +29,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.product.impl.ArtifactImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.ArtifactImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ArtifactImpl()
@@ -49,7 +48,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -60,18 +58,17 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Folder getParent()
   {
-    if (eContainerFeatureID != ProductPackage.ARTIFACT__PARENT) return null;
+    if (eContainerFeatureID != ProductPackage.ARTIFACT__PARENT)
+      return null;
     return (Folder)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(Folder newParent, NotificationChain msgs)
@@ -82,7 +79,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(Folder newParent)
@@ -93,11 +89,13 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
       if (EcoreUtil.isAncestor(this, newParent))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newParent != null)
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProductPackage.FOLDER__MEMBERS, Folder.class, msgs);
       msgs = basicSetParent(newParent, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.ARTIFACT__PARENT, newParent, newParent));
@@ -105,7 +103,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -114,7 +111,8 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
     switch (featureID)
     {
     case ProductPackage.ARTIFACT__PARENT:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetParent((Folder)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -122,7 +120,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -138,7 +135,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -154,7 +150,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -170,7 +165,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -187,7 +181,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -204,7 +197,6 @@ public abstract class ArtifactImpl extends EObjectImpl implements Artifact
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

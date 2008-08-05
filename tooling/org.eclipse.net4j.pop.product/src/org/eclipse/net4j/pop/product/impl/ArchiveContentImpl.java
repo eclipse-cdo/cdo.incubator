@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ArchiveContentImpl.java,v 1.3 2008-08-01 08:14:45 estepper Exp $
+ * $Id: ArchiveContentImpl.java,v 1.4 2008-08-05 14:47:58 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -39,7 +39,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ArchiveContentImpl()
@@ -49,7 +48,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -60,18 +58,17 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Archive getArchive()
   {
-    if (eContainerFeatureID != ProductPackage.ARCHIVE_CONTENT__ARCHIVE) return null;
+    if (eContainerFeatureID != ProductPackage.ARCHIVE_CONTENT__ARCHIVE)
+      return null;
     return (Archive)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetArchive(Archive newArchive, NotificationChain msgs)
@@ -82,7 +79,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setArchive(Archive newArchive)
@@ -93,11 +89,13 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
       if (EcoreUtil.isAncestor(this, newArchive))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newArchive != null)
         msgs = ((InternalEObject)newArchive).eInverseAdd(this, ProductPackage.ARCHIVE__CONTENT, Archive.class, msgs);
       msgs = basicSetArchive(newArchive, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.ARCHIVE_CONTENT__ARCHIVE, newArchive,
@@ -106,7 +104,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -115,7 +112,8 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
     switch (featureID)
     {
     case ProductPackage.ARCHIVE_CONTENT__ARCHIVE:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetArchive((Archive)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -123,7 +121,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -139,7 +136,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -155,7 +151,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -171,7 +166,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -188,7 +182,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -205,7 +198,6 @@ public class ArchiveContentImpl extends FolderImpl implements ArchiveContent
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

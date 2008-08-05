@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProjectImpl.java,v 1.3 2008-08-01 08:14:45 estepper Exp $
+ * $Id: WorkspaceProjectImpl.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.product.ProductPackage;
 import org.eclipse.net4j.pop.product.WorkingSet;
 import org.eclipse.net4j.pop.product.WorkspaceProject;
-import org.eclipse.net4j.pop.project.CodeRoot;
+import org.eclipse.net4j.pop.project.RepositoryModule;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -60,8 +60,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -69,9 +69,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getWorkingSets() <em>Working Sets</em>}' reference list. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getWorkingSets() <em>Working Sets</em>}' reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getWorkingSets()
    * @generated
    * @ordered
@@ -79,38 +79,37 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected EList<WorkingSet> workingSets;
 
   /**
-   * The cached value of the '{@link #getCodeRoot() <em>Code Root</em>}' reference. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
-   * @see #getCodeRoot()
+   * The cached value of the '{@link #getRepositoryModule() <em>Repository Module</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRepositoryModule()
    * @generated
    * @ordered
    */
-  protected CodeRoot codeRoot;
+  protected RepositoryModule repositoryModule;
 
   /**
-   * The default value of the '{@link #getCodePath() <em>Code Path</em>}' attribute. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
-   * @see #getCodePath()
+   * The default value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRepositoryPath()
    * @generated
    * @ordered
    */
-  protected static final String CODE_PATH_EDEFAULT = null;
+  protected static final String REPOSITORY_PATH_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getCodePath() <em>Code Path</em>}' attribute. <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * 
-   * @see #getCodePath()
+   * The cached value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getRepositoryPath()
    * @generated
    * @ordered
    */
-  protected String codePath = CODE_PATH_EDEFAULT;
+  protected String repositoryPath = REPOSITORY_PATH_EDEFAULT;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected WorkspaceProjectImpl()
@@ -120,7 +119,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -131,7 +129,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -141,7 +138,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -154,7 +150,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkingSet> getWorkingSets()
@@ -169,18 +164,17 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProduct getWorkspaceSpec()
   {
-    if (eContainerFeatureID != ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC) return null;
+    if (eContainerFeatureID != ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC)
+      return null;
     return (PopProduct)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpec(PopProduct newWorkspaceSpec, NotificationChain msgs)
@@ -191,7 +185,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setWorkspaceSpec(PopProduct newWorkspaceSpec)
@@ -202,12 +195,14 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
       if (EcoreUtil.isAncestor(this, newWorkspaceSpec))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newWorkspaceSpec != null)
         msgs = ((InternalEObject)newWorkspaceSpec).eInverseAdd(this, ProductPackage.POP_PRODUCT__PROJECTS,
             PopProduct.class, msgs);
       msgs = basicSetWorkspaceSpec(newWorkspaceSpec, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC,
@@ -215,77 +210,76 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRoot getCodeRoot()
+  public RepositoryModule getRepositoryModule()
   {
-    if (codeRoot != null && codeRoot.eIsProxy())
+    if (repositoryModule != null && repositoryModule.eIsProxy())
     {
-      InternalEObject oldCodeRoot = (InternalEObject)codeRoot;
-      codeRoot = (CodeRoot)eResolveProxy(oldCodeRoot);
-      if (codeRoot != oldCodeRoot)
+      InternalEObject oldRepositoryModule = (InternalEObject)repositoryModule;
+      repositoryModule = (RepositoryModule)eResolveProxy(oldRepositoryModule);
+      if (repositoryModule != oldRepositoryModule)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductPackage.WORKSPACE_PROJECT__CODE_ROOT,
-              oldCodeRoot, codeRoot));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+              ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE, oldRepositoryModule, repositoryModule));
       }
     }
-    return codeRoot;
+    return repositoryModule;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public CodeRoot basicGetCodeRoot()
+  public RepositoryModule basicGetRepositoryModule()
   {
-    return codeRoot;
+    return repositoryModule;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setCodeRoot(CodeRoot newCodeRoot)
+  public void setRepositoryModule(RepositoryModule newRepositoryModule)
   {
-    CodeRoot oldCodeRoot = codeRoot;
-    codeRoot = newCodeRoot;
+    RepositoryModule oldRepositoryModule = repositoryModule;
+    repositoryModule = newRepositoryModule;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__CODE_ROOT, oldCodeRoot,
-          codeRoot));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE,
+          oldRepositoryModule, repositoryModule));
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public String getCodePath()
+  public String getRepositoryPath()
   {
-    return codePath;
+    return repositoryPath;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setCodePath(String newCodePath)
+  public void setRepositoryPath(String newRepositoryPath)
   {
-    String oldCodePath = codePath;
-    codePath = newCodePath;
+    String oldRepositoryPath = repositoryPath;
+    repositoryPath = newRepositoryPath;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__CODE_PATH, oldCodePath,
-          codePath));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH,
+          oldRepositoryPath, repositoryPath));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -297,7 +291,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
     case ProductPackage.WORKSPACE_PROJECT__WORKING_SETS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getWorkingSets()).basicAdd(otherEnd, msgs);
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetWorkspaceSpec((PopProduct)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -305,7 +300,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -323,7 +317,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -339,7 +332,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -353,18 +345,18 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
       return getWorkingSets();
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       return getWorkspaceSpec();
-    case ProductPackage.WORKSPACE_PROJECT__CODE_ROOT:
-      if (resolve) return getCodeRoot();
-      return basicGetCodeRoot();
-    case ProductPackage.WORKSPACE_PROJECT__CODE_PATH:
-      return getCodePath();
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
+      if (resolve)
+        return getRepositoryModule();
+      return basicGetRepositoryModule();
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
+      return getRepositoryPath();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -383,11 +375,11 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       setWorkspaceSpec((PopProduct)newValue);
       return;
-    case ProductPackage.WORKSPACE_PROJECT__CODE_ROOT:
-      setCodeRoot((CodeRoot)newValue);
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
+      setRepositoryModule((RepositoryModule)newValue);
       return;
-    case ProductPackage.WORKSPACE_PROJECT__CODE_PATH:
-      setCodePath((String)newValue);
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
+      setRepositoryPath((String)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -395,7 +387,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -412,11 +403,11 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       setWorkspaceSpec((PopProduct)null);
       return;
-    case ProductPackage.WORKSPACE_PROJECT__CODE_ROOT:
-      setCodeRoot((CodeRoot)null);
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
+      setRepositoryModule((RepositoryModule)null);
       return;
-    case ProductPackage.WORKSPACE_PROJECT__CODE_PATH:
-      setCodePath(CODE_PATH_EDEFAULT);
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
+      setRepositoryPath(REPOSITORY_PATH_EDEFAULT);
       return;
     }
     super.eUnset(featureID);
@@ -424,7 +415,6 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -438,29 +428,30 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
       return workingSets != null && !workingSets.isEmpty();
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       return getWorkspaceSpec() != null;
-    case ProductPackage.WORKSPACE_PROJECT__CODE_ROOT:
-      return codeRoot != null;
-    case ProductPackage.WORKSPACE_PROJECT__CODE_PATH:
-      return CODE_PATH_EDEFAULT == null ? codePath != null : !CODE_PATH_EDEFAULT.equals(codePath);
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
+      return repositoryModule != null;
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
+      return REPOSITORY_PATH_EDEFAULT == null ? repositoryPath != null : !REPOSITORY_PATH_EDEFAULT
+          .equals(repositoryPath);
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+    if (eIsProxy())
+      return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$
     result.append(name);
-    result.append(", codePath: "); //$NON-NLS-1$
-    result.append(codePath);
+    result.append(", repositoryPath: "); //$NON-NLS-1$
+    result.append(repositoryPath);
     result.append(')');
     return result.toString();
   }

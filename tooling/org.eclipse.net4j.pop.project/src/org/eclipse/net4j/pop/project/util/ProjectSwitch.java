@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.14 2008-08-05 07:23:04 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.15 2008-08-05 14:48:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -18,7 +18,6 @@ import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
-import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.DevelopmentStream;
@@ -30,6 +29,7 @@ import org.eclipse.net4j.pop.project.Milestone;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.RepositoryModule;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
@@ -141,10 +141,16 @@ public class ProjectSwitch<T>
         result = defaultCase(theEObject);
       return result;
     }
-    case ProjectPackage.CODE_ROOT:
+    case ProjectPackage.REPOSITORY_MODULE:
     {
-      CodeRoot codeRoot = (CodeRoot)theEObject;
-      T result = caseCodeRoot(codeRoot);
+      RepositoryModule repositoryModule = (RepositoryModule)theEObject;
+      T result = caseRepositoryModule(repositoryModule);
+      if (result == null)
+        result = casePopElement(repositoryModule);
+      if (result == null)
+        result = caseIdentifiable(repositoryModule);
+      if (result == null)
+        result = caseDisplayable(repositoryModule);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -467,20 +473,6 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Code Root</em>'.
-   * <!-- begin-user-doc --> This
-   * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Code Root</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCodeRoot(CodeRoot object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Checkout</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -522,6 +514,22 @@ public class ProjectSwitch<T>
    * @generated
    */
   public T caseCommitter(Committer object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Repository Module</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Repository Module</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRepositoryModule(RepositoryModule object)
   {
     return null;
   }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProject.java,v 1.10 2008-08-05 07:23:04 estepper Exp $
+ * $Id: PopProject.java,v 1.11 2008-08-05 14:48:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -28,7 +28,7 @@ import java.util.Date;
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getTeamProvider <em>Team Provider</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getRepositoryUrl <em>Repository Url</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCommitters <em>Committers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCodeRoots <em>Code Roots</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getPrimaryModule <em>Primary Module</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getMainBranch <em>Main Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getRootStream <em>Root Stream</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.PopProject#getCheckouts <em>Checkouts</em>}</li>
@@ -120,24 +120,6 @@ public interface PopProject extends PopElement
   void setRepositoryUrl(String value);
 
   /**
-   * Returns the value of the '<em><b>Code Roots</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.CodeRoot}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.CodeRoot#getPopProject <em>Pop Project</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Code Roots</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Code Roots</em>' containment reference list.
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getPopProject_CodeRoots()
-   * @see org.eclipse.net4j.pop.project.CodeRoot#getPopProject
-   * @model opposite="popProject" containment="true" resolveProxies="true" required="true"
-   * @generated
-   */
-  EList<CodeRoot> getCodeRoots();
-
-  /**
    * Returns the value of the '<em><b>Committers</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.net4j.pop.project.Committer}.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Committer#getPopProject <em>Pop Project</em>}'.
@@ -154,6 +136,34 @@ public interface PopProject extends PopElement
    * @generated
    */
   EList<Committer> getCommitters();
+
+  /**
+   * Returns the value of the '<em><b>Primary Module</b></em>' containment reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.RepositoryModule#getPopProject <em>Pop Project</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Primary Module</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Primary Module</em>' containment reference.
+   * @see #setPrimaryModule(RepositoryModule)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getPopProject_PrimaryModule()
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getPopProject
+   * @model opposite="popProject" containment="true" resolveProxies="true" required="true"
+   * @generated
+   */
+  RepositoryModule getPrimaryModule();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.PopProject#getPrimaryModule <em>Primary Module</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Primary Module</em>' containment reference.
+   * @see #getPrimaryModule()
+   * @generated
+   */
+  void setPrimaryModule(RepositoryModule value);
 
   /**
    * Returns the value of the '<em><b>Main Branch</b></em>' containment reference.

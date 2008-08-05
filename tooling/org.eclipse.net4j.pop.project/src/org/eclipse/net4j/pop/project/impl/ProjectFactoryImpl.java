@@ -8,12 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.12 2008-08-05 07:23:04 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.13 2008-08-05 14:48:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.Checkout;
-import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.MainBranch;
@@ -28,8 +27,10 @@ import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.SubBranch;
 import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaskStream;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -87,8 +88,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
       return createPopProject();
     case ProjectPackage.COMMITTER:
       return createCommitter();
-    case ProjectPackage.CODE_ROOT:
-      return createCodeRoot();
     case ProjectPackage.CHECKOUT:
       return createCheckout();
     case ProjectPackage.TAG:
@@ -117,6 +116,40 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+    case ProjectPackage.REPOSITORY_ADAPTER:
+      return createRepositoryAdapterFromString(eDataType, initialValue);
+    default:
+      throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+    case ProjectPackage.REPOSITORY_ADAPTER:
+      return convertRepositoryAdapterToString(eDataType, instanceValue);
+    default:
+      throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+    }
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -124,16 +157,6 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   {
     PopProjectImpl popProject = new PopProjectImpl();
     return popProject;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public CodeRoot createCodeRoot()
-  {
-    CodeRootImpl codeRoot = new CodeRootImpl();
-    return codeRoot;
   }
 
   /**
@@ -255,6 +278,26 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   {
     MergeImpl merge = new MergeImpl();
     return merge;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IRepositoryAdapter createRepositoryAdapterFromString(EDataType eDataType, String initialValue)
+  {
+    return (IRepositoryAdapter)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertRepositoryAdapterToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
   }
 
   /**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductEditorPlugin.java,v 1.3 2008-08-01 08:41:07 estepper Exp $
+ * $Id: ProductEditorPlugin.java,v 1.4 2008-08-05 14:47:49 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.editor;
 
@@ -20,29 +20,29 @@ import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 
 /**
- * This is the central singleton for the Product editor plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the central singleton for the Product editor plugin.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public final class ProductEditorPlugin extends EMFPlugin
 {
   /**
-   * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Keep track of the singleton.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static final ProductEditorPlugin INSTANCE = new ProductEditorPlugin();
 
   /**
-   * Keep track of the singleton. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Keep track of the singleton.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private static Implementation plugin;
 
   /**
-   * Create the instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Create the instance.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProductEditorPlugin()
@@ -51,8 +51,8 @@ public final class ProductEditorPlugin extends EMFPlugin
   }
 
   /**
-   * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the singleton instance.
    * @generated
    */
@@ -63,8 +63,8 @@ public final class ProductEditorPlugin extends EMFPlugin
   }
 
   /**
-   * Returns the singleton instance of the Eclipse plugin. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the singleton instance.
    * @generated
    */
@@ -74,15 +74,15 @@ public final class ProductEditorPlugin extends EMFPlugin
   }
 
   /**
-   * The actual implementation of the Eclipse <b>Plugin</b>. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The actual implementation of the Eclipse <b>Plugin</b>.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static class Implementation extends EclipseUIPlugin
   {
     /**
-     * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Creates an instance.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public Implementation()

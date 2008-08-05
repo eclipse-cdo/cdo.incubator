@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProjectItemProvider.java,v 1.3 2008-08-01 08:14:45 estepper Exp $
+ * $Id: WorkspaceProjectItemProvider.java,v 1.4 2008-08-05 14:47:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.provider;
 
@@ -46,8 +46,8 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public WorkspaceProjectItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -69,15 +69,15 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
 
       addNamePropertyDescriptor(object);
       addWorkingSetsPropertyDescriptor(object);
-      addCodeRootPropertyDescriptor(object);
-      addCodePathPropertyDescriptor(object);
+      addRepositoryModulePropertyDescriptor(object);
+      addRepositoryPathPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -92,8 +92,8 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This adds a property descriptor for the Working Sets feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Working Sets feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addWorkingSetsPropertyDescriptor(Object object)
@@ -108,42 +108,43 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This adds a property descriptor for the Code Root feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Repository Module feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  protected void addCodeRootPropertyDescriptor(Object object)
+  protected void addRepositoryModulePropertyDescriptor(Object object)
   {
     itemPropertyDescriptors
         .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
             getResourceLocator(),
-            getString("_UI_WorkspaceProject_codeRoot_feature"), //$NON-NLS-1$
+            getString("_UI_WorkspaceProject_repositoryModule_feature"), //$NON-NLS-1$
             getString(
-                "_UI_PropertyDescriptor_description", "_UI_WorkspaceProject_codeRoot_feature", "_UI_WorkspaceProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProductPackage.Literals.WORKSPACE_PROJECT__CODE_ROOT, true, false, true, null, null, null));
+                "_UI_PropertyDescriptor_description", "_UI_WorkspaceProject_repositoryModule_feature", "_UI_WorkspaceProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            ProductPackage.Literals.WORKSPACE_PROJECT__REPOSITORY_MODULE, true, false, true, null, null, null));
   }
 
   /**
-   * This adds a property descriptor for the Code Path feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Repository Path feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  protected void addCodePathPropertyDescriptor(Object object)
+  protected void addRepositoryPathPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors
         .add(createItemPropertyDescriptor(
             ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
             getResourceLocator(),
-            getString("_UI_WorkspaceProject_codePath_feature"), //$NON-NLS-1$
+            getString("_UI_WorkspaceProject_repositoryPath_feature"), //$NON-NLS-1$
             getString(
-                "_UI_PropertyDescriptor_description", "_UI_WorkspaceProject_codePath_feature", "_UI_WorkspaceProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProductPackage.Literals.WORKSPACE_PROJECT__CODE_PATH, true, false, false,
+                "_UI_PropertyDescriptor_description", "_UI_WorkspaceProject_repositoryPath_feature", "_UI_WorkspaceProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            ProductPackage.Literals.WORKSPACE_PROJECT__REPOSITORY_PATH, true, false, false,
             ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -153,8 +154,8 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This returns WorkspaceProject.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns WorkspaceProject.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -164,8 +165,8 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -177,9 +178,9 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -190,7 +191,7 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
     switch (notification.getFeatureID(WorkspaceProject.class))
     {
     case ProductPackage.WORKSPACE_PROJECT__NAME:
-    case ProductPackage.WORKSPACE_PROJECT__CODE_PATH:
+    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }
@@ -198,9 +199,9 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -210,8 +211,8 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Return the resource locator for this item provider's resources.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

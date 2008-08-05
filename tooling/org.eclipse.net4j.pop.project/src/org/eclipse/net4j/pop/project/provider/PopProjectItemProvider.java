@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectItemProvider.java,v 1.12 2008-08-05 07:23:04 estepper Exp $
+ * $Id: PopProjectItemProvider.java,v 1.13 2008-08-05 14:48:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -149,7 +149,7 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
     {
       super.getChildrenFeatures(object);
       childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__COMMITTERS);
-      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__CODE_ROOTS);
+      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__PRIMARY_MODULE);
       childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__MAIN_BRANCH);
       childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__ROOT_STREAM);
     }
@@ -212,7 +212,7 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     case ProjectPackage.POP_PROJECT__COMMITTERS:
-    case ProjectPackage.POP_PROJECT__CODE_ROOTS:
+    case ProjectPackage.POP_PROJECT__PRIMARY_MODULE:
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
@@ -234,9 +234,6 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
 
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__COMMITTERS,
         ProjectFactory.eINSTANCE.createCommitter()));
-
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__CODE_ROOTS,
-        ProjectFactory.eINSTANCE.createCodeRoot()));
 
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__MAIN_BRANCH,
         ProjectFactory.eINSTANCE.createMainBranch()));

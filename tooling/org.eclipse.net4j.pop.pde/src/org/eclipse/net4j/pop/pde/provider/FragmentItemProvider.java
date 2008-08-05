@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: FragmentItemProvider.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: FragmentItemProvider.java,v 1.3 2008-08-05 14:47:45 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.provider;
 
@@ -29,9 +29,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.pde.Fragment} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.pde.Fragment} object.
+ * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class FragmentItemProvider extends PluginEntityItemProvider implements IEditingDomainItemProvider,
@@ -39,8 +39,8 @@ public class FragmentItemProvider extends PluginEntityItemProvider implements IE
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public FragmentItemProvider(AdapterFactory adapterFactory)
@@ -49,8 +49,8 @@ public class FragmentItemProvider extends PluginEntityItemProvider implements IE
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -65,8 +65,8 @@ public class FragmentItemProvider extends PluginEntityItemProvider implements IE
   }
 
   /**
-   * This returns Fragment.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Fragment.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -76,8 +76,8 @@ public class FragmentItemProvider extends PluginEntityItemProvider implements IE
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -89,9 +89,9 @@ public class FragmentItemProvider extends PluginEntityItemProvider implements IE
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -102,9 +102,9 @@ public class FragmentItemProvider extends PluginEntityItemProvider implements IE
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductFactoryImpl.java,v 1.4 2008-08-01 08:34:34 estepper Exp $
+ * $Id: ProductFactoryImpl.java,v 1.5 2008-08-05 14:47:58 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -30,14 +30,13 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 {
   /**
-   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static ProductFactory init()
@@ -59,8 +58,8 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
   }
 
   /**
-   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProductFactoryImpl()
@@ -70,7 +69,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -99,7 +97,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProduct createPopProduct()
@@ -110,7 +107,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public WorkingSet createWorkingSet()
@@ -121,7 +117,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public WorkspaceProject createWorkspaceProject()
@@ -132,7 +127,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public File createFile()
@@ -143,7 +137,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Folder createFolder()
@@ -154,7 +147,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Archive createArchive()
@@ -165,7 +157,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ArchiveContent createArchiveContent()
@@ -176,7 +167,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public ProductPackage getProductPackage()
@@ -186,7 +176,6 @@ public class ProductFactoryImpl extends EFactoryImpl implements ProductFactory
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @deprecated
    * @generated
    */

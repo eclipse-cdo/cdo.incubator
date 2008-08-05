@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PDEDistributionImpl.java,v 1.2 2008-08-01 08:15:04 estepper Exp $
+ * $Id: PDEDistributionImpl.java,v 1.3 2008-08-05 14:47:44 estepper Exp $
  */
 package org.eclipse.net4j.pop.pde.impl;
 
@@ -35,19 +35,19 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getEntities <em>Entities</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getTargetPlatform <em>Target Platform</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getEntities <em>Entities</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.pde.impl.PDEDistributionImpl#getTargetPlatform <em>Target Platform</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDistribution
 {
   /**
-   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getEntities()
    * @generated
    * @ordered
@@ -56,7 +56,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PDEDistributionImpl()
@@ -66,7 +65,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -77,7 +75,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<PDEEntity> getEntities()
@@ -92,18 +89,17 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TargetPlatform getTargetPlatform()
   {
-    if (eContainerFeatureID != PDEPackage.PDE_DISTRIBUTION__TARGET_PLATFORM) return null;
+    if (eContainerFeatureID != PDEPackage.PDE_DISTRIBUTION__TARGET_PLATFORM)
+      return null;
     return (TargetPlatform)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetTargetPlatform(TargetPlatform newTargetPlatform, NotificationChain msgs)
@@ -114,7 +110,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTargetPlatform(TargetPlatform newTargetPlatform)
@@ -125,12 +120,14 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
       if (EcoreUtil.isAncestor(this, newTargetPlatform))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newTargetPlatform != null)
         msgs = ((InternalEObject)newTargetPlatform).eInverseAdd(this, PDEPackage.TARGET_PLATFORM__DISTRIBUTIONS,
             TargetPlatform.class, msgs);
       msgs = basicSetTargetPlatform(newTargetPlatform, msgs);
-      if (msgs != null) msgs.dispatch();
+      if (msgs != null)
+        msgs.dispatch();
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PDEPackage.PDE_DISTRIBUTION__TARGET_PLATFORM,
@@ -139,7 +136,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -151,7 +147,8 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
     case PDEPackage.PDE_DISTRIBUTION__ENTITIES:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getEntities()).basicAdd(otherEnd, msgs);
     case PDEPackage.PDE_DISTRIBUTION__TARGET_PLATFORM:
-      if (eInternalContainer() != null) msgs = eBasicRemoveFromContainer(msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetTargetPlatform((TargetPlatform)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -159,7 +156,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -177,7 +173,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -194,7 +189,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -212,7 +206,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -234,7 +227,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -254,7 +246,6 @@ public abstract class PDEDistributionImpl extends EObjectImpl implements PDEDist
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

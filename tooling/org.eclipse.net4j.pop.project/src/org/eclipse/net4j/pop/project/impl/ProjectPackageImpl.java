@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.21 2008-08-05 08:20:18 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.22 2008-08-05 14:48:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -16,7 +16,6 @@ import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
-import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.DevelopmentStream;
@@ -29,6 +28,7 @@ import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.RepositoryModule;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
@@ -36,9 +36,11 @@ import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaggedElement;
 import org.eclipse.net4j.pop.project.Target;
 import org.eclipse.net4j.pop.project.TaskStream;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -55,12 +57,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * @generated
    */
   private EClass popProjectEClass = null;
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass codeRootEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -81,6 +77,13 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * @generated
    */
   private EClass committerEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass repositoryModuleEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -177,6 +180,13 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * @generated
    */
   private EClass mergeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EDataType repositoryAdapterEDataType = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -294,9 +304,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPopProject_CodeRoots()
+  public EReference getPopProject_Committers()
   {
-    return (EReference)popProjectEClass.getEStructuralFeatures().get(4);
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -304,9 +314,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPopProject_Committers()
+  public EReference getPopProject_PrimaryModule()
   {
-    return (EReference)popProjectEClass.getEStructuralFeatures().get(3);
+    return (EReference)popProjectEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -336,35 +346,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   public EReference getPopProject_Checkouts()
   {
     return (EReference)popProjectEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getCodeRoot()
-  {
-    return codeRootEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getCodeRoot_PopProject()
-  {
-    return (EReference)codeRootEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getCodeRoot_RootPath()
-  {
-    return (EAttribute)codeRootEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -499,6 +480,66 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   public EAttribute getCommitter_Active()
   {
     return (EAttribute)committerEClass.getEStructuralFeatures().get(6);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRepositoryModule()
+  {
+    return repositoryModuleEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRepositoryModule_PopProject()
+  {
+    return (EReference)repositoryModuleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRepositoryModule_Adapter()
+  {
+    return (EAttribute)repositoryModuleEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRepositoryModule_AdapterType()
+  {
+    return (EAttribute)repositoryModuleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRepositoryModule_AdapterDescriptor()
+  {
+    return (EAttribute)repositoryModuleEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getRepositoryModule_ModuleDescriptor()
+  {
+    return (EAttribute)repositoryModuleEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -991,6 +1032,16 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EDataType getRepositoryAdapter()
+  {
+    return repositoryAdapterEDataType;
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
@@ -1023,7 +1074,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(popProjectEClass, POP_PROJECT__TEAM_PROVIDER);
     createEAttribute(popProjectEClass, POP_PROJECT__REPOSITORY_URL);
     createEReference(popProjectEClass, POP_PROJECT__COMMITTERS);
-    createEReference(popProjectEClass, POP_PROJECT__CODE_ROOTS);
+    createEReference(popProjectEClass, POP_PROJECT__PRIMARY_MODULE);
     createEReference(popProjectEClass, POP_PROJECT__MAIN_BRANCH);
     createEReference(popProjectEClass, POP_PROJECT__ROOT_STREAM);
     createEReference(popProjectEClass, POP_PROJECT__CHECKOUTS);
@@ -1037,9 +1088,12 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(committerEClass, COMMITTER__EXIT);
     createEAttribute(committerEClass, COMMITTER__ACTIVE);
 
-    codeRootEClass = createEClass(CODE_ROOT);
-    createEReference(codeRootEClass, CODE_ROOT__POP_PROJECT);
-    createEAttribute(codeRootEClass, CODE_ROOT__ROOT_PATH);
+    repositoryModuleEClass = createEClass(REPOSITORY_MODULE);
+    createEReference(repositoryModuleEClass, REPOSITORY_MODULE__POP_PROJECT);
+    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__ADAPTER);
+    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__ADAPTER_TYPE);
+    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__ADAPTER_DESCRIPTOR);
+    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__MODULE_DESCRIPTOR);
 
     checkoutEClass = createEClass(CHECKOUT);
     createEReference(checkoutEClass, CHECKOUT__POP_PROJECT);
@@ -1118,6 +1172,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(mergeEClass, MERGE__STREAM);
     createEAttribute(mergeEClass, MERGE__DATE);
     createEReference(mergeEClass, MERGE__DELIVERY);
+
+    // Create data types
+    repositoryAdapterEDataType = createEDataType(REPOSITORY_ADAPTER);
   }
 
   /**
@@ -1153,6 +1210,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     // Add supertypes to classes
     popProjectEClass.getESuperTypes().add(theBasePackage.getPopElement());
     committerEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    repositoryModuleEClass.getESuperTypes().add(theBasePackage.getPopElement());
     checkoutEClass.getESuperTypes().add(theBasePackage.getPopElement());
     checkoutDiscriminatorEClass.getESuperTypes().add(theBasePackage.getPopElement());
     taggedElementEClass.getESuperTypes().add(theBasePackage.getPopElement());
@@ -1194,10 +1252,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getCommitter_PopProject(),
         "committers", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getPopProject_CodeRoots(),
-        this.getCodeRoot(),
-        this.getCodeRoot_PopProject(),
-        "codeRoots", null, 1, -1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getPopProject_PrimaryModule(),
+        this.getRepositoryModule(),
+        this.getRepositoryModule_PopProject(),
+        "primaryModule", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getPopProject_MainBranch(),
         this.getMainBranch(),
@@ -1254,16 +1312,29 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     op = addEOperation(committerEClass, null, "deactivate", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "exit", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(codeRootEClass, CodeRoot.class, "CodeRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEClass(repositoryModuleEClass, RepositoryModule.class,
+        "RepositoryModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getCodeRoot_PopProject(),
+        getRepositoryModule_PopProject(),
         this.getPopProject(),
-        this.getPopProject_CodeRoots(),
-        "popProject", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        this.getPopProject_PrimaryModule(),
+        "popProject", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getCodeRoot_RootPath(),
+        getRepositoryModule_Adapter(),
+        this.getRepositoryAdapter(),
+        "adapter", null, 1, 1, RepositoryModule.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getRepositoryModule_AdapterType(),
         ecorePackage.getEString(),
-        "rootPath", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "adapterType", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getRepositoryModule_AdapterDescriptor(),
+        ecorePackage.getEString(),
+        "adapterDescriptor", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getRepositoryModule_ModuleDescriptor(),
+        ecorePackage.getEString(),
+        "moduleDescriptor", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -1543,6 +1614,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getDelivery(),
         this.getDelivery_Merges(),
         "delivery", null, 1, 1, Merge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    // Initialize data types
+    initEDataType(repositoryAdapterEDataType, IRepositoryAdapter.class,
+        "RepositoryAdapter", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     // Create resource
     createResource(eNS_URI);
