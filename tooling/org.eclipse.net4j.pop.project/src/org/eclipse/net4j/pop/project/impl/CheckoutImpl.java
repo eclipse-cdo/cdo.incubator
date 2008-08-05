@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.4 2008-08-05 07:50:21 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.5 2008-08-05 07:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -50,11 +50,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   /**
    * @ADDED
    */
-  private PopProject popProject;
-
-  /**
-   * @ADDED
-   */
   private CheckoutDiscriminator discriminator;
 
   /**
@@ -90,15 +85,7 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
    */
   public PopProject getPopProject()
   {
-    return popProject;
-  }
-
-  /**
-   * @ADDED
-   */
-  public void setPopProject(PopProject popProject)
-  {
-    this.popProject = popProject;
+    return getDiscriminator().getPopProject();
   }
 
   /**

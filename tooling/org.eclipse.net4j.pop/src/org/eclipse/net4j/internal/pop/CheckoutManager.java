@@ -16,8 +16,10 @@ import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
+import org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl;
 import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
 import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -158,11 +160,14 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
       PopElement popElement = pop.getPopElement(checkoutName);
       if (popElement instanceof CheckoutDiscriminator)
       {
-        CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
-        checkout.setPopProject(popProject);
-        checkout.setDiscriminator((CheckoutDiscriminator)popElement);
-        checkout.setLocation(location.append(checkoutName));
-        addCheckout(checkout);
+        CheckoutDiscriminatorImpl discriminator = (CheckoutDiscriminatorImpl)popElement;
+        if (ObjectUtil.equals(discriminator.getIdValue(), checkoutName))
+        {
+          CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
+          checkout.setDiscriminator(discriminator);
+          checkout.setLocation(location.append(checkoutName));
+          addCheckout(checkout);
+        }
       }
     }
   }
