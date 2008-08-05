@@ -29,10 +29,6 @@
         <genParameters ecoreParameter="Project.ecore#//PopProject/addCommitter/entry"/>
       </genOperations>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//CodeRoot">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CodeRoot/popProject"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRoot/rootPath"/>
-    </genClasses>
     <genClasses ecoreClass="Project.ecore#//Committer">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Committer/popProject"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/repositoryLogin"/>
@@ -44,6 +40,16 @@
       <genOperations ecoreOperation="Project.ecore#//Committer/deactivate">
         <genParameters ecoreParameter="Project.ecore#//Committer/deactivate/exit"/>
       </genOperations>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//CodeRoot">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CodeRoot/popProject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CodeRoot/rootPath"/>
+    </genClasses>
+    <genClasses ecoreClass="Project.ecore#//Checkout">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Checkout/discriminator"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="Project.ecore#//CheckoutDiscriminator">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CheckoutDiscriminator/checkouts"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//TaggedElement">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//TaggedElement/tag"/>
@@ -93,7 +99,6 @@
       </genOperations>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//IntegrationStream">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//IntegrationStream/name"/>
       <genFeatures property="None" children="true" createChild="true" propertySortChoices="true"
           ecoreFeature="ecore:EReference Project.ecore#//IntegrationStream/taskStreams"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//IntegrationStream/releases"/>

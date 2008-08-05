@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.12 2008-08-05 05:54:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -16,6 +16,8 @@ import org.eclipse.net4j.pop.base.Displayable;
 import org.eclipse.net4j.pop.base.Identifiable;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
+import org.eclipse.net4j.pop.project.Checkout;
+import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
@@ -125,14 +127,6 @@ public class ProjectSwitch<T>
         result = defaultCase(theEObject);
       return result;
     }
-    case ProjectPackage.CODE_ROOT:
-    {
-      CodeRoot codeRoot = (CodeRoot)theEObject;
-      T result = caseCodeRoot(codeRoot);
-      if (result == null)
-        result = defaultCase(theEObject);
-      return result;
-    }
     case ProjectPackage.COMMITTER:
     {
       Committer committer = (Committer)theEObject;
@@ -143,6 +137,42 @@ public class ProjectSwitch<T>
         result = caseIdentifiable(committer);
       if (result == null)
         result = caseDisplayable(committer);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProjectPackage.CODE_ROOT:
+    {
+      CodeRoot codeRoot = (CodeRoot)theEObject;
+      T result = caseCodeRoot(codeRoot);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProjectPackage.CHECKOUT:
+    {
+      Checkout checkout = (Checkout)theEObject;
+      T result = caseCheckout(checkout);
+      if (result == null)
+        result = casePopElement(checkout);
+      if (result == null)
+        result = caseIdentifiable(checkout);
+      if (result == null)
+        result = caseDisplayable(checkout);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR:
+    {
+      CheckoutDiscriminator checkoutDiscriminator = (CheckoutDiscriminator)theEObject;
+      T result = caseCheckoutDiscriminator(checkoutDiscriminator);
+      if (result == null)
+        result = casePopElement(checkoutDiscriminator);
+      if (result == null)
+        result = caseIdentifiable(checkoutDiscriminator);
+      if (result == null)
+        result = caseDisplayable(checkoutDiscriminator);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -166,6 +196,8 @@ public class ProjectSwitch<T>
       Tag tag = (Tag)theEObject;
       T result = caseTag(tag);
       if (result == null)
+        result = caseCheckoutDiscriminator(tag);
+      if (result == null)
         result = casePopElement(tag);
       if (result == null)
         result = caseIdentifiable(tag);
@@ -179,6 +211,8 @@ public class ProjectSwitch<T>
     {
       Branch branch = (Branch)theEObject;
       T result = caseBranch(branch);
+      if (result == null)
+        result = caseCheckoutDiscriminator(branch);
       if (result == null)
         result = casePopElement(branch);
       if (result == null)
@@ -195,6 +229,8 @@ public class ProjectSwitch<T>
       T result = caseMainBranch(mainBranch);
       if (result == null)
         result = caseBranch(mainBranch);
+      if (result == null)
+        result = caseCheckoutDiscriminator(mainBranch);
       if (result == null)
         result = casePopElement(mainBranch);
       if (result == null)
@@ -213,6 +249,8 @@ public class ProjectSwitch<T>
         result = caseBranch(subBranch);
       if (result == null)
         result = caseTaggedElement(subBranch);
+      if (result == null)
+        result = caseCheckoutDiscriminator(subBranch);
       if (result == null)
         result = casePopElement(subBranch);
       if (result == null)
@@ -438,6 +476,38 @@ public class ProjectSwitch<T>
    * @generated
    */
   public T caseCodeRoot(CodeRoot object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Checkout</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Checkout</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckout(Checkout object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Checkout Discriminator</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Checkout Discriminator</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseCheckoutDiscriminator(CheckoutDiscriminator object)
   {
     return null;
   }

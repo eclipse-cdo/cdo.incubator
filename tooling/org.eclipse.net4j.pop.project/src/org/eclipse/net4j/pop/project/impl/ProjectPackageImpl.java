@@ -8,12 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.15 2008-08-03 18:55:59 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.16 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.project.Branch;
+import org.eclipse.net4j.pop.project.Checkout;
+import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
@@ -59,6 +61,20 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * @generated
    */
   private EClass codeRootEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass checkoutEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass checkoutDiscriminatorEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -339,6 +355,46 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
   public EAttribute getCodeRoot_RootPath()
   {
     return (EAttribute)codeRootEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCheckout()
+  {
+    return checkoutEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCheckout_Discriminator()
+  {
+    return (EReference)checkoutEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getCheckoutDiscriminator()
+  {
+    return checkoutDiscriminatorEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getCheckoutDiscriminator_Checkouts()
+  {
+    return (EReference)checkoutDiscriminatorEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -941,10 +997,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(popProjectEClass, POP_PROJECT__MAIN_BRANCH);
     createEReference(popProjectEClass, POP_PROJECT__ROOT_STREAM);
 
-    codeRootEClass = createEClass(CODE_ROOT);
-    createEReference(codeRootEClass, CODE_ROOT__POP_PROJECT);
-    createEAttribute(codeRootEClass, CODE_ROOT__ROOT_PATH);
-
     committerEClass = createEClass(COMMITTER);
     createEReference(committerEClass, COMMITTER__POP_PROJECT);
     createEAttribute(committerEClass, COMMITTER__REPOSITORY_LOGIN);
@@ -953,6 +1005,16 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(committerEClass, COMMITTER__ENTRY);
     createEAttribute(committerEClass, COMMITTER__EXIT);
     createEAttribute(committerEClass, COMMITTER__ACTIVE);
+
+    codeRootEClass = createEClass(CODE_ROOT);
+    createEReference(codeRootEClass, CODE_ROOT__POP_PROJECT);
+    createEAttribute(codeRootEClass, CODE_ROOT__ROOT_PATH);
+
+    checkoutEClass = createEClass(CHECKOUT);
+    createEReference(checkoutEClass, CHECKOUT__DISCRIMINATOR);
+
+    checkoutDiscriminatorEClass = createEClass(CHECKOUT_DISCRIMINATOR);
+    createEReference(checkoutDiscriminatorEClass, CHECKOUT_DISCRIMINATOR__CHECKOUTS);
 
     taggedElementEClass = createEClass(TAGGED_ELEMENT);
     createEReference(taggedElementEClass, TAGGED_ELEMENT__TAG);
@@ -1058,9 +1120,11 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     // Add supertypes to classes
     popProjectEClass.getESuperTypes().add(theBasePackage.getPopElement());
     committerEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    checkoutEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    checkoutDiscriminatorEClass.getESuperTypes().add(theBasePackage.getPopElement());
     taggedElementEClass.getESuperTypes().add(theBasePackage.getPopElement());
-    tagEClass.getESuperTypes().add(theBasePackage.getPopElement());
-    branchEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    tagEClass.getESuperTypes().add(this.getCheckoutDiscriminator());
+    branchEClass.getESuperTypes().add(this.getCheckoutDiscriminator());
     mainBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getTaggedElement());
@@ -1118,17 +1182,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     addEParameter(op, ecorePackage.getEString(), "email", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "entry", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(codeRootEClass, CodeRoot.class, "CodeRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEReference(
-        getCodeRoot_PopProject(),
-        this.getPopProject(),
-        this.getPopProject_CodeRoots(),
-        "popProject", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getCodeRoot_RootPath(),
-        ecorePackage.getEString(),
-        "rootPath", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
     initEClass(committerEClass, Committer.class, "Committer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getCommitter_PopProject(),
@@ -1162,6 +1215,32 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     op = addEOperation(committerEClass, null, "deactivate", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, ecorePackage.getEDate(), "exit", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(codeRootEClass, CodeRoot.class, "CodeRoot", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getCodeRoot_PopProject(),
+        this.getPopProject(),
+        this.getPopProject_CodeRoots(),
+        "popProject", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getCodeRoot_RootPath(),
+        ecorePackage.getEString(),
+        "rootPath", null, 1, 1, CodeRoot.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getCheckout_Discriminator(),
+        this.getCheckoutDiscriminator(),
+        this.getCheckoutDiscriminator_Checkouts(),
+        "discriminator", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(checkoutDiscriminatorEClass, CheckoutDiscriminator.class,
+        "CheckoutDiscriminator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getCheckoutDiscriminator_Checkouts(),
+        this.getCheckout(),
+        this.getCheckout_Discriminator(),
+        "checkouts", null, 0, -1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(taggedElementEClass, TaggedElement.class,
         "TaggedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

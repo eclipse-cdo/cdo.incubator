@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectAdapterFactory.java,v 1.9 2008-08-01 11:01:46 estepper Exp $
+ * $Id: ProjectAdapterFactory.java,v 1.10 2008-08-05 05:54:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -16,6 +16,8 @@ import org.eclipse.net4j.pop.base.Displayable;
 import org.eclipse.net4j.pop.base.Identifiable;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Branch;
+import org.eclipse.net4j.pop.project.Checkout;
+import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
@@ -105,15 +107,27 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
     }
 
     @Override
+    public Adapter caseCommitter(Committer object)
+    {
+      return createCommitterAdapter();
+    }
+
+    @Override
     public Adapter caseCodeRoot(CodeRoot object)
     {
       return createCodeRootAdapter();
     }
 
     @Override
-    public Adapter caseCommitter(Committer object)
+    public Adapter caseCheckout(Checkout object)
     {
-      return createCommitterAdapter();
+      return createCheckoutAdapter();
+    }
+
+    @Override
+    public Adapter caseCheckoutDiscriminator(CheckoutDiscriminator object)
+    {
+      return createCheckoutDiscriminatorAdapter();
     }
 
     @Override
@@ -272,6 +286,36 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createCodeRootAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.Checkout <em>Checkout</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.project.Checkout
+   * @generated
+   */
+  public Adapter createCheckoutAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator <em>Checkout Discriminator</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.project.CheckoutDiscriminator
+   * @generated
+   */
+  public Adapter createCheckoutDiscriminatorAdapter()
   {
     return null;
   }

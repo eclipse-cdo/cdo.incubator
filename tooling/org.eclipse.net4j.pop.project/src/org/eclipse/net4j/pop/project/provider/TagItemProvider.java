@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagItemProvider.java,v 1.10 2008-08-03 17:31:34 estepper Exp $
+ * $Id: TagItemProvider.java,v 1.11 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
-import org.eclipse.net4j.pop.base.provider.PopElementItemProvider;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Tag;
 
@@ -39,7 +38,7 @@ import java.util.List;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TagItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
+public class TagItemProvider extends CheckoutDiscriminatorItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
     IItemColorProvider, IItemFontProvider
 {

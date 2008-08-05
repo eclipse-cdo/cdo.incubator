@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.10 2008-08-01 20:05:23 estepper Exp $
+ * $Id: TagImpl.java,v 1.11 2008-08-05 05:54:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
-import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Tag;
@@ -38,7 +37,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public class TagImpl extends PopElementImpl implements Tag
+public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc

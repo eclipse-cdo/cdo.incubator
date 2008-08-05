@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.11 2008-08-01 20:05:23 estepper Exp $
+ * $Id: BranchImpl.java,v 1.12 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
-import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Stream;
@@ -44,7 +43,7 @@ import java.util.Collection;
  *
  * @generated
  */
-public abstract class BranchImpl extends PopElementImpl implements Branch
+public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Branch
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc

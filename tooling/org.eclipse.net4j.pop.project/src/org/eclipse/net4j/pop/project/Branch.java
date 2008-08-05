@@ -8,11 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Branch.java,v 1.9 2008-08-01 18:29:00 estepper Exp $
+ * $Id: Branch.java,v 1.10 2008-08-05 05:54:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
-
-import org.eclipse.net4j.pop.base.PopElement;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -35,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
  * @model abstract="true"
  * @generated
  */
-public interface Branch extends PopElement
+public interface Branch extends CheckoutDiscriminator
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

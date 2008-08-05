@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectItemProviderAdapterFactory.java,v 1.8 2008-08-01 20:05:23 estepper Exp $
+ * $Id: ProjectItemProviderAdapterFactory.java,v 1.9 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -148,6 +148,31 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
     }
 
     return codeRootItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.Checkout} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected CheckoutItemProvider checkoutItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Checkout}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createCheckoutAdapter()
+  {
+    if (checkoutItemProvider == null)
+    {
+      checkoutItemProvider = new CheckoutItemProvider(this);
+    }
+
+    return checkoutItemProvider;
   }
 
   /**
@@ -557,10 +582,12 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   {
     if (popProjectItemProvider != null)
       popProjectItemProvider.dispose();
-    if (codeRootItemProvider != null)
-      codeRootItemProvider.dispose();
     if (committerItemProvider != null)
       committerItemProvider.dispose();
+    if (codeRootItemProvider != null)
+      codeRootItemProvider.dispose();
+    if (checkoutItemProvider != null)
+      checkoutItemProvider.dispose();
     if (tagItemProvider != null)
       tagItemProvider.dispose();
     if (mainBranchItemProvider != null)

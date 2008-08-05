@@ -8,17 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamItemProvider.java,v 1.11 2008-08-05 05:54:19 estepper Exp $
+ * $Id: CheckoutDiscriminatorItemProvider.java,v 1.1 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
-import org.eclipse.net4j.pop.project.IntegrationStream;
-import org.eclipse.net4j.pop.project.ProjectFactory;
+import org.eclipse.net4j.pop.base.provider.PopElementItemProvider;
+import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -33,28 +33,30 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.IntegrationStream} object. <!--
- * begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.CheckoutDiscriminator} object.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
  * @generated
  */
-public class IntegrationStreamItemProvider extends StreamItemProvider implements IEditingDomainItemProvider,
+public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
     IItemColorProvider, IItemFontProvider
 {
   /**
    * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public IntegrationStreamItemProvider(AdapterFactory adapterFactory)
+  public CheckoutDiscriminatorItemProvider(AdapterFactory adapterFactory)
   {
     super(adapterFactory);
   }
 
   /**
    * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -64,58 +66,47 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
     {
       super.getPropertyDescriptors(object);
 
+      addCheckoutsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
+   * This adds a property descriptor for the Checkouts feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+  protected void addCheckoutsPropertyDescriptor(Object object)
   {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(ProjectPackage.Literals.INTEGRATION_STREAM__TASK_STREAMS);
-      childrenFeatures.add(ProjectPackage.Literals.INTEGRATION_STREAM__RELEASES);
-    }
-    return childrenFeatures;
+    itemPropertyDescriptors
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+            getResourceLocator(),
+            getString("_UI_CheckoutDiscriminator_checkouts_feature"), //$NON-NLS-1$
+            getString(
+                "_UI_PropertyDescriptor_description", "_UI_CheckoutDiscriminator_checkouts_feature", "_UI_CheckoutDiscriminator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            ProjectPackage.Literals.CHECKOUT_DISCRIMINATOR__CHECKOUTS, false, false, false, null, null, null));
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
-   */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
-  {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
-
-    return super.getChildFeature(object, child);
-  }
-
-  /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
    */
   @Override
   public String getText(Object object)
   {
-    throw new UnsupportedOperationException();
+    String label = ((CheckoutDiscriminator)object).getId();
+    return label == null || label.length() == 0 ? getString("_UI_CheckoutDiscriminator_type") : //$NON-NLS-1$
+        getString("_UI_CheckoutDiscriminator_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
    * This handles model notifications by calling {@link #updateChildren} to update any cached
    * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -123,11 +114,10 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   {
     updateChildren(notification);
 
-    switch (notification.getFeatureID(IntegrationStream.class))
+    switch (notification.getFeatureID(CheckoutDiscriminator.class))
     {
-    case ProjectPackage.INTEGRATION_STREAM__TASK_STREAMS:
-    case ProjectPackage.INTEGRATION_STREAM__RELEASES:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUTS:
+      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }
     super.notifyChanged(notification);
@@ -136,19 +126,14 @@ public class IntegrationStreamItemProvider extends StreamItemProvider implements
   /**
    * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
    * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
   @Override
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.INTEGRATION_STREAM__TASK_STREAMS,
-        ProjectFactory.eINSTANCE.createTaskStream()));
-
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.INTEGRATION_STREAM__RELEASES,
-        ProjectFactory.eINSTANCE.createRelease()));
   }
 
 }

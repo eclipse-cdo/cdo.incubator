@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Tag.java,v 1.8 2008-08-01 18:29:00 estepper Exp $
+ * $Id: Tag.java,v 1.9 2008-08-05 05:54:20 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
-import org.eclipse.net4j.pop.base.PopElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Tag</b></em>'. <!-- end-user-doc -->
@@ -30,7 +29,7 @@ import org.eclipse.net4j.pop.base.PopElement;
  * @model
  * @generated
  */
-public interface Tag extends PopElement
+public interface Tag extends CheckoutDiscriminator
 {
   /**
    * Returns the value of the '<em><b>Branch</b></em>' container reference.

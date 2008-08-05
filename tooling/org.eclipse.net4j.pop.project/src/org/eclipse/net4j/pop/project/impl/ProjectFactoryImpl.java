@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.9 2008-08-01 11:01:46 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.10 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
+import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CodeRoot;
 import org.eclipse.net4j.pop.project.Committer;
 import org.eclipse.net4j.pop.project.Delivery;
@@ -84,10 +85,12 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
     {
     case ProjectPackage.POP_PROJECT:
       return createPopProject();
-    case ProjectPackage.CODE_ROOT:
-      return createCodeRoot();
     case ProjectPackage.COMMITTER:
       return createCommitter();
+    case ProjectPackage.CODE_ROOT:
+      return createCodeRoot();
+    case ProjectPackage.CHECKOUT:
+      return createCheckout();
     case ProjectPackage.TAG:
       return createTag();
     case ProjectPackage.MAIN_BRANCH:
@@ -131,6 +134,17 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   {
     CodeRootImpl codeRoot = new CodeRootImpl();
     return codeRoot;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Checkout createCheckout()
+  {
+    CheckoutImpl checkout = new CheckoutImpl();
+    return checkout;
   }
 
   /**

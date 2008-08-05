@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchItemProvider.java,v 1.10 2008-08-03 17:31:34 estepper Exp $
+ * $Id: BranchItemProvider.java,v 1.11 2008-08-05 05:54:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
-import org.eclipse.net4j.pop.base.provider.PopElementItemProvider;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.ProjectPackage;
@@ -41,7 +40,7 @@ import java.util.List;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BranchItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
+public class BranchItemProvider extends CheckoutDiscriminatorItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
     IItemColorProvider, IItemFontProvider
 {

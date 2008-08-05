@@ -24,12 +24,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootStream" lowerBound="1"
         eType="#//RootStream" containment="true" eOpposite="#//RootStream/popProject"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CodeRoot">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
-        eType="#//PopProject" eOpposite="#//PopProject/codeRoots"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootPath" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Committer" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eOperations name="deactivate" lowerBound="1">
       <eParameters name="exit" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -46,18 +40,35 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
         volatile="true" transient="true" derived="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CodeRoot">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="#//PopProject" eOpposite="#//PopProject/codeRoots"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discriminator" lowerBound="1"
+        eType="#//CheckoutDiscriminator" changeable="false" volatile="true" transient="true"
+        derived="true" eOpposite="#//CheckoutDiscriminator/checkouts"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CheckoutDiscriminator" abstract="true"
+      eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkouts" upperBound="-1"
+        eType="#//Checkout" changeable="false" volatile="true" transient="true" derived="true"
+        eOpposite="#//Checkout/discriminator"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaggedElement" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="tag" lowerBound="1" eType="#//Tag"
         eOpposite="#//Tag/taggedElement"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Tag" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Tag" eSuperTypes="#//CheckoutDiscriminator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="branch" lowerBound="1"
         eType="#//Branch" eOpposite="#//Branch/tags"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taggedElement" eType="#//TaggedElement"
         eOpposite="#//TaggedElement/tag"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Branch" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Branch" abstract="true" eSuperTypes="#//CheckoutDiscriminator">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branches" upperBound="-1"
         eType="#//SubBranch" containment="true" eOpposite="#//SubBranch/parent"/>
