@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectItemProvider.java,v 1.14 2008-08-05 18:39:26 estepper Exp $
+ * $Id: PopProjectItemProvider.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.PopProject} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.PopProject} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PopProjectItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PopProjectItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -68,16 +68,14 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
       super.getPropertyDescriptors(object);
 
       addNamePropertyDescriptor(object);
-      addTeamProviderPropertyDescriptor(object);
-      addRepositoryUrlPropertyDescriptor(object);
       addCheckoutsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -91,38 +89,8 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This adds a property descriptor for the Team Provider feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  protected void addTeamProviderPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_PopProject_teamProvider_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_PopProject_teamProvider_feature", "_UI_PopProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.POP_PROJECT__TEAM_PROVIDER, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-  }
-
-  /**
-   * This adds a property descriptor for the Repository Url feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  protected void addRepositoryUrlPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_PopProject_repositoryUrl_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_PopProject_repositoryUrl_feature", "_UI_PopProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.POP_PROJECT__REPOSITORY_URL, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-  }
-
-  /**
-   * This adds a property descriptor for the Checkouts feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Checkouts feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addCheckoutsPropertyDescriptor(Object object)
@@ -136,9 +104,9 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -147,9 +115,7 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__COMMITTERS);
-      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__PRIMARY_MODULE);
-      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__MAIN_BRANCH);
+      childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__REPOSITORY);
       childrenFeatures.add(ProjectPackage.Literals.POP_PROJECT__ROOT_STREAM);
     }
     return childrenFeatures;
@@ -157,7 +123,6 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -170,8 +135,8 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This returns PopProject.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns PopProject.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -194,9 +159,9 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -207,13 +172,9 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
     switch (notification.getFeatureID(PopProject.class))
     {
     case ProjectPackage.POP_PROJECT__NAME:
-    case ProjectPackage.POP_PROJECT__TEAM_PROVIDER:
-    case ProjectPackage.POP_PROJECT__REPOSITORY_URL:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
-    case ProjectPackage.POP_PROJECT__COMMITTERS:
-    case ProjectPackage.POP_PROJECT__PRIMARY_MODULE:
-    case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
+    case ProjectPackage.POP_PROJECT__REPOSITORY:
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
@@ -222,9 +183,9 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -232,11 +193,8 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__COMMITTERS,
-        ProjectFactory.eINSTANCE.createCommitter()));
-
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__MAIN_BRANCH,
-        ProjectFactory.eINSTANCE.createMainBranch()));
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__REPOSITORY,
+        ProjectFactory.eINSTANCE.createRepository()));
 
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.POP_PROJECT__ROOT_STREAM,
         ProjectFactory.eINSTANCE.createRootStream()));

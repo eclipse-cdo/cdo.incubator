@@ -8,11 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProject.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
+ * $Id: WorkspaceProject.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 
-import org.eclipse.net4j.pop.project.RepositoryModule;
+import org.eclipse.net4j.pop.project.Module;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getWorkingSets <em>Working Sets</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getWorkspaceSpec <em>Workspace Spec</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getCodeRoot <em>Code Root</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getCodePath <em>Code Path</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getModule <em>Module</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.WorkspaceProject#getRepositoryPath <em>Repository Path</em>}</li>
  * </ul>
  * </p>
  * 
@@ -111,31 +111,30 @@ public interface WorkspaceProject extends EObject
   void setWorkspaceSpec(PopProduct value);
 
   /**
-   * Returns the value of the '<em><b>Repository Module</b></em>' reference. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Module</b></em>' reference. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Repository Module</em>' reference isn't clear, there really should be more of a
-   * description here...
+   * If the meaning of the '<em>Module</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
    * 
-   * @return the value of the '<em>Repository Module</em>' reference.
-   * @see #setRepositoryModule(RepositoryModule)
-   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_RepositoryModule()
+   * @return the value of the '<em>Module</em>' reference.
+   * @see #setModule(Module)
+   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_Module()
    * @model required="true"
    * @generated
    */
-  RepositoryModule getRepositoryModule();
+  Module getModule();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getRepositoryModule
-   * <em>Repository Module</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getModule <em>Module</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @param value
-   *          the new value of the '<em>Repository Module</em>' reference.
-   * @see #getRepositoryModule()
+   *          the new value of the '<em>Module</em>' reference.
+   * @see #getModule()
    * @generated
    */
-  void setRepositoryModule(RepositoryModule value);
+  void setModule(Module value);
 
   /**
    * Returns the value of the '<em><b>Repository Path</b></em>' attribute. <!-- begin-user-doc -->

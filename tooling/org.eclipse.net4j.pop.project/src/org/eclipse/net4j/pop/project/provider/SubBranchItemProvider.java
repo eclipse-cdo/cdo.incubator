@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchItemProvider.java,v 1.10 2008-08-05 18:39:26 estepper Exp $
+ * $Id: SubBranchItemProvider.java,v 1.11 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -32,9 +32,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.SubBranch} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.SubBranch} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
 public class SubBranchItemProvider extends BranchItemProvider implements IEditingDomainItemProvider,
@@ -42,8 +42,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public SubBranchItemProvider(AdapterFactory adapterFactory)
@@ -52,8 +52,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -70,8 +70,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This adds a property descriptor for the Tag feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Tag feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addTagPropertyDescriptor(Object object)
@@ -83,8 +83,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This adds a property descriptor for the Parent feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Parent feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addParentPropertyDescriptor(Object object)
@@ -96,8 +96,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This returns SubBranch.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns SubBranch.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -120,9 +120,9 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -140,9 +140,9 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

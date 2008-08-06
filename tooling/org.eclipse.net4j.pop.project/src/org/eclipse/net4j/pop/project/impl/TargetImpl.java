@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetImpl.java,v 1.10 2008-08-05 18:39:27 estepper Exp $
+ * $Id: TargetImpl.java,v 1.11 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -33,11 +33,11 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getDate <em>Date</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getStreams <em>Streams</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getDate <em>Date</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TargetImpl#getStreams <em>Streams</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class TargetImpl extends TaggedElementImpl implements Target
@@ -53,8 +53,8 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
   protected static final Date DATE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getDate()
    * @generated
    * @ordered
@@ -62,9 +62,9 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
   protected Date date = DATE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getStreams() <em>Streams</em>}' reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getStreams() <em>Streams</em>}' reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getStreams()
    * @generated
    * @ordered
@@ -73,7 +73,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected TargetImpl()
@@ -83,7 +82,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -94,7 +92,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getDate()
@@ -104,7 +101,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDate(Date newDate)
@@ -117,7 +113,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<TaskStream> getStreams()
@@ -132,7 +127,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -149,7 +143,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -165,7 +158,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -183,7 +175,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -205,7 +196,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -225,7 +215,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -243,7 +232,6 @@ public abstract class TargetImpl extends TaggedElementImpl implements Target
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

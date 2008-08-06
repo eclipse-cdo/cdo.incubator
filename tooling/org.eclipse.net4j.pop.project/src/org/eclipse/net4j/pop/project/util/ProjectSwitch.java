@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.16 2008-08-05 18:39:27 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.17 2008-08-06 07:07:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -26,10 +26,12 @@ import org.eclipse.net4j.pop.project.MainBranch;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.Merge;
 import org.eclipse.net4j.pop.project.Milestone;
+import org.eclipse.net4j.pop.project.Module;
 import org.eclipse.net4j.pop.project.PopProject;
+import org.eclipse.net4j.pop.project.PrimaryModule;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
-import org.eclipse.net4j.pop.project.RepositoryModule;
+import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
@@ -48,22 +50,21 @@ import java.util.List;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage
  * @generated
  */
 public class ProjectSwitch<T>
 {
   /**
-   * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached model package
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected static ProjectPackage modelPackage;
 
   /**
-   * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProjectSwitch()
@@ -77,7 +78,6 @@ public class ProjectSwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -89,7 +89,6 @@ public class ProjectSwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -109,7 +108,6 @@ public class ProjectSwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -131,6 +129,50 @@ public class ProjectSwitch<T>
         result = defaultCase(theEObject);
       return result;
     }
+    case ProjectPackage.REPOSITORY:
+    {
+      Repository repository = (Repository)theEObject;
+      T result = caseRepository(repository);
+      if (result == null)
+        result = casePopElement(repository);
+      if (result == null)
+        result = caseIdentifiable(repository);
+      if (result == null)
+        result = caseDisplayable(repository);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProjectPackage.MODULE:
+    {
+      Module module = (Module)theEObject;
+      T result = caseModule(module);
+      if (result == null)
+        result = casePopElement(module);
+      if (result == null)
+        result = caseIdentifiable(module);
+      if (result == null)
+        result = caseDisplayable(module);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProjectPackage.PRIMARY_MODULE:
+    {
+      PrimaryModule primaryModule = (PrimaryModule)theEObject;
+      T result = casePrimaryModule(primaryModule);
+      if (result == null)
+        result = caseModule(primaryModule);
+      if (result == null)
+        result = casePopElement(primaryModule);
+      if (result == null)
+        result = caseIdentifiable(primaryModule);
+      if (result == null)
+        result = caseDisplayable(primaryModule);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
     case ProjectPackage.COMMITTER:
     {
       Committer committer = (Committer)theEObject;
@@ -141,34 +183,6 @@ public class ProjectSwitch<T>
         result = caseIdentifiable(committer);
       if (result == null)
         result = caseDisplayable(committer);
-      if (result == null)
-        result = defaultCase(theEObject);
-      return result;
-    }
-    case ProjectPackage.REPOSITORY_MODULE:
-    {
-      RepositoryModule repositoryModule = (RepositoryModule)theEObject;
-      T result = caseRepositoryModule(repositoryModule);
-      if (result == null)
-        result = casePopElement(repositoryModule);
-      if (result == null)
-        result = caseIdentifiable(repositoryModule);
-      if (result == null)
-        result = caseDisplayable(repositoryModule);
-      if (result == null)
-        result = defaultCase(theEObject);
-      return result;
-    }
-    case ProjectPackage.CHECKOUT:
-    {
-      Checkout checkout = (Checkout)theEObject;
-      T result = caseCheckout(checkout);
-      if (result == null)
-        result = casePopElement(checkout);
-      if (result == null)
-        result = caseIdentifiable(checkout);
-      if (result == null)
-        result = caseDisplayable(checkout);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -267,6 +281,20 @@ public class ProjectSwitch<T>
         result = caseIdentifiable(subBranch);
       if (result == null)
         result = caseDisplayable(subBranch);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProjectPackage.CHECKOUT:
+    {
+      Checkout checkout = (Checkout)theEObject;
+      T result = caseCheckout(checkout);
+      if (result == null)
+        result = casePopElement(checkout);
+      if (result == null)
+        result = caseIdentifiable(checkout);
+      if (result == null)
+        result = caseDisplayable(checkout);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -463,11 +491,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Pop Project</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Pop Project</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Pop Project</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -478,11 +505,58 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Checkout</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Repository</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Repository</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRepository(Repository object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Module</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Module</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModule(Module object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Primary Module</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Primary Module</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePrimaryModule(PrimaryModule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Checkout</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Checkout</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -509,11 +583,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Committer</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Committer</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Committer</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -524,26 +597,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Repository Module</em>'. <!-- begin-user-doc
-   * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Repository Module</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRepositoryModule(RepositoryModule object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Tagged Element</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Tagged Element</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Tagged Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -554,11 +611,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Tag</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Tag</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Tag</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -569,11 +625,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Branch</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Branch</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Branch</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -584,11 +639,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Main Branch</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Main Branch</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Main Branch</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -599,11 +653,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Sub Branch</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Sub Branch</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Sub Branch</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -614,11 +667,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Stream</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Stream</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Stream</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -629,11 +681,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Task Stream</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Task Stream</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Task Stream</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -644,11 +695,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Integration Stream</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Integration Stream</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Integration Stream</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -659,11 +709,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Development Stream</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Development Stream</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Development Stream</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -674,11 +723,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Maintenance Stream</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Maintenance Stream</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Maintenance Stream</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -689,11 +737,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Root Stream</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Root Stream</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Root Stream</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -704,11 +751,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Target</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Target</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Target</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -719,11 +765,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Release</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Release</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Release</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -734,11 +779,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Milestone</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Milestone</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Milestone</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -749,11 +793,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Delivery</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Delivery</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Delivery</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -764,11 +807,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Merge</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Merge</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Merge</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -779,11 +821,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -794,11 +835,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Displayable</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Displayable</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Displayable</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -809,11 +849,10 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Pop Element</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Pop Element</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Pop Element</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -824,12 +863,11 @@ public class ProjectSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
    * anyway. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject)
    * @generated

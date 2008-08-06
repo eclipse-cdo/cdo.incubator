@@ -26,8 +26,8 @@
         eType="#//WorkingSet" eOpposite="#//WorkingSet/projects"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="workspaceSpec" lowerBound="1"
         eType="#//PopProduct" eOpposite="#//PopProduct/projects"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="repositoryModule" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.net4j.pop.project/model/Project.ecore#//RepositoryModule"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="module" lowerBound="1"
+        eType="ecore:EClass ../../org.eclipse.net4j.pop.project/model/Project.ecore#//Module"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryPath" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkspaceConfigurator" abstract="true">

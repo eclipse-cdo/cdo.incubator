@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductPackageImpl.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
+ * $Id: ProductPackageImpl.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -306,7 +306,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage
    * 
    * @generated
    */
-  public EReference getWorkspaceProject_RepositoryModule()
+  public EReference getWorkspaceProject_Module()
   {
     return (EReference)workspaceProjectEClass.getEStructuralFeatures().get(3);
   }
@@ -476,7 +476,7 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage
     createEAttribute(workspaceProjectEClass, WORKSPACE_PROJECT__NAME);
     createEReference(workspaceProjectEClass, WORKSPACE_PROJECT__WORKING_SETS);
     createEReference(workspaceProjectEClass, WORKSPACE_PROJECT__WORKSPACE_SPEC);
-    createEReference(workspaceProjectEClass, WORKSPACE_PROJECT__REPOSITORY_MODULE);
+    createEReference(workspaceProjectEClass, WORKSPACE_PROJECT__MODULE);
     createEAttribute(workspaceProjectEClass, WORKSPACE_PROJECT__REPOSITORY_PATH);
 
     workspaceConfiguratorEClass = createEClass(WORKSPACE_CONFIGURATOR);
@@ -592,10 +592,10 @@ public class ProductPackageImpl extends EPackageImpl implements ProductPackage
         this.getPopProduct_Projects(),
         "workspaceSpec", null, 1, 1, WorkspaceProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getWorkspaceProject_RepositoryModule(),
-        theProjectPackage.getRepositoryModule(),
+        getWorkspaceProject_Module(),
+        theProjectPackage.getModule(),
         null,
-        "repositoryModule", null, 1, 1, WorkspaceProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "module", null, 1, 1, WorkspaceProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getWorkspaceProject_RepositoryPath(),
         ecorePackage.getEString(),

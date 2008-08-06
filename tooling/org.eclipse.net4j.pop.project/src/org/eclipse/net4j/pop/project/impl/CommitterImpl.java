@@ -8,14 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.13 2008-08-06 06:23:58 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.14 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Committer;
-import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.Repository;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -31,39 +31,39 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getPopProject <em>Pop Project</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepositoryLogin <em>Repository Login</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getLogin <em>Login</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CommitterImpl extends PopElementImpl implements Committer
 {
   /**
-   * The default value of the '{@link #getRepositoryLogin() <em>Repository Login</em>}' attribute. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
-   * @see #getRepositoryLogin()
+   * The default value of the '{@link #getLogin() <em>Login</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogin()
    * @generated
    * @ordered
    */
-  protected static final String REPOSITORY_LOGIN_EDEFAULT = null;
+  protected static final String LOGIN_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRepositoryLogin() <em>Repository Login</em>}' attribute. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * 
-   * @see #getRepositoryLogin()
+   * The cached value of the '{@link #getLogin() <em>Login</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLogin()
    * @generated
    * @ordered
    */
-  protected String repositoryLogin = REPOSITORY_LOGIN_EDEFAULT;
+  protected String login = LOGIN_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -76,8 +76,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -135,8 +135,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getExit()
    * @generated
    * @ordered
@@ -155,7 +155,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CommitterImpl()
@@ -165,7 +164,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -175,94 +173,92 @@ public class CommitterImpl extends PopElementImpl implements Committer
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public PopProject getPopProject()
+  public Repository getRepository()
   {
-    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT)
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY)
       return null;
-    return (PopProject)eContainer();
+    return (Repository)eContainer();
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public PopProject basicGetPopProject()
+  public Repository basicGetRepository()
   {
-    if (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT)
+    if (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY)
       return null;
-    return (PopProject)eInternalContainer();
+    return (Repository)eInternalContainer();
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
+  public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
   {
-    msgs = eBasicSetContainer((InternalEObject)newPopProject, ProjectPackage.COMMITTER__POP_PROJECT, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newRepository, ProjectPackage.COMMITTER__REPOSITORY, msgs);
     return msgs;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setPopProject(PopProject newPopProject)
+  public void setRepository(Repository newRepository)
   {
-    if (newPopProject != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.COMMITTER__POP_PROJECT && newPopProject != null))
+    if (newRepository != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.COMMITTER__REPOSITORY && newRepository != null))
     {
-      if (EcoreUtil.isAncestor(this, newPopProject))
+      if (EcoreUtil.isAncestor(this, newRepository))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
-      if (newPopProject != null)
-        msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__COMMITTERS,
-            PopProject.class, msgs);
-      msgs = basicSetPopProject(newPopProject, msgs);
+      if (newRepository != null)
+        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.REPOSITORY__COMMITTERS,
+            Repository.class, msgs);
+      msgs = basicSetRepository(newRepository, msgs);
       if (msgs != null)
         msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__POP_PROJECT, newPopProject,
-          newPopProject));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__REPOSITORY, newRepository,
+          newRepository));
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public String getRepositoryLogin()
+  public String getLogin()
   {
-    return repositoryLogin;
+    return login;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setRepositoryLogin(String newRepositoryLogin)
+  public void setLogin(String newLogin)
   {
-    String oldRepositoryLogin = repositoryLogin;
-    repositoryLogin = newRepositoryLogin;
+    String oldLogin = login;
+    login = newLogin;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__REPOSITORY_LOGIN,
-          oldRepositoryLogin, repositoryLogin));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.COMMITTER__LOGIN, oldLogin, login));
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -272,7 +268,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -285,7 +280,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getEmail()
@@ -295,7 +289,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -308,7 +301,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getEntry()
@@ -318,7 +310,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -331,7 +322,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getExit()
@@ -341,7 +331,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -364,18 +353,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
-   */
-  public void deactivate(Date exit)
-  {
-    // TODO: implement CommitterImpl.deactivate(exit)
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -383,17 +360,16 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
+    case ProjectPackage.COMMITTER__REPOSITORY:
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetPopProject((PopProject)otherEnd, msgs);
+      return basicSetRepository((Repository)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -401,15 +377,14 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
-      return basicSetPopProject(null, msgs);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      return basicSetRepository(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -417,15 +392,14 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (eContainerFeatureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
-      return eInternalContainer().eInverseRemove(this, ProjectPackage.POP_PROJECT__COMMITTERS, PopProject.class, msgs);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.REPOSITORY__COMMITTERS, Repository.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -433,12 +407,12 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
+    case ProjectPackage.COMMITTER__REPOSITORY:
       if (resolve)
-        return getPopProject();
-      return basicGetPopProject();
-    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
-      return getRepositoryLogin();
+        return getRepository();
+      return basicGetRepository();
+    case ProjectPackage.COMMITTER__LOGIN:
+      return getLogin();
     case ProjectPackage.COMMITTER__NAME:
       return getName();
     case ProjectPackage.COMMITTER__EMAIL:
@@ -455,7 +429,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -463,11 +436,11 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
-      setPopProject((PopProject)newValue);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      setRepository((Repository)newValue);
       return;
-    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
-      setRepositoryLogin((String)newValue);
+    case ProjectPackage.COMMITTER__LOGIN:
+      setLogin((String)newValue);
       return;
     case ProjectPackage.COMMITTER__NAME:
       setName((String)newValue);
@@ -487,7 +460,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -495,11 +467,11 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
-      setPopProject((PopProject)null);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      setRepository((Repository)null);
       return;
-    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
-      setRepositoryLogin(REPOSITORY_LOGIN_EDEFAULT);
+    case ProjectPackage.COMMITTER__LOGIN:
+      setLogin(LOGIN_EDEFAULT);
       return;
     case ProjectPackage.COMMITTER__NAME:
       setName(NAME_EDEFAULT);
@@ -519,7 +491,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -527,11 +498,10 @@ public class CommitterImpl extends PopElementImpl implements Committer
   {
     switch (featureID)
     {
-    case ProjectPackage.COMMITTER__POP_PROJECT:
-      return basicGetPopProject() != null;
-    case ProjectPackage.COMMITTER__REPOSITORY_LOGIN:
-      return REPOSITORY_LOGIN_EDEFAULT == null ? repositoryLogin != null : !REPOSITORY_LOGIN_EDEFAULT
-          .equals(repositoryLogin);
+    case ProjectPackage.COMMITTER__REPOSITORY:
+      return basicGetRepository() != null;
+    case ProjectPackage.COMMITTER__LOGIN:
+      return LOGIN_EDEFAULT == null ? login != null : !LOGIN_EDEFAULT.equals(login);
     case ProjectPackage.COMMITTER__NAME:
       return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     case ProjectPackage.COMMITTER__EMAIL:
@@ -548,7 +518,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -558,8 +527,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
       return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (repositoryLogin: "); //$NON-NLS-1$
-    result.append(repositoryLogin);
+    result.append(" (login: "); //$NON-NLS-1$
+    result.append(login);
     result.append(", name: "); //$NON-NLS-1$
     result.append(name);
     result.append(", email: "); //$NON-NLS-1$

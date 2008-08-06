@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.14 2008-08-06 06:23:58 estepper Exp $
+ * $Id: StreamImpl.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -38,11 +38,11 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getBranch <em>Branch</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getMerges <em>Merges</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getBranch <em>Branch</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.StreamImpl#getMerges <em>Merges</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class StreamImpl extends PopElementImpl implements Stream
@@ -58,9 +58,9 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
   protected Branch branch;
 
   /**
-   * The cached value of the '{@link #getMerges() <em>Merges</em>}' containment reference list. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getMerges() <em>Merges</em>}' containment reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getMerges()
    * @generated
    * @ordered
@@ -69,7 +69,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected StreamImpl()
@@ -79,7 +78,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -90,7 +88,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch getBranch()
@@ -110,7 +107,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch basicGetBranch()
@@ -120,7 +116,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs)
@@ -141,7 +136,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBranch(Branch newBranch)
@@ -163,7 +157,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Merge> getMerges()
@@ -220,7 +213,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -241,7 +233,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -259,7 +250,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -279,7 +269,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -301,7 +290,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -321,7 +309,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.11 2008-08-05 18:39:27 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.12 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.MainBranch;
 import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.SubBranch;
 import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaggedElement;
@@ -84,7 +85,9 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       if (tag != oldTag)
       {
         if (eNotificationRequired())
+        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.SUB_BRANCH__TAG, oldTag, tag));
+        }
       }
     }
     return tag;
@@ -114,9 +117,13 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__TAG,
           oldTag, newTag);
       if (msgs == null)
+      {
         msgs = notification;
+      }
       else
+      {
         msgs.add(notification);
+      }
     }
     return msgs;
   }
@@ -132,15 +139,23 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
       NotificationChain msgs = null;
       if (tag != null)
+      {
         msgs = ((InternalEObject)tag).eInverseRemove(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
+      }
       if (newTag != null)
+      {
         msgs = ((InternalEObject)newTag).eInverseAdd(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
+      }
       msgs = basicSetTag(newTag, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__TAG, newTag, newTag));
+    }
   }
 
   /**
@@ -152,7 +167,9 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   public Branch getParent()
   {
     if (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT)
+    {
       return null;
+    }
     return (Branch)eContainer();
   }
 
@@ -164,7 +181,9 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   public Branch basicGetParent()
   {
     if (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT)
+    {
       return null;
+    }
     return (Branch)eInternalContainer();
   }
 
@@ -186,22 +205,32 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
    */
   public void setParent(Branch newParent)
   {
-    if (newParent != eInternalContainer()
-        || (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT && newParent != null))
+    if (newParent != eInternalContainer() || eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT
+        && newParent != null)
     {
       if (EcoreUtil.isAncestor(this, newParent))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newParent != null)
+      {
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.BRANCH__BRANCHES, Branch.class, msgs);
+      }
       msgs = basicSetParent(newParent, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__PARENT, newParent, newParent));
+    }
   }
 
   /**
@@ -216,11 +245,15 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
     case ProjectPackage.SUB_BRANCH__TAG:
       if (tag != null)
+      {
         msgs = ((InternalEObject)tag).eInverseRemove(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
+      }
       return basicSetTag((Tag)otherEnd, msgs);
     case ProjectPackage.SUB_BRANCH__PARENT:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetParent((Branch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -272,11 +305,15 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
     case ProjectPackage.SUB_BRANCH__TAG:
       if (resolve)
+      {
         return getTag();
+      }
       return basicGetTag();
     case ProjectPackage.SUB_BRANCH__PARENT:
       if (resolve)
+      {
         return getParent();
+      }
       return basicGetParent();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -380,6 +417,15 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       }
     }
     return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public Repository getRepository()
+  {
+    return getMainBranch().getRepository();
   }
 
   /**

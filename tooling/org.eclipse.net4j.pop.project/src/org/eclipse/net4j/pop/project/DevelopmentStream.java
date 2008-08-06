@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStream.java,v 1.8 2008-08-05 18:39:27 estepper Exp $
+ * $Id: DevelopmentStream.java,v 1.9 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -33,15 +33,15 @@ import java.util.Date;
 public interface DevelopmentStream extends IntegrationStream
 {
   /**
-   * Returns the value of the '<em><b>Maintenance Streams</b></em>' containment reference list. The list contents are of
-   * type {@link org.eclipse.net4j.pop.project.MaintenanceStream}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.MaintenanceStream#getParent <em>Parent</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Maintenance Streams</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.MaintenanceStream}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.MaintenanceStream#getParent <em>Parent</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Maintenance Streams</em>' reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Maintenance Streams</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDevelopmentStream_MaintenanceStreams()
    * @see org.eclipse.net4j.pop.project.MaintenanceStream#getParent
@@ -52,7 +52,6 @@ public interface DevelopmentStream extends IntegrationStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model required="true" dateRequired="true" compatibleRequired="true" incrementRequired="true"
    * @generated
    */

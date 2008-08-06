@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProjectItemProvider.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
+ * $Id: WorkspaceProjectItemProvider.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.provider;
 
@@ -69,7 +69,7 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
 
       addNamePropertyDescriptor(object);
       addWorkingSetsPropertyDescriptor(object);
-      addRepositoryModulePropertyDescriptor(object);
+      addModulePropertyDescriptor(object);
       addRepositoryPathPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -108,19 +108,17 @@ public class WorkspaceProjectItemProvider extends ItemProviderAdapter implements
   }
 
   /**
-   * This adds a property descriptor for the Repository Module feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Module feature. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  protected void addRepositoryModulePropertyDescriptor(Object object)
+  protected void addModulePropertyDescriptor(Object object)
   {
-    itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-            getResourceLocator(),
-            getString("_UI_WorkspaceProject_repositoryModule_feature"), //$NON-NLS-1$
-            getString(
-                "_UI_PropertyDescriptor_description", "_UI_WorkspaceProject_repositoryModule_feature", "_UI_WorkspaceProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProductPackage.Literals.WORKSPACE_PROJECT__REPOSITORY_MODULE, true, false, true, null, null, null));
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_WorkspaceProject_module_feature"), //$NON-NLS-1$
+        getString(
+            "_UI_PropertyDescriptor_description", "_UI_WorkspaceProject_module_feature", "_UI_WorkspaceProject_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProductPackage.Literals.WORKSPACE_PROJECT__MODULE, true, false, true, null, null, null));
   }
 
   /**

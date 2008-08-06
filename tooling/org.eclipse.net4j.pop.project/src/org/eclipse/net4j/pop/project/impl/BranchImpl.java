@@ -8,17 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.16 2008-08-06 06:23:58 estepper Exp $
+ * $Id: BranchImpl.java,v 1.17 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.MainBranch;
-import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
 import org.eclipse.net4j.pop.project.Tag;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -97,6 +97,11 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
   protected Stream stream;
 
   /**
+   * @ADDED
+   */
+  private IRepositoryTag.Branch repositoryTag;
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -137,7 +142,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__NAME, oldName, name));
+    }
   }
 
   /**
@@ -184,7 +191,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       if (stream != oldStream)
       {
         if (eNotificationRequired())
+        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.BRANCH__STREAM, oldStream, stream));
+        }
       }
     }
     return stream;
@@ -214,9 +223,13 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__STREAM,
           oldStream, newStream);
       if (msgs == null)
+      {
         msgs = notification;
+      }
       else
+      {
         msgs.add(notification);
+      }
     }
     return msgs;
   }
@@ -232,15 +245,23 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
     {
       NotificationChain msgs = null;
       if (stream != null)
+      {
         msgs = ((InternalEObject)stream).eInverseRemove(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
+      }
       if (newStream != null)
+      {
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
+      }
       msgs = basicSetStream(newStream, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__STREAM, newStream, newStream));
+    }
   }
 
   /**
@@ -261,9 +282,15 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
    * @ADDED
    */
   @Override
-  public PopProject getPopProject()
+  public synchronized IRepositoryTag getRepositoryTag()
   {
-    return getMainBranch().getPopProject();
+    if (repositoryTag == null)
+    {
+      // TODO Listen to repository for adapter type changes
+      repositoryTag = getRepository().getAdapter().createBranchTag(name);
+    }
+
+    return repositoryTag;
   }
 
   /**
@@ -283,7 +310,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTags()).basicAdd(otherEnd, msgs);
     case ProjectPackage.BRANCH__STREAM:
       if (stream != null)
+      {
         msgs = ((InternalEObject)stream).eInverseRemove(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
+      }
       return basicSetStream((Stream)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -327,7 +356,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       return getTags();
     case ProjectPackage.BRANCH__STREAM:
       if (resolve)
+      {
         return getStream();
+      }
       return basicGetStream();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -419,7 +450,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

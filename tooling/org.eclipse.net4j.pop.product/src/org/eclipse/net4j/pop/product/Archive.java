@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Archive.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
+ * $Id: Archive.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStream.java,v 1.8 2008-08-05 18:39:26 estepper Exp $
+ * $Id: MaintenanceStream.java,v 1.9 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -48,25 +48,23 @@ public interface MaintenanceStream extends IntegrationStream
   DevelopmentStream getParent();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.MaintenanceStream#getParent <em>Parent</em>}' container
-   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Parent</em>' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.MaintenanceStream#getParent <em>Parent</em>}' container reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Parent</em>' container reference.
    * @see #getParent()
    * @generated
    */
   void setParent(DevelopmentStream value);
 
   /**
-   * Returns the value of the '<em><b>Baseline</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Release#getMaintenance <em>Maintenance</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Baseline</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Release#getMaintenance <em>Maintenance</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Baseline</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Baseline</em>' reference.
    * @see #setBaseline(Release)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getMaintenanceStream_Baseline()
@@ -77,11 +75,9 @@ public interface MaintenanceStream extends IntegrationStream
   Release getBaseline();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.MaintenanceStream#getBaseline <em>Baseline</em>}'
-   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Baseline</em>' reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.MaintenanceStream#getBaseline <em>Baseline</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Baseline</em>' reference.
    * @see #getBaseline()
    * @generated
    */

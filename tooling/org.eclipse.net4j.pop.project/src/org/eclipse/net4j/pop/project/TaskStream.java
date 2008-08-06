@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStream.java,v 1.9 2008-08-05 18:39:26 estepper Exp $
+ * $Id: TaskStream.java,v 1.10 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -18,17 +18,18 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Task Stream</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.TaskStream#getTaskId <em>Task Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.TaskStream#getParent <em>Parent</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.TaskStream#getBaseline <em>Baseline</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.TaskStream#getTargets <em>Targets</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.TaskStream#getDeliveries <em>Deliveries</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getTaskId <em>Task Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getBaseline <em>Baseline</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getTargets <em>Targets</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.TaskStream#getDeliveries <em>Deliveries</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream()
  * @model
  * @generated
@@ -36,13 +37,13 @@ import java.util.Date;
 public interface TaskStream extends Stream
 {
   /**
-   * Returns the value of the '<em><b>Task Id</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Task Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Task Id</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Task Id</em>' attribute.
    * @see #setTaskId(String)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream_TaskId()
@@ -63,14 +64,14 @@ public interface TaskStream extends Stream
   void setTaskId(String value);
 
   /**
-   * Returns the value of the '<em><b>Parent</b></em>' container reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.IntegrationStream#getTaskStreams <em>Task Streams</em>}'. <!-- begin-user-doc
+   * Returns the value of the '<em><b>Parent</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.IntegrationStream#getTaskStreams <em>Task Streams</em>}'.
+   * <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Parent</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Parent</em>' container reference.
    * @see #setParent(IntegrationStream)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream_Parent()
@@ -92,13 +93,13 @@ public interface TaskStream extends Stream
   void setParent(IntegrationStream value);
 
   /**
-   * Returns the value of the '<em><b>Baseline</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Baseline</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Baseline</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Baseline</em>' attribute.
    * @see #setBaseline(Date)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream_Baseline()
@@ -110,24 +111,22 @@ public interface TaskStream extends Stream
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.project.TaskStream#getBaseline <em>Baseline</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Baseline</em>' attribute.
+   * @param value the new value of the '<em>Baseline</em>' attribute.
    * @see #getBaseline()
    * @generated
    */
   void setBaseline(Date value);
 
   /**
-   * Returns the value of the '<em><b>Targets</b></em>' reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.project.Target}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Target#getStreams <em>Streams</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Targets</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.Target}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Target#getStreams <em>Streams</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Targets</em>' reference list isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Targets</em>' reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream_Targets()
    * @see org.eclipse.net4j.pop.project.Target#getStreams
@@ -137,15 +136,15 @@ public interface TaskStream extends Stream
   EList<Target> getTargets();
 
   /**
-   * Returns the value of the '<em><b>Deliveries</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.project.Delivery}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Deliveries</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.project.Delivery}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Delivery#getStream <em>Stream</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Deliveries</em>' containment reference list isn't clear, there really should be more of
    * a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Deliveries</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getTaskStream_Deliveries()
    * @see org.eclipse.net4j.pop.project.Delivery#getStream
@@ -156,7 +155,6 @@ public interface TaskStream extends Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @model required="true" idRequired="true" dateRequired="true"
    * @generated
    */

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductPackage.java,v 1.6 2008-08-05 18:39:11 estepper Exp $
+ * $Id: ProductPackage.java,v 1.7 2008-08-06 07:07:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 
@@ -202,12 +202,12 @@ public interface ProductPackage extends EPackage
   int WORKSPACE_PROJECT__WORKSPACE_SPEC = 2;
 
   /**
-   * The feature id for the '<em><b>Repository Module</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Module</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    * @ordered
    */
-  int WORKSPACE_PROJECT__REPOSITORY_MODULE = 3;
+  int WORKSPACE_PROJECT__MODULE = 3;
 
   /**
    * The feature id for the '<em><b>Repository Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -567,16 +567,15 @@ public interface ProductPackage extends EPackage
   EReference getWorkspaceProject_WorkspaceSpec();
 
   /**
-   * Returns the meta object for the reference '
-   * {@link org.eclipse.net4j.pop.product.WorkspaceProject#getRepositoryModule <em>Repository Module</em>}'. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
+   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getModule
+   * <em>Module</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @return the meta object for the reference '<em>Repository Module</em>'.
-   * @see org.eclipse.net4j.pop.product.WorkspaceProject#getRepositoryModule()
+   * @return the meta object for the reference '<em>Module</em>'.
+   * @see org.eclipse.net4j.pop.product.WorkspaceProject#getModule()
    * @see #getWorkspaceProject()
    * @generated
    */
-  EReference getWorkspaceProject_RepositoryModule();
+  EReference getWorkspaceProject_Module();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getRepositoryPath
@@ -839,12 +838,12 @@ public interface ProductPackage extends EPackage
     EReference WORKSPACE_PROJECT__WORKSPACE_SPEC = eINSTANCE.getWorkspaceProject_WorkspaceSpec();
 
     /**
-     * The meta object literal for the '<em><b>Repository Module</b></em>' reference feature. <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
+     * The meta object literal for the '<em><b>Module</b></em>' reference feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
      * 
      * @generated
      */
-    EReference WORKSPACE_PROJECT__REPOSITORY_MODULE = eINSTANCE.getWorkspaceProject_RepositoryModule();
+    EReference WORKSPACE_PROJECT__MODULE = eINSTANCE.getWorkspaceProject_Module();
 
     /**
      * The meta object literal for the '<em><b>Repository Path</b></em>' attribute feature. <!-- begin-user-doc --> <!--

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Checkout.java,v 1.4 2008-08-05 18:39:26 estepper Exp $
+ * $Id: Checkout.java,v 1.5 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -18,15 +18,16 @@ import org.eclipse.core.runtime.IPath;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Checkout</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.Checkout#getPopProject <em>Pop Project</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Checkout#getDiscriminator <em>Discriminator</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Checkout#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getDiscriminator <em>Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Checkout#getLocation <em>Location</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout()
  * @model
  * @generated
@@ -34,13 +35,13 @@ import org.eclipse.core.runtime.IPath;
 public interface Checkout extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Pop Project</b></em>' reference. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop Project</b></em>' reference.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pop Project</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Pop Project</em>' reference.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout_PopProject()
    * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
@@ -49,13 +50,13 @@ public interface Checkout extends PopElement
   PopProject getPopProject();
 
   /**
-   * Returns the value of the '<em><b>Discriminator</b></em>' reference. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Discriminator</b></em>' reference.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Discriminator</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Discriminator</em>' reference.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout_Discriminator()
    * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
@@ -64,17 +65,16 @@ public interface Checkout extends PopElement
   CheckoutDiscriminator getDiscriminator();
 
   /**
-   * Returns the value of the '<em><b>Location</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Location</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Location</em>' attribute.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckout_Location()
-   * @model dataType="org.eclipse.net4j.pop.base.Path" required="true" transient="true" changeable="false"
-   *        volatile="true" derived="true"
+   * @model dataType="org.eclipse.net4j.pop.base.Path" required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   IPath getLocation();

@@ -8,15 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorImpl.java,v 1.7 2008-08-05 18:39:27 estepper Exp $
+ * $Id: CheckoutDiscriminatorImpl.java,v 1.8 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
-import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
+import org.eclipse.net4j.pop.project.Repository;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -26,6 +27,7 @@ import org.eclipse.emf.ecore.EClass;
  * <p>
  * The following features are implemented:
  * <ul>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl#getRepositoryTag <em>Repository Tag</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl#getCheckout <em>Checkout</em>}</li>
  * </ul>
  * </p>
@@ -34,6 +36,16 @@ import org.eclipse.emf.ecore.EClass;
  */
 public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implements CheckoutDiscriminator
 {
+  /**
+   * The default value of the '{@link #getRepositoryTag() <em>Repository Tag</em>}' attribute. <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * 
+   * @see #getRepositoryTag()
+   * @generated
+   * @ordered
+   */
+  protected static final IRepositoryTag REPOSITORY_TAG_EDEFAULT = null;
+
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -60,6 +72,13 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
    * 
    * @generated NOT
    */
+  public abstract IRepositoryTag getRepositoryTag();
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
   public Checkout getCheckout()
   {
     ICheckoutManager checkoutManager = getCheckoutManager();
@@ -76,7 +95,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
    * 
    * @generated NOT
    */
-  public abstract PopProject getPopProject();
+  public abstract Repository getRepository();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -98,6 +117,8 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   {
     switch (featureID)
     {
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR__REPOSITORY_TAG:
+      return getRepositoryTag();
     case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUT:
       return getCheckout();
     }
@@ -114,6 +135,9 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
   {
     switch (featureID)
     {
+    case ProjectPackage.CHECKOUT_DISCRIMINATOR__REPOSITORY_TAG:
+      return REPOSITORY_TAG_EDEFAULT == null ? getRepositoryTag() != null : !REPOSITORY_TAG_EDEFAULT
+          .equals(getRepositoryTag());
     case ProjectPackage.CHECKOUT_DISCRIMINATOR__CHECKOUT:
       return getCheckout() != null;
     }
@@ -125,7 +149,7 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
    */
   private ICheckoutManager getCheckoutManager()
   {
-    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
+    PopProjectImpl popProject = (PopProjectImpl)getRepository().getPopProject();
     return popProject.getCheckoutManager();
   }
 

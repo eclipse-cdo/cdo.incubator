@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ReleaseImpl.java,v 1.14 2008-08-06 06:23:58 estepper Exp $
+ * $Id: ReleaseImpl.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -36,21 +36,21 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getMaintenance <em>Maintenance</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getVersion <em>Version</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getStream <em>Stream</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getMilestones <em>Milestones</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getMaintenance <em>Maintenance</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.ReleaseImpl#getMilestones <em>Milestones</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ReleaseImpl extends TargetImpl implements Release
 {
   /**
-   * The cached value of the '{@link #getMaintenance() <em>Maintenance</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getMaintenance() <em>Maintenance</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getMaintenance()
    * @generated
    * @ordered
@@ -58,9 +58,9 @@ public class ReleaseImpl extends TargetImpl implements Release
   protected MaintenanceStream maintenance;
 
   /**
-   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getVersion() <em>Version</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getVersion()
    * @generated
    * @ordered
@@ -68,9 +68,9 @@ public class ReleaseImpl extends TargetImpl implements Release
   protected static final Version VERSION_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getVersion() <em>Version</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getVersion()
    * @generated
    * @ordered
@@ -89,7 +89,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ReleaseImpl()
@@ -99,7 +98,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -110,7 +108,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MaintenanceStream getMaintenance()
@@ -131,7 +128,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MaintenanceStream basicGetMaintenance()
@@ -141,7 +137,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetMaintenance(MaintenanceStream newMaintenance, NotificationChain msgs)
@@ -162,7 +157,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setMaintenance(MaintenanceStream newMaintenance)
@@ -187,7 +181,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Version getVersion()
@@ -197,7 +190,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setVersion(Version newVersion)
@@ -210,7 +202,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IntegrationStream getStream()
@@ -222,7 +213,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IntegrationStream basicGetStream()
@@ -234,7 +224,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetStream(IntegrationStream newStream, NotificationChain msgs)
@@ -245,7 +234,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setStream(IntegrationStream newStream)
@@ -271,7 +259,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Milestone> getMilestones()
@@ -297,7 +284,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -323,7 +309,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -343,7 +328,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -360,7 +344,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -386,7 +369,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -414,7 +396,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -440,7 +421,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -462,7 +442,6 @@ public class ReleaseImpl extends TargetImpl implements Release
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

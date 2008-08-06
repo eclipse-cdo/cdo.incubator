@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProjectImpl.java,v 1.5 2008-08-05 18:39:11 estepper Exp $
+ * $Id: WorkspaceProjectImpl.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.product.ProductPackage;
 import org.eclipse.net4j.pop.product.WorkingSet;
 import org.eclipse.net4j.pop.product.WorkspaceProject;
-import org.eclipse.net4j.pop.project.RepositoryModule;
+import org.eclipse.net4j.pop.project.Module;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -40,8 +40,8 @@ import java.util.Collection;
  * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getName <em>Name</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getWorkingSets <em>Working Sets</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getWorkspaceSpec <em>Workspace Spec</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getCodeRoot <em>Code Root</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getCodePath <em>Code Path</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getModule <em>Module</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.product.impl.WorkspaceProjectImpl#getRepositoryPath <em>Repository Path</em>}</li>
  * </ul>
  * </p>
  * 
@@ -79,14 +79,14 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
   protected EList<WorkingSet> workingSets;
 
   /**
-   * The cached value of the '{@link #getRepositoryModule() <em>Repository Module</em>}' reference. <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
+   * The cached value of the '{@link #getModule() <em>Module</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
    * 
-   * @see #getRepositoryModule()
+   * @see #getModule()
    * @generated
    * @ordered
    */
-  protected RepositoryModule repositoryModule;
+  protected Module module;
 
   /**
    * The default value of the '{@link #getRepositoryPath() <em>Repository Path</em>}' attribute. <!-- begin-user-doc -->
@@ -222,20 +222,20 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
    * 
    * @generated
    */
-  public RepositoryModule getRepositoryModule()
+  public Module getModule()
   {
-    if (repositoryModule != null && repositoryModule.eIsProxy())
+    if (module != null && module.eIsProxy())
     {
-      InternalEObject oldRepositoryModule = (InternalEObject)repositoryModule;
-      repositoryModule = (RepositoryModule)eResolveProxy(oldRepositoryModule);
-      if (repositoryModule != oldRepositoryModule)
+      InternalEObject oldModule = (InternalEObject)module;
+      module = (Module)eResolveProxy(oldModule);
+      if (module != oldModule)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-              ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE, oldRepositoryModule, repositoryModule));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProductPackage.WORKSPACE_PROJECT__MODULE,
+              oldModule, module));
       }
     }
-    return repositoryModule;
+    return module;
   }
 
   /**
@@ -243,9 +243,9 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
    * 
    * @generated
    */
-  public RepositoryModule basicGetRepositoryModule()
+  public Module basicGetModule()
   {
-    return repositoryModule;
+    return module;
   }
 
   /**
@@ -253,13 +253,12 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
    * 
    * @generated
    */
-  public void setRepositoryModule(RepositoryModule newRepositoryModule)
+  public void setModule(Module newModule)
   {
-    RepositoryModule oldRepositoryModule = repositoryModule;
-    repositoryModule = newRepositoryModule;
+    Module oldModule = module;
+    module = newModule;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE,
-          oldRepositoryModule, repositoryModule));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKSPACE_PROJECT__MODULE, oldModule, module));
   }
 
   /**
@@ -357,10 +356,10 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
       return getWorkingSets();
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       return getWorkspaceSpec();
-    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
+    case ProductPackage.WORKSPACE_PROJECT__MODULE:
       if (resolve)
-        return getRepositoryModule();
-      return basicGetRepositoryModule();
+        return getModule();
+      return basicGetModule();
     case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
       return getRepositoryPath();
     }
@@ -388,8 +387,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       setWorkspaceSpec((PopProduct)newValue);
       return;
-    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
-      setRepositoryModule((RepositoryModule)newValue);
+    case ProductPackage.WORKSPACE_PROJECT__MODULE:
+      setModule((Module)newValue);
       return;
     case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
       setRepositoryPath((String)newValue);
@@ -417,8 +416,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       setWorkspaceSpec((PopProduct)null);
       return;
-    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
-      setRepositoryModule((RepositoryModule)null);
+    case ProductPackage.WORKSPACE_PROJECT__MODULE:
+      setModule((Module)null);
       return;
     case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
       setRepositoryPath(REPOSITORY_PATH_EDEFAULT);
@@ -443,8 +442,8 @@ public class WorkspaceProjectImpl extends EObjectImpl implements WorkspaceProjec
       return workingSets != null && !workingSets.isEmpty();
     case ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC:
       return getWorkspaceSpec() != null;
-    case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_MODULE:
-      return repositoryModule != null;
+    case ProductPackage.WORKSPACE_PROJECT__MODULE:
+      return module != null;
     case ProductPackage.WORKSPACE_PROJECT__REPOSITORY_PATH:
       return REPOSITORY_PATH_EDEFAULT == null ? repositoryPath != null : !REPOSITORY_PATH_EDEFAULT
           .equals(repositoryPath);

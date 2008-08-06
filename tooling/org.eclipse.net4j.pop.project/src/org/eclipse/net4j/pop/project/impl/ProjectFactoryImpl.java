@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.15 2008-08-06 06:23:58 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.16 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -23,6 +23,7 @@ import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.SubBranch;
 import org.eclipse.net4j.pop.project.Tag;
@@ -86,16 +87,18 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
     {
     case ProjectPackage.POP_PROJECT:
       return createPopProject();
+    case ProjectPackage.REPOSITORY:
+      return createRepository();
     case ProjectPackage.COMMITTER:
       return createCommitter();
-    case ProjectPackage.CHECKOUT:
-      return createCheckout();
     case ProjectPackage.TAG:
       return createTag();
     case ProjectPackage.MAIN_BRANCH:
       return createMainBranch();
     case ProjectPackage.SUB_BRANCH:
       return createSubBranch();
+    case ProjectPackage.CHECKOUT:
+      return createCheckout();
     case ProjectPackage.TASK_STREAM:
       return createTaskStream();
     case ProjectPackage.MAINTENANCE_STREAM:
@@ -124,6 +127,17 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   {
     PopProjectImpl popProject = new PopProjectImpl();
     return popProject;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public Repository createRepository()
+  {
+    RepositoryImpl repository = new RepositoryImpl();
+    return repository;
   }
 
   /**

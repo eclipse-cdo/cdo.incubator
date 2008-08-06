@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductModelWizard.java,v 1.4 2008-08-05 18:39:02 estepper Exp $
+ * $Id: ProductModelWizard.java,v 1.5 2008-08-06 07:07:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.editor;
 
@@ -71,81 +71,81 @@ import java.util.MissingResourceException;
 import java.util.StringTokenizer;
 
 /**
- * This is a simple wizard for creating a new model file. <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ * This is a simple wizard for creating a new model file.
+ * <!-- begin-user-doc --> <!-- end-user-doc -->
  * @generated
  */
 public class ProductModelWizard extends Wizard implements INewWizard
 {
   /**
-   * The supported extensions for created files. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The supported extensions for created files.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static final List<String> FILE_EXTENSIONS = Collections.unmodifiableList(Arrays
       .asList(ProductEditorPlugin.INSTANCE.getString("_UI_ProductEditorFilenameExtensions").split("\\s*,\\s*"))); //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * A formatted list of supported file extensions, suitable for display. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * A formatted list of supported file extensions, suitable for display.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public static final String FORMATTED_FILE_EXTENSIONS = ProductEditorPlugin.INSTANCE.getString(
       "_UI_ProductEditorFilenameExtensions").replaceAll("\\s*,\\s*", ", ");
 
   /**
-   * This caches an instance of the model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This caches an instance of the model package.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected ProductPackage productPackage = ProductPackage.eINSTANCE;
 
   /**
-   * This caches an instance of the model factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This caches an instance of the model factory.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected ProductFactory productFactory = productPackage.getProductFactory();
 
   /**
-   * This is the file creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This is the file creation page.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected ProductModelWizardNewFileCreationPage newFileCreationPage;
 
   /**
-   * This is the initial object creation page. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This is the initial object creation page.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected ProductModelWizardInitialObjectCreationPage initialObjectCreationPage;
 
   /**
-   * Remember the selection during initialization for populating the default container. <!-- begin-user-doc --> <!--
+   * Remember the selection during initialization for populating the default container.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   protected IStructuredSelection selection;
 
   /**
-   * Remember the workbench during initialization. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Remember the workbench during initialization.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected IWorkbench workbench;
 
   /**
-   * Caches the names of the types that can be created as the root object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Caches the names of the types that can be created as the root object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected List<String> initialObjectNames;
 
   /**
-   * This just records the information. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This just records the information.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void init(IWorkbench workbench, IStructuredSelection selection)
@@ -185,8 +185,8 @@ public class ProductModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Create a new model. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Create a new model.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected EObject createInitialModel()
@@ -197,8 +197,8 @@ public class ProductModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Do the work after everything is specified. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Do the work after everything is specified.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -299,15 +299,15 @@ public class ProductModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the one page of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This is the one page of the wizard.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public class ProductModelWizardNewFileCreationPage extends WizardNewFileCreationPage
   {
     /**
-     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Pass in the selection.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public ProductModelWizardNewFileCreationPage(String pageId, IStructuredSelection selection)
@@ -316,8 +316,8 @@ public class ProductModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * The framework calls this to see if the file is correct. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * The framework calls this to see if the file is correct.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     @Override
@@ -339,7 +339,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public IFile getModelFile()
@@ -349,15 +348,14 @@ public class ProductModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * This is the page where the type of object to create is selected. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This is the page where the type of object to create is selected.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public class ProductModelWizardInitialObjectCreationPage extends WizardPage
   {
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected Combo initialObjectField;
@@ -369,14 +367,13 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected Combo encodingField;
 
     /**
-     * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Pass in the selection.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     public ProductModelWizardInitialObjectCreationPage(String pageId)
@@ -386,7 +383,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public void createControl(Composite parent)
@@ -463,7 +459,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected ModifyListener validator = new ModifyListener()
@@ -476,7 +471,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected boolean validatePage()
@@ -486,7 +480,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     @Override
@@ -510,7 +503,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getInitialObjectName()
@@ -529,7 +521,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     public String getEncoding()
@@ -538,8 +529,8 @@ public class ProductModelWizard extends Wizard implements INewWizard
     }
 
     /**
-     * Returns the label for the specified type name. <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
+     * Returns the label for the specified type name.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
      * @generated
      */
     protected String getLabel(String typeName)
@@ -557,7 +548,6 @@ public class ProductModelWizard extends Wizard implements INewWizard
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
-     * 
      * @generated
      */
     protected Collection<String> getEncodings()
@@ -576,8 +566,8 @@ public class ProductModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * The framework calls this to create the contents of the wizard. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The framework calls this to create the contents of the wizard.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -639,8 +629,8 @@ public class ProductModelWizard extends Wizard implements INewWizard
   }
 
   /**
-   * Get the file from the page. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Get the file from the page.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public IFile getModelFile()

@@ -210,24 +210,24 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private IPath checkoutPrimaryModule(CheckoutDiscriminator discriminator)
   {
-    IPath target = getCheckoutLocation(discriminator);
+    IPath checkoutLocation = getCheckoutLocation(discriminator);
     RepositoryModule module = discriminator.getPopProject().getPrimaryModule();
     IRepositoryAdapter adapter = module.getAdapter();
     if (discriminator instanceof Branch)
     {
       String branch = ((Branch)discriminator).getName();
-      adapter.checkoutBranch(target, module.getRepositoryDescriptor(), module.getModuleDescriptor(), branch);
+      adapter.checkoutBranch(checkoutLocation, module.getRepositoryDescription(), module.getModuleDescription(), branch);
     }
     else if (discriminator instanceof Tag)
     {
       String tag = ((Tag)discriminator).getName();
-      adapter.checkoutTag(target, module.getRepositoryDescriptor(), module.getModuleDescriptor(), tag);
+      adapter.checkoutTag(checkoutLocation, module.getRepositoryDescription(), module.getModuleDescription(), tag);
     }
     else
     {
       throw new IllegalArgumentException("Unrecognized checkout discriminator: " + discriminator);
     }
 
-    return target;
+    return checkoutLocation;
   }
 }

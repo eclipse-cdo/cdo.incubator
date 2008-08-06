@@ -8,19 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStream.java,v 1.8 2008-08-05 18:39:26 estepper Exp $
+ * $Id: RootStream.java,v 1.9 2008-08-06 07:07:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Root Stream</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.RootStream#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.RootStream#getPopProject <em>Pop Project</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getRootStream()
  * @model
  * @generated
@@ -28,14 +29,14 @@ package org.eclipse.net4j.pop.project;
 public interface RootStream extends DevelopmentStream
 {
   /**
-   * Returns the value of the '<em><b>Pop Project</b></em>' container reference. It is bidirectional and its opposite is
-   * '{@link org.eclipse.net4j.pop.project.PopProject#getRootStream <em>Root Stream</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop Project</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.PopProject#getRootStream <em>Root Stream</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pop Project</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Pop Project</em>' container reference.
    * @see #setPopProject(PopProject)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getRootStream_PopProject()
@@ -46,11 +47,9 @@ public interface RootStream extends DevelopmentStream
   PopProject getPopProject();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.RootStream#getPopProject <em>Pop Project</em>}'
-   * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Pop Project</em>' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.RootStream#getPopProject <em>Pop Project</em>}' container reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pop Project</em>' container reference.
    * @see #getPopProject()
    * @generated
    */
