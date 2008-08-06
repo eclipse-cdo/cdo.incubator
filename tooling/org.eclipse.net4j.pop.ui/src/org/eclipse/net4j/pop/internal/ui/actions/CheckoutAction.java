@@ -31,7 +31,7 @@ public class CheckoutAction extends LongRunningAction
   public CheckoutAction(IWorkbenchPage page, CheckoutDiscriminator discriminator)
   {
     super(page, TITLE);
-    setDiscriminator(discriminator);
+    doSetDiscriminator(discriminator);
   }
 
   public CheckoutAction(IWorkbenchPage page)
@@ -46,6 +46,14 @@ public class CheckoutAction extends LongRunningAction
 
   public void setDiscriminator(CheckoutDiscriminator discriminator)
   {
+    if (this.discriminator != discriminator)
+    {
+      doSetDiscriminator(discriminator);
+    }
+  }
+
+  private void doSetDiscriminator(CheckoutDiscriminator discriminator)
+  {
     this.discriminator = discriminator;
     if (discriminator == null)
     {
@@ -54,7 +62,7 @@ public class CheckoutAction extends LongRunningAction
     }
     else
     {
-      if (discriminator.getCheckout() != null)
+      if (discriminator.hasCheckout())
       {
         setEnabled(false);
         setToolTipText(DISABLED_TOOLTIP);

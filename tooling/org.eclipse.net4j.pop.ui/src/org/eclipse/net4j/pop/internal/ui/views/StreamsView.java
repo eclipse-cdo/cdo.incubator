@@ -164,7 +164,6 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected void setDetailInput(StructuredViewer viewer, Object input)
   {
-    checkoutAction.setDiscriminator(null);
     if (input instanceof Stream)
     {
       Stream stream = (Stream)input;
@@ -172,10 +171,17 @@ public class StreamsView extends MasterDetailsView
       {
         super.setDetailInput(viewer, stream.getPopProject());
         Branch branch = stream.getBranch();
-        if (branch != null && branch.hasCheckout())
+        if (branch != null)
         {
-          selectAndReveal(viewer, branch.getCheckout());
-          checkoutAction.setDiscriminator(branch);
+          if (branch.hasCheckout())
+          {
+            selectAndReveal(viewer, branch.getCheckout());
+            checkoutAction.setDiscriminator(null);
+          }
+          else
+          {
+            checkoutAction.setDiscriminator(branch);
+          }
         }
 
         return;
