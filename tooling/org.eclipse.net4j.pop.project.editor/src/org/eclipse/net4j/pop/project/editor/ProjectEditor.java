@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectEditor.java,v 1.8 2008-08-03 08:56:54 estepper Exp $
+ * $Id: ProjectEditor.java,v 1.9 2008-08-06 09:27:19 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.editor;
 
 import org.eclipse.net4j.pop.base.editor.BaseEditor;
 
 /**
+ * @author Eike Stepper
  * @generated NOT
  */
 public class ProjectEditor extends BaseEditor

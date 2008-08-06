@@ -48,6 +48,5 @@ public class NewAction extends LongRunningActionDelegate implements IObjectActio
       CheckoutDiscriminator discriminator = (CheckoutDiscriminator)element;
       discriminator.checkout();
     }
-
   }
 }
