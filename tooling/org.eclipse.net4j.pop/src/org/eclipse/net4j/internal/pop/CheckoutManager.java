@@ -165,7 +165,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
     IFolder target = createFolder(project, module.getName(), monitor);
     IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());
-    folder.checkout(target, true, new NullProgressMonitor());
+    folder.checkoutInto(target, true, new NullProgressMonitor());
 
     return createCheckout(discriminator, project.getLocation());
   }
