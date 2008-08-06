@@ -24,6 +24,8 @@ public interface IRepositoryAdapter extends IAdaptable
 {
   public String getType();
 
+  public IRepositorySession openSession(String repository);
+
   public void checkoutBranch(IPath target, String repository, String module, String branch);
 
   public void checkoutTag(IPath target, String repository, String module, String tag);
