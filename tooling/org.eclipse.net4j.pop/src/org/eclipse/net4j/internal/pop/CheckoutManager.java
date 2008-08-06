@@ -36,6 +36,7 @@ import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
@@ -154,21 +155,22 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
   public Checkout checkout(CheckoutDiscriminator discriminator)
   {
     checkActive();
-    IProject project = createProject(discriminator.getId());
+    IProgressMonitor monitor = new NullProgressMonitor();
+    IProject project = createProject(discriminator.getId(), monitor);
     Repository repository = discriminator.getRepository();
     Module module = repository.getPrimaryModule();
 
     IRepositoryAdapter adapter = repository.getAdapter();
-    IRepositorySession session = adapter.openSession(repository.getDescriptor(), false, new NullProgressMonitor());
+    IRepositorySession session = adapter.openSession(repository.getDescriptor(), false, monitor);
 
-    IFolder target = createFolder(project, module.getName());
+    IFolder target = createFolder(project, module.getName(), monitor);
     IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());
     folder.checkout(target, true, new NullProgressMonitor());
 
     return createCheckout(discriminator, project.getLocation());
   }
 
-  private IProject createProject(String name)
+  private IProject createProject(String name, IProgressMonitor monitor)
   {
     try
     {
@@ -182,7 +184,8 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
       projectDescription.setComment("POP Process Tooling checkout project");
       projectDescription.setLocation(location.append(name));
 
-      project.create(projectDescription, new NullProgressMonitor());
+      project.create(projectDescription, monitor);
+      project.open(monitor);
       return project;
     }
     catch (CoreException ex)
@@ -191,7 +194,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     }
   }
 
-  private IFolder createFolder(IContainer container, String name)
+  private IFolder createFolder(IContainer container, String name, IProgressMonitor monitor)
   {
     try
     {
@@ -201,7 +204,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
         throw new IllegalStateException("Folder already exists: " + folder.getFullPath());
       }
 
-      folder.create(true, true, new NullProgressMonitor());
+      folder.create(true, true, monitor);
       return folder;
     }
     catch (CoreException ex)
