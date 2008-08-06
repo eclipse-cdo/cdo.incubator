@@ -8,13 +8,38 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.repository.ccvs;
-
-import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+package org.eclipse.net4j.pop.repository;
 
 /**
  * @author Eike Stepper
  */
-public interface ICvsRepositoryAdapter extends IRepositoryAdapter
+public interface IRepositoryTag
 {
+  public IRepositoryAdapter getAdapter();
+
+  public String asString();
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface Branch extends IRepositoryTag
+  {
+    public String getName();
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface Version extends IRepositoryTag
+  {
+    public String getName();
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public interface Date extends IRepositoryTag
+  {
+    public java.util.Date getDate();
+  }
 }

@@ -10,18 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.repository;
 
-import org.eclipse.core.runtime.IAdaptable;
-
 /**
  * @author Eike Stepper
  */
-public interface IRepositorySession extends IAdaptable
+public interface IRepositorySession
 {
   public IRepositoryAdapter getAdapter();
 
   public String getRepositoryDescription();
 
   public boolean isWriteAccess();
+
+  public IRepositoryFolder getFolder(IRepositoryTag tag, String path);
 
   public void close();
 }

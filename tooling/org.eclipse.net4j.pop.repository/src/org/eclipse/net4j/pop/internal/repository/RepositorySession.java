@@ -12,12 +12,10 @@ package org.eclipse.net4j.pop.internal.repository;
 
 import org.eclipse.net4j.pop.repository.IRepositorySession;
 
-import org.eclipse.core.runtime.PlatformObject;
-
 /**
  * @author Eike Stepper
  */
-public abstract class RepositorySession extends PlatformObject implements IRepositorySession
+public abstract class RepositorySession implements IRepositorySession
 {
   private RepositoryAdapter adapter;
 

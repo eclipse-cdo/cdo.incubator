@@ -12,7 +12,9 @@ package org.eclipse.net4j.pop.repository.internal.ccvs;
 
 import org.eclipse.net4j.pop.internal.repository.RepositoryAdapter;
 import org.eclipse.net4j.pop.repository.IRepositorySession;
-import org.eclipse.net4j.pop.repository.ccvs.ICvsRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
+import org.eclipse.net4j.pop.repository.IRepositoryTag.Branch;
+import org.eclipse.net4j.pop.repository.IRepositoryTag.Version;
 import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.ui.UIUtil;
 
@@ -64,7 +66,7 @@ import java.util.Set;
 /**
  * @author Eike Stepper
  */
-public class CvsRepositoryAdapter extends RepositoryAdapter implements ICvsRepositoryAdapter
+public class CvsRepositoryAdapter extends RepositoryAdapter
 {
   public CvsRepositoryAdapter()
   {
@@ -73,6 +75,21 @@ public class CvsRepositoryAdapter extends RepositoryAdapter implements ICvsRepos
   public String getType()
   {
     return CVSProviderPlugin.getTypeId();
+  }
+
+  public Branch createBranchTag(String name)
+  {
+    return new CvsRepositoryTag.Branch(this, name);
+  }
+
+  public Version createVersionTag(String name)
+  {
+    return new CvsRepositoryTag.Version(this, name);
+  }
+
+  public IRepositoryTag.Date createDateTag(java.util.Date date)
+  {
+    return new CvsRepositoryTag.Date(this, date);
   }
 
   public IRepositorySession openSession(String repository, boolean writeAccess, IProgressMonitor monitor)

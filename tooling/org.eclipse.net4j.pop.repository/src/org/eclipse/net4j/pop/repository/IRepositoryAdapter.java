@@ -25,6 +25,12 @@ public interface IRepositoryAdapter extends IAdaptable
 {
   public String getType();
 
+  public IRepositoryTag.Branch createBranchTag(String name);
+
+  public IRepositoryTag.Version createVersionTag(String name);
+
+  public IRepositoryTag.Date createDateTag(java.util.Date date);
+
   public IRepositorySession openSession(String repositoryDescription, boolean writeAccess, IProgressMonitor monitor);
 
   public void checkoutBranch(IPath target, String repository, String module, String branch);

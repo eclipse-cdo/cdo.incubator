@@ -11,7 +11,8 @@
 package org.eclipse.net4j.pop.repository.internal.ccvs;
 
 import org.eclipse.net4j.pop.internal.repository.RepositorySession;
-import org.eclipse.net4j.pop.repository.ccvs.ICvsRepositorySession;
+import org.eclipse.net4j.pop.repository.IRepositoryFolder;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -25,7 +26,7 @@ import org.eclipse.team.internal.ccvs.core.util.KnownRepositories;
 /**
  * @author Eike Stepper
  */
-public class CvsRepositorySession extends RepositorySession implements ICvsRepositorySession
+public class CvsRepositorySession extends RepositorySession
 {
   private ICVSFolder localRoot;
 
@@ -64,7 +65,13 @@ public class CvsRepositorySession extends RepositorySession implements ICvsRepos
     return repositoryLocation;
   }
 
+  public IRepositoryFolder getFolder(IRepositoryTag tag, String path)
+  {
+    return new CvsRepositoryFolder(this, (CvsRepositoryTag)tag, path);
+  }
+
   public void close()
   {
+    cvsSession.close();
   }
 }

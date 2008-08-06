@@ -8,22 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.repository.ccvs;
-
-import org.eclipse.net4j.pop.repository.IRepositorySession;
-
-import org.eclipse.team.internal.ccvs.core.ICVSFolder;
-import org.eclipse.team.internal.ccvs.core.ICVSRepositoryLocation;
-import org.eclipse.team.internal.ccvs.core.client.Session;
+package org.eclipse.net4j.pop.repository;
 
 /**
  * @author Eike Stepper
  */
-public interface ICvsRepositorySession extends IRepositorySession
+public interface IRepositoryFolder
 {
-  public ICVSFolder getLocalRoot();
+  public IRepositorySession getSession();
 
-  public ICVSRepositoryLocation getRepositoryLocation();
+  public IRepositoryTag getTag();
 
-  public Session getCvsSession();
+  public String getPath();
 }
