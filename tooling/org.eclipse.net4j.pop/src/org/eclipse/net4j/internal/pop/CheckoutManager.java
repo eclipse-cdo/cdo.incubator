@@ -229,7 +229,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   public void checkoutLocationChanged()
   {
-    // TODO fire clear event
+    // TODO Fire clear event
     checkouts.clear();
     init();
   }
