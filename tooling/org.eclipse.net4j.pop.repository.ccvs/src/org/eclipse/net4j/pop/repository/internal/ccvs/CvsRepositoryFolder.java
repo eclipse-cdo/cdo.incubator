@@ -16,23 +16,15 @@ import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.WrappedException;
 
 import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.jobs.ISchedulingRule;
-import org.eclipse.core.runtime.jobs.MultiRule;
-import org.eclipse.team.core.RepositoryProvider;
-import org.eclipse.team.core.TeamException;
 import org.eclipse.team.internal.ccvs.core.CVSException;
-import org.eclipse.team.internal.ccvs.core.CVSMessages;
 import org.eclipse.team.internal.ccvs.core.CVSProviderPlugin;
 import org.eclipse.team.internal.ccvs.core.CVSTag;
-import org.eclipse.team.internal.ccvs.core.CVSTeamProvider;
 import org.eclipse.team.internal.ccvs.core.ICVSFolder;
 import org.eclipse.team.internal.ccvs.core.Policy;
 import org.eclipse.team.internal.ccvs.core.client.Checkout;
@@ -45,9 +37,7 @@ import org.eclipse.team.internal.ccvs.core.resources.RemoteFolder;
 import org.eclipse.team.internal.ccvs.core.syncinfo.FolderSyncInfo;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 /**
  * @author Eike Stepper
@@ -91,7 +81,7 @@ public class CvsRepositoryFolder implements IRepositoryFolder
     return cvsFolder;
   }
 
-  public void checkoutInto(IContainer parent, String localName, boolean recursive, IProgressMonitor monitor)
+  public void checkoutAs(IContainer parent, String localName, boolean recursive, IProgressMonitor monitor)
   {
     try
     {
@@ -168,56 +158,5 @@ public class CvsRepositoryFolder implements IRepositoryFolder
 
     // reset the folder sync info so it will be managed by it's parent
     folder.setFolderSyncInfo(folder.getFolderSyncInfo());
-  }
-
-  @SuppressWarnings("unchecked")
-  private static ISchedulingRule getCheckoutRule(final IProject[] projects)
-  {
-    if (projects.length == 1)
-    {
-      return ResourcesPlugin.getWorkspace().getRuleFactory().modifyRule(projects[0]);
-    }
-    else
-    {
-      Set rules = new HashSet();
-      for (int i = 0; i < projects.length; i++)
-      {
-        ISchedulingRule modifyRule = ResourcesPlugin.getWorkspace().getRuleFactory().modifyRule(projects[i]);
-        if (modifyRule instanceof IResource && ((IResource)modifyRule).getType() == IResource.ROOT)
-        {
-          // One of the projects is mapped to a provider that locks the workspace.
-          // Just return the workspace root rule
-          return modifyRule;
-        }
-        rules.add(modifyRule);
-      }
-      return new MultiRule((ISchedulingRule[])rules.toArray(new ISchedulingRule[rules.size()]));
-    }
-  }
-
-  /*
-   * Bring the provied projects into the workspace
-   */
-  private static void refreshProjects(IProject[] projects, IProgressMonitor monitor) throws CoreException,
-      TeamException
-  {
-    monitor.beginTask(CVSMessages.CVSProvider_Creating_projects_2, projects.length * 100);
-    try
-    {
-      for (int i = 0; i < projects.length; i++)
-      {
-        IProject project = projects[i];
-        // Register the project with Team
-        RepositoryProvider.map(project, CVSProviderPlugin.getTypeId());
-        CVSTeamProvider provider = (CVSTeamProvider)RepositoryProvider.getProvider(project, CVSProviderPlugin
-            .getTypeId());
-        provider.setWatchEditEnabled(CVSProviderPlugin.getPlugin().isWatchEditEnabled());
-      }
-
-    }
-    finally
-    {
-      monitor.done();
-    }
   }
 }

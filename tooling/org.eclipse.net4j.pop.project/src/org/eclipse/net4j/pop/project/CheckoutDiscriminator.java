@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminator.java,v 1.8 2008-08-06 09:10:42 estepper Exp $
+ * $Id: CheckoutDiscriminator.java,v 1.9 2008-08-06 16:02:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -18,15 +18,14 @@ import org.eclipse.net4j.pop.repository.IRepositoryTag;
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Checkout Discriminator</b></em>'. <!--
  * end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getRepositoryTag <em>Repository Tag</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckout <em>Checkout</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getRepositoryTag <em>Repository Tag</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.CheckoutDiscriminator#getCheckout <em>Checkout</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckoutDiscriminator()
  * @model abstract="true"
  * @generated
@@ -34,28 +33,29 @@ import org.eclipse.net4j.pop.repository.IRepositoryTag;
 public interface CheckoutDiscriminator extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Repository Tag</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Repository Tag</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Repository Tag</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Repository Tag</em>' attribute.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckoutDiscriminator_RepositoryTag()
-   * @model dataType="org.eclipse.net4j.pop.base.RepositoryTag" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model dataType="org.eclipse.net4j.pop.base.RepositoryTag" required="true" transient="true" changeable="false"
+   *        volatile="true" derived="true"
    * @generated
    */
   IRepositoryTag getRepositoryTag();
 
   /**
-   * Returns the value of the '<em><b>Checkout</b></em>' reference.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Checkout</b></em>' reference. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Checkout</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Checkout</em>' reference.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getCheckoutDiscriminator_Checkout()
    * @model resolveProxies="false" transient="true" changeable="false" volatile="true" derived="true"
@@ -64,16 +64,16 @@ public interface CheckoutDiscriminator extends PopElement
   Checkout getCheckout();
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model kind="operation" required="true"
    * @generated
    */
   Repository getRepository();
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model required="true"
    * @generated
    */
@@ -81,6 +81,7 @@ public interface CheckoutDiscriminator extends PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model required="true"
    * @generated
    */

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleImpl.java,v 1.2 2008-08-06 10:32:46 estepper Exp $
+ * $Id: PrimaryModuleImpl.java,v 1.3 2008-08-06 16:02:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -24,23 +24,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primary Module</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Primary Module</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PrimaryModuleImpl()
@@ -49,8 +47,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -60,8 +58,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository getRepository()
@@ -72,8 +70,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository basicGetRepository()
@@ -84,8 +82,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
@@ -95,8 +93,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRepository(Repository newRepository)
@@ -122,8 +120,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -140,8 +138,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -156,8 +154,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -173,8 +171,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -191,8 +189,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -208,8 +206,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -225,8 +223,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -240,4 +238,4 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     return super.eIsSet(featureID);
   }
 
-} //PrimaryModuleImpl
+} // PrimaryModuleImpl

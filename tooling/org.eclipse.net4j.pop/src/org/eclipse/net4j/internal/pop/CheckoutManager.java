@@ -27,8 +27,6 @@ import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IWorkspace;
@@ -38,7 +36,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 
 import java.io.File;
@@ -167,7 +164,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     {
       // IFolder target = createFolder(project, module.getName(), monitor);
       IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());
-      folder.checkoutInto(project, module.getName(), true, new NullProgressMonitor());
+      folder.checkoutAs(project, module.getName(), true, new NullProgressMonitor());
 
       return createCheckout(discriminator, project.getLocation());
     }
@@ -194,25 +191,6 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
       project.create(projectDescription, monitor);
       project.open(monitor);
       return project;
-    }
-    catch (CoreException ex)
-    {
-      throw WrappedException.wrap(ex);
-    }
-  }
-
-  private IFolder createFolder(IContainer container, String name, IProgressMonitor monitor)
-  {
-    try
-    {
-      IFolder folder = container.getFolder(new Path(name));
-      if (folder.exists())
-      {
-        throw new IllegalStateException("Folder already exists: " + folder.getFullPath());
-      }
-
-      folder.create(true, true, monitor);
-      return folder;
     }
     catch (CoreException ex)
     {

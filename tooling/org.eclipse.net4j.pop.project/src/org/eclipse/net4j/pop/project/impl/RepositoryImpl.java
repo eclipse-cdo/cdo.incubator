@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.5 2008-08-06 10:32:46 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.6 2008-08-06 16:02:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -38,24 +38,24 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPopProject <em>Pop Project</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPrimaryModule <em>Primary Module</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getCommitters <em>Committers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPopProject <em>Pop Project</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPrimaryModule <em>Primary Module</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getCommitters <em>Committers</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class RepositoryImpl extends PopElementImpl implements Repository
 {
   /**
-   * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getAdapter()
    * @generated
    * @ordered
@@ -63,9 +63,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected static final IRepositoryAdapter ADAPTER_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getAdapterType()
    * @generated
    * @ordered
@@ -73,9 +73,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected static final String ADAPTER_TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getAdapterType()
    * @generated
    * @ordered
@@ -83,9 +83,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected String adapterType = ADAPTER_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getDescriptor()
    * @generated
    * @ordered
@@ -93,9 +93,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected static final String DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getDescriptor()
    * @generated
    * @ordered
@@ -123,9 +123,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected EList<Committer> committers;
 
   /**
-   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
-   * <!-- begin-user-doc
+   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference. <!-- begin-user-doc
    * --> <!-- end-user-doc -->
+   * 
    * @see #getMainBranch()
    * @generated
    * @ordered
@@ -139,6 +139,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected RepositoryImpl()
@@ -148,6 +149,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -158,6 +160,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject getPopProject()
@@ -169,6 +172,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -180,6 +184,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -190,6 +195,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -235,6 +241,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getAdapterType()
@@ -266,6 +273,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getDescriptor()
@@ -275,6 +283,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setDescriptor(String newDescriptor)
@@ -288,6 +297,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PrimaryModule getPrimaryModule()
@@ -318,6 +328,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PrimaryModule basicGetPrimaryModule()
@@ -327,6 +338,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPrimaryModule(PrimaryModule newPrimaryModule, NotificationChain msgs)
@@ -347,6 +359,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPrimaryModule(PrimaryModule newPrimaryModule)
@@ -371,6 +384,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Committer> getCommitters()
@@ -385,6 +399,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MainBranch getMainBranch()
@@ -414,6 +429,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MainBranch basicGetMainBranch()
@@ -423,6 +439,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetMainBranch(MainBranch newMainBranch, NotificationChain msgs)
@@ -443,6 +460,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setMainBranch(MainBranch newMainBranch)
@@ -467,6 +485,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -497,6 +516,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -518,6 +538,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -533,6 +554,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -566,6 +588,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -599,6 +622,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -630,6 +654,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -657,6 +682,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

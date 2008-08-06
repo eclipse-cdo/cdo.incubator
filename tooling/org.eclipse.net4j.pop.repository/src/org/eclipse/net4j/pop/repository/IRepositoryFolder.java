@@ -24,5 +24,5 @@ public interface IRepositoryFolder
 
   public String getPath();
 
-  public void checkoutInto(IContainer parent, String localName, boolean recursive, IProgressMonitor monitor);
+  public void checkoutAs(IContainer parent, String localName, boolean recursive, IProgressMonitor monitor);
 }

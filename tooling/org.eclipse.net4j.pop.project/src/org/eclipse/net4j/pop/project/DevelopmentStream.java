@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStream.java,v 1.10 2008-08-06 09:10:42 estepper Exp $
+ * $Id: DevelopmentStream.java,v 1.11 2008-08-06 16:02:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -31,15 +31,15 @@ import org.eclipse.emf.common.util.EList;
 public interface DevelopmentStream extends IntegrationStream
 {
   /**
-   * Returns the value of the '<em><b>Maintenance Streams</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.project.MaintenanceStream}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.MaintenanceStream#getParent <em>Parent</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Maintenance Streams</b></em>' containment reference list. The list contents are of
+   * type {@link org.eclipse.net4j.pop.project.MaintenanceStream}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.project.MaintenanceStream#getParent <em>Parent</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Maintenance Streams</em>' reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Maintenance Streams</em>' containment reference list.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getDevelopmentStream_MaintenanceStreams()
    * @see org.eclipse.net4j.pop.project.MaintenanceStream#getParent

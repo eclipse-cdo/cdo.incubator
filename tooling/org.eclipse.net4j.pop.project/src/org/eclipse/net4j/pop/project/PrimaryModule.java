@@ -8,20 +8,19 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModule.java,v 1.2 2008-08-06 10:32:46 estepper Exp $
+ * $Id: PrimaryModule.java,v 1.3 2008-08-06 16:02:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Primary Module</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.project.PrimaryModule#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.PrimaryModule#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getPrimaryModule()
  * @model
  * @generated
@@ -29,15 +28,15 @@ package org.eclipse.net4j.pop.project;
 public interface PrimaryModule extends Module
 {
   /**
-   * Returns the value of the '<em><b>Repository</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Repository#getPrimaryModule <em>Primary Module</em>}'.
-   * <!-- begin-user-doc
+   * Returns the value of the '<em><b>Repository</b></em>' container reference. It is bidirectional and its opposite is
+   * '{@link org.eclipse.net4j.pop.project.Repository#getPrimaryModule <em>Primary Module</em>}'. <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Repository</em>' container reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Repository</em>' container reference.
    * @see #setRepository(Repository)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getPrimaryModule_Repository()
@@ -48,9 +47,11 @@ public interface PrimaryModule extends Module
   Repository getRepository();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.PrimaryModule#getRepository <em>Repository</em>}' container reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Repository</em>' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.PrimaryModule#getRepository <em>Repository</em>}'
+   * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Repository</em>' container reference.
    * @see #getRepository()
    * @generated
    */

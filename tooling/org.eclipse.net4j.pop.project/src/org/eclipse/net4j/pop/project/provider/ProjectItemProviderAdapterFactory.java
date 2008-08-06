@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectItemProviderAdapterFactory.java,v 1.13 2008-08-06 10:32:46 estepper Exp $
+ * $Id: ProjectItemProviderAdapterFactory.java,v 1.14 2008-08-06 16:02:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -53,24 +53,24 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
     IChangeNotifier, IDisposable, IChildCreationExtender
 {
   /**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc --> <!--
+   * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc --> <!--
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-   * This helps manage the child creation extenders.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This helps manage the child creation extenders. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
@@ -85,8 +85,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
-   * This constructs an instance.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ProjectItemProviderAdapterFactory()
@@ -109,9 +109,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected PopProjectItemProvider popProjectItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.PopProject}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.PopProject}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -126,17 +126,17 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.Repository} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.Repository} instances. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected RepositoryItemProvider repositoryItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Repository}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Repository}. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -152,16 +152,16 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
 
   /**
    * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.PrimaryModule} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PrimaryModuleItemProvider primaryModuleItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.PrimaryModule}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.PrimaryModule}. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -184,9 +184,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected CheckoutItemProvider checkoutItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Checkout}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Checkout}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -209,9 +209,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected CommitterItemProvider committerItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Committer}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Committer}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -259,9 +259,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected MainBranchItemProvider mainBranchItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.MainBranch}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.MainBranch}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -284,9 +284,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected SubBranchItemProvider subBranchItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.SubBranch}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.SubBranch}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -309,9 +309,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected TaskStreamItemProvider taskStreamItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.TaskStream}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.TaskStream}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -328,14 +328,15 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   /**
    * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.MaintenanceStream} instances.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MaintenanceStreamItemProvider maintenanceStreamItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.MaintenanceStream}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.MaintenanceStream}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -358,9 +359,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected RootStreamItemProvider rootStreamItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.RootStream}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.RootStream}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -383,9 +384,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected ReleaseItemProvider releaseItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Release}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Release}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -408,9 +409,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected MilestoneItemProvider milestoneItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Milestone}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Milestone}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -433,9 +434,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected DeliveryItemProvider deliveryItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Delivery}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Delivery}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -458,9 +459,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   protected MergeItemProvider mergeItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Merge}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.Merge}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -475,8 +476,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ComposeableAdapterFactory getRootAdapterFactory()
@@ -485,8 +486,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
@@ -496,6 +497,7 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -505,9 +507,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc --> <!--
+   * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -518,6 +520,7 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -537,6 +540,7 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public List<IChildCreationExtender> getChildCreationExtenders()
@@ -546,6 +550,7 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain)
@@ -555,6 +560,7 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ResourceLocator getResourceLocator()
@@ -563,8 +569,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This adds a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void addListener(INotifyChangedListener notifyChangedListener)
@@ -573,8 +579,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This removes a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void removeListener(INotifyChangedListener notifyChangedListener)
@@ -583,9 +589,9 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc --> <!--
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   public void fireNotifyChanged(Notification notification)
@@ -599,8 +605,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
   }
 
   /**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void dispose()
