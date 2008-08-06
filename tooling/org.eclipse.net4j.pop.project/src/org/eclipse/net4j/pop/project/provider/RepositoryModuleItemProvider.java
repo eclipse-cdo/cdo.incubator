@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryModuleItemProvider.java,v 1.3 2008-08-05 18:39:25 estepper Exp $
+ * $Id: RepositoryModuleItemProvider.java,v 1.4 2008-08-06 06:23:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -67,8 +67,8 @@ public class RepositoryModuleItemProvider extends PopElementItemProvider impleme
 
       addPopProjectPropertyDescriptor(object);
       addAdapterTypePropertyDescriptor(object);
-      addRepositoryDescriptorPropertyDescriptor(object);
-      addModuleDescriptorPropertyDescriptor(object);
+      addRepositoryDescriptionPropertyDescriptor(object);
+      addModuleDescriptionPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -108,39 +108,39 @@ public class RepositoryModuleItemProvider extends PopElementItemProvider impleme
   }
 
   /**
-   * This adds a property descriptor for the Repository Descriptor feature. <!-- begin-user-doc --> <!-- end-user-doc
+   * This adds a property descriptor for the Repository Description feature. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
    * @generated
    */
-  protected void addRepositoryDescriptorPropertyDescriptor(Object object)
+  protected void addRepositoryDescriptionPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors
         .add(createItemPropertyDescriptor(
             ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
             getResourceLocator(),
-            getString("_UI_RepositoryModule_repositoryDescriptor_feature"), //$NON-NLS-1$
+            getString("_UI_RepositoryModule_repositoryDescription_feature"), //$NON-NLS-1$
             getString(
-                "_UI_PropertyDescriptor_description", "_UI_RepositoryModule_repositoryDescriptor_feature", "_UI_RepositoryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR, true, false, false,
+                "_UI_PropertyDescriptor_description", "_UI_RepositoryModule_repositoryDescription_feature", "_UI_RepositoryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            ProjectPackage.Literals.REPOSITORY_MODULE__REPOSITORY_DESCRIPTION, true, false, false,
             ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
   /**
-   * This adds a property descriptor for the Module Descriptor feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Module Description feature. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
    */
-  protected void addModuleDescriptorPropertyDescriptor(Object object)
+  protected void addModuleDescriptionPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors
         .add(createItemPropertyDescriptor(
             ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
             getResourceLocator(),
-            getString("_UI_RepositoryModule_moduleDescriptor_feature"), //$NON-NLS-1$
+            getString("_UI_RepositoryModule_moduleDescription_feature"), //$NON-NLS-1$
             getString(
-                "_UI_PropertyDescriptor_description", "_UI_RepositoryModule_moduleDescriptor_feature", "_UI_RepositoryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.REPOSITORY_MODULE__MODULE_DESCRIPTOR, true, false, false,
+                "_UI_PropertyDescriptor_description", "_UI_RepositoryModule_moduleDescription_feature", "_UI_RepositoryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            ProjectPackage.Literals.REPOSITORY_MODULE__MODULE_DESCRIPTION, true, false, false,
             ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
@@ -152,7 +152,7 @@ public class RepositoryModuleItemProvider extends PopElementItemProvider impleme
   @Override
   public String getText(Object object)
   {
-    String label = ((RepositoryModule)object).getModuleDescriptor();
+    String label = ((RepositoryModule)object).getModuleDescription();
     return label == null || label.length() == 0 ? getString("_UI_RepositoryModule_type") : //$NON-NLS-1$
         label;
   }
@@ -171,8 +171,8 @@ public class RepositoryModuleItemProvider extends PopElementItemProvider impleme
     switch (notification.getFeatureID(RepositoryModule.class))
     {
     case ProjectPackage.REPOSITORY_MODULE__ADAPTER_TYPE:
-    case ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR:
-    case ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTOR:
+    case ProjectPackage.REPOSITORY_MODULE__REPOSITORY_DESCRIPTION:
+    case ProjectPackage.REPOSITORY_MODULE__MODULE_DESCRIPTION:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamImpl.java,v 1.15 2008-08-05 18:42:42 estepper Exp $
+ * $Id: MaintenanceStreamImpl.java,v 1.16 2008-08-06 06:23:58 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -80,9 +80,7 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   public DevelopmentStream getParent()
   {
     if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT)
-    {
       return null;
-    }
     return (DevelopmentStream)eContainer();
   }
 
@@ -94,9 +92,7 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   public DevelopmentStream basicGetParent()
   {
     if (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT)
-    {
       return null;
-    }
     return (DevelopmentStream)eInternalContainer();
   }
 
@@ -118,34 +114,24 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
    */
   public void setParent(DevelopmentStream newParent)
   {
-    if (newParent != eInternalContainer() || eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT
-        && newParent != null)
+    if (newParent != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.MAINTENANCE_STREAM__PARENT && newParent != null))
     {
       if (EcoreUtil.isAncestor(this, newParent))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newParent != null)
-      {
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS,
             DevelopmentStream.class, msgs);
-      }
       msgs = basicSetParent(newParent, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAINTENANCE_STREAM__PARENT, newParent,
           newParent));
-    }
   }
 
   /**
@@ -162,10 +148,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
       if (baseline != oldBaseline)
       {
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.MAINTENANCE_STREAM__BASELINE,
               oldBaseline, baseline));
-        }
       }
     }
     return baseline;
@@ -195,13 +179,9 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.MAINTENANCE_STREAM__BASELINE, oldBaseline, newBaseline);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
@@ -217,26 +197,18 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     {
       NotificationChain msgs = null;
       if (baseline != null)
-      {
         msgs = ((InternalEObject)baseline).eInverseRemove(this, ProjectPackage.RELEASE__MAINTENANCE, Release.class,
             msgs);
-      }
       if (newBaseline != null)
-      {
         msgs = ((InternalEObject)newBaseline).eInverseAdd(this, ProjectPackage.RELEASE__MAINTENANCE, Release.class,
             msgs);
-      }
       msgs = basicSetBaseline(newBaseline, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MAINTENANCE_STREAM__BASELINE, newBaseline,
           newBaseline));
-    }
   }
 
   /**
@@ -251,16 +223,12 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     {
     case ProjectPackage.MAINTENANCE_STREAM__PARENT:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetParent((DevelopmentStream)otherEnd, msgs);
     case ProjectPackage.MAINTENANCE_STREAM__BASELINE:
       if (baseline != null)
-      {
         msgs = ((InternalEObject)baseline).eInverseRemove(this, ProjectPackage.RELEASE__MAINTENANCE, Release.class,
             msgs);
-      }
       return basicSetBaseline((Release)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -313,15 +281,11 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     {
     case ProjectPackage.MAINTENANCE_STREAM__PARENT:
       if (resolve)
-      {
         return getParent();
-      }
       return basicGetParent();
     case ProjectPackage.MAINTENANCE_STREAM__BASELINE:
       if (resolve)
-      {
         return getBaseline();
-      }
       return basicGetBaseline();
     }
     return super.eGet(featureID, resolve, coreType);

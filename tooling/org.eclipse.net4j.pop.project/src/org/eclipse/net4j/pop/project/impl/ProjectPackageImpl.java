@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.23 2008-08-05 18:39:27 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.24 2008-08-06 06:23:58 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -36,11 +36,9 @@ import org.eclipse.net4j.pop.project.Tag;
 import org.eclipse.net4j.pop.project.TaggedElement;
 import org.eclipse.net4j.pop.project.Target;
 import org.eclipse.net4j.pop.project.TaskStream;
-import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -199,13 +197,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * @generated
    */
   private EClass mergeEClass = null;
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  private EDataType repositoryAdapterEDataType = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -552,7 +543,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * 
    * @generated
    */
-  public EAttribute getRepositoryModule_RepositoryDescriptor()
+  public EAttribute getRepositoryModule_RepositoryDescription()
   {
     return (EAttribute)repositoryModuleEClass.getEStructuralFeatures().get(3);
   }
@@ -562,7 +553,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * 
    * @generated
    */
-  public EAttribute getRepositoryModule_ModuleDescriptor()
+  public EAttribute getRepositoryModule_ModuleDescription()
   {
     return (EAttribute)repositoryModuleEClass.getEStructuralFeatures().get(4);
   }
@@ -1112,16 +1103,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * 
    * @generated
    */
-  public EDataType getRepositoryAdapter()
-  {
-    return repositoryAdapterEDataType;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
   public ProjectFactory getProjectFactory()
   {
     return (ProjectFactory)getEFactoryInstance();
@@ -1170,8 +1151,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(repositoryModuleEClass, REPOSITORY_MODULE__POP_PROJECT);
     createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__ADAPTER);
     createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__ADAPTER_TYPE);
-    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR);
-    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__MODULE_DESCRIPTOR);
+    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__REPOSITORY_DESCRIPTION);
+    createEAttribute(repositoryModuleEClass, REPOSITORY_MODULE__MODULE_DESCRIPTION);
 
     checkoutEClass = createEClass(CHECKOUT);
     createEReference(checkoutEClass, CHECKOUT__POP_PROJECT);
@@ -1250,9 +1231,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(mergeEClass, MERGE__STREAM);
     createEAttribute(mergeEClass, MERGE__DATE);
     createEReference(mergeEClass, MERGE__DELIVERY);
-
-    // Create data types
-    repositoryAdapterEDataType = createEDataType(REPOSITORY_ADAPTER);
   }
 
   /**
@@ -1400,20 +1378,20 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         "popProject", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getRepositoryModule_Adapter(),
-        this.getRepositoryAdapter(),
+        theBasePackage.getRepositoryAdapter(),
         "adapter", null, 1, 1, RepositoryModule.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getRepositoryModule_AdapterType(),
         ecorePackage.getEString(),
         "adapterType", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getRepositoryModule_RepositoryDescriptor(),
+        getRepositoryModule_RepositoryDescription(),
         ecorePackage.getEString(),
-        "repositoryDescriptor", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "repositoryDescription", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getRepositoryModule_ModuleDescriptor(),
+        getRepositoryModule_ModuleDescription(),
         ecorePackage.getEString(),
-        "moduleDescriptor", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "moduleDescription", null, 1, 1, RepositoryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -1693,10 +1671,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getDelivery(),
         this.getDelivery_Merges(),
         "delivery", null, 1, 1, Merge.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    // Initialize data types
-    initEDataType(repositoryAdapterEDataType, IRepositoryAdapter.class,
-        "RepositoryAdapter", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     // Create resource
     createResource(eNS_URI);

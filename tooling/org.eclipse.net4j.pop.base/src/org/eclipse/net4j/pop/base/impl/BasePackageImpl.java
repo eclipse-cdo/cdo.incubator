@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BasePackageImpl.java,v 1.7 2008-08-05 18:42:46 estepper Exp $
+ * $Id: BasePackageImpl.java,v 1.8 2008-08-06 06:24:01 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
@@ -18,6 +18,10 @@ import org.eclipse.net4j.pop.base.Displayable;
 import org.eclipse.net4j.pop.base.Identifiable;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.base.Version;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositoryFolder;
+import org.eclipse.net4j.pop.repository.IRepositorySession;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -68,6 +72,34 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
    * @generated
    */
   private EDataType pathEDataType = null;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  private EDataType repositoryAdapterEDataType = null;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  private EDataType repositorySessionEDataType = null;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  private EDataType repositoryFolderEDataType = null;
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  private EDataType repositoryTagEDataType = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -211,6 +243,46 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
    * 
    * @generated
    */
+  public EDataType getRepositoryAdapter()
+  {
+    return repositoryAdapterEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public EDataType getRepositorySession()
+  {
+    return repositorySessionEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public EDataType getRepositoryFolder()
+  {
+    return repositoryFolderEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public EDataType getRepositoryTag()
+  {
+    return repositoryTagEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
   public BaseFactory getBaseFactory()
   {
     return (BaseFactory)getEFactoryInstance();
@@ -247,6 +319,10 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
     // Create data types
     versionEDataType = createEDataType(VERSION);
     pathEDataType = createEDataType(PATH);
+    repositoryAdapterEDataType = createEDataType(REPOSITORY_ADAPTER);
+    repositorySessionEDataType = createEDataType(REPOSITORY_SESSION);
+    repositoryFolderEDataType = createEDataType(REPOSITORY_FOLDER);
+    repositoryTagEDataType = createEDataType(REPOSITORY_TAG);
   }
 
   /**
@@ -304,6 +380,14 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage
     // Initialize data types
     initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEDataType(pathEDataType, IPath.class, "Path", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(repositoryAdapterEDataType, IRepositoryAdapter.class,
+        "RepositoryAdapter", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(repositorySessionEDataType, IRepositorySession.class,
+        "RepositorySession", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(repositoryFolderEDataType, IRepositoryFolder.class,
+        "RepositoryFolder", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(repositoryTagEDataType, IRepositoryTag.class,
+        "RepositoryTag", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
     // Create resource
     createResource(eNS_URI);

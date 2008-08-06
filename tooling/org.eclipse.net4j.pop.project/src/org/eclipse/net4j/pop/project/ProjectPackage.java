@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.20 2008-08-05 18:39:26 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.21 2008-08-06 06:23:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -16,7 +16,6 @@ import org.eclipse.net4j.pop.base.BasePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -337,21 +336,22 @@ public interface ProjectPackage extends EPackage
   int REPOSITORY_MODULE__ADAPTER_TYPE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Repository Descriptor</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * The feature id for the '<em><b>Repository Description</b></em>' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_MODULE__REPOSITORY_DESCRIPTION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Module Description</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
    * @generated
    * @ordered
    */
-  int REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Module Descriptor</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   * @ordered
-   */
-  int REPOSITORY_MODULE__MODULE_DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+  int REPOSITORY_MODULE__MODULE_DESCRIPTION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Repository Module</em>' class. <!-- begin-user-doc --> <!--
@@ -1637,15 +1637,6 @@ public interface ProjectPackage extends EPackage
   int MERGE_FEATURE_COUNT = TAGGED_ELEMENT_FEATURE_COUNT + 3;
 
   /**
-   * The meta object id for the '<em>Repository Adapter</em>' data type. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @see org.eclipse.net4j.pop.repository.IRepositoryAdapter
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getRepositoryAdapter()
-   * @generated
-   */
-  int REPOSITORY_ADAPTER = 21;
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.PopProject <em>Pop Project</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -1944,27 +1935,27 @@ public interface ProjectPackage extends EPackage
 
   /**
    * Returns the meta object for the attribute '
-   * {@link org.eclipse.net4j.pop.project.RepositoryModule#getRepositoryDescriptor <em>Repository Descriptor</em>}'.
+   * {@link org.eclipse.net4j.pop.project.RepositoryModule#getRepositoryDescription <em>Repository Description</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @return the meta object for the attribute '<em>Repository Descriptor</em>'.
-   * @see org.eclipse.net4j.pop.project.RepositoryModule#getRepositoryDescriptor()
+   * @return the meta object for the attribute '<em>Repository Description</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getRepositoryDescription()
    * @see #getRepositoryModule()
    * @generated
    */
-  EAttribute getRepositoryModule_RepositoryDescriptor();
+  EAttribute getRepositoryModule_RepositoryDescription();
 
   /**
    * Returns the meta object for the attribute '
-   * {@link org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescriptor <em>Module Descriptor</em>}'. <!--
+   * {@link org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescription <em>Module Description</em>}'. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @return the meta object for the attribute '<em>Module Descriptor</em>'.
-   * @see org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescriptor()
+   * @return the meta object for the attribute '<em>Module Description</em>'.
+   * @see org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescription()
    * @see #getRepositoryModule()
    * @generated
    */
-  EAttribute getRepositoryModule_ModuleDescriptor();
+  EAttribute getRepositoryModule_ModuleDescription();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.TaggedElement <em>Tagged Element</em>}'.
@@ -2552,17 +2543,6 @@ public interface ProjectPackage extends EPackage
   EReference getMerge_Delivery();
 
   /**
-   * Returns the meta object for data type '{@link org.eclipse.net4j.pop.repository.IRepositoryAdapter
-   * <em>Repository Adapter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @return the meta object for data type '<em>Repository Adapter</em>'.
-   * @see org.eclipse.net4j.pop.repository.IRepositoryAdapter
-   * @model instanceClass="org.eclipse.net4j.pop.repository.IRepositoryAdapter"
-   * @generated
-   */
-  EDataType getRepositoryAdapter();
-
-  /**
    * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @return the factory that creates the instances of the model.
@@ -2811,20 +2791,20 @@ public interface ProjectPackage extends EPackage
     EAttribute REPOSITORY_MODULE__ADAPTER_TYPE = eINSTANCE.getRepositoryModule_AdapterType();
 
     /**
-     * The meta object literal for the '<em><b>Repository Descriptor</b></em>' attribute feature. <!-- begin-user-doc
+     * The meta object literal for the '<em><b>Repository Description</b></em>' attribute feature. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * 
      * @generated
      */
-    EAttribute REPOSITORY_MODULE__REPOSITORY_DESCRIPTOR = eINSTANCE.getRepositoryModule_RepositoryDescriptor();
+    EAttribute REPOSITORY_MODULE__REPOSITORY_DESCRIPTION = eINSTANCE.getRepositoryModule_RepositoryDescription();
 
     /**
-     * The meta object literal for the '<em><b>Module Descriptor</b></em>' attribute feature. <!-- begin-user-doc -->
+     * The meta object literal for the '<em><b>Module Description</b></em>' attribute feature. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * 
      * @generated
      */
-    EAttribute REPOSITORY_MODULE__MODULE_DESCRIPTOR = eINSTANCE.getRepositoryModule_ModuleDescriptor();
+    EAttribute REPOSITORY_MODULE__MODULE_DESCRIPTION = eINSTANCE.getRepositoryModule_ModuleDescription();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl
@@ -3289,16 +3269,6 @@ public interface ProjectPackage extends EPackage
      * @generated
      */
     EReference MERGE__DELIVERY = eINSTANCE.getMerge_Delivery();
-
-    /**
-     * The meta object literal for the '<em>Repository Adapter</em>' data type. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * 
-     * @see org.eclipse.net4j.pop.repository.IRepositoryAdapter
-     * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getRepositoryAdapter()
-     * @generated
-     */
-    EDataType REPOSITORY_ADAPTER = eINSTANCE.getRepositoryAdapter();
 
   }
 

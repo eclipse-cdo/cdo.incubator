@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.18 2008-08-05 18:42:42 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.19 2008-08-06 06:23:58 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -201,9 +201,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__NAME, oldName, name));
-    }
   }
 
   /**
@@ -226,10 +224,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     String oldTeamProvider = teamProvider;
     teamProvider = newTeamProvider;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__TEAM_PROVIDER, oldTeamProvider,
           teamProvider));
-    }
   }
 
   /**
@@ -252,10 +248,8 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     String oldRepositoryUrl = repositoryUrl;
     repositoryUrl = newRepositoryUrl;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__REPOSITORY_URL,
           oldRepositoryUrl, repositoryUrl));
-    }
   }
 
   /**
@@ -295,14 +289,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
               RepositoryModule.class, msgs);
         }
         if (msgs != null)
-        {
           msgs.dispatch();
-        }
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__PRIMARY_MODULE,
               oldPrimaryModule, primaryModule));
-        }
       }
     }
     return primaryModule;
@@ -332,13 +322,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.POP_PROJECT__PRIMARY_MODULE, oldPrimaryModule, newPrimaryModule);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
@@ -354,26 +340,18 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     {
       NotificationChain msgs = null;
       if (primaryModule != null)
-      {
         msgs = ((InternalEObject)primaryModule).eInverseRemove(this, ProjectPackage.REPOSITORY_MODULE__POP_PROJECT,
             RepositoryModule.class, msgs);
-      }
       if (newPrimaryModule != null)
-      {
         msgs = ((InternalEObject)newPrimaryModule).eInverseAdd(this, ProjectPackage.REPOSITORY_MODULE__POP_PROJECT,
             RepositoryModule.class, msgs);
-      }
       msgs = basicSetPrimaryModule(newPrimaryModule, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__PRIMARY_MODULE,
           newPrimaryModule, newPrimaryModule));
-    }
   }
 
   /**
@@ -397,14 +375,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
           msgs = newMainBranch.eInverseAdd(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT, MainBranch.class, msgs);
         }
         if (msgs != null)
-        {
           msgs.dispatch();
-        }
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__MAIN_BRANCH,
               oldMainBranch, mainBranch));
-        }
       }
     }
     return mainBranch;
@@ -434,13 +408,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.POP_PROJECT__MAIN_BRANCH, oldMainBranch, newMainBranch);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
@@ -456,26 +426,18 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     {
       NotificationChain msgs = null;
       if (mainBranch != null)
-      {
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT,
             MainBranch.class, msgs);
-      }
       if (newMainBranch != null)
-      {
         msgs = ((InternalEObject)newMainBranch).eInverseAdd(this, ProjectPackage.MAIN_BRANCH__POP_PROJECT,
             MainBranch.class, msgs);
-      }
       msgs = basicSetMainBranch(newMainBranch, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__MAIN_BRANCH, newMainBranch,
           newMainBranch));
-    }
   }
 
   /**
@@ -499,14 +461,10 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
           msgs = newRootStream.eInverseAdd(this, ProjectPackage.ROOT_STREAM__POP_PROJECT, RootStream.class, msgs);
         }
         if (msgs != null)
-        {
           msgs.dispatch();
-        }
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.POP_PROJECT__ROOT_STREAM,
               oldRootStream, rootStream));
-        }
       }
     }
     return rootStream;
@@ -536,13 +494,9 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.POP_PROJECT__ROOT_STREAM, oldRootStream, newRootStream);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
@@ -558,26 +512,18 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     {
       NotificationChain msgs = null;
       if (rootStream != null)
-      {
         msgs = ((InternalEObject)rootStream).eInverseRemove(this, ProjectPackage.ROOT_STREAM__POP_PROJECT,
             RootStream.class, msgs);
-      }
       if (newRootStream != null)
-      {
         msgs = ((InternalEObject)newRootStream).eInverseAdd(this, ProjectPackage.ROOT_STREAM__POP_PROJECT,
             RootStream.class, msgs);
-      }
       msgs = basicSetRootStream(newRootStream, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.POP_PROJECT__ROOT_STREAM, newRootStream,
           newRootStream));
-    }
   }
 
   /**
@@ -622,24 +568,18 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getCommitters()).basicAdd(otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__PRIMARY_MODULE:
       if (primaryModule != null)
-      {
         msgs = ((InternalEObject)primaryModule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
             - ProjectPackage.POP_PROJECT__PRIMARY_MODULE, null, msgs);
-      }
       return basicSetPrimaryModule((RepositoryModule)otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       if (mainBranch != null)
-      {
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
             - ProjectPackage.POP_PROJECT__MAIN_BRANCH, null, msgs);
-      }
       return basicSetMainBranch((MainBranch)otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       if (rootStream != null)
-      {
         msgs = ((InternalEObject)rootStream).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
             - ProjectPackage.POP_PROJECT__ROOT_STREAM, null, msgs);
-      }
       return basicSetRootStream((RootStream)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -687,21 +627,15 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       return getCommitters();
     case ProjectPackage.POP_PROJECT__PRIMARY_MODULE:
       if (resolve)
-      {
         return getPrimaryModule();
-      }
       return basicGetPrimaryModule();
     case ProjectPackage.POP_PROJECT__MAIN_BRANCH:
       if (resolve)
-      {
         return getMainBranch();
-      }
       return basicGetMainBranch();
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       if (resolve)
-      {
         return getRootStream();
-      }
       return basicGetRootStream();
     case ProjectPackage.POP_PROJECT__CHECKOUTS:
       return getCheckouts();
@@ -820,9 +754,7 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

@@ -16,4 +16,8 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.eclipse.net4j.pop.base.Version"/>
   <eClassifiers xsi:type="ecore:EDataType" name="Path" instanceClassName="org.eclipse.core.runtime.IPath"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="RepositoryAdapter" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryAdapter"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="RepositorySession" instanceClassName="org.eclipse.net4j.pop.repository.IRepositorySession"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="RepositoryFolder" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryFolder"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="RepositoryTag" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryTag"/>
 </ecore:EPackage>

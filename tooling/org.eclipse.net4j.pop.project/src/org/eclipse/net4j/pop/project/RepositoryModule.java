@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryModule.java,v 1.2 2008-08-05 18:39:26 estepper Exp $
+ * $Id: RepositoryModule.java,v 1.3 2008-08-06 06:23:57 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -75,8 +75,8 @@ public interface RepositoryModule extends PopElement
    * 
    * @return the value of the '<em>Adapter</em>' attribute.
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepositoryModule_Adapter()
-   * @model dataType="org.eclipse.net4j.pop.project.RepositoryAdapter" required="true" transient="true"
-   *        changeable="false" volatile="true" derived="true"
+   * @model dataType="org.eclipse.net4j.pop.base.RepositoryAdapter" required="true" transient="true" changeable="false"
+   *        volatile="true" derived="true"
    * @generated
    */
   IRepositoryAdapter getAdapter();
@@ -109,57 +109,57 @@ public interface RepositoryModule extends PopElement
   void setAdapterType(String value);
 
   /**
-   * Returns the value of the '<em><b>Repository Descriptor</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Repository Description</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Repository Descriptor</em>' attribute isn't clear, there really should be more of a
+   * If the meaning of the '<em>Repository Description</em>' attribute isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
    * 
-   * @return the value of the '<em>Repository Descriptor</em>' attribute.
-   * @see #setRepositoryDescriptor(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepositoryModule_RepositoryDescriptor()
+   * @return the value of the '<em>Repository Description</em>' attribute.
+   * @see #setRepositoryDescription(String)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepositoryModule_RepositoryDescription()
    * @model required="true"
    * @generated
    */
-  String getRepositoryDescriptor();
+  String getRepositoryDescription();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.RepositoryModule#getRepositoryDescriptor
-   * <em>Repository Descriptor</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.RepositoryModule#getRepositoryDescription
+   * <em>Repository Description</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @param value
-   *          the new value of the '<em>Repository Descriptor</em>' attribute.
-   * @see #getRepositoryDescriptor()
+   *          the new value of the '<em>Repository Description</em>' attribute.
+   * @see #getRepositoryDescription()
    * @generated
    */
-  void setRepositoryDescriptor(String value);
+  void setRepositoryDescription(String value);
 
   /**
-   * Returns the value of the '<em><b>Module Descriptor</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Module Description</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Module Descriptor</em>' attribute isn't clear, there really should be more of a
+   * If the meaning of the '<em>Module Description</em>' attribute isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
    * 
-   * @return the value of the '<em>Module Descriptor</em>' attribute.
-   * @see #setModuleDescriptor(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepositoryModule_ModuleDescriptor()
+   * @return the value of the '<em>Module Description</em>' attribute.
+   * @see #setModuleDescription(String)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepositoryModule_ModuleDescription()
    * @model required="true"
    * @generated
    */
-  String getModuleDescriptor();
+  String getModuleDescription();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescriptor
-   * <em>Module Descriptor</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.RepositoryModule#getModuleDescription
+   * <em>Module Description</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @param value
-   *          the new value of the '<em>Module Descriptor</em>' attribute.
-   * @see #getModuleDescriptor()
+   *          the new value of the '<em>Module Description</em>' attribute.
+   * @see #getModuleDescription()
    * @generated
    */
-  void setModuleDescriptor(String value);
+  void setModuleDescription(String value);
 
 } // RepositoryModule

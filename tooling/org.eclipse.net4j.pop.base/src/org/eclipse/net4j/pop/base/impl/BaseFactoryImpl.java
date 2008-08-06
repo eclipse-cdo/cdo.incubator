@@ -8,13 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BaseFactoryImpl.java,v 1.9 2008-08-05 18:42:46 estepper Exp $
+ * $Id: BaseFactoryImpl.java,v 1.10 2008-08-06 06:24:01 estepper Exp $
  */
 package org.eclipse.net4j.pop.base.impl;
 
 import org.eclipse.net4j.pop.base.BaseFactory;
 import org.eclipse.net4j.pop.base.BasePackage;
 import org.eclipse.net4j.pop.base.Version;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositoryFolder;
+import org.eclipse.net4j.pop.repository.IRepositorySession;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -94,6 +98,14 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
       return createVersionFromString(eDataType, initialValue);
     case BasePackage.PATH:
       return createPathFromString(eDataType, initialValue);
+    case BasePackage.REPOSITORY_ADAPTER:
+      return createRepositoryAdapterFromString(eDataType, initialValue);
+    case BasePackage.REPOSITORY_SESSION:
+      return createRepositorySessionFromString(eDataType, initialValue);
+    case BasePackage.REPOSITORY_FOLDER:
+      return createRepositoryFolderFromString(eDataType, initialValue);
+    case BasePackage.REPOSITORY_TAG:
+      return createRepositoryTagFromString(eDataType, initialValue);
     default:
       throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -113,6 +125,14 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
       return convertVersionToString(eDataType, instanceValue);
     case BasePackage.PATH:
       return convertPathToString(eDataType, instanceValue);
+    case BasePackage.REPOSITORY_ADAPTER:
+      return convertRepositoryAdapterToString(eDataType, instanceValue);
+    case BasePackage.REPOSITORY_SESSION:
+      return convertRepositorySessionToString(eDataType, instanceValue);
+    case BasePackage.REPOSITORY_FOLDER:
+      return convertRepositoryFolderToString(eDataType, instanceValue);
+    case BasePackage.REPOSITORY_TAG:
+      return convertRepositoryTagToString(eDataType, instanceValue);
     default:
       throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -154,6 +174,86 @@ public class BaseFactoryImpl extends EFactoryImpl implements BaseFactory
    * @generated
    */
   public String convertPathToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public IRepositoryAdapter createRepositoryAdapterFromString(EDataType eDataType, String initialValue)
+  {
+    return (IRepositoryAdapter)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public String convertRepositoryAdapterToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public IRepositorySession createRepositorySessionFromString(EDataType eDataType, String initialValue)
+  {
+    return (IRepositorySession)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public String convertRepositorySessionToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public IRepositoryFolder createRepositoryFolderFromString(EDataType eDataType, String initialValue)
+  {
+    return (IRepositoryFolder)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public String convertRepositoryFolderToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public IRepositoryTag createRepositoryTagFromString(EDataType eDataType, String initialValue)
+  {
+    return (IRepositoryTag)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  public String convertRepositoryTagToString(EDataType eDataType, Object instanceValue)
   {
     return super.convertToString(eDataType, instanceValue);
   }

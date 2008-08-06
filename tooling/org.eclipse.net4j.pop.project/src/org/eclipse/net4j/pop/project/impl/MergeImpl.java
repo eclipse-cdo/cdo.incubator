@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MergeImpl.java,v 1.12 2008-08-05 18:42:42 estepper Exp $
+ * $Id: MergeImpl.java,v 1.13 2008-08-06 06:23:58 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -99,9 +99,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   public Stream getStream()
   {
     if (eContainerFeatureID != ProjectPackage.MERGE__STREAM)
-    {
       return null;
-    }
     return (Stream)eContainer();
   }
 
@@ -113,9 +111,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   public Stream basicGetStream()
   {
     if (eContainerFeatureID != ProjectPackage.MERGE__STREAM)
-    {
       return null;
-    }
     return (Stream)eInternalContainer();
   }
 
@@ -137,31 +133,21 @@ public class MergeImpl extends TaggedElementImpl implements Merge
    */
   public void setStream(Stream newStream)
   {
-    if (newStream != eInternalContainer() || eContainerFeatureID != ProjectPackage.MERGE__STREAM && newStream != null)
+    if (newStream != eInternalContainer() || (eContainerFeatureID != ProjectPackage.MERGE__STREAM && newStream != null))
     {
       if (EcoreUtil.isAncestor(this, newStream))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newStream != null)
-      {
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.STREAM__MERGES, Stream.class, msgs);
-      }
       msgs = basicSetStream(newStream, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MERGE__STREAM, newStream, newStream));
-    }
   }
 
   /**
@@ -184,9 +170,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     Date oldDate = date;
     date = newDate;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MERGE__DATE, oldDate, date));
-    }
   }
 
   /**
@@ -203,10 +187,8 @@ public class MergeImpl extends TaggedElementImpl implements Merge
       if (delivery != oldDelivery)
       {
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.MERGE__DELIVERY, oldDelivery,
               delivery));
-        }
       }
     }
     return delivery;
@@ -236,13 +218,9 @@ public class MergeImpl extends TaggedElementImpl implements Merge
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.MERGE__DELIVERY,
           oldDelivery, newDelivery);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
@@ -258,23 +236,15 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     {
       NotificationChain msgs = null;
       if (delivery != null)
-      {
         msgs = ((InternalEObject)delivery).eInverseRemove(this, ProjectPackage.DELIVERY__MERGES, Delivery.class, msgs);
-      }
       if (newDelivery != null)
-      {
         msgs = ((InternalEObject)newDelivery).eInverseAdd(this, ProjectPackage.DELIVERY__MERGES, Delivery.class, msgs);
-      }
       msgs = basicSetDelivery(newDelivery, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.MERGE__DELIVERY, newDelivery, newDelivery));
-    }
   }
 
   /**
@@ -289,15 +259,11 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     {
     case ProjectPackage.MERGE__STREAM:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetStream((Stream)otherEnd, msgs);
     case ProjectPackage.MERGE__DELIVERY:
       if (delivery != null)
-      {
         msgs = ((InternalEObject)delivery).eInverseRemove(this, ProjectPackage.DELIVERY__MERGES, Delivery.class, msgs);
-      }
       return basicSetDelivery((Delivery)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -349,17 +315,13 @@ public class MergeImpl extends TaggedElementImpl implements Merge
     {
     case ProjectPackage.MERGE__STREAM:
       if (resolve)
-      {
         return getStream();
-      }
       return basicGetStream();
     case ProjectPackage.MERGE__DATE:
       return getDate();
     case ProjectPackage.MERGE__DELIVERY:
       if (resolve)
-      {
         return getDelivery();
-      }
       return basicGetDelivery();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -440,9 +402,7 @@ public class MergeImpl extends TaggedElementImpl implements Merge
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (date: "); //$NON-NLS-1$
