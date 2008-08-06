@@ -19,20 +19,21 @@ import org.eclipse.net4j.util.WrappedException;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.team.internal.ccvs.core.CVSException;
-import org.eclipse.team.internal.ccvs.core.CVSProviderPlugin;
 
 /**
  * @author Eike Stepper
  */
 public class CvsRepositoryAdapter extends RepositoryAdapter
 {
+  public static final String TYPE = "CVS";
+
   public CvsRepositoryAdapter()
   {
   }
 
   public String getType()
   {
-    return CVSProviderPlugin.getTypeId();
+    return TYPE;
   }
 
   public Branch createBranchTag(String name)

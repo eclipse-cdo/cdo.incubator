@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.3 2008-08-06 08:30:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -103,7 +103,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
         .getRootAdapterFactory(), getResourceLocator(),
         getString("_UI_Repository_adapter_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_Repository_adapter_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.REPOSITORY__ADAPTER, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+        ProjectPackage.Literals.REPOSITORY__ADAPTER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
         null, null));
   }
 
@@ -195,7 +195,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   @Override
   public String getText(Object object)
   {
-    String label = ((Repository)object).getId();
+    String label = ((Repository)object).getDescriptor();
     return label == null || label.length() == 0 ? getString("_UI_Repository_type") : //$NON-NLS-1$
         getString("_UI_Repository_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }
@@ -214,7 +214,6 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
 
     switch (notification.getFeatureID(Repository.class))
     {
-    case ProjectPackage.REPOSITORY__ADAPTER:
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:
     case ProjectPackage.REPOSITORY__DESCRIPTOR:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
