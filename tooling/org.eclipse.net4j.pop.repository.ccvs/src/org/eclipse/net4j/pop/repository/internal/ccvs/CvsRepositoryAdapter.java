@@ -75,9 +75,16 @@ public class CvsRepositoryAdapter extends RepositoryAdapter implements ICvsRepos
     return CVSProviderPlugin.getTypeId();
   }
 
-  public IRepositorySession openSession(String repository)
+  public IRepositorySession openSession(String repository, boolean writeAccess, IProgressMonitor monitor)
   {
-    return null;
+    try
+    {
+      return new CvsRepositorySession(this, repository, writeAccess, monitor);
+    }
+    catch (CVSException ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
   }
 
   public void checkoutBranch(IPath target, String repository, String module, String branch)

@@ -17,7 +17,33 @@ import org.eclipse.core.runtime.PlatformObject;
 /**
  * @author Eike Stepper
  */
-public class RepositorySession extends PlatformObject implements IRepositorySession
+public abstract class RepositorySession extends PlatformObject implements IRepositorySession
 {
+  private RepositoryAdapter adapter;
 
+  private String repositoryDescription;
+
+  private boolean writeAccess;
+
+  public RepositorySession(RepositoryAdapter adapter, String repositoryDescription, boolean writeAccess)
+  {
+    this.adapter = adapter;
+    this.repositoryDescription = repositoryDescription;
+    this.writeAccess = writeAccess;
+  }
+
+  public RepositoryAdapter getAdapter()
+  {
+    return adapter;
+  }
+
+  public String getRepositoryDescription()
+  {
+    return repositoryDescription;
+  }
+
+  public boolean isWriteAccess()
+  {
+    return writeAccess;
+  }
 }

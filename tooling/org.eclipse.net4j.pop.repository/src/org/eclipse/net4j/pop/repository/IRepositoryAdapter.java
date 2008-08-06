@@ -14,6 +14,7 @@ import org.eclipse.net4j.util.registry.IRegistry;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
 
 import java.util.Date;
 
@@ -24,7 +25,7 @@ public interface IRepositoryAdapter extends IAdaptable
 {
   public String getType();
 
-  public IRepositorySession openSession(String repository);
+  public IRepositorySession openSession(String repositoryDescription, boolean writeAccess, IProgressMonitor monitor);
 
   public void checkoutBranch(IPath target, String repository, String module, String branch);
 

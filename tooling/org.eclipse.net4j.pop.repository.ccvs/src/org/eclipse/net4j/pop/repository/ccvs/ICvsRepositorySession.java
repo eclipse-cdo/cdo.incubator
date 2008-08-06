@@ -8,20 +8,22 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.repository;
+package org.eclipse.net4j.pop.repository.ccvs;
 
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.net4j.pop.repository.IRepositorySession;
+
+import org.eclipse.team.internal.ccvs.core.ICVSFolder;
+import org.eclipse.team.internal.ccvs.core.ICVSRepositoryLocation;
+import org.eclipse.team.internal.ccvs.core.client.Session;
 
 /**
  * @author Eike Stepper
  */
-public interface IRepositorySession extends IAdaptable
+public interface ICvsRepositorySession extends IRepositorySession
 {
-  public IRepositoryAdapter getAdapter();
+  public ICVSFolder getLocalRoot();
 
-  public String getRepositoryDescription();
+  public ICVSRepositoryLocation getRepositoryLocation();
 
-  public boolean isWriteAccess();
-
-  public void close();
+  public Session getCvsSession();
 }
