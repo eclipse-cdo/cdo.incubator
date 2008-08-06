@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.14 2008-08-06 16:02:22 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.15 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -53,7 +53,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DevelopmentStreamImpl()
@@ -63,7 +62,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -74,7 +72,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<MaintenanceStream> getMaintenanceStreams()
@@ -89,7 +86,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -106,7 +102,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -122,7 +117,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -138,7 +132,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -157,7 +150,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -174,7 +166,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

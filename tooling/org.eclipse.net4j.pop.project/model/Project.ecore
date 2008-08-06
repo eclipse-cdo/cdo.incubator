@@ -38,6 +38,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="PrimaryModule" eSuperTypes="#//Module">
     <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
         eType="#//Repository" eOpposite="#//Repository/primaryModule"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="productModelPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="product.xml"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Committer" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
@@ -102,6 +104,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.net4j.pop.base/model/Base.ecore#//Path"
         changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stream" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eOperations name="getPopProject" lowerBound="1" eType="#//PopProject"/>

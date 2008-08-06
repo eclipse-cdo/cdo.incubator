@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleImpl.java,v 1.3 2008-08-06 16:02:22 estepper Exp $
+ * $Id: PrimaryModuleImpl.java,v 1.4 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,17 +28,37 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl#getProductModelPath <em>Product Model Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 {
   /**
+   * The default value of the '{@link #getProductModelPath() <em>Product Model Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProductModelPath()
+   * @generated
+   * @ordered
+   */
+  protected static final String PRODUCT_MODEL_PATH_EDEFAULT = "product.xml"; //$NON-NLS-1$
+
+  /**
+   * The cached value of the '{@link #getProductModelPath() <em>Product Model Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getProductModelPath()
+   * @generated
+   * @ordered
+   */
+  protected String productModelPath = PRODUCT_MODEL_PATH_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PrimaryModuleImpl()
@@ -48,7 +68,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -59,7 +78,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Repository getRepository()
@@ -71,7 +89,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Repository basicGetRepository()
@@ -83,7 +100,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
@@ -94,7 +110,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepository(Repository newRepository)
@@ -120,8 +135,31 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getProductModelPath()
+  {
+    return productModelPath;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setProductModelPath(String newProductModelPath)
+  {
+    String oldProductModelPath = productModelPath;
+    productModelPath = newProductModelPath;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.PRIMARY_MODULE__PRODUCT_MODEL_PATH,
+          oldProductModelPath, productModelPath));
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -139,7 +177,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -155,7 +192,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -172,7 +208,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -184,13 +219,14 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
       if (resolve)
         return getRepository();
       return basicGetRepository();
+    case ProjectPackage.PRIMARY_MODULE__PRODUCT_MODEL_PATH:
+      return getProductModelPath();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -201,13 +237,15 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     case ProjectPackage.PRIMARY_MODULE__REPOSITORY:
       setRepository((Repository)newValue);
       return;
+    case ProjectPackage.PRIMARY_MODULE__PRODUCT_MODEL_PATH:
+      setProductModelPath((String)newValue);
+      return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -218,13 +256,15 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     case ProjectPackage.PRIMARY_MODULE__REPOSITORY:
       setRepository((Repository)null);
       return;
+    case ProjectPackage.PRIMARY_MODULE__PRODUCT_MODEL_PATH:
+      setProductModelPath(PRODUCT_MODEL_PATH_EDEFAULT);
+      return;
     }
     super.eUnset(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -234,8 +274,29 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     {
     case ProjectPackage.PRIMARY_MODULE__REPOSITORY:
       return basicGetRepository() != null;
+    case ProjectPackage.PRIMARY_MODULE__PRODUCT_MODEL_PATH:
+      return PRODUCT_MODEL_PATH_EDEFAULT == null ? productModelPath != null : !PRODUCT_MODEL_PATH_EDEFAULT
+          .equals(productModelPath);
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy())
+      return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (productModelPath: "); //$NON-NLS-1$
+    result.append(productModelPath);
+    result.append(')');
+    return result.toString();
   }
 
 } // PrimaryModuleImpl

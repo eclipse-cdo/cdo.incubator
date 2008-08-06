@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.11 2008-08-06 16:02:22 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.12 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.IPath;
  * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getPopProject <em>Pop Project</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
  * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#getLocation <em>Location</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
  * 
@@ -48,6 +49,16 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   protected static final IPath LOCATION_EDEFAULT = null;
 
   /**
+   * The default value of the '{@link #isActive() <em>Active</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
+   * @see #isActive()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ACTIVE_EDEFAULT = false;
+
+  /**
    * @ADDED
    */
   private CheckoutDiscriminator discriminator;
@@ -56,6 +67,11 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
    * @ADDED
    */
   private IPath location;
+
+  /**
+   * @ADDED
+   */
+  private ICheckoutManager manager;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -109,6 +125,21 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   }
 
   /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  public boolean isActive()
+  {
+    if (manager == null)
+    {
+      return false;
+    }
+
+    return manager.isCheckoutActive(this);
+  }
+
+  /**
    * @ADDED
    */
   public void setLocation(IPath location)
@@ -140,6 +171,8 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
       return getDiscriminator();
     case ProjectPackage.CHECKOUT__LOCATION:
       return getLocation();
+    case ProjectPackage.CHECKOUT__ACTIVE:
+      return isActive() ? Boolean.TRUE : Boolean.FALSE;
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -160,8 +193,26 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
       return getDiscriminator() != null;
     case ProjectPackage.CHECKOUT__LOCATION:
       return LOCATION_EDEFAULT == null ? getLocation() != null : !LOCATION_EDEFAULT.equals(getLocation());
+    case ProjectPackage.CHECKOUT__ACTIVE:
+      return isActive() != ACTIVE_EDEFAULT;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * @ADDED
+   */
+  public ICheckoutManager getManager()
+  {
+    return manager;
+  }
+
+  /**
+   * @ADDED
+   */
+  public void setManager(ICheckoutManager manager)
+  {
+    this.manager = manager;
   }
 
 } // CheckoutImpl

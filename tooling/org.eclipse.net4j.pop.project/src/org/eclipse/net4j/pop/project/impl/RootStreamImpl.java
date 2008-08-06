@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RootStreamImpl.java,v 1.15 2008-08-06 16:02:22 estepper Exp $
+ * $Id: RootStreamImpl.java,v 1.16 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,17 +28,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.RootStreamImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.RootStreamImpl#getPopProject <em>Pop Project</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected RootStreamImpl()
@@ -48,7 +47,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -59,7 +57,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -72,7 +69,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -84,7 +80,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
@@ -95,7 +90,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -122,7 +116,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -140,7 +133,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -156,7 +148,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -172,7 +163,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -190,7 +180,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -207,7 +196,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -224,7 +212,6 @@ public class RootStreamImpl extends DevelopmentStreamImpl implements RootStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

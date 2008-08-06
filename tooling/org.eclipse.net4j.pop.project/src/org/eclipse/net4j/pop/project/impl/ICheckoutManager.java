@@ -31,4 +31,10 @@ public interface ICheckoutManager extends IContainer<Checkout>, IAdaptable
   public Checkout getCheckout(CheckoutDiscriminator discriminator);
 
   public Checkout checkout(CheckoutDiscriminator discriminator);
+
+  public Checkout getActiveCheckout();
+
+  public void getActiveCheckout(Checkout checkout);
+
+  public boolean isCheckoutActive(Checkout checkout);
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ModuleItemProvider.java,v 1.4 2008-08-06 16:02:22 estepper Exp $
+ * $Id: ModuleItemProvider.java,v 1.5 2008-08-06 16:56:15 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -34,9 +34,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Module} object. <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Module} object.
+ * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
- * 
  * @generated
  */
 public class ModuleItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
@@ -44,8 +44,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ModuleItemProvider(AdapterFactory adapterFactory)
@@ -54,8 +54,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -72,8 +72,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -87,8 +87,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This adds a property descriptor for the Descriptor feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Descriptor feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addDescriptorPropertyDescriptor(Object object)
@@ -115,9 +115,9 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -136,9 +136,9 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

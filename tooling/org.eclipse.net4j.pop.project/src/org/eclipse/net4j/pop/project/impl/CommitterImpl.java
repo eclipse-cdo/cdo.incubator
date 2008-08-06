@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterImpl.java,v 1.15 2008-08-06 16:02:22 estepper Exp $
+ * $Id: CommitterImpl.java,v 1.16 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,16 +31,16 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getLogin <em>Login</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getLogin <em>Login</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#getExit <em>Exit</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.CommitterImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CommitterImpl extends PopElementImpl implements Committer
@@ -76,8 +76,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -135,8 +135,8 @@ public class CommitterImpl extends PopElementImpl implements Committer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getExit()
    * @generated
    * @ordered
@@ -155,7 +155,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CommitterImpl()
@@ -165,7 +164,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -176,7 +174,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Repository getRepository()
@@ -188,7 +185,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Repository basicGetRepository()
@@ -200,7 +196,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
@@ -211,7 +206,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepository(Repository newRepository)
@@ -238,7 +232,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getLogin()
@@ -248,7 +241,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setLogin(String newLogin)
@@ -261,7 +253,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -271,7 +262,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -284,7 +274,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getEmail()
@@ -294,7 +283,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -307,7 +295,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getEntry()
@@ -317,7 +304,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -330,7 +316,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getExit()
@@ -340,7 +325,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -363,7 +347,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -381,7 +364,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -397,7 +379,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -413,7 +394,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -443,7 +423,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -475,7 +454,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -507,7 +485,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -535,7 +512,6 @@ public class CommitterImpl extends PopElementImpl implements Committer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

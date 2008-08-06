@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ModuleImpl.java,v 1.3 2008-08-06 16:02:22 estepper Exp $
+ * $Id: ModuleImpl.java,v 1.4 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -25,11 +25,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.ModuleImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.ModuleImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.ModuleImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.ModuleImpl#getDescriptor <em>Descriptor</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class ModuleImpl extends PopElementImpl implements Module
@@ -45,8 +45,8 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -54,9 +54,9 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getDescriptor()
    * @generated
    * @ordered
@@ -64,9 +64,9 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
   protected static final String DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getDescriptor()
    * @generated
    * @ordered
@@ -75,7 +75,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected ModuleImpl()
@@ -85,7 +84,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -96,7 +94,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -106,7 +103,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -119,7 +115,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getDescriptor()
@@ -129,7 +124,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDescriptor(String newDescriptor)
@@ -143,7 +137,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -161,7 +154,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -181,7 +173,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -201,7 +192,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -219,7 +209,6 @@ public abstract class ModuleImpl extends PopElementImpl implements Module
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -60,6 +60,8 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private Map<CheckoutDiscriminator, Checkout> checkouts = new HashMap<CheckoutDiscriminator, Checkout>();
 
+  private Checkout activeCheckout;
+
   public CheckoutManager(Pop pop)
   {
     this.pop = pop;
@@ -174,33 +176,24 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     }
   }
 
-  private IProject createProject(String name, IProgressMonitor monitor)
-  {
-    try
-    {
-      IProject project = ROOT.getProject(name);
-      if (project.exists())
-      {
-        throw new IllegalStateException("Project already exists: " + name);
-      }
-
-      IProjectDescription projectDescription = WS.newProjectDescription(name);
-      projectDescription.setComment("POP Process Tooling checkout project");
-      projectDescription.setLocation(location.append(name));
-
-      project.create(projectDescription, monitor);
-      project.open(monitor);
-      return project;
-    }
-    catch (CoreException ex)
-    {
-      throw WrappedException.wrap(ex);
-    }
-  }
-
   public Checkout[] getElements()
   {
     return getCheckouts();
+  }
+
+  public Checkout getActiveCheckout()
+  {
+    return activeCheckout;
+  }
+
+  public void getActiveCheckout(Checkout checkout)
+  {
+    activeCheckout = checkout;
+  }
+
+  public boolean isCheckoutActive(Checkout checkout)
+  {
+    return checkout == activeCheckout;
   }
 
   @SuppressWarnings("unchecked")
@@ -256,9 +249,34 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     }
   }
 
+  private IProject createProject(String name, IProgressMonitor monitor)
+  {
+    try
+    {
+      IProject project = ROOT.getProject(name);
+      if (project.exists())
+      {
+        throw new IllegalStateException("Project already exists: " + name);
+      }
+
+      IProjectDescription projectDescription = WS.newProjectDescription(name);
+      projectDescription.setComment("POP Process Tooling checkout project");
+      projectDescription.setLocation(location.append(name));
+
+      project.create(projectDescription, monitor);
+      project.open(monitor);
+      return project;
+    }
+    catch (CoreException ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
+  }
+
   private Checkout createCheckout(CheckoutDiscriminator discriminator, IPath checkoutLocation)
   {
     CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
+    checkout.setManager(this);
     checkout.setDiscriminator(discriminator);
     checkout.setLocation(checkoutLocation);
 

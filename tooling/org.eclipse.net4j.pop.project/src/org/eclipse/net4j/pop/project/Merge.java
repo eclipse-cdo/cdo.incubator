@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Merge.java,v 1.11 2008-08-06 16:02:22 estepper Exp $
+ * $Id: Merge.java,v 1.12 2008-08-06 16:56:16 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -16,15 +16,16 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Merge</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Merge#getDate <em>Date</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.Merge#getDelivery <em>Delivery</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Merge#getDate <em>Date</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Merge#getDelivery <em>Delivery</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getMerge()
  * @model
  * @generated
@@ -32,14 +33,14 @@ import java.util.Date;
 public interface Merge extends TaggedElement
 {
   /**
-   * Returns the value of the '<em><b>Stream</b></em>' container reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Stream</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Stream#getMerges <em>Merges</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Stream</em>' container reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Stream</em>' container reference.
    * @see #setStream(Stream)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getMerge_Stream()
@@ -52,21 +53,19 @@ public interface Merge extends TaggedElement
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.project.Merge#getStream <em>Stream</em>}' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Stream</em>' container reference.
+   * @param value the new value of the '<em>Stream</em>' container reference.
    * @see #getStream()
    * @generated
    */
   void setStream(Stream value);
 
   /**
-   * Returns the value of the '<em><b>Date</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Date</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Date</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Date</em>' attribute.
    * @see #setDate(Date)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getMerge_Date()
@@ -87,14 +86,14 @@ public interface Merge extends TaggedElement
   void setDate(Date value);
 
   /**
-   * Returns the value of the '<em><b>Delivery</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.project.Delivery#getMerges <em>Merges</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Delivery</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Delivery#getMerges <em>Merges</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Delivery</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Delivery</em>' reference.
    * @see #setDelivery(Delivery)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getMerge_Delivery()
