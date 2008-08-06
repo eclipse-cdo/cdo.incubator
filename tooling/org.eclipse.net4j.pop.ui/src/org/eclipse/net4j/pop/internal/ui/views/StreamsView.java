@@ -13,6 +13,7 @@ package org.eclipse.net4j.pop.internal.ui.views;
 import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
 import org.eclipse.net4j.pop.internal.ui.actions.CheckoutAction;
+import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
@@ -61,6 +62,8 @@ public class StreamsView extends MasterDetailsView
 
   private TreeViewer branchesViewer;
 
+  private CheckoutAction checkoutAction;
+
   public StreamsView()
   {
     adapterFactory = new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE);
@@ -72,6 +75,8 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected StructuredViewer createMaster(Composite parent)
   {
+    checkoutAction = new CheckoutAction(getSite().getPage());
+
     TreeViewer viewer = createViewer(parent, new PopContentProvider.Streams(adapterFactory));
     viewer.setInput(IPopManager.INSTANCE);
     return viewer;
@@ -82,7 +87,18 @@ public class StreamsView extends MasterDetailsView
   {
     if (ObjectUtil.equals(title, CHECKOUTS))
     {
-      return createViewer(parent, new PopContentProvider(adapterFactory));
+      PopContentProvider contentProvider = new PopContentProvider(adapterFactory)
+      {
+        @Override
+        public void dispose()
+        {
+          checkoutsViewer = null;
+          super.dispose();
+        }
+      };
+
+      checkoutsViewer = createViewer(parent, contentProvider);
+      return checkoutsViewer;
     }
 
     if (ObjectUtil.equals(title, BRANCHES))
@@ -148,9 +164,23 @@ public class StreamsView extends MasterDetailsView
   @Override
   protected void setDetailInput(StructuredViewer viewer, Object input)
   {
+    checkoutAction.setDiscriminator(null);
     if (input instanceof Stream)
     {
       Stream stream = (Stream)input;
+      if (viewer == checkoutsViewer)
+      {
+        super.setDetailInput(viewer, stream.getPopProject());
+        Branch branch = stream.getBranch();
+        if (branch != null && branch.hasCheckout())
+        {
+          selectAndReveal(viewer, branch.getCheckout());
+          checkoutAction.setDiscriminator(branch);
+        }
+
+        return;
+      }
+
       if (viewer == branchesViewer)
       {
         super.setDetailInput(viewer, stream.getPopProject());
@@ -167,7 +197,7 @@ public class StreamsView extends MasterDetailsView
   {
     if (ObjectUtil.equals(getCurrentDetailTitle(), CHECKOUTS))
     {
-      manager.add(new CheckoutAction(getSite().getPage()));
+      manager.add(checkoutAction);
     }
   }
 
