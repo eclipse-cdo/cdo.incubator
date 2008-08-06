@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleItemProvider.java,v 1.1 2008-08-06 07:07:25 estepper Exp $
+ * $Id: PrimaryModuleItemProvider.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -75,7 +75,7 @@ public class PrimaryModuleItemProvider extends ModuleItemProvider implements IEd
   @Override
   public String getText(Object object)
   {
-    String label = ((PrimaryModule)object).getId();
+    String label = ((PrimaryModule)object).getName();
     return label == null || label.length() == 0 ? getString("_UI_PrimaryModule_type") : //$NON-NLS-1$
         getString("_UI_PrimaryModule_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }

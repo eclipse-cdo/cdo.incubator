@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.17 2008-08-06 07:07:25 estepper Exp $
+ * $Id: BranchImpl.java,v 1.18 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -36,13 +36,13 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getBranches <em>Branches</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getTags <em>Tags</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getBranches <em>Branches</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getTags <em>Tags</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.BranchImpl#getStream <em>Stream</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Branch
@@ -58,8 +58,8 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -67,9 +67,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getBranches() <em>Branches</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getBranches()
    * @generated
    * @ordered
@@ -77,9 +77,9 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
   protected EList<SubBranch> branches;
 
   /**
-   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTags() <em>Tags</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getTags()
    * @generated
    * @ordered
@@ -103,7 +103,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected BranchImpl()
@@ -113,7 +112,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -124,7 +122,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -134,7 +131,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -142,14 +138,11 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__NAME, oldName, name));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<SubBranch> getBranches()
@@ -164,7 +157,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Tag> getTags()
@@ -179,7 +171,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Stream getStream()
@@ -191,9 +182,7 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       if (stream != oldStream)
       {
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.BRANCH__STREAM, oldStream, stream));
-        }
       }
     }
     return stream;
@@ -201,7 +190,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Stream basicGetStream()
@@ -211,7 +199,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetStream(Stream newStream, NotificationChain msgs)
@@ -223,20 +210,15 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__STREAM,
           oldStream, newStream);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setStream(Stream newStream)
@@ -245,23 +227,15 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
     {
       NotificationChain msgs = null;
       if (stream != null)
-      {
         msgs = ((InternalEObject)stream).eInverseRemove(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
-      }
       if (newStream != null)
-      {
         msgs = ((InternalEObject)newStream).eInverseAdd(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
-      }
       msgs = basicSetStream(newStream, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.BRANCH__STREAM, newStream, newStream));
-    }
   }
 
   /**
@@ -295,7 +269,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -310,9 +283,7 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTags()).basicAdd(otherEnd, msgs);
     case ProjectPackage.BRANCH__STREAM:
       if (stream != null)
-      {
         msgs = ((InternalEObject)stream).eInverseRemove(this, ProjectPackage.STREAM__BRANCH, Stream.class, msgs);
-      }
       return basicSetStream((Stream)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -320,7 +291,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -340,7 +310,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -356,9 +325,7 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
       return getTags();
     case ProjectPackage.BRANCH__STREAM:
       if (resolve)
-      {
         return getStream();
-      }
       return basicGetStream();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -366,7 +333,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -395,7 +361,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -421,7 +386,6 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -443,16 +407,13 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

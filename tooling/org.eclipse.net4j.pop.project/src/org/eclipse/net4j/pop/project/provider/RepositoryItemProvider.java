@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.1 2008-08-06 07:07:25 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -72,7 +72,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
       addPopProjectPropertyDescriptor(object);
       addAdapterPropertyDescriptor(object);
       addAdapterTypePropertyDescriptor(object);
-      addDescriptionPropertyDescriptor(object);
+      addDescriptorPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
@@ -124,19 +124,19 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   }
 
   /**
-   * This adds a property descriptor for the Description feature.
+   * This adds a property descriptor for the Descriptor feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addDescriptionPropertyDescriptor(Object object)
+  protected void addDescriptorPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Repository_description_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Repository_description_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.REPOSITORY__DESCRIPTION, true, false, false,
-        ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+        getString("_UI_Repository_descriptor_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Repository_descriptor_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.REPOSITORY__DESCRIPTOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+        null, null));
   }
 
   /**
@@ -216,7 +216,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     {
     case ProjectPackage.REPOSITORY__ADAPTER:
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:
-    case ProjectPackage.REPOSITORY__DESCRIPTION:
+    case ProjectPackage.REPOSITORY__DESCRIPTOR:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:

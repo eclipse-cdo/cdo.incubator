@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.1 2008-08-06 07:07:26 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -40,7 +40,7 @@ import java.util.Collection;
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPopProject <em>Pop Project</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPrimaryModule <em>Primary Module</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getCommitters <em>Committers</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
@@ -92,24 +92,24 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected String adapterType = ADAPTER_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @see #getDescription()
+   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDescriptor()
    * @generated
    * @ordered
    */
-  protected static final String DESCRIPTION_EDEFAULT = null;
+  protected static final String DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @see #getDescription()
+   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDescriptor()
    * @generated
    * @ordered
    */
-  protected String description = DESCRIPTION_EDEFAULT;
+  protected String descriptor = DESCRIPTOR_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getPrimaryModule() <em>Primary Module</em>}' containment reference. <!--
@@ -258,25 +258,27 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public String getDescription()
+  public String getDescriptor()
   {
-    return description;
+    return descriptor;
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public void setDescription(String newDescription)
+  public void setDescriptor(String newDescriptor)
   {
-    String oldDescription = description;
-    description = newDescription;
+    String oldDescriptor = descriptor;
+    descriptor = newDescriptor;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY__DESCRIPTION, oldDescription,
-          description));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY__DESCRIPTOR, oldDescriptor,
+          descriptor));
   }
 
   /**
@@ -520,8 +522,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return getAdapter();
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:
       return getAdapterType();
-    case ProjectPackage.REPOSITORY__DESCRIPTION:
-      return getDescription();
+    case ProjectPackage.REPOSITORY__DESCRIPTOR:
+      return getDescriptor();
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       if (resolve)
         return getPrimaryModule();
@@ -552,8 +554,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:
       setAdapterType((String)newValue);
       return;
-    case ProjectPackage.REPOSITORY__DESCRIPTION:
-      setDescription((String)newValue);
+    case ProjectPackage.REPOSITORY__DESCRIPTOR:
+      setDescriptor((String)newValue);
       return;
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       setPrimaryModule((PrimaryModule)newValue);
@@ -584,8 +586,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:
       setAdapterType(ADAPTER_TYPE_EDEFAULT);
       return;
-    case ProjectPackage.REPOSITORY__DESCRIPTION:
-      setDescription(DESCRIPTION_EDEFAULT);
+    case ProjectPackage.REPOSITORY__DESCRIPTOR:
+      setDescriptor(DESCRIPTOR_EDEFAULT);
       return;
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       setPrimaryModule((PrimaryModule)null);
@@ -615,8 +617,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return ADAPTER_EDEFAULT == null ? getAdapter() != null : !ADAPTER_EDEFAULT.equals(getAdapter());
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:
       return ADAPTER_TYPE_EDEFAULT == null ? adapterType != null : !ADAPTER_TYPE_EDEFAULT.equals(adapterType);
-    case ProjectPackage.REPOSITORY__DESCRIPTION:
-      return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+    case ProjectPackage.REPOSITORY__DESCRIPTOR:
+      return DESCRIPTOR_EDEFAULT == null ? descriptor != null : !DESCRIPTOR_EDEFAULT.equals(descriptor);
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       return primaryModule != null;
     case ProjectPackage.REPOSITORY__COMMITTERS:
@@ -640,8 +642,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (adapterType: "); //$NON-NLS-1$
     result.append(adapterType);
-    result.append(", description: "); //$NON-NLS-1$
-    result.append(description);
+    result.append(", descriptor: "); //$NON-NLS-1$
+    result.append(descriptor);
     result.append(')');
     return result.toString();
   }

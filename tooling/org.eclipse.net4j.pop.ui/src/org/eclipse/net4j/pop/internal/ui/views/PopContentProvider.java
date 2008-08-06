@@ -24,6 +24,7 @@ import org.eclipse.net4j.pop.project.Merge;
 import org.eclipse.net4j.pop.project.Milestone;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.Release;
+import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.RootStream;
 import org.eclipse.net4j.pop.project.Stream;
 import org.eclipse.net4j.pop.project.SubBranch;
@@ -392,8 +393,12 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof RootStream)
       {
         RootStream obj = (RootStream)object;
-        EList<Committer> result = obj.getPopProject().getCommitters();
-        return result.toArray(new Object[result.size()]);
+        Repository repository = obj.getPopProject().getRepository();
+        if (repository != null)
+        {
+          EList<Committer> result = repository.getCommitters();
+          return result.toArray(new Object[result.size()]);
+        }
       }
 
       return new Object[0];
@@ -405,10 +410,14 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof Committer)
       {
         Committer obj = (Committer)object;
-        PopProject popProject = obj.getPopProject();
-        if (popProject != null)
+        Repository repository = obj.getRepository();
+        if (repository != null)
         {
-          return popProject.getRootStream();
+          PopProject popProject = repository.getPopProject();
+          if (popProject != null)
+          {
+            return popProject.getRootStream();
+          }
         }
       }
 
@@ -438,10 +447,14 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof PopProject)
       {
         PopProject obj = (PopProject)object;
-        MainBranch mainBranch = obj.getMainBranch();
-        if (mainBranch != null)
+        Repository repository = obj.getRepository();
+        if (repository != null)
         {
-          return new Object[] { mainBranch };
+          MainBranch mainBranch = repository.getMainBranch();
+          if (mainBranch != null)
+          {
+            return new Object[] { mainBranch };
+          }
         }
       }
 
@@ -467,10 +480,10 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (object instanceof MainBranch)
       {
         MainBranch obj = (MainBranch)object;
-        Stream stream = obj.getStream();
-        if (stream != null)
+        Repository repository = obj.getRepository();
+        if (repository != null)
         {
-          return stream.getPopProject();
+          return repository.getPopProject();
         }
       }
 

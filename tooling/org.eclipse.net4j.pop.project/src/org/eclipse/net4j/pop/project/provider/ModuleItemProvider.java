@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ModuleItemProvider.java,v 1.1 2008-08-06 07:07:25 estepper Exp $
+ * $Id: ModuleItemProvider.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -34,9 +34,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Module} object.
- * <!-- begin-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.project.Module} object. <!-- begin-user-doc -->
  * <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class ModuleItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
@@ -44,8 +44,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ModuleItemProvider(AdapterFactory adapterFactory)
@@ -54,8 +54,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -65,23 +65,39 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
     {
       super.getPropertyDescriptors(object);
 
-      addDescriptionPropertyDescriptor(object);
+      addNamePropertyDescriptor(object);
+      addDescriptorPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Description feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
-  protected void addDescriptionPropertyDescriptor(Object object)
+  protected void addNamePropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Module_description_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Module_description_feature", "_UI_Module_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.MODULE__DESCRIPTION, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+        getString("_UI_Module_name_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Module_name_feature", "_UI_Module_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.MODULE__NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
+        null));
+  }
+
+  /**
+   * This adds a property descriptor for the Descriptor feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated
+   */
+  protected void addDescriptorPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_Module_descriptor_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Module_descriptor_feature", "_UI_Module_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.MODULE__DESCRIPTOR, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
         null, null));
   }
 
@@ -93,15 +109,15 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   @Override
   public String getText(Object object)
   {
-    String label = ((Module)object).getDescription();
+    String label = ((Module)object).getDescriptor();
     return label == null || label.length() == 0 ? getString("_UI_RepositoryModule_type") : //$NON-NLS-1$
         label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -111,7 +127,8 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
 
     switch (notification.getFeatureID(Module.class))
     {
-    case ProjectPackage.MODULE__DESCRIPTION:
+    case ProjectPackage.MODULE__NAME:
+    case ProjectPackage.MODULE__DESCRIPTOR:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }
@@ -119,9 +136,9 @@ public class ModuleItemProvider extends PopElementItemProvider implements IEditi
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

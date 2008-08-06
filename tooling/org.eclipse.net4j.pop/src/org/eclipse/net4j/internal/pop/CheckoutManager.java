@@ -12,21 +12,32 @@ package org.eclipse.net4j.internal.pop;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.pop.base.PopElement;
-import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
+import org.eclipse.net4j.pop.project.Module;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
-import org.eclipse.net4j.pop.project.RepositoryModule;
-import org.eclipse.net4j.pop.project.Tag;
-import org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl;
+import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
 import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositoryFolder;
+import org.eclipse.net4j.pop.repository.IRepositorySession;
+import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IProjectDescription;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 
 import java.io.File;
@@ -39,6 +50,10 @@ import java.util.Map;
  */
 public class CheckoutManager extends Container<Checkout> implements ICheckoutManager
 {
+  private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
+
+  private static final IWorkspaceRoot ROOT = WS.getRoot();
+
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
 
   private Pop pop;
@@ -130,8 +145,61 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   public Checkout checkout(CheckoutDiscriminator discriminator)
   {
-    IPath location = checkoutPrimaryModule(discriminator);
-    return createCheckout(discriminator, location);
+    checkActive();
+    IProject project = createProject(discriminator.getId());
+    Repository repository = discriminator.getRepository();
+
+    IRepositoryAdapter adapter = repository.getAdapter();
+    IRepositorySession session = adapter.openSession(repository.getDescriptor(), false, new NullProgressMonitor());
+    Module module = repository.getPrimaryModule();
+
+    IFolder target = createFolder(project, module.getName());
+    IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());
+    folder.checkout(target, true, new NullProgressMonitor());
+
+    return createCheckout(discriminator, project.getLocation());
+  }
+
+  private IProject createProject(String name)
+  {
+    try
+    {
+      IProject project = ROOT.getProject(name);
+      if (project.exists())
+      {
+        throw new IllegalStateException("Project already exists: " + name);
+      }
+
+      IProjectDescription projectDescription = WS.newProjectDescription(name);
+      projectDescription.setComment("POP Process Tooling checkout project");
+      projectDescription.setLocation(location.append(name));
+
+      project.create(projectDescription, new NullProgressMonitor());
+      return project;
+    }
+    catch (CoreException ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
+  }
+
+  private IFolder createFolder(IContainer container, String name)
+  {
+    try
+    {
+      IFolder folder = container.getFolder(new Path(name));
+      if (folder.exists())
+      {
+        throw new IllegalStateException("Folder already exists: " + folder.getFullPath());
+      }
+
+      folder.create(true, true, new NullProgressMonitor());
+      return folder;
+    }
+    catch (CoreException ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
   }
 
   public Checkout[] getElements()
@@ -186,16 +254,10 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
         if (popElement instanceof CheckoutDiscriminator)
         {
           CheckoutDiscriminator discriminator = (CheckoutDiscriminator)popElement;
-          createCheckout(discriminator, getCheckoutLocation(discriminator));
+          createCheckout(discriminator, location.append(discriminator.getId()));
         }
       }
     }
-  }
-
-  private IPath getCheckoutLocation(CheckoutDiscriminator discriminator)
-  {
-    String checkoutName = ((CheckoutDiscriminatorImpl)discriminator).getId();
-    return location.append(checkoutName);
   }
 
   private Checkout createCheckout(CheckoutDiscriminator discriminator, IPath checkoutLocation)
@@ -206,28 +268,5 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
     addCheckout(checkout);
     return checkout;
-  }
-
-  private IPath checkoutPrimaryModule(CheckoutDiscriminator discriminator)
-  {
-    IPath checkoutLocation = getCheckoutLocation(discriminator);
-    RepositoryModule module = discriminator.getPopProject().getPrimaryModule();
-    IRepositoryAdapter adapter = module.getAdapter();
-    if (discriminator instanceof Branch)
-    {
-      String branch = ((Branch)discriminator).getName();
-      adapter.checkoutBranch(checkoutLocation, module.getRepositoryDescription(), module.getModuleDescription(), branch);
-    }
-    else if (discriminator instanceof Tag)
-    {
-      String tag = ((Tag)discriminator).getName();
-      adapter.checkoutTag(checkoutLocation, module.getRepositoryDescription(), module.getModuleDescription(), tag);
-    }
-    else
-    {
-      throw new IllegalArgumentException("Unrecognized checkout discriminator: " + discriminator);
-    }
-
-    return checkoutLocation;
   }
 }

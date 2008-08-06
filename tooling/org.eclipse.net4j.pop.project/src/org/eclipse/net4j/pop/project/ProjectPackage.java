@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.22 2008-08-06 07:07:25 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.23 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -187,12 +187,13 @@ public interface ProjectPackage extends EPackage
   int REPOSITORY__ADAPTER_TYPE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Description</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REPOSITORY__DESCRIPTION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
+  int REPOSITORY__DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Primary Module</b></em>' containment reference.
@@ -256,12 +257,22 @@ public interface ProjectPackage extends EPackage
   int MODULE__CLASS = BasePackage.POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Description</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODULE__DESCRIPTION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+  int MODULE__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Module</em>' class.
@@ -269,7 +280,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int MODULE_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
+  int MODULE_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl <em>Primary Module</em>}' class.
@@ -297,12 +308,22 @@ public interface ProjectPackage extends EPackage
   int PRIMARY_MODULE__CLASS = MODULE__CLASS;
 
   /**
-   * The feature id for the '<em><b>Description</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMARY_MODULE__DESCRIPTION = MODULE__DESCRIPTION;
+  int PRIMARY_MODULE__NAME = MODULE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__DESCRIPTOR = MODULE__DESCRIPTOR;
 
   /**
    * The feature id for the '<em><b>Repository</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1829,14 +1850,15 @@ public interface ProjectPackage extends EPackage
   EAttribute getRepository_AdapterType();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Repository#getDescription <em>Description</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Description</em>'.
-   * @see org.eclipse.net4j.pop.project.Repository#getDescription()
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Repository#getDescriptor <em>Descriptor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Descriptor</em>'.
+   * @see org.eclipse.net4j.pop.project.Repository#getDescriptor()
    * @see #getRepository()
    * @generated
    */
-  EAttribute getRepository_Description();
+  EAttribute getRepository_Descriptor();
 
   /**
    * Returns the meta object for the containment reference '{@link org.eclipse.net4j.pop.project.Repository#getPrimaryModule <em>Primary Module</em>}'.
@@ -1882,14 +1904,26 @@ public interface ProjectPackage extends EPackage
   EClass getModule();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Module#getDescription <em>Description</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Description</em>'.
-   * @see org.eclipse.net4j.pop.project.Module#getDescription()
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Module#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.eclipse.net4j.pop.project.Module#getName()
    * @see #getModule()
    * @generated
    */
-  EAttribute getModule_Description();
+  EAttribute getModule_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.project.Module#getDescriptor <em>Descriptor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Descriptor</em>'.
+   * @see org.eclipse.net4j.pop.project.Module#getDescriptor()
+   * @see #getModule()
+   * @generated
+   */
+  EAttribute getModule_Descriptor();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.project.PrimaryModule <em>Primary Module</em>}'.
@@ -2704,12 +2738,12 @@ public interface ProjectPackage extends EPackage
     EAttribute REPOSITORY__ADAPTER_TYPE = eINSTANCE.getRepository_AdapterType();
 
     /**
-     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The meta object literal for the '<em><b>Descriptor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute REPOSITORY__DESCRIPTION = eINSTANCE.getRepository_Description();
+    EAttribute REPOSITORY__DESCRIPTOR = eINSTANCE.getRepository_Descriptor();
 
     /**
      * The meta object literal for the '<em><b>Primary Module</b></em>' containment reference feature. <!--
@@ -2745,12 +2779,20 @@ public interface ProjectPackage extends EPackage
     EClass MODULE = eINSTANCE.getModule();
 
     /**
-     * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute MODULE__DESCRIPTION = eINSTANCE.getModule_Description();
+    EAttribute MODULE__NAME = eINSTANCE.getModule_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Descriptor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MODULE__DESCRIPTOR = eINSTANCE.getModule_Descriptor();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl <em>Primary Module</em>}' class.

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.16 2008-08-06 07:07:26 estepper Exp $
+ * $Id: TagImpl.java,v 1.17 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -31,12 +31,12 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getBranch <em>Branch</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getTaggedElement <em>Tagged Element</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getBranch <em>Branch</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.TagImpl#getTaggedElement <em>Tagged Element</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
@@ -52,8 +52,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -61,9 +61,9 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTaggedElement() <em>Tagged Element</em>}' reference. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTaggedElement() <em>Tagged Element</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getTaggedElement()
    * @generated
    * @ordered
@@ -77,7 +77,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected TagImpl()
@@ -87,7 +86,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -98,35 +96,28 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch getBranch()
   {
     if (eContainerFeatureID != ProjectPackage.TAG__BRANCH)
-    {
       return null;
-    }
     return (Branch)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch basicGetBranch()
   {
     if (eContainerFeatureID != ProjectPackage.TAG__BRANCH)
-    {
       return null;
-    }
     return (Branch)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs)
@@ -137,41 +128,29 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBranch(Branch newBranch)
   {
-    if (newBranch != eInternalContainer() || eContainerFeatureID != ProjectPackage.TAG__BRANCH && newBranch != null)
+    if (newBranch != eInternalContainer() || (eContainerFeatureID != ProjectPackage.TAG__BRANCH && newBranch != null))
     {
       if (EcoreUtil.isAncestor(this, newBranch))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newBranch != null)
-      {
         msgs = ((InternalEObject)newBranch).eInverseAdd(this, ProjectPackage.BRANCH__TAGS, Branch.class, msgs);
-      }
       msgs = basicSetBranch(newBranch, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__BRANCH, newBranch, newBranch));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -181,7 +160,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -189,14 +167,11 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__NAME, oldName, name));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TaggedElement getTaggedElement()
@@ -208,10 +183,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
       if (taggedElement != oldTaggedElement)
       {
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.TAG__TAGGED_ELEMENT,
               oldTaggedElement, taggedElement));
-        }
       }
     }
     return taggedElement;
@@ -219,7 +192,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public TaggedElement basicGetTaggedElement()
@@ -229,7 +201,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetTaggedElement(TaggedElement newTaggedElement, NotificationChain msgs)
@@ -241,20 +212,15 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           ProjectPackage.TAG__TAGGED_ELEMENT, oldTaggedElement, newTaggedElement);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTaggedElement(TaggedElement newTaggedElement)
@@ -263,31 +229,22 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     {
       NotificationChain msgs = null;
       if (taggedElement != null)
-      {
         msgs = ((InternalEObject)taggedElement).eInverseRemove(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
-      }
       if (newTaggedElement != null)
-      {
         msgs = ((InternalEObject)newTaggedElement).eInverseAdd(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
-      }
       msgs = basicSetTaggedElement(newTaggedElement, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.TAG__TAGGED_ELEMENT, newTaggedElement,
           newTaggedElement));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -297,16 +254,12 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     {
     case ProjectPackage.TAG__BRANCH:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetBranch((Branch)otherEnd, msgs);
     case ProjectPackage.TAG__TAGGED_ELEMENT:
       if (taggedElement != null)
-      {
         msgs = ((InternalEObject)taggedElement).eInverseRemove(this, ProjectPackage.TAGGED_ELEMENT__TAG,
             TaggedElement.class, msgs);
-      }
       return basicSetTaggedElement((TaggedElement)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -314,7 +267,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -332,7 +284,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -348,7 +299,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -358,17 +308,13 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     {
     case ProjectPackage.TAG__BRANCH:
       if (resolve)
-      {
         return getBranch();
-      }
       return basicGetBranch();
     case ProjectPackage.TAG__NAME:
       return getName();
     case ProjectPackage.TAG__TAGGED_ELEMENT:
       if (resolve)
-      {
         return getTaggedElement();
-      }
       return basicGetTaggedElement();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -376,7 +322,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -399,7 +344,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -422,7 +366,6 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -442,16 +385,13 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: "); //$NON-NLS-1$

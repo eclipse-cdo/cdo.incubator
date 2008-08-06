@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.25 2008-08-06 07:07:25 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.26 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -357,7 +357,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRepository_Description()
+  public EAttribute getRepository_Descriptor()
   {
     return (EAttribute)repositoryEClass.getEStructuralFeatures().get(3);
   }
@@ -407,9 +407,19 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getModule_Description()
+  public EAttribute getModule_Name()
   {
     return (EAttribute)moduleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getModule_Descriptor()
+  {
+    return (EAttribute)moduleEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1095,13 +1105,14 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEReference(repositoryEClass, REPOSITORY__POP_PROJECT);
     createEAttribute(repositoryEClass, REPOSITORY__ADAPTER);
     createEAttribute(repositoryEClass, REPOSITORY__ADAPTER_TYPE);
-    createEAttribute(repositoryEClass, REPOSITORY__DESCRIPTION);
+    createEAttribute(repositoryEClass, REPOSITORY__DESCRIPTOR);
     createEReference(repositoryEClass, REPOSITORY__PRIMARY_MODULE);
     createEReference(repositoryEClass, REPOSITORY__COMMITTERS);
     createEReference(repositoryEClass, REPOSITORY__MAIN_BRANCH);
 
     moduleEClass = createEClass(MODULE);
-    createEAttribute(moduleEClass, MODULE__DESCRIPTION);
+    createEAttribute(moduleEClass, MODULE__NAME);
+    createEAttribute(moduleEClass, MODULE__DESCRIPTOR);
 
     primaryModuleEClass = createEClass(PRIMARY_MODULE);
     createEReference(primaryModuleEClass, PRIMARY_MODULE__REPOSITORY);
@@ -1290,9 +1301,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         ecorePackage.getEString(),
         "adapterType", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getRepository_Description(),
+        getRepository_Descriptor(),
         ecorePackage.getEString(),
-        "description", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "descriptor", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getRepository_PrimaryModule(),
         this.getPrimaryModule(),
@@ -1311,9 +1322,13 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     initEClass(moduleEClass, Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
-        getModule_Description(),
+        getModule_Name(),
         ecorePackage.getEString(),
-        "description", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "name", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getModule_Descriptor(),
+        ecorePackage.getEString(),
+        "descriptor", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(primaryModuleEClass, PrimaryModule.class,
         "PrimaryModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

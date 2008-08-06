@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Repository.java,v 1.1 2008-08-06 07:07:25 estepper Exp $
+ * $Id: Repository.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getPopProject <em>Pop Project</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getAdapter <em>Adapter</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getAdapterType <em>Adapter Type</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Repository#getDescription <em>Description</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Repository#getDescriptor <em>Descriptor</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getPrimaryModule <em>Primary Module</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getCommitters <em>Committers</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getMainBranch <em>Main Branch</em>}</li>
@@ -105,29 +105,30 @@ public interface Repository extends PopElement
   void setAdapterType(String value);
 
   /**
-   * Returns the value of the '<em><b>Description</b></em>' attribute.
+   * Returns the value of the '<em><b>Descriptor</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Description</em>' attribute isn't clear, there really should be more of a description
-   * here...
+   * If the meaning of the '<em>Descriptor</em>' attribute isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Description</em>' attribute.
-   * @see #setDescription(String)
-   * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepository_Description()
+   * @return the value of the '<em>Descriptor</em>' attribute.
+   * @see #setDescriptor(String)
+   * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepository_Descriptor()
    * @model required="true"
    * @generated
    */
-  String getDescription();
+  String getDescriptor();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Repository#getDescription <em>Description</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Description</em>' attribute.
-   * @see #getDescription()
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Repository#getDescriptor <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Descriptor</em>' attribute.
+   * @see #getDescriptor()
    * @generated
    */
-  void setDescription(String value);
+  void setDescriptor(String value);
 
   /**
    * Returns the value of the '<em><b>Primary Module</b></em>' containment reference. It is bidirectional and its

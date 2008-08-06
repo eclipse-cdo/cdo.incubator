@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.12 2008-08-06 07:07:25 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.13 2008-08-06 08:24:50 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -32,18 +32,18 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getTag <em>Tag</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SubBranchImpl extends BranchImpl implements SubBranch
 {
   /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getTag()
    * @generated
    * @ordered
@@ -52,7 +52,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected SubBranchImpl()
@@ -62,7 +61,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -73,7 +71,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag getTag()
@@ -85,9 +82,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       if (tag != oldTag)
       {
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.SUB_BRANCH__TAG, oldTag, tag));
-        }
       }
     }
     return tag;
@@ -95,7 +90,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Tag basicGetTag()
@@ -105,7 +99,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetTag(Tag newTag, NotificationChain msgs)
@@ -117,20 +110,15 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__TAG,
           oldTag, newTag);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTag(Tag newTag)
@@ -139,57 +127,42 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
       NotificationChain msgs = null;
       if (tag != null)
-      {
         msgs = ((InternalEObject)tag).eInverseRemove(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
-      }
       if (newTag != null)
-      {
         msgs = ((InternalEObject)newTag).eInverseAdd(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
-      }
       msgs = basicSetTag(newTag, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__TAG, newTag, newTag));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Branch getParent()
   {
     if (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT)
-    {
       return null;
-    }
     return (Branch)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch basicGetParent()
   {
     if (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT)
-    {
       return null;
-    }
     return (Branch)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(Branch newParent, NotificationChain msgs)
@@ -200,42 +173,30 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(Branch newParent)
   {
-    if (newParent != eInternalContainer() || eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT
-        && newParent != null)
+    if (newParent != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.SUB_BRANCH__PARENT && newParent != null))
     {
       if (EcoreUtil.isAncestor(this, newParent))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newParent != null)
-      {
         msgs = ((InternalEObject)newParent).eInverseAdd(this, ProjectPackage.BRANCH__BRANCHES, Branch.class, msgs);
-      }
       msgs = basicSetParent(newParent, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.SUB_BRANCH__PARENT, newParent, newParent));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -245,15 +206,11 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
     case ProjectPackage.SUB_BRANCH__TAG:
       if (tag != null)
-      {
         msgs = ((InternalEObject)tag).eInverseRemove(this, ProjectPackage.TAG__TAGGED_ELEMENT, Tag.class, msgs);
-      }
       return basicSetTag((Tag)otherEnd, msgs);
     case ProjectPackage.SUB_BRANCH__PARENT:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetParent((Branch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -261,7 +218,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -279,7 +235,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -295,7 +250,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -305,15 +259,11 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
     case ProjectPackage.SUB_BRANCH__TAG:
       if (resolve)
-      {
         return getTag();
-      }
       return basicGetTag();
     case ProjectPackage.SUB_BRANCH__PARENT:
       if (resolve)
-      {
         return getParent();
-      }
       return basicGetParent();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -321,7 +271,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -341,7 +290,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -361,7 +309,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -379,7 +326,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -400,7 +346,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
