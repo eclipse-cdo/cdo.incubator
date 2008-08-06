@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.23 2008-08-03 16:45:27 estepper Exp $
+ $Id: plugin.xml,v 1.24 2008-08-06 09:24:30 estepper Exp $
 -->
 
 <plugin>
@@ -73,6 +73,20 @@
             </and>
          </enablement>
       </decorator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            id="org.eclipse.net4j.pop.ui.contribution1"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.eclipse.net4j.pop.internal.ui.actions.NewAction"
+               enablesFor="1"
+               id="org.eclipse.net4j.pop.ui.newAction"
+               label="Checkout"
+               menubarPath="org.eclipse.net4j.pop.ui.menu1/group1">
+         </action>
+      </objectContribution>
    </extension>
 
 </plugin>
