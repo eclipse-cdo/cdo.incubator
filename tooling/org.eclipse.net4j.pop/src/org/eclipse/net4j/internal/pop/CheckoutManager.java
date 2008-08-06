@@ -127,6 +127,14 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     return null;
   }
 
+  public boolean hasCheckout(CheckoutDiscriminator discriminator)
+  {
+    synchronized (checkouts)
+    {
+      return checkouts.containsKey(discriminator);
+    }
+  }
+
   public Checkout getCheckout(CheckoutDiscriminator discriminator)
   {
     synchronized (checkouts)

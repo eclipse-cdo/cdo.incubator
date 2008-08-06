@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.15 2008-08-06 07:07:26 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.16 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Integration Stream</b></em>'. <!-- end-user-doc
@@ -108,28 +107,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
           ProjectPackage.INTEGRATION_STREAM__RELEASES, ProjectPackage.RELEASE__STREAM);
     }
     return releases;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
-   */
-  public TaskStream startTask(String taskId, Date baseline)
-  {
-    // TODO: implement IntegrationStreamImpl.startTask(taskId, baseline)
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
-   */
-  public Release addRelease(Date date)
-  {
-    // TODO: implement IntegrationStreamImpl.addRelease(date)
-    throw new UnsupportedOperationException();
   }
 
   /**

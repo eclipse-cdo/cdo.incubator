@@ -54,6 +54,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="CheckoutDiscriminator" abstract="true"
       eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eOperations name="getRepository" lowerBound="1" eType="#//Repository"/>
+    <eOperations name="hasCheckout" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eOperations name="checkout" lowerBound="1" eType="#//Checkout"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryTag" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.net4j.pop.base/model/Base.ecore#//RepositoryTag"
@@ -106,20 +107,12 @@
     <eOperations name="getPopProject" lowerBound="1" eType="#//PopProject"/>
     <eOperations name="getParent" eType="#//Stream"/>
     <eOperations name="getStreams" upperBound="-1" eType="#//Stream"/>
-    <eOperations name="merge" lowerBound="1" eType="#//Merge">
-      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-      <eParameters name="delivery" lowerBound="1" eType="#//Delivery"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branch" lowerBound="1"
         eType="#//Branch" eOpposite="#//Branch/stream"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="merges" upperBound="-1"
         eType="#//Merge" containment="true" eOpposite="#//Merge/stream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskStream" eSuperTypes="#//Stream">
-    <eOperations name="deliver" lowerBound="1" eType="#//Delivery">
-      <eParameters name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="taskId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
@@ -132,24 +125,12 @@
         eType="#//Delivery" containment="true" eOpposite="#//Delivery/stream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntegrationStream" abstract="true" eSuperTypes="#//Stream">
-    <eOperations name="startTask" lowerBound="1" eType="#//TaskStream">
-      <eParameters name="taskId" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-      <eParameters name="baseline" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    </eOperations>
-    <eOperations name="addRelease" lowerBound="1" eType="#//Release">
-      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskStreams" upperBound="-1"
         eType="#//TaskStream" containment="true" eOpposite="#//TaskStream/parent"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
         eType="#//Release" containment="true" eOpposite="#//Release/stream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DevelopmentStream" abstract="true" eSuperTypes="#//IntegrationStream">
-    <eOperations name="addRelease" lowerBound="1" eType="#//Release">
-      <eParameters name="date" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-      <eParameters name="compatible" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-      <eParameters name="increment" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenanceStreams" upperBound="-1"
         eType="#//MaintenanceStream" containment="true" eOpposite="#//MaintenanceStream/parent"/>
   </eClassifiers>
@@ -169,7 +150,6 @@
         eType="#//TaskStream" eOpposite="#//TaskStream/targets"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//Target">
-    <eOperations name="startMaintenance" lowerBound="1" eType="#//MaintenanceStream"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenance" eType="#//MaintenanceStream"
         eOpposite="#//MaintenanceStream/baseline"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"

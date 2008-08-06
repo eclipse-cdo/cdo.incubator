@@ -8,13 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
+ * $Id: StreamImpl.java,v 1.16 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Branch;
-import org.eclipse.net4j.pop.project.Delivery;
 import org.eclipse.net4j.pop.project.Merge;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
@@ -31,7 +30,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Stream</b></em>'. <!-- end-user-doc -->
@@ -199,17 +197,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
    * @ADDED
    */
   public abstract void collectStreams(EList<Stream> streams);
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
-   */
-  public Merge merge(Date date, Delivery delivery)
-  {
-    // TODO: implement StreamImpl.merge(date, delivery)
-    throw new UnsupportedOperationException();
-  }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->

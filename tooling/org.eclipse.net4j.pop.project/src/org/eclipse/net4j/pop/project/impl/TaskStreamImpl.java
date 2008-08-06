@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStreamImpl.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
+ * $Id: TaskStreamImpl.java,v 1.16 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -256,17 +256,6 @@ public class TaskStreamImpl extends StreamImpl implements TaskStream
           ProjectPackage.TASK_STREAM__DELIVERIES, ProjectPackage.DELIVERY__STREAM);
     }
     return deliveries;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
-   */
-  public Delivery deliver(String id, Date date)
-  {
-    // TODO: implement TaskStreamImpl.deliver(id, date)
-    throw new UnsupportedOperationException();
   }
 
   /**

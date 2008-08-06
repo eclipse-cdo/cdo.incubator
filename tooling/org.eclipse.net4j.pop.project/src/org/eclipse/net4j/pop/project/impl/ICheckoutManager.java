@@ -26,6 +26,8 @@ public interface ICheckoutManager extends IContainer<Checkout>, IAdaptable
 
   public Checkout[] getCheckouts();
 
+  public boolean hasCheckout(CheckoutDiscriminator discriminator);
+
   public Checkout getCheckout(CheckoutDiscriminator discriminator);
 
   public Checkout checkout(CheckoutDiscriminator discriminator);

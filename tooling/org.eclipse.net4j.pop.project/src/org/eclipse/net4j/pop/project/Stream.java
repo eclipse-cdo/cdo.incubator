@@ -8,15 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Stream.java,v 1.11 2008-08-06 07:07:25 estepper Exp $
+ * $Id: Stream.java,v 1.12 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 import org.eclipse.net4j.pop.base.PopElement;
 
 import org.eclipse.emf.common.util.EList;
-
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Stream</b></em>'. <!-- end-user-doc -->
@@ -101,12 +99,5 @@ public interface Stream extends PopElement
    * @generated
    */
   EList<Stream> getStreams();
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true" dateRequired="true" deliveryRequired="true"
-   * @generated
-   */
-  Merge merge(Date date, Delivery delivery);
 
 } // Stream

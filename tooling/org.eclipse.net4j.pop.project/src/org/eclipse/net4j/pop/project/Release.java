@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Release.java,v 1.10 2008-08-06 07:07:25 estepper Exp $
+ * $Id: Release.java,v 1.11 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -133,12 +133,5 @@ public interface Release extends Target
    * @generated
    */
   EList<Milestone> getMilestones();
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true"
-   * @generated
-   */
-  MaintenanceStream startMaintenance();
 
 } // Release

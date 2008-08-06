@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ReleaseImpl.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
+ * $Id: ReleaseImpl.java,v 1.16 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -269,17 +269,6 @@ public class ReleaseImpl extends TargetImpl implements Release
           ProjectPackage.RELEASE__MILESTONES, ProjectPackage.MILESTONE__RELEASE);
     }
     return milestones;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated NOT
-   */
-  public MaintenanceStream startMaintenance()
-  {
-    // TODO: implement ReleaseImpl.startMaintenance()
-    throw new UnsupportedOperationException();
   }
 
   /**

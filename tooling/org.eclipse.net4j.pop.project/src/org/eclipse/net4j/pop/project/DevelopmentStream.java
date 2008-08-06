@@ -8,13 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStream.java,v 1.9 2008-08-06 07:07:25 estepper Exp $
+ * $Id: DevelopmentStream.java,v 1.10 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 import org.eclipse.emf.common.util.EList;
-
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Development Stream</b></em>'. <!-- end-user-doc
@@ -49,12 +47,5 @@ public interface DevelopmentStream extends IntegrationStream
    * @generated
    */
   EList<MaintenanceStream> getMaintenanceStreams();
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true" dateRequired="true" compatibleRequired="true" incrementRequired="true"
-   * @generated
-   */
-  Release addRelease(Date date, boolean compatible, int increment);
 
 } // DevelopmentStream

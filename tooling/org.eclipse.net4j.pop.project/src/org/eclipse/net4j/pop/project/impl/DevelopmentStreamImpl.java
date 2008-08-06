@@ -8,14 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.11 2008-08-06 07:07:25 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.12 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.project.DevelopmentStream;
 import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.ProjectPackage;
-import org.eclipse.net4j.pop.project.Release;
 import org.eclipse.net4j.pop.project.Stream;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -26,7 +25,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Development Stream</b></em>'. <!-- end-user-doc
@@ -55,6 +53,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected DevelopmentStreamImpl()
@@ -64,6 +63,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -74,6 +74,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<MaintenanceStream> getMaintenanceStreams()
@@ -89,16 +90,6 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated NOT
-   */
-  public Release addRelease(Date date, boolean compatible, int increment)
-  {
-    // TODO: implement DevelopmentStreamImpl.addRelease(date, compatible, increment)
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -115,6 +106,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -130,6 +122,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -145,6 +138,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -163,6 +157,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -179,6 +174,7 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

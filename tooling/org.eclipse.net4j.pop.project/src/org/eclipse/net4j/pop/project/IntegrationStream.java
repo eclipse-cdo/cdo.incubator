@@ -8,13 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStream.java,v 1.11 2008-08-06 07:07:25 estepper Exp $
+ * $Id: IntegrationStream.java,v 1.12 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
 import org.eclipse.emf.common.util.EList;
-
-import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Integration Stream</b></em>'. <!-- end-user-doc
@@ -68,19 +66,5 @@ public interface IntegrationStream extends Stream
    * @generated
    */
   EList<Release> getReleases();
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true" taskIdRequired="true" baselineRequired="true"
-   * @generated
-   */
-  TaskStream startTask(String taskId, Date baseline);
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true" dateRequired="true"
-   * @generated
-   */
-  Release addRelease(Date date);
 
 } // IntegrationStream

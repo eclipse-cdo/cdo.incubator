@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.27 2008-08-06 08:36:37 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.28 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -41,7 +41,6 @@ import org.eclipse.net4j.pop.project.TaskStream;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -1383,6 +1382,8 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     addEOperation(checkoutDiscriminatorEClass, this.getRepository(), "getRepository", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
+    addEOperation(checkoutDiscriminatorEClass, ecorePackage.getEBoolean(), "hasCheckout", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
     addEOperation(checkoutDiscriminatorEClass, this.getCheckout(), "checkout", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(taggedElementEClass, TaggedElement.class,
@@ -1483,10 +1484,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     addEOperation(streamEClass, this.getStream(), "getStreams", 0, -1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
-    EOperation op = addEOperation(streamEClass, this.getMerge(), "merge", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, this.getDelivery(), "delivery", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
     initEClass(taskStreamEClass, TaskStream.class,
         "TaskStream", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
@@ -1513,10 +1510,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getDelivery_Stream(),
         "deliveries", null, 0, -1, TaskStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    op = addEOperation(taskStreamEClass, this.getDelivery(), "deliver", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEString(), "id", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
     initEClass(integrationStreamEClass, IntegrationStream.class,
         "IntegrationStream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -1530,13 +1523,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getRelease_Stream(),
         "releases", null, 0, -1, IntegrationStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    op = addEOperation(integrationStreamEClass, this.getTaskStream(), "startTask", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEString(), "taskId", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEDate(), "baseline", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
-    op = addEOperation(integrationStreamEClass, this.getRelease(), "addRelease", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-
     initEClass(developmentStreamEClass, DevelopmentStream.class,
         "DevelopmentStream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -1544,11 +1530,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getMaintenanceStream(),
         this.getMaintenanceStream_Parent(),
         "maintenanceStreams", null, 0, -1, DevelopmentStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    op = addEOperation(developmentStreamEClass, this.getRelease(), "addRelease", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEDate(), "date", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEBoolean(), "compatible", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
-    addEParameter(op, ecorePackage.getEInt(), "increment", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(maintenanceStreamEClass, MaintenanceStream.class,
         "MaintenanceStream", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1602,8 +1583,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getMilestone(),
         this.getMilestone_Release(),
         "milestones", null, 0, -1, Release.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    addEOperation(releaseEClass, this.getMaintenanceStream(), "startMaintenance", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(milestoneEClass, Milestone.class, "Milestone", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskStream.java,v 1.10 2008-08-06 07:07:25 estepper Exp $
+ * $Id: TaskStream.java,v 1.11 2008-08-06 09:10:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -152,12 +152,5 @@ public interface TaskStream extends Stream
    * @generated
    */
   EList<Delivery> getDeliveries();
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @model required="true" idRequired="true" dateRequired="true"
-   * @generated
-   */
-  Delivery deliver(String id, Date date);
 
 } // TaskStream
