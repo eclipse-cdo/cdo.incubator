@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CommitterItemProvider.java,v 1.12 2008-08-06 07:07:25 estepper Exp $
+ * $Id: CommitterItemProvider.java,v 1.13 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -65,6 +65,7 @@ public class CommitterItemProvider extends PopElementItemProvider implements IEd
     {
       super.getPropertyDescriptors(object);
 
+      addRepositoryPropertyDescriptor(object);
       addLoginPropertyDescriptor(object);
       addNamePropertyDescriptor(object);
       addEmailPropertyDescriptor(object);
@@ -73,6 +74,20 @@ public class CommitterItemProvider extends PopElementItemProvider implements IEd
       addActivePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Repository feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRepositoryPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Committer_repository_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_Committer_repository_feature", "_UI_Committer_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.COMMITTER__REPOSITORY, false, false, false, null, null, null));
   }
 
   /**

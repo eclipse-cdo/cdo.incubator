@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProject.java,v 1.13 2008-08-06 07:07:25 estepper Exp $
+ * $Id: PopProject.java,v 1.14 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -63,6 +63,7 @@ public interface PopProject extends PopElement
 
   /**
    * Returns the value of the '<em><b>Repository</b></em>' containment reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.Repository#getPopProject <em>Pop Project</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Repository</em>' containment reference isn't clear, there really should be more of a
@@ -72,7 +73,8 @@ public interface PopProject extends PopElement
    * @return the value of the '<em>Repository</em>' containment reference.
    * @see #setRepository(Repository)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getPopProject_Repository()
-   * @model containment="true" resolveProxies="true" required="true"
+   * @see org.eclipse.net4j.pop.project.Repository#getPopProject
+   * @model opposite="popProject" containment="true" resolveProxies="true" required="true"
    * @generated
    */
   Repository getRepository();

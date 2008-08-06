@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Repository.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
+ * $Id: Repository.java,v 1.3 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -40,25 +40,27 @@ import org.eclipse.emf.common.util.EList;
 public interface Repository extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Pop Project</b></em>' reference.
+   * Returns the value of the '<em><b>Pop Project</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.project.PopProject#getRepository <em>Repository</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pop Project</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Pop Project</em>' reference.
+   * @return the value of the '<em>Pop Project</em>' container reference.
    * @see #setPopProject(PopProject)
    * @see org.eclipse.net4j.pop.project.ProjectPackage#getRepository_PopProject()
-   * @model required="true"
+   * @see org.eclipse.net4j.pop.project.PopProject#getRepository
+   * @model opposite="repository" required="true" transient="false"
    * @generated
    */
   PopProject getPopProject();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Repository#getPopProject <em>Pop Project</em>}' reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.project.Repository#getPopProject <em>Pop Project</em>}' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pop Project</em>' reference.
+   * @param value the new value of the '<em>Pop Project</em>' container reference.
    * @see #getPopProject()
    * @generated
    */

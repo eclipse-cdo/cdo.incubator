@@ -8,14 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchItemProvider.java,v 1.11 2008-08-06 07:07:25 estepper Exp $
+ * $Id: MainBranchItemProvider.java,v 1.12 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
 import org.eclipse.net4j.pop.project.MainBranch;
+import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -60,8 +62,23 @@ public class MainBranchItemProvider extends BranchItemProvider implements IEditi
     {
       super.getPropertyDescriptors(object);
 
+      addRepositoryPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Repository feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRepositoryPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_MainBranch_repository_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_MainBranch_repository_feature", "_UI_MainBranch_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.MAIN_BRANCH__REPOSITORY, false, false, false, null, null, null));
   }
 
   /**

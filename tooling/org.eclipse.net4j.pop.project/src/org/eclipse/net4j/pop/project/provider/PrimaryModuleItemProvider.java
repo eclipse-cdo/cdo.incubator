@@ -8,14 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleItemProvider.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
+ * $Id: PrimaryModuleItemProvider.java,v 1.3 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
 import org.eclipse.net4j.pop.project.PrimaryModule;
+import org.eclipse.net4j.pop.project.ProjectPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -62,8 +64,24 @@ public class PrimaryModuleItemProvider extends ModuleItemProvider implements IEd
     {
       super.getPropertyDescriptors(object);
 
+      addRepositoryPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
+  }
+
+  /**
+   * This adds a property descriptor for the Repository feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRepositoryPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_PrimaryModule_repository_feature"), //$NON-NLS-1$
+        getString(
+            "_UI_PropertyDescriptor_description", "_UI_PrimaryModule_repository_feature", "_UI_PrimaryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProjectPackage.Literals.PRIMARY_MODULE__REPOSITORY, false, false, false, null, null, null));
   }
 
   /**

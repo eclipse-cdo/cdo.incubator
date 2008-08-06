@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.3 2008-08-06 08:30:11 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.4 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -70,7 +70,6 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
       super.getPropertyDescriptors(object);
 
       addPopProjectPropertyDescriptor(object);
-      addAdapterPropertyDescriptor(object);
       addAdapterTypePropertyDescriptor(object);
       addDescriptorPropertyDescriptor(object);
     }
@@ -88,23 +87,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Repository_popProject_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_Repository_popProject_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.REPOSITORY__POP_PROJECT, true, false, true, null, null, null));
-  }
-
-  /**
-   * This adds a property descriptor for the Adapter feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addAdapterPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Repository_adapter_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Repository_adapter_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProjectPackage.Literals.REPOSITORY__ADAPTER, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-        null, null));
+        ProjectPackage.Literals.REPOSITORY__POP_PROJECT, false, false, true, null, null, null));
   }
 
   /**
@@ -195,7 +178,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   @Override
   public String getText(Object object)
   {
-    String label = ((Repository)object).getDescriptor();
+    String label = ((Repository)object).getAdapterType();
     return label == null || label.length() == 0 ? getString("_UI_Repository_type") : //$NON-NLS-1$
         getString("_UI_Repository_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }

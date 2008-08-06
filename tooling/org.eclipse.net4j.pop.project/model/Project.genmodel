@@ -20,9 +20,10 @@
           ecoreFeature="ecore:EReference Project.ecore#//PopProject/rootStream"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//PopProject/checkouts"/>
     </genClasses>
-    <genClasses ecoreClass="Project.ecore#//Repository" labelFeature="#//project/Repository/descriptor">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Project.ecore#//Repository/popProject"/>
-      <genFeatures notify="false" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Repository/adapter"/>
+    <genClasses ecoreClass="Project.ecore#//Repository" labelFeature="#//project/Repository/adapterType">
+      <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference Project.ecore#//Repository/popProject"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Repository/adapter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Repository/adapterType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Repository/descriptor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Project.ecore#//Repository/primaryModule"/>
@@ -34,10 +35,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Module/descriptor"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//PrimaryModule">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//PrimaryModule/repository"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//PrimaryModule/repository"/>
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//Committer">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Committer/repository"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//Committer/repository"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/login"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/email"/>
@@ -71,7 +72,7 @@
       <genOperations ecoreOperation="Project.ecore#//Branch/getParent"/>
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//MainBranch">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//MainBranch/repository"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//MainBranch/repository"/>
     </genClasses>
     <genClasses ecoreClass="Project.ecore#//SubBranch">
       <genFeatures property="Readonly" createChild="false" propertySortChoices="true"

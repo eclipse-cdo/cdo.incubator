@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.2 2008-08-06 08:24:50 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.3 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -51,16 +52,6 @@ import java.util.Collection;
  */
 public class RepositoryImpl extends PopElementImpl implements Repository
 {
-  /**
-   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @see #getPopProject()
-   * @generated
-   * @ordered
-   */
-  protected PopProject popProject;
-
   /**
    * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute.
    * <!-- begin-user-doc --> <!--
@@ -171,18 +162,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
    */
   public PopProject getPopProject()
   {
-    if (popProject != null && popProject.eIsProxy())
-    {
-      InternalEObject oldPopProject = (InternalEObject)popProject;
-      popProject = (PopProject)eResolveProxy(oldPopProject);
-      if (popProject != oldPopProject)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProjectPackage.REPOSITORY__POP_PROJECT,
-              oldPopProject, popProject));
-      }
-    }
-    return popProject;
+    if (eContainerFeatureID != ProjectPackage.REPOSITORY__POP_PROJECT)
+      return null;
+    return (PopProject)eContainer();
   }
 
   /**
@@ -191,7 +173,20 @@ public class RepositoryImpl extends PopElementImpl implements Repository
    */
   public PopProject basicGetPopProject()
   {
-    return popProject;
+    if (eContainerFeatureID != ProjectPackage.REPOSITORY__POP_PROJECT)
+      return null;
+    return (PopProject)eInternalContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPopProject(PopProject newPopProject, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newPopProject, ProjectPackage.REPOSITORY__POP_PROJECT, msgs);
+    return msgs;
   }
 
   /**
@@ -200,11 +195,24 @@ public class RepositoryImpl extends PopElementImpl implements Repository
    */
   public void setPopProject(PopProject newPopProject)
   {
-    PopProject oldPopProject = popProject;
-    popProject = newPopProject;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY__POP_PROJECT, oldPopProject,
-          popProject));
+    if (newPopProject != eInternalContainer()
+        || (eContainerFeatureID != ProjectPackage.REPOSITORY__POP_PROJECT && newPopProject != null))
+    {
+      if (EcoreUtil.isAncestor(this, newPopProject))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newPopProject != null)
+        msgs = ((InternalEObject)newPopProject).eInverseAdd(this, ProjectPackage.POP_PROJECT__REPOSITORY,
+            PopProject.class, msgs);
+      msgs = basicSetPopProject(newPopProject, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProjectPackage.REPOSITORY__POP_PROJECT, newPopProject,
+          newPopProject));
   }
 
   /**
@@ -470,6 +478,10 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   {
     switch (featureID)
     {
+    case ProjectPackage.REPOSITORY__POP_PROJECT:
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      return basicSetPopProject((PopProject)otherEnd, msgs);
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       if (primaryModule != null)
         msgs = ((InternalEObject)primaryModule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -495,6 +507,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   {
     switch (featureID)
     {
+    case ProjectPackage.REPOSITORY__POP_PROJECT:
+      return basicSetPopProject(null, msgs);
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       return basicSetPrimaryModule(null, msgs);
     case ProjectPackage.REPOSITORY__COMMITTERS:
@@ -503,6 +517,22 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return basicSetMainBranch(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID)
+    {
+    case ProjectPackage.REPOSITORY__POP_PROJECT:
+      return eInternalContainer().eInverseRemove(this, ProjectPackage.POP_PROJECT__REPOSITORY, PopProject.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -612,7 +642,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     switch (featureID)
     {
     case ProjectPackage.REPOSITORY__POP_PROJECT:
-      return popProject != null;
+      return basicGetPopProject() != null;
     case ProjectPackage.REPOSITORY__ADAPTER:
       return ADAPTER_EDEFAULT == null ? getAdapter() != null : !ADAPTER_EDEFAULT.equals(getAdapter());
     case ProjectPackage.REPOSITORY__ADAPTER_TYPE:

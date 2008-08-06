@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.26 2008-08-06 08:24:50 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.27 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -1272,7 +1272,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEReference(
         getPopProject_Repository(),
         this.getRepository(),
-        null,
+        this.getRepository_PopProject(),
         "repository", null, 1, 1, PopProject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getPopProject_RootStream(),
@@ -1290,7 +1290,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     initEReference(
         getRepository_PopProject(),
         this.getPopProject(),
-        null,
+        this.getPopProject_Repository(),
         "popProject", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getRepository_Adapter(),

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.20 2008-08-06 07:07:25 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.21 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -141,12 +141,11 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
       if (repository != oldRepository)
       {
         InternalEObject newRepository = (InternalEObject)repository;
-        NotificationChain msgs = oldRepository.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-            - ProjectPackage.POP_PROJECT__REPOSITORY, null, null);
+        NotificationChain msgs = oldRepository.eInverseRemove(this, ProjectPackage.REPOSITORY__POP_PROJECT,
+            Repository.class, null);
         if (newRepository.eInternalContainer() == null)
         {
-          msgs = newRepository.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProjectPackage.POP_PROJECT__REPOSITORY, null,
-              msgs);
+          msgs = newRepository.eInverseAdd(this, ProjectPackage.REPOSITORY__POP_PROJECT, Repository.class, msgs);
         }
         if (msgs != null)
           msgs.dispatch();
@@ -197,11 +196,11 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
     {
       NotificationChain msgs = null;
       if (repository != null)
-        msgs = ((InternalEObject)repository).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-            - ProjectPackage.POP_PROJECT__REPOSITORY, null, msgs);
+        msgs = ((InternalEObject)repository).eInverseRemove(this, ProjectPackage.REPOSITORY__POP_PROJECT,
+            Repository.class, msgs);
       if (newRepository != null)
-        msgs = ((InternalEObject)newRepository).eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-            - ProjectPackage.POP_PROJECT__REPOSITORY, null, msgs);
+        msgs = ((InternalEObject)newRepository).eInverseAdd(this, ProjectPackage.REPOSITORY__POP_PROJECT,
+            Repository.class, msgs);
       msgs = basicSetRepository(newRepository, msgs);
       if (msgs != null)
         msgs.dispatch();
@@ -318,6 +317,11 @@ public class PopProjectImpl extends PopElementImpl implements PopProject
   {
     switch (featureID)
     {
+    case ProjectPackage.POP_PROJECT__REPOSITORY:
+      if (repository != null)
+        msgs = ((InternalEObject)repository).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+            - ProjectPackage.POP_PROJECT__REPOSITORY, null, msgs);
+      return basicSetRepository((Repository)otherEnd, msgs);
     case ProjectPackage.POP_PROJECT__ROOT_STREAM:
       if (rootStream != null)
         msgs = ((InternalEObject)rootStream).eInverseRemove(this, EOPPOSITE_FEATURE_BASE

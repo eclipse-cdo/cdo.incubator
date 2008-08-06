@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.23 2008-08-06 08:24:50 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.24 2008-08-06 08:36:37 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -163,7 +163,7 @@ public interface ProjectPackage extends EPackage
   int REPOSITORY__CLASS = BasePackage.POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Pop Project</b></em>' reference.
+   * The feature id for the '<em><b>Pop Project</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
@@ -1820,9 +1820,9 @@ public interface ProjectPackage extends EPackage
   EClass getRepository();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.project.Repository#getPopProject <em>Pop Project</em>}'.
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.project.Repository#getPopProject <em>Pop Project</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Pop Project</em>'.
+   * @return the meta object for the container reference '<em>Pop Project</em>'.
    * @see org.eclipse.net4j.pop.project.Repository#getPopProject()
    * @see #getRepository()
    * @generated
@@ -2714,7 +2714,7 @@ public interface ProjectPackage extends EPackage
     EClass REPOSITORY = eINSTANCE.getRepository();
 
     /**
-     * The meta object literal for the '<em><b>Pop Project</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Pop Project</b></em>' container reference feature.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
      * @generated
