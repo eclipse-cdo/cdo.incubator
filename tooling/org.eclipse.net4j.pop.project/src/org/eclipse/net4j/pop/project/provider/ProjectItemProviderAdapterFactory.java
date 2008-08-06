@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectItemProviderAdapterFactory.java,v 1.12 2008-08-06 07:07:25 estepper Exp $
+ * $Id: ProjectItemProviderAdapterFactory.java,v 1.13 2008-08-06 10:32:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -148,6 +148,31 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
     }
 
     return repositoryItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.project.PrimaryModule} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected PrimaryModuleItemProvider primaryModuleItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.project.PrimaryModule}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createPrimaryModuleAdapter()
+  {
+    if (primaryModuleItemProvider == null)
+    {
+      primaryModuleItemProvider = new PrimaryModuleItemProvider(this);
+    }
+
+    return primaryModuleItemProvider;
   }
 
   /**
@@ -584,6 +609,8 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
       popProjectItemProvider.dispose();
     if (repositoryItemProvider != null)
       repositoryItemProvider.dispose();
+    if (primaryModuleItemProvider != null)
+      primaryModuleItemProvider.dispose();
     if (committerItemProvider != null)
       committerItemProvider.dispose();
     if (tagItemProvider != null)

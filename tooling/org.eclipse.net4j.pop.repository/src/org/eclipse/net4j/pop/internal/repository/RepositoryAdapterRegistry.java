@@ -22,11 +22,11 @@ import org.eclipse.core.runtime.Platform;
 /**
  * @author Eike Stepper
  */
-public class RepositoryAdapterFactory extends HashMapRegistry<String, IRepositoryAdapter> implements Registry
+public class RepositoryAdapterRegistry extends HashMapRegistry<String, IRepositoryAdapter> implements Registry
 {
-  public static final RepositoryAdapterFactory INSTANCE = new RepositoryAdapterFactory();
+  public static final RepositoryAdapterRegistry INSTANCE = new RepositoryAdapterRegistry();
 
-  private RepositoryAdapterFactory()
+  private RepositoryAdapterRegistry()
   {
   }
 

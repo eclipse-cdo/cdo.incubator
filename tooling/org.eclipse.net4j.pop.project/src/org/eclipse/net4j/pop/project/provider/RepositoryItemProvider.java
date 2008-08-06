@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.5 2008-08-06 08:45:12 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.6 2008-08-06 10:32:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -211,6 +211,9 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
+
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.REPOSITORY__PRIMARY_MODULE,
+        ProjectFactory.eINSTANCE.createPrimaryModule()));
 
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.REPOSITORY__COMMITTERS,
         ProjectFactory.eINSTANCE.createCommitter()));

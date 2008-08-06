@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModule.java,v 1.1 2008-08-06 07:07:25 estepper Exp $
+ * $Id: PrimaryModule.java,v 1.2 2008-08-06 10:32:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -23,7 +23,7 @@ package org.eclipse.net4j.pop.project;
  * </p>
  *
  * @see org.eclipse.net4j.pop.project.ProjectPackage#getPrimaryModule()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface PrimaryModule extends Module

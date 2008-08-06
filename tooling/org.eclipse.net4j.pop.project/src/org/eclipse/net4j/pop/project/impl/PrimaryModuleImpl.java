@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleImpl.java,v 1.1 2008-08-06 07:07:25 estepper Exp $
+ * $Id: PrimaryModuleImpl.java,v 1.2 2008-08-06 10:32:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -36,7 +36,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  *
  * @generated
  */
-public abstract class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
+public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 {
   /**
    * <!-- begin-user-doc -->

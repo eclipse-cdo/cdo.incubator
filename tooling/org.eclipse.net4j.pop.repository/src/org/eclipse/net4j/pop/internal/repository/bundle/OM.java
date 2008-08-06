@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.repository.bundle;
 
+import org.eclipse.net4j.pop.internal.repository.RepositoryAdapterRegistry;
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.OSGiActivator;
@@ -44,6 +45,20 @@ public abstract class OM
     public Activator()
     {
       super(BUNDLE);
+    }
+
+    @Override
+    protected void doStart() throws Exception
+    {
+      super.doStart();
+      RepositoryAdapterRegistry.INSTANCE.activate();
+    }
+
+    @Override
+    protected void doStop() throws Exception
+    {
+      RepositoryAdapterRegistry.INSTANCE.deactivate();
+      super.doStop();
     }
   }
 }

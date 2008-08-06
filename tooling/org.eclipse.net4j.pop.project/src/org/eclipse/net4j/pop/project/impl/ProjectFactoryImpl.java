@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.17 2008-08-06 08:24:50 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.18 2008-08-06 10:32:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.net4j.pop.project.MaintenanceStream;
 import org.eclipse.net4j.pop.project.Merge;
 import org.eclipse.net4j.pop.project.Milestone;
 import org.eclipse.net4j.pop.project.PopProject;
+import org.eclipse.net4j.pop.project.PrimaryModule;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Release;
@@ -87,6 +88,8 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
       return createPopProject();
     case ProjectPackage.REPOSITORY:
       return createRepository();
+    case ProjectPackage.PRIMARY_MODULE:
+      return createPrimaryModule();
     case ProjectPackage.COMMITTER:
       return createCommitter();
     case ProjectPackage.TAG:
@@ -134,6 +137,17 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
   {
     RepositoryImpl repository = new RepositoryImpl();
     return repository;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PrimaryModule createPrimaryModule()
+  {
+    PrimaryModuleImpl primaryModule = new PrimaryModuleImpl();
+    return primaryModule;
   }
 
   /**

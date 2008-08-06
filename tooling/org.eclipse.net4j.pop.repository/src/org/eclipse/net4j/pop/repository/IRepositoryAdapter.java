@@ -35,7 +35,6 @@ public interface IRepositoryAdapter extends IAdaptable
    */
   public interface Registry extends IRegistry<String, IRepositoryAdapter>
   {
-    Registry INSTANCE = org.eclipse.net4j.pop.internal.repository.RepositoryAdapterFactory.INSTANCE;
+    Registry INSTANCE = org.eclipse.net4j.pop.internal.repository.RepositoryAdapterRegistry.INSTANCE;
   }
-
 }

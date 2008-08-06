@@ -156,10 +156,10 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     checkActive();
     IProject project = createProject(discriminator.getId());
     Repository repository = discriminator.getRepository();
+    Module module = repository.getPrimaryModule();
 
     IRepositoryAdapter adapter = repository.getAdapter();
     IRepositorySession session = adapter.openSession(repository.getDescriptor(), false, new NullProgressMonitor());
-    Module module = repository.getPrimaryModule();
 
     IFolder target = createFolder(project, module.getName());
     IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());

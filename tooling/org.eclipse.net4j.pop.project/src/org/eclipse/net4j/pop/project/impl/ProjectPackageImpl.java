@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.28 2008-08-06 09:10:42 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.29 2008-08-06 10:32:46 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -1330,7 +1330,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         "descriptor", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(primaryModuleEClass, PrimaryModule.class,
-        "PrimaryModule", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        "PrimaryModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getPrimaryModule_Repository(),
         this.getRepository(),
