@@ -20,8 +20,10 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 import org.eclipse.core.runtime.jobs.MultiRule;
 import org.eclipse.team.core.RepositoryProvider;
@@ -89,20 +91,31 @@ public class CvsRepositoryFolder implements IRepositoryFolder
     return cvsFolder;
   }
 
-  public void checkoutInto(IContainer target, boolean recursive, IProgressMonitor monitor)
+  public void checkoutInto(IContainer parent, String localName, boolean recursive, IProgressMonitor monitor)
   {
     try
     {
-      ICVSFolder targetFolder = CVSWorkspaceRoot.getCVSFolderFor(target);
+      ICVSFolder parentFolder = CVSWorkspaceRoot.getCVSFolderFor(parent);
+      if (localName == null)
+      {
+        IPath path = new Path(null, cvsFolder.getRepositoryRelativePath());
+        if (path.segmentCount() > 1)
+        {
+          localName = path.lastSegment();
+        }
+      }
 
       // Add recurse option
-      List localOptions = new ArrayList();
+      List<LocalOption> localOptions = new ArrayList<LocalOption>();
       if (!recursive)
       {
         localOptions.add(Command.DO_NOT_RECURSE);
       }
 
-      localOptions.add(Checkout.makeDirectoryNameOption(target.getName()));
+      if (localName != null)
+      {
+        localOptions.add(Checkout.makeDirectoryNameOption(localName));
+      }
 
       // Prune empty directories if pruning enabled
       if (CVSProviderPlugin.getPlugin().getPruneEmptyDirectories())
@@ -121,10 +134,15 @@ public class CvsRepositoryFolder implements IRepositoryFolder
 
       // Perform the checkout
       Session cvsSession = session.getCvsSession();
-      IStatus status = Command.CHECKOUT.execute(cvsSession, Command.NO_GLOBAL_OPTIONS, (LocalOption[])localOptions
+      IStatus status = Command.CHECKOUT.execute(cvsSession, Command.NO_GLOBAL_OPTIONS, localOptions
           .toArray(new LocalOption[localOptions.size()]), new String[] { cvsFolder.getRepositoryRelativePath() }, null,
           Policy.subMonitorFor(monitor, 80));
+      if (!status.isOK())
+      {
+        throw new CoreException(status);
+      }
 
+      ICVSFolder targetFolder = parentFolder.getFolder(localName);
       String root = session.getCvsSession().getCVSRepositoryLocation().getLocation(false);
       manageFolder(targetFolder, root);
     }

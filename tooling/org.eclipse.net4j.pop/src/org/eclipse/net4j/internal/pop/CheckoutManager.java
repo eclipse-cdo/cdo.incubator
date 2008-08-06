@@ -163,9 +163,9 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     IRepositoryAdapter adapter = repository.getAdapter();
     IRepositorySession session = adapter.openSession(repository.getDescriptor(), false, monitor);
 
-    IFolder target = createFolder(project, module.getName(), monitor);
+    // IFolder target = createFolder(project, module.getName(), monitor);
     IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());
-    folder.checkoutInto(target, true, new NullProgressMonitor());
+    folder.checkoutInto(project, module.getName(), true, new NullProgressMonitor());
 
     return createCheckout(discriminator, project.getLocation());
   }
