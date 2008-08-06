@@ -13,10 +13,7 @@ package org.eclipse.net4j.pop.repository;
 import org.eclipse.net4j.util.registry.IRegistry;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-
-import java.util.Date;
 
 /**
  * @author Eike Stepper
@@ -32,12 +29,6 @@ public interface IRepositoryAdapter extends IAdaptable
   public IRepositoryTag.Date createDateTag(java.util.Date date);
 
   public IRepositorySession openSession(String repositoryDescription, boolean writeAccess, IProgressMonitor monitor);
-
-  public void checkoutBranch(IPath target, String repository, String module, String branch);
-
-  public void checkoutTag(IPath target, String repository, String module, String tag);
-
-  public void checkoutDate(IPath target, String repository, String module, Date date);
 
   /**
    * @author Eike Stepper

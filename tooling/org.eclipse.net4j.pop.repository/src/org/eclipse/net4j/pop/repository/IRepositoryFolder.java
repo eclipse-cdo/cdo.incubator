@@ -10,6 +10,9 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.repository;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.runtime.IProgressMonitor;
+
 /**
  * @author Eike Stepper
  */
@@ -20,4 +23,6 @@ public interface IRepositoryFolder
   public IRepositoryTag getTag();
 
   public String getPath();
+
+  public void checkout(IContainer target, boolean recursive, IProgressMonitor monitor);
 }
