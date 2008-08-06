@@ -46,13 +46,13 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class CheckoutManager extends Container<Checkout> implements ICheckoutManager
+public class PopCheckouts extends Container<Checkout> implements ICheckoutManager
 {
   private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
 
   private static final IWorkspaceRoot ROOT = WS.getRoot();
 
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopCheckouts.class);
 
   private Pop pop;
 
@@ -62,7 +62,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private Checkout activeCheckout;
 
-  public CheckoutManager(Pop pop)
+  public PopCheckouts(Pop pop)
   {
     this.pop = pop;
   }

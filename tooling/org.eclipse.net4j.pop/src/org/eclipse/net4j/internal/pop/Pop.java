@@ -40,7 +40,7 @@ public class Pop extends Lifecycle implements IPop
 
   private ModelManager modelManager;
 
-  private CheckoutManager checkoutManager = new CheckoutManager(this);
+  private PopCheckouts checkoutManager = new PopCheckouts(this);
 
   public Pop(IProject project)
   {
@@ -134,7 +134,7 @@ public class Pop extends Lifecycle implements IPop
     return modelManager;
   }
 
-  public CheckoutManager getCheckoutManager()
+  public PopCheckouts getCheckoutManager()
   {
     return checkoutManager;
   }
