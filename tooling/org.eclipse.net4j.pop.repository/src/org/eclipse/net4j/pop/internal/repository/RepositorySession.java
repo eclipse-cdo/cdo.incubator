@@ -12,6 +12,8 @@ package org.eclipse.net4j.pop.internal.repository;
 
 import org.eclipse.net4j.pop.repository.IRepositorySession;
 
+import org.eclipse.core.resources.IContainer;
+
 /**
  * @author Eike Stepper
  */
@@ -21,12 +23,16 @@ public abstract class RepositorySession implements IRepositorySession
 
   private String repositoryDescription;
 
+  private IContainer localRoot;
+
   private boolean writeAccess;
 
-  public RepositorySession(RepositoryAdapter adapter, String repositoryDescription, boolean writeAccess)
+  public RepositorySession(RepositoryAdapter adapter, String repositoryDescription, IContainer localRoot,
+      boolean writeAccess)
   {
     this.adapter = adapter;
     this.repositoryDescription = repositoryDescription;
+    this.localRoot = localRoot;
     this.writeAccess = writeAccess;
   }
 
@@ -38,6 +44,11 @@ public abstract class RepositorySession implements IRepositorySession
   public String getRepositoryDescription()
   {
     return repositoryDescription;
+  }
+
+  public IContainer getLocalRoot()
+  {
+    return localRoot;
   }
 
   public boolean isWriteAccess()

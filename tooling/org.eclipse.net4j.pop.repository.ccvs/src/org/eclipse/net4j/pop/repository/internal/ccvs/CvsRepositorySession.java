@@ -14,10 +14,9 @@ import org.eclipse.net4j.pop.internal.repository.RepositorySession;
 import org.eclipse.net4j.pop.repository.IRepositoryFolder;
 import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.team.internal.ccvs.core.CVSException;
-import org.eclipse.team.internal.ccvs.core.ICVSFolder;
 import org.eclipse.team.internal.ccvs.core.ICVSRepositoryLocation;
 import org.eclipse.team.internal.ccvs.core.client.Session;
 import org.eclipse.team.internal.ccvs.core.resources.CVSWorkspaceRoot;
@@ -28,19 +27,16 @@ import org.eclipse.team.internal.ccvs.core.util.KnownRepositories;
  */
 public class CvsRepositorySession extends RepositorySession
 {
-  private ICVSFolder localRoot;
-
   private ICVSRepositoryLocation repositoryLocation;
 
   private Session cvsSession;
 
-  public CvsRepositorySession(CvsRepositoryAdapter adapter, String repositoryDescription, boolean writeAccess,
-      IProgressMonitor monitor) throws CVSException
+  public CvsRepositorySession(CvsRepositoryAdapter adapter, String repositoryDescription, IContainer localRoot,
+      boolean writeAccess, IProgressMonitor monitor) throws CVSException
   {
-    super(adapter, repositoryDescription, writeAccess);
-    localRoot = CVSWorkspaceRoot.getCVSFolderFor(ResourcesPlugin.getWorkspace().getRoot());
+    super(adapter, repositoryDescription, localRoot, writeAccess);
     repositoryLocation = KnownRepositories.getInstance().getRepository(repositoryDescription);
-    cvsSession = new Session(repositoryLocation, localRoot);
+    cvsSession = new Session(repositoryLocation, CVSWorkspaceRoot.getCVSFolderFor(localRoot));
     cvsSession.open(monitor, writeAccess);
   }
 
@@ -50,19 +46,14 @@ public class CvsRepositorySession extends RepositorySession
     return (CvsRepositoryAdapter)super.getAdapter();
   }
 
-  public ICVSFolder getLocalRoot()
+  public ICVSRepositoryLocation getRepositoryLocation()
   {
-    return localRoot;
+    return repositoryLocation;
   }
 
   public Session getCvsSession()
   {
     return cvsSession;
-  }
-
-  public ICVSRepositoryLocation getRepositoryLocation()
-  {
-    return repositoryLocation;
   }
 
   public IRepositoryFolder getFolder(IRepositoryTag tag, String path)

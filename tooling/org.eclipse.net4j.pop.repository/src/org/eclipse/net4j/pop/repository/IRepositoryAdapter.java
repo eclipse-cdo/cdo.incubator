@@ -12,6 +12,7 @@ package org.eclipse.net4j.pop.repository;
 
 import org.eclipse.net4j.util.registry.IRegistry;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 
@@ -28,7 +29,8 @@ public interface IRepositoryAdapter extends IAdaptable
 
   public IRepositoryTag.Date createDateTag(java.util.Date date);
 
-  public IRepositorySession openSession(String repositoryDescription, boolean writeAccess, IProgressMonitor monitor);
+  public IRepositorySession openSession(String repositoryDescriptor, IContainer localRoot, boolean writeAccess,
+      IProgressMonitor monitor);
 
   /**
    * @author Eike Stepper

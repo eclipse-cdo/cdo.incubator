@@ -17,6 +17,7 @@ import org.eclipse.net4j.pop.repository.IRepositoryTag.Branch;
 import org.eclipse.net4j.pop.repository.IRepositoryTag.Version;
 import org.eclipse.net4j.util.WrappedException;
 
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.team.internal.ccvs.core.CVSException;
 
@@ -51,11 +52,12 @@ public class CvsRepositoryAdapter extends RepositoryAdapter
     return new CvsRepositoryTag.Date(this, date);
   }
 
-  public IRepositorySession openSession(String repository, boolean writeAccess, IProgressMonitor monitor)
+  public IRepositorySession openSession(String repositoryDescriptor, IContainer localRoot, boolean writeAccess,
+      IProgressMonitor monitor)
   {
     try
     {
-      return new CvsRepositorySession(this, repository, writeAccess, monitor);
+      return new CvsRepositorySession(this, repositoryDescriptor, localRoot, writeAccess, monitor);
     }
     catch (CVSException ex)
     {
