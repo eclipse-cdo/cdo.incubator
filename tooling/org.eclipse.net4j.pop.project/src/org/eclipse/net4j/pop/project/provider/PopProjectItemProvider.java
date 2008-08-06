@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectItemProvider.java,v 1.15 2008-08-06 07:07:25 estepper Exp $
+ * $Id: PopProjectItemProvider.java,v 1.16 2008-08-06 08:45:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -155,7 +155,7 @@ public class PopProjectItemProvider extends PopElementItemProvider implements IE
   {
     String label = ((PopProject)object).getName();
     return label == null || label.length() == 0 ? getString("_UI_PopProject_type") : //$NON-NLS-1$
-        label;
+        label + " " + getString("_UI_PopProject_type"); //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**

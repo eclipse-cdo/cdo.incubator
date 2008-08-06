@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorItemProvider.java,v 1.5 2008-08-06 07:07:25 estepper Exp $
+ * $Id: CheckoutDiscriminatorItemProvider.java,v 1.6 2008-08-06 08:45:12 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -27,8 +27,6 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
 import java.util.List;
@@ -65,29 +63,9 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
     {
       super.getPropertyDescriptors(object);
 
-      addRepositoryTagPropertyDescriptor(object);
       addCheckoutPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Repository Tag feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRepositoryTagPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors
-        .add(createItemPropertyDescriptor(
-            ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-            getResourceLocator(),
-            getString("_UI_CheckoutDiscriminator_repositoryTag_feature"), //$NON-NLS-1$
-            getString(
-                "_UI_PropertyDescriptor_description", "_UI_CheckoutDiscriminator_repositoryTag_feature", "_UI_CheckoutDiscriminator_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            ProjectPackage.Literals.CHECKOUT_DISCRIMINATOR__REPOSITORY_TAG, false, false, false,
-            ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
   /**
@@ -129,13 +107,6 @@ public class CheckoutDiscriminatorItemProvider extends PopElementItemProvider im
   public void notifyChanged(Notification notification)
   {
     updateChildren(notification);
-
-    switch (notification.getFeatureID(CheckoutDiscriminator.class))
-    {
-    case ProjectPackage.CHECKOUT_DISCRIMINATOR__REPOSITORY_TAG:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
-    }
     super.notifyChanged(notification);
   }
 

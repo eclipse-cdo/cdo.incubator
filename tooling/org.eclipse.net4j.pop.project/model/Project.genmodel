@@ -47,7 +47,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//Committer/active"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Project.ecore#//CheckoutDiscriminator">
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CheckoutDiscriminator/repositoryTag"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Project.ecore#//CheckoutDiscriminator/repositoryTag"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Project.ecore#//CheckoutDiscriminator/checkout.1"/>
       <genOperations ecoreOperation="Project.ecore#//CheckoutDiscriminator/getRepository"/>
       <genOperations ecoreOperation="Project.ecore#//CheckoutDiscriminator/checkout"/>
