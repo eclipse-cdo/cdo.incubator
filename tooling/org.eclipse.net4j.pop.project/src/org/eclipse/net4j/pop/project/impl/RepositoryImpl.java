@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.7 2008-08-06 16:56:16 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.8 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -42,9 +42,9 @@ import java.util.Collection;
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getPrimaryModule <em>Primary Module</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getCommitters <em>Committers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
  * </ul>
  * </p>
  *
@@ -103,6 +103,16 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected String descriptor = DESCRIPTOR_EDEFAULT;
 
   /**
+   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
+   * <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * @see #getMainBranch()
+   * @generated
+   * @ordered
+   */
+  protected MainBranch mainBranch;
+
+  /**
    * The cached value of the '{@link #getPrimaryModule() <em>Primary Module</em>}' containment reference. <!--
    * begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -121,16 +131,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
    * @ordered
    */
   protected EList<Committer> committers;
-
-  /**
-   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
-   * <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * @see #getMainBranch()
-   * @generated
-   * @ordered
-   */
-  protected MainBranch mainBranch;
 
   /**
    * @ADDED
@@ -479,6 +479,11 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
       return basicSetPopProject((PopProject)otherEnd, msgs);
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
+      if (mainBranch != null)
+        msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+            - ProjectPackage.REPOSITORY__MAIN_BRANCH, null, msgs);
+      return basicSetMainBranch((MainBranch)otherEnd, msgs);
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       if (primaryModule != null)
         msgs = ((InternalEObject)primaryModule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -486,11 +491,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return basicSetPrimaryModule((PrimaryModule)otherEnd, msgs);
     case ProjectPackage.REPOSITORY__COMMITTERS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getCommitters()).basicAdd(otherEnd, msgs);
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
-      if (mainBranch != null)
-        msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-            - ProjectPackage.REPOSITORY__MAIN_BRANCH, null, msgs);
-      return basicSetMainBranch((MainBranch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -506,12 +506,12 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case ProjectPackage.REPOSITORY__POP_PROJECT:
       return basicSetPopProject(null, msgs);
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
+      return basicSetMainBranch(null, msgs);
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       return basicSetPrimaryModule(null, msgs);
     case ProjectPackage.REPOSITORY__COMMITTERS:
       return ((InternalEList<?>)getCommitters()).basicRemove(otherEnd, msgs);
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
-      return basicSetMainBranch(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -550,16 +550,16 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return getAdapterType();
     case ProjectPackage.REPOSITORY__DESCRIPTOR:
       return getDescriptor();
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
+      if (resolve)
+        return getMainBranch();
+      return basicGetMainBranch();
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       if (resolve)
         return getPrimaryModule();
       return basicGetPrimaryModule();
     case ProjectPackage.REPOSITORY__COMMITTERS:
       return getCommitters();
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
-      if (resolve)
-        return getMainBranch();
-      return basicGetMainBranch();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -583,15 +583,15 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     case ProjectPackage.REPOSITORY__DESCRIPTOR:
       setDescriptor((String)newValue);
       return;
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
+      setMainBranch((MainBranch)newValue);
+      return;
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       setPrimaryModule((PrimaryModule)newValue);
       return;
     case ProjectPackage.REPOSITORY__COMMITTERS:
       getCommitters().clear();
       getCommitters().addAll((Collection<? extends Committer>)newValue);
-      return;
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
-      setMainBranch((MainBranch)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -615,14 +615,14 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     case ProjectPackage.REPOSITORY__DESCRIPTOR:
       setDescriptor(DESCRIPTOR_EDEFAULT);
       return;
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
+      setMainBranch((MainBranch)null);
+      return;
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       setPrimaryModule((PrimaryModule)null);
       return;
     case ProjectPackage.REPOSITORY__COMMITTERS:
       getCommitters().clear();
-      return;
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
-      setMainBranch((MainBranch)null);
       return;
     }
     super.eUnset(featureID);
@@ -645,12 +645,12 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return ADAPTER_TYPE_EDEFAULT == null ? adapterType != null : !ADAPTER_TYPE_EDEFAULT.equals(adapterType);
     case ProjectPackage.REPOSITORY__DESCRIPTOR:
       return DESCRIPTOR_EDEFAULT == null ? descriptor != null : !DESCRIPTOR_EDEFAULT.equals(descriptor);
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
+      return mainBranch != null;
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
       return primaryModule != null;
     case ProjectPackage.REPOSITORY__COMMITTERS:
       return committers != null && !committers.isEmpty();
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
-      return mainBranch != null;
     }
     return super.eIsSet(featureID);
   }

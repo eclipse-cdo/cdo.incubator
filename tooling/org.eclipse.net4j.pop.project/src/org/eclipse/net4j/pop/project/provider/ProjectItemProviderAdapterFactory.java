@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectItemProviderAdapterFactory.java,v 1.15 2008-08-06 16:56:15 estepper Exp $
+ * $Id: ProjectItemProviderAdapterFactory.java,v 1.16 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -608,18 +608,18 @@ public class ProjectItemProviderAdapterFactory extends ProjectAdapterFactory imp
       popProjectItemProvider.dispose();
     if (repositoryItemProvider != null)
       repositoryItemProvider.dispose();
-    if (primaryModuleItemProvider != null)
-      primaryModuleItemProvider.dispose();
     if (committerItemProvider != null)
       committerItemProvider.dispose();
+    if (primaryModuleItemProvider != null)
+      primaryModuleItemProvider.dispose();
+    if (checkoutItemProvider != null)
+      checkoutItemProvider.dispose();
     if (tagItemProvider != null)
       tagItemProvider.dispose();
     if (mainBranchItemProvider != null)
       mainBranchItemProvider.dispose();
     if (subBranchItemProvider != null)
       subBranchItemProvider.dispose();
-    if (checkoutItemProvider != null)
-      checkoutItemProvider.dispose();
     if (taskStreamItemProvider != null)
       taskStreamItemProvider.dispose();
     if (maintenanceStreamItemProvider != null)

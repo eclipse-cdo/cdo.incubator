@@ -23,12 +23,24 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptor" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
+        eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/repository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="primaryModule" lowerBound="1"
         eType="#//PrimaryModule" containment="true" eOpposite="#//PrimaryModule/repository"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="committers" lowerBound="1"
         upperBound="-1" eType="#//Committer" containment="true" eOpposite="#//Committer/repository"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
-        eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/repository"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Committer" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
+        eType="#//Repository" eOpposite="#//Repository/committers"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="login" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entry" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
+        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Module" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -41,14 +53,16 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="productModelPath" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="product.xml"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Committer" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
-        eType="#//Repository" eOpposite="#//Repository/committers"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="login" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="email" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="entry" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
+        eType="#//PopProject" changeable="false" volatile="true" transient="true"
+        derived="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="discriminator" lowerBound="1"
+        eType="#//CheckoutDiscriminator" changeable="false" volatile="true" transient="true"
+        derived="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
+        eType="ecore:EDataType ../../org.eclipse.net4j.pop.base/model/Base.ecore#//Path"
+        changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
         volatile="true" transient="true" derived="true"/>
@@ -93,20 +107,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="SubBranch" eSuperTypes="#//Branch #//TaggedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//Branch" eOpposite="#//Branch/branches"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="popProject" lowerBound="1"
-        eType="#//PopProject" changeable="false" volatile="true" transient="true"
-        derived="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="discriminator" lowerBound="1"
-        eType="#//CheckoutDiscriminator" changeable="false" volatile="true" transient="true"
-        derived="true" resolveProxies="false"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
-        eType="ecore:EDataType ../../org.eclipse.net4j.pop.base/model/Base.ecore#//Path"
-        changeable="false" volatile="true" transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
-        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stream" abstract="true" eSuperTypes="../../org.eclipse.net4j.pop.base/model/Base.ecore#//PopElement">
     <eOperations name="getPopProject" lowerBound="1" eType="#//PopProject"/>

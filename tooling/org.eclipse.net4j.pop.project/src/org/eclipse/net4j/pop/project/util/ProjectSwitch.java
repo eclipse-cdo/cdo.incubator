@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectSwitch.java,v 1.19 2008-08-06 16:56:16 estepper Exp $
+ * $Id: ProjectSwitch.java,v 1.20 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -143,6 +143,20 @@ public class ProjectSwitch<T>
         result = defaultCase(theEObject);
       return result;
     }
+    case ProjectPackage.COMMITTER:
+    {
+      Committer committer = (Committer)theEObject;
+      T result = caseCommitter(committer);
+      if (result == null)
+        result = casePopElement(committer);
+      if (result == null)
+        result = caseIdentifiable(committer);
+      if (result == null)
+        result = caseDisplayable(committer);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
     case ProjectPackage.MODULE:
     {
       Module module = (Module)theEObject;
@@ -173,16 +187,16 @@ public class ProjectSwitch<T>
         result = defaultCase(theEObject);
       return result;
     }
-    case ProjectPackage.COMMITTER:
+    case ProjectPackage.CHECKOUT:
     {
-      Committer committer = (Committer)theEObject;
-      T result = caseCommitter(committer);
+      Checkout checkout = (Checkout)theEObject;
+      T result = caseCheckout(checkout);
       if (result == null)
-        result = casePopElement(committer);
+        result = casePopElement(checkout);
       if (result == null)
-        result = caseIdentifiable(committer);
+        result = caseIdentifiable(checkout);
       if (result == null)
-        result = caseDisplayable(committer);
+        result = caseDisplayable(checkout);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -281,20 +295,6 @@ public class ProjectSwitch<T>
         result = caseIdentifiable(subBranch);
       if (result == null)
         result = caseDisplayable(subBranch);
-      if (result == null)
-        result = defaultCase(theEObject);
-      return result;
-    }
-    case ProjectPackage.CHECKOUT:
-    {
-      Checkout checkout = (Checkout)theEObject;
-      T result = caseCheckout(checkout);
-      if (result == null)
-        result = casePopElement(checkout);
-      if (result == null)
-        result = caseIdentifiable(checkout);
-      if (result == null)
-        result = caseDisplayable(checkout);
       if (result == null)
         result = defaultCase(theEObject);
       return result;

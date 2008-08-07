@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectFactoryImpl.java,v 1.20 2008-08-06 16:56:16 estepper Exp $
+ * $Id: ProjectFactoryImpl.java,v 1.21 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -88,18 +88,18 @@ public class ProjectFactoryImpl extends EFactoryImpl implements ProjectFactory
       return createPopProject();
     case ProjectPackage.REPOSITORY:
       return createRepository();
-    case ProjectPackage.PRIMARY_MODULE:
-      return createPrimaryModule();
     case ProjectPackage.COMMITTER:
       return createCommitter();
+    case ProjectPackage.PRIMARY_MODULE:
+      return createPrimaryModule();
+    case ProjectPackage.CHECKOUT:
+      return createCheckout();
     case ProjectPackage.TAG:
       return createTag();
     case ProjectPackage.MAIN_BRANCH:
       return createMainBranch();
     case ProjectPackage.SUB_BRANCH:
       return createSubBranch();
-    case ProjectPackage.CHECKOUT:
-      return createCheckout();
     case ProjectPackage.TASK_STREAM:
       return createTaskStream();
     case ProjectPackage.MAINTENANCE_STREAM:

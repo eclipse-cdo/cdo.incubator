@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.8 2008-08-06 16:56:15 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.9 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.provider;
 
@@ -131,9 +131,9 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(ProjectPackage.Literals.REPOSITORY__MAIN_BRANCH);
       childrenFeatures.add(ProjectPackage.Literals.REPOSITORY__PRIMARY_MODULE);
       childrenFeatures.add(ProjectPackage.Literals.REPOSITORY__COMMITTERS);
-      childrenFeatures.add(ProjectPackage.Literals.REPOSITORY__MAIN_BRANCH);
     }
     return childrenFeatures;
   }
@@ -192,9 +192,9 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     case ProjectPackage.REPOSITORY__DESCRIPTOR:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
+    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
     case ProjectPackage.REPOSITORY__PRIMARY_MODULE:
     case ProjectPackage.REPOSITORY__COMMITTERS:
-    case ProjectPackage.REPOSITORY__MAIN_BRANCH:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
     }
@@ -212,14 +212,14 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
+    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.REPOSITORY__MAIN_BRANCH,
+        ProjectFactory.eINSTANCE.createMainBranch()));
+
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.REPOSITORY__PRIMARY_MODULE,
         ProjectFactory.eINSTANCE.createPrimaryModule()));
 
     newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.REPOSITORY__COMMITTERS,
         ProjectFactory.eINSTANCE.createCommitter()));
-
-    newChildDescriptors.add(createChildParameter(ProjectPackage.Literals.REPOSITORY__MAIN_BRANCH,
-        ProjectFactory.eINSTANCE.createMainBranch()));
   }
 
 }

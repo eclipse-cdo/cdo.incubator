@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectAdapterFactory.java,v 1.17 2008-08-06 16:56:16 estepper Exp $
+ * $Id: ProjectAdapterFactory.java,v 1.18 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.util;
 
@@ -115,6 +115,12 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
     }
 
     @Override
+    public Adapter caseCommitter(Committer object)
+    {
+      return createCommitterAdapter();
+    }
+
+    @Override
     public Adapter caseModule(Module object)
     {
       return createModuleAdapter();
@@ -127,9 +133,9 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
     }
 
     @Override
-    public Adapter caseCommitter(Committer object)
+    public Adapter caseCheckout(Checkout object)
     {
-      return createCommitterAdapter();
+      return createCheckoutAdapter();
     }
 
     @Override
@@ -166,12 +172,6 @@ public class ProjectAdapterFactory extends AdapterFactoryImpl
     public Adapter caseSubBranch(SubBranch object)
     {
       return createSubBranchAdapter();
-    }
-
-    @Override
-    public Adapter caseCheckout(Checkout object)
-    {
-      return createCheckoutAdapter();
     }
 
     @Override

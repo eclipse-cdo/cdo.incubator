@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackage.java,v 1.26 2008-08-06 16:56:16 estepper Exp $
+ * $Id: ProjectPackage.java,v 1.27 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -196,13 +196,22 @@ public interface ProjectPackage extends EPackage
   int REPOSITORY__DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
+   * The feature id for the '<em><b>Main Branch</b></em>' containment reference.
+   * <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__MAIN_BRANCH = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
    * The feature id for the '<em><b>Primary Module</b></em>' containment reference.
    * <!-- begin-user-doc --> <!--
    * end-user-doc -->
    * @generated
    * @ordered
    */
-  int REPOSITORY__PRIMARY_MODULE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+  int REPOSITORY__PRIMARY_MODULE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Committers</b></em>' containment reference list.
@@ -211,16 +220,7 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__COMMITTERS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 5;
-
-  /**
-   * The feature id for the '<em><b>Main Branch</b></em>' containment reference.
-   * <!-- begin-user-doc --> <!--
-   * end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REPOSITORY__MAIN_BRANCH = BasePackage.POP_ELEMENT_FEATURE_COUNT + 6;
+  int REPOSITORY__COMMITTERS = BasePackage.POP_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Repository</em>' class.
@@ -238,47 +238,7 @@ public interface ProjectPackage extends EPackage
    * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getModule()
    * @generated
    */
-  int MODULE = 2;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE__ID = BasePackage.POP_ELEMENT__ID;
-
-  /**
-   * The feature id for the '<em><b>Class</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE__CLASS = BasePackage.POP_ELEMENT__CLASS;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE__DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Module</em>' class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MODULE_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
+  int MODULE = 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.PrimaryModuleImpl <em>Primary Module</em>}' class.
@@ -287,66 +247,7 @@ public interface ProjectPackage extends EPackage
    * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getPrimaryModule()
    * @generated
    */
-  int PRIMARY_MODULE = 3;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE__ID = MODULE__ID;
-
-  /**
-   * The feature id for the '<em><b>Class</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE__CLASS = MODULE__CLASS;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE__NAME = MODULE__NAME;
-
-  /**
-   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE__DESCRIPTOR = MODULE__DESCRIPTOR;
-
-  /**
-   * The feature id for the '<em><b>Repository</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE__REPOSITORY = MODULE_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Product Model Path</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE__PRODUCT_MODEL_PATH = MODULE_FEATURE_COUNT + 1;
-
-  /**
-   * The number of structural features of the '<em>Primary Module</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
-   * -->
-   * 
-   * @generated
-   * @ordered
-   */
-  int PRIMARY_MODULE_FEATURE_COUNT = MODULE_FEATURE_COUNT + 2;
+  int PRIMARY_MODULE = 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CheckoutImpl <em>Checkout</em>}' class. <!--
@@ -356,7 +257,7 @@ public interface ProjectPackage extends EPackage
    * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getCheckout()
    * @generated
    */
-  int CHECKOUT = 11;
+  int CHECKOUT = 5;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CheckoutDiscriminatorImpl <em>Checkout Discriminator</em>}' class.
@@ -365,7 +266,7 @@ public interface ProjectPackage extends EPackage
    * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getCheckoutDiscriminator()
    * @generated
    */
-  int CHECKOUT_DISCRIMINATOR = 5;
+  int CHECKOUT_DISCRIMINATOR = 6;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.CommitterImpl <em>Committer</em>}' class.
@@ -374,7 +275,7 @@ public interface ProjectPackage extends EPackage
    * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getCommitter()
    * @generated
    */
-  int COMMITTER = 4;
+  int COMMITTER = 2;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -463,6 +364,209 @@ public interface ProjectPackage extends EPackage
    * @generated
    * @ordered
    */
+  int MODULE__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__CLASS = BasePackage.POP_ELEMENT__CLASS;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__NAME = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__DESCRIPTOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Module</em>' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__ID = MODULE__ID;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__CLASS = MODULE__CLASS;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__NAME = MODULE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Descriptor</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__DESCRIPTOR = MODULE__DESCRIPTOR;
+
+  /**
+   * The feature id for the '<em><b>Repository</b></em>' container reference. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__REPOSITORY = MODULE_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Product Model Path</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__PRODUCT_MODEL_PATH = MODULE_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Primary Module</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE_FEATURE_COUNT = MODULE_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl <em>Tagged Element</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.project.impl.TaggedElementImpl
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getTaggedElement()
+   * @generated
+   */
+  int TAGGED_ELEMENT = 7;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TagImpl <em>Tag</em>}' class. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @see org.eclipse.net4j.pop.project.impl.TagImpl
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getTag()
+   * @generated
+   */
+  int TAG = 8;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.BranchImpl <em>Branch</em>}' class. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @see org.eclipse.net4j.pop.project.impl.BranchImpl
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getBranch()
+   * @generated
+   */
+  int BRANCH = 9;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl <em>Main Branch</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.project.impl.MainBranchImpl
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getMainBranch()
+   * @generated
+   */
+  int MAIN_BRANCH = 10;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl <em>Sub Branch</em>}' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.project.impl.SubBranchImpl
+   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getSubBranch()
+   * @generated
+   */
+  int SUB_BRANCH = 11;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__ID = BasePackage.POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__CLASS = BasePackage.POP_ELEMENT__CLASS;
+
+  /**
+   * The feature id for the '<em><b>Pop Project</b></em>' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__POP_PROJECT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Discriminator</b></em>' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__DISCRIMINATOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Location</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__LOCATION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Active</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__ACTIVE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Checkout</em>' class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
   int CHECKOUT_DISCRIMINATOR__ID = BasePackage.POP_ELEMENT__ID;
 
   /**
@@ -499,15 +603,6 @@ public interface ProjectPackage extends EPackage
   int CHECKOUT_DISCRIMINATOR_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TaggedElementImpl <em>Tagged Element</em>}' class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see org.eclipse.net4j.pop.project.impl.TaggedElementImpl
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getTaggedElement()
-   * @generated
-   */
-  int TAGGED_ELEMENT = 6;
-
-  /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -539,16 +634,6 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int TAGGED_ELEMENT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.TagImpl <em>Tag</em>}' class. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @see org.eclipse.net4j.pop.project.impl.TagImpl
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getTag()
-   * @generated
-   */
-  int TAG = 7;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -613,16 +698,6 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int TAG_FEATURE_COUNT = CHECKOUT_DISCRIMINATOR_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.BranchImpl <em>Branch</em>}' class. <!--
-   * begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @see org.eclipse.net4j.pop.project.impl.BranchImpl
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getBranch()
-   * @generated
-   */
-  int BRANCH = 8;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -697,15 +772,6 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int BRANCH_FEATURE_COUNT = CHECKOUT_DISCRIMINATOR_FEATURE_COUNT + 4;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.MainBranchImpl <em>Main Branch</em>}' class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see org.eclipse.net4j.pop.project.impl.MainBranchImpl
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getMainBranch()
-   * @generated
-   */
-  int MAIN_BRANCH = 9;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -790,15 +856,6 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int MAIN_BRANCH_FEATURE_COUNT = BRANCH_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.SubBranchImpl <em>Sub Branch</em>}' class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see org.eclipse.net4j.pop.project.impl.SubBranchImpl
-   * @see org.eclipse.net4j.pop.project.impl.ProjectPackageImpl#getSubBranch()
-   * @generated
-   */
-  int SUB_BRANCH = 10;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -889,63 +946,6 @@ public interface ProjectPackage extends EPackage
    * @ordered
    */
   int SUB_BRANCH_FEATURE_COUNT = BRANCH_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT__ID = BasePackage.POP_ELEMENT__ID;
-
-  /**
-   * The feature id for the '<em><b>Class</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT__CLASS = BasePackage.POP_ELEMENT__CLASS;
-
-  /**
-   * The feature id for the '<em><b>Pop Project</b></em>' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT__POP_PROJECT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Discriminator</b></em>' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT__DISCRIMINATOR = BasePackage.POP_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Location</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT__LOCATION = BasePackage.POP_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Active</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT__ACTIVE = BasePackage.POP_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The number of structural features of the '<em>Checkout</em>' class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CHECKOUT_FEATURE_COUNT = BasePackage.POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.project.impl.StreamImpl <em>Stream</em>}' class. <!--

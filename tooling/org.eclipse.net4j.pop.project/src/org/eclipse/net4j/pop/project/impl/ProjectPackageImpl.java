@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProjectPackageImpl.java,v 1.31 2008-08-06 16:56:16 estepper Exp $
+ * $Id: ProjectPackageImpl.java,v 1.32 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
@@ -358,7 +358,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getRepository_PrimaryModule()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(4);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -367,7 +367,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getRepository_Committers()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(5);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -376,7 +376,7 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
    */
   public EReference getRepository_MainBranch()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(6);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -1104,17 +1104,9 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(repositoryEClass, REPOSITORY__ADAPTER);
     createEAttribute(repositoryEClass, REPOSITORY__ADAPTER_TYPE);
     createEAttribute(repositoryEClass, REPOSITORY__DESCRIPTOR);
+    createEReference(repositoryEClass, REPOSITORY__MAIN_BRANCH);
     createEReference(repositoryEClass, REPOSITORY__PRIMARY_MODULE);
     createEReference(repositoryEClass, REPOSITORY__COMMITTERS);
-    createEReference(repositoryEClass, REPOSITORY__MAIN_BRANCH);
-
-    moduleEClass = createEClass(MODULE);
-    createEAttribute(moduleEClass, MODULE__NAME);
-    createEAttribute(moduleEClass, MODULE__DESCRIPTOR);
-
-    primaryModuleEClass = createEClass(PRIMARY_MODULE);
-    createEReference(primaryModuleEClass, PRIMARY_MODULE__REPOSITORY);
-    createEAttribute(primaryModuleEClass, PRIMARY_MODULE__PRODUCT_MODEL_PATH);
 
     committerEClass = createEClass(COMMITTER);
     createEReference(committerEClass, COMMITTER__REPOSITORY);
@@ -1124,6 +1116,20 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     createEAttribute(committerEClass, COMMITTER__ENTRY);
     createEAttribute(committerEClass, COMMITTER__EXIT);
     createEAttribute(committerEClass, COMMITTER__ACTIVE);
+
+    moduleEClass = createEClass(MODULE);
+    createEAttribute(moduleEClass, MODULE__NAME);
+    createEAttribute(moduleEClass, MODULE__DESCRIPTOR);
+
+    primaryModuleEClass = createEClass(PRIMARY_MODULE);
+    createEReference(primaryModuleEClass, PRIMARY_MODULE__REPOSITORY);
+    createEAttribute(primaryModuleEClass, PRIMARY_MODULE__PRODUCT_MODEL_PATH);
+
+    checkoutEClass = createEClass(CHECKOUT);
+    createEReference(checkoutEClass, CHECKOUT__POP_PROJECT);
+    createEReference(checkoutEClass, CHECKOUT__DISCRIMINATOR);
+    createEAttribute(checkoutEClass, CHECKOUT__LOCATION);
+    createEAttribute(checkoutEClass, CHECKOUT__ACTIVE);
 
     checkoutDiscriminatorEClass = createEClass(CHECKOUT_DISCRIMINATOR);
     createEAttribute(checkoutDiscriminatorEClass, CHECKOUT_DISCRIMINATOR__REPOSITORY_TAG);
@@ -1148,12 +1154,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
 
     subBranchEClass = createEClass(SUB_BRANCH);
     createEReference(subBranchEClass, SUB_BRANCH__PARENT);
-
-    checkoutEClass = createEClass(CHECKOUT);
-    createEReference(checkoutEClass, CHECKOUT__POP_PROJECT);
-    createEReference(checkoutEClass, CHECKOUT__DISCRIMINATOR);
-    createEAttribute(checkoutEClass, CHECKOUT__LOCATION);
-    createEAttribute(checkoutEClass, CHECKOUT__ACTIVE);
 
     streamEClass = createEClass(STREAM);
     createEReference(streamEClass, STREAM__BRANCH);
@@ -1239,9 +1239,10 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     // Add supertypes to classes
     popProjectEClass.getESuperTypes().add(theBasePackage.getPopElement());
     repositoryEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    committerEClass.getESuperTypes().add(theBasePackage.getPopElement());
     moduleEClass.getESuperTypes().add(theBasePackage.getPopElement());
     primaryModuleEClass.getESuperTypes().add(this.getModule());
-    committerEClass.getESuperTypes().add(theBasePackage.getPopElement());
+    checkoutEClass.getESuperTypes().add(theBasePackage.getPopElement());
     checkoutDiscriminatorEClass.getESuperTypes().add(theBasePackage.getPopElement());
     taggedElementEClass.getESuperTypes().add(theBasePackage.getPopElement());
     tagEClass.getESuperTypes().add(this.getCheckoutDiscriminator());
@@ -1249,7 +1250,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
     mainBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getTaggedElement());
-    checkoutEClass.getESuperTypes().add(theBasePackage.getPopElement());
     streamEClass.getESuperTypes().add(theBasePackage.getPopElement());
     taskStreamEClass.getESuperTypes().add(this.getStream());
     integrationStreamEClass.getESuperTypes().add(this.getStream());
@@ -1305,6 +1305,11 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         ecorePackage.getEString(),
         "descriptor", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
+        getRepository_MainBranch(),
+        this.getMainBranch(),
+        this.getMainBranch_Repository(),
+        "mainBranch", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
         getRepository_PrimaryModule(),
         this.getPrimaryModule(),
         this.getPrimaryModule_Repository(),
@@ -1314,33 +1319,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getCommitter(),
         this.getCommitter_Repository(),
         "committers", null, 1, -1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getRepository_MainBranch(),
-        this.getMainBranch(),
-        this.getMainBranch_Repository(),
-        "mainBranch", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    initEClass(moduleEClass, Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEAttribute(
-        getModule_Name(),
-        ecorePackage.getEString(),
-        "name", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getModule_Descriptor(),
-        ecorePackage.getEString(),
-        "descriptor", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    initEClass(primaryModuleEClass, PrimaryModule.class,
-        "PrimaryModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEReference(
-        getPrimaryModule_Repository(),
-        this.getRepository(),
-        this.getRepository_PrimaryModule(),
-        "repository", null, 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getPrimaryModule_ProductModelPath(),
-        ecorePackage.getEString(),
-        "productModelPath", "product.xml", 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
     initEClass(committerEClass, Committer.class, "Committer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -1372,6 +1350,48 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         getCommitter_Active(),
         ecorePackage.getEBoolean(),
         "active", null, 1, 1, Committer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(moduleEClass, Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEAttribute(
+        getModule_Name(),
+        ecorePackage.getEString(),
+        "name", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getModule_Descriptor(),
+        ecorePackage.getEString(),
+        "descriptor", null, 1, 1, Module.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(primaryModuleEClass, PrimaryModule.class,
+        "PrimaryModule", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getPrimaryModule_Repository(),
+        this.getRepository(),
+        this.getRepository_PrimaryModule(),
+        "repository", null, 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getPrimaryModule_ProductModelPath(),
+        ecorePackage.getEString(),
+        "productModelPath", "product.xml", 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+
+    initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getCheckout_PopProject(),
+        this.getPopProject(),
+        null,
+        "popProject", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getCheckout_Discriminator(),
+        this.getCheckoutDiscriminator(),
+        null,
+        "discriminator", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getCheckout_Location(),
+        theBasePackage.getPath(),
+        "location", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getCheckout_Active(),
+        ecorePackage.getEBoolean(),
+        "active", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(checkoutDiscriminatorEClass, CheckoutDiscriminator.class,
         "CheckoutDiscriminator", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1454,26 +1474,6 @@ public class ProjectPackageImpl extends EPackageImpl implements ProjectPackage
         this.getBranch(),
         this.getBranch_Branches(),
         "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEReference(
-        getCheckout_PopProject(),
-        this.getPopProject(),
-        null,
-        "popProject", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getCheckout_Discriminator(),
-        this.getCheckoutDiscriminator(),
-        null,
-        "discriminator", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getCheckout_Location(),
-        theBasePackage.getPath(),
-        "location", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getCheckout_Active(),
-        ecorePackage.getEBoolean(),
-        "active", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(streamEClass, Stream.class, "Stream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Repository.java,v 1.5 2008-08-06 16:56:16 estepper Exp $
+ * $Id: Repository.java,v 1.6 2008-08-07 06:29:17 estepper Exp $
  */
 package org.eclipse.net4j.pop.project;
 
@@ -27,9 +27,9 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getAdapter <em>Adapter</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getAdapterType <em>Adapter Type</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.project.Repository#getMainBranch <em>Main Branch</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getPrimaryModule <em>Primary Module</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.project.Repository#getCommitters <em>Committers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.project.Repository#getMainBranch <em>Main Branch</em>}</li>
  * </ul>
  * </p>
  *
