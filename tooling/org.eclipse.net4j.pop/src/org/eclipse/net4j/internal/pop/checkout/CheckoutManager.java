@@ -52,11 +52,11 @@ import java.util.Map;
  */
 public class CheckoutManager extends Container<Checkout> implements ICheckoutManager
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
+
   private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
 
   private static final IWorkspaceRoot ROOT = WS.getRoot();
-
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
 
   private Pop pop;
 
