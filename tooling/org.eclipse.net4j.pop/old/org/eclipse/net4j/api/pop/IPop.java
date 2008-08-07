@@ -8,9 +8,8 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop;
+package org.eclipse.net4j.api.pop;
 
-import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.project.ICheckoutManager;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.util.event.INotifier;
@@ -30,8 +29,6 @@ public interface IPop extends Comparable<IPop>, IAdaptable, INotifier
   public ResourceSet getResourceSet();
 
   public PopProject getProjectModel();
-
-  public PopProduct getProductModel();
 
   public ICheckoutManager getCheckoutManager();
 }

@@ -10,10 +10,10 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
+import org.eclipse.net4j.api.pop.IPop;
+import org.eclipse.net4j.api.pop.IPopManager;
 import org.eclipse.net4j.internal.pop.Pop;
 import org.eclipse.net4j.internal.pop.PopManager;
-import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.IPopManager;
 import org.eclipse.net4j.pop.internal.ui.bundle.OM;
 import org.eclipse.net4j.pop.project.Branch;
 import org.eclipse.net4j.pop.project.Committer;

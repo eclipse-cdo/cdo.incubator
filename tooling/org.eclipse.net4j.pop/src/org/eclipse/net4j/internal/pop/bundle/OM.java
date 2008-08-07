@@ -12,7 +12,6 @@ package org.eclipse.net4j.internal.pop.bundle;
 
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
-import org.eclipse.net4j.util.om.OSGiActivator;
 import org.eclipse.net4j.util.om.log.OMLogger;
 import org.eclipse.net4j.util.om.pref.OMPreferences;
 import org.eclipse.net4j.util.om.trace.OMTracer;
@@ -30,32 +29,7 @@ public abstract class OM
 
   public static final OMTracer DEBUG = BUNDLE.tracer("debug"); //$NON-NLS-1$
 
-  public static final OMTracer PERF = BUNDLE.tracer("perf"); //$NON-NLS-1$
-
   public static final OMLogger LOG = BUNDLE.logger();
 
   public static final OMPreferences PREFS = BUNDLE.preferences();
-
-  /**
-   * @author Eike Stepper
-   */
-  public static final class Activator extends OSGiActivator
-  {
-    public Activator()
-    {
-      super(BUNDLE);
-    }
-
-    @Override
-    protected void doStart() throws Exception
-    {
-      org.eclipse.net4j.internal.pop.PopManager.INSTANCE.activate();
-    }
-
-    @Override
-    protected void doStop() throws Exception
-    {
-      org.eclipse.net4j.internal.pop.PopManager.INSTANCE.deactivate();
-    }
-  }
 }

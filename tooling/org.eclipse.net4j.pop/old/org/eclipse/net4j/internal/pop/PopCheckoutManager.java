@@ -8,10 +8,8 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.checkout;
+package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.Pop;
-import org.eclipse.net4j.internal.pop.PopManager;
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.base.util.EMFUtil;
@@ -20,7 +18,6 @@ import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.ICheckoutManager;
 import org.eclipse.net4j.pop.project.Module;
 import org.eclipse.net4j.pop.project.PopProject;
-import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
@@ -50,9 +47,9 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class CheckoutManager extends Container<Checkout> implements ICheckoutManager
+public class PopCheckoutManager extends Container<Checkout> implements ICheckoutManager
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopCheckoutManager.class);
 
   private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
 
@@ -66,7 +63,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private Checkout activeCheckout;
 
-  public CheckoutManager(Pop pop)
+  public PopCheckoutManager(Pop pop)
   {
     this.pop = pop;
   }
@@ -279,7 +276,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
 
   private Checkout createCheckout(CheckoutDiscriminator discriminator, IPath checkoutLocation)
   {
-    CheckoutImpl checkout = (CheckoutImpl)ProjectFactory.eINSTANCE.createCheckout();
+    CheckoutImpl checkout = new CheckoutImpl();
     checkout.setManager(this);
     checkout.setDiscriminator(discriminator);
     checkout.setLocation(checkoutLocation);

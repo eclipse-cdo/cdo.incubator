@@ -8,23 +8,24 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop;
+package org.eclipse.net4j.internal.pop.natures;
 
-import org.eclipse.net4j.util.container.IContainer;
-
-import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.resources.IProject;
 
 /**
  * @author Eike Stepper
  */
-public interface IPopManager extends IContainer<IPop>, IAdaptable
+public class PopProductNature extends Nature
 {
-  IPopManager INSTANCE = org.eclipse.net4j.internal.pop.PopManager.INSTANCE;
+  public static final String NATURE_ID = "org.eclipse.net4j.pop.PopProductNature";
 
-  public IPop getPop(String name);
+  public PopProductNature()
+  {
+    super(NATURE_ID);
+  }
 
-  public IPop[] getPops();
-
-  public IPath getCheckoutLocation();
+  public static IProject[] getProjects()
+  {
+    return getProjects(NATURE_ID);
+  }
 }

@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
-import org.eclipse.net4j.pop.IPopManager;
+import org.eclipse.net4j.api.pop.IPopManager;
 import org.eclipse.net4j.pop.base.provider.BaseItemProviderAdapterFactory;
 import org.eclipse.net4j.pop.internal.ui.actions.CheckoutAction;
 import org.eclipse.net4j.pop.project.Branch;
