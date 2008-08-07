@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.13 2008-08-07 06:29:17 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.14 2008-08-07 08:00:24 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
+import org.eclipse.net4j.pop.project.ICheckoutManager;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 

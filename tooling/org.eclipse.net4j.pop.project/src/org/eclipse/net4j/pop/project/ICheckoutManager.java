@@ -8,11 +8,8 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.project.impl;
+package org.eclipse.net4j.pop.project;
 
-import org.eclipse.net4j.pop.project.Checkout;
-import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
-import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.util.container.IContainer;
 
 import org.eclipse.core.runtime.IAdaptable;
@@ -34,7 +31,7 @@ public interface ICheckoutManager extends IContainer<Checkout>, IAdaptable
 
   public Checkout getActiveCheckout();
 
-  public void getActiveCheckout(Checkout checkout);
+  public void setActiveCheckout(Checkout checkout);
 
   public boolean isCheckoutActive(Checkout checkout);
 }

@@ -17,12 +17,12 @@ import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.base.util.EMFUtil;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
+import org.eclipse.net4j.pop.project.ICheckoutManager;
 import org.eclipse.net4j.pop.project.Module;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectFactory;
 import org.eclipse.net4j.pop.project.Repository;
 import org.eclipse.net4j.pop.project.impl.CheckoutImpl;
-import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 import org.eclipse.net4j.pop.repository.IRepositoryFolder;
 import org.eclipse.net4j.pop.repository.IRepositorySession;
@@ -190,7 +190,7 @@ public class CheckoutManager extends Container<Checkout> implements ICheckoutMan
     return activeCheckout;
   }
 
-  public void getActiveCheckout(Checkout checkout)
+  public void setActiveCheckout(Checkout checkout)
   {
     activeCheckout = checkout;
   }

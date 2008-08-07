@@ -11,8 +11,8 @@
 package org.eclipse.net4j.pop;
 
 import org.eclipse.net4j.pop.product.PopProduct;
+import org.eclipse.net4j.pop.project.ICheckoutManager;
 import org.eclipse.net4j.pop.project.PopProject;
-import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.util.event.INotifier;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;

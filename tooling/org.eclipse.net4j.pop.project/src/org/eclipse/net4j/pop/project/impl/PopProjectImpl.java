@@ -8,12 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProjectImpl.java,v 1.23 2008-08-06 16:56:16 estepper Exp $
+ * $Id: PopProjectImpl.java,v 1.24 2008-08-07 08:00:24 estepper Exp $
  */
 package org.eclipse.net4j.pop.project.impl;
 
 import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.project.Checkout;
+import org.eclipse.net4j.pop.project.ICheckoutManager;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.ProjectPackage;
 import org.eclipse.net4j.pop.project.Repository;
