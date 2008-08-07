@@ -8,12 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProductImpl.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
+ * $Id: PopProductImpl.java,v 1.7 2008-08-07 06:47:39 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
+import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.product.ProductPackage;
+import org.eclipse.net4j.pop.product.SecondaryModule;
 import org.eclipse.net4j.pop.product.WorkingSet;
 import org.eclipse.net4j.pop.product.WorkspaceConfigurator;
 import org.eclipse.net4j.pop.product.WorkspaceProject;
@@ -25,7 +27,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -36,21 +37,23 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getPopProject <em>Pop Project</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getProjects <em>Projects</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getWorkingSets <em>Working Sets</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getConfigurators <em>Configurators</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getPopProject <em>Pop Project</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getSecondaryModules <em>Secondary Modules</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getProjects <em>Projects</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getWorkingSets <em>Working Sets</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.PopProductImpl#getConfigurators <em>Configurators</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class PopProductImpl extends EObjectImpl implements PopProduct
+public class PopProductImpl extends PopElementImpl implements PopProduct
 {
   /**
-   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPopProject() <em>Pop Project</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPopProject()
    * @generated
    * @ordered
@@ -58,9 +61,29 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
   protected PopProject popProject;
 
   /**
-   * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list. <!-- begin-user-doc
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSecondaryModules() <em>Secondary Modules</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSecondaryModules()
+   * @generated
+   * @ordered
+   */
+  protected EList<SecondaryModule> secondaryModules;
+
+  /**
+   * The cached value of the '{@link #getProjects() <em>Projects</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getProjects()
    * @generated
    * @ordered
@@ -89,7 +112,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopProductImpl()
@@ -99,7 +121,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -110,7 +131,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject getPopProject()
@@ -131,7 +151,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopProject basicGetPopProject()
@@ -141,7 +160,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPopProject(PopProject newPopProject)
@@ -154,8 +172,34 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String getName()
+  {
+    // TODO: implement this method to return the 'Name' attribute
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<SecondaryModule> getSecondaryModules()
+  {
+    if (secondaryModules == null)
+    {
+      secondaryModules = new EObjectContainmentWithInverseEList<SecondaryModule>(SecondaryModule.class, this,
+          ProductPackage.POP_PRODUCT__SECONDARY_MODULES, ProductPackage.SECONDARY_MODULE__POP_PRODUCT);
+    }
+    return secondaryModules;
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkspaceProject> getProjects()
@@ -163,14 +207,13 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
     if (projects == null)
     {
       projects = new EObjectContainmentWithInverseEList<WorkspaceProject>(WorkspaceProject.class, this,
-          ProductPackage.POP_PRODUCT__PROJECTS, ProductPackage.WORKSPACE_PROJECT__WORKSPACE_SPEC);
+          ProductPackage.POP_PRODUCT__PROJECTS, ProductPackage.WORKSPACE_PROJECT__POP_PRODUCT);
     }
     return projects;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkingSet> getWorkingSets()
@@ -178,14 +221,13 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
     if (workingSets == null)
     {
       workingSets = new EObjectContainmentWithInverseEList<WorkingSet>(WorkingSet.class, this,
-          ProductPackage.POP_PRODUCT__WORKING_SETS, ProductPackage.WORKING_SET__WORKSPACE_SPEC);
+          ProductPackage.POP_PRODUCT__WORKING_SETS, ProductPackage.WORKING_SET__POP_PRODUCT);
     }
     return workingSets;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkspaceConfigurator> getConfigurators()
@@ -193,14 +235,13 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
     if (configurators == null)
     {
       configurators = new EObjectContainmentWithInverseEList<WorkspaceConfigurator>(WorkspaceConfigurator.class, this,
-          ProductPackage.POP_PRODUCT__CONFIGURATORS, ProductPackage.WORKSPACE_CONFIGURATOR__WORKSPACE_SPEC);
+          ProductPackage.POP_PRODUCT__CONFIGURATORS, ProductPackage.WORKSPACE_CONFIGURATOR__POP_PROJECT);
     }
     return configurators;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -209,6 +250,8 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
   {
     switch (featureID)
     {
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getSecondaryModules()).basicAdd(otherEnd, msgs);
     case ProductPackage.POP_PRODUCT__PROJECTS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getProjects()).basicAdd(otherEnd, msgs);
     case ProductPackage.POP_PRODUCT__WORKING_SETS:
@@ -221,7 +264,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -229,6 +271,8 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
   {
     switch (featureID)
     {
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
+      return ((InternalEList<?>)getSecondaryModules()).basicRemove(otherEnd, msgs);
     case ProductPackage.POP_PRODUCT__PROJECTS:
       return ((InternalEList<?>)getProjects()).basicRemove(otherEnd, msgs);
     case ProductPackage.POP_PRODUCT__WORKING_SETS:
@@ -241,7 +285,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -253,6 +296,10 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
       if (resolve)
         return getPopProject();
       return basicGetPopProject();
+    case ProductPackage.POP_PRODUCT__NAME:
+      return getName();
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
+      return getSecondaryModules();
     case ProductPackage.POP_PRODUCT__PROJECTS:
       return getProjects();
     case ProductPackage.POP_PRODUCT__WORKING_SETS:
@@ -265,7 +312,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -276,6 +322,10 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
     {
     case ProductPackage.POP_PRODUCT__POP_PROJECT:
       setPopProject((PopProject)newValue);
+      return;
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
+      getSecondaryModules().clear();
+      getSecondaryModules().addAll((Collection<? extends SecondaryModule>)newValue);
       return;
     case ProductPackage.POP_PRODUCT__PROJECTS:
       getProjects().clear();
@@ -295,7 +345,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -305,6 +354,9 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
     {
     case ProductPackage.POP_PRODUCT__POP_PROJECT:
       setPopProject((PopProject)null);
+      return;
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
+      getSecondaryModules().clear();
       return;
     case ProductPackage.POP_PRODUCT__PROJECTS:
       getProjects().clear();
@@ -321,7 +373,6 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -331,6 +382,10 @@ public class PopProductImpl extends EObjectImpl implements PopProduct
     {
     case ProductPackage.POP_PRODUCT__POP_PROJECT:
       return popProject != null;
+    case ProductPackage.POP_PRODUCT__NAME:
+      return NAME_EDEFAULT == null ? getName() != null : !NAME_EDEFAULT.equals(getName());
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
+      return secondaryModules != null && !secondaryModules.isEmpty();
     case ProductPackage.POP_PRODUCT__PROJECTS:
       return projects != null && !projects.isEmpty();
     case ProductPackage.POP_PRODUCT__WORKING_SETS:

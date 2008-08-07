@@ -8,14 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceProject.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
+ * $Id: WorkspaceProject.java,v 1.7 2008-08-07 06:47:38 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 
+import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.project.Module;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Workspace Project</b></em>'. <!-- end-user-doc
@@ -35,15 +35,43 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface WorkspaceProject extends EObject
+public interface WorkspaceProject extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop Product</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.product.PopProduct#getProjects <em>Projects</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pop Product</em>' container reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pop Product</em>' container reference.
+   * @see #setPopProduct(PopProduct)
+   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_PopProduct()
+   * @see org.eclipse.net4j.pop.product.PopProduct#getProjects
+   * @model opposite="projects" required="true" transient="false"
+   * @generated
+   */
+  PopProduct getPopProduct();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getPopProduct <em>Pop Product</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pop Product</em>' container reference.
+   * @see #getPopProduct()
+   * @generated
+   */
+  void setPopProduct(PopProduct value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_Name()
@@ -55,24 +83,22 @@ public interface WorkspaceProject extends EObject
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Name</em>' attribute.
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Working Sets</b></em>' reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.product.WorkingSet}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.product.WorkingSet#getProjects <em>Projects</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Working Sets</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.product.WorkingSet}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.product.WorkingSet#getProjects <em>Projects</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Working Sets</em>' reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Working Sets</em>' reference list.
    * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_WorkingSets()
    * @see org.eclipse.net4j.pop.product.WorkingSet#getProjects
@@ -82,41 +108,12 @@ public interface WorkspaceProject extends EObject
   EList<WorkingSet> getWorkingSets();
 
   /**
-   * Returns the value of the '<em><b>Workspace Spec</b></em>' container reference. It is bidirectional and its opposite
-   * is '{@link org.eclipse.net4j.pop.product.PopProduct#getProjects <em>Projects</em>}'. <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Workspace Spec</em>' container reference isn't clear, there really should be more of a
-   * description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * 
-   * @return the value of the '<em>Workspace Spec</em>' container reference.
-   * @see #setWorkspaceSpec(PopProduct)
-   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_WorkspaceSpec()
-   * @see org.eclipse.net4j.pop.product.PopProduct#getProjects
-   * @model opposite="projects" required="true" transient="false"
-   * @generated
-   */
-  PopProduct getWorkspaceSpec();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getWorkspaceSpec
-   * <em>Workspace Spec</em>}' container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Workspace Spec</em>' container reference.
-   * @see #getWorkspaceSpec()
-   * @generated
-   */
-  void setWorkspaceSpec(PopProduct value);
-
-  /**
-   * Returns the value of the '<em><b>Module</b></em>' reference. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Module</b></em>' reference.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Module</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Module</em>' reference.
    * @see #setModule(Module)
    * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_Module()
@@ -128,39 +125,36 @@ public interface WorkspaceProject extends EObject
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getModule <em>Module</em>}' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Module</em>' reference.
+   * @param value the new value of the '<em>Module</em>' reference.
    * @see #getModule()
    * @generated
    */
   void setModule(Module value);
 
   /**
-   * Returns the value of the '<em><b>Repository Path</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Module Path</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Repository Path</em>' attribute isn't clear, there really should be more of a
-   * description here...
+   * If the meaning of the '<em>Module Path</em>' attribute isn't clear,
+   * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
-   * @return the value of the '<em>Repository Path</em>' attribute.
-   * @see #setRepositoryPath(String)
-   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_RepositoryPath()
+   * @return the value of the '<em>Module Path</em>' attribute.
+   * @see #setModulePath(String)
+   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkspaceProject_ModulePath()
    * @model
    * @generated
    */
-  String getRepositoryPath();
+  String getModulePath();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getRepositoryPath
-   * <em>Repository Path</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Repository Path</em>' attribute.
-   * @see #getRepositoryPath()
+   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getModulePath <em>Module Path</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Module Path</em>' attribute.
+   * @see #getModulePath()
    * @generated
    */
-  void setRepositoryPath(String value);
+  void setModulePath(String value);
 
 } // WorkspaceProject

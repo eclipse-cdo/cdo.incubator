@@ -8,10 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: ProductSwitch.java,v 1.6 2008-08-06 07:07:34 estepper Exp $
+ * $Id: ProductSwitch.java,v 1.7 2008-08-07 06:47:39 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.util;
 
+import org.eclipse.net4j.pop.base.Displayable;
+import org.eclipse.net4j.pop.base.Identifiable;
+import org.eclipse.net4j.pop.base.PopElement;
 import org.eclipse.net4j.pop.product.Archive;
 import org.eclipse.net4j.pop.product.ArchiveContent;
 import org.eclipse.net4j.pop.product.Artifact;
@@ -19,9 +22,11 @@ import org.eclipse.net4j.pop.product.File;
 import org.eclipse.net4j.pop.product.Folder;
 import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.product.ProductPackage;
+import org.eclipse.net4j.pop.product.SecondaryModule;
 import org.eclipse.net4j.pop.product.WorkingSet;
 import org.eclipse.net4j.pop.product.WorkspaceConfigurator;
 import org.eclipse.net4j.pop.product.WorkspaceProject;
+import org.eclipse.net4j.pop.project.Module;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -33,22 +38,21 @@ import java.util.List;
  * {@link #doSwitch(EObject) doSwitch(object)} to invoke the <code>caseXXX</code> method for each class of the model,
  * starting with the actual class of the object and proceeding up the inheritance hierarchy until a non-null result is
  * returned, which is the result of the switch. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.product.ProductPackage
  * @generated
  */
 public class ProductSwitch<T>
 {
   /**
-   * The cached model package <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached model package
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected static ProductPackage modelPackage;
 
   /**
-   * Creates an instance of the switch. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the switch.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public ProductSwitch()
@@ -62,7 +66,6 @@ public class ProductSwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -74,7 +77,6 @@ public class ProductSwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -94,7 +96,6 @@ public class ProductSwitch<T>
   /**
    * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @return the first non-null result returned by a <code>caseXXX</code> call.
    * @generated
    */
@@ -107,6 +108,28 @@ public class ProductSwitch<T>
       PopProduct popProduct = (PopProduct)theEObject;
       T result = casePopProduct(popProduct);
       if (result == null)
+        result = casePopElement(popProduct);
+      if (result == null)
+        result = caseIdentifiable(popProduct);
+      if (result == null)
+        result = caseDisplayable(popProduct);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case ProductPackage.SECONDARY_MODULE:
+    {
+      SecondaryModule secondaryModule = (SecondaryModule)theEObject;
+      T result = caseSecondaryModule(secondaryModule);
+      if (result == null)
+        result = caseModule(secondaryModule);
+      if (result == null)
+        result = casePopElement(secondaryModule);
+      if (result == null)
+        result = caseIdentifiable(secondaryModule);
+      if (result == null)
+        result = caseDisplayable(secondaryModule);
+      if (result == null)
         result = defaultCase(theEObject);
       return result;
     }
@@ -114,6 +137,12 @@ public class ProductSwitch<T>
     {
       WorkingSet workingSet = (WorkingSet)theEObject;
       T result = caseWorkingSet(workingSet);
+      if (result == null)
+        result = casePopElement(workingSet);
+      if (result == null)
+        result = caseIdentifiable(workingSet);
+      if (result == null)
+        result = caseDisplayable(workingSet);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -123,6 +152,12 @@ public class ProductSwitch<T>
       WorkspaceProject workspaceProject = (WorkspaceProject)theEObject;
       T result = caseWorkspaceProject(workspaceProject);
       if (result == null)
+        result = casePopElement(workspaceProject);
+      if (result == null)
+        result = caseIdentifiable(workspaceProject);
+      if (result == null)
+        result = caseDisplayable(workspaceProject);
+      if (result == null)
         result = defaultCase(theEObject);
       return result;
     }
@@ -130,6 +165,12 @@ public class ProductSwitch<T>
     {
       WorkspaceConfigurator workspaceConfigurator = (WorkspaceConfigurator)theEObject;
       T result = caseWorkspaceConfigurator(workspaceConfigurator);
+      if (result == null)
+        result = casePopElement(workspaceConfigurator);
+      if (result == null)
+        result = caseIdentifiable(workspaceConfigurator);
+      if (result == null)
+        result = caseDisplayable(workspaceConfigurator);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -192,11 +233,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Pop Product</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Pop Product</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Pop Product</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -207,11 +247,26 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Working Set</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Secondary Module</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Secondary Module</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSecondaryModule(SecondaryModule object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Working Set</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Working Set</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -222,11 +277,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Workspace Project</em>'. <!-- begin-user-doc
+   * Returns the result of interpreting the object as an instance of '<em>Workspace Project</em>'.
+   * <!-- begin-user-doc
    * --> This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Workspace Project</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -253,11 +307,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Artifact</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Artifact</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Artifact</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -268,11 +321,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>File</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>File</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>File</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -283,11 +335,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Folder</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Folder</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Folder</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -298,11 +349,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Archive</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Archive</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Archive</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -313,11 +363,10 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Archive Content</em>'. <!-- begin-user-doc -->
+   * Returns the result of interpreting the object as an instance of '<em>Archive Content</em>'.
+   * <!-- begin-user-doc -->
    * This implementation returns null; returning a non-null result will terminate the switch. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>Archive Content</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
@@ -328,12 +377,75 @@ public class ProductSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'. <!-- begin-user-doc --> This
+   * Returns the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Identifiable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseIdentifiable(Identifiable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Displayable</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Displayable</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDisplayable(Displayable object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pop Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pop Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePopElement(PopElement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Module</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Module</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseModule(Module object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * <!-- begin-user-doc --> This
    * implementation returns null; returning a non-null result will terminate the switch, but this is the last case
    * anyway. <!-- end-user-doc -->
-   * 
-   * @param object
-   *          the target of the switch.
+   * @param object the target of the switch.
    * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject)
    * @generated

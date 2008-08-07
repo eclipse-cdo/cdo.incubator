@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkingSetImpl.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
+ * $Id: WorkingSetImpl.java,v 1.7 2008-08-07 06:47:38 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
+import org.eclipse.net4j.pop.base.impl.PopElementImpl;
 import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.product.ProductPackage;
 import org.eclipse.net4j.pop.product.WorkingSet;
@@ -23,7 +24,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -35,15 +35,15 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.product.impl.WorkingSetImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.WorkingSetImpl#getProjects <em>Projects</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.impl.WorkingSetImpl#getWorkspaceSpec <em>Workspace Spec</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.WorkingSetImpl#getPopProduct <em>Pop Product</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.WorkingSetImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.impl.WorkingSetImpl#getProjects <em>Projects</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class WorkingSetImpl extends EObjectImpl implements WorkingSet
+public class WorkingSetImpl extends PopElementImpl implements WorkingSet
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -56,8 +56,8 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -65,9 +65,9 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getProjects() <em>Projects</em>}' reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getProjects() <em>Projects</em>}' reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getProjects()
    * @generated
    * @ordered
@@ -76,7 +76,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected WorkingSetImpl()
@@ -86,7 +85,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -96,8 +94,57 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   }
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PopProduct getPopProduct()
+  {
+    if (eContainerFeatureID != ProductPackage.WORKING_SET__POP_PRODUCT)
+      return null;
+    return (PopProduct)eContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPopProduct(PopProduct newPopProduct, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newPopProduct, ProductPackage.WORKING_SET__POP_PRODUCT, msgs);
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPopProduct(PopProduct newPopProduct)
+  {
+    if (newPopProduct != eInternalContainer()
+        || (eContainerFeatureID != ProductPackage.WORKING_SET__POP_PRODUCT && newPopProduct != null))
+    {
+      if (EcoreUtil.isAncestor(this, newPopProduct))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newPopProduct != null)
+        msgs = ((InternalEObject)newPopProduct).eInverseAdd(this, ProductPackage.POP_PRODUCT__WORKING_SETS,
+            PopProduct.class, msgs);
+      msgs = basicSetPopProduct(newPopProduct, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKING_SET__POP_PRODUCT, newPopProduct,
+          newPopProduct));
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -107,7 +154,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -120,7 +166,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<WorkspaceProject> getProjects()
@@ -135,57 +180,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public PopProduct getWorkspaceSpec()
-  {
-    if (eContainerFeatureID != ProductPackage.WORKING_SET__WORKSPACE_SPEC)
-      return null;
-    return (PopProduct)eContainer();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public NotificationChain basicSetWorkspaceSpec(PopProduct newWorkspaceSpec, NotificationChain msgs)
-  {
-    msgs = eBasicSetContainer((InternalEObject)newWorkspaceSpec, ProductPackage.WORKING_SET__WORKSPACE_SPEC, msgs);
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  public void setWorkspaceSpec(PopProduct newWorkspaceSpec)
-  {
-    if (newWorkspaceSpec != eInternalContainer()
-        || (eContainerFeatureID != ProductPackage.WORKING_SET__WORKSPACE_SPEC && newWorkspaceSpec != null))
-    {
-      if (EcoreUtil.isAncestor(this, newWorkspaceSpec))
-        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      NotificationChain msgs = null;
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      if (newWorkspaceSpec != null)
-        msgs = ((InternalEObject)newWorkspaceSpec).eInverseAdd(this, ProductPackage.POP_PRODUCT__WORKING_SETS,
-            PopProduct.class, msgs);
-      msgs = basicSetWorkspaceSpec(newWorkspaceSpec, msgs);
-      if (msgs != null)
-        msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProductPackage.WORKING_SET__WORKSPACE_SPEC,
-          newWorkspaceSpec, newWorkspaceSpec));
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -194,19 +188,18 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (featureID)
     {
-    case ProductPackage.WORKING_SET__PROJECTS:
-      return ((InternalEList<InternalEObject>)(InternalEList<?>)getProjects()).basicAdd(otherEnd, msgs);
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetWorkspaceSpec((PopProduct)otherEnd, msgs);
+      return basicSetPopProduct((PopProduct)otherEnd, msgs);
+    case ProductPackage.WORKING_SET__PROJECTS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getProjects()).basicAdd(otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -214,17 +207,16 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (featureID)
     {
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
+      return basicSetPopProduct(null, msgs);
     case ProductPackage.WORKING_SET__PROJECTS:
       return ((InternalEList<?>)getProjects()).basicRemove(otherEnd, msgs);
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
-      return basicSetWorkspaceSpec(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -232,7 +224,7 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (eContainerFeatureID)
     {
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
       return eInternalContainer()
           .eInverseRemove(this, ProductPackage.POP_PRODUCT__WORKING_SETS, PopProduct.class, msgs);
     }
@@ -241,7 +233,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -249,19 +240,18 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (featureID)
     {
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
+      return getPopProduct();
     case ProductPackage.WORKING_SET__NAME:
       return getName();
     case ProductPackage.WORKING_SET__PROJECTS:
       return getProjects();
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
-      return getWorkspaceSpec();
     }
     return super.eGet(featureID, resolve, coreType);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -270,6 +260,9 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (featureID)
     {
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
+      setPopProduct((PopProduct)newValue);
+      return;
     case ProductPackage.WORKING_SET__NAME:
       setName((String)newValue);
       return;
@@ -277,16 +270,12 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
       getProjects().clear();
       getProjects().addAll((Collection<? extends WorkspaceProject>)newValue);
       return;
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
-      setWorkspaceSpec((PopProduct)newValue);
-      return;
     }
     super.eSet(featureID, newValue);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -294,14 +283,14 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (featureID)
     {
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
+      setPopProduct((PopProduct)null);
+      return;
     case ProductPackage.WORKING_SET__NAME:
       setName(NAME_EDEFAULT);
       return;
     case ProductPackage.WORKING_SET__PROJECTS:
       getProjects().clear();
-      return;
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
-      setWorkspaceSpec((PopProduct)null);
       return;
     }
     super.eUnset(featureID);
@@ -309,7 +298,6 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -317,19 +305,18 @@ public class WorkingSetImpl extends EObjectImpl implements WorkingSet
   {
     switch (featureID)
     {
+    case ProductPackage.WORKING_SET__POP_PRODUCT:
+      return getPopProduct() != null;
     case ProductPackage.WORKING_SET__NAME:
       return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     case ProductPackage.WORKING_SET__PROJECTS:
       return projects != null && !projects.isEmpty();
-    case ProductPackage.WORKING_SET__WORKSPACE_SPEC:
-      return getWorkspaceSpec() != null;
     }
     return super.eIsSet(featureID);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

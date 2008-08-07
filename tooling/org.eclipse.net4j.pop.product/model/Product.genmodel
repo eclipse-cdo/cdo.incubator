@@ -14,25 +14,31 @@
       childCreationExtenders="true" contentTypeIdentifier="pop.product" fileExtensions="xml"
       ecorePackage="Product.ecore#/">
     <genClasses ecoreClass="Product.ecore#//PopProduct">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//PopProduct/popProject"/>
+      <genFeatures property="Readonly" createChild="false" propertySortChoices="true"
+          ecoreFeature="ecore:EReference Product.ecore#//PopProduct/popProject"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Product.ecore#//PopProduct/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Product.ecore#//PopProduct/secondaryModules"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Product.ecore#//PopProduct/projects"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Product.ecore#//PopProduct/workingSets"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Product.ecore#//PopProduct/configurators"/>
     </genClasses>
+    <genClasses ecoreClass="Product.ecore#//SecondaryModule">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//SecondaryModule/popProduct"/>
+    </genClasses>
     <genClasses ecoreClass="Product.ecore#//WorkingSet">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//WorkingSet/popProduct"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Product.ecore#//WorkingSet/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//WorkingSet/projects"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//WorkingSet/workspaceSpec"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//WorkingSet/projects"/>
     </genClasses>
     <genClasses ecoreClass="Product.ecore#//WorkspaceProject">
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceProject/popProduct"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Product.ecore#//WorkspaceProject/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceProject/workingSets"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceProject/workspaceSpec"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceProject/codeRoot"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Product.ecore#//WorkspaceProject/codePath"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceProject/module"/>
+      <genFeatures createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceProject/workingSets"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Product.ecore#//WorkspaceConfigurator">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceConfigurator/workspaceSpec"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EReference Product.ecore#//WorkspaceConfigurator/popProject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Product.ecore#//WorkspaceConfigurator/name"/>
       <genOperations ecoreOperation="Product.ecore#//WorkspaceConfigurator/configureWorkspace"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Product.ecore#//Artifact">

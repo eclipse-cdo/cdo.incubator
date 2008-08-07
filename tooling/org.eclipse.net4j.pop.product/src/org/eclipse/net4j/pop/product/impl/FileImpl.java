@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: FileImpl.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
+ * $Id: FileImpl.java,v 1.7 2008-08-07 06:47:38 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.impl;
 
@@ -21,14 +21,13 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>File</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class FileImpl extends ArtifactImpl implements File
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected FileImpl()
@@ -38,7 +37,6 @@ public class FileImpl extends ArtifactImpl implements File
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

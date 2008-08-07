@@ -8,37 +8,67 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkingSet.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
+ * $Id: WorkingSet.java,v 1.7 2008-08-07 06:47:38 estepper Exp $
  */
 package org.eclipse.net4j.pop.product;
 
+import org.eclipse.net4j.pop.base.PopElement;
+
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Working Set</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.product.WorkingSet#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.WorkingSet#getProjects <em>Projects</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.product.WorkingSet#getWorkspaceSpec <em>Workspace Spec</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.WorkingSet#getPopProduct <em>Pop Product</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.WorkingSet#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.product.WorkingSet#getProjects <em>Projects</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkingSet()
  * @model
  * @generated
  */
-public interface WorkingSet extends EObject
+public interface WorkingSet extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop Product</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.product.PopProduct#getWorkingSets <em>Working Sets</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Pop Product</em>' container reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Pop Product</em>' container reference.
+   * @see #setPopProduct(PopProduct)
+   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkingSet_PopProduct()
+   * @see org.eclipse.net4j.pop.product.PopProduct#getWorkingSets
+   * @model opposite="workingSets" required="true" transient="false"
+   * @generated
+   */
+  PopProduct getPopProduct();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkingSet#getPopProduct <em>Pop Product</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pop Product</em>' container reference.
+   * @see #getPopProduct()
+   * @generated
+   */
+  void setPopProduct(PopProduct value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkingSet_Name()
@@ -59,16 +89,16 @@ public interface WorkingSet extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Projects</b></em>' reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.product.WorkspaceProject}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.product.WorkspaceProject#getWorkingSets <em>Working Sets</em>}'. <!-- begin-user-doc
+   * Returns the value of the '<em><b>Projects</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.product.WorkspaceProject}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.product.WorkspaceProject#getWorkingSets <em>Working Sets</em>}'.
+   * <!-- begin-user-doc
    * -->
    * <p>
    * If the meaning of the '<em>Projects</em>' reference list isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Projects</em>' reference list.
    * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkingSet_Projects()
    * @see org.eclipse.net4j.pop.product.WorkspaceProject#getWorkingSets
@@ -76,34 +106,5 @@ public interface WorkingSet extends EObject
    * @generated
    */
   EList<WorkspaceProject> getProjects();
-
-  /**
-   * Returns the value of the '<em><b>Workspace Spec</b></em>' container reference. It is bidirectional and its opposite
-   * is '{@link org.eclipse.net4j.pop.product.PopProduct#getWorkingSets <em>Working Sets</em>}'. <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Workspace Spec</em>' container reference isn't clear, there really should be more of a
-   * description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * 
-   * @return the value of the '<em>Workspace Spec</em>' container reference.
-   * @see #setWorkspaceSpec(PopProduct)
-   * @see org.eclipse.net4j.pop.product.ProductPackage#getWorkingSet_WorkspaceSpec()
-   * @see org.eclipse.net4j.pop.product.PopProduct#getWorkingSets
-   * @model opposite="workingSets" required="true" transient="false"
-   * @generated
-   */
-  PopProduct getWorkspaceSpec();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.product.WorkingSet#getWorkspaceSpec <em>Workspace Spec</em>}'
-   * container reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Workspace Spec</em>' container reference.
-   * @see #getWorkspaceSpec()
-   * @generated
-   */
-  void setWorkspaceSpec(PopProduct value);
 
 } // WorkingSet

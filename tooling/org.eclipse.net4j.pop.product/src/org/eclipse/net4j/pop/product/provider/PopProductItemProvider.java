@@ -8,20 +8,19 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopProductItemProvider.java,v 1.6 2008-08-06 07:07:33 estepper Exp $
+ * $Id: PopProductItemProvider.java,v 1.7 2008-08-07 06:47:39 estepper Exp $
  */
 package org.eclipse.net4j.pop.product.provider;
 
+import org.eclipse.net4j.pop.base.provider.PopElementItemProvider;
 import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.product.ProductFactory;
 import org.eclipse.net4j.pop.product.ProductPackage;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IChildCreationExtender;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
 import org.eclipse.emf.edit.provider.IItemFontProvider;
@@ -30,25 +29,25 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.product.PopProduct} object. <!-- begin-user-doc
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.product.PopProduct} object.
+ * <!-- begin-user-doc
  * --> <!-- end-user-doc -->
- * 
  * @generated
  */
-public class PopProductItemProvider extends ItemProviderAdapter implements IEditingDomainItemProvider,
+public class PopProductItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
     IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource,
     IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PopProductItemProvider(AdapterFactory adapterFactory)
@@ -57,8 +56,8 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -69,13 +68,14 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
       super.getPropertyDescriptors(object);
 
       addPopProjectPropertyDescriptor(object);
+      addNamePropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Pop Project feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Pop Project feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addPopProjectPropertyDescriptor(Object object)
@@ -83,15 +83,31 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
     itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
         .getRootAdapterFactory(), getResourceLocator(), getString("_UI_PopProduct_popProject_feature"), //$NON-NLS-1$
         getString("_UI_PropertyDescriptor_description", "_UI_PopProduct_popProject_feature", "_UI_PopProduct_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        ProductPackage.Literals.POP_PRODUCT__POP_PROJECT, true, false, true, null, null, null));
+        ProductPackage.Literals.POP_PRODUCT__POP_PROJECT, false, false, true, null, null, null));
+  }
+
+  /**
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addNamePropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(),
+        getString("_UI_PopProduct_name_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_PopProduct_name_feature", "_UI_PopProduct_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        ProductPackage.Literals.POP_PRODUCT__NAME, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+        null, null));
   }
 
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -100,6 +116,7 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(ProductPackage.Literals.POP_PRODUCT__SECONDARY_MODULES);
       childrenFeatures.add(ProductPackage.Literals.POP_PRODUCT__PROJECTS);
       childrenFeatures.add(ProductPackage.Literals.POP_PRODUCT__WORKING_SETS);
       childrenFeatures.add(ProductPackage.Literals.POP_PRODUCT__CONFIGURATORS);
@@ -109,7 +126,6 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -122,19 +138,8 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
+   * This returns PopProduct.gif.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  @Override
-  public boolean hasChildren(Object object)
-  {
-    return hasChildren(object, true);
-  }
-
-  /**
-   * This returns PopProduct.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -144,20 +149,22 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
   public String getText(Object object)
   {
-    return getString("_UI_PopProduct_type"); //$NON-NLS-1$
+    String label = ((PopProduct)object).getName();
+    return label == null || label.length() == 0 ? getString("_UI_PopProduct_type") : //$NON-NLS-1$
+        getString("_UI_PopProduct_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -167,6 +174,11 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
 
     switch (notification.getFeatureID(PopProduct.class))
     {
+    case ProductPackage.POP_PRODUCT__POP_PROJECT:
+    case ProductPackage.POP_PRODUCT__NAME:
+      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+      return;
+    case ProductPackage.POP_PRODUCT__SECONDARY_MODULES:
     case ProductPackage.POP_PRODUCT__PROJECTS:
     case ProductPackage.POP_PRODUCT__WORKING_SETS:
     case ProductPackage.POP_PRODUCT__CONFIGURATORS:
@@ -177,9 +189,9 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -187,22 +199,14 @@ public class PopProductItemProvider extends ItemProviderAdapter implements IEdit
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
+    newChildDescriptors.add(createChildParameter(ProductPackage.Literals.POP_PRODUCT__SECONDARY_MODULES,
+        ProductFactory.eINSTANCE.createSecondaryModule()));
+
     newChildDescriptors.add(createChildParameter(ProductPackage.Literals.POP_PRODUCT__PROJECTS,
         ProductFactory.eINSTANCE.createWorkspaceProject()));
 
     newChildDescriptors.add(createChildParameter(ProductPackage.Literals.POP_PRODUCT__WORKING_SETS,
         ProductFactory.eINSTANCE.createWorkingSet()));
-  }
-
-  /**
-   * Return the resource locator for this item provider's resources. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
-   */
-  @Override
-  public ResourceLocator getResourceLocator()
-  {
-    return ((IChildCreationExtender)adapterFactory).getResourceLocator();
   }
 
 }
