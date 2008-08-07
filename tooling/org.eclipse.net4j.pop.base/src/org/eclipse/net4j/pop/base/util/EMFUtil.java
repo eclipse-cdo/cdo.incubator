@@ -11,6 +11,7 @@
 package org.eclipse.net4j.pop.base.util;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -45,5 +46,24 @@ public final class EMFUtil
         };
       }
     });
+  }
+
+  public static EObject getObjectById(ResourceSet resourceSet, String id)
+  {
+    if (resourceSet == null)
+    {
+      return null;
+    }
+
+    for (Resource resource : resourceSet.getResources())
+    {
+      EObject element = resource.getEObject(id);
+      if (element != null)
+      {
+        return element;
+      }
+    }
+
+    return null;
   }
 }

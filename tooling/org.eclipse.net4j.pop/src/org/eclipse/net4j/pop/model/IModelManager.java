@@ -8,30 +8,23 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop;
+package org.eclipse.net4j.pop.model;
 
-import org.eclipse.net4j.pop.product.PopProduct;
-import org.eclipse.net4j.pop.project.PopProject;
-import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.util.event.INotifier;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IPath;
 
 /**
  * @author Eike Stepper
  */
-public interface IPop extends Comparable<IPop>, IAdaptable, INotifier
+public interface IModelManager<MODEL extends EObject> extends INotifier.Introspection
 {
-  public IProject getProject();
+  public IPath getPrimaryPath();
 
   public ResourceSet getResourceSet();
 
-  public PopProject getProjectModel();
-
-  public PopProduct getProductModel();
-
-  public ICheckoutManager getCheckoutManager();
+  public MODEL getModel();
 }

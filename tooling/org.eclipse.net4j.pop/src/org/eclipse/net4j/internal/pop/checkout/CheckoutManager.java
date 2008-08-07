@@ -8,10 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop;
+package org.eclipse.net4j.internal.pop.checkout;
 
+import org.eclipse.net4j.internal.pop.Pop;
+import org.eclipse.net4j.internal.pop.PopManager;
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.pop.base.PopElement;
+import org.eclipse.net4j.pop.base.util.EMFUtil;
 import org.eclipse.net4j.pop.project.Checkout;
 import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.project.Module;
@@ -23,6 +26,7 @@ import org.eclipse.net4j.pop.project.impl.ICheckoutManager;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 import org.eclipse.net4j.pop.repository.IRepositoryFolder;
 import org.eclipse.net4j.pop.repository.IRepositorySession;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
@@ -46,13 +50,13 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class PopCheckouts extends Container<Checkout> implements ICheckoutManager
+public class CheckoutManager extends Container<Checkout> implements ICheckoutManager
 {
   private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
 
   private static final IWorkspaceRoot ROOT = WS.getRoot();
 
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopCheckouts.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, CheckoutManager.class);
 
   private Pop pop;
 
@@ -62,7 +66,7 @@ public class PopCheckouts extends Container<Checkout> implements ICheckoutManage
 
   private Checkout activeCheckout;
 
-  public PopCheckouts(Pop pop)
+  public CheckoutManager(Pop pop)
   {
     this.pop = pop;
   }
@@ -74,7 +78,7 @@ public class PopCheckouts extends Container<Checkout> implements ICheckoutManage
 
   public PopProject getPopProject()
   {
-    return pop.getPopProject();
+    return pop.getProjectModel();
   }
 
   public void addCheckout(Checkout checkout)
@@ -161,11 +165,11 @@ public class PopCheckouts extends Container<Checkout> implements ICheckoutManage
 
     IRepositoryAdapter adapter = repository.getAdapter();
     IRepositorySession session = adapter.openSession(repository.getDescriptor(), project, false, monitor);
+    IRepositoryTag repositoryTag = discriminator.getRepositoryTag();
 
     try
     {
-      // IFolder target = createFolder(project, module.getName(), monitor);
-      IRepositoryFolder folder = session.getFolder(discriminator.getRepositoryTag(), module.getDescriptor());
+      IRepositoryFolder folder = session.getFolder(repositoryTag, module.getDescriptor());
       folder.checkoutAs(project, module.getName(), true, new NullProgressMonitor());
 
       return createCheckout(discriminator, project.getLocation());
@@ -231,7 +235,7 @@ public class PopCheckouts extends Container<Checkout> implements ICheckoutManage
 
   private void init()
   {
-    PopProject popProject = pop.getPopProject();
+    PopProject popProject = pop.getProjectModel();
     location = PopManager.INSTANCE.getCheckoutLocation().append(popProject.getName());
     File locationFolder = location.toFile();
     if (locationFolder.exists() && locationFolder.isDirectory())
@@ -239,7 +243,7 @@ public class PopCheckouts extends Container<Checkout> implements ICheckoutManage
       for (File folder : locationFolder.listFiles())
       {
         String checkoutName = folder.getName();
-        PopElement popElement = pop.getPopElement(checkoutName);
+        PopElement popElement = (PopElement)EMFUtil.getObjectById(pop.getResourceSet(), checkoutName);
         if (popElement instanceof CheckoutDiscriminator)
         {
           CheckoutDiscriminator discriminator = (CheckoutDiscriminator)popElement;

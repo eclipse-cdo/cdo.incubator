@@ -14,8 +14,9 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)",
  org.eclipse.net4j.util;bundle-version="[2.0.0,3.0.0)";visibility:=reexport,
  org.eclipse.net4j.pop.project;bundle-version="[1.0.0,2.0.0)";visibility:=reexport,
  org.eclipse.net4j.pop.product;bundle-version="[1.0.0,2.0.0)";visibility:=reexport
-Export-Package: org.eclipse.net4j.internal.pop;version="1.0.0";x-internal=true,
- org.eclipse.net4j.internal.pop.bundle;version="1.0.0";x-internal=true,
- org.eclipse.net4j.internal.pop.natures;version="1.0.0",
- org.eclipse.net4j.internal.pop.util;version="1.0.0",
+Export-Package: org.eclipse.net4j.internal.pop;version="1.0.0";x-internal=true;x-friends:="org.eclipse.net4j.pop.ui",
+ org.eclipse.net4j.internal.pop.bundle;version="1.0.0";x-internal=true;x-friends:="org.eclipse.net4j.pop.ui",
+ org.eclipse.net4j.internal.pop.checkout;version="1.0.0";x-friends:="org.eclipse.net4j.pop.ui",
+ org.eclipse.net4j.internal.pop.model;version="1.0.0";x-friends:="org.eclipse.net4j.pop.ui",
+ org.eclipse.net4j.internal.pop.natures;version="1.0.0";x-friends:="org.eclipse.net4j.pop.ui",
  org.eclipse.net4j.pop;version="1.0.0"

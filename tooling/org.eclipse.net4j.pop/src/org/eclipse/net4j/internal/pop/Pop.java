@@ -10,19 +10,18 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop;
 
-import org.eclipse.net4j.internal.pop.util.ModelEvent;
-import org.eclipse.net4j.internal.pop.util.ModelManager;
+import org.eclipse.net4j.internal.pop.checkout.CheckoutManager;
+import org.eclipse.net4j.internal.pop.model.ModelEvent;
+import org.eclipse.net4j.internal.pop.model.ModelManager;
 import org.eclipse.net4j.pop.IPop;
-import org.eclipse.net4j.pop.base.PopElement;
+import org.eclipse.net4j.pop.model.IModelManager;
+import org.eclipse.net4j.pop.product.PopProduct;
 import org.eclipse.net4j.pop.project.PopProject;
 import org.eclipse.net4j.pop.project.impl.PopProjectImpl;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.StringUtil;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.core.resources.IProject;
@@ -38,45 +37,27 @@ public class Pop extends Lifecycle implements IPop
 {
   private IProject project;
 
-  private ModelManager modelManager;
+  private ResourceSet resourceSet;
 
-  private PopCheckouts checkoutManager = new PopCheckouts(this);
+  private ProjectModelManager projectModelManager;
+
+  private ProductModelManager productModelManager;
+
+  private CheckoutManager checkoutManager = new CheckoutManager(this);
 
   public Pop(IProject project)
   {
     this.project = project;
-    IPath modelPath = project.getFullPath().append("project.xml");
-    modelManager = new ModelManager(modelPath)
-    {
-      @Override
-      protected void fireModelEvent(ModelEvent.Kind kind)
-      {
-        super.fireModelEvent(kind);
-        if (kind == ModelEvent.Kind.MODEL_UNAVAILABLE)
-        {
-          Pop.this.deactivate();
-        }
-        else
-        {
-          PopProject popProject = getPopProject();
-          if (!StringUtil.isEmpty(popProject.getName()))
-          {
-            Pop.this.activate();
-          }
-          else
-          {
-            Pop.this.deactivate();
-          }
-        }
-      }
-    };
+    resourceSet = ModelManager.createResourceSet();
 
-    modelManager.activate();
+    IPath modelPath = project.getFullPath().append("project.xml");
+    projectModelManager = new ProjectModelManager(modelPath);
+    projectModelManager.activate();
   }
 
   public void dispose()
   {
-    modelManager.deactivate();
+    projectModelManager.deactivate();
   }
 
   public IProject getProject()
@@ -84,57 +65,32 @@ public class Pop extends Lifecycle implements IPop
     return project;
   }
 
-  public PopProject getPopProject()
+  public ResourceSet getResourceSet()
   {
-    Resource resource = getPopResource();
-    if (resource == null)
-    {
-      return null;
-    }
-
-    EList<EObject> contents = resource.getContents();
-    if (contents.isEmpty())
-    {
-      return null;
-    }
-
-    return (PopProject)contents.get(0);
+    return resourceSet;
   }
 
-  public PopElement getPopElement(String id)
+  public PopProject getProjectModel()
   {
-    Resource resource = getPopResource();
-    if (resource == null)
-    {
-      return null;
-    }
-
-    return (PopElement)resource.getEObject(id);
+    return projectModelManager.getModel();
   }
 
-  public Resource getPopResource()
+  public PopProduct getProductModel()
   {
-    ResourceSet resourceSet = modelManager.getResourceSet();
-    if (resourceSet == null)
-    {
-      return null;
-    }
-
-    EList<Resource> resources = resourceSet.getResources();
-    if (resources.isEmpty())
-    {
-      return null;
-    }
-
-    return resources.get(0);
+    return productModelManager.getModel();
   }
 
-  public ModelManager getModelManager()
+  public IModelManager<PopProject> getProjectModelManager()
   {
-    return modelManager;
+    return projectModelManager;
   }
 
-  public PopCheckouts getCheckoutManager()
+  public IModelManager<PopProduct> getProductModelManager()
+  {
+    return productModelManager;
+  }
+
+  public CheckoutManager getCheckoutManager()
   {
     return checkoutManager;
   }
@@ -179,11 +135,51 @@ public class Pop extends Lifecycle implements IPop
     return MessageFormat.format("POP[{0}]", project.getName());
   }
 
+  protected void handleProjectModelEvent(ModelEvent.Kind kind)
+  {
+    if (kind == ModelEvent.Kind.MODEL_UNAVAILABLE)
+    {
+      deactivate();
+    }
+    else
+    {
+      PopProject popProject = getProjectModel();
+      if (!StringUtil.isEmpty(popProject.getName()))
+      {
+        activate();
+      }
+      else
+      {
+        deactivate();
+      }
+    }
+  }
+
+  protected void handleProductModelEvent(ModelEvent.Kind kind)
+  {
+    if (kind == ModelEvent.Kind.MODEL_UNAVAILABLE)
+    {
+      Pop.this.deactivate();
+    }
+    else
+    {
+      PopProject popProject = getProjectModel();
+      if (!StringUtil.isEmpty(popProject.getName()))
+      {
+        Pop.this.activate();
+      }
+      else
+      {
+        Pop.this.deactivate();
+      }
+    }
+  }
+
   @Override
   protected void doActivate() throws Exception
   {
     super.doActivate();
-    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
+    PopProjectImpl popProject = (PopProjectImpl)getProjectModel();
     if (popProject == null)
     {
       throw new IllegalStateException("POP project not available");
@@ -196,7 +192,7 @@ public class Pop extends Lifecycle implements IPop
   @Override
   protected void doDeactivate() throws Exception
   {
-    PopProjectImpl popProject = (PopProjectImpl)getPopProject();
+    PopProjectImpl popProject = (PopProjectImpl)getProjectModel();
     if (popProject != null)
     {
       popProject.setCheckoutManager(null);
@@ -204,5 +200,41 @@ public class Pop extends Lifecycle implements IPop
 
     checkoutManager.deactivate();
     super.doDeactivate();
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ProjectModelManager extends ModelManager<PopProject>
+  {
+    public ProjectModelManager(IPath modelEntry)
+    {
+      super(modelEntry, resourceSet);
+    }
+
+    @Override
+    protected void fireModelEvent(ModelEvent.Kind kind)
+    {
+      super.fireModelEvent(kind);
+      handleProjectModelEvent(kind);
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ProductModelManager extends ModelManager<PopProduct>
+  {
+    public ProductModelManager(IPath modelEntry)
+    {
+      super(modelEntry, resourceSet);
+    }
+
+    @Override
+    protected void fireModelEvent(ModelEvent.Kind kind)
+    {
+      super.fireModelEvent(kind);
+      handleProductModelEvent(kind);
+    }
   }
 }

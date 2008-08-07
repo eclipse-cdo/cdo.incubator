@@ -8,15 +8,18 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.util;
+package org.eclipse.net4j.internal.pop.model;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
-import org.eclipse.net4j.internal.pop.util.ModelEvent.Kind;
 import org.eclipse.net4j.pop.base.util.EMFUtil;
+import org.eclipse.net4j.pop.model.IModelEvent;
+import org.eclipse.net4j.pop.model.IModelManager;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -45,7 +48,8 @@ import java.util.Set;
 /**
  * @author Eike Stepper
  */
-public class ModelManager extends Lifecycle implements IResourceChangeListener
+public class ModelManager<MODEL extends EObject> extends Lifecycle implements IModelManager<MODEL>,
+    IResourceChangeListener
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ModelManager.class);
 
@@ -82,6 +86,40 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     return resourceSet;
   }
 
+  public Resource getModelResource()
+  {
+    if (resourceSet == null)
+    {
+      return null;
+    }
+
+    EList<Resource> resources = resourceSet.getResources();
+    if (resources.isEmpty())
+    {
+      return null;
+    }
+
+    return resources.get(0);
+  }
+
+  @SuppressWarnings("unchecked")
+  public MODEL getModel()
+  {
+    Resource resource = getModelResource();
+    if (resource == null)
+    {
+      return null;
+    }
+
+    EList<EObject> contents = resource.getContents();
+    if (contents.isEmpty())
+    {
+      return null;
+    }
+
+    return (MODEL)contents.get(0);
+  }
+
   public void resourceChanged(IResourceChangeEvent event)
   {
     IResourceDelta delta = event.getDelta();
@@ -100,7 +138,7 @@ public class ModelManager extends Lifecycle implements IResourceChangeListener
     }
   }
 
-  protected void fireModelEvent(Kind kind)
+  protected void fireModelEvent(IModelEvent.Kind kind)
   {
     if (TRACER.isEnabled())
     {

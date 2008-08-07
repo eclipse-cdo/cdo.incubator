@@ -116,7 +116,7 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       List<Object> result = new ArrayList<Object>();
       for (IPop pop : manager.getPops())
       {
-        PopProject popProject = pop.getPopProject();
+        PopProject popProject = pop.getProjectModel();
         if (popProject != null)
         {
           result.add(popProject);
@@ -315,10 +315,10 @@ public class PopContentProvider extends AdapterFactoryContentProvider
         Pop[] pops2 = manager.getPops();
         for (Pop pop : pops2)
         {
-          pop.getModelManager().addListener(this);
+          pop.getProjectModelManager().addListener(this);
           pops.add(pop);
 
-          PopProject popProject = pop.getPopProject();
+          PopProject popProject = pop.getProjectModel();
           if (popProject != null)
           {
             RootStream rootStream = popProject.getRootStream();
@@ -363,7 +363,7 @@ public class PopContentProvider extends AdapterFactoryContentProvider
     {
       for (Pop pop : pops)
       {
-        pop.getModelManager().removeListener(this);
+        pop.getProjectModelManager().removeListener(this);
       }
 
       pops.clear();
