@@ -8,33 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.internal.pop.model;
+package org.eclipse.net4j.pop.model;
 
-import org.eclipse.net4j.pop.model.IModelEvent;
-import org.eclipse.net4j.util.event.Event;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * @author Eike Stepper
  */
-public class ModelEvent extends Event implements IModelEvent
+public interface IModelHandler<T extends EObject>
 {
-  private static final long serialVersionUID = 1L;
+  public T locateModel(IModelRegistration<T> registration);
 
-  private Kind kind;
+  public void modelAvailable(IModelRegistration<T> registration);
 
-  public ModelEvent(ModelManager<?> modelManager, Kind kind)
-  {
-    super(modelManager);
-    this.kind = kind;
-  }
+  public void modelRefreshed(IModelRegistration<T> registration);
 
-  public ModelManager<?> getModelManager()
-  {
-    return (ModelManager<?>)super.getSource();
-  }
-
-  public Kind getKind()
-  {
-    return kind;
-  }
+  public void modelUnvailable(IModelRegistration<T> registration);
 }

@@ -10,18 +10,31 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.model;
 
-import org.eclipse.net4j.util.event.INotifier;
+import org.eclipse.net4j.pop.Pop;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
  * @author Eike Stepper
  */
-public interface IModelManager extends INotifier
+public class Client
 {
-  public ResourceSet getResourceSet();
+  public static void main(String[] args) throws Exception
+  {
+    URI uri = URI.createPlatformResourceURI("/cdo.pop/project.xml", false);
+    DefaultModelHandler<Pop> handler = new DefaultModelHandler<Pop>()
+    {
+      @Override
+      protected void handleModel(Pop model)
+      {
+        System.out.println("Model: " + model);
+      }
+    };
 
-  public <T extends EObject> IModelRegistration<T> registerModel(URI uri, IModelHandler<T> handler);
+    IModelManager modelManager = new ModelManager();
+    IModelRegistration<Pop> registration = modelManager.registerModel(uri, handler);
+
+    Thread.sleep(10000L);
+    registration.cancel();
+  }
 }

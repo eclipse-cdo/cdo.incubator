@@ -48,10 +48,10 @@ import java.util.Set;
 /**
  * @author Eike Stepper
  */
-public class ModelManager<MODEL extends EObject> extends Lifecycle implements IModelManager<MODEL>,
+public class OLDModelManager<MODEL extends EObject> extends Lifecycle implements IModelManager<MODEL>,
     IResourceChangeListener
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ModelManager.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, OLDModelManager.class);
 
   private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
 
@@ -65,13 +65,13 @@ public class ModelManager<MODEL extends EObject> extends Lifecycle implements IM
 
   private boolean available;
 
-  public ModelManager(IPath primaryPath, ResourceSet resourceSet)
+  public OLDModelManager(IPath primaryPath, ResourceSet resourceSet)
   {
     this.primaryPath = primaryPath;
     this.resourceSet = resourceSet;
   }
 
-  public ModelManager(IPath modelEntry)
+  public OLDModelManager(IPath modelEntry)
   {
     this(modelEntry, createResourceSet());
   }

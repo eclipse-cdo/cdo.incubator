@@ -10,22 +10,24 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.model;
 
-import org.eclipse.net4j.util.event.IEvent;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * @author Eike Stepper
  */
-public interface IModelEvent extends IEvent
+public interface IModelRegistration<T extends EObject>
 {
-  public IModelManager<?> getModelManager();
+  public IModelManager getModelManager();
 
-  public Kind getKind();
+  public IModelHandler<T> getModelHandler();
 
-  /**
-   * @author Eike Stepper
-   */
-  public static enum Kind
-  {
-    MODEL_AVAILABLE, MODEL_UNAVAILABLE, MODEL_REFRESHED
-  }
+  public IModelResource getModelResource();
+
+  public boolean isModelAvailable();
+
+  public T getModel();
+
+  public boolean isCancelled();
+
+  public void cancel();
 }
