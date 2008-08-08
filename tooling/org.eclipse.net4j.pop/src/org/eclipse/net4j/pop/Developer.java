@@ -8,11 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Developer.java,v 1.1 2008-08-07 17:42:11 estepper Exp $
+ * $Id: Developer.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
-
-import org.eclipse.emf.common.util.EList;
 
 import java.util.Date;
 
@@ -31,8 +29,6 @@ import java.util.Date;
  *   <li>{@link org.eclipse.net4j.pop.Developer#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Developer#getExit <em>Exit</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Developer#isActive <em>Active</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Developer#getTaskGroups <em>Task Groups</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Developer#getTasks <em>Tasks</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,7 +36,7 @@ import java.util.Date;
  * @model
  * @generated
  */
-public interface Developer extends PopElement
+public interface Developer extends PopElement, Assignee
 {
   /**
    * Returns the value of the '<em><b>Pop</b></em>' container reference.
@@ -214,41 +210,5 @@ public interface Developer extends PopElement
    * @generated
    */
   boolean isActive();
-
-  /**
-   * Returns the value of the '<em><b>Task Groups</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.TaskGroup}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.TaskGroup#getDeveloper <em>Developer</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Task Groups</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Task Groups</em>' containment reference list.
-   * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_TaskGroups()
-   * @see org.eclipse.net4j.pop.TaskGroup#getDeveloper
-   * @model opposite="developer" containment="true" resolveProxies="true"
-   * @generated
-   */
-  EList<TaskGroup> getTaskGroups();
-
-  /**
-   * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.Task}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Task#getDeveloper <em>Developer</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Tasks</em>' containment reference list.
-   * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Tasks()
-   * @see org.eclipse.net4j.pop.Task#getDeveloper
-   * @model opposite="developer" containment="true" resolveProxies="true"
-   * @generated
-   */
-  EList<Task> getTasks();
 
 } // Developer

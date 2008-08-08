@@ -8,11 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskGroupImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: TaskGroupImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
-import org.eclipse.net4j.pop.Developer;
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Task;
 import org.eclipse.net4j.pop.TaskGroup;
@@ -36,11 +36,10 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getDeveloper <em>Developer</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getChildren <em>Children</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getTaskGroups <em>Task Groups</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getAssignee <em>Assignee</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,6 +47,26 @@ import java.util.Collection;
  */
 public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 {
+  /**
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTasks()
+   * @generated
+   * @ordered
+   */
+  protected EList<Task> tasks;
+
+  /**
+   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTaskGroups()
+   * @generated
+   * @ordered
+   */
+  protected EList<TaskGroup> taskGroups;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -67,26 +86,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
-
-  /**
-   * The cached value of the '{@link #getChildren() <em>Children</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getChildren()
-   * @generated
-   * @ordered
-   */
-  protected EList<TaskGroup> children;
-
-  /**
-   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTasks()
-   * @generated
-   * @ordered
-   */
-  protected EList<Task> tasks;
 
   /**
    * <!-- begin-user-doc -->
@@ -137,11 +136,11 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public Developer getDeveloper()
+  public Assignee getAssignee()
   {
-    if (eContainerFeatureID != PopPackage.TASK_GROUP__DEVELOPER)
+    if (eContainerFeatureID != PopPackage.TASK_GROUP__ASSIGNEE)
       return null;
-    return (Developer)eContainer();
+    return (Assignee)eContainer();
   }
 
   /**
@@ -149,11 +148,11 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public Developer basicGetDeveloper()
+  public Assignee basicGetAssignee()
   {
-    if (eContainerFeatureID != PopPackage.TASK_GROUP__DEVELOPER)
+    if (eContainerFeatureID != PopPackage.TASK_GROUP__ASSIGNEE)
       return null;
-    return (Developer)eInternalContainer();
+    return (Assignee)eInternalContainer();
   }
 
   /**
@@ -161,9 +160,9 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDeveloper(Developer newDeveloper, NotificationChain msgs)
+  public NotificationChain basicSetAssignee(Assignee newAssignee, NotificationChain msgs)
   {
-    msgs = eBasicSetContainer((InternalEObject)newDeveloper, PopPackage.TASK_GROUP__DEVELOPER, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newAssignee, PopPackage.TASK_GROUP__ASSIGNEE, msgs);
     return msgs;
   }
 
@@ -172,101 +171,24 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDeveloper(Developer newDeveloper)
+  public void setAssignee(Assignee newAssignee)
   {
-    if (newDeveloper != eInternalContainer()
-        || (eContainerFeatureID != PopPackage.TASK_GROUP__DEVELOPER && newDeveloper != null))
+    if (newAssignee != eInternalContainer()
+        || (eContainerFeatureID != PopPackage.TASK_GROUP__ASSIGNEE && newAssignee != null))
     {
-      if (EcoreUtil.isAncestor(this, newDeveloper))
+      if (EcoreUtil.isAncestor(this, newAssignee))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
-      if (newDeveloper != null)
-        msgs = ((InternalEObject)newDeveloper).eInverseAdd(this, PopPackage.DEVELOPER__TASK_GROUPS, Developer.class,
-            msgs);
-      msgs = basicSetDeveloper(newDeveloper, msgs);
+      if (newAssignee != null)
+        msgs = ((InternalEObject)newAssignee).eInverseAdd(this, PopPackage.ASSIGNEE__TASK_GROUPS, Assignee.class, msgs);
+      msgs = basicSetAssignee(newAssignee, msgs);
       if (msgs != null)
         msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.TASK_GROUP__DEVELOPER, newDeveloper,
-          newDeveloper));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TaskGroup getParent()
-  {
-    if (eContainerFeatureID != PopPackage.TASK_GROUP__PARENT)
-      return null;
-    return (TaskGroup)eContainer();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TaskGroup basicGetParent()
-  {
-    if (eContainerFeatureID != PopPackage.TASK_GROUP__PARENT)
-      return null;
-    return (TaskGroup)eInternalContainer();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetParent(TaskGroup newParent, NotificationChain msgs)
-  {
-    msgs = eBasicSetContainer((InternalEObject)newParent, PopPackage.TASK_GROUP__PARENT, msgs);
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setParent(TaskGroup newParent)
-  {
-    if (newParent != eInternalContainer()
-        || (eContainerFeatureID != PopPackage.TASK_GROUP__PARENT && newParent != null))
-    {
-      if (EcoreUtil.isAncestor(this, newParent))
-        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      NotificationChain msgs = null;
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      if (newParent != null)
-        msgs = ((InternalEObject)newParent).eInverseAdd(this, PopPackage.TASK_GROUP__CHILDREN, TaskGroup.class, msgs);
-      msgs = basicSetParent(newParent, msgs);
-      if (msgs != null)
-        msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.TASK_GROUP__PARENT, newParent, newParent));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EList<TaskGroup> getChildren()
-  {
-    if (children == null)
-    {
-      children = new EObjectContainmentWithInverseEList.Resolving<TaskGroup>(TaskGroup.class, this,
-          PopPackage.TASK_GROUP__CHILDREN, PopPackage.TASK_GROUP__PARENT);
-    }
-    return children;
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.TASK_GROUP__ASSIGNEE, newAssignee, newAssignee));
   }
 
   /**
@@ -279,9 +201,24 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
     if (tasks == null)
     {
       tasks = new EObjectContainmentWithInverseEList.Resolving<Task>(Task.class, this, PopPackage.TASK_GROUP__TASKS,
-          PopPackage.TASK__TASK_GROUP);
+          PopPackage.TASK__ASSIGNEE);
     }
     return tasks;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<TaskGroup> getTaskGroups()
+  {
+    if (taskGroups == null)
+    {
+      taskGroups = new EObjectContainmentWithInverseEList.Resolving<TaskGroup>(TaskGroup.class, this,
+          PopPackage.TASK_GROUP__TASK_GROUPS, PopPackage.TASK_GROUP__ASSIGNEE);
+    }
+    return taskGroups;
   }
 
   /**
@@ -295,18 +232,14 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (featureID)
     {
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetDeveloper((Developer)otherEnd, msgs);
-    case PopPackage.TASK_GROUP__PARENT:
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetParent((TaskGroup)otherEnd, msgs);
-    case PopPackage.TASK_GROUP__CHILDREN:
-      return ((InternalEList<InternalEObject>)(InternalEList<?>)getChildren()).basicAdd(otherEnd, msgs);
     case PopPackage.TASK_GROUP__TASKS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      return basicSetAssignee((Assignee)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -321,14 +254,12 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (featureID)
     {
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      return basicSetDeveloper(null, msgs);
-    case PopPackage.TASK_GROUP__PARENT:
-      return basicSetParent(null, msgs);
-    case PopPackage.TASK_GROUP__CHILDREN:
-      return ((InternalEList<?>)getChildren()).basicRemove(otherEnd, msgs);
     case PopPackage.TASK_GROUP__TASKS:
       return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
+      return ((InternalEList<?>)getTaskGroups()).basicRemove(otherEnd, msgs);
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      return basicSetAssignee(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -343,10 +274,8 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (eContainerFeatureID)
     {
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      return eInternalContainer().eInverseRemove(this, PopPackage.DEVELOPER__TASK_GROUPS, Developer.class, msgs);
-    case PopPackage.TASK_GROUP__PARENT:
-      return eInternalContainer().eInverseRemove(this, PopPackage.TASK_GROUP__CHILDREN, TaskGroup.class, msgs);
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      return eInternalContainer().eInverseRemove(this, PopPackage.ASSIGNEE__TASK_GROUPS, Assignee.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
@@ -361,20 +290,16 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (featureID)
     {
-    case PopPackage.TASK_GROUP__NAME:
-      return getName();
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      if (resolve)
-        return getDeveloper();
-      return basicGetDeveloper();
-    case PopPackage.TASK_GROUP__PARENT:
-      if (resolve)
-        return getParent();
-      return basicGetParent();
-    case PopPackage.TASK_GROUP__CHILDREN:
-      return getChildren();
     case PopPackage.TASK_GROUP__TASKS:
       return getTasks();
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
+      return getTaskGroups();
+    case PopPackage.TASK_GROUP__NAME:
+      return getName();
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      if (resolve)
+        return getAssignee();
+      return basicGetAssignee();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -390,22 +315,19 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (featureID)
     {
-    case PopPackage.TASK_GROUP__NAME:
-      setName((String)newValue);
-      return;
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      setDeveloper((Developer)newValue);
-      return;
-    case PopPackage.TASK_GROUP__PARENT:
-      setParent((TaskGroup)newValue);
-      return;
-    case PopPackage.TASK_GROUP__CHILDREN:
-      getChildren().clear();
-      getChildren().addAll((Collection<? extends TaskGroup>)newValue);
-      return;
     case PopPackage.TASK_GROUP__TASKS:
       getTasks().clear();
       getTasks().addAll((Collection<? extends Task>)newValue);
+      return;
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
+      getTaskGroups().clear();
+      getTaskGroups().addAll((Collection<? extends TaskGroup>)newValue);
+      return;
+    case PopPackage.TASK_GROUP__NAME:
+      setName((String)newValue);
+      return;
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      setAssignee((Assignee)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -421,20 +343,17 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (featureID)
     {
+    case PopPackage.TASK_GROUP__TASKS:
+      getTasks().clear();
+      return;
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
+      getTaskGroups().clear();
+      return;
     case PopPackage.TASK_GROUP__NAME:
       setName(NAME_EDEFAULT);
       return;
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      setDeveloper((Developer)null);
-      return;
-    case PopPackage.TASK_GROUP__PARENT:
-      setParent((TaskGroup)null);
-      return;
-    case PopPackage.TASK_GROUP__CHILDREN:
-      getChildren().clear();
-      return;
-    case PopPackage.TASK_GROUP__TASKS:
-      getTasks().clear();
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      setAssignee((Assignee)null);
       return;
     }
     super.eUnset(featureID);
@@ -450,18 +369,62 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   {
     switch (featureID)
     {
-    case PopPackage.TASK_GROUP__NAME:
-      return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-    case PopPackage.TASK_GROUP__DEVELOPER:
-      return basicGetDeveloper() != null;
-    case PopPackage.TASK_GROUP__PARENT:
-      return basicGetParent() != null;
-    case PopPackage.TASK_GROUP__CHILDREN:
-      return children != null && !children.isEmpty();
     case PopPackage.TASK_GROUP__TASKS:
       return tasks != null && !tasks.isEmpty();
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
+      return taskGroups != null && !taskGroups.isEmpty();
+    case PopPackage.TASK_GROUP__NAME:
+      return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+    case PopPackage.TASK_GROUP__ASSIGNEE:
+      return basicGetAssignee() != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Assignee.class)
+    {
+      switch (derivedFeatureID)
+      {
+      case PopPackage.TASK_GROUP__TASKS:
+        return PopPackage.ASSIGNEE__TASKS;
+      case PopPackage.TASK_GROUP__TASK_GROUPS:
+        return PopPackage.ASSIGNEE__TASK_GROUPS;
+      default:
+        return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Assignee.class)
+    {
+      switch (baseFeatureID)
+      {
+      case PopPackage.ASSIGNEE__TASKS:
+        return PopPackage.TASK_GROUP__TASKS;
+      case PopPackage.ASSIGNEE__TASK_GROUPS:
+        return PopPackage.TASK_GROUP__TASK_GROUPS;
+      default:
+        return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

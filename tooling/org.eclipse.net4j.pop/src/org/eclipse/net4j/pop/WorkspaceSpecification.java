@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceSpecification.java,v 1.1 2008-08-07 17:42:11 estepper Exp $
+ * $Id: WorkspaceSpecification.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -36,6 +36,7 @@ public interface WorkspaceSpecification extends PopElement
 {
   /**
    * Returns the value of the '<em><b>Checkout</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Checkout#getWorkspaceSpecification <em>Workspace Specification</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Checkout</em>' reference isn't clear,
@@ -45,7 +46,8 @@ public interface WorkspaceSpecification extends PopElement
    * @return the value of the '<em>Checkout</em>' reference.
    * @see #setCheckout(Checkout)
    * @see org.eclipse.net4j.pop.PopPackage#getWorkspaceSpecification_Checkout()
-   * @model required="true"
+   * @see org.eclipse.net4j.pop.Checkout#getWorkspaceSpecification
+   * @model opposite="workspaceSpecification" required="true"
    * @generated
    */
   Checkout getCheckout();

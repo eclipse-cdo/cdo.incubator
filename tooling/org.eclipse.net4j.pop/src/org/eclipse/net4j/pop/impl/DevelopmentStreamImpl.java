@@ -8,19 +8,23 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.DevelopmentStream;
 import org.eclipse.net4j.pop.MaintenanceStream;
+import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -33,6 +37,7 @@ import java.util.Collection;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.impl.DevelopmentStreamImpl#getMaintenanceStreams <em>Maintenance Streams</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DevelopmentStreamImpl#getPop <em>Pop</em>}</li>
  * </ul>
  * </p>
  *
@@ -91,6 +96,65 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
    * <!-- end-user-doc -->
    * @generated
    */
+  public Pop getPop()
+  {
+    if (eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP)
+      return null;
+    return (Pop)eContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Pop basicGetPop()
+  {
+    if (eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP)
+      return null;
+    return (Pop)eInternalContainer();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
+  {
+    msgs = eBasicSetContainer((InternalEObject)newPop, PopPackage.DEVELOPMENT_STREAM__POP, msgs);
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPop(Pop newPop)
+  {
+    if (newPop != eInternalContainer() || (eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP && newPop != null))
+    {
+      if (EcoreUtil.isAncestor(this, newPop))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      NotificationChain msgs = null;
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      if (newPop != null)
+        msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__ROOT_STREAM, Pop.class, msgs);
+      msgs = basicSetPop(newPop, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPMENT_STREAM__POP, newPop, newPop));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs)
@@ -99,6 +163,10 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
     {
     case PopPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getMaintenanceStreams()).basicAdd(otherEnd, msgs);
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
+      return basicSetPop((Pop)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -115,8 +183,26 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
     {
     case PopPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS:
       return ((InternalEList<?>)getMaintenanceStreams()).basicRemove(otherEnd, msgs);
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      return basicSetPop(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID)
+    {
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      return eInternalContainer().eInverseRemove(this, PopPackage.POP__ROOT_STREAM, Pop.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -131,6 +217,10 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
     {
     case PopPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS:
       return getMaintenanceStreams();
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      if (resolve)
+        return getPop();
+      return basicGetPop();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -150,6 +240,9 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
       getMaintenanceStreams().clear();
       getMaintenanceStreams().addAll((Collection<? extends MaintenanceStream>)newValue);
       return;
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      setPop((Pop)newValue);
+      return;
     }
     super.eSet(featureID, newValue);
   }
@@ -167,6 +260,9 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
     case PopPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS:
       getMaintenanceStreams().clear();
       return;
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      setPop((Pop)null);
+      return;
     }
     super.eUnset(featureID);
   }
@@ -183,6 +279,8 @@ public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implem
     {
     case PopPackage.DEVELOPMENT_STREAM__MAINTENANCE_STREAMS:
       return maintenanceStreams != null && !maintenanceStreams.isEmpty();
+    case PopPackage.DEVELOPMENT_STREAM__POP:
+      return basicGetPop() != null;
     }
     return super.eIsSet(featureID);
   }

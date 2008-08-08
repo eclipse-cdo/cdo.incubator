@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManager.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: CheckoutManager.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -38,20 +38,32 @@ import org.eclipse.core.runtime.IPath;
 public interface CheckoutManager extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Pop</b></em>' reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.Pop}.
+   * Returns the value of the '<em><b>Pop</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getCheckoutManager <em>Checkout Manager</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pop</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Pop</em>' reference list.
+   * @return the value of the '<em>Pop</em>' reference.
+   * @see #setPop(Pop)
    * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager_Pop()
-   * @model required="true"
+   * @see org.eclipse.net4j.pop.Pop#getCheckoutManager
+   * @model opposite="checkoutManager" required="true"
    * @generated
    */
-  EList<Pop> getPop();
+  Pop getPop();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pop</em>' reference.
+   * @see #getPop()
+   * @generated
+   */
+  void setPop(Pop value);
 
   /**
    * Returns the value of the '<em><b>Location</b></em>' attribute.

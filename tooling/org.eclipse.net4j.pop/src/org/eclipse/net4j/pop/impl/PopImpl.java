@@ -8,18 +8,21 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopImpl.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: PopImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.CheckoutManager;
 import org.eclipse.net4j.pop.Developer;
+import org.eclipse.net4j.pop.DevelopmentStream;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Repository;
-import org.eclipse.net4j.pop.RootStream;
+import org.eclipse.net4j.pop.Task;
+import org.eclipse.net4j.pop.TaskGroup;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -39,6 +42,8 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getTaskGroups <em>Task Groups</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getManager <em>Manager</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#isActive <em>Active</em>}</li>
@@ -54,6 +59,26 @@ import java.util.Collection;
  */
 public class PopImpl extends PopElementImpl implements Pop
 {
+  /**
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTasks()
+   * @generated
+   * @ordered
+   */
+  protected EList<Task> tasks;
+
+  /**
+   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTaskGroups()
+   * @generated
+   * @ordered
+   */
+  protected EList<TaskGroup> taskGroups;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -112,7 +137,7 @@ public class PopImpl extends PopElementImpl implements Pop
    * @generated
    * @ordered
    */
-  protected RootStream rootStream;
+  protected DevelopmentStream rootStream;
 
   /**
    * The cached value of the '{@link #getPrimaryModule() <em>Primary Module</em>}' containment reference.
@@ -153,6 +178,36 @@ public class PopImpl extends PopElementImpl implements Pop
   protected EClass eStaticClass()
   {
     return PopPackage.Literals.POP;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<Task> getTasks()
+  {
+    if (tasks == null)
+    {
+      tasks = new EObjectContainmentWithInverseEList.Resolving<Task>(Task.class, this, PopPackage.POP__TASKS,
+          PopPackage.TASK__ASSIGNEE);
+    }
+    return tasks;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<TaskGroup> getTaskGroups()
+  {
+    if (taskGroups == null)
+    {
+      taskGroups = new EObjectContainmentWithInverseEList.Resolving<TaskGroup>(TaskGroup.class, this,
+          PopPackage.POP__TASK_GROUPS, PopPackage.TASK_GROUP__ASSIGNEE);
+    }
+    return taskGroups;
   }
 
   /**
@@ -316,20 +371,20 @@ public class PopImpl extends PopElementImpl implements Pop
    * <!-- end-user-doc -->
    * @generated
    */
-  public RootStream getRootStream()
+  public DevelopmentStream getRootStream()
   {
     if (rootStream != null && rootStream.eIsProxy())
     {
       InternalEObject oldRootStream = (InternalEObject)rootStream;
-      rootStream = (RootStream)eResolveProxy(oldRootStream);
+      rootStream = (DevelopmentStream)eResolveProxy(oldRootStream);
       if (rootStream != oldRootStream)
       {
         InternalEObject newRootStream = (InternalEObject)rootStream;
-        NotificationChain msgs = oldRootStream
-            .eInverseRemove(this, PopPackage.ROOT_STREAM__POP, RootStream.class, null);
+        NotificationChain msgs = oldRootStream.eInverseRemove(this, PopPackage.DEVELOPMENT_STREAM__POP,
+            DevelopmentStream.class, null);
         if (newRootStream.eInternalContainer() == null)
         {
-          msgs = newRootStream.eInverseAdd(this, PopPackage.ROOT_STREAM__POP, RootStream.class, msgs);
+          msgs = newRootStream.eInverseAdd(this, PopPackage.DEVELOPMENT_STREAM__POP, DevelopmentStream.class, msgs);
         }
         if (msgs != null)
           msgs.dispatch();
@@ -346,7 +401,7 @@ public class PopImpl extends PopElementImpl implements Pop
    * <!-- end-user-doc -->
    * @generated
    */
-  public RootStream basicGetRootStream()
+  public DevelopmentStream basicGetRootStream()
   {
     return rootStream;
   }
@@ -356,9 +411,9 @@ public class PopImpl extends PopElementImpl implements Pop
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetRootStream(RootStream newRootStream, NotificationChain msgs)
+  public NotificationChain basicSetRootStream(DevelopmentStream newRootStream, NotificationChain msgs)
   {
-    RootStream oldRootStream = rootStream;
+    DevelopmentStream oldRootStream = rootStream;
     rootStream = newRootStream;
     if (eNotificationRequired())
     {
@@ -377,15 +432,17 @@ public class PopImpl extends PopElementImpl implements Pop
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRootStream(RootStream newRootStream)
+  public void setRootStream(DevelopmentStream newRootStream)
   {
     if (newRootStream != rootStream)
     {
       NotificationChain msgs = null;
       if (rootStream != null)
-        msgs = ((InternalEObject)rootStream).eInverseRemove(this, PopPackage.ROOT_STREAM__POP, RootStream.class, msgs);
+        msgs = ((InternalEObject)rootStream).eInverseRemove(this, PopPackage.DEVELOPMENT_STREAM__POP,
+            DevelopmentStream.class, msgs);
       if (newRootStream != null)
-        msgs = ((InternalEObject)newRootStream).eInverseAdd(this, PopPackage.ROOT_STREAM__POP, RootStream.class, msgs);
+        msgs = ((InternalEObject)newRootStream).eInverseAdd(this, PopPackage.DEVELOPMENT_STREAM__POP,
+            DevelopmentStream.class, msgs);
       msgs = basicSetRootStream(newRootStream, msgs);
       if (msgs != null)
         msgs.dispatch();
@@ -516,13 +573,45 @@ public class PopImpl extends PopElementImpl implements Pop
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCheckoutManager(CheckoutManager newCheckoutManager)
+  public NotificationChain basicSetCheckoutManager(CheckoutManager newCheckoutManager, NotificationChain msgs)
   {
     CheckoutManager oldCheckoutManager = checkoutManager;
     checkoutManager = newCheckoutManager;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.POP__CHECKOUT_MANAGER, oldCheckoutManager,
-          checkoutManager));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PopPackage.POP__CHECKOUT_MANAGER,
+          oldCheckoutManager, newCheckoutManager);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCheckoutManager(CheckoutManager newCheckoutManager)
+  {
+    if (newCheckoutManager != checkoutManager)
+    {
+      NotificationChain msgs = null;
+      if (checkoutManager != null)
+        msgs = ((InternalEObject)checkoutManager).eInverseRemove(this, PopPackage.CHECKOUT_MANAGER__POP,
+            CheckoutManager.class, msgs);
+      if (newCheckoutManager != null)
+        msgs = ((InternalEObject)newCheckoutManager).eInverseAdd(this, PopPackage.CHECKOUT_MANAGER__POP,
+            CheckoutManager.class, msgs);
+      msgs = basicSetCheckoutManager(newCheckoutManager, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.POP__CHECKOUT_MANAGER, newCheckoutManager,
+          newCheckoutManager));
   }
 
   /**
@@ -536,6 +625,10 @@ public class PopImpl extends PopElementImpl implements Pop
   {
     switch (featureID)
     {
+    case PopPackage.POP__TASKS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
+    case PopPackage.POP__TASK_GROUPS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
     case PopPackage.POP__DEVELOPERS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getDevelopers()).basicAdd(otherEnd, msgs);
     case PopPackage.POP__REPOSITORY:
@@ -547,12 +640,17 @@ public class PopImpl extends PopElementImpl implements Pop
       if (rootStream != null)
         msgs = ((InternalEObject)rootStream).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - PopPackage.POP__ROOT_STREAM,
             null, msgs);
-      return basicSetRootStream((RootStream)otherEnd, msgs);
+      return basicSetRootStream((DevelopmentStream)otherEnd, msgs);
     case PopPackage.POP__PRIMARY_MODULE:
       if (primaryModule != null)
         msgs = ((InternalEObject)primaryModule).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
             - PopPackage.POP__PRIMARY_MODULE, null, msgs);
       return basicSetPrimaryModule((PrimaryModule)otherEnd, msgs);
+    case PopPackage.POP__CHECKOUT_MANAGER:
+      if (checkoutManager != null)
+        msgs = ((InternalEObject)checkoutManager).eInverseRemove(this, PopPackage.CHECKOUT_MANAGER__POP,
+            CheckoutManager.class, msgs);
+      return basicSetCheckoutManager((CheckoutManager)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -567,6 +665,10 @@ public class PopImpl extends PopElementImpl implements Pop
   {
     switch (featureID)
     {
+    case PopPackage.POP__TASKS:
+      return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
+    case PopPackage.POP__TASK_GROUPS:
+      return ((InternalEList<?>)getTaskGroups()).basicRemove(otherEnd, msgs);
     case PopPackage.POP__DEVELOPERS:
       return ((InternalEList<?>)getDevelopers()).basicRemove(otherEnd, msgs);
     case PopPackage.POP__REPOSITORY:
@@ -575,6 +677,8 @@ public class PopImpl extends PopElementImpl implements Pop
       return basicSetRootStream(null, msgs);
     case PopPackage.POP__PRIMARY_MODULE:
       return basicSetPrimaryModule(null, msgs);
+    case PopPackage.POP__CHECKOUT_MANAGER:
+      return basicSetCheckoutManager(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -589,6 +693,10 @@ public class PopImpl extends PopElementImpl implements Pop
   {
     switch (featureID)
     {
+    case PopPackage.POP__TASKS:
+      return getTasks();
+    case PopPackage.POP__TASK_GROUPS:
+      return getTaskGroups();
     case PopPackage.POP__MANAGER:
       if (resolve)
         return getManager();
@@ -630,6 +738,14 @@ public class PopImpl extends PopElementImpl implements Pop
   {
     switch (featureID)
     {
+    case PopPackage.POP__TASKS:
+      getTasks().clear();
+      getTasks().addAll((Collection<? extends Task>)newValue);
+      return;
+    case PopPackage.POP__TASK_GROUPS:
+      getTaskGroups().clear();
+      getTaskGroups().addAll((Collection<? extends TaskGroup>)newValue);
+      return;
     case PopPackage.POP__NAME:
       setName((String)newValue);
       return;
@@ -641,7 +757,7 @@ public class PopImpl extends PopElementImpl implements Pop
       setRepository((Repository)newValue);
       return;
     case PopPackage.POP__ROOT_STREAM:
-      setRootStream((RootStream)newValue);
+      setRootStream((DevelopmentStream)newValue);
       return;
     case PopPackage.POP__PRIMARY_MODULE:
       setPrimaryModule((PrimaryModule)newValue);
@@ -663,6 +779,12 @@ public class PopImpl extends PopElementImpl implements Pop
   {
     switch (featureID)
     {
+    case PopPackage.POP__TASKS:
+      getTasks().clear();
+      return;
+    case PopPackage.POP__TASK_GROUPS:
+      getTaskGroups().clear();
+      return;
     case PopPackage.POP__NAME:
       setName(NAME_EDEFAULT);
       return;
@@ -673,7 +795,7 @@ public class PopImpl extends PopElementImpl implements Pop
       setRepository((Repository)null);
       return;
     case PopPackage.POP__ROOT_STREAM:
-      setRootStream((RootStream)null);
+      setRootStream((DevelopmentStream)null);
       return;
     case PopPackage.POP__PRIMARY_MODULE:
       setPrimaryModule((PrimaryModule)null);
@@ -695,6 +817,10 @@ public class PopImpl extends PopElementImpl implements Pop
   {
     switch (featureID)
     {
+    case PopPackage.POP__TASKS:
+      return tasks != null && !tasks.isEmpty();
+    case PopPackage.POP__TASK_GROUPS:
+      return taskGroups != null && !taskGroups.isEmpty();
     case PopPackage.POP__MANAGER:
       return basicGetManager() != null;
     case PopPackage.POP__NAME:
@@ -713,6 +839,52 @@ public class PopImpl extends PopElementImpl implements Pop
       return checkoutManager != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Assignee.class)
+    {
+      switch (derivedFeatureID)
+      {
+      case PopPackage.POP__TASKS:
+        return PopPackage.ASSIGNEE__TASKS;
+      case PopPackage.POP__TASK_GROUPS:
+        return PopPackage.ASSIGNEE__TASK_GROUPS;
+      default:
+        return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Assignee.class)
+    {
+      switch (baseFeatureID)
+      {
+      case PopPackage.ASSIGNEE__TASKS:
+        return PopPackage.POP__TASKS;
+      case PopPackage.ASSIGNEE__TASK_GROUPS:
+        return PopPackage.POP__TASK_GROUPS;
+      default:
+        return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

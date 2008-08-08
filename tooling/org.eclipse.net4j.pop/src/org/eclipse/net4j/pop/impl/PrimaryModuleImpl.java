@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: PrimaryModuleImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -31,7 +31,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getPop <em>Pop</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getWorkspaceSpecificationPath <em>Workspace Specification Path</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getSpecificationPath <em>Specification Path</em>}</li>
  * </ul>
  * </p>
  *
@@ -40,24 +40,24 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 {
   /**
-   * The default value of the '{@link #getWorkspaceSpecificationPath() <em>Workspace Specification Path</em>}' attribute.
+   * The default value of the '{@link #getSpecificationPath() <em>Specification Path</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWorkspaceSpecificationPath()
+   * @see #getSpecificationPath()
    * @generated
    * @ordered
    */
-  protected static final String WORKSPACE_SPECIFICATION_PATH_EDEFAULT = "product.xml"; //$NON-NLS-1$
+  protected static final String SPECIFICATION_PATH_EDEFAULT = "product.xml"; //$NON-NLS-1$
 
   /**
-   * The cached value of the '{@link #getWorkspaceSpecificationPath() <em>Workspace Specification Path</em>}' attribute.
+   * The cached value of the '{@link #getSpecificationPath() <em>Specification Path</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getWorkspaceSpecificationPath()
+   * @see #getSpecificationPath()
    * @generated
    * @ordered
    */
-  protected String workspaceSpecificationPath = WORKSPACE_SPECIFICATION_PATH_EDEFAULT;
+  protected String specificationPath = SPECIFICATION_PATH_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -144,9 +144,9 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getWorkspaceSpecificationPath()
+  public String getSpecificationPath()
   {
-    return workspaceSpecificationPath;
+    return specificationPath;
   }
 
   /**
@@ -154,13 +154,13 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWorkspaceSpecificationPath(String newWorkspaceSpecificationPath)
+  public void setSpecificationPath(String newSpecificationPath)
   {
-    String oldWorkspaceSpecificationPath = workspaceSpecificationPath;
-    workspaceSpecificationPath = newWorkspaceSpecificationPath;
+    String oldSpecificationPath = specificationPath;
+    specificationPath = newSpecificationPath;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH,
-          oldWorkspaceSpecificationPath, workspaceSpecificationPath));
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.PRIMARY_MODULE__SPECIFICATION_PATH,
+          oldSpecificationPath, specificationPath));
   }
 
   /**
@@ -227,8 +227,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
       if (resolve)
         return getPop();
       return basicGetPop();
-    case PopPackage.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH:
-      return getWorkspaceSpecificationPath();
+    case PopPackage.PRIMARY_MODULE__SPECIFICATION_PATH:
+      return getSpecificationPath();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -246,8 +246,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     case PopPackage.PRIMARY_MODULE__POP:
       setPop((Pop)newValue);
       return;
-    case PopPackage.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH:
-      setWorkspaceSpecificationPath((String)newValue);
+    case PopPackage.PRIMARY_MODULE__SPECIFICATION_PATH:
+      setSpecificationPath((String)newValue);
       return;
     }
     super.eSet(featureID, newValue);
@@ -266,8 +266,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     case PopPackage.PRIMARY_MODULE__POP:
       setPop((Pop)null);
       return;
-    case PopPackage.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH:
-      setWorkspaceSpecificationPath(WORKSPACE_SPECIFICATION_PATH_EDEFAULT);
+    case PopPackage.PRIMARY_MODULE__SPECIFICATION_PATH:
+      setSpecificationPath(SPECIFICATION_PATH_EDEFAULT);
       return;
     }
     super.eUnset(featureID);
@@ -285,9 +285,9 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
     {
     case PopPackage.PRIMARY_MODULE__POP:
       return basicGetPop() != null;
-    case PopPackage.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH:
-      return WORKSPACE_SPECIFICATION_PATH_EDEFAULT == null ? workspaceSpecificationPath != null
-          : !WORKSPACE_SPECIFICATION_PATH_EDEFAULT.equals(workspaceSpecificationPath);
+    case PopPackage.PRIMARY_MODULE__SPECIFICATION_PATH:
+      return SPECIFICATION_PATH_EDEFAULT == null ? specificationPath != null : !SPECIFICATION_PATH_EDEFAULT
+          .equals(specificationPath);
     }
     return super.eIsSet(featureID);
   }
@@ -304,8 +304,8 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
       return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (workspaceSpecificationPath: "); //$NON-NLS-1$
-    result.append(workspaceSpecificationPath);
+    result.append(" (specificationPath: "); //$NON-NLS-1$
+    result.append(specificationPath);
     result.append(')');
     return result.toString();
   }

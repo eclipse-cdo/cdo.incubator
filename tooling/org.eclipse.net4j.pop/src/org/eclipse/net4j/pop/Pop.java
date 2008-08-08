@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Pop.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: Pop.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -37,10 +37,11 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Pop extends PopElement
+public interface Pop extends PopElement, Assignee
 {
   /**
    * Returns the value of the '<em><b>Manager</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Manager</em>' reference isn't clear,
@@ -49,7 +50,8 @@ public interface Pop extends PopElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Manager</em>' reference.
    * @see org.eclipse.net4j.pop.PopPackage#getPop_Manager()
-   * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @see org.eclipse.net4j.pop.PopManager#getPops
+   * @model opposite="pops" required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   PopManager getManager();
@@ -143,7 +145,7 @@ public interface Pop extends PopElement
 
   /**
    * Returns the value of the '<em><b>Root Stream</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.RootStream#getPop <em>Pop</em>}'.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.DevelopmentStream#getPop <em>Pop</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Root Stream</em>' containment reference isn't clear,
@@ -151,13 +153,13 @@ public interface Pop extends PopElement
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Root Stream</em>' containment reference.
-   * @see #setRootStream(RootStream)
+   * @see #setRootStream(DevelopmentStream)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_RootStream()
-   * @see org.eclipse.net4j.pop.RootStream#getPop
+   * @see org.eclipse.net4j.pop.DevelopmentStream#getPop
    * @model opposite="pop" containment="true" resolveProxies="true" required="true"
    * @generated
    */
-  RootStream getRootStream();
+  DevelopmentStream getRootStream();
 
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getRootStream <em>Root Stream</em>}' containment reference.
@@ -167,7 +169,7 @@ public interface Pop extends PopElement
    * @see #getRootStream()
    * @generated
    */
-  void setRootStream(RootStream value);
+  void setRootStream(DevelopmentStream value);
 
   /**
    * Returns the value of the '<em><b>Primary Module</b></em>' containment reference.
@@ -199,6 +201,7 @@ public interface Pop extends PopElement
 
   /**
    * Returns the value of the '<em><b>Checkout Manager</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Checkout Manager</em>' reference isn't clear,
@@ -208,7 +211,8 @@ public interface Pop extends PopElement
    * @return the value of the '<em>Checkout Manager</em>' reference.
    * @see #setCheckoutManager(CheckoutManager)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_CheckoutManager()
-   * @model
+   * @see org.eclipse.net4j.pop.CheckoutManager#getPop
+   * @model opposite="pop"
    * @generated
    */
   CheckoutManager getCheckoutManager();

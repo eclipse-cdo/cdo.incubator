@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeveloperItemProvider.java,v 1.1 2008-08-07 17:42:15 estepper Exp $
+ * $Id: DeveloperItemProvider.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -193,8 +193,8 @@ public class DeveloperItemProvider extends PopElementItemProvider implements IEd
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(PopPackage.Literals.DEVELOPER__TASK_GROUPS);
-      childrenFeatures.add(PopPackage.Literals.DEVELOPER__TASKS);
+      childrenFeatures.add(PopPackage.Literals.ASSIGNEE__TASKS);
+      childrenFeatures.add(PopPackage.Literals.ASSIGNEE__TASK_GROUPS);
     }
     return childrenFeatures;
   }
@@ -261,8 +261,8 @@ public class DeveloperItemProvider extends PopElementItemProvider implements IEd
     case PopPackage.DEVELOPER__ACTIVE:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
-    case PopPackage.DEVELOPER__TASK_GROUPS:
     case PopPackage.DEVELOPER__TASKS:
+    case PopPackage.DEVELOPER__TASK_GROUPS:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
     }
@@ -281,11 +281,11 @@ public class DeveloperItemProvider extends PopElementItemProvider implements IEd
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
-    newChildDescriptors.add(createChildParameter(PopPackage.Literals.DEVELOPER__TASK_GROUPS, PopFactory.eINSTANCE
-        .createTaskGroup()));
+    newChildDescriptors
+        .add(createChildParameter(PopPackage.Literals.ASSIGNEE__TASKS, PopFactory.eINSTANCE.createTask()));
 
-    newChildDescriptors.add(createChildParameter(PopPackage.Literals.DEVELOPER__TASKS, PopFactory.eINSTANCE
-        .createTask()));
+    newChildDescriptors.add(createChildParameter(PopPackage.Literals.ASSIGNEE__TASK_GROUPS, PopFactory.eINSTANCE
+        .createTaskGroup()));
   }
 
 }

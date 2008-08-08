@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModule.java,v 1.1 2008-08-07 17:42:11 estepper Exp $
+ * $Id: PrimaryModule.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -21,7 +21,7 @@ package org.eclipse.net4j.pop;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.PrimaryModule#getPop <em>Pop</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.PrimaryModule#getWorkspaceSpecificationPath <em>Workspace Specification Path</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.PrimaryModule#getSpecificationPath <em>Specification Path</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,30 +60,30 @@ public interface PrimaryModule extends Module
   void setPop(Pop value);
 
   /**
-   * Returns the value of the '<em><b>Workspace Specification Path</b></em>' attribute.
+   * Returns the value of the '<em><b>Specification Path</b></em>' attribute.
    * The default value is <code>"product.xml"</code>.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Workspace Specification Path</em>' attribute isn't clear,
+   * If the meaning of the '<em>Specification Path</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Workspace Specification Path</em>' attribute.
-   * @see #setWorkspaceSpecificationPath(String)
-   * @see org.eclipse.net4j.pop.PopPackage#getPrimaryModule_WorkspaceSpecificationPath()
+   * @return the value of the '<em>Specification Path</em>' attribute.
+   * @see #setSpecificationPath(String)
+   * @see org.eclipse.net4j.pop.PopPackage#getPrimaryModule_SpecificationPath()
    * @model default="product.xml" required="true"
    * @generated
    */
-  String getWorkspaceSpecificationPath();
+  String getSpecificationPath();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.PrimaryModule#getWorkspaceSpecificationPath <em>Workspace Specification Path</em>}' attribute.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.PrimaryModule#getSpecificationPath <em>Specification Path</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Workspace Specification Path</em>' attribute.
-   * @see #getWorkspaceSpecificationPath()
+   * @param value the new value of the '<em>Specification Path</em>' attribute.
+   * @see #getSpecificationPath()
    * @generated
    */
-  void setWorkspaceSpecificationPath(String value);
+  void setSpecificationPath(String value);
 
 } // PrimaryModule

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackage.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: PopPackage.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -235,13 +235,31 @@ public interface PopPackage extends EPackage
   int POP__CLASS = POP_ELEMENT__CLASS;
 
   /**
+   * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP__TASKS = POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Task Groups</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP__TASK_GROUPS = POP_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Manager</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POP__MANAGER = POP_ELEMENT_FEATURE_COUNT + 0;
+  int POP__MANAGER = POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -250,7 +268,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__NAME = POP_ELEMENT_FEATURE_COUNT + 1;
+  int POP__NAME = POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Active</b></em>' attribute.
@@ -259,7 +277,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__ACTIVE = POP_ELEMENT_FEATURE_COUNT + 2;
+  int POP__ACTIVE = POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Developers</b></em>' containment reference list.
@@ -268,7 +286,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__DEVELOPERS = POP_ELEMENT_FEATURE_COUNT + 3;
+  int POP__DEVELOPERS = POP_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Repository</b></em>' containment reference.
@@ -277,7 +295,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__REPOSITORY = POP_ELEMENT_FEATURE_COUNT + 4;
+  int POP__REPOSITORY = POP_ELEMENT_FEATURE_COUNT + 6;
 
   /**
    * The feature id for the '<em><b>Root Stream</b></em>' containment reference.
@@ -286,7 +304,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__ROOT_STREAM = POP_ELEMENT_FEATURE_COUNT + 5;
+  int POP__ROOT_STREAM = POP_ELEMENT_FEATURE_COUNT + 7;
 
   /**
    * The feature id for the '<em><b>Primary Module</b></em>' containment reference.
@@ -295,7 +313,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__PRIMARY_MODULE = POP_ELEMENT_FEATURE_COUNT + 6;
+  int POP__PRIMARY_MODULE = POP_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The feature id for the '<em><b>Checkout Manager</b></em>' reference.
@@ -304,7 +322,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP__CHECKOUT_MANAGER = POP_ELEMENT_FEATURE_COUNT + 7;
+  int POP__CHECKOUT_MANAGER = POP_ELEMENT_FEATURE_COUNT + 9;
 
   /**
    * The number of structural features of the '<em>Pop</em>' class.
@@ -313,7 +331,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 8;
+  int POP_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 10;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.ModuleImpl <em>Module</em>}' class.
@@ -426,13 +444,13 @@ public interface PopPackage extends EPackage
   int PRIMARY_MODULE__POP = MODULE_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Workspace Specification Path</b></em>' attribute.
+   * The feature id for the '<em><b>Specification Path</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH = MODULE_FEATURE_COUNT + 1;
+  int PRIMARY_MODULE__SPECIFICATION_PATH = MODULE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Primary Module</em>' class.
@@ -554,67 +572,13 @@ public interface PopPackage extends EPackage
   int DEVELOPER__CLASS = POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Pop</b></em>' container reference.
+   * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVELOPER__POP = POP_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Repository User</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPER__REPOSITORY_USER = POP_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPER__NAME = POP_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Email</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPER__EMAIL = POP_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
-   * The feature id for the '<em><b>Entry</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPER__ENTRY = POP_ELEMENT_FEATURE_COUNT + 4;
-
-  /**
-   * The feature id for the '<em><b>Exit</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPER__EXIT = POP_ELEMENT_FEATURE_COUNT + 5;
-
-  /**
-   * The feature id for the '<em><b>Active</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DEVELOPER__ACTIVE = POP_ELEMENT_FEATURE_COUNT + 6;
+  int DEVELOPER__TASKS = POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Task Groups</b></em>' containment reference list.
@@ -623,16 +587,70 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int DEVELOPER__TASK_GROUPS = POP_ELEMENT_FEATURE_COUNT + 7;
+  int DEVELOPER__TASK_GROUPS = POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+   * The feature id for the '<em><b>Pop</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVELOPER__TASKS = POP_ELEMENT_FEATURE_COUNT + 8;
+  int DEVELOPER__POP = POP_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Repository User</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__REPOSITORY_USER = POP_ELEMENT_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__NAME = POP_ELEMENT_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Email</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__EMAIL = POP_ELEMENT_FEATURE_COUNT + 5;
+
+  /**
+   * The feature id for the '<em><b>Entry</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__ENTRY = POP_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The feature id for the '<em><b>Exit</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__EXIT = POP_ELEMENT_FEATURE_COUNT + 7;
+
+  /**
+   * The feature id for the '<em><b>Active</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__ACTIVE = POP_ELEMENT_FEATURE_COUNT + 8;
 
   /**
    * The number of structural features of the '<em>Developer</em>' class.
@@ -672,49 +690,40 @@ public interface PopPackage extends EPackage
   int TASK_GROUP__CLASS = POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_GROUP__NAME = POP_ELEMENT_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Developer</b></em>' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_GROUP__DEVELOPER = POP_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Parent</b></em>' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_GROUP__PARENT = POP_ELEMENT_FEATURE_COUNT + 2;
-
-  /**
-   * The feature id for the '<em><b>Children</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK_GROUP__CHILDREN = POP_ELEMENT_FEATURE_COUNT + 3;
-
-  /**
    * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK_GROUP__TASKS = POP_ELEMENT_FEATURE_COUNT + 4;
+  int TASK_GROUP__TASKS = POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Task Groups</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_GROUP__TASK_GROUPS = POP_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_GROUP__NAME = POP_ELEMENT_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Assignee</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_GROUP__ASSIGNEE = POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Task Group</em>' class.
@@ -723,7 +732,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_GROUP_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 5;
+  int TASK_GROUP_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.TaskImpl <em>Task</em>}' class.
@@ -763,22 +772,13 @@ public interface PopPackage extends EPackage
   int TASK__MYLYN_ID = POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Developer</b></em>' container reference.
+   * The feature id for the '<em><b>Assignee</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TASK__DEVELOPER = POP_ELEMENT_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Task Group</b></em>' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int TASK__TASK_GROUP = POP_ELEMENT_FEATURE_COUNT + 2;
+  int TASK__ASSIGNEE = POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Targets</b></em>' reference list.
@@ -787,7 +787,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK__TARGETS = POP_ELEMENT_FEATURE_COUNT + 3;
+  int TASK__TARGETS = POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Task</em>' class.
@@ -796,7 +796,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TASK_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 4;
+  int TASK_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.CheckoutDiscriminatorImpl <em>Checkout Discriminator</em>}' class.
@@ -1583,13 +1583,22 @@ public interface PopPackage extends EPackage
   int DEVELOPMENT_STREAM__MAINTENANCE_STREAMS = INTEGRATION_STREAM_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Pop</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPMENT_STREAM__POP = INTEGRATION_STREAM_FEATURE_COUNT + 1;
+
+  /**
    * The number of structural features of the '<em>Development Stream</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DEVELOPMENT_STREAM_FEATURE_COUNT = INTEGRATION_STREAM_FEATURE_COUNT + 1;
+  int DEVELOPMENT_STREAM_FEATURE_COUNT = INTEGRATION_STREAM_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.MaintenanceStreamImpl <em>Maintenance Stream</em>}' class.
@@ -1683,97 +1692,6 @@ public interface PopPackage extends EPackage
   int MAINTENANCE_STREAM_FEATURE_COUNT = INTEGRATION_STREAM_FEATURE_COUNT + 2;
 
   /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.impl.RootStreamImpl <em>Root Stream</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.eclipse.net4j.pop.impl.RootStreamImpl
-   * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRootStream()
-   * @generated
-   */
-  int ROOT_STREAM = 22;
-
-  /**
-   * The feature id for the '<em><b>Id</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__ID = DEVELOPMENT_STREAM__ID;
-
-  /**
-   * The feature id for the '<em><b>Class</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__CLASS = DEVELOPMENT_STREAM__CLASS;
-
-  /**
-   * The feature id for the '<em><b>Branch</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__BRANCH = DEVELOPMENT_STREAM__BRANCH;
-
-  /**
-   * The feature id for the '<em><b>Integrations</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__INTEGRATIONS = DEVELOPMENT_STREAM__INTEGRATIONS;
-
-  /**
-   * The feature id for the '<em><b>Delivery Streams</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__DELIVERY_STREAMS = DEVELOPMENT_STREAM__DELIVERY_STREAMS;
-
-  /**
-   * The feature id for the '<em><b>Releases</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__RELEASES = DEVELOPMENT_STREAM__RELEASES;
-
-  /**
-   * The feature id for the '<em><b>Maintenance Streams</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__MAINTENANCE_STREAMS = DEVELOPMENT_STREAM__MAINTENANCE_STREAMS;
-
-  /**
-   * The feature id for the '<em><b>Pop</b></em>' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM__POP = DEVELOPMENT_STREAM_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Root Stream</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ROOT_STREAM_FEATURE_COUNT = DEVELOPMENT_STREAM_FEATURE_COUNT + 1;
-
-  /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.TargetImpl <em>Target</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1781,7 +1699,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getTarget()
    * @generated
    */
-  int TARGET = 23;
+  int TARGET = 22;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1845,7 +1763,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRelease()
    * @generated
    */
-  int RELEASE = 24;
+  int RELEASE = 23;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1945,7 +1863,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getMilestone()
    * @generated
    */
-  int MILESTONE = 25;
+  int MILESTONE = 24;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2027,7 +1945,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getDelivery()
    * @generated
    */
-  int DELIVERY = 26;
+  int DELIVERY = 25;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2109,7 +2027,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIntegration()
    * @generated
    */
-  int INTEGRATION = 27;
+  int INTEGRATION = 26;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2182,7 +2100,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getCheckoutManager()
    * @generated
    */
-  int CHECKOUT_MANAGER = 28;
+  int CHECKOUT_MANAGER = 27;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2203,7 +2121,7 @@ public interface PopPackage extends EPackage
   int CHECKOUT_MANAGER__CLASS = POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Pop</b></em>' reference list.
+   * The feature id for the '<em><b>Pop</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2255,7 +2173,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getCheckout()
    * @generated
    */
-  int CHECKOUT = 29;
+  int CHECKOUT = 28;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2355,7 +2273,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getWorkspaceSpecification()
    * @generated
    */
-  int WORKSPACE_SPECIFICATION = 30;
+  int WORKSPACE_SPECIFICATION = 29;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2419,7 +2337,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getSecondaryModule()
    * @generated
    */
-  int SECONDARY_MODULE = 31;
+  int SECONDARY_MODULE = 30;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2483,7 +2401,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getWorkspaceConfigurator()
    * @generated
    */
-  int WORKSPACE_CONFIGURATOR = 32;
+  int WORKSPACE_CONFIGURATOR = 31;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2520,6 +2438,43 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int WORKSPACE_CONFIGURATOR_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.impl.AssigneeImpl <em>Assignee</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.impl.AssigneeImpl
+   * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getAssignee()
+   * @generated
+   */
+  int ASSIGNEE = 32;
+
+  /**
+   * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNEE__TASKS = 0;
+
+  /**
+   * The feature id for the '<em><b>Task Groups</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNEE__TASK_GROUPS = 1;
+
+  /**
+   * The number of structural features of the '<em>Assignee</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNEE_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.CheckoutState <em>Checkout State</em>}' enum.
@@ -2816,15 +2771,15 @@ public interface PopPackage extends EPackage
   EReference getPrimaryModule_Pop();
 
   /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.PrimaryModule#getWorkspaceSpecificationPath <em>Workspace Specification Path</em>}'.
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.PrimaryModule#getSpecificationPath <em>Specification Path</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Workspace Specification Path</em>'.
-   * @see org.eclipse.net4j.pop.PrimaryModule#getWorkspaceSpecificationPath()
+   * @return the meta object for the attribute '<em>Specification Path</em>'.
+   * @see org.eclipse.net4j.pop.PrimaryModule#getSpecificationPath()
    * @see #getPrimaryModule()
    * @generated
    */
-  EAttribute getPrimaryModule_WorkspaceSpecificationPath();
+  EAttribute getPrimaryModule_SpecificationPath();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Repository <em>Repository</em>}'.
@@ -2979,28 +2934,6 @@ public interface PopPackage extends EPackage
   EAttribute getDeveloper_Active();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.Developer#getTaskGroups <em>Task Groups</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Task Groups</em>'.
-   * @see org.eclipse.net4j.pop.Developer#getTaskGroups()
-   * @see #getDeveloper()
-   * @generated
-   */
-  EReference getDeveloper_TaskGroups();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.Developer#getTasks <em>Tasks</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Tasks</em>'.
-   * @see org.eclipse.net4j.pop.Developer#getTasks()
-   * @see #getDeveloper()
-   * @generated
-   */
-  EReference getDeveloper_Tasks();
-
-  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.TaskGroup <em>Task Group</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3022,48 +2955,15 @@ public interface PopPackage extends EPackage
   EAttribute getTaskGroup_Name();
 
   /**
-   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.TaskGroup#getDeveloper <em>Developer</em>}'.
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.TaskGroup#getAssignee <em>Assignee</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the container reference '<em>Developer</em>'.
-   * @see org.eclipse.net4j.pop.TaskGroup#getDeveloper()
+   * @return the meta object for the container reference '<em>Assignee</em>'.
+   * @see org.eclipse.net4j.pop.TaskGroup#getAssignee()
    * @see #getTaskGroup()
    * @generated
    */
-  EReference getTaskGroup_Developer();
-
-  /**
-   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.TaskGroup#getParent <em>Parent</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the container reference '<em>Parent</em>'.
-   * @see org.eclipse.net4j.pop.TaskGroup#getParent()
-   * @see #getTaskGroup()
-   * @generated
-   */
-  EReference getTaskGroup_Parent();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.TaskGroup#getChildren <em>Children</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Children</em>'.
-   * @see org.eclipse.net4j.pop.TaskGroup#getChildren()
-   * @see #getTaskGroup()
-   * @generated
-   */
-  EReference getTaskGroup_Children();
-
-  /**
-   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.TaskGroup#getTasks <em>Tasks</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Tasks</em>'.
-   * @see org.eclipse.net4j.pop.TaskGroup#getTasks()
-   * @see #getTaskGroup()
-   * @generated
-   */
-  EReference getTaskGroup_Tasks();
+  EReference getTaskGroup_Assignee();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Task <em>Task</em>}'.
@@ -3087,26 +2987,15 @@ public interface PopPackage extends EPackage
   EAttribute getTask_MylynId();
 
   /**
-   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.Task#getDeveloper <em>Developer</em>}'.
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the container reference '<em>Developer</em>'.
-   * @see org.eclipse.net4j.pop.Task#getDeveloper()
+   * @return the meta object for the container reference '<em>Assignee</em>'.
+   * @see org.eclipse.net4j.pop.Task#getAssignee()
    * @see #getTask()
    * @generated
    */
-  EReference getTask_Developer();
-
-  /**
-   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.Task#getTaskGroup <em>Task Group</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the container reference '<em>Task Group</em>'.
-   * @see org.eclipse.net4j.pop.Task#getTaskGroup()
-   * @see #getTask()
-   * @generated
-   */
-  EReference getTask_TaskGroup();
+  EReference getTask_Assignee();
 
   /**
    * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.Task#getTargets <em>Targets</em>}'.
@@ -3473,6 +3362,17 @@ public interface PopPackage extends EPackage
   EReference getDevelopmentStream_MaintenanceStreams();
 
   /**
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.DevelopmentStream#getPop <em>Pop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Pop</em>'.
+   * @see org.eclipse.net4j.pop.DevelopmentStream#getPop()
+   * @see #getDevelopmentStream()
+   * @generated
+   */
+  EReference getDevelopmentStream_Pop();
+
+  /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.MaintenanceStream <em>Maintenance Stream</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3503,27 +3403,6 @@ public interface PopPackage extends EPackage
    * @generated
    */
   EReference getMaintenanceStream_Baseline();
-
-  /**
-   * Returns the meta object for class '{@link org.eclipse.net4j.pop.RootStream <em>Root Stream</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Root Stream</em>'.
-   * @see org.eclipse.net4j.pop.RootStream
-   * @generated
-   */
-  EClass getRootStream();
-
-  /**
-   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.RootStream#getPop <em>Pop</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the container reference '<em>Pop</em>'.
-   * @see org.eclipse.net4j.pop.RootStream#getPop()
-   * @see #getRootStream()
-   * @generated
-   */
-  EReference getRootStream_Pop();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Target <em>Target</em>}'.
@@ -3751,10 +3630,10 @@ public interface PopPackage extends EPackage
   EClass getCheckoutManager();
 
   /**
-   * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}'.
+   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Pop</em>'.
+   * @return the meta object for the reference '<em>Pop</em>'.
    * @see org.eclipse.net4j.pop.CheckoutManager#getPop()
    * @see #getCheckoutManager()
    * @generated
@@ -3965,6 +3844,38 @@ public interface PopPackage extends EPackage
    * @generated
    */
   EReference getWorkspaceConfigurator_WorkspaceSpecification();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.net4j.pop.Assignee <em>Assignee</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Assignee</em>'.
+   * @see org.eclipse.net4j.pop.Assignee
+   * @generated
+   */
+  EClass getAssignee();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.Assignee#getTasks <em>Tasks</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Tasks</em>'.
+   * @see org.eclipse.net4j.pop.Assignee#getTasks()
+   * @see #getAssignee()
+   * @generated
+   */
+  EReference getAssignee_Tasks();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.Assignee#getTaskGroups <em>Task Groups</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Task Groups</em>'.
+   * @see org.eclipse.net4j.pop.Assignee#getTaskGroups()
+   * @see #getAssignee()
+   * @generated
+   */
+  EReference getAssignee_TaskGroups();
 
   /**
    * Returns the meta object for enum '{@link org.eclipse.net4j.pop.CheckoutState <em>Checkout State</em>}'.
@@ -4248,12 +4159,12 @@ public interface PopPackage extends EPackage
     EReference PRIMARY_MODULE__POP = eINSTANCE.getPrimaryModule_Pop();
 
     /**
-     * The meta object literal for the '<em><b>Workspace Specification Path</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Specification Path</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH = eINSTANCE.getPrimaryModule_WorkspaceSpecificationPath();
+    EAttribute PRIMARY_MODULE__SPECIFICATION_PATH = eINSTANCE.getPrimaryModule_SpecificationPath();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.RepositoryImpl <em>Repository</em>}' class.
@@ -4372,22 +4283,6 @@ public interface PopPackage extends EPackage
     EAttribute DEVELOPER__ACTIVE = eINSTANCE.getDeveloper_Active();
 
     /**
-     * The meta object literal for the '<em><b>Task Groups</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEVELOPER__TASK_GROUPS = eINSTANCE.getDeveloper_TaskGroups();
-
-    /**
-     * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference DEVELOPER__TASKS = eINSTANCE.getDeveloper_Tasks();
-
-    /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.TaskGroupImpl <em>Task Group</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4406,36 +4301,12 @@ public interface PopPackage extends EPackage
     EAttribute TASK_GROUP__NAME = eINSTANCE.getTaskGroup_Name();
 
     /**
-     * The meta object literal for the '<em><b>Developer</b></em>' container reference feature.
+     * The meta object literal for the '<em><b>Assignee</b></em>' container reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TASK_GROUP__DEVELOPER = eINSTANCE.getTaskGroup_Developer();
-
-    /**
-     * The meta object literal for the '<em><b>Parent</b></em>' container reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TASK_GROUP__PARENT = eINSTANCE.getTaskGroup_Parent();
-
-    /**
-     * The meta object literal for the '<em><b>Children</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TASK_GROUP__CHILDREN = eINSTANCE.getTaskGroup_Children();
-
-    /**
-     * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TASK_GROUP__TASKS = eINSTANCE.getTaskGroup_Tasks();
+    EReference TASK_GROUP__ASSIGNEE = eINSTANCE.getTaskGroup_Assignee();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.TaskImpl <em>Task</em>}' class.
@@ -4456,20 +4327,12 @@ public interface PopPackage extends EPackage
     EAttribute TASK__MYLYN_ID = eINSTANCE.getTask_MylynId();
 
     /**
-     * The meta object literal for the '<em><b>Developer</b></em>' container reference feature.
+     * The meta object literal for the '<em><b>Assignee</b></em>' container reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TASK__DEVELOPER = eINSTANCE.getTask_Developer();
-
-    /**
-     * The meta object literal for the '<em><b>Task Group</b></em>' container reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference TASK__TASK_GROUP = eINSTANCE.getTask_TaskGroup();
+    EReference TASK__ASSIGNEE = eINSTANCE.getTask_Assignee();
 
     /**
      * The meta object literal for the '<em><b>Targets</b></em>' reference list feature.
@@ -4764,6 +4627,14 @@ public interface PopPackage extends EPackage
     EReference DEVELOPMENT_STREAM__MAINTENANCE_STREAMS = eINSTANCE.getDevelopmentStream_MaintenanceStreams();
 
     /**
+     * The meta object literal for the '<em><b>Pop</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DEVELOPMENT_STREAM__POP = eINSTANCE.getDevelopmentStream_Pop();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.MaintenanceStreamImpl <em>Maintenance Stream</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4788,24 +4659,6 @@ public interface PopPackage extends EPackage
      * @generated
      */
     EReference MAINTENANCE_STREAM__BASELINE = eINSTANCE.getMaintenanceStream_Baseline();
-
-    /**
-     * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.RootStreamImpl <em>Root Stream</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.eclipse.net4j.pop.impl.RootStreamImpl
-     * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRootStream()
-     * @generated
-     */
-    EClass ROOT_STREAM = eINSTANCE.getRootStream();
-
-    /**
-     * The meta object literal for the '<em><b>Pop</b></em>' container reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference ROOT_STREAM__POP = eINSTANCE.getRootStream_Pop();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.TargetImpl <em>Target</em>}' class.
@@ -4988,7 +4841,7 @@ public interface PopPackage extends EPackage
     EClass CHECKOUT_MANAGER = eINSTANCE.getCheckoutManager();
 
     /**
-     * The meta object literal for the '<em><b>Pop</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Pop</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -5156,6 +5009,32 @@ public interface PopPackage extends EPackage
      */
     EReference WORKSPACE_CONFIGURATOR__WORKSPACE_SPECIFICATION = eINSTANCE
         .getWorkspaceConfigurator_WorkspaceSpecification();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.AssigneeImpl <em>Assignee</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.net4j.pop.impl.AssigneeImpl
+     * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getAssignee()
+     * @generated
+     */
+    EClass ASSIGNEE = eINSTANCE.getAssignee();
+
+    /**
+     * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNEE__TASKS = eINSTANCE.getAssignee_Tasks();
+
+    /**
+     * The meta object literal for the '<em><b>Task Groups</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNEE__TASK_GROUPS = eINSTANCE.getAssignee_TaskGroups();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.CheckoutState <em>Checkout State</em>}' enum.

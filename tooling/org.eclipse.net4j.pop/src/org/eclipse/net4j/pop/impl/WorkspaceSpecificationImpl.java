@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceSpecificationImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: WorkspaceSpecificationImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -133,13 +133,45 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCheckout(Checkout newCheckout)
+  public NotificationChain basicSetCheckout(Checkout newCheckout, NotificationChain msgs)
   {
     Checkout oldCheckout = checkout;
     checkout = newCheckout;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT, oldCheckout,
-          checkout));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+          PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT, oldCheckout, newCheckout);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setCheckout(Checkout newCheckout)
+  {
+    if (newCheckout != checkout)
+    {
+      NotificationChain msgs = null;
+      if (checkout != null)
+        msgs = ((InternalEObject)checkout).eInverseRemove(this, PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION,
+            Checkout.class, msgs);
+      if (newCheckout != null)
+        msgs = ((InternalEObject)newCheckout).eInverseAdd(this, PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION,
+            Checkout.class, msgs);
+      msgs = basicSetCheckout(newCheckout, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT, newCheckout,
+          newCheckout));
   }
 
   /**
@@ -184,6 +216,11 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   {
     switch (featureID)
     {
+    case PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT:
+      if (checkout != null)
+        msgs = ((InternalEObject)checkout).eInverseRemove(this, PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION,
+            Checkout.class, msgs);
+      return basicSetCheckout((Checkout)otherEnd, msgs);
     case PopPackage.WORKSPACE_SPECIFICATION__SECONDARY_MODULES:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getSecondaryModules()).basicAdd(otherEnd, msgs);
     case PopPackage.WORKSPACE_SPECIFICATION__WORKSPACE_CONFIGURATORS:
@@ -202,6 +239,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   {
     switch (featureID)
     {
+    case PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT:
+      return basicSetCheckout(null, msgs);
     case PopPackage.WORKSPACE_SPECIFICATION__SECONDARY_MODULES:
       return ((InternalEList<?>)getSecondaryModules()).basicRemove(otherEnd, msgs);
     case PopPackage.WORKSPACE_SPECIFICATION__WORKSPACE_CONFIGURATORS:

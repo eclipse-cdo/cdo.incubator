@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManagerImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: CheckoutManagerImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
-import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.core.runtime.IPath;
@@ -50,14 +49,14 @@ import java.util.Collection;
 public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManager
 {
   /**
-   * The cached value of the '{@link #getPop() <em>Pop</em>}' reference list.
+   * The cached value of the '{@link #getPop() <em>Pop</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPop()
    * @generated
    * @ordered
    */
-  protected EList<Pop> pop;
+  protected Pop pop;
 
   /**
    * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
@@ -115,13 +114,72 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Pop> getPop()
+  public Pop getPop()
   {
-    if (pop == null)
+    if (pop != null && pop.eIsProxy())
     {
-      pop = new EObjectResolvingEList<Pop>(Pop.class, this, PopPackage.CHECKOUT_MANAGER__POP);
+      InternalEObject oldPop = (InternalEObject)pop;
+      pop = (Pop)eResolveProxy(oldPop);
+      if (pop != oldPop)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PopPackage.CHECKOUT_MANAGER__POP, oldPop, pop));
+      }
     }
     return pop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Pop basicGetPop()
+  {
+    return pop;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
+  {
+    Pop oldPop = pop;
+    pop = newPop;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PopPackage.CHECKOUT_MANAGER__POP,
+          oldPop, newPop);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setPop(Pop newPop)
+  {
+    if (newPop != pop)
+    {
+      NotificationChain msgs = null;
+      if (pop != null)
+        msgs = ((InternalEObject)pop).eInverseRemove(this, PopPackage.POP__CHECKOUT_MANAGER, Pop.class, msgs);
+      if (newPop != null)
+        msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__CHECKOUT_MANAGER, Pop.class, msgs);
+      msgs = basicSetPop(newPop, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.CHECKOUT_MANAGER__POP, newPop, newPop));
   }
 
   /**
@@ -186,6 +244,10 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
   {
     switch (featureID)
     {
+    case PopPackage.CHECKOUT_MANAGER__POP:
+      if (pop != null)
+        msgs = ((InternalEObject)pop).eInverseRemove(this, PopPackage.POP__CHECKOUT_MANAGER, Pop.class, msgs);
+      return basicSetPop((Pop)otherEnd, msgs);
     case PopPackage.CHECKOUT_MANAGER__CHECKOUTS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getCheckouts()).basicAdd(otherEnd, msgs);
     }
@@ -202,6 +264,8 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
   {
     switch (featureID)
     {
+    case PopPackage.CHECKOUT_MANAGER__POP:
+      return basicSetPop(null, msgs);
     case PopPackage.CHECKOUT_MANAGER__CHECKOUTS:
       return ((InternalEList<?>)getCheckouts()).basicRemove(otherEnd, msgs);
     }
@@ -219,7 +283,9 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
     switch (featureID)
     {
     case PopPackage.CHECKOUT_MANAGER__POP:
-      return getPop();
+      if (resolve)
+        return getPop();
+      return basicGetPop();
     case PopPackage.CHECKOUT_MANAGER__LOCATION:
       return getLocation();
     case PopPackage.CHECKOUT_MANAGER__CHECKOUTS:
@@ -242,8 +308,7 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
     switch (featureID)
     {
     case PopPackage.CHECKOUT_MANAGER__POP:
-      getPop().clear();
-      getPop().addAll((Collection<? extends Pop>)newValue);
+      setPop((Pop)newValue);
       return;
     case PopPackage.CHECKOUT_MANAGER__CHECKOUTS:
       getCheckouts().clear();
@@ -267,7 +332,7 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
     switch (featureID)
     {
     case PopPackage.CHECKOUT_MANAGER__POP:
-      getPop().clear();
+      setPop((Pop)null);
       return;
     case PopPackage.CHECKOUT_MANAGER__CHECKOUTS:
       getCheckouts().clear();
@@ -290,7 +355,7 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
     switch (featureID)
     {
     case PopPackage.CHECKOUT_MANAGER__POP:
-      return pop != null && !pop.isEmpty();
+      return pop != null;
     case PopPackage.CHECKOUT_MANAGER__LOCATION:
       return LOCATION_EDEFAULT == null ? getLocation() != null : !LOCATION_EDEFAULT.equals(getLocation());
     case PopPackage.CHECKOUT_MANAGER__CHECKOUTS:

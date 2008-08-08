@@ -17,12 +17,12 @@
   <eClassifiers xsi:type="ecore:EClass" name="PopManager" abstract="true" interface="true"
       eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pops" upperBound="-1" eType="#//Pop"
-        changeable="false" volatile="true" transient="true" derived="true"/>
+        changeable="false" volatile="true" transient="true" derived="true" eOpposite="#//Pop/manager"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//PopElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//PopElement #//Assignee">
     <eStructuralFeatures xsi:type="ecore:EReference" name="manager" lowerBound="1"
         eType="#//PopManager" changeable="false" volatile="true" transient="true"
-        derived="true"/>
+        derived="true" eOpposite="#//PopManager/pops"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
@@ -32,10 +32,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
         eType="#//Repository" containment="true" eOpposite="#//Repository/pop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="rootStream" lowerBound="1"
-        eType="#//RootStream" containment="true" eOpposite="#//RootStream/pop"/>
+        eType="#//DevelopmentStream" containment="true" eOpposite="#//DevelopmentStream/pop"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="primaryModule" lowerBound="1"
         eType="#//PrimaryModule" containment="true" eOpposite="#//PrimaryModule/pop"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="checkoutManager" eType="#//CheckoutManager"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkoutManager" eType="#//CheckoutManager"
+        eOpposite="#//CheckoutManager/pop"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Module" abstract="true" eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -45,9 +46,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="PrimaryModule" eSuperTypes="#//Module">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
         eOpposite="#//Pop/primaryModule"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workspaceSpecificationPath"
-        lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        defaultValueLiteral="product.xml"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="specificationPath" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" defaultValueLiteral="product.xml"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
@@ -62,7 +62,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
         eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/repository"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Developer" eSuperTypes="#//PopElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Developer" eSuperTypes="#//PopElement #//Assignee">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
         eOpposite="#//Pop/developers"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryUser" lowerBound="1"
@@ -74,29 +74,17 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="active" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
         volatile="true" transient="true" derived="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="taskGroups" upperBound="-1"
-        eType="#//TaskGroup" containment="true" eOpposite="#//TaskGroup/developer"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="#//Task" containment="true" eOpposite="#//Task/developer"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskGroup" eSuperTypes="#//PopElement">
+  <eClassifiers xsi:type="ecore:EClass" name="TaskGroup" eSuperTypes="#//PopElement #//Assignee">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="developer" eType="#//Developer"
-        eOpposite="#//Developer/taskGroups"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parent" eType="#//TaskGroup"
-        eOpposite="#//TaskGroup/children"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//TaskGroup" containment="true" eOpposite="#//TaskGroup/parent"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="#//Task" containment="true" eOpposite="#//Task/taskGroup"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" lowerBound="1"
+        eType="#//Assignee" eOpposite="#//Assignee/taskGroups"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="mylynId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="developer" eType="#//Developer"
-        eOpposite="#//Developer/tasks"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="taskGroup" eType="#//TaskGroup"
-        eOpposite="#//TaskGroup/tasks"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="assignee" lowerBound="1"
+        eType="#//Assignee" eOpposite="#//Assignee/tasks"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" lowerBound="1"
         upperBound="-1" eType="#//Target" eOpposite="#//Target/tasks"/>
   </eClassifiers>
@@ -109,7 +97,8 @@
         eType="#//RepositoryTag" changeable="false" volatile="true" transient="true"
         derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkout" eType="#//Checkout"
-        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false"/>
+        changeable="false" volatile="true" transient="true" derived="true" resolveProxies="false"
+        eOpposite="#//Checkout/discriminator"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Tag" eSuperTypes="#//CheckoutDiscriminator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="branch" lowerBound="1"
@@ -173,16 +162,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="DevelopmentStream" abstract="true" eSuperTypes="#//IntegrationStream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="maintenanceStreams" upperBound="-1"
         eType="#//MaintenanceStream" containment="true" eOpposite="#//MaintenanceStream/parent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
+        eOpposite="#//Pop/rootStream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MaintenanceStream" eSuperTypes="#//IntegrationStream">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//DevelopmentStream" eOpposite="#//DevelopmentStream/maintenanceStreams"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="baseline" lowerBound="1"
         eType="#//Release" eOpposite="#//Release/maintenance"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="RootStream" eSuperTypes="#//DevelopmentStream">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
-        eOpposite="#//Pop/rootStream"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Target" abstract="true" eSuperTypes="#//TaggedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -221,8 +208,8 @@
         eType="#//Delivery" eOpposite="#//Delivery/merges"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckoutManager" eSuperTypes="#//PopElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" upperBound="-1"
-        eType="#//Pop"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
+        eOpposite="#//Pop/checkoutManager"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
         eType="#//Path" changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkouts" upperBound="-1"
@@ -234,7 +221,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="manager" lowerBound="1"
         eType="#//CheckoutManager" resolveProxies="false" eOpposite="#//CheckoutManager/checkouts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminator" lowerBound="1"
-        eType="#//CheckoutDiscriminator" resolveProxies="false"/>
+        eType="#//CheckoutDiscriminator" resolveProxies="false" eOpposite="#//CheckoutDiscriminator/checkout.1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
         eType="#//Path" changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transitioning" lowerBound="1"
@@ -246,11 +233,11 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
         volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="workspaceSpecification"
-        eType="#//WorkspaceSpecification"/>
+        eType="#//WorkspaceSpecification" eOpposite="#//WorkspaceSpecification/checkout"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WorkspaceSpecification" eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkout" lowerBound="1"
-        eType="#//Checkout"/>
+        eType="#//Checkout" eOpposite="#//Checkout/workspaceSpecification"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="secondaryModules" upperBound="-1"
         eType="#//SecondaryModule" containment="true" eOpposite="#//SecondaryModule/workspaceSpecification"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="workspaceConfigurators"
@@ -278,4 +265,10 @@
   <eClassifiers xsi:type="ecore:EDataType" name="RepositorySession" instanceClassName="org.eclipse.net4j.pop.repository.IRepositorySession"/>
   <eClassifiers xsi:type="ecore:EDataType" name="RepositoryFolder" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryFolder"/>
   <eClassifiers xsi:type="ecore:EDataType" name="RepositoryTag" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryTag"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Assignee">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task" containment="true" eOpposite="#//Task/assignee"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskGroups" upperBound="-1"
+        eType="#//TaskGroup" containment="true" eOpposite="#//TaskGroup/assignee"/>
+  </eClassifiers>
 </ecore:EPackage>

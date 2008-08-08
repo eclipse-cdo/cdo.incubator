@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -49,16 +49,6 @@ import org.eclipse.core.runtime.IPath;
  */
 public class CheckoutImpl extends PopElementImpl implements Checkout
 {
-  /**
-   * The cached value of the '{@link #getDiscriminator() <em>Discriminator</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDiscriminator()
-   * @generated
-   * @ordered
-   */
-  protected CheckoutDiscriminator discriminator;
-
   /**
    * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -186,7 +176,9 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
    */
   public CheckoutDiscriminator getDiscriminator()
   {
-    return discriminator;
+    // TODO: implement this method to return the 'Discriminator' reference
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
   }
 
   /**
@@ -196,11 +188,9 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
    */
   public void setDiscriminator(CheckoutDiscriminator newDiscriminator)
   {
-    CheckoutDiscriminator oldDiscriminator = discriminator;
-    discriminator = newDiscriminator;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.CHECKOUT__DISCRIMINATOR, oldDiscriminator,
-          discriminator));
+    // TODO: implement this method to set the 'Discriminator' reference
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
   }
 
   /**
@@ -287,13 +277,46 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification)
+  public NotificationChain basicSetWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification,
+      NotificationChain msgs)
   {
     WorkspaceSpecification oldWorkspaceSpecification = workspaceSpecification;
     workspaceSpecification = newWorkspaceSpecification;
     if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+          PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION, oldWorkspaceSpecification, newWorkspaceSpecification);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification)
+  {
+    if (newWorkspaceSpecification != workspaceSpecification)
+    {
+      NotificationChain msgs = null;
+      if (workspaceSpecification != null)
+        msgs = ((InternalEObject)workspaceSpecification).eInverseRemove(this,
+            PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT, WorkspaceSpecification.class, msgs);
+      if (newWorkspaceSpecification != null)
+        msgs = ((InternalEObject)newWorkspaceSpecification).eInverseAdd(this,
+            PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT, WorkspaceSpecification.class, msgs);
+      msgs = basicSetWorkspaceSpecification(newWorkspaceSpecification, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION,
-          oldWorkspaceSpecification, workspaceSpecification));
+          newWorkspaceSpecification, newWorkspaceSpecification));
   }
 
   /**
@@ -310,6 +333,11 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
       return basicSetManager((CheckoutManager)otherEnd, msgs);
+    case PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION:
+      if (workspaceSpecification != null)
+        msgs = ((InternalEObject)workspaceSpecification).eInverseRemove(this,
+            PopPackage.WORKSPACE_SPECIFICATION__CHECKOUT, WorkspaceSpecification.class, msgs);
+      return basicSetWorkspaceSpecification((WorkspaceSpecification)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -326,6 +354,8 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
     {
     case PopPackage.CHECKOUT__MANAGER:
       return basicSetManager(null, msgs);
+    case PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION:
+      return basicSetWorkspaceSpecification(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -436,7 +466,7 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
     case PopPackage.CHECKOUT__MANAGER:
       return getManager() != null;
     case PopPackage.CHECKOUT__DISCRIMINATOR:
-      return discriminator != null;
+      return getDiscriminator() != null;
     case PopPackage.CHECKOUT__LOCATION:
       return LOCATION_EDEFAULT == null ? getLocation() != null : !LOCATION_EDEFAULT.equals(getLocation());
     case PopPackage.CHECKOUT__TRANSITIONING:

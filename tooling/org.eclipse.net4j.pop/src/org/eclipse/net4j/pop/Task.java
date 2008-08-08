@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Task.java,v 1.1 2008-08-07 17:42:11 estepper Exp $
+ * $Id: Task.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -23,8 +23,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.Task#getMylynId <em>Mylyn Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Task#getDeveloper <em>Developer</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Task#getTaskGroup <em>Task Group</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Task#getTargets <em>Targets</em>}</li>
  * </ul>
  * </p>
@@ -62,60 +61,32 @@ public interface Task extends PopElement
   void setMylynId(String value);
 
   /**
-   * Returns the value of the '<em><b>Developer</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Developer#getTasks <em>Tasks</em>}'.
+   * Returns the value of the '<em><b>Assignee</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Assignee#getTasks <em>Tasks</em>}'.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Developer</em>' container reference isn't clear,
+   * If the meaning of the '<em>Assignee</em>' container reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Developer</em>' container reference.
-   * @see #setDeveloper(Developer)
-   * @see org.eclipse.net4j.pop.PopPackage#getTask_Developer()
-   * @see org.eclipse.net4j.pop.Developer#getTasks
-   * @model opposite="tasks" transient="false"
+   * @return the value of the '<em>Assignee</em>' container reference.
+   * @see #setAssignee(Assignee)
+   * @see org.eclipse.net4j.pop.PopPackage#getTask_Assignee()
+   * @see org.eclipse.net4j.pop.Assignee#getTasks
+   * @model opposite="tasks" required="true" transient="false"
    * @generated
    */
-  Developer getDeveloper();
+  Assignee getAssignee();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Task#getDeveloper <em>Developer</em>}' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Developer</em>' container reference.
-   * @see #getDeveloper()
+   * @param value the new value of the '<em>Assignee</em>' container reference.
+   * @see #getAssignee()
    * @generated
    */
-  void setDeveloper(Developer value);
-
-  /**
-   * Returns the value of the '<em><b>Task Group</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.TaskGroup#getTasks <em>Tasks</em>}'.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Task Group</em>' container reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Task Group</em>' container reference.
-   * @see #setTaskGroup(TaskGroup)
-   * @see org.eclipse.net4j.pop.PopPackage#getTask_TaskGroup()
-   * @see org.eclipse.net4j.pop.TaskGroup#getTasks
-   * @model opposite="tasks" transient="false"
-   * @generated
-   */
-  TaskGroup getTaskGroup();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Task#getTaskGroup <em>Task Group</em>}' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Task Group</em>' container reference.
-   * @see #getTaskGroup()
-   * @generated
-   */
-  void setTaskGroup(TaskGroup value);
+  void setAssignee(Assignee value);
 
   /**
    * Returns the value of the '<em><b>Targets</b></em>' reference list.

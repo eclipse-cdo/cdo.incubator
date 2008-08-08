@@ -8,15 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: TaskImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
-import org.eclipse.net4j.pop.Developer;
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Target;
 import org.eclipse.net4j.pop.Task;
-import org.eclipse.net4j.pop.TaskGroup;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -38,8 +37,7 @@ import java.util.Collection;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getMylynId <em>Mylyn Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getDeveloper <em>Developer</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getTaskGroup <em>Task Group</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getAssignee <em>Assignee</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  * </p>
@@ -127,11 +125,11 @@ public class TaskImpl extends PopElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public Developer getDeveloper()
+  public Assignee getAssignee()
   {
-    if (eContainerFeatureID != PopPackage.TASK__DEVELOPER)
+    if (eContainerFeatureID != PopPackage.TASK__ASSIGNEE)
       return null;
-    return (Developer)eContainer();
+    return (Assignee)eContainer();
   }
 
   /**
@@ -139,11 +137,11 @@ public class TaskImpl extends PopElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public Developer basicGetDeveloper()
+  public Assignee basicGetAssignee()
   {
-    if (eContainerFeatureID != PopPackage.TASK__DEVELOPER)
+    if (eContainerFeatureID != PopPackage.TASK__ASSIGNEE)
       return null;
-    return (Developer)eInternalContainer();
+    return (Assignee)eInternalContainer();
   }
 
   /**
@@ -151,9 +149,9 @@ public class TaskImpl extends PopElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetDeveloper(Developer newDeveloper, NotificationChain msgs)
+  public NotificationChain basicSetAssignee(Assignee newAssignee, NotificationChain msgs)
   {
-    msgs = eBasicSetContainer((InternalEObject)newDeveloper, PopPackage.TASK__DEVELOPER, msgs);
+    msgs = eBasicSetContainer((InternalEObject)newAssignee, PopPackage.TASK__ASSIGNEE, msgs);
     return msgs;
   }
 
@@ -162,84 +160,24 @@ public class TaskImpl extends PopElementImpl implements Task
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setDeveloper(Developer newDeveloper)
+  public void setAssignee(Assignee newAssignee)
   {
-    if (newDeveloper != eInternalContainer()
-        || (eContainerFeatureID != PopPackage.TASK__DEVELOPER && newDeveloper != null))
+    if (newAssignee != eInternalContainer()
+        || (eContainerFeatureID != PopPackage.TASK__ASSIGNEE && newAssignee != null))
     {
-      if (EcoreUtil.isAncestor(this, newDeveloper))
+      if (EcoreUtil.isAncestor(this, newAssignee))
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
-      if (newDeveloper != null)
-        msgs = ((InternalEObject)newDeveloper).eInverseAdd(this, PopPackage.DEVELOPER__TASKS, Developer.class, msgs);
-      msgs = basicSetDeveloper(newDeveloper, msgs);
+      if (newAssignee != null)
+        msgs = ((InternalEObject)newAssignee).eInverseAdd(this, PopPackage.ASSIGNEE__TASKS, Assignee.class, msgs);
+      msgs = basicSetAssignee(newAssignee, msgs);
       if (msgs != null)
         msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.TASK__DEVELOPER, newDeveloper, newDeveloper));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TaskGroup getTaskGroup()
-  {
-    if (eContainerFeatureID != PopPackage.TASK__TASK_GROUP)
-      return null;
-    return (TaskGroup)eContainer();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public TaskGroup basicGetTaskGroup()
-  {
-    if (eContainerFeatureID != PopPackage.TASK__TASK_GROUP)
-      return null;
-    return (TaskGroup)eInternalContainer();
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetTaskGroup(TaskGroup newTaskGroup, NotificationChain msgs)
-  {
-    msgs = eBasicSetContainer((InternalEObject)newTaskGroup, PopPackage.TASK__TASK_GROUP, msgs);
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setTaskGroup(TaskGroup newTaskGroup)
-  {
-    if (newTaskGroup != eInternalContainer()
-        || (eContainerFeatureID != PopPackage.TASK__TASK_GROUP && newTaskGroup != null))
-    {
-      if (EcoreUtil.isAncestor(this, newTaskGroup))
-        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      NotificationChain msgs = null;
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      if (newTaskGroup != null)
-        msgs = ((InternalEObject)newTaskGroup).eInverseAdd(this, PopPackage.TASK_GROUP__TASKS, TaskGroup.class, msgs);
-      msgs = basicSetTaskGroup(newTaskGroup, msgs);
-      if (msgs != null)
-        msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.TASK__TASK_GROUP, newTaskGroup, newTaskGroup));
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.TASK__ASSIGNEE, newAssignee, newAssignee));
   }
 
   /**
@@ -268,14 +206,10 @@ public class TaskImpl extends PopElementImpl implements Task
   {
     switch (featureID)
     {
-    case PopPackage.TASK__DEVELOPER:
+    case PopPackage.TASK__ASSIGNEE:
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetDeveloper((Developer)otherEnd, msgs);
-    case PopPackage.TASK__TASK_GROUP:
-      if (eInternalContainer() != null)
-        msgs = eBasicRemoveFromContainer(msgs);
-      return basicSetTaskGroup((TaskGroup)otherEnd, msgs);
+      return basicSetAssignee((Assignee)otherEnd, msgs);
     case PopPackage.TASK__TARGETS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTargets()).basicAdd(otherEnd, msgs);
     }
@@ -292,10 +226,8 @@ public class TaskImpl extends PopElementImpl implements Task
   {
     switch (featureID)
     {
-    case PopPackage.TASK__DEVELOPER:
-      return basicSetDeveloper(null, msgs);
-    case PopPackage.TASK__TASK_GROUP:
-      return basicSetTaskGroup(null, msgs);
+    case PopPackage.TASK__ASSIGNEE:
+      return basicSetAssignee(null, msgs);
     case PopPackage.TASK__TARGETS:
       return ((InternalEList<?>)getTargets()).basicRemove(otherEnd, msgs);
     }
@@ -312,10 +244,8 @@ public class TaskImpl extends PopElementImpl implements Task
   {
     switch (eContainerFeatureID)
     {
-    case PopPackage.TASK__DEVELOPER:
-      return eInternalContainer().eInverseRemove(this, PopPackage.DEVELOPER__TASKS, Developer.class, msgs);
-    case PopPackage.TASK__TASK_GROUP:
-      return eInternalContainer().eInverseRemove(this, PopPackage.TASK_GROUP__TASKS, TaskGroup.class, msgs);
+    case PopPackage.TASK__ASSIGNEE:
+      return eInternalContainer().eInverseRemove(this, PopPackage.ASSIGNEE__TASKS, Assignee.class, msgs);
     }
     return super.eBasicRemoveFromContainerFeature(msgs);
   }
@@ -332,14 +262,10 @@ public class TaskImpl extends PopElementImpl implements Task
     {
     case PopPackage.TASK__MYLYN_ID:
       return getMylynId();
-    case PopPackage.TASK__DEVELOPER:
+    case PopPackage.TASK__ASSIGNEE:
       if (resolve)
-        return getDeveloper();
-      return basicGetDeveloper();
-    case PopPackage.TASK__TASK_GROUP:
-      if (resolve)
-        return getTaskGroup();
-      return basicGetTaskGroup();
+        return getAssignee();
+      return basicGetAssignee();
     case PopPackage.TASK__TARGETS:
       return getTargets();
     }
@@ -360,11 +286,8 @@ public class TaskImpl extends PopElementImpl implements Task
     case PopPackage.TASK__MYLYN_ID:
       setMylynId((String)newValue);
       return;
-    case PopPackage.TASK__DEVELOPER:
-      setDeveloper((Developer)newValue);
-      return;
-    case PopPackage.TASK__TASK_GROUP:
-      setTaskGroup((TaskGroup)newValue);
+    case PopPackage.TASK__ASSIGNEE:
+      setAssignee((Assignee)newValue);
       return;
     case PopPackage.TASK__TARGETS:
       getTargets().clear();
@@ -387,11 +310,8 @@ public class TaskImpl extends PopElementImpl implements Task
     case PopPackage.TASK__MYLYN_ID:
       setMylynId(MYLYN_ID_EDEFAULT);
       return;
-    case PopPackage.TASK__DEVELOPER:
-      setDeveloper((Developer)null);
-      return;
-    case PopPackage.TASK__TASK_GROUP:
-      setTaskGroup((TaskGroup)null);
+    case PopPackage.TASK__ASSIGNEE:
+      setAssignee((Assignee)null);
       return;
     case PopPackage.TASK__TARGETS:
       getTargets().clear();
@@ -412,10 +332,8 @@ public class TaskImpl extends PopElementImpl implements Task
     {
     case PopPackage.TASK__MYLYN_ID:
       return MYLYN_ID_EDEFAULT == null ? mylynId != null : !MYLYN_ID_EDEFAULT.equals(mylynId);
-    case PopPackage.TASK__DEVELOPER:
-      return basicGetDeveloper() != null;
-    case PopPackage.TASK__TASK_GROUP:
-      return basicGetTaskGroup() != null;
+    case PopPackage.TASK__ASSIGNEE:
+      return basicGetAssignee() != null;
     case PopPackage.TASK__TARGETS:
       return targets != null && !targets.isEmpty();
     }

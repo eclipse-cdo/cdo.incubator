@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutManager;
 import org.eclipse.net4j.pop.CheckoutState;
@@ -28,7 +29,6 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
-import org.eclipse.net4j.pop.RootStream;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.SubBranch;
 import org.eclipse.net4j.pop.Tag;
@@ -124,8 +124,6 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
       return createDeliveryStream();
     case PopPackage.MAINTENANCE_STREAM:
       return createMaintenanceStream();
-    case PopPackage.ROOT_STREAM:
-      return createRootStream();
     case PopPackage.RELEASE:
       return createRelease();
     case PopPackage.MILESTONE:
@@ -142,6 +140,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
       return createWorkspaceSpecification();
     case PopPackage.SECONDARY_MODULE:
       return createSecondaryModule();
+    case PopPackage.ASSIGNEE:
+      return createAssignee();
     default:
       throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -331,17 +331,6 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public RootStream createRootStream()
-  {
-    RootStreamImpl rootStream = new RootStreamImpl();
-    return rootStream;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public Release createRelease()
   {
     ReleaseImpl release = new ReleaseImpl();
@@ -423,6 +412,17 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   {
     SecondaryModuleImpl secondaryModule = new SecondaryModuleImpl();
     return secondaryModule;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Assignee createAssignee()
+  {
+    AssigneeImpl assignee = new AssigneeImpl();
+    return assignee;
   }
 
   /**

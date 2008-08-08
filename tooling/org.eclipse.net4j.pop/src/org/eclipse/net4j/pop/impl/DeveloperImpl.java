@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeveloperImpl.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: DeveloperImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Developer;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
@@ -38,6 +39,8 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTaskGroups <em>Task Groups</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getPop <em>Pop</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getRepositoryUser <em>Repository User</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getName <em>Name</em>}</li>
@@ -45,8 +48,6 @@ import java.util.Date;
  *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getEntry <em>Entry</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getExit <em>Exit</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#isActive <em>Active</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTaskGroups <em>Task Groups</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTasks <em>Tasks</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,6 +55,26 @@ import java.util.Date;
  */
 public class DeveloperImpl extends PopElementImpl implements Developer
 {
+  /**
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTasks()
+   * @generated
+   * @ordered
+   */
+  protected EList<Task> tasks;
+
+  /**
+   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTaskGroups()
+   * @generated
+   * @ordered
+   */
+  protected EList<TaskGroup> taskGroups;
+
   /**
    * The default value of the '{@link #getRepositoryUser() <em>Repository User</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -163,26 +184,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
    * @ordered
    */
   protected static final boolean ACTIVE_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTaskGroups()
-   * @generated
-   * @ordered
-   */
-  protected EList<TaskGroup> taskGroups;
-
-  /**
-   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getTasks()
-   * @generated
-   * @ordered
-   */
-  protected EList<Task> tasks;
 
   /**
    * <!-- begin-user-doc -->
@@ -402,7 +403,7 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     if (taskGroups == null)
     {
       taskGroups = new EObjectContainmentWithInverseEList.Resolving<TaskGroup>(TaskGroup.class, this,
-          PopPackage.DEVELOPER__TASK_GROUPS, PopPackage.TASK_GROUP__DEVELOPER);
+          PopPackage.DEVELOPER__TASK_GROUPS, PopPackage.TASK_GROUP__ASSIGNEE);
     }
     return taskGroups;
   }
@@ -417,7 +418,7 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     if (tasks == null)
     {
       tasks = new EObjectContainmentWithInverseEList.Resolving<Task>(Task.class, this, PopPackage.DEVELOPER__TASKS,
-          PopPackage.TASK__DEVELOPER);
+          PopPackage.TASK__ASSIGNEE);
     }
     return tasks;
   }
@@ -433,14 +434,14 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   {
     switch (featureID)
     {
+    case PopPackage.DEVELOPER__TASKS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
+    case PopPackage.DEVELOPER__TASK_GROUPS:
+      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
     case PopPackage.DEVELOPER__POP:
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
       return basicSetPop((Pop)otherEnd, msgs);
-    case PopPackage.DEVELOPER__TASK_GROUPS:
-      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
-    case PopPackage.DEVELOPER__TASKS:
-      return ((InternalEList<InternalEObject>)(InternalEList<?>)getTasks()).basicAdd(otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
   }
@@ -455,12 +456,12 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   {
     switch (featureID)
     {
-    case PopPackage.DEVELOPER__POP:
-      return basicSetPop(null, msgs);
-    case PopPackage.DEVELOPER__TASK_GROUPS:
-      return ((InternalEList<?>)getTaskGroups()).basicRemove(otherEnd, msgs);
     case PopPackage.DEVELOPER__TASKS:
       return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
+    case PopPackage.DEVELOPER__TASK_GROUPS:
+      return ((InternalEList<?>)getTaskGroups()).basicRemove(otherEnd, msgs);
+    case PopPackage.DEVELOPER__POP:
+      return basicSetPop(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -491,6 +492,10 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   {
     switch (featureID)
     {
+    case PopPackage.DEVELOPER__TASKS:
+      return getTasks();
+    case PopPackage.DEVELOPER__TASK_GROUPS:
+      return getTaskGroups();
     case PopPackage.DEVELOPER__POP:
       if (resolve)
         return getPop();
@@ -507,10 +512,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
       return getExit();
     case PopPackage.DEVELOPER__ACTIVE:
       return isActive() ? Boolean.TRUE : Boolean.FALSE;
-    case PopPackage.DEVELOPER__TASK_GROUPS:
-      return getTaskGroups();
-    case PopPackage.DEVELOPER__TASKS:
-      return getTasks();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -526,6 +527,14 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   {
     switch (featureID)
     {
+    case PopPackage.DEVELOPER__TASKS:
+      getTasks().clear();
+      getTasks().addAll((Collection<? extends Task>)newValue);
+      return;
+    case PopPackage.DEVELOPER__TASK_GROUPS:
+      getTaskGroups().clear();
+      getTaskGroups().addAll((Collection<? extends TaskGroup>)newValue);
+      return;
     case PopPackage.DEVELOPER__POP:
       setPop((Pop)newValue);
       return;
@@ -544,14 +553,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     case PopPackage.DEVELOPER__EXIT:
       setExit((Date)newValue);
       return;
-    case PopPackage.DEVELOPER__TASK_GROUPS:
-      getTaskGroups().clear();
-      getTaskGroups().addAll((Collection<? extends TaskGroup>)newValue);
-      return;
-    case PopPackage.DEVELOPER__TASKS:
-      getTasks().clear();
-      getTasks().addAll((Collection<? extends Task>)newValue);
-      return;
     }
     super.eSet(featureID, newValue);
   }
@@ -566,6 +567,12 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   {
     switch (featureID)
     {
+    case PopPackage.DEVELOPER__TASKS:
+      getTasks().clear();
+      return;
+    case PopPackage.DEVELOPER__TASK_GROUPS:
+      getTaskGroups().clear();
+      return;
     case PopPackage.DEVELOPER__POP:
       setPop((Pop)null);
       return;
@@ -584,12 +591,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     case PopPackage.DEVELOPER__EXIT:
       setExit(EXIT_EDEFAULT);
       return;
-    case PopPackage.DEVELOPER__TASK_GROUPS:
-      getTaskGroups().clear();
-      return;
-    case PopPackage.DEVELOPER__TASKS:
-      getTasks().clear();
-      return;
     }
     super.eUnset(featureID);
   }
@@ -604,6 +605,10 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   {
     switch (featureID)
     {
+    case PopPackage.DEVELOPER__TASKS:
+      return tasks != null && !tasks.isEmpty();
+    case PopPackage.DEVELOPER__TASK_GROUPS:
+      return taskGroups != null && !taskGroups.isEmpty();
     case PopPackage.DEVELOPER__POP:
       return basicGetPop() != null;
     case PopPackage.DEVELOPER__REPOSITORY_USER:
@@ -619,12 +624,54 @@ public class DeveloperImpl extends PopElementImpl implements Developer
       return EXIT_EDEFAULT == null ? exit != null : !EXIT_EDEFAULT.equals(exit);
     case PopPackage.DEVELOPER__ACTIVE:
       return isActive() != ACTIVE_EDEFAULT;
-    case PopPackage.DEVELOPER__TASK_GROUPS:
-      return taskGroups != null && !taskGroups.isEmpty();
-    case PopPackage.DEVELOPER__TASKS:
-      return tasks != null && !tasks.isEmpty();
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Assignee.class)
+    {
+      switch (derivedFeatureID)
+      {
+      case PopPackage.DEVELOPER__TASKS:
+        return PopPackage.ASSIGNEE__TASKS;
+      case PopPackage.DEVELOPER__TASK_GROUPS:
+        return PopPackage.ASSIGNEE__TASK_GROUPS;
+      default:
+        return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Assignee.class)
+    {
+      switch (baseFeatureID)
+      {
+      case PopPackage.ASSIGNEE__TASKS:
+        return PopPackage.DEVELOPER__TASKS;
+      case PopPackage.ASSIGNEE__TASK_GROUPS:
+        return PopPackage.DEVELOPER__TASK_GROUPS;
+      default:
+        return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
   /**

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Checkout.java,v 1.1 2008-08-07 17:42:11 estepper Exp $
+ * $Id: Checkout.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -68,6 +68,7 @@ public interface Checkout extends PopElement
 
   /**
    * Returns the value of the '<em><b>Discriminator</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.CheckoutDiscriminator#getCheckout <em>Checkout</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Discriminator</em>' reference isn't clear,
@@ -77,7 +78,8 @@ public interface Checkout extends PopElement
    * @return the value of the '<em>Discriminator</em>' reference.
    * @see #setDiscriminator(CheckoutDiscriminator)
    * @see org.eclipse.net4j.pop.PopPackage#getCheckout_Discriminator()
-   * @model resolveProxies="false" required="true"
+   * @see org.eclipse.net4j.pop.CheckoutDiscriminator#getCheckout
+   * @model opposite="checkout" resolveProxies="false" required="true"
    * @generated
    */
   CheckoutDiscriminator getDiscriminator();
@@ -156,6 +158,7 @@ public interface Checkout extends PopElement
 
   /**
    * Returns the value of the '<em><b>Workspace Specification</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.WorkspaceSpecification#getCheckout <em>Checkout</em>}'.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Workspace Specification</em>' reference isn't clear,
@@ -165,7 +168,8 @@ public interface Checkout extends PopElement
    * @return the value of the '<em>Workspace Specification</em>' reference.
    * @see #setWorkspaceSpecification(WorkspaceSpecification)
    * @see org.eclipse.net4j.pop.PopPackage#getCheckout_WorkspaceSpecification()
-   * @model
+   * @see org.eclipse.net4j.pop.WorkspaceSpecification#getCheckout
+   * @model opposite="checkout"
    * @generated
    */
   WorkspaceSpecification getWorkspaceSpecification();

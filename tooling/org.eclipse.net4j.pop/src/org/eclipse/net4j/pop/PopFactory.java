@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactory.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: PopFactory.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -132,15 +132,6 @@ public interface PopFactory extends EFactory
   MaintenanceStream createMaintenanceStream();
 
   /**
-   * Returns a new object of class '<em>Root Stream</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Root Stream</em>'.
-   * @generated
-   */
-  RootStream createRootStream();
-
-  /**
    * Returns a new object of class '<em>Release</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -211,6 +202,15 @@ public interface PopFactory extends EFactory
    * @generated
    */
   SecondaryModule createSecondaryModule();
+
+  /**
+   * Returns a new object of class '<em>Assignee</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Assignee</em>'.
+   * @generated
+   */
+  Assignee createAssignee();
 
   /**
    * Returns the package supported by this factory.

@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutDiscriminator;
@@ -37,7 +38,6 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
-import org.eclipse.net4j.pop.RootStream;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.SubBranch;
@@ -231,13 +231,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass rootStreamEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass targetEClass = null;
 
   /**
@@ -302,6 +295,13 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * @generated
    */
   private EClass workspaceConfiguratorEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass assigneeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -640,7 +640,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPrimaryModule_WorkspaceSpecificationPath()
+  public EAttribute getPrimaryModule_SpecificationPath()
   {
     return (EAttribute)primaryModuleEClass.getEStructuralFeatures().get(1);
   }
@@ -790,26 +790,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDeveloper_TaskGroups()
-  {
-    return (EReference)developerEClass.getEStructuralFeatures().get(7);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getDeveloper_Tasks()
-  {
-    return (EReference)developerEClass.getEStructuralFeatures().get(8);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EClass getTaskGroup()
   {
     return taskGroupEClass;
@@ -830,39 +810,9 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTaskGroup_Developer()
+  public EReference getTaskGroup_Assignee()
   {
     return (EReference)taskGroupEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTaskGroup_Parent()
-  {
-    return (EReference)taskGroupEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTaskGroup_Children()
-  {
-    return (EReference)taskGroupEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getTaskGroup_Tasks()
-  {
-    return (EReference)taskGroupEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -890,7 +840,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTask_Developer()
+  public EReference getTask_Assignee()
   {
     return (EReference)taskEClass.getEStructuralFeatures().get(1);
   }
@@ -900,19 +850,9 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getTask_TaskGroup()
-  {
-    return (EReference)taskEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getTask_Targets()
   {
-    return (EReference)taskEClass.getEStructuralFeatures().get(3);
+    return (EReference)taskEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1250,6 +1190,16 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getDevelopmentStream_Pop()
+  {
+    return (EReference)developmentStreamEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMaintenanceStream()
   {
     return maintenanceStreamEClass;
@@ -1273,26 +1223,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
   public EReference getMaintenanceStream_Baseline()
   {
     return (EReference)maintenanceStreamEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getRootStream()
-  {
-    return rootStreamEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getRootStream_Pop()
-  {
-    return (EReference)rootStreamEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1710,6 +1640,36 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getAssignee()
+  {
+    return assigneeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssignee_Tasks()
+  {
+    return (EReference)assigneeEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssignee_TaskGroups()
+  {
+    return (EReference)assigneeEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EEnum getCheckoutState()
   {
     return checkoutStateEEnum;
@@ -1833,7 +1793,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     primaryModuleEClass = createEClass(PRIMARY_MODULE);
     createEReference(primaryModuleEClass, PRIMARY_MODULE__POP);
-    createEAttribute(primaryModuleEClass, PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH);
+    createEAttribute(primaryModuleEClass, PRIMARY_MODULE__SPECIFICATION_PATH);
 
     repositoryEClass = createEClass(REPOSITORY);
     createEReference(repositoryEClass, REPOSITORY__POP);
@@ -1850,20 +1810,14 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     createEAttribute(developerEClass, DEVELOPER__ENTRY);
     createEAttribute(developerEClass, DEVELOPER__EXIT);
     createEAttribute(developerEClass, DEVELOPER__ACTIVE);
-    createEReference(developerEClass, DEVELOPER__TASK_GROUPS);
-    createEReference(developerEClass, DEVELOPER__TASKS);
 
     taskGroupEClass = createEClass(TASK_GROUP);
     createEAttribute(taskGroupEClass, TASK_GROUP__NAME);
-    createEReference(taskGroupEClass, TASK_GROUP__DEVELOPER);
-    createEReference(taskGroupEClass, TASK_GROUP__PARENT);
-    createEReference(taskGroupEClass, TASK_GROUP__CHILDREN);
-    createEReference(taskGroupEClass, TASK_GROUP__TASKS);
+    createEReference(taskGroupEClass, TASK_GROUP__ASSIGNEE);
 
     taskEClass = createEClass(TASK);
     createEAttribute(taskEClass, TASK__MYLYN_ID);
-    createEReference(taskEClass, TASK__DEVELOPER);
-    createEReference(taskEClass, TASK__TASK_GROUP);
+    createEReference(taskEClass, TASK__ASSIGNEE);
     createEReference(taskEClass, TASK__TARGETS);
 
     checkoutDiscriminatorEClass = createEClass(CHECKOUT_DISCRIMINATOR);
@@ -1908,13 +1862,11 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     developmentStreamEClass = createEClass(DEVELOPMENT_STREAM);
     createEReference(developmentStreamEClass, DEVELOPMENT_STREAM__MAINTENANCE_STREAMS);
+    createEReference(developmentStreamEClass, DEVELOPMENT_STREAM__POP);
 
     maintenanceStreamEClass = createEClass(MAINTENANCE_STREAM);
     createEReference(maintenanceStreamEClass, MAINTENANCE_STREAM__PARENT);
     createEReference(maintenanceStreamEClass, MAINTENANCE_STREAM__BASELINE);
-
-    rootStreamEClass = createEClass(ROOT_STREAM);
-    createEReference(rootStreamEClass, ROOT_STREAM__POP);
 
     targetEClass = createEClass(TARGET);
     createEAttribute(targetEClass, TARGET__DATE);
@@ -1967,6 +1919,10 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     workspaceConfiguratorEClass = createEClass(WORKSPACE_CONFIGURATOR);
     createEReference(workspaceConfiguratorEClass, WORKSPACE_CONFIGURATOR__WORKSPACE_SPECIFICATION);
 
+    assigneeEClass = createEClass(ASSIGNEE);
+    createEReference(assigneeEClass, ASSIGNEE__TASKS);
+    createEReference(assigneeEClass, ASSIGNEE__TASK_GROUPS);
+
     // Create enums
     checkoutStateEEnum = createEEnum(CHECKOUT_STATE);
 
@@ -2013,11 +1969,14 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     popElementEClass.getESuperTypes().add(this.getDisplayable());
     popManagerEClass.getESuperTypes().add(this.getPopElement());
     popEClass.getESuperTypes().add(this.getPopElement());
+    popEClass.getESuperTypes().add(this.getAssignee());
     moduleEClass.getESuperTypes().add(this.getPopElement());
     primaryModuleEClass.getESuperTypes().add(this.getModule());
     repositoryEClass.getESuperTypes().add(this.getPopElement());
     developerEClass.getESuperTypes().add(this.getPopElement());
+    developerEClass.getESuperTypes().add(this.getAssignee());
     taskGroupEClass.getESuperTypes().add(this.getPopElement());
+    taskGroupEClass.getESuperTypes().add(this.getAssignee());
     taskEClass.getESuperTypes().add(this.getPopElement());
     checkoutDiscriminatorEClass.getESuperTypes().add(this.getPopElement());
     tagEClass.getESuperTypes().add(this.getCheckoutDiscriminator());
@@ -2030,7 +1989,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     integrationStreamEClass.getESuperTypes().add(this.getStream());
     developmentStreamEClass.getESuperTypes().add(this.getIntegrationStream());
     maintenanceStreamEClass.getESuperTypes().add(this.getIntegrationStream());
-    rootStreamEClass.getESuperTypes().add(this.getDevelopmentStream());
     targetEClass.getESuperTypes().add(this.getTaggedElement());
     releaseEClass.getESuperTypes().add(this.getTarget());
     milestoneEClass.getESuperTypes().add(this.getTarget());
@@ -2066,14 +2024,14 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getPopManager_Pops(),
         this.getPop(),
-        null,
+        this.getPop_Manager(),
         "pops", null, 0, -1, PopManager.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(popEClass, Pop.class, "Pop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getPop_Manager(),
         this.getPopManager(),
-        null,
+        this.getPopManager_Pops(),
         "manager", null, 1, 1, Pop.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getPop_Name(),
@@ -2095,8 +2053,8 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         "repository", null, 1, 1, Pop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getPop_RootStream(),
-        this.getRootStream(),
-        this.getRootStream_Pop(),
+        this.getDevelopmentStream(),
+        this.getDevelopmentStream_Pop(),
         "rootStream", null, 1, 1, Pop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getPop_PrimaryModule(),
@@ -2106,7 +2064,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getPop_CheckoutManager(),
         this.getCheckoutManager(),
-        null,
+        this.getCheckoutManager_Pop(),
         "checkoutManager", null, 0, 1, Pop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(moduleEClass, Module.class, "Module", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2127,9 +2085,9 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getPop_PrimaryModule(),
         "pop", null, 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
-        getPrimaryModule_WorkspaceSpecificationPath(),
+        getPrimaryModule_SpecificationPath(),
         ecorePackage.getEString(),
-        "workspaceSpecificationPath", "product.xml", 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
+        "specificationPath", "product.xml", 1, 1, PrimaryModule.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$ //$NON-NLS-2$
 
     initEClass(repositoryEClass, Repository.class,
         "Repository", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2186,16 +2144,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         getDeveloper_Active(),
         ecorePackage.getEBoolean(),
         "active", null, 1, 1, Developer.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getDeveloper_TaskGroups(),
-        this.getTaskGroup(),
-        this.getTaskGroup_Developer(),
-        "taskGroups", null, 0, -1, Developer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getDeveloper_Tasks(),
-        this.getTask(),
-        this.getTask_Developer(),
-        "tasks", null, 0, -1, Developer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(taskGroupEClass, TaskGroup.class, "TaskGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
@@ -2203,25 +2151,10 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         ecorePackage.getEString(),
         "name", null, 1, 1, TaskGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getTaskGroup_Developer(),
-        this.getDeveloper(),
-        this.getDeveloper_TaskGroups(),
-        "developer", null, 0, 1, TaskGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getTaskGroup_Parent(),
-        this.getTaskGroup(),
-        this.getTaskGroup_Children(),
-        "parent", null, 0, 1, TaskGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getTaskGroup_Children(),
-        this.getTaskGroup(),
-        this.getTaskGroup_Parent(),
-        "children", null, 0, -1, TaskGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getTaskGroup_Tasks(),
-        this.getTask(),
-        this.getTask_TaskGroup(),
-        "tasks", null, 0, -1, TaskGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getTaskGroup_Assignee(),
+        this.getAssignee(),
+        this.getAssignee_TaskGroups(),
+        "assignee", null, 1, 1, TaskGroup.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
@@ -2229,15 +2162,10 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         ecorePackage.getEString(),
         "mylynId", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
-        getTask_Developer(),
-        this.getDeveloper(),
-        this.getDeveloper_Tasks(),
-        "developer", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getTask_TaskGroup(),
-        this.getTaskGroup(),
-        this.getTaskGroup_Tasks(),
-        "taskGroup", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        getTask_Assignee(),
+        this.getAssignee(),
+        this.getAssignee_Tasks(),
+        "assignee", null, 1, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getTask_Targets(),
         this.getTarget(),
@@ -2253,7 +2181,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getCheckoutDiscriminator_Checkout(),
         this.getCheckout(),
-        null,
+        this.getCheckout_Discriminator(),
         "checkout", null, 0, 1, CheckoutDiscriminator.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(checkoutDiscriminatorEClass, this.getRepository(), "getRepository", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
@@ -2395,6 +2323,11 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getMaintenanceStream(),
         this.getMaintenanceStream_Parent(),
         "maintenanceStreams", null, 0, -1, DevelopmentStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getDevelopmentStream_Pop(),
+        this.getPop(),
+        this.getPop_RootStream(),
+        "pop", null, 1, 1, DevelopmentStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(maintenanceStreamEClass, MaintenanceStream.class,
         "MaintenanceStream", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2408,14 +2341,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getRelease(),
         this.getRelease_Maintenance(),
         "baseline", null, 1, 1, MaintenanceStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-
-    initEClass(rootStreamEClass, RootStream.class,
-        "RootStream", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEReference(
-        getRootStream_Pop(),
-        this.getPop(),
-        this.getPop_RootStream(),
-        "pop", null, 1, 1, RootStream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(targetEClass, Target.class, "Target", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEAttribute(
@@ -2502,8 +2427,8 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getCheckoutManager_Pop(),
         this.getPop(),
-        null,
-        "pop", null, 1, -1, CheckoutManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        this.getPop_CheckoutManager(),
+        "pop", null, 1, 1, CheckoutManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCheckoutManager_Location(),
         this.getPath(),
@@ -2528,7 +2453,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getCheckout_Discriminator(),
         this.getCheckoutDiscriminator(),
-        null,
+        this.getCheckoutDiscriminator_Checkout(),
         "discriminator", null, 1, 1, Checkout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCheckout_Location(),
@@ -2549,7 +2474,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getCheckout_WorkspaceSpecification(),
         this.getWorkspaceSpecification(),
-        null,
+        this.getWorkspaceSpecification_Checkout(),
         "workspaceSpecification", null, 0, 1, Checkout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(workspaceSpecificationEClass, WorkspaceSpecification.class,
@@ -2557,7 +2482,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     initEReference(
         getWorkspaceSpecification_Checkout(),
         this.getCheckout(),
-        null,
+        this.getCheckout_WorkspaceSpecification(),
         "checkout", null, 1, 1, WorkspaceSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getWorkspaceSpecification_SecondaryModules(),
@@ -2589,6 +2514,18 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     addEOperation(workspaceConfiguratorEClass, null, "validate", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(workspaceConfiguratorEClass, null, "execute", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(assigneeEClass, Assignee.class, "Assignee", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getAssignee_Tasks(),
+        this.getTask(),
+        this.getTask_Assignee(),
+        "tasks", null, 0, -1, Assignee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getAssignee_TaskGroups(),
+        this.getTaskGroup(),
+        this.getTaskGroup_Assignee(),
+        "taskGroups", null, 0, -1, Assignee.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     // Initialize enums and add enum literals
     initEEnum(checkoutStateEEnum, CheckoutState.class, "CheckoutState"); //$NON-NLS-1$
