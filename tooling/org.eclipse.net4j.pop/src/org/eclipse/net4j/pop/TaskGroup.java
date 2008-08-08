@@ -8,10 +8,9 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskGroup.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
+ * $Id: TaskGroup.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop;
-
 
 /**
  * <!-- begin-user-doc -->

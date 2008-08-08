@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -19,6 +19,7 @@ import org.eclipse.net4j.pop.CheckoutState;
 import org.eclipse.net4j.pop.Delivery;
 import org.eclipse.net4j.pop.DeliveryStream;
 import org.eclipse.net4j.pop.Developer;
+import org.eclipse.net4j.pop.DevelopmentStream;
 import org.eclipse.net4j.pop.Integration;
 import org.eclipse.net4j.pop.MainBranch;
 import org.eclipse.net4j.pop.MaintenanceStream;
@@ -122,6 +123,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
       return createSubBranch();
     case PopPackage.DELIVERY_STREAM:
       return createDeliveryStream();
+    case PopPackage.DEVELOPMENT_STREAM:
+      return createDevelopmentStream();
     case PopPackage.MAINTENANCE_STREAM:
       return createMaintenanceStream();
     case PopPackage.RELEASE:
@@ -313,6 +316,17 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   {
     DeliveryStreamImpl deliveryStream = new DeliveryStreamImpl();
     return deliveryStream;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DevelopmentStream createDevelopmentStream()
+  {
+    DevelopmentStreamImpl developmentStream = new DevelopmentStreamImpl();
+    return developmentStream;
   }
 
   /**

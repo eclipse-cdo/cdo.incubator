@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactory.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
+ * $Id: PopFactory.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -121,6 +121,15 @@ public interface PopFactory extends EFactory
    * @generated
    */
   DeliveryStream createDeliveryStream();
+
+  /**
+   * Returns a new object of class '<em>Development Stream</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Development Stream</em>'.
+   * @generated
+   */
+  DevelopmentStream createDevelopmentStream();
 
   /**
    * Returns a new object of class '<em>Maintenance Stream</em>'.

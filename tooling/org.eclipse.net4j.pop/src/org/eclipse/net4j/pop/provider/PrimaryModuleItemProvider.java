@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleItemProvider.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: PrimaryModuleItemProvider.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -69,27 +69,27 @@ public class PrimaryModuleItemProvider extends ModuleItemProvider implements IEd
     {
       super.getPropertyDescriptors(object);
 
-      addWorkspaceSpecificationPathPropertyDescriptor(object);
+      addSpecificationPathPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Workspace Specification Path feature.
+   * This adds a property descriptor for the Specification Path feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addWorkspaceSpecificationPathPropertyDescriptor(Object object)
+  protected void addSpecificationPathPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors
         .add(createItemPropertyDescriptor(
             ((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
             getResourceLocator(),
-            getString("_UI_PrimaryModule_workspaceSpecificationPath_feature"), //$NON-NLS-1$
+            getString("_UI_PrimaryModule_specificationPath_feature"), //$NON-NLS-1$
             getString(
-                "_UI_PropertyDescriptor_description", "_UI_PrimaryModule_workspaceSpecificationPath_feature", "_UI_PrimaryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-            PopPackage.Literals.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH, true, false, false,
+                "_UI_PropertyDescriptor_description", "_UI_PrimaryModule_specificationPath_feature", "_UI_PrimaryModule_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            PopPackage.Literals.PRIMARY_MODULE__SPECIFICATION_PATH, true, false, false,
             ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
@@ -133,7 +133,7 @@ public class PrimaryModuleItemProvider extends ModuleItemProvider implements IEd
 
     switch (notification.getFeatureID(PrimaryModule.class))
     {
-    case PopPackage.PRIMARY_MODULE__WORKSPACE_SPECIFICATION_PATH:
+    case PopPackage.PRIMARY_MODULE__SPECIFICATION_PATH:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
     }

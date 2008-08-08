@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProviderAdapterFactory.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
+ * $Id: PopItemProviderAdapterFactory.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -351,6 +351,31 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
     }
 
     return deliveryStreamItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.DevelopmentStream} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected DevelopmentStreamItemProvider developmentStreamItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.DevelopmentStream}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createDevelopmentStreamAdapter()
+  {
+    if (developmentStreamItemProvider == null)
+    {
+      developmentStreamItemProvider = new DevelopmentStreamItemProvider(this);
+    }
+
+    return developmentStreamItemProvider;
   }
 
   /**
@@ -750,6 +775,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
       subBranchItemProvider.dispose();
     if (deliveryStreamItemProvider != null)
       deliveryStreamItemProvider.dispose();
+    if (developmentStreamItemProvider != null)
+      developmentStreamItemProvider.dispose();
     if (maintenanceStreamItemProvider != null)
       maintenanceStreamItemProvider.dispose();
     if (releaseItemProvider != null)

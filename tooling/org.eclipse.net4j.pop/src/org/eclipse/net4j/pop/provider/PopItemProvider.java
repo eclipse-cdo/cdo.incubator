@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProvider.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
+ * $Id: PopItemProvider.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -252,6 +252,9 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
 
     newChildDescriptors.add(createChildParameter(PopPackage.Literals.POP__REPOSITORY, PopFactory.eINSTANCE
         .createRepository()));
+
+    newChildDescriptors.add(createChildParameter(PopPackage.Literals.POP__ROOT_STREAM, PopFactory.eINSTANCE
+        .createDevelopmentStream()));
 
     newChildDescriptors.add(createChildParameter(PopPackage.Literals.POP__PRIMARY_MODULE, PopFactory.eINSTANCE
         .createPrimaryModule()));

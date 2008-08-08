@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStream.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
+ * $Id: DevelopmentStream.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -28,7 +28,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.net4j.pop.PopPackage#getDevelopmentStream()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface DevelopmentStream extends IntegrationStream

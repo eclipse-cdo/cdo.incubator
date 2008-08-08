@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopAdapterFactory.java,v 1.1 2008-08-07 17:42:16 estepper Exp $
+ * $Id: PopAdapterFactory.java,v 1.2 2008-08-08 09:24:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutDiscriminator;
@@ -35,7 +36,6 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
-import org.eclipse.net4j.pop.RootStream;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.SubBranch;
@@ -247,12 +247,6 @@ public class PopAdapterFactory extends AdapterFactoryImpl
     }
 
     @Override
-    public Adapter caseRootStream(RootStream object)
-    {
-      return createRootStreamAdapter();
-    }
-
-    @Override
     public Adapter caseTarget(Target object)
     {
       return createTargetAdapter();
@@ -310,6 +304,12 @@ public class PopAdapterFactory extends AdapterFactoryImpl
     public Adapter caseWorkspaceConfigurator(WorkspaceConfigurator object)
     {
       return createWorkspaceConfiguratorAdapter();
+    }
+
+    @Override
+    public Adapter caseAssignee(Assignee object)
+    {
+      return createAssigneeAdapter();
     }
 
     @Override
@@ -664,21 +664,6 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.RootStream <em>Root Stream</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.eclipse.net4j.pop.RootStream
-   * @generated
-   */
-  public Adapter createRootStreamAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Target <em>Target</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -824,6 +809,21 @@ public class PopAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWorkspaceConfiguratorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Assignee <em>Assignee</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.eclipse.net4j.pop.Assignee
+   * @generated
+   */
+  public Adapter createAssigneeAdapter()
   {
     return null;
   }

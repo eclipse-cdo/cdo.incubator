@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -43,7 +43,7 @@ import java.util.Collection;
  *
  * @generated
  */
-public abstract class DevelopmentStreamImpl extends IntegrationStreamImpl implements DevelopmentStream
+public class DevelopmentStreamImpl extends IntegrationStreamImpl implements DevelopmentStream
 {
   /**
    * The cached value of the '{@link #getMaintenanceStreams() <em>Maintenance Streams</em>}' containment reference list.

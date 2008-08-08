@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopSwitch.java,v 1.1 2008-08-07 17:42:16 estepper Exp $
+ * $Id: PopSwitch.java,v 1.2 2008-08-08 09:24:34 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
+import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutDiscriminator;
@@ -35,7 +36,6 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
-import org.eclipse.net4j.pop.RootStream;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.SubBranch;
@@ -181,6 +181,8 @@ public class PopSwitch<T>
       if (result == null)
         result = casePopElement(pop);
       if (result == null)
+        result = caseAssignee(pop);
+      if (result == null)
         result = caseIdentifiable(pop);
       if (result == null)
         result = caseDisplayable(pop);
@@ -239,6 +241,8 @@ public class PopSwitch<T>
       if (result == null)
         result = casePopElement(developer);
       if (result == null)
+        result = caseAssignee(developer);
+      if (result == null)
         result = caseIdentifiable(developer);
       if (result == null)
         result = caseDisplayable(developer);
@@ -252,6 +256,8 @@ public class PopSwitch<T>
       T result = caseTaskGroup(taskGroup);
       if (result == null)
         result = casePopElement(taskGroup);
+      if (result == null)
+        result = caseAssignee(taskGroup);
       if (result == null)
         result = caseIdentifiable(taskGroup);
       if (result == null)
@@ -452,26 +458,6 @@ public class PopSwitch<T>
         result = defaultCase(theEObject);
       return result;
     }
-    case PopPackage.ROOT_STREAM:
-    {
-      RootStream rootStream = (RootStream)theEObject;
-      T result = caseRootStream(rootStream);
-      if (result == null)
-        result = caseDevelopmentStream(rootStream);
-      if (result == null)
-        result = caseIntegrationStream(rootStream);
-      if (result == null)
-        result = caseStream(rootStream);
-      if (result == null)
-        result = casePopElement(rootStream);
-      if (result == null)
-        result = caseIdentifiable(rootStream);
-      if (result == null)
-        result = caseDisplayable(rootStream);
-      if (result == null)
-        result = defaultCase(theEObject);
-      return result;
-    }
     case PopPackage.TARGET:
     {
       Target target = (Target)theEObject;
@@ -624,6 +610,14 @@ public class PopSwitch<T>
         result = caseIdentifiable(workspaceConfigurator);
       if (result == null)
         result = caseDisplayable(workspaceConfigurator);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case PopPackage.ASSIGNEE:
+    {
+      Assignee assignee = (Assignee)theEObject;
+      T result = caseAssignee(assignee);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -986,22 +980,6 @@ public class PopSwitch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Root Stream</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Root Stream</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRootStream(RootStream object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Target</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1157,6 +1135,22 @@ public class PopSwitch<T>
    * @generated
    */
   public T caseWorkspaceConfigurator(WorkspaceConfigurator object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Assignee</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Assignee</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAssignee(Assignee object)
   {
     return null;
   }

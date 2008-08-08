@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskGroupItemProvider.java,v 1.1 2008-08-07 17:42:14 estepper Exp $
+ * $Id: TaskGroupItemProvider.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -106,8 +106,8 @@ public class TaskGroupItemProvider extends PopElementItemProvider implements IEd
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(PopPackage.Literals.TASK_GROUP__CHILDREN);
-      childrenFeatures.add(PopPackage.Literals.TASK_GROUP__TASKS);
+      childrenFeatures.add(PopPackage.Literals.ASSIGNEE__TASKS);
+      childrenFeatures.add(PopPackage.Literals.ASSIGNEE__TASK_GROUPS);
     }
     return childrenFeatures;
   }
@@ -169,8 +169,8 @@ public class TaskGroupItemProvider extends PopElementItemProvider implements IEd
     case PopPackage.TASK_GROUP__NAME:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
-    case PopPackage.TASK_GROUP__CHILDREN:
     case PopPackage.TASK_GROUP__TASKS:
+    case PopPackage.TASK_GROUP__TASK_GROUPS:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
     }
@@ -189,11 +189,11 @@ public class TaskGroupItemProvider extends PopElementItemProvider implements IEd
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
 
-    newChildDescriptors.add(createChildParameter(PopPackage.Literals.TASK_GROUP__CHILDREN, PopFactory.eINSTANCE
-        .createTaskGroup()));
+    newChildDescriptors
+        .add(createChildParameter(PopPackage.Literals.ASSIGNEE__TASKS, PopFactory.eINSTANCE.createTask()));
 
-    newChildDescriptors.add(createChildParameter(PopPackage.Literals.TASK_GROUP__TASKS, PopFactory.eINSTANCE
-        .createTask()));
+    newChildDescriptors.add(createChildParameter(PopPackage.Literals.ASSIGNEE__TASK_GROUPS, PopFactory.eINSTANCE
+        .createTaskGroup()));
   }
 
 }
