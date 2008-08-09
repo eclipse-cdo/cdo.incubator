@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManager.java,v 1.3 2008-08-09 09:26:22 estepper Exp $
+ * $Id: PopManager.java,v 1.4 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -16,14 +16,13 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Manager</b></em>'. <!-- end-user-doc -->
- *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.PopPackage#getPopManager()
  * @model
  * @generated
@@ -36,15 +35,15 @@ public interface PopManager extends PopElement
   public static final PopManager INSTANCE = org.eclipse.net4j.pop.impl.PopManagerImpl.INSTANCE;
 
   /**
-   * Returns the value of the '<em><b>Pops</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.Pop}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pops</b></em>' containment reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.Pop}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}'. <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pops</em>' reference list isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Pops</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getPopManager_Pops()
    * @see org.eclipse.net4j.pop.Pop#getPopManager

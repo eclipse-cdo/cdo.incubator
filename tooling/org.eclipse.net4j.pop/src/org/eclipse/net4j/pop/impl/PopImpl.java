@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopImpl.java,v 1.3 2008-08-09 09:26:22 estepper Exp $
+ * $Id: PopImpl.java,v 1.4 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -37,33 +37,31 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import java.util.Collection;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Pop</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Pop</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getTaskGroups <em>Task Groups</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getPopManager <em>Pop Manager</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#isActive <em>Active</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getDevelopers <em>Developers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getRepository <em>Repository</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getRootStream <em>Root Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getPrimaryModule <em>Primary Module</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getCheckoutManager <em>Checkout Manager</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getTasks <em>Tasks</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getTaskGroups <em>Task Groups</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getPopManager <em>Pop Manager</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#isActive <em>Active</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getDevelopers <em>Developers</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getRootStream <em>Root Stream</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getPrimaryModule <em>Primary Module</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopImpl#getCheckoutManager <em>Checkout Manager</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PopImpl extends PopElementImpl implements Pop
 {
   /**
-   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getTasks()
    * @generated
    * @ordered
@@ -71,9 +69,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected EList<Task> tasks;
 
   /**
-   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getTaskGroups()
    * @generated
    * @ordered
@@ -81,9 +79,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected EList<TaskGroup> taskGroups;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -91,9 +89,8 @@ public class PopImpl extends PopElementImpl implements Pop
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -101,9 +98,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isActive() <em>Active</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #isActive() <em>Active</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @see #isActive()
    * @generated
    * @ordered
@@ -111,9 +108,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected static final boolean ACTIVE_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getDevelopers() <em>Developers</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getDevelopers() <em>Developers</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getDevelopers()
    * @generated
    * @ordered
@@ -121,9 +118,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected EList<Developer> developers;
 
   /**
-   * The cached value of the '{@link #getRepository() <em>Repository</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getRepository() <em>Repository</em>}' containment reference. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getRepository()
    * @generated
    * @ordered
@@ -131,9 +128,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected Repository repository;
 
   /**
-   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getRootStream() <em>Root Stream</em>}' containment reference. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getRootStream()
    * @generated
    * @ordered
@@ -141,9 +138,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected DevelopmentStream rootStream;
 
   /**
-   * The cached value of the '{@link #getPrimaryModule() <em>Primary Module</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getPrimaryModule() <em>Primary Module</em>}' containment reference. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getPrimaryModule()
    * @generated
    * @ordered
@@ -151,9 +148,9 @@ public class PopImpl extends PopElementImpl implements Pop
   protected PrimaryModule primaryModule;
 
   /**
-   * The cached value of the '{@link #getCheckoutManager() <em>Checkout Manager</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getCheckoutManager() <em>Checkout Manager</em>}' reference. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getCheckoutManager()
    * @generated
    * @ordered
@@ -161,8 +158,8 @@ public class PopImpl extends PopElementImpl implements Pop
   protected CheckoutManager checkoutManager;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopImpl()
@@ -171,8 +168,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -182,8 +179,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Task> getTasks()
@@ -197,8 +194,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<TaskGroup> getTaskGroups()
@@ -212,8 +209,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopManager getPopManager()
@@ -224,8 +221,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopManager basicGetPopManager()
@@ -236,8 +233,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPopManager(PopManager newPopManager, NotificationChain msgs)
@@ -247,8 +244,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPopManager(PopManager newPopManager)
@@ -272,8 +269,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -282,8 +279,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -295,8 +292,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public boolean isActive()
@@ -307,8 +304,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Developer> getDevelopers()
@@ -322,8 +319,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository getRepository()
@@ -351,8 +348,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository basicGetRepository()
@@ -361,8 +358,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
@@ -382,8 +379,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRepository(Repository newRepository)
@@ -404,8 +401,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DevelopmentStream getRootStream()
@@ -434,8 +431,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DevelopmentStream basicGetRootStream()
@@ -444,8 +441,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetRootStream(DevelopmentStream newRootStream, NotificationChain msgs)
@@ -465,8 +462,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRootStream(DevelopmentStream newRootStream)
@@ -489,8 +486,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PrimaryModule getPrimaryModule()
@@ -519,8 +516,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PrimaryModule basicGetPrimaryModule()
@@ -529,8 +526,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPrimaryModule(PrimaryModule newPrimaryModule, NotificationChain msgs)
@@ -550,8 +547,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPrimaryModule(PrimaryModule newPrimaryModule)
@@ -575,8 +572,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public CheckoutManager getCheckoutManager()
@@ -596,8 +593,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public CheckoutManager basicGetCheckoutManager()
@@ -606,8 +603,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetCheckoutManager(CheckoutManager newCheckoutManager, NotificationChain msgs)
@@ -627,8 +624,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setCheckoutManager(CheckoutManager newCheckoutManager)
@@ -652,8 +649,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -697,8 +694,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -727,8 +724,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -743,8 +740,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -787,8 +784,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -832,8 +829,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -873,8 +870,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -907,8 +904,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -930,8 +927,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -953,8 +950,8 @@ public class PopImpl extends PopElementImpl implements Pop
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -970,4 +967,4 @@ public class PopImpl extends PopElementImpl implements Pop
     return result.toString();
   }
 
-} //PopImpl
+} // PopImpl

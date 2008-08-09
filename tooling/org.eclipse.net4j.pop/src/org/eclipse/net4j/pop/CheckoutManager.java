@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManager.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
+ * $Id: CheckoutManager.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -17,20 +17,18 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.core.runtime.IPath;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Checkout Manager</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Checkout Manager</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.CheckoutManager#getLocation <em>Location</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.CheckoutManager#getCheckouts <em>Checkouts</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.CheckoutManager#getActiveCheckout <em>Active Checkout</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.CheckoutManager#getLocation <em>Location</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.CheckoutManager#getCheckouts <em>Checkouts</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.CheckoutManager#getActiveCheckout <em>Active Checkout</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager()
  * @model
  * @generated
@@ -38,14 +36,14 @@ import org.eclipse.core.runtime.IPath;
 public interface CheckoutManager extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Pop</b></em>' reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getCheckoutManager <em>Checkout Manager</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop</b></em>' reference. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.Pop#getCheckoutManager <em>Checkout Manager</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Pop</em>' reference list isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Pop</em>' reference list isn't clear, there really should be more of a description
+   * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Pop</em>' reference.
    * @see #setPop(Pop)
    * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager_Pop()
@@ -56,40 +54,42 @@ public interface CheckoutManager extends PopElement
   Pop getPop();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pop</em>' reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}' reference. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Pop</em>' reference.
    * @see #getPop()
    * @generated
    */
   void setPop(Pop value);
 
   /**
-   * Returns the value of the '<em><b>Location</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Location</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Location</em>' attribute isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Location</em>' attribute isn't clear, there really should be more of a description
+   * here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Location</em>' attribute.
    * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager_Location()
-   * @model dataType="org.eclipse.net4j.pop.Path" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model dataType="org.eclipse.net4j.pop.Path" required="true" transient="true" changeable="false" volatile="true"
+   *        derived="true"
    * @generated
    */
   IPath getLocation();
 
   /**
-   * Returns the value of the '<em><b>Checkouts</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.Checkout}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Checkout#getManager <em>Manager</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Checkouts</b></em>' containment reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.Checkout}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.Checkout#getManager <em>Manager</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Checkouts</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Checkouts</em>' containment reference list isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Checkouts</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager_Checkouts()
    * @see org.eclipse.net4j.pop.Checkout#getManager
@@ -99,13 +99,13 @@ public interface CheckoutManager extends PopElement
   EList<Checkout> getCheckouts();
 
   /**
-   * Returns the value of the '<em><b>Active Checkout</b></em>' reference.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Active Checkout</b></em>' reference. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Active Checkout</em>' reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Active Checkout</em>' reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Active Checkout</em>' reference.
    * @see #setActiveCheckout(Checkout)
    * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager_ActiveCheckout()
@@ -115,10 +115,11 @@ public interface CheckoutManager extends PopElement
   Checkout getActiveCheckout();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.CheckoutManager#getActiveCheckout <em>Active Checkout</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Active Checkout</em>' reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.CheckoutManager#getActiveCheckout <em>Active Checkout</em>}'
+   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Active Checkout</em>' reference.
    * @see #getActiveCheckout()
    * @generated
    */

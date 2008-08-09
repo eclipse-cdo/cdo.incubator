@@ -8,23 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Milestone.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: Milestone.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Milestone</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Milestone</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.Milestone#getRelease <em>Release</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Milestone#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Milestone#getRelease <em>Release</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Milestone#getName <em>Name</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.PopPackage#getMilestone()
  * @model
  * @generated
@@ -32,14 +29,14 @@ package org.eclipse.net4j.pop;
 public interface Milestone extends Target
 {
   /**
-   * Returns the value of the '<em><b>Release</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Release#getMilestones <em>Milestones</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Release</b></em>' container reference. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.Release#getMilestones <em>Milestones</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Release</em>' container reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Release</em>' container reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Release</em>' container reference.
    * @see #setRelease(Release)
    * @see org.eclipse.net4j.pop.PopPackage#getMilestone_Release()
@@ -51,22 +48,22 @@ public interface Milestone extends Target
 
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.Milestone#getRelease <em>Release</em>}' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Release</em>' container reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Release</em>' container reference.
    * @see #getRelease()
    * @generated
    */
   void setRelease(Release value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.PopPackage#getMilestone_Name()
@@ -76,10 +73,11 @@ public interface Milestone extends Target
   String getName();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Milestone#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Milestone#getName <em>Name</em>}' attribute. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */

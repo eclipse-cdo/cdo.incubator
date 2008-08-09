@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.5 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -50,21 +50,18 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.eclipse.net4j.pop.*;
 import org.eclipse.core.runtime.IPath;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
+ * 
  * @generated
  */
 public class PopFactoryImpl extends EFactoryImpl implements PopFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates the default factory implementation. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public static PopFactory init()
@@ -85,9 +82,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * Creates an instance of the factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopFactoryImpl()
@@ -96,8 +92,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -155,8 +151,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -184,8 +180,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -213,8 +209,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopManager createPopManager()
@@ -224,8 +220,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Pop createPop()
@@ -235,8 +231,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PrimaryModule createPrimaryModule()
@@ -246,8 +242,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository createRepository()
@@ -257,8 +253,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Developer createDeveloper()
@@ -268,8 +264,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TaskGroup createTaskGroup()
@@ -279,8 +275,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Task createTask()
@@ -290,8 +286,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Tag createTag()
@@ -301,8 +297,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MainBranch createMainBranch()
@@ -312,8 +308,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public SubBranch createSubBranch()
@@ -323,8 +319,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DeliveryStream createDeliveryStream()
@@ -334,8 +330,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DevelopmentStream createDevelopmentStream()
@@ -345,8 +341,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public MaintenanceStream createMaintenanceStream()
@@ -356,8 +352,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release createRelease()
@@ -367,8 +363,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Milestone createMilestone()
@@ -378,8 +374,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Delivery createDelivery()
@@ -389,8 +385,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Integration createIntegration()
@@ -400,8 +396,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public CheckoutManager createCheckoutManager()
@@ -411,8 +407,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Checkout createCheckout()
@@ -422,8 +418,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public WorkspaceSpecification createWorkspaceSpecification()
@@ -433,8 +429,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public SecondaryModule createSecondaryModule()
@@ -444,8 +440,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Assignee createAssignee()
@@ -455,8 +451,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public CheckoutState createCheckoutStateFromString(EDataType eDataType, String initialValue)
@@ -469,8 +465,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertCheckoutStateToString(EDataType eDataType, Object instanceValue)
@@ -479,8 +475,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Version createVersionFromString(EDataType eDataType, String initialValue)
@@ -489,8 +485,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertVersionToString(EDataType eDataType, Object instanceValue)
@@ -499,8 +495,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IPath createPathFromString(EDataType eDataType, String initialValue)
@@ -509,8 +505,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertPathToString(EDataType eDataType, Object instanceValue)
@@ -519,8 +515,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IRepositoryAdapter createRepositoryAdapterFromString(EDataType eDataType, String initialValue)
@@ -529,8 +525,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertRepositoryAdapterToString(EDataType eDataType, Object instanceValue)
@@ -539,8 +535,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IRepositorySession createRepositorySessionFromString(EDataType eDataType, String initialValue)
@@ -549,8 +545,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertRepositorySessionToString(EDataType eDataType, Object instanceValue)
@@ -559,8 +555,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IRepositoryFolder createRepositoryFolderFromString(EDataType eDataType, String initialValue)
@@ -569,8 +565,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertRepositoryFolderToString(EDataType eDataType, Object instanceValue)
@@ -579,8 +575,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public IRepositoryTag createRepositoryTagFromString(EDataType eDataType, String initialValue)
@@ -589,8 +585,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String convertRepositoryTagToString(EDataType eDataType, Object instanceValue)
@@ -599,8 +595,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopPackage getPopPackage()
@@ -609,8 +605,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @deprecated
    * @generated
    */
@@ -620,4 +616,4 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
     return PopPackage.eINSTANCE;
   }
 
-} //PopFactoryImpl
+} // PopFactoryImpl

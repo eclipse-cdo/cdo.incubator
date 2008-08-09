@@ -8,18 +8,15 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Displayable.java,v 1.1 2008-08-07 17:42:11 estepper Exp $
+ * $Id: Displayable.java,v 1.2 2008-08-09 09:58:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Displayable</b></em>'.
- * <!-- end-user-doc -->
- *
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Displayable</b></em>'. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.net4j.pop.PopPackage#getDisplayable()
  * @model interface="true" abstract="true"
  * @generated
@@ -27,8 +24,8 @@ import org.eclipse.emf.ecore.EObject;
 public interface Displayable extends EObject
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @model kind="operation" required="true"
    * @generated
    */

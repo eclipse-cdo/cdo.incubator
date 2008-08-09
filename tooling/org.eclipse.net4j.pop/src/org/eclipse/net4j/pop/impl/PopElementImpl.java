@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -19,25 +19,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PopElementImpl extends EObjectImpl implements PopElement
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getId()
    * @generated
    * @ordered
@@ -45,9 +42,9 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   protected static final String ID_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getClass_() <em>Class</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getClass_() <em>Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @see #getClass_()
    * @generated
    * @ordered
@@ -55,8 +52,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   protected static final String CLASS_EDEFAULT = null;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopElementImpl()
@@ -65,8 +62,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -76,8 +73,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getId()
@@ -88,8 +85,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getClass_()
@@ -100,8 +97,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getDisplayString()
@@ -112,8 +109,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -130,8 +127,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -147,4 +144,4 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
     return super.eIsSet(featureID);
   }
 
-} //PopElementImpl
+} // PopElementImpl

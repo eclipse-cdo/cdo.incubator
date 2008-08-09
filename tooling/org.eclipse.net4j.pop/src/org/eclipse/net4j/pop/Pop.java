@@ -8,31 +8,28 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Pop.java,v 1.3 2008-08-09 09:26:22 estepper Exp $
+ * $Id: Pop.java,v 1.4 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Pop</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Pop</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#isActive <em>Active</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getDevelopers <em>Developers</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getRepository <em>Repository</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getRootStream <em>Root Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getPrimaryModule <em>Primary Module</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getCheckoutManager <em>Checkout Manager</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#isActive <em>Active</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getDevelopers <em>Developers</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getRootStream <em>Root Stream</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getPrimaryModule <em>Primary Module</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.Pop#getCheckoutManager <em>Checkout Manager</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.net4j.pop.PopPackage#getPop()
  * @model
  * @generated
@@ -40,14 +37,14 @@ import org.eclipse.emf.common.util.EList;
 public interface Pop extends PopElement, Assignee
 {
   /**
-   * Returns the value of the '<em><b>Pop Manager</b></em>' container reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop Manager</b></em>' container reference. It is bidirectional and its opposite is
+   * '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Pop Manager</em>' container reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Pop Manager</em>' container reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Pop Manager</em>' container reference.
    * @see #setPopManager(PopManager)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_PopManager()
@@ -59,22 +56,22 @@ public interface Pop extends PopElement, Assignee
 
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}' container reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pop Manager</em>' container reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Pop Manager</em>' container reference.
    * @see #getPopManager()
    * @generated
    */
   void setPopManager(PopManager value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_Name()
@@ -84,23 +81,23 @@ public interface Pop extends PopElement, Assignee
   String getName();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getName <em>Name</em>}' attribute. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
+   * 
+   * @param value
+   *          the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Active</b></em>' attribute.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Active</b></em>' attribute. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Active</em>' attribute isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Active</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Active</em>' attribute.
    * @see org.eclipse.net4j.pop.PopPackage#getPop_Active()
    * @model required="true" transient="true" changeable="false" volatile="true" derived="true"
@@ -109,15 +106,15 @@ public interface Pop extends PopElement, Assignee
   boolean isActive();
 
   /**
-   * Returns the value of the '<em><b>Developers</b></em>' containment reference list.
-   * The list contents are of type {@link org.eclipse.net4j.pop.Developer}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Developer#getPop <em>Pop</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Developers</b></em>' containment reference list. The list contents are of type
+   * {@link org.eclipse.net4j.pop.Developer}. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.Developer#getPop <em>Pop</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Developers</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Developers</em>' containment reference list isn't clear, there really should be more of
+   * a description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Developers</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getPop_Developers()
    * @see org.eclipse.net4j.pop.Developer#getPop
@@ -127,14 +124,14 @@ public interface Pop extends PopElement, Assignee
   EList<Developer> getDevelopers();
 
   /**
-   * Returns the value of the '<em><b>Repository</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Repository#getPop <em>Pop</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Repository</b></em>' containment reference. It is bidirectional and its opposite
+   * is '{@link org.eclipse.net4j.pop.Repository#getPop <em>Pop</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Repository</em>' containment reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Repository</em>' containment reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Repository</em>' containment reference.
    * @see #setRepository(Repository)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_Repository()
@@ -146,23 +143,24 @@ public interface Pop extends PopElement, Assignee
 
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getRepository <em>Repository</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Repository</em>' containment reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Repository</em>' containment reference.
    * @see #getRepository()
    * @generated
    */
   void setRepository(Repository value);
 
   /**
-   * Returns the value of the '<em><b>Root Stream</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.DevelopmentStream#getPop <em>Pop</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Root Stream</b></em>' containment reference. It is bidirectional and its opposite
+   * is '{@link org.eclipse.net4j.pop.DevelopmentStream#getPop <em>Pop</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Root Stream</em>' containment reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Root Stream</em>' containment reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Root Stream</em>' containment reference.
    * @see #setRootStream(DevelopmentStream)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_RootStream()
@@ -174,23 +172,24 @@ public interface Pop extends PopElement, Assignee
 
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getRootStream <em>Root Stream</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Root Stream</em>' containment reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Root Stream</em>' containment reference.
    * @see #getRootStream()
    * @generated
    */
   void setRootStream(DevelopmentStream value);
 
   /**
-   * Returns the value of the '<em><b>Primary Module</b></em>' containment reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.PrimaryModule#getPop <em>Pop</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Primary Module</b></em>' containment reference. It is bidirectional and its
+   * opposite is '{@link org.eclipse.net4j.pop.PrimaryModule#getPop <em>Pop</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Primary Module</em>' containment reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Primary Module</em>' containment reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Primary Module</em>' containment reference.
    * @see #setPrimaryModule(PrimaryModule)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_PrimaryModule()
@@ -201,24 +200,25 @@ public interface Pop extends PopElement, Assignee
   PrimaryModule getPrimaryModule();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getPrimaryModule <em>Primary Module</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Primary Module</em>' containment reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getPrimaryModule <em>Primary Module</em>}' containment
+   * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Primary Module</em>' containment reference.
    * @see #getPrimaryModule()
    * @generated
    */
   void setPrimaryModule(PrimaryModule value);
 
   /**
-   * Returns the value of the '<em><b>Checkout Manager</b></em>' reference.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}'.
-   * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Checkout Manager</b></em>' reference. It is bidirectional and its opposite is '
+   * {@link org.eclipse.net4j.pop.CheckoutManager#getPop <em>Pop</em>}'. <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Checkout Manager</em>' reference isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Checkout Manager</em>' reference isn't clear, there really should be more of a
+   * description here...
    * </p>
    * <!-- end-user-doc -->
+   * 
    * @return the value of the '<em>Checkout Manager</em>' reference.
    * @see #setCheckoutManager(CheckoutManager)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_CheckoutManager()
@@ -230,9 +230,10 @@ public interface Pop extends PopElement, Assignee
 
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getCheckoutManager <em>Checkout Manager</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Checkout Manager</em>' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @param value
+   *          the new value of the '<em>Checkout Manager</em>' reference.
    * @see #getCheckoutManager()
    * @generated
    */

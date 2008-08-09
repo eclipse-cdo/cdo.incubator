@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: AssigneeImpl.java,v 1.1 2008-08-08 09:24:33 estepper Exp $
+ * $Id: AssigneeImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -28,25 +28,23 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import java.util.Collection;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Assignee</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Assignee</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.AssigneeImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.AssigneeImpl#getTaskGroups <em>Task Groups</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.AssigneeImpl#getTasks <em>Tasks</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.AssigneeImpl#getTaskGroups <em>Task Groups</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AssigneeImpl extends EObjectImpl implements Assignee
 {
   /**
-   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getTasks()
    * @generated
    * @ordered
@@ -54,9 +52,9 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   protected EList<Task> tasks;
 
   /**
-   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getTaskGroups() <em>Task Groups</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getTaskGroups()
    * @generated
    * @ordered
@@ -64,8 +62,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   protected EList<TaskGroup> taskGroups;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected AssigneeImpl()
@@ -74,8 +72,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -85,8 +83,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Task> getTasks()
@@ -100,8 +98,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<TaskGroup> getTaskGroups()
@@ -115,8 +113,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -134,8 +132,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -152,8 +150,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -170,8 +168,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -193,8 +191,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -213,8 +211,8 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -230,4 +228,4 @@ public class AssigneeImpl extends EObjectImpl implements Assignee
     return super.eIsSet(featureID);
   }
 
-} //AssigneeImpl
+} // AssigneeImpl

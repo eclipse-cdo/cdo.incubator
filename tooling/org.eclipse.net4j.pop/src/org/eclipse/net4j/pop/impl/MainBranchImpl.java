@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MainBranchImpl.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: MainBranchImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -24,23 +24,21 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Main Branch</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Main Branch</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.MainBranchImpl#getRepository <em>Repository</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.MainBranchImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MainBranchImpl extends BranchImpl implements MainBranch
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MainBranchImpl()
@@ -49,8 +47,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -60,8 +58,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository getRepository()
@@ -72,8 +70,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Repository basicGetRepository()
@@ -84,8 +82,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
@@ -95,8 +93,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRepository(Repository newRepository)
@@ -122,8 +120,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -140,8 +138,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -156,8 +154,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -172,8 +170,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -190,8 +188,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -207,8 +205,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -224,8 +222,8 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -239,4 +237,4 @@ public class MainBranchImpl extends BranchImpl implements MainBranch
     return super.eIsSet(featureID);
   }
 
-} //MainBranchImpl
+} // MainBranchImpl
