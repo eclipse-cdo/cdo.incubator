@@ -34,9 +34,10 @@ import org.eclipse.core.runtime.Path;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * @author Eike Stepper
@@ -74,16 +75,26 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
   {
     try
     {
-      return resourceSet.getResource(uri, true);
+      if (getFile(uri) != null)
+      {
+        return resourceSet.getResource(uri, true);
+      }
     }
     catch (Exception ex)
     {
       OM.LOG.error(ex);
-      return null;
     }
+
+    return null;
   }
 
-  public <T extends EObject> IModelRegistration<T> register(URI uri, IModelHandler<T> handler)
+  public void ungetResource(Resource resource)
+  {
+    resource.unload();
+    resourceSet.getResources().remove(resource);
+  }
+
+  public ModelResource getOrCreateModelResource(URI uri)
   {
     ModelResource modelResource;
     synchronized (modelResources)
@@ -96,6 +107,18 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
       }
     }
 
+    return modelResource;
+  }
+
+  public ModelResource[] getReferers(ModelResource referenced)
+  {
+    // TODO: implement ModelManager.getReferers(modelResource)
+    throw new UnsupportedOperationException();
+  }
+
+  public <T extends EObject> IModelRegistration<T> register(URI uri, IModelHandler<T> handler)
+  {
+    ModelResource modelResource = getOrCreateModelResource(uri);
     return modelResource.addRregistration(handler);
   }
 
@@ -136,6 +159,56 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
 
   protected void cleanup()
   {
+    Set<ModelResource> primaries = new HashSet<ModelResource>();
+    Set<ModelResource> secondaries = new HashSet<ModelResource>();
+    synchronized (modelResources)
+    {
+      for (ModelResource modelResource : modelResources.values())
+      {
+        if (modelResource.hasRegistrations())
+        {
+          primaries.add(modelResource);
+        }
+        else
+        {
+          secondaries.add(modelResource);
+        }
+      }
+    }
+
+    Set<ModelResource> reachables = new HashSet<ModelResource>();
+    for (ModelResource primary : primaries)
+    {
+      xref(primary, reachables);
+    }
+
+    for (ModelResource secondary : secondaries)
+    {
+      if (!reachables.contains(secondary))
+      {
+        URI uri = secondary.getURI();
+        if (TRACER.isEnabled())
+        {
+          TRACER.format("Unreachable: {0}", uri);
+        }
+
+        synchronized (modelResources)
+        {
+          modelResources.remove(uri);
+        }
+      }
+    }
+  }
+
+  private void xref(ModelResource modelResource, Set<ModelResource> reachables)
+  {
+    if (reachables.add(modelResource))
+    {
+      for (ModelResource reference : modelResource.getReferences())
+      {
+        xref(reference, reachables);
+      }
+    }
   }
 
   public static ResourceSet createResourceSet()
@@ -199,16 +272,16 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
       List<ModelResource> result = new ArrayList<ModelResource>();
       synchronized (modelResources)
       {
-        for (Entry<URI, ModelResource> entry : modelResources.entrySet())
+        for (ModelResource modelResource : modelResources.values())
         {
-          URI uri = entry.getKey();
+          URI uri = modelResource.getURI();
           if (uri.isPlatformResource())
           {
             IPath path = new Path(uri.toPlatformString(false));
             IResourceDelta member = delta.findMember(path);
             if (member != null && member.getResource() instanceof IFile)
             {
-              result.add(entry.getValue());
+              result.add(modelResource);
             }
           }
         }

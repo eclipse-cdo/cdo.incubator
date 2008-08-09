@@ -19,17 +19,12 @@ import org.eclipse.emf.common.util.URI;
  */
 public class Client
 {
+  private static URI uri = URI.createPlatformResourceURI("/cdo.pop/project.xml", false);
+
+  private static IModelHandler<Pop> handler = new DefaultModelHandler<Pop>();
+
   public static void main(String[] args) throws Exception
   {
-    URI uri = URI.createPlatformResourceURI("/cdo.pop/project.xml", false);
-    DefaultModelHandler<Pop> handler = new DefaultModelHandler<Pop>()
-    {
-      public void modelChanged(Pop model, Kind kind)
-      {
-        System.out.println(kind.toString() + ": " + model);
-      }
-    };
-
     IModelManager modelManager = new ModelManager();
     IModelRegistration<Pop> registration = modelManager.register(uri, handler);
 

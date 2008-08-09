@@ -12,30 +12,31 @@ package org.eclipse.net4j.pop.model;
 
 import org.eclipse.net4j.util.event.Notifier;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
-import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.Platform;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Eike Stepper
  */
 public class ModelResource extends Notifier implements IModelResource
 {
-  private static final long UNKNOWN = Long.MIN_VALUE;
-
   private ModelManager modelManager;
 
   private URI uri;
 
-  private transient boolean exists = true;
+  private Resource resource;
 
-  private transient long lastModified = UNKNOWN;
+  private ModelResource[] references;
 
   private List<ModelRegistration<? extends EObject>> registrations = new ArrayList<ModelRegistration<? extends EObject>>();
 
@@ -55,29 +56,24 @@ public class ModelResource extends Notifier implements IModelResource
     return uri;
   }
 
-  public boolean exists()
-  {
-    return exists;
-  }
-
-  public long getLastModified()
-  {
-    return lastModified;
-  }
-
   public Resource getResource()
   {
-    return modelManager.getResourceSet().getResource(uri, true);
+    return resource;
   }
 
-  public IModelResource[] getReferences()
+  public synchronized ModelResource[] getReferences()
   {
-    return null;
+    if (references == null)
+    {
+      references = xref();
+    }
+
+    return references;
   }
 
-  public IModelResource[] getReferers()
+  public ModelResource[] getReferers()
   {
-    return null;
+    return modelManager.getReferers(this);
   }
 
   @SuppressWarnings("unchecked")
@@ -121,18 +117,59 @@ public class ModelResource extends Notifier implements IModelResource
     }
   }
 
-  public void refresh()
+  public synchronized void refresh()
   {
-    Resource resource = null;
-    IFile file = ModelManager.getFile(uri);
-    if (file != null)
+    if (resource != null)
     {
-      resource = modelManager.getResource(uri);
+      modelManager.ungetResource(resource);
+      resource = null;
     }
 
+    resource = modelManager.getResource(uri);
+    references = null;
     for (ModelRegistration<?> registration : getRegistrations())
     {
       registration.refresh(resource);
     }
+  }
+
+  private ModelResource[] xref()
+  {
+    Set<ModelResource> targets = new HashSet<ModelResource>();
+    if (resource != null)
+    {
+      for (TreeIterator<EObject> it = resource.getAllContents(); it.hasNext();)
+      {
+        InternalEObject object = (InternalEObject)it.next();
+        URI targetURI = getResourceURI(object);
+        if (targetURI != null)
+        {
+          ModelResource target = modelManager.getOrCreateModelResource(targetURI);
+          if (target != this)
+          {
+            targets.add(target);
+          }
+        }
+      }
+    }
+
+    return targets.toArray(new ModelResource[targets.size()]);
+  }
+
+  private URI getResourceURI(InternalEObject object)
+  {
+    URI targetURI = object.eProxyURI();
+    if (targetURI != null)
+    {
+      return targetURI.trimFragment();
+    }
+
+    Resource targetResource = object.eResource();
+    if (targetResource != null)
+    {
+      return targetResource.getURI();
+    }
+
+    return null;
   }
 }

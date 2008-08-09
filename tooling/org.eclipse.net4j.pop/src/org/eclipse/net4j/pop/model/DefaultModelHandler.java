@@ -10,14 +10,19 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.model;
 
+import org.eclipse.net4j.internal.pop.bundle.OM;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * @author Eike Stepper
  */
-public abstract class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
+public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, DefaultModelHandler.class);
+
   public DefaultModelHandler()
   {
   }
@@ -37,5 +42,19 @@ public abstract class DefaultModelHandler<T extends EObject> implements IModelHa
     }
 
     return null;
+  }
+
+  public final void modelChanged(T model, IModelHandler.Kind kind)
+  {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("{0}: {1}", kind, model);
+    }
+
+    handleModelChanged(model, kind);
+  }
+
+  protected void handleModelChanged(T model, Kind kind)
+  {
   }
 }

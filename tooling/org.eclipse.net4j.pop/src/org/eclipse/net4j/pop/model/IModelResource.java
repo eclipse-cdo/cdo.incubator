@@ -27,10 +27,6 @@ public interface IModelResource extends INotifier, IAdaptable
 
   public URI getURI();
 
-  public boolean exists();
-
-  public long getLastModified();
-
   public IModelResource[] getReferences();
 
   public IModelResource[] getReferers();
