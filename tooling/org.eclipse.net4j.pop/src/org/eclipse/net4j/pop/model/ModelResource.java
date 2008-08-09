@@ -56,7 +56,7 @@ public class ModelResource extends Notifier implements IModelResource
     return uri;
   }
 
-  public Resource getResource()
+  public synchronized Resource getResource()
   {
     return resource;
   }
@@ -71,7 +71,7 @@ public class ModelResource extends Notifier implements IModelResource
     return references;
   }
 
-  public ModelResource[] getReferers()
+  public synchronized ModelResource[] getReferers()
   {
     return modelManager.getReferers(this);
   }
