@@ -142,15 +142,11 @@ public class ModelResource extends Notifier implements IModelResource
     {
       for (TreeIterator<EObject> it = resource.getAllContents(); it.hasNext();)
       {
-        InternalEObject object = (InternalEObject)it.next();
-        URI targetURI = getResourceURI(object);
-        if (targetURI != null)
+        EObject object = it.next();
+        xref(object, targets);
+        for (EObject ref : object.eCrossReferences())
         {
-          ModelResource target = modelManager.getOrCreateModelResource(targetURI);
-          if (target != this)
-          {
-            targets.add(target);
-          }
+          xref(ref, targets);
         }
       }
     }
@@ -158,9 +154,22 @@ public class ModelResource extends Notifier implements IModelResource
     return targets.toArray(new ModelResource[targets.size()]);
   }
 
-  private URI getResourceURI(InternalEObject object)
+  private void xref(EObject object, Set<ModelResource> targets)
   {
-    URI targetURI = object.eProxyURI();
+    URI targetURI = getResourceURI(object);
+    if (targetURI != null)
+    {
+      ModelResource target = modelManager.getOrCreateModelResource(targetURI);
+      if (target != this)
+      {
+        targets.add(target);
+      }
+    }
+  }
+
+  private URI getResourceURI(EObject object)
+  {
+    URI targetURI = ((InternalEObject)object).eProxyURI();
     if (targetURI != null)
     {
       return targetURI.trimFragment();
