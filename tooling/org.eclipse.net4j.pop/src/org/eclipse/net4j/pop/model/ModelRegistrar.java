@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public abstract class ModelRegistrar<T extends EObject> extends NatureManager
+public class ModelRegistrar<T extends EObject> extends NatureManager
 {
   private IModelManager modelManager;
 

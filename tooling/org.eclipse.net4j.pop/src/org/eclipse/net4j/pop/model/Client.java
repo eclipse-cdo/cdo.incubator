@@ -21,7 +21,7 @@ public class Client
 {
   private static URI uri = URI.createPlatformResourceURI("/cdo.pop/project.xml", false);
 
-  private static IModelHandler<Pop> handler = new DefaultModelHandler<Pop>();
+  private static IModelHandler<Pop> handler = new DefaultModelHandler.Adapter<Pop>();
 
   public static void main(String[] args) throws Exception
   {

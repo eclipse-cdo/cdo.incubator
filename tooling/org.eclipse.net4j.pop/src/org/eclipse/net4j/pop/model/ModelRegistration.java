@@ -88,7 +88,7 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
       if (kind != null)
       {
         this.model = model;
-        modelHandler.modelChanged(model, kind);
+        modelHandler.modelChanged(this, kind);
       }
     }
     catch (Exception ex)

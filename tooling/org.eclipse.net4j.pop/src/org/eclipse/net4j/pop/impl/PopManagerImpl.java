@@ -8,18 +8,21 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.1 2008-08-09 09:26:22 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.2 2008-08-09 09:56:42 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
-import org.eclipse.net4j.internal.pop.natures.NatureManager;
 import org.eclipse.net4j.internal.pop.natures.PopProjectNature;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.PopPackage;
+import org.eclipse.net4j.pop.model.DefaultModelHandler;
+import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelRegistration;
 import org.eclipse.net4j.pop.model.ModelManager;
+import org.eclipse.net4j.pop.model.ModelRegistrar;
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleException;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
@@ -29,15 +32,11 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.IPath;
-
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Manager</b></em>'. <!-- end-user-doc -->
@@ -75,17 +74,18 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
   /**
    * @ADDED
    */
-  private Map<IProject, Pop> _pops = new HashMap<IProject, Pop>();
-
-  /**
-   * @ADDED
-   */
   private ModelManager modelManager = new ModelManager();
 
   /**
    * @ADDED
    */
-  private NatureManager projectNatures = new ProjectNatures();
+  private IModelHandler<Pop> popHandler = new PopHandler();
+
+  /**
+   * @ADDED
+   */
+  private ModelRegistrar<Pop> popRegistrar = new ModelRegistrar<Pop>(modelManager, popHandler,
+      PopProjectNature.NATURE_ID, "project.xml");
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -163,66 +163,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
-  public void addPop(IProject project)
-  {
-    PopImpl pop = new PopImpl();
-    synchronized (pops)
-    {
-      if (pops.containsKey(project))
-      {
-        throw new IllegalStateException("Duplicate  ID: " + project);
-      }
-
-      pops.put(project, project2);
-    }
-
-    if (TRACER.isEnabled())
-    {
-      TRACER.trace("Added POP: " + project2);
-    }
-
-    if (isActive())
-    {
-      fireElementAddedEvent(project2);
-    }
-  }
-
-  public Pop removePop(IProject project)
-  {
-    Pop pop = null;
-    synchronized (pops)
-    {
-      pop = pops.remove(project);
-    }
-
-    if (pop != null)
-    {
-      pop.dispose();
-      if (TRACER.isEnabled())
-      {
-        TRACER.trace("Removed POP: " + pop);
-      }
-
-      if (isActive())
-      {
-        fireElementRemovedEvent(pop);
-      }
-
-      return pop;
-    }
-
-    return null;
-  }
-
-  public Pop getPop(String name)
-  {
-    checkActive();
-    synchronized (pops)
-    {
-      return pops.get(name);
-    }
-  }
-
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
@@ -291,65 +231,93 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
     return super.eIsSet(featureID);
   }
 
+  /**
+   * @ADDED
+   */
   public void activate() throws LifecycleException
   {
     modelManager.activate();
-    projectNatures.activate();
+    popRegistrar.activate();
   }
 
+  /**
+   * @ADDED
+   */
   public Exception deactivate()
   {
-    projectNatures.deactivate();
+    popRegistrar.deactivate();
     modelManager.deactivate();
     return null;
   }
 
-  private final class ProjectNatures extends NatureManager
+  /**
+   * @author Eike Stepper
+   * @ADDED
+   */
+  private final class PopHandler extends DefaultModelHandler<Pop>
   {
-    private Map<URI, IModelRegistration<Pop>> registrations = new HashMap<URI, IModelRegistration<Pop>>();
-
-    public ProjectNatures()
+    @Override
+    protected void modelAvailable(IModelRegistration<Pop> registration)
     {
-      super(PopProjectNature.NATURE_ID);
+      if (TRACER.isEnabled())
+      {
+        URI uri = registration.getModelResource().getURI();
+        TRACER.format("Adding pop: {0}", uri);
+      }
+
+      pops.add(registration.getModel());
     }
 
     @Override
-    protected void projectAdded(IProject project)
+    protected void modelRefreshed(IModelRegistration<Pop> registration)
     {
-      try
+      URI uri = registration.getModelResource().getURI();
+      int index = indexOf(uri);
+      if (index != -1)
       {
-        super.projectAdded(project);
-        URI uri = getModelURI(project);
-        addPop(project);
-      }
-      catch (Exception ex)
-      {
-        OM.LOG.error(ex);
-      }
-    }
+        if (TRACER.isEnabled())
+        {
+          TRACER.format("Replacing pop: {0}", uri);
+        }
 
-    protected URI getModelURI(IProject project)
-    {
-      return URI.createPlatformResourceURI(getModelPath(project).toString(), false);
-    }
-
-    protected IPath getModelPath(IProject project)
-    {
-      return null;
+        pops.set(index, registration.getModel());
+      }
     }
 
     @Override
-    protected void projectRemoved(IProject project)
+    protected void modelUnavailable(IModelRegistration<Pop> registration)
     {
-      try
+      URI uri = registration.getModelResource().getURI();
+      int index = indexOf(uri);
+      if (index != -1)
       {
-        super.projectRemoved(project);
-        removePop(project);
+        if (TRACER.isEnabled())
+        {
+          TRACER.format("Removing pop: {0}", uri);
+        }
+
+        pops.remove(index);
       }
-      catch (Exception ex)
+    }
+
+    private int indexOf(URI uri)
+    {
+      int index = 0;
+      for (Pop pop : pops)
       {
-        OM.LOG.error(ex);
+        Resource resource = pop.eResource();
+        if (resource != null)
+        {
+          if (ObjectUtil.equals(resource.getURI(), uri))
+          {
+            return index;
+          }
+        }
+
+        ++index;
       }
+
+      return -1;
     }
   }
 

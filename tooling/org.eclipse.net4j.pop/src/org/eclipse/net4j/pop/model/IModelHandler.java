@@ -20,7 +20,7 @@ public interface IModelHandler<T extends EObject>
 {
   public T locateModel(Resource resource);
 
-  public void modelChanged(T model, Kind kind);
+  public void modelChanged(IModelRegistration<T> registration, Kind kind);
 
   /**
    * @author Eike Stepper

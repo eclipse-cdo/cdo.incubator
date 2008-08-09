@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 /**
  * @author Eike Stepper
  */
-public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
+public abstract class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, DefaultModelHandler.class);
 
@@ -28,7 +28,7 @@ public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
   }
 
   @SuppressWarnings("unchecked")
-  public T locateModel(Resource resource)
+  public final T locateModel(Resource resource)
   {
     for (EObject object : resource.getContents())
     {
@@ -44,17 +44,57 @@ public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
     return null;
   }
 
-  public final void modelChanged(T model, IModelHandler.Kind kind)
+  public final void modelChanged(IModelRegistration<T> registration, IModelHandler.Kind kind)
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("{0}: {1}", kind, model);
+      TRACER.format("{0}: {1}", kind, registration.getModelResource());
     }
 
-    handleModelChanged(model, kind);
+    switch (kind)
+    {
+    case AVAILABLE:
+      modelAvailable(registration);
+      break;
+
+    case REFRESHED:
+      modelRefreshed(registration);
+      break;
+
+    case UNAVAILABLE:
+      modelUnavailable(registration);
+      break;
+    }
   }
 
-  protected void handleModelChanged(T model, Kind kind)
+  protected abstract void modelAvailable(IModelRegistration<T> registration);
+
+  protected abstract void modelRefreshed(IModelRegistration<T> registration);
+
+  protected abstract void modelUnavailable(IModelRegistration<T> registration);
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Adapter<T extends EObject> extends DefaultModelHandler<T>
   {
+    public Adapter()
+    {
+    }
+
+    @Override
+    protected void modelAvailable(IModelRegistration<T> registration)
+    {
+    }
+
+    @Override
+    protected void modelRefreshed(IModelRegistration<T> registration)
+    {
+    }
+
+    @Override
+    protected void modelUnavailable(IModelRegistration<T> registration)
+    {
+    }
   }
 }
