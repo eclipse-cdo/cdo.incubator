@@ -25,7 +25,7 @@ public class Client
     DefaultModelHandler<Pop> handler = new DefaultModelHandler<Pop>()
     {
       @Override
-      protected void handleModel(Pop model)
+      protected void modelChanged(Pop model, Kind kind)
       {
         System.out.println("Model: " + model);
       }

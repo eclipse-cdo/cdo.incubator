@@ -54,22 +54,12 @@ public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
     return null;
   }
 
-  public void modelAvailable(IModelRegistration<T> registration)
+  public void modelChanged(IModelRegistration<T> registration, Kind kind)
   {
-    handleModel(registration.getModel());
+    modelChanged(registration.getModel(), kind);
   }
 
-  public void modelRefreshed(IModelRegistration<T> registration)
-  {
-    handleModel(registration.getModel());
-  }
-
-  public void modelUnvailable(IModelRegistration<T> registration)
-  {
-    handleModel(null);
-  }
-
-  protected void handleModel(T model)
+  protected void modelChanged(T model, Kind kind)
   {
   }
 }

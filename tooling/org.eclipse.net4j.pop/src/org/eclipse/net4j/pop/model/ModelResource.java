@@ -13,30 +13,42 @@ package org.eclipse.net4j.pop.model;
 import org.eclipse.net4j.util.event.Notifier;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Eike Stepper
  */
 public class ModelResource extends Notifier implements IModelResource
 {
-  private IModelManager modelManager;
+  private static final long UNKNOWN = Long.MIN_VALUE;
+
+  private ModelManager modelManager;
 
   private URI uri;
 
-  private boolean exists;
+  private transient boolean exists = true;
 
-  private int registrations;
+  private transient long lastModified = UNKNOWN;
 
-  public ModelResource(IModelManager modelManager, URI uri)
+  private List<ModelRegistration<? extends EObject>> registrations = new ArrayList<ModelRegistration<? extends EObject>>();
+
+  public ModelResource(ModelManager modelManager, URI uri)
   {
     this.modelManager = modelManager;
     this.uri = uri;
   }
 
-  public IModelManager getModelManager()
+  public ModelManager getModelManager()
   {
     return modelManager;
   }
@@ -49,6 +61,11 @@ public class ModelResource extends Notifier implements IModelResource
   public boolean exists()
   {
     return exists;
+  }
+
+  public long getLastModified()
+  {
+    return lastModified;
   }
 
   public Resource getResource()
@@ -72,18 +89,78 @@ public class ModelResource extends Notifier implements IModelResource
     return Platform.getAdapterManager().getAdapter(this, adapter);
   }
 
-  public synchronized boolean hasRegistrations()
+  public void refresh()
   {
-    return registrations > 0;
+    IFile file = ModelManager.getFile(uri);
+    if (file != null)
+    {
+      Resource resource = modelManager.getResource(uri);
+      if (resource != null)
+      {
+        handleExistingResource(resource, affected);
+      }
+    }
+
+    handleNonExistingResouce(uri);
   }
 
-  public synchronized void incRegistrations()
+  private void handleMissing()
   {
-    ++registrations;
+    if (exists)
+    {
+      exists = false;
+      mo
+      fireModelEventModelEvent.Kind.MODEL_UNAVAILABLE;
+    }
   }
 
-  public synchronized void decRegistrations()
+  private void handleExisting(Resource resource)
   {
-    --registrations;
+    EcoreUtil.resolveAll(resource);
+    for (Resource resource : resourceSet.getResources())
+    {
+      if (!resource.equals(primaryResource))
+      {
+        IPath path = new Path(resource.getURI().path());
+        secondaryPaths.add(path);
+      }
+    }
+
+    if (exists)
+    {
+      fireModelEvent(ModelEvent.Kind.MODEL_REFRESHED);
+    }
+    else
+    {
+      exists = true;
+      fireModelEvent(ModelEvent.Kind.MODEL_AVAILABLE);
+    }
+  }
+
+  public <T extends EObject> IModelRegistration<T> addRregistration(IModelHandler<T> handler)
+  {
+    ModelRegistration<T> registration = new ModelRegistration<T>(this, handler);
+    synchronized (registrations)
+    {
+      registrations.add(registration);
+    }
+
+    return registration;
+  }
+
+  public void removeRegistration(ModelRegistration<? extends EObject> registration)
+  {
+    synchronized (registrations)
+    {
+      registrations.remove(registration);
+    }
+  }
+
+  public boolean hasRegistrations()
+  {
+    synchronized (registrations)
+    {
+      return !registrations.isEmpty();
+    }
   }
 }

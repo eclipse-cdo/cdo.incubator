@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -42,19 +41,19 @@ import java.util.Map.Entry;
 /**
  * @author Eike Stepper
  */
-public class ModelManager extends QueueWorker<List<ModelResource>> implements IModelManager, IResourceChangeListener
+public class ModelManager extends QueueWorker<List<ModelResource>> implements IModelManager
 {
+  public static final IWorkspace WS = ResourcesPlugin.getWorkspace();
+
+  public static final IWorkspaceRoot ROOT = ResourcesPlugin.getWorkspace().getRoot();
+
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ModelManager.class);
-
-  private static final IWorkspace WS = ResourcesPlugin.getWorkspace();
-
-  private static final IWorkspaceRoot ROOT = ResourcesPlugin.getWorkspace().getRoot();
 
   private ResourceSet resourceSet;
 
   private Map<URI, ModelResource> modelResources = new HashMap<URI, ModelResource>();
 
-  private Map<URI, List<ModelRegistration<? extends EObject>>> registrations = new HashMap<URI, List<ModelRegistration<? extends EObject>>>();
+  private WorkspaceMonitor workspaceMonitor = new WorkspaceMonitor();
 
   public ModelManager(ResourceSet resourceSet)
   {
@@ -71,193 +70,7 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
     return resourceSet;
   }
 
-  public <T extends EObject> IModelRegistration<T> registerModel(URI uri, IModelHandler<T> handler)
-  {
-    ModelResource modelResource;
-    synchronized (modelResources)
-    {
-      modelResource = modelResources.get(uri);
-      if (modelResource == null)
-      {
-        modelResource = new ModelResource(this, uri);
-        modelResources.put(uri, modelResource);
-      }
-
-      modelResource.incRegistrations();
-    }
-
-    ModelRegistration<T> registration = new ModelRegistration<T>(this, modelResource, handler);
-    synchronized (registrations)
-    {
-      List<ModelRegistration<? extends EObject>> list = registrations.get(uri);
-      if (list == null)
-      {
-        list = new ArrayList<ModelRegistration<? extends EObject>>();
-        registrations.put(uri, list);
-      }
-
-      list.add(registration);
-    }
-
-    return registration;
-  }
-
-  public void deregisterModel(ModelRegistration<? extends EObject> registration)
-  {
-  }
-
-  @Override
-  protected void doActivate() throws Exception
-  {
-    super.doActivate();
-    WS.addResourceChangeListener(this, IResourceChangeEvent.POST_CHANGE);
-  }
-
-  @Override
-  protected void doDeactivate() throws Exception
-  {
-    WS.removeResourceChangeListener(this);
-    super.doDeactivate();
-  }
-
-  public void resourceChanged(IResourceChangeEvent event)
-  {
-    IResourceDelta delta = event.getDelta();
-    if (delta != null)
-    {
-      final List<ModelResource> affected = getAffectedModelResources(delta);
-      if (!affected.isEmpty())
-      {
-        addWork(affected);
-      }
-    }
-  }
-
-  @Override
-  protected String getThreadName()
-  {
-    return "model-manager";
-  }
-
-  @Override
-  protected void work(WorkContext context, List<ModelResource> affected)
-  {
-    refresh(affected);
-  }
-
-  protected void refresh(List<ModelResource> affected)
-  {
-    // resourceSet.getResources().clear();
-
-    for (URI uri : getRegisteredURIs())
-    {
-      IFile file = getFile(uri);
-      if (file != null)
-      {
-        Resource resource = getResource(uri);
-        if (resource != null)
-        {
-          handleExistingResouce(resource, affected);
-        }
-      }
-
-      handleNonExistingResouce(uri);
-    }
-  }
-
-  private void handleNonExistingResouce()
-  {
-    if (available)
-    {
-      secondaryPaths.clear();
-      available = false;
-      fireModelEvent(ModelEvent.Kind.MODEL_UNAVAILABLE);
-    }
-  }
-
-  private void handleExistingResouce(Resource primaryResource, List<ModelResource> affected)
-  {
-    secondaryPaths.clear();
-    EcoreUtil.resolveAll(resourceSet);
-    for (Resource resource : resourceSet.getResources())
-    {
-      if (!resource.equals(primaryResource))
-      {
-        IPath path = new Path(resource.getURI().path());
-        secondaryPaths.add(path);
-      }
-    }
-
-    if (available)
-    {
-      fireModelEvent(ModelEvent.Kind.MODEL_REFRESHED);
-    }
-    else
-    {
-      available = true;
-      fireModelEvent(ModelEvent.Kind.MODEL_AVAILABLE);
-    }
-  }
-
-  private URI[] getRegisteredURIs()
-  {
-    synchronized (registrations)
-    {
-      return registrations.keySet().toArray(new URI[registrations.size()]);
-    }
-  }
-
-  private List<ModelResource> getAffectedModelResources(IResourceDelta delta)
-  {
-    List<ModelResource> result = new ArrayList<ModelResource>();
-    synchronized (modelResources)
-    {
-      for (Entry<URI, ModelResource> entry : modelResources.entrySet())
-      {
-        URI uri = entry.getKey();
-        if (uri.isPlatformResource())
-        {
-          IPath path = new Path(uri.toPlatformString(false));
-          IResourceDelta member = delta.findMember(path);
-          if (member != null && member.getResource() instanceof IFile)
-          {
-            result.add(entry.getValue());
-          }
-        }
-      }
-    }
-
-    return result;
-  }
-
-  private IFile getFile(URI uri)
-  {
-    if (uri.isPlatformResource())
-    {
-      IPath path = new Path(uri.toPlatformString(false));
-      return getFile(path);
-    }
-
-    return null;
-  }
-
-  private IFile getFile(IPath path)
-  {
-    IResource resource = ROOT.findMember(path);
-    if (resource instanceof IFile)
-    {
-      return (IFile)resource;
-    }
-
-    return null;
-  }
-
-  private Resource getResource(IPath path)
-  {
-    return getResource(URI.createPlatformResourceURI(path.toString(), false));
-  }
-
-  private Resource getResource(URI uri)
+  public Resource getResource(URI uri)
   {
     try
     {
@@ -270,10 +83,138 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
     }
   }
 
+  public <T extends EObject> IModelRegistration<T> registerModel(URI uri, IModelHandler<T> handler)
+  {
+    ModelResource modelResource;
+    synchronized (modelResources)
+    {
+      modelResource = modelResources.get(uri);
+      if (modelResource == null)
+      {
+        modelResource = new ModelResource(this, uri);
+        modelResources.put(uri, modelResource);
+      }
+    }
+
+    return modelResource.addRregistration(handler);
+  }
+
+  @Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    WS.addResourceChangeListener(workspaceMonitor, IResourceChangeEvent.POST_CHANGE);
+  }
+
+  @Override
+  protected void doDeactivate() throws Exception
+  {
+    WS.removeResourceChangeListener(workspaceMonitor);
+    super.doDeactivate();
+  }
+
+  @Override
+  protected String getThreadName()
+  {
+    return "model-manager";
+  }
+
+  @Override
+  protected void work(WorkContext context, List<ModelResource> affected)
+  {
+    refresh(affected);
+    cleanup();
+  }
+
+  protected void refresh(List<ModelResource> affected)
+  {
+    for (ModelResource modelResource : affected)
+    {
+      modelResource.refresh();
+    }
+  }
+
+  protected void cleanup()
+  {
+  }
+
   public static ResourceSet createResourceSet()
   {
     ResourceSet resourceSet = new ResourceSetImpl();
     EMFUtil.prepareSupportForUUIDs(resourceSet);
     return resourceSet;
+  }
+
+  public static IFile getFile(URI uri)
+  {
+    if (uri.isPlatformResource())
+    {
+      IPath path = new Path(uri.toPlatformString(false));
+      return getFile(path);
+    }
+
+    return null;
+  }
+
+  public static IFile getFile(IPath path)
+  {
+    IResource resource = ROOT.findMember(path);
+    if (resource instanceof IFile)
+    {
+      return (IFile)resource;
+    }
+
+    return null;
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class WorkspaceMonitor implements IResourceChangeListener
+  {
+    public WorkspaceMonitor()
+    {
+    }
+
+    public void resourceChanged(IResourceChangeEvent event)
+    {
+      IResourceDelta delta = event.getDelta();
+      if (delta != null)
+      {
+        List<ModelResource> affected = getAffectedModelResources(delta);
+        if (!affected.isEmpty())
+        {
+          if (TRACER.isEnabled())
+          {
+            TRACER.format("Affected: {0}", affected);
+          }
+
+          addWork(affected);
+        }
+      }
+    }
+
+    private List<ModelResource> getAffectedModelResources(IResourceDelta delta)
+    {
+      List<ModelResource> result = new ArrayList<ModelResource>();
+      synchronized (modelResources)
+      {
+        for (Entry<URI, ModelResource> entry : modelResources.entrySet())
+        {
+          URI uri = entry.getKey();
+          if (uri.isPlatformResource())
+          {
+            IPath path = new Path(uri.toPlatformString(false));
+            IResourceDelta member = delta.findMember(path);
+            if (member != null && member.getResource() instanceof IFile)
+            {
+              result.add(entry.getValue());
+            }
+          }
+        }
+      }
+
+      return result;
+    }
   }
 }

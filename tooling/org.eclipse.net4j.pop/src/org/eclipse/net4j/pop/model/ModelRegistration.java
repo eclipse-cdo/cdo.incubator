@@ -17,24 +17,16 @@ import org.eclipse.emf.ecore.EObject;
  */
 public class ModelRegistration<T extends EObject> implements IModelRegistration<T>
 {
-  private ModelManager modelManager;
-
   private ModelResource modelResource;
 
   private IModelHandler<T> modelHandler;
 
   private boolean cancelled;
 
-  public ModelRegistration(ModelManager modelManager, ModelResource modelResource, IModelHandler<T> modelHandler)
+  public ModelRegistration(ModelResource modelResource, IModelHandler<T> modelHandler)
   {
-    this.modelManager = modelManager;
     this.modelResource = modelResource;
     this.modelHandler = modelHandler;
-  }
-
-  public IModelManager getModelManager()
-  {
-    return modelManager;
   }
 
   public IModelHandler<T> getModelHandler()
@@ -73,7 +65,7 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
   {
     if (!cancelled)
     {
-      modelManager.deregisterModel(this);
+      modelResource.removeRegistration(this);
       cancelled = true;
     }
   }

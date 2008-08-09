@@ -17,11 +17,9 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface IModelRegistration<T extends EObject>
 {
-  public IModelManager getModelManager();
+  public IModelResource getModelResource();
 
   public IModelHandler<T> getModelHandler();
-
-  public IModelResource getModelResource();
 
   public boolean isModelAvailable();
 

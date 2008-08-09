@@ -19,9 +19,13 @@ public interface IModelHandler<T extends EObject>
 {
   public T locateModel(IModelRegistration<T> registration);
 
-  public void modelAvailable(IModelRegistration<T> registration);
+  public void modelChanged(IModelRegistration<T> registration, Kind kind);
 
-  public void modelRefreshed(IModelRegistration<T> registration);
-
-  public void modelUnvailable(IModelRegistration<T> registration);
+  /**
+   * @author Eike Stepper
+   */
+  public enum Kind
+  {
+    AVAILABLE, REFRESHED, UNAVAILABLE
+  }
 }
