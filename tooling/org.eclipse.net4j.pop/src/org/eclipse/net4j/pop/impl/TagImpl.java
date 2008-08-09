@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: TagImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -25,26 +25,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tag</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Tag</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.TagImpl#getBranch <em>Branch</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TagImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.TagImpl#getTaggedElement <em>Tagged Element</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.TagImpl#getBranch <em>Branch</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.TagImpl#getName <em>Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.TagImpl#getTaggedElement <em>Tagged Element</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -52,9 +50,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getName()
    * @generated
    * @ordered
@@ -62,9 +59,9 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTaggedElement() <em>Tagged Element</em>}' reference.
-   * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTaggedElement() <em>Tagged Element</em>}' reference. <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * 
    * @see #getTaggedElement()
    * @generated
    * @ordered
@@ -72,8 +69,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   protected TaggedElement taggedElement;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TagImpl()
@@ -82,8 +79,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -93,8 +90,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch getBranch()
@@ -105,8 +102,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch basicGetBranch()
@@ -117,8 +114,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs)
@@ -128,8 +125,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setBranch(Branch newBranch)
@@ -152,8 +149,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getName()
@@ -162,8 +159,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setName(String newName)
@@ -175,8 +172,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TaggedElement getTaggedElement()
@@ -196,8 +193,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TaggedElement basicGetTaggedElement()
@@ -206,8 +203,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetTaggedElement(TaggedElement newTaggedElement, NotificationChain msgs)
@@ -227,8 +224,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTaggedElement(TaggedElement newTaggedElement)
@@ -252,8 +249,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -275,8 +272,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -293,8 +290,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -309,8 +306,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -333,8 +330,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -356,8 +353,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -379,8 +376,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -399,8 +396,8 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -416,4 +413,4 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
     return result.toString();
   }
 
-} //TagImpl
+} // TagImpl

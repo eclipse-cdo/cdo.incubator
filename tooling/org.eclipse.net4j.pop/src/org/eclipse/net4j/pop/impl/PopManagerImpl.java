@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.4 2008-08-09 09:58:51 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -19,7 +19,7 @@ import org.eclipse.net4j.internal.pop.natures.PopProjectNature;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.PopPackage;
-import org.eclipse.net4j.pop.model.DefaultModelHandler;
+import org.eclipse.net4j.pop.model.ModelHandler;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelRegistration;
 import org.eclipse.net4j.util.ObjectUtil;
@@ -254,7 +254,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
    * @author Eike Stepper
    * @ADDED
    */
-  private final class PopHandler extends DefaultModelHandler<Pop>
+  private final class PopHandler extends ModelHandler<Pop>
   {
     @Override
     protected void modelAvailable(IModelRegistration<Pop> registration)

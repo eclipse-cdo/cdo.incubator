@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: MaintenanceStreamImpl.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -25,25 +25,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Maintenance Stream</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Maintenance Stream</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.MaintenanceStreamImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.MaintenanceStreamImpl#getBaseline <em>Baseline</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.MaintenanceStreamImpl#getParent <em>Parent</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.MaintenanceStreamImpl#getBaseline <em>Baseline</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MaintenanceStreamImpl extends IntegrationStreamImpl implements MaintenanceStream
 {
   /**
-   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' reference. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -51,8 +50,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   protected Release baseline;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected MaintenanceStreamImpl()
@@ -61,8 +60,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -72,8 +71,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DevelopmentStream getParent()
@@ -84,8 +83,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DevelopmentStream basicGetParent()
@@ -96,8 +95,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetParent(DevelopmentStream newParent, NotificationChain msgs)
@@ -107,8 +106,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParent(DevelopmentStream newParent)
@@ -133,8 +132,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release getBaseline()
@@ -154,8 +153,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Release basicGetBaseline()
@@ -164,8 +163,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetBaseline(Release newBaseline, NotificationChain msgs)
@@ -185,8 +184,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setBaseline(Release newBaseline)
@@ -208,8 +207,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -230,8 +229,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -248,8 +247,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -265,8 +264,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -287,8 +286,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -307,8 +306,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -327,8 +326,8 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -344,4 +343,4 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     return super.eIsSet(featureID);
   }
 
-} //MaintenanceStreamImpl
+} // MaintenanceStreamImpl

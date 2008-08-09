@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaggedElementImpl.java,v 1.1 2008-08-07 17:42:12 estepper Exp $
+ * $Id: TaggedElementImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -23,24 +23,21 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tagged Element</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Tagged Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.TaggedElementImpl#getTag <em>Tag</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.TaggedElementImpl#getTag <em>Tag</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class TaggedElementImpl extends PopElementImpl implements TaggedElement
 {
   /**
-   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getTag() <em>Tag</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getTag()
    * @generated
    * @ordered
@@ -48,8 +45,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   protected Tag tag;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TaggedElementImpl()
@@ -58,8 +55,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -69,8 +66,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Tag getTag()
@@ -89,8 +86,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Tag basicGetTag()
@@ -99,8 +96,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetTag(Tag newTag, NotificationChain msgs)
@@ -120,8 +117,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setTag(Tag newTag)
@@ -142,8 +139,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -160,8 +157,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -176,8 +173,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -194,8 +191,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -211,8 +208,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -228,8 +225,8 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -243,4 +240,4 @@ public abstract class TaggedElementImpl extends PopElementImpl implements Tagged
     return super.eIsSet(featureID);
   }
 
-} //TaggedElementImpl
+} // TaggedElementImpl

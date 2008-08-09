@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryItemProvider.java,v 1.1 2008-08-07 17:42:14 estepper Exp $
+ * $Id: DeliveryItemProvider.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Delivery} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Delivery} object. <!-- begin-user-doc --> <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class DeliveryItemProvider extends TaggedElementItemProvider implements IEditingDomainItemProvider,
@@ -46,9 +46,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public DeliveryItemProvider(AdapterFactory adapterFactory)
@@ -57,9 +56,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -77,9 +75,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Number feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Number feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addNumberPropertyDescriptor(Object object)
@@ -93,9 +90,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Date feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Date feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addDatePropertyDescriptor(Object object)
@@ -110,9 +106,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds a property descriptor for the Merges feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Merges feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addMergesPropertyDescriptor(Object object)
@@ -124,9 +119,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This returns Delivery.gif.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns Delivery.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -136,9 +130,8 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -150,10 +143,9 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -172,10 +164,9 @@ public class DeliveryItemProvider extends TaggedElementItemProvider implements I
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

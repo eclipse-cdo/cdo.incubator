@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskItemProvider.java,v 1.1 2008-08-07 17:42:14 estepper Exp $
+ * $Id: TaskItemProvider.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Task} object.
- * <!-- begin-user-doc -->
- * <!-- end-user-doc -->
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Task} object. <!-- begin-user-doc --> <!--
+ * end-user-doc -->
+ * 
  * @generated
  */
 public class TaskItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
@@ -46,9 +46,8 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public TaskItemProvider(AdapterFactory adapterFactory)
@@ -57,9 +56,8 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -76,9 +74,8 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This adds a property descriptor for the Mylyn Id feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Mylyn Id feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addMylynIdPropertyDescriptor(Object object)
@@ -93,9 +90,8 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This adds a property descriptor for the Targets feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Targets feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addTargetsPropertyDescriptor(Object object)
@@ -107,9 +103,8 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This returns Task.gif.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns Task.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -119,9 +114,8 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -133,10 +127,9 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -154,10 +147,9 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

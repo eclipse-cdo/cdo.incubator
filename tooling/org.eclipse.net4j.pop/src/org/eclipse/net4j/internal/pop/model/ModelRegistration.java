@@ -8,9 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.model;
+package org.eclipse.net4j.internal.pop.model;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
+import org.eclipse.net4j.pop.model.IModelHandler;
+import org.eclipse.net4j.pop.model.IModelRegistration;
+import org.eclipse.net4j.pop.model.IModelResource;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;

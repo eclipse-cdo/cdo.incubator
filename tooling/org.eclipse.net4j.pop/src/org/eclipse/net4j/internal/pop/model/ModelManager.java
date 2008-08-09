@@ -8,10 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  **************************************************************************/
-package org.eclipse.net4j.pop.model;
+package org.eclipse.net4j.internal.pop.model;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.internal.pop.util.EMFUtil;
+import org.eclipse.net4j.pop.model.IModelHandler;
+import org.eclipse.net4j.pop.model.IModelManager;
+import org.eclipse.net4j.pop.model.IModelRegistration;
 import org.eclipse.net4j.util.lifecycle.QueueWorker;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 

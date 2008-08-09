@@ -1,7 +1,10 @@
-package org.eclipse.net4j.pop.model;
+package org.eclipse.net4j.internal.pop.model;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.internal.pop.natures.NatureManager;
+import org.eclipse.net4j.pop.model.IModelHandler;
+import org.eclipse.net4j.pop.model.IModelManager;
+import org.eclipse.net4j.pop.model.IModelRegistration;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -27,25 +27,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import java.util.Collection;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Integration Stream</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Integration Stream</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.IntegrationStreamImpl#getDeliveryStreams <em>Delivery Streams</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.IntegrationStreamImpl#getReleases <em>Releases</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.IntegrationStreamImpl#getDeliveryStreams <em>Delivery Streams</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.IntegrationStreamImpl#getReleases <em>Releases</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class IntegrationStreamImpl extends StreamImpl implements IntegrationStream
 {
   /**
-   * The cached value of the '{@link #getDeliveryStreams() <em>Delivery Streams</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getDeliveryStreams() <em>Delivery Streams</em>}' containment reference list. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getDeliveryStreams()
    * @generated
    * @ordered
@@ -53,9 +52,9 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected EList<DeliveryStream> deliveryStreams;
 
   /**
-   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list. <!-- begin-user-doc
+   * --> <!-- end-user-doc -->
+   * 
    * @see #getReleases()
    * @generated
    * @ordered
@@ -63,8 +62,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected EList<Release> releases;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IntegrationStreamImpl()
@@ -73,8 +72,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -84,8 +83,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<DeliveryStream> getDeliveryStreams()
@@ -99,8 +98,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Release> getReleases()
@@ -114,8 +113,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -133,8 +132,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -151,8 +150,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -169,8 +168,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -192,8 +191,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -212,8 +211,8 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -229,4 +228,4 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
     return super.eIsSet(featureID);
   }
 
-} //IntegrationStreamImpl
+} // IntegrationStreamImpl

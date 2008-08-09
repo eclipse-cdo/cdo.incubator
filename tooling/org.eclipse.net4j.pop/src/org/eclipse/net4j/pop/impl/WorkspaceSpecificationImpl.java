@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceSpecificationImpl.java,v 1.2 2008-08-08 09:24:33 estepper Exp $
+ * $Id: WorkspaceSpecificationImpl.java,v 1.3 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -30,26 +30,26 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import java.util.Collection;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Workspace Specification</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Workspace Specification</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.WorkspaceSpecificationImpl#getCheckout <em>Checkout</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.WorkspaceSpecificationImpl#getSecondaryModules <em>Secondary Modules</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.WorkspaceSpecificationImpl#getWorkspaceConfigurators <em>Workspace Configurators</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.WorkspaceSpecificationImpl#getCheckout <em>Checkout</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.WorkspaceSpecificationImpl#getSecondaryModules <em>Secondary Modules</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.WorkspaceSpecificationImpl#getWorkspaceConfigurators <em>Workspace
+ * Configurators</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class WorkspaceSpecificationImpl extends PopElementImpl implements WorkspaceSpecification
 {
   /**
-   * The cached value of the '{@link #getCheckout() <em>Checkout</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getCheckout() <em>Checkout</em>}' reference. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getCheckout()
    * @generated
    * @ordered
@@ -58,8 +58,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
 
   /**
    * The cached value of the '{@link #getSecondaryModules() <em>Secondary Modules</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getSecondaryModules()
    * @generated
    * @ordered
@@ -67,9 +67,9 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   protected EList<SecondaryModule> secondaryModules;
 
   /**
-   * The cached value of the '{@link #getWorkspaceConfigurators() <em>Workspace Configurators</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getWorkspaceConfigurators() <em>Workspace Configurators</em>}' containment
+   * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getWorkspaceConfigurators()
    * @generated
    * @ordered
@@ -77,8 +77,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   protected EList<WorkspaceConfigurator> workspaceConfigurators;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected WorkspaceSpecificationImpl()
@@ -87,8 +87,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -98,8 +98,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Checkout getCheckout()
@@ -119,8 +119,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Checkout basicGetCheckout()
@@ -129,8 +129,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetCheckout(Checkout newCheckout, NotificationChain msgs)
@@ -150,8 +150,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setCheckout(Checkout newCheckout)
@@ -175,8 +175,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<SecondaryModule> getSecondaryModules()
@@ -190,8 +190,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<WorkspaceConfigurator> getWorkspaceConfigurators()
@@ -206,8 +206,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -230,8 +230,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -250,8 +250,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -272,8 +272,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -298,8 +298,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -321,8 +321,8 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -340,4 +340,4 @@ public class WorkspaceSpecificationImpl extends PopElementImpl implements Worksp
     return super.eIsSet(featureID);
   }
 
-} //WorkspaceSpecificationImpl
+} // WorkspaceSpecificationImpl

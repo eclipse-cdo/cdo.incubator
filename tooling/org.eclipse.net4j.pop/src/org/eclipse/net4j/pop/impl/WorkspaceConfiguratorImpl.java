@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: WorkspaceConfiguratorImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: WorkspaceConfiguratorImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -24,23 +24,23 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Workspace Configurator</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Workspace Configurator</b></em>'. <!--
+ * end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.WorkspaceConfiguratorImpl#getWorkspaceSpecification <em>Workspace Specification</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.WorkspaceConfiguratorImpl#getWorkspaceSpecification <em>Workspace Specification
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implements WorkspaceConfigurator
 {
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected WorkspaceConfiguratorImpl()
@@ -49,8 +49,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -60,8 +60,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public WorkspaceSpecification getWorkspaceSpecification()
@@ -72,8 +72,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public WorkspaceSpecification basicGetWorkspaceSpecification()
@@ -84,8 +84,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification,
@@ -97,8 +97,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification)
@@ -124,8 +124,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void validate()
@@ -136,8 +136,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void execute()
@@ -148,8 +148,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -166,8 +166,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -182,8 +182,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -199,8 +199,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -217,8 +217,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -234,8 +234,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -251,8 +251,8 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -266,4 +266,4 @@ public abstract class WorkspaceConfiguratorImpl extends PopElementImpl implement
     return super.eIsSet(featureID);
   }
 
-} //WorkspaceConfiguratorImpl
+} // WorkspaceConfiguratorImpl

@@ -19,11 +19,11 @@ import org.eclipse.emf.ecore.resource.Resource;
 /**
  * @author Eike Stepper
  */
-public abstract class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
+public abstract class ModelHandler<T extends EObject> implements IModelHandler<T>
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, DefaultModelHandler.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ModelHandler.class);
 
-  public DefaultModelHandler()
+  public ModelHandler()
   {
   }
 
@@ -76,7 +76,7 @@ public abstract class DefaultModelHandler<T extends EObject> implements IModelHa
   /**
    * @author Eike Stepper
    */
-  public static class Adapter<T extends EObject> extends DefaultModelHandler<T>
+  public static class Adapter<T extends EObject> extends ModelHandler<T>
   {
     public Adapter()
     {

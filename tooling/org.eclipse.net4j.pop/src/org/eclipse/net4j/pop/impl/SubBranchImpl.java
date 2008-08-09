@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -25,26 +25,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sub Branch</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Sub Branch</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTagName <em>Root Tag Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTag <em>Root Tag</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTagName <em>Root Tag Name</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTag <em>Root Tag</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SubBranchImpl extends BranchImpl implements SubBranch
 {
   /**
-   * The default value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getRootTagName()
    * @generated
    * @ordered
@@ -52,9 +50,9 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   protected static final String ROOT_TAG_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getRootTagName()
    * @generated
    * @ordered
@@ -62,8 +60,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   protected String rootTagName = ROOT_TAG_NAME_EDEFAULT;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected SubBranchImpl()
@@ -72,8 +70,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -83,8 +81,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch getParent()
@@ -95,8 +93,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Branch basicGetParent()
@@ -107,8 +105,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetParent(Branch newParent, NotificationChain msgs)
@@ -118,8 +116,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParent(Branch newParent)
@@ -143,8 +141,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public String getRootTagName()
@@ -153,8 +151,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setRootTagName(String newRootTagName)
@@ -167,8 +165,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Tag getRootTag()
@@ -179,8 +177,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -197,8 +195,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -213,8 +211,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -229,8 +227,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -251,8 +249,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -271,8 +269,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -291,8 +289,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -311,8 +309,8 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -328,4 +326,4 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     return result.toString();
   }
 
-} //SubBranchImpl
+} // SubBranchImpl

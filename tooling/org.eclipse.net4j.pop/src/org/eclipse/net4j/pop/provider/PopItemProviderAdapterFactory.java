@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProviderAdapterFactory.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
+ * $Id: PopItemProviderAdapterFactory.java,v 1.5 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -56,24 +56,24 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
     IChangeNotifier, IDisposable, IChildCreationExtender
 {
   /**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc --> <!--
+   * This keeps track of the root adapter factory that delegates to this adapter factory. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc --> <!--
+   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-   * This helps manage the child creation extenders.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This helps manage the child creation extenders. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(
@@ -88,8 +88,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
-   * This constructs an instance.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public PopItemProviderAdapterFactory()
@@ -107,17 +107,17 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.PopManager} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.PopManager} instances. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopManagerItemProvider popManagerItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.PopManager}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.PopManager}. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @generated
    */
   @Override
@@ -132,16 +132,16 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Pop} instances.
-   * <!-- begin-user-doc
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Pop} instances. <!-- begin-user-doc
    * --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopItemProvider popItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Pop}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Pop}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -164,9 +164,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected PrimaryModuleItemProvider primaryModuleItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.PrimaryModule}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.PrimaryModule}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -256,16 +256,16 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Task} instances.
-   * <!-- begin-user-doc
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Task} instances. <!-- begin-user-doc
    * --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TaskItemProvider taskItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Task}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Task}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -280,16 +280,16 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Tag} instances.
-   * <!-- begin-user-doc
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Tag} instances. <!-- begin-user-doc
    * --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected TagItemProvider tagItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Tag}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Tag}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -362,9 +362,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected DeliveryStreamItemProvider deliveryStreamItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.DeliveryStream}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.DeliveryStream}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -379,17 +379,17 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.DevelopmentStream} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.DevelopmentStream} instances. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected DevelopmentStreamItemProvider developmentStreamItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.DevelopmentStream}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.DevelopmentStream}. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -412,9 +412,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected MaintenanceStreamItemProvider maintenanceStreamItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.MaintenanceStream}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.MaintenanceStream}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -437,8 +437,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected ReleaseItemProvider releaseItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Release}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Release}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -486,8 +486,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected DeliveryItemProvider deliveryItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Delivery}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Delivery}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -535,9 +535,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected CheckoutManagerItemProvider checkoutManagerItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.CheckoutManager}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.CheckoutManager}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -560,8 +560,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected CheckoutItemProvider checkoutItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Checkout}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Checkout}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -578,14 +578,15 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   /**
    * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.WorkspaceSpecification} instances.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected WorkspaceSpecificationItemProvider workspaceSpecificationItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.WorkspaceSpecification}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.WorkspaceSpecification}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -608,9 +609,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   protected SecondaryModuleItemProvider secondaryModuleItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.SecondaryModule}.
-   * <!-- begin-user-doc --> <!--
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.SecondaryModule}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -625,17 +626,16 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Assignee} instances.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.Assignee} instances. <!--
+   * begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected AssigneeItemProvider assigneeItemProvider;
 
   /**
-   * This creates an adapter for a {@link org.eclipse.net4j.pop.Assignee}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.Assignee}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -650,8 +650,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ComposeableAdapterFactory getRootAdapterFactory()
@@ -660,8 +660,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This sets the composed adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
@@ -671,6 +671,7 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -680,9 +681,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc --> <!--
+   * This implementation substitutes the factory itself as the key for the adapter. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -693,6 +694,7 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -712,6 +714,7 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public List<IChildCreationExtender> getChildCreationExtenders()
@@ -721,6 +724,7 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain)
@@ -730,6 +734,7 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public ResourceLocator getResourceLocator()
@@ -738,8 +743,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This adds a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void addListener(INotifyChangedListener notifyChangedListener)
@@ -748,8 +753,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This removes a listener.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This removes a listener. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void removeListener(INotifyChangedListener notifyChangedListener)
@@ -758,9 +763,9 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc --> <!--
+   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @generated
    */
   public void fireNotifyChanged(Notification notification)
@@ -774,8 +779,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
   }
 
   /**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This disposes all of the item providers created by this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void dispose()

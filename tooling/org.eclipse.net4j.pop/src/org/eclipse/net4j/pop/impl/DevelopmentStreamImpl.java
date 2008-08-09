@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.4 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -30,25 +30,24 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import java.util.Collection;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Development Stream</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Development Stream</b></em>'. <!-- end-user-doc
+ * -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.DevelopmentStreamImpl#getMaintenanceStreams <em>Maintenance Streams</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.DevelopmentStreamImpl#getPop <em>Pop</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.DevelopmentStreamImpl#getMaintenanceStreams <em>Maintenance Streams</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.DevelopmentStreamImpl#getPop <em>Pop</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class DevelopmentStreamImpl extends IntegrationStreamImpl implements DevelopmentStream
 {
   /**
    * The cached value of the '{@link #getMaintenanceStreams() <em>Maintenance Streams</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getMaintenanceStreams()
    * @generated
    * @ordered
@@ -56,8 +55,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   protected EList<MaintenanceStream> maintenanceStreams;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected DevelopmentStreamImpl()
@@ -66,8 +65,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -77,8 +76,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<MaintenanceStream> getMaintenanceStreams()
@@ -92,8 +91,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Pop getPop()
@@ -104,8 +103,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Pop basicGetPop()
@@ -116,8 +115,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
@@ -127,8 +126,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setPop(Pop newPop)
@@ -151,8 +150,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -172,8 +171,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -190,8 +189,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -206,8 +205,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -226,8 +225,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -248,8 +247,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -268,8 +267,8 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -285,4 +284,4 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
     return super.eIsSet(featureID);
   }
 
-} //DevelopmentStreamImpl
+} // DevelopmentStreamImpl

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationImpl.java,v 1.1 2008-08-07 17:42:13 estepper Exp $
+ * $Id: IntegrationImpl.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -27,26 +27,24 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import java.util.Date;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Integration</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '<em><b>Integration</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.IntegrationImpl#getStream <em>Stream</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.IntegrationImpl#getDate <em>Date</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.impl.IntegrationImpl#getDelivery <em>Delivery</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.IntegrationImpl#getStream <em>Stream</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.IntegrationImpl#getDate <em>Date</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.IntegrationImpl#getDelivery <em>Delivery</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class IntegrationImpl extends TaggedElementImpl implements Integration
 {
   /**
-   * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The default value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+   * -->
+   * 
    * @see #getDate()
    * @generated
    * @ordered
@@ -54,9 +52,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   protected static final Date DATE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getDate() <em>Date</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @see #getDate()
    * @generated
    * @ordered
@@ -64,9 +61,9 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   protected Date date = DATE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getDelivery() <em>Delivery</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * The cached value of the '{@link #getDelivery() <em>Delivery</em>}' reference. <!-- begin-user-doc --> <!--
+   * end-user-doc -->
+   * 
    * @see #getDelivery()
    * @generated
    * @ordered
@@ -74,8 +71,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   protected Delivery delivery;
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected IntegrationImpl()
@@ -84,8 +81,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -95,8 +92,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Stream getStream()
@@ -107,8 +104,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Stream basicGetStream()
@@ -119,8 +116,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetStream(Stream newStream, NotificationChain msgs)
@@ -130,8 +127,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setStream(Stream newStream)
@@ -155,8 +152,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Date getDate()
@@ -165,8 +162,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setDate(Date newDate)
@@ -178,8 +175,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Delivery getDelivery()
@@ -199,8 +196,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public Delivery basicGetDelivery()
@@ -209,8 +206,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public NotificationChain basicSetDelivery(Delivery newDelivery, NotificationChain msgs)
@@ -230,8 +227,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public void setDelivery(Delivery newDelivery)
@@ -252,8 +249,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -274,8 +271,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -292,8 +289,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -308,8 +305,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -332,8 +329,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -355,8 +352,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -378,8 +375,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -398,8 +395,8 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
   }
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -415,4 +412,4 @@ public class IntegrationImpl extends TaggedElementImpl implements Integration
     return result.toString();
   }
 
-} //IntegrationImpl
+} // IntegrationImpl
