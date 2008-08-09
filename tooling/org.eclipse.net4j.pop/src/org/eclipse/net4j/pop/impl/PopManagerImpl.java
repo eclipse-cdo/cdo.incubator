@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.4 2008-08-09 09:58:51 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.5 2008-08-09 10:09:01 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -19,9 +19,9 @@ import org.eclipse.net4j.internal.pop.natures.PopProjectNature;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.PopPackage;
-import org.eclipse.net4j.pop.model.ModelHandler;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelRegistration;
+import org.eclipse.net4j.pop.model.ModelHandler;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleException;
@@ -265,7 +265,8 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
         TRACER.format("Adding pop: {0}", uri);
       }
 
-      pops.add(registration.getModel());
+      Pop pop = registration.getModel();
+      pops.add(pop);
     }
 
     @Override
@@ -280,7 +281,8 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
           TRACER.format("Replacing pop: {0}", uri);
         }
 
-        pops.set(index, registration.getModel());
+        Pop pop = registration.getModel();
+        pops.set(index, pop);
       }
     }
 

@@ -121,13 +121,13 @@ public class ModelResource extends Notifier implements IModelResource
 
   public void dispose()
   {
-    ungetResource();
+    disposeResource();
     registrations = null;
   }
 
   public synchronized void refresh()
   {
-    ungetResource();
+    disposeResource();
     resource = modelManager.getResource(uri);
     for (ModelRegistration<?> registration : getRegistrations())
     {
@@ -184,7 +184,7 @@ public class ModelResource extends Notifier implements IModelResource
     return null;
   }
 
-  private void ungetResource()
+  private void disposeResource()
   {
     references = null;
     if (resource != null)
