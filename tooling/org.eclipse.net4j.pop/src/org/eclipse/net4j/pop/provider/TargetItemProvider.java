@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TargetItemProvider.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
+ * $Id: TargetItemProvider.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Target} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Target} object.
+ * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class TargetItemProvider extends TaggedElementItemProvider implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public TargetItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -74,8 +74,8 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
   }
 
   /**
-   * This adds a property descriptor for the Date feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Date feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addDatePropertyDescriptor(Object object)
@@ -87,8 +87,8 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
   }
 
   /**
-   * This adds a property descriptor for the Tasks feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Tasks feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addTasksPropertyDescriptor(Object object)
@@ -100,8 +100,8 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -113,9 +113,9 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -133,9 +133,9 @@ public class TargetItemProvider extends TaggedElementItemProvider implements IEd
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Assignee.java,v 1.2 2008-08-09 09:58:08 estepper Exp $
+ * $Id: Assignee.java,v 1.3 2008-08-09 18:31:08 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -17,14 +17,15 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Assignee</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.Assignee#getTasks <em>Tasks</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Assignee#getTaskGroups <em>Task Groups</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Assignee#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Assignee#getTaskGroups <em>Task Groups</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.PopPackage#getAssignee()
  * @model
  * @generated
@@ -32,15 +33,15 @@ import org.eclipse.emf.ecore.EObject;
 public interface Assignee extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Tasks</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.Task}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.Task}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Tasks</em>' containment reference list isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Tasks</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getAssignee_Tasks()
    * @see org.eclipse.net4j.pop.Task#getAssignee
@@ -50,15 +51,15 @@ public interface Assignee extends EObject
   EList<Task> getTasks();
 
   /**
-   * Returns the value of the '<em><b>Task Groups</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.TaskGroup}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.TaskGroup#getAssignee <em>Assignee</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Task Groups</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.TaskGroup}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.TaskGroup#getAssignee <em>Assignee</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Task Groups</em>' containment reference list isn't clear, there really should be more of
    * a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Task Groups</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getAssignee_TaskGroups()
    * @see org.eclipse.net4j.pop.TaskGroup#getAssignee

@@ -8,19 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaggedElement.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: TaggedElement.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Tagged Element</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.TaggedElement#getTag <em>Tag</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.TaggedElement#getTag <em>Tag</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.PopPackage#getTaggedElement()
  * @model abstract="true"
  * @generated
@@ -28,13 +29,13 @@ package org.eclipse.net4j.pop;
 public interface TaggedElement extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Tag</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Tag#getTaggedElement <em>Tagged Element</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Tag</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Tag#getTaggedElement <em>Tagged Element</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Tag</em>' reference isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Tag</em>' reference.
    * @see #setTag(Tag)
    * @see org.eclipse.net4j.pop.PopPackage#getTaggedElement_Tag()

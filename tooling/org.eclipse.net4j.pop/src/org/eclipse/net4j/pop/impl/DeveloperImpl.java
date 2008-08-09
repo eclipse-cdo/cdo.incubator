@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeveloperImpl.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: DeveloperImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -210,7 +210,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   public Pop getPop()
   {
     if (eContainerFeatureID != PopPackage.DEVELOPER__POP)
+    {
       return null;
+    }
     return (Pop)eContainer();
   }
 
@@ -222,7 +224,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   public Pop basicGetPop()
   {
     if (eContainerFeatureID != PopPackage.DEVELOPER__POP)
+    {
       return null;
+    }
     return (Pop)eInternalContainer();
   }
 
@@ -244,21 +248,31 @@ public class DeveloperImpl extends PopElementImpl implements Developer
    */
   public void setPop(Pop newPop)
   {
-    if (newPop != eInternalContainer() || (eContainerFeatureID != PopPackage.DEVELOPER__POP && newPop != null))
+    if (newPop != eInternalContainer() || eContainerFeatureID != PopPackage.DEVELOPER__POP && newPop != null)
     {
       if (EcoreUtil.isAncestor(this, newPop))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newPop != null)
+      {
         msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__DEVELOPERS, Pop.class, msgs);
+      }
       msgs = basicSetPop(newPop, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__POP, newPop, newPop));
+    }
   }
 
   /**
@@ -281,8 +295,10 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     String oldRepositoryUser = repositoryUser;
     repositoryUser = newRepositoryUser;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__REPOSITORY_USER, oldRepositoryUser,
           repositoryUser));
+    }
   }
 
   /**
@@ -305,7 +321,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__NAME, oldName, name));
+    }
   }
 
   /**
@@ -328,7 +346,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     String oldEmail = email;
     email = newEmail;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__EMAIL, oldEmail, email));
+    }
   }
 
   /**
@@ -351,7 +371,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     Date oldEntry = entry;
     entry = newEntry;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__ENTRY, oldEntry, entry));
+    }
   }
 
   /**
@@ -374,19 +396,19 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     Date oldExit = exit;
     exit = newExit;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__EXIT, oldExit, exit));
+    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public boolean isActive()
   {
-    // TODO: implement this method to return the 'Active' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    return getExit() != null;
   }
 
   /**
@@ -436,7 +458,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
     case PopPackage.DEVELOPER__POP:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetPop((Pop)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -494,7 +518,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
       return getTaskGroups();
     case PopPackage.DEVELOPER__POP:
       if (resolve)
+      {
         return getPop();
+      }
       return basicGetPop();
     case PopPackage.DEVELOPER__REPOSITORY_USER:
       return getRepositoryUser();
@@ -679,7 +705,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (repositoryUser: "); //$NON-NLS-1$

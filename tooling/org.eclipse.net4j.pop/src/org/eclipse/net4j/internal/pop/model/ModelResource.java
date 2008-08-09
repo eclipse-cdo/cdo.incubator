@@ -10,18 +10,20 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.model;
 
+import org.eclipse.net4j.internal.pop.util.EMFUtil;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelResource;
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.event.Notifier;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import org.eclipse.core.runtime.Platform;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -119,6 +121,35 @@ public class ModelResource extends Notifier implements IModelResource
     }
   }
 
+  @Override
+  public boolean equals(Object obj)
+  {
+    if (obj == this)
+    {
+      return true;
+    }
+
+    if (obj instanceof ModelResource)
+    {
+      ModelResource that = (ModelResource)obj;
+      return ObjectUtil.equals(uri, that.uri);
+    }
+
+    return false;
+  }
+
+  @Override
+  public int hashCode()
+  {
+    return ObjectUtil.hashCode(uri);
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("ModelResource[{0}}", uri);
+  }
+
   public void dispose()
   {
     disposeResource();
@@ -156,7 +187,7 @@ public class ModelResource extends Notifier implements IModelResource
 
   private void xref(EObject object, Set<ModelResource> targets)
   {
-    URI targetURI = getResourceURI(object);
+    URI targetURI = EMFUtil.getResourceURI(object);
     if (targetURI != null)
     {
       ModelResource target = modelManager.getOrCreateModelResource(targetURI);
@@ -165,23 +196,6 @@ public class ModelResource extends Notifier implements IModelResource
         targets.add(target);
       }
     }
-  }
-
-  private URI getResourceURI(EObject object)
-  {
-    URI targetURI = ((InternalEObject)object).eProxyURI();
-    if (targetURI != null)
-    {
-      return targetURI.trimFragment();
-    }
-
-    Resource targetResource = object.eResource();
-    if (targetResource != null)
-    {
-      return targetResource.getURI();
-    }
-
-    return null;
   }
 
   private void disposeResource()

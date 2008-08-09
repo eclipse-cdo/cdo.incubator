@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.5 2008-08-09 09:58:10 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -66,287 +66,246 @@ import org.eclipse.core.runtime.IPath;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!-- end-user-doc -->
- * 
  * @generated
  */
 public class PopPackageImpl extends EPackageImpl implements PopPackage
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass identifiableEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass displayableEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass popElementEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass popManagerEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass popEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass moduleEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass primaryModuleEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass repositoryEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass developerEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taskGroupEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taskEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass checkoutDiscriminatorEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass tagEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass taggedElementEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass branchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass mainBranchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass subBranchEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass streamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass deliveryStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass integrationStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass developmentStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass maintenanceStreamEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass targetEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass releaseEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass milestoneEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass deliveryEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass integrationEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass checkoutManagerEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass checkoutEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass workspaceSpecificationEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass secondaryModuleEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass workspaceConfiguratorEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EClass assigneeEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EEnum checkoutStateEEnum = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType versionEDataType = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType pathEDataType = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType repositoryAdapterEDataType = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType repositorySessionEDataType = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType repositoryFolderEDataType = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private EDataType repositoryTagEDataType = null;
@@ -371,24 +330,27 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private static boolean isInited = false;
 
   /**
-   * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * Simple dependencies are satisfied by calling this method on all dependent packages before doing anything else. This
-   * method drives initialization for interdependent packages directly, in parallel with this package, itself.
-   * <p>
-   * Of this package and its interdependencies, all packages which have not yet been registered by their URI values are
-   * first created and registered. The packages are then initialized in two steps: meta-model objects for all of the
-   * packages are created before any are initialized, since one package's meta-model objects may refer to those of
-   * another.
-   * <p>
-   * Invocation of this method will not affect any packages that have already been initialized. <!-- begin-user-doc -->
+   * Creates, registers, and initializes the <b>Package</b> for this
+   * model, and for any others upon which it depends.  Simple
+   * dependencies are satisfied by calling this method on all
+   * dependent packages before doing anything else.  This method drives
+   * initialization for interdependent packages directly, in parallel
+   * with this package, itself.
+   * <p>Of this package and its interdependencies, all packages which
+   * have not yet been registered by their URI values are first created
+   * and registered.  The packages are then initialized in two steps:
+   * meta-model objects for all of the packages are created before any
+   * are initialized, since one package's meta-model objects may refer to
+   * those of another.
+   * <p>Invocation of this method will not affect any packages that have
+   * already been initialized.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #eNS_URI
    * @see #createPackageContents()
    * @see #initializePackageContents()
@@ -420,7 +382,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getIdentifiable()
@@ -430,7 +391,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getIdentifiable_Id()
@@ -440,7 +400,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDisplayable()
@@ -450,7 +409,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getPopElement()
@@ -460,7 +418,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getPopElement_Class()
@@ -470,7 +427,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getPopManager()
@@ -480,7 +436,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPopManager_Pops()
@@ -490,7 +445,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getPop()
@@ -500,7 +454,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPop_PopManager()
@@ -510,7 +463,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getPop_Name()
@@ -520,7 +472,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getPop_Active()
@@ -530,7 +481,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPop_Developers()
@@ -540,7 +490,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPop_Repository()
@@ -550,7 +499,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPop_RootStream()
@@ -560,7 +508,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPop_PrimaryModule()
@@ -570,7 +517,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPop_CheckoutManager()
@@ -580,7 +526,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getModule()
@@ -590,7 +535,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getModule_Name()
@@ -600,7 +544,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getModule_Descriptor()
@@ -610,7 +553,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getPrimaryModule()
@@ -620,7 +562,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getPrimaryModule_Pop()
@@ -630,7 +571,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getPrimaryModule_SpecificationPath()
@@ -640,7 +580,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getRepository()
@@ -650,7 +589,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRepository_Pop()
@@ -660,7 +598,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getRepository_Adapter()
@@ -670,7 +607,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getRepository_AdapterType()
@@ -680,7 +616,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getRepository_Descriptor()
@@ -690,7 +625,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRepository_MainBranch()
@@ -700,7 +634,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDeveloper()
@@ -710,7 +643,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDeveloper_Pop()
@@ -720,7 +652,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeveloper_RepositoryUser()
@@ -730,7 +661,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeveloper_Name()
@@ -740,7 +670,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeveloper_Email()
@@ -750,7 +679,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeveloper_Entry()
@@ -760,7 +688,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeveloper_Exit()
@@ -770,7 +697,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeveloper_Active()
@@ -780,7 +706,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTaskGroup()
@@ -790,7 +715,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTaskGroup_Name()
@@ -800,7 +724,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaskGroup_Assignee()
@@ -810,7 +733,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTask()
@@ -820,7 +742,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTask_MylynId()
@@ -830,7 +751,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTask_Assignee()
@@ -840,7 +760,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTask_Targets()
@@ -850,7 +769,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCheckoutDiscriminator()
@@ -860,7 +778,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCheckoutDiscriminator_RepositoryTag()
@@ -870,7 +787,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckoutDiscriminator_Checkout()
@@ -880,7 +796,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTag()
@@ -890,7 +805,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTag_Branch()
@@ -900,7 +814,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTag_Name()
@@ -910,7 +823,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTag_TaggedElement()
@@ -920,7 +832,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTaggedElement()
@@ -930,7 +841,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTaggedElement_Tag()
@@ -940,7 +850,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getBranch()
@@ -950,7 +859,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getBranch_Name()
@@ -960,7 +868,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Branches()
@@ -970,7 +877,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Tags()
@@ -980,7 +886,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getBranch_Stream()
@@ -990,7 +895,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMainBranch()
@@ -1000,7 +904,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMainBranch_Repository()
@@ -1010,7 +913,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getSubBranch()
@@ -1020,7 +922,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getSubBranch_Parent()
@@ -1030,7 +931,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getSubBranch_RootTagName()
@@ -1040,7 +940,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getSubBranch_RootTag()
@@ -1050,7 +949,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getStream()
@@ -1060,7 +958,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getStream_Branch()
@@ -1070,7 +967,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getStream_Integrations()
@@ -1080,7 +976,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDeliveryStream()
@@ -1090,7 +985,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDeliveryStream_Parent()
@@ -1100,7 +994,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDeliveryStream_Baseline()
@@ -1110,7 +1003,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDeliveryStream_Task()
@@ -1120,7 +1012,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDeliveryStream_Deliveries()
@@ -1130,7 +1021,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getIntegrationStream()
@@ -1140,7 +1030,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegrationStream_DeliveryStreams()
@@ -1150,7 +1039,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegrationStream_Releases()
@@ -1160,7 +1048,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDevelopmentStream()
@@ -1170,7 +1057,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDevelopmentStream_MaintenanceStreams()
@@ -1180,7 +1066,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDevelopmentStream_Pop()
@@ -1190,7 +1075,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMaintenanceStream()
@@ -1200,7 +1084,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMaintenanceStream_Parent()
@@ -1210,7 +1093,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMaintenanceStream_Baseline()
@@ -1220,7 +1102,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getTarget()
@@ -1230,7 +1111,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getTarget_Date()
@@ -1240,7 +1120,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getTarget_Tasks()
@@ -1250,7 +1129,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getRelease()
@@ -1260,7 +1138,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Maintenance()
@@ -1270,7 +1147,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getRelease_Version()
@@ -1280,7 +1156,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Stream()
@@ -1290,7 +1165,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getRelease_Milestones()
@@ -1300,7 +1174,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getMilestone()
@@ -1310,7 +1183,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getMilestone_Release()
@@ -1320,7 +1192,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getMilestone_Name()
@@ -1330,7 +1201,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getDelivery()
@@ -1340,7 +1210,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDelivery_Stream()
@@ -1350,7 +1219,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDelivery_Number()
@@ -1360,7 +1228,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getDelivery_Date()
@@ -1370,7 +1237,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getDelivery_Merges()
@@ -1380,7 +1246,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getIntegration()
@@ -1390,7 +1255,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegration_Stream()
@@ -1400,7 +1264,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getIntegration_Date()
@@ -1410,7 +1273,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getIntegration_Delivery()
@@ -1420,7 +1282,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCheckoutManager()
@@ -1430,7 +1291,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckoutManager_Pop()
@@ -1440,7 +1300,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCheckoutManager_Location()
@@ -1450,7 +1309,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckoutManager_Checkouts()
@@ -1460,7 +1318,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckoutManager_ActiveCheckout()
@@ -1470,7 +1327,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getCheckout()
@@ -1480,7 +1336,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckout_Manager()
@@ -1490,7 +1345,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckout_Discriminator()
@@ -1500,7 +1354,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCheckout_Location()
@@ -1510,7 +1363,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCheckout_Transitioning()
@@ -1520,7 +1372,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCheckout_State()
@@ -1530,7 +1381,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EAttribute getCheckout_Active()
@@ -1540,7 +1390,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getCheckout_WorkspaceSpecification()
@@ -1550,7 +1399,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getWorkspaceSpecification()
@@ -1560,7 +1408,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getWorkspaceSpecification_Checkout()
@@ -1570,7 +1417,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getWorkspaceSpecification_SecondaryModules()
@@ -1580,7 +1426,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getWorkspaceSpecification_WorkspaceConfigurators()
@@ -1590,7 +1435,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getSecondaryModule()
@@ -1600,7 +1444,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getSecondaryModule_WorkspaceSpecification()
@@ -1610,7 +1453,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getWorkspaceConfigurator()
@@ -1620,7 +1462,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getWorkspaceConfigurator_WorkspaceSpecification()
@@ -1630,7 +1471,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EClass getAssignee()
@@ -1640,7 +1480,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getAssignee_Tasks()
@@ -1650,7 +1489,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EReference getAssignee_TaskGroups()
@@ -1660,7 +1498,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EEnum getCheckoutState()
@@ -1670,7 +1507,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getVersion()
@@ -1680,7 +1516,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getPath()
@@ -1690,7 +1525,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getRepositoryAdapter()
@@ -1700,7 +1534,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getRepositorySession()
@@ -1710,7 +1543,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getRepositoryFolder()
@@ -1720,7 +1552,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EDataType getRepositoryTag()
@@ -1730,7 +1561,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public PopFactory getPopFactory()
@@ -1740,15 +1570,14 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private boolean isCreated = false;
 
   /**
-   * Creates the meta-model objects for the package. This method is guarded to have no affect on any invocation but its
-   * first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates the meta-model objects for the package.  This method is
+   * guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void createPackageContents()
@@ -1929,15 +1758,14 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private boolean isInitialized = false;
 
   /**
-   * Complete the initialization of the package and its meta-model. This method is guarded to have no affect on any
-   * invocation but its first. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Complete the initialization of the package and its meta-model.  This
+   * method is guarded to have no affect on any invocation but its first.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public void initializePackageContents()
@@ -2267,7 +2095,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getIntegration_Stream(),
         "integrations", null, 0, -1, Stream.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    addEOperation(streamEClass, this.getPop(), "getPopProject", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEOperation(streamEClass, this.getPop(), "getPop", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     addEOperation(streamEClass, this.getStream(), "getParent", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 

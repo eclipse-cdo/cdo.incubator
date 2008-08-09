@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskImpl.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: TaskImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -34,20 +34,20 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getMylynId <em>Mylyn Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getAssignee <em>Assignee</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getTargets <em>Targets</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getMylynId <em>Mylyn Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getAssignee <em>Assignee</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TaskImpl extends PopElementImpl implements Task
 {
   /**
-   * The default value of the '{@link #getMylynId() <em>Mylyn Id</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getMylynId() <em>Mylyn Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getMylynId()
    * @generated
    * @ordered
@@ -55,9 +55,9 @@ public class TaskImpl extends PopElementImpl implements Task
   protected static final String MYLYN_ID_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getMylynId() <em>Mylyn Id</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getMylynId() <em>Mylyn Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getMylynId()
    * @generated
    * @ordered
@@ -65,9 +65,9 @@ public class TaskImpl extends PopElementImpl implements Task
   protected String mylynId = MYLYN_ID_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getTargets() <em>Targets</em>}' reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getTargets()
    * @generated
    * @ordered
@@ -76,7 +76,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected TaskImpl()
@@ -86,7 +85,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -97,7 +95,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getMylynId()
@@ -107,7 +104,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setMylynId(String newMylynId)
@@ -120,7 +116,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Assignee getAssignee()
@@ -132,7 +127,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Assignee basicGetAssignee()
@@ -144,7 +138,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetAssignee(Assignee newAssignee, NotificationChain msgs)
@@ -155,7 +148,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setAssignee(Assignee newAssignee)
@@ -180,7 +172,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Target> getTargets()
@@ -195,7 +186,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -216,7 +206,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -234,7 +223,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -250,7 +238,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -272,7 +259,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -297,7 +283,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -320,7 +305,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -340,7 +324,6 @@ public class TaskImpl extends PopElementImpl implements Task
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

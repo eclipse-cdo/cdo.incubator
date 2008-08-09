@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SecondaryModuleImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: SecondaryModuleImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -40,7 +40,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected SecondaryModuleImpl()
@@ -50,7 +49,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -61,7 +59,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public WorkspaceSpecification getWorkspaceSpecification()
@@ -73,7 +70,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public WorkspaceSpecification basicGetWorkspaceSpecification()
@@ -85,7 +81,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification,
@@ -98,7 +93,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification)
@@ -125,7 +119,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -143,7 +136,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -159,7 +151,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -176,7 +167,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -194,7 +184,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -211,7 +200,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -228,7 +216,6 @@ public class SecondaryModuleImpl extends ModuleImpl implements SecondaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

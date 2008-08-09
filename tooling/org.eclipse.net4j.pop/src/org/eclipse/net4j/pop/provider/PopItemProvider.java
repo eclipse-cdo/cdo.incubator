@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProvider.java,v 1.5 2008-08-09 09:58:11 estepper Exp $
+ * $Id: PopItemProvider.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -38,9 +38,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Pop} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Pop} object.
+ * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class PopItemProvider extends PopElementItemProvider implements IEditingDomainItemProvider,
@@ -48,8 +48,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PopItemProvider(AdapterFactory adapterFactory)
@@ -58,8 +58,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -77,8 +77,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -90,8 +90,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This adds a property descriptor for the Active feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Active feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addActivePropertyDescriptor(Object object)
@@ -103,8 +103,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This adds a property descriptor for the Checkout Manager feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Checkout Manager feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addCheckoutManagerPropertyDescriptor(Object object)
@@ -118,9 +118,9 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   /**
    * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
    * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}. <!-- begin-user-doc --> <!--
+   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -141,7 +141,6 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -154,8 +153,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This returns Pop.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Pop.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -165,8 +164,8 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -178,9 +177,9 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -207,9 +206,9 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

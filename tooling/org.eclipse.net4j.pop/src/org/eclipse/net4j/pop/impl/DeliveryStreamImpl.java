@@ -8,14 +8,16 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryStreamImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: DeliveryStreamImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.Delivery;
 import org.eclipse.net4j.pop.DeliveryStream;
 import org.eclipse.net4j.pop.IntegrationStream;
+import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
+import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.Task;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -49,9 +51,9 @@ import java.util.Date;
 public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 {
   /**
-   * The default value of the '{@link #getBaseline() <em>Baseline</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getBaseline() <em>Baseline</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -59,9 +61,9 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
   protected static final Date BASELINE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -69,8 +71,8 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
   protected Date baseline = BASELINE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getTask() <em>Task</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getTask() <em>Task</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getTask()
    * @generated
    * @ordered
@@ -89,7 +91,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DeliveryStreamImpl()
@@ -99,7 +100,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -110,9 +110,9 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
+  @Override
   public IntegrationStream getParent()
   {
     if (eContainerFeatureID != PopPackage.DELIVERY_STREAM__PARENT)
@@ -122,7 +122,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IntegrationStream basicGetParent()
@@ -134,7 +133,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(IntegrationStream newParent, NotificationChain msgs)
@@ -145,7 +143,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(IntegrationStream newParent)
@@ -171,7 +168,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getBaseline()
@@ -181,7 +177,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBaseline(Date newBaseline)
@@ -194,7 +189,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Task getTask()
@@ -214,7 +208,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Task basicGetTask()
@@ -224,7 +217,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setTask(Task newTask)
@@ -237,7 +229,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Delivery> getDeliveries()
@@ -252,7 +243,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -273,7 +263,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -291,7 +280,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -308,7 +296,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -334,7 +321,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -362,7 +348,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -388,7 +373,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -410,7 +394,6 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -426,4 +409,21 @@ public class DeliveryStreamImpl extends StreamImpl implements DeliveryStream
     return result.toString();
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public Pop getPop()
+  {
+    return getParent().getPop();
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public void collectStreams(EList<Stream> streams)
+  {
+    // Do nothing
+  }
 } // DeliveryStreamImpl

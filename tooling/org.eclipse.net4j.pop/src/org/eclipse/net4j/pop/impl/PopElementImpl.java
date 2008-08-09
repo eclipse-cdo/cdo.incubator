@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -17,24 +17,26 @@ import org.eclipse.net4j.pop.PopPackage;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getId <em>Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class PopElementImpl extends EObjectImpl implements PopElement
 {
   /**
-   * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The default value of the '{@link #getId() <em>Id</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getId()
    * @generated
    * @ordered
@@ -53,7 +55,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopElementImpl()
@@ -63,7 +64,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -75,42 +75,42 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public String getId()
   {
-    // TODO: implement this method to return the 'Id' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    Resource resource = eResource();
+    if (resource instanceof XMLResource)
+    {
+      XMLResource xmlResource = (XMLResource)resource;
+      return xmlResource.getID(this);
+    }
+
+    return null;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
-   */
-  public String getClass_()
-  {
-    // TODO: implement this method to return the 'Class' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @generated
+   * @generated NOT
    */
   public String getDisplayString()
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    return toString();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
+   * @generated NOT
+   */
+  public String getClass_()
+  {
+    return eClass().getName();
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -128,7 +128,6 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

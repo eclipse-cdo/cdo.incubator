@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: StreamImpl.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: StreamImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -20,6 +20,7 @@ import org.eclipse.net4j.pop.Stream;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -34,11 +35,11 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.StreamImpl#getBranch <em>Branch</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.StreamImpl#getIntegrations <em>Integrations</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.StreamImpl#getBranch <em>Branch</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.StreamImpl#getIntegrations <em>Integrations</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class StreamImpl extends PopElementImpl implements Stream
@@ -65,7 +66,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected StreamImpl()
@@ -75,7 +75,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -86,7 +85,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch getBranch()
@@ -106,7 +104,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch basicGetBranch()
@@ -116,7 +113,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetBranch(Branch newBranch, NotificationChain msgs)
@@ -137,7 +133,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBranch(Branch newBranch)
@@ -159,7 +154,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Integration> getIntegrations()
@@ -175,42 +169,36 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public Pop getPopProject()
-  {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
+  public abstract Pop getPop();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public Stream getParent()
-  {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
+  public abstract Stream getParent();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public EList<Stream> getStreams()
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    EList<Stream> streams = new BasicEList<Stream>();
+    collectStreams(streams);
+    return streams;
   }
 
   /**
+   * @ADDED
+   */
+  public abstract void collectStreams(EList<Stream> streams);
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -231,7 +219,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -249,7 +236,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -269,7 +255,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -291,7 +276,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -311,7 +295,6 @@ public abstract class StreamImpl extends PopElementImpl implements Stream
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: IntegrationStreamImpl.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
+ * $Id: IntegrationStreamImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.DeliveryStream;
 import org.eclipse.net4j.pop.IntegrationStream;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Release;
+import org.eclipse.net4j.pop.Stream;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.EList;
@@ -52,9 +53,9 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
   protected EList<DeliveryStream> deliveryStreams;
 
   /**
-   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list. <!-- begin-user-doc
+   * The cached value of the '{@link #getReleases() <em>Releases</em>}' containment reference list.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getReleases()
    * @generated
    * @ordered
@@ -63,7 +64,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected IntegrationStreamImpl()
@@ -73,7 +73,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -84,7 +83,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<DeliveryStream> getDeliveryStreams()
@@ -99,7 +97,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Release> getReleases()
@@ -114,7 +111,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -133,7 +129,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -151,7 +146,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -169,7 +163,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -192,7 +185,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -212,7 +204,6 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -228,4 +219,12 @@ public abstract class IntegrationStreamImpl extends StreamImpl implements Integr
     return super.eIsSet(featureID);
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public void collectStreams(EList<Stream> streams)
+  {
+    streams.addAll(getDeliveryStreams());
+  }
 } // IntegrationStreamImpl

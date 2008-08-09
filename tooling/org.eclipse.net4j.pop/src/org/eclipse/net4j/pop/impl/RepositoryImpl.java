@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -103,6 +103,11 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected MainBranch mainBranch;
 
   /**
+   * @ADDED
+   */
+  private IRepositoryAdapter adapter;
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
    * @generated
@@ -131,7 +136,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   public Pop getPop()
   {
     if (eContainerFeatureID != PopPackage.REPOSITORY__POP)
+    {
       return null;
+    }
     return (Pop)eContainer();
   }
 
@@ -143,7 +150,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   public Pop basicGetPop()
   {
     if (eContainerFeatureID != PopPackage.REPOSITORY__POP)
+    {
       return null;
+    }
     return (Pop)eInternalContainer();
   }
 
@@ -165,33 +174,50 @@ public class RepositoryImpl extends PopElementImpl implements Repository
    */
   public void setPop(Pop newPop)
   {
-    if (newPop != eInternalContainer() || (eContainerFeatureID != PopPackage.REPOSITORY__POP && newPop != null))
+    if (newPop != eInternalContainer() || eContainerFeatureID != PopPackage.REPOSITORY__POP && newPop != null)
     {
       if (EcoreUtil.isAncestor(this, newPop))
+      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
+      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       if (newPop != null)
+      {
         msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__REPOSITORY, Pop.class, msgs);
+      }
       msgs = basicSetPop(newPop, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__POP, newPop, newPop));
+    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
-  public IRepositoryAdapter getAdapter()
+  public synchronized IRepositoryAdapter getAdapter()
   {
-    // TODO: implement this method to return the 'Adapter' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    if (adapter == null)
+    {
+      adapter = IRepositoryAdapter.Registry.INSTANCE.get(adapterType);
+      if (adapter == null)
+      {
+        throw new IllegalStateException("Unrecognized repository adapter type: " + adapterType);
+      }
+    }
+
+    return adapter;
   }
 
   /**
@@ -207,15 +233,23 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * 
-   * @generated
+   * @generated NOT
    */
   public void setAdapterType(String newAdapterType)
   {
-    String oldAdapterType = adapterType;
-    adapterType = newAdapterType;
+    String oldAdapterType = null;
+    synchronized (this)
+    {
+      oldAdapterType = adapterType;
+      adapterType = newAdapterType;
+      adapter = null;
+    }
+
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__ADAPTER_TYPE, oldAdapterType,
           adapterType));
+    }
   }
 
   /**
@@ -238,8 +272,10 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     String oldDescriptor = descriptor;
     descriptor = newDescriptor;
     if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__DESCRIPTOR, oldDescriptor,
           descriptor));
+    }
   }
 
   /**
@@ -263,10 +299,14 @@ public class RepositoryImpl extends PopElementImpl implements Repository
           msgs = newMainBranch.eInverseAdd(this, PopPackage.MAIN_BRANCH__REPOSITORY, MainBranch.class, msgs);
         }
         if (msgs != null)
+        {
           msgs.dispatch();
+        }
         if (eNotificationRequired())
+        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, PopPackage.REPOSITORY__MAIN_BRANCH, oldMainBranch,
               mainBranch));
+        }
       }
     }
     return mainBranch;
@@ -296,9 +336,13 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           PopPackage.REPOSITORY__MAIN_BRANCH, oldMainBranch, newMainBranch);
       if (msgs == null)
+      {
         msgs = notification;
+      }
       else
+      {
         msgs.add(notification);
+      }
     }
     return msgs;
   }
@@ -314,18 +358,26 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
       NotificationChain msgs = null;
       if (mainBranch != null)
+      {
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, PopPackage.MAIN_BRANCH__REPOSITORY, MainBranch.class,
             msgs);
+      }
       if (newMainBranch != null)
+      {
         msgs = ((InternalEObject)newMainBranch).eInverseAdd(this, PopPackage.MAIN_BRANCH__REPOSITORY, MainBranch.class,
             msgs);
+      }
       msgs = basicSetMainBranch(newMainBranch, msgs);
       if (msgs != null)
+      {
         msgs.dispatch();
+      }
     }
     else if (eNotificationRequired())
+    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__MAIN_BRANCH, newMainBranch,
           newMainBranch));
+    }
   }
 
   /**
@@ -340,12 +392,16 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY__POP:
       if (eInternalContainer() != null)
+      {
         msgs = eBasicRemoveFromContainer(msgs);
+      }
       return basicSetPop((Pop)otherEnd, msgs);
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       if (mainBranch != null)
+      {
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
             - PopPackage.REPOSITORY__MAIN_BRANCH, null, msgs);
+      }
       return basicSetMainBranch((MainBranch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -397,7 +453,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY__POP:
       if (resolve)
+      {
         return getPop();
+      }
       return basicGetPop();
     case PopPackage.REPOSITORY__ADAPTER:
       return getAdapter();
@@ -407,7 +465,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return getDescriptor();
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       if (resolve)
+      {
         return getMainBranch();
+      }
       return basicGetMainBranch();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -498,7 +558,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   public String toString()
   {
     if (eIsProxy())
+    {
       return super.toString();
+    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (adapterType: "); //$NON-NLS-1$

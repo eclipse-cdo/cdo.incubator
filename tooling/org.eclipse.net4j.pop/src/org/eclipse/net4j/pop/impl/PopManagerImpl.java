@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.5 2008-08-09 10:09:01 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.internal.pop.model.ModelManager;
 import org.eclipse.net4j.internal.pop.model.ModelRegistrar;
 import org.eclipse.net4j.internal.pop.natures.PopProjectNature;
+import org.eclipse.net4j.internal.pop.util.EMFUtil;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.PopPackage;
@@ -23,7 +24,6 @@ import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelRegistration;
 import org.eclipse.net4j.pop.model.ModelHandler;
 import org.eclipse.net4j.util.ObjectUtil;
-import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleException;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -43,13 +43,13 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.PopManagerImpl#getPops <em>Pops</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopManagerImpl#getPops <em>Pops</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
-public class PopManagerImpl extends PopElementImpl implements PopManager, ILifecycle
+public class PopManagerImpl extends PopElementImpl implements PopManager
 {
   /**
    * @ADDED
@@ -62,9 +62,9 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopManagerImpl.class);
 
   /**
-   * The cached value of the '{@link #getPops() <em>Pops</em>}' containment reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPops() <em>Pops</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPops()
    * @generated
    * @ordered
@@ -89,7 +89,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopManagerImpl()
@@ -106,7 +105,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -117,7 +115,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Pop> getPops()
@@ -131,8 +128,15 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
   }
 
   /**
+   * @ADDED
+   */
+  public ResourceSet getResourceSet()
+  {
+    return modelManager.getResourceSet();
+  }
+
+  /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -149,7 +153,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -165,7 +168,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -181,7 +183,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -200,7 +201,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -217,7 +217,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -266,7 +265,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
       }
 
       Pop pop = registration.getModel();
-      pops.add(pop);
+      getPops().add(pop);
     }
 
     @Override
@@ -282,7 +281,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
         }
 
         Pop pop = registration.getModel();
-        pops.set(index, pop);
+        getPops().set(index, pop);
       }
     }
 
@@ -298,22 +297,19 @@ public class PopManagerImpl extends PopElementImpl implements PopManager, ILifec
           TRACER.format("Removing pop: {0}", uri);
         }
 
-        pops.remove(index);
+        getPops().remove(index);
       }
     }
 
     private int indexOf(URI uri)
     {
       int index = 0;
-      for (Pop pop : pops)
+      for (Pop pop : getPops())
       {
-        Resource resource = pop.eResource();
-        if (resource != null)
+        URI resourceURI = EMFUtil.getResourceURI(pop);
+        if (ObjectUtil.equals(resourceURI, uri))
         {
-          if (ObjectUtil.equals(resource.getURI(), uri))
-          {
-            return index;
-          }
+          return index;
         }
 
         ++index;

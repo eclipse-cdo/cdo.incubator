@@ -134,7 +134,7 @@
         resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stream" abstract="true" eSuperTypes="#//PopElement">
-    <eOperations name="getPopProject" lowerBound="1" eType="#//Pop"/>
+    <eOperations name="getPop" lowerBound="1" eType="#//Pop"/>
     <eOperations name="getParent" eType="#//Stream"/>
     <eOperations name="getStreams" upperBound="-1" eType="#//Stream"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="branch" lowerBound="1"

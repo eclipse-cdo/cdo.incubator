@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopEditor.java,v 1.2 2008-08-09 09:26:25 estepper Exp $
+ * $Id: PopEditor.java,v 1.3 2008-08-09 18:31:13 estepper Exp $
  */
 package org.eclipse.net4j.pop.editor;
 
@@ -644,7 +644,7 @@ public class PopEditor extends MultiPageEditorPart implements IEditingDomainProv
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  protected void initializeEditingDomain()
+  protected void initializeEditingDomainGen()
   {
     // Create an adapter factory that yields item providers.
     //
@@ -689,6 +689,18 @@ public class PopEditor extends MultiPageEditorPart implements IEditingDomainProv
     // Create the editing domain with a special command stack.
     //
     editingDomain = new AdapterFactoryEditingDomain(adapterFactory, commandStack, new HashMap<Resource, Boolean>());
+  }
+
+  /**
+   * This sets up the editing domain for the model editor. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
+   */
+  protected void initializeEditingDomain()
+  {
+    initializeEditingDomainGen();
+    // editingDomain = new AdapterFactoryEditingDomain(adapterFactory, editingDomain.getCommandStack(),
+    // PopManager.INSTANCE.getResourceSet());
   }
 
   /**

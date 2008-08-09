@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PrimaryModuleImpl.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: PrimaryModuleImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -28,11 +28,11 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getPop <em>Pop</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getSpecificationPath <em>Specification Path</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getPop <em>Pop</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PrimaryModuleImpl#getSpecificationPath <em>Specification Path</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
@@ -59,7 +59,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PrimaryModuleImpl()
@@ -69,7 +68,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -80,7 +78,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop getPop()
@@ -92,7 +89,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop basicGetPop()
@@ -104,7 +100,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
@@ -115,7 +110,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPop(Pop newPop)
@@ -139,7 +133,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getSpecificationPath()
@@ -149,7 +142,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setSpecificationPath(String newSpecificationPath)
@@ -163,7 +155,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -181,7 +172,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -197,7 +187,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -213,7 +202,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -233,7 +221,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -253,7 +240,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -273,7 +259,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -292,7 +277,6 @@ public class PrimaryModuleImpl extends ModuleImpl implements PrimaryModule
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

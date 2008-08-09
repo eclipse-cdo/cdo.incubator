@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopAdapterFactory.java,v 1.4 2008-08-09 09:58:11 estepper Exp $
+ * $Id: PopAdapterFactory.java,v 1.5 2008-08-09 18:31:10 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
@@ -55,22 +55,21 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
  * method for each class of the model. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.PopPackage
  * @generated
  */
 public class PopAdapterFactory extends AdapterFactoryImpl
 {
   /**
-   * The cached model package. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached model package.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected static PopPackage modelPackage;
 
   /**
-   * Creates an instance of the adapter factory. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Creates an instance of the adapter factory.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public PopAdapterFactory()
@@ -82,10 +81,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Returns whether this factory is applicable for the type of the object. <!-- begin-user-doc --> This implementation
+   * Returns whether this factory is applicable for the type of the object.
+   * <!-- begin-user-doc --> This implementation
    * returns <code>true</code> if the object is either the model's package or is an instance object of the model. <!--
    * end-user-doc -->
-   * 
    * @return whether this factory is applicable for the type of the object.
    * @generated
    */
@@ -104,8 +103,8 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * The switch that delegates to the <code>createXXX</code> methods. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The switch that delegates to the <code>createXXX</code> methods.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected PopSwitch<Adapter> modelSwitch = new PopSwitch<Adapter>()
@@ -316,10 +315,9 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   };
 
   /**
-   * Creates an adapter for the <code>target</code>. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param target
-   *          the object to adapt.
+   * Creates an adapter for the <code>target</code>.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param target the object to adapt.
    * @return the adapter for the <code>target</code>.
    * @generated
    */
@@ -333,7 +331,6 @@ public class PopAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Identifiable <em>Identifiable</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.Identifiable
    * @generated
@@ -386,10 +383,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Pop <em>Pop</em>}'. <!-- begin-user-doc
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Pop <em>Pop</em>}'.
+   * <!-- begin-user-doc
    * --> This default implementation returns null so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.Pop
    * @generated
@@ -417,7 +414,6 @@ public class PopAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.PrimaryModule <em>Primary Module</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.PrimaryModule
    * @generated
@@ -484,11 +480,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.CheckoutDiscriminator
-   * <em>Checkout Discriminator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.CheckoutDiscriminator <em>Checkout Discriminator</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.CheckoutDiscriminator
    * @generated
@@ -499,10 +494,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Tag <em>Tag</em>}'. <!-- begin-user-doc
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.Tag <em>Tag</em>}'.
+   * <!-- begin-user-doc
    * --> This default implementation returns null so that we can easily ignore cases; it's useful to ignore a case when
    * inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.Tag
    * @generated
@@ -516,7 +511,6 @@ public class PopAdapterFactory extends AdapterFactoryImpl
    * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.TaggedElement <em>Tagged Element</em>}'.
    * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful to
    * ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.TaggedElement
    * @generated
@@ -583,10 +577,9 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.DeliveryStream <em>Delivery Stream</em>}
-   * '. <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.DeliveryStream <em>Delivery Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily ignore cases; it's useful
    * to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.DeliveryStream
    * @generated
@@ -597,11 +590,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.IntegrationStream
-   * <em>Integration Stream</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.IntegrationStream <em>Integration Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.IntegrationStream
    * @generated
@@ -612,11 +604,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.DevelopmentStream
-   * <em>Development Stream</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.DevelopmentStream <em>Development Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.DevelopmentStream
    * @generated
@@ -627,11 +618,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.MaintenanceStream
-   * <em>Maintenance Stream</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.MaintenanceStream <em>Maintenance Stream</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.MaintenanceStream
    * @generated
@@ -712,10 +702,9 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.CheckoutManager
-   * <em>Checkout Manager</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.CheckoutManager <em>Checkout Manager</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily
    * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.CheckoutManager
    * @generated
@@ -740,11 +729,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.WorkspaceSpecification
-   * <em>Workspace Specification</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.WorkspaceSpecification <em>Workspace Specification</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.WorkspaceSpecification
    * @generated
@@ -755,10 +743,9 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.SecondaryModule
-   * <em>Secondary Module</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can easily
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.SecondaryModule <em>Secondary Module</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can easily
    * ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!-- end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.SecondaryModule
    * @generated
@@ -769,11 +756,10 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.WorkspaceConfigurator
-   * <em>Workspace Configurator</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
+   * Creates a new adapter for an object of class '{@link org.eclipse.net4j.pop.WorkspaceConfigurator <em>Workspace Configurator</em>}'.
+   * <!-- begin-user-doc --> This default implementation returns null so that we can
    * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @see org.eclipse.net4j.pop.WorkspaceConfigurator
    * @generated
@@ -798,9 +784,9 @@ public class PopAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for the default case. <!-- begin-user-doc --> This default implementation returns null. <!--
+   * Creates a new adapter for the default case.
+   * <!-- begin-user-doc --> This default implementation returns null. <!--
    * end-user-doc -->
-   * 
    * @return the new adapter.
    * @generated
    */

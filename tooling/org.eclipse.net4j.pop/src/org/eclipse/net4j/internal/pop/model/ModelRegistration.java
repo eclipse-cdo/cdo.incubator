@@ -18,6 +18,8 @@ import org.eclipse.net4j.pop.model.IModelResource;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 
+import java.text.MessageFormat;
+
 /**
  * @author Eike Stepper
  */
@@ -80,6 +82,12 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
   public boolean isCancelled()
   {
     return cancelled;
+  }
+
+  @Override
+  public String toString()
+  {
+    return MessageFormat.format("ModelRegistration[{0}}", modelResource.getURI());
   }
 
   public void refresh(Resource resource)

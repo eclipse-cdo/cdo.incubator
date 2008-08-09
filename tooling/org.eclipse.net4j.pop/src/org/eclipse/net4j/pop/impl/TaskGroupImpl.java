@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskGroupImpl.java,v 1.3 2008-08-09 09:58:11 estepper Exp $
+ * $Id: TaskGroupImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -34,21 +34,21 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getTasks <em>Tasks</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getTaskGroups <em>Task Groups</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getAssignee <em>Assignee</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getTaskGroups <em>Task Groups</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.TaskGroupImpl#getAssignee <em>Assignee</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 {
   /**
-   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getTasks()
    * @generated
    * @ordered
@@ -76,8 +76,8 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -86,7 +86,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected TaskGroupImpl()
@@ -96,7 +95,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -107,7 +105,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -117,7 +114,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -130,7 +126,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Assignee getAssignee()
@@ -142,7 +137,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Assignee basicGetAssignee()
@@ -154,7 +148,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetAssignee(Assignee newAssignee, NotificationChain msgs)
@@ -165,7 +158,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setAssignee(Assignee newAssignee)
@@ -190,7 +182,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Task> getTasks()
@@ -205,7 +196,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<TaskGroup> getTaskGroups()
@@ -220,7 +210,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -243,7 +232,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -263,7 +251,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -279,7 +266,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -303,7 +289,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -332,7 +317,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -358,7 +342,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -380,7 +363,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -403,7 +385,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -426,7 +407,6 @@ public class TaskGroupImpl extends PopElementImpl implements TaskGroup
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

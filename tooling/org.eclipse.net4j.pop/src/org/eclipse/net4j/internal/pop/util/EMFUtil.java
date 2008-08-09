@@ -12,6 +12,7 @@ package org.eclipse.net4j.internal.pop.util;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
@@ -64,6 +65,23 @@ public final class EMFUtil
       }
     }
 
+    return null;
+  }
+
+  public static URI getResourceURI(EObject object)
+  {
+    URI targetURI = ((InternalEObject)object).eProxyURI();
+    if (targetURI != null)
+    {
+      return targetURI.trimFragment();
+    }
+  
+    Resource targetResource = object.eResource();
+    if (targetResource != null)
+    {
+      return targetResource.getURI();
+    }
+  
     return null;
   }
 }

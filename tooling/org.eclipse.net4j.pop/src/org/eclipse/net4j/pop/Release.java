@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Release.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: Release.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -16,16 +16,17 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Release</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.Release#getMaintenance <em>Maintenance</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Release#getVersion <em>Version</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Release#getStream <em>Stream</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Release#getMilestones <em>Milestones</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Release#getMaintenance <em>Maintenance</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Release#getVersion <em>Version</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Release#getStream <em>Stream</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Release#getMilestones <em>Milestones</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.PopPackage#getRelease()
  * @model
  * @generated
@@ -33,14 +34,14 @@ import org.eclipse.emf.common.util.EList;
 public interface Release extends Target
 {
   /**
-   * Returns the value of the '<em><b>Maintenance</b></em>' reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.MaintenanceStream#getBaseline <em>Baseline</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Maintenance</b></em>' reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.MaintenanceStream#getBaseline <em>Baseline</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Maintenance</em>' reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Maintenance</em>' reference.
    * @see #setMaintenance(MaintenanceStream)
    * @see org.eclipse.net4j.pop.PopPackage#getRelease_Maintenance()
@@ -62,13 +63,13 @@ public interface Release extends Target
   void setMaintenance(MaintenanceStream value);
 
   /**
-   * Returns the value of the '<em><b>Version</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Version</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Version</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Version</em>' attribute.
    * @see #setVersion(Version)
    * @see org.eclipse.net4j.pop.PopPackage#getRelease_Version()
@@ -89,14 +90,14 @@ public interface Release extends Target
   void setVersion(Version value);
 
   /**
-   * Returns the value of the '<em><b>Stream</b></em>' container reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.IntegrationStream#getReleases <em>Releases</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Stream</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.IntegrationStream#getReleases <em>Releases</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Stream</em>' container reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Stream</em>' container reference.
    * @see #setStream(IntegrationStream)
    * @see org.eclipse.net4j.pop.PopPackage#getRelease_Stream()
@@ -118,15 +119,15 @@ public interface Release extends Target
   void setStream(IntegrationStream value);
 
   /**
-   * Returns the value of the '<em><b>Milestones</b></em>' containment reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.Milestone}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Milestone#getRelease <em>Release</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Milestones</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.Milestone}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Milestone#getRelease <em>Release</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Milestones</em>' containment reference list isn't clear, there really should be more of
    * a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Milestones</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getRelease_Milestones()
    * @see org.eclipse.net4j.pop.Milestone#getRelease

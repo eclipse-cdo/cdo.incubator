@@ -8,12 +8,13 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamImpl.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
+ * $Id: MaintenanceStreamImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.DevelopmentStream;
 import org.eclipse.net4j.pop.MaintenanceStream;
+import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Release;
 
@@ -40,9 +41,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 public class MaintenanceStreamImpl extends IntegrationStreamImpl implements MaintenanceStream
 {
   /**
-   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getBaseline() <em>Baseline</em>}' reference.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getBaseline()
    * @generated
    * @ordered
@@ -51,7 +52,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected MaintenanceStreamImpl()
@@ -61,7 +61,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -72,9 +71,9 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
+  @Override
   public DevelopmentStream getParent()
   {
     if (eContainerFeatureID != PopPackage.MAINTENANCE_STREAM__PARENT)
@@ -84,7 +83,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public DevelopmentStream basicGetParent()
@@ -96,7 +94,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(DevelopmentStream newParent, NotificationChain msgs)
@@ -107,7 +104,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(DevelopmentStream newParent)
@@ -133,7 +129,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release getBaseline()
@@ -154,7 +149,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Release basicGetBaseline()
@@ -164,7 +158,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetBaseline(Release newBaseline, NotificationChain msgs)
@@ -185,7 +178,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setBaseline(Release newBaseline)
@@ -208,7 +200,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -230,7 +221,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -248,7 +238,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -265,7 +254,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -287,7 +275,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -307,7 +294,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -327,7 +313,6 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -343,4 +328,12 @@ public class MaintenanceStreamImpl extends IntegrationStreamImpl implements Main
     return super.eIsSet(featureID);
   }
 
+  /**
+   * @ADDED
+   */
+  @Override
+  public Pop getPop()
+  {
+    return getParent().getPop();
+  }
 } // MaintenanceStreamImpl

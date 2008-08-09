@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Developer.java,v 1.3 2008-08-09 09:58:09 estepper Exp $
+ * $Id: Developer.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -16,19 +16,20 @@ import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Developer</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.Developer#getPop <em>Pop</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Developer#getRepositoryUser <em>Repository User</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Developer#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Developer#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Developer#getEntry <em>Entry</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Developer#getExit <em>Exit</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Developer#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#getPop <em>Pop</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#getRepositoryUser <em>Repository User</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#getExit <em>Exit</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Developer#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.PopPackage#getDeveloper()
  * @model
  * @generated
@@ -36,14 +37,14 @@ import java.util.Date;
 public interface Developer extends PopElement, Assignee
 {
   /**
-   * Returns the value of the '<em><b>Pop</b></em>' container reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Pop#getDevelopers <em>Developers</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getDevelopers <em>Developers</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pop</em>' container reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Pop</em>' container reference.
    * @see #setPop(Pop)
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Pop()
@@ -65,13 +66,13 @@ public interface Developer extends PopElement, Assignee
   void setPop(Pop value);
 
   /**
-   * Returns the value of the '<em><b>Repository User</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Repository User</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Repository User</em>' attribute isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Repository User</em>' attribute.
    * @see #setRepositoryUser(String)
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_RepositoryUser()
@@ -81,23 +82,21 @@ public interface Developer extends PopElement, Assignee
   String getRepositoryUser();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Developer#getRepositoryUser <em>Repository User</em>}'
-   * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Repository User</em>' attribute.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Developer#getRepositoryUser <em>Repository User</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @param value the new value of the '<em>Repository User</em>' attribute.
    * @see #getRepositoryUser()
    * @generated
    */
   void setRepositoryUser(String value);
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Name</em>' attribute.
    * @see #setName(String)
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Name()
@@ -118,12 +117,12 @@ public interface Developer extends PopElement, Assignee
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Email</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Email</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Email</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Email</em>' attribute.
    * @see #setEmail(String)
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Email()
@@ -144,12 +143,12 @@ public interface Developer extends PopElement, Assignee
   void setEmail(String value);
 
   /**
-   * Returns the value of the '<em><b>Entry</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Entry</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Entry</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Entry</em>' attribute.
    * @see #setEntry(Date)
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Entry()
@@ -170,12 +169,12 @@ public interface Developer extends PopElement, Assignee
   void setEntry(Date value);
 
   /**
-   * Returns the value of the '<em><b>Exit</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Exit</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Exit</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Exit</em>' attribute.
    * @see #setExit(Date)
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Exit()
@@ -196,12 +195,12 @@ public interface Developer extends PopElement, Assignee
   void setExit(Date value);
 
   /**
-   * Returns the value of the '<em><b>Active</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Active</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Active</em>' attribute isn't clear, there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Active</em>' attribute.
    * @see org.eclipse.net4j.pop.PopPackage#getDeveloper_Active()
    * @model required="true" transient="true" changeable="false" volatile="true" derived="true"

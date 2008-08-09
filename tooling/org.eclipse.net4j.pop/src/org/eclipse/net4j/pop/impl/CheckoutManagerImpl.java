@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManagerImpl.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: CheckoutManagerImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -48,8 +48,8 @@ import java.util.Collection;
 public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManager
 {
   /**
-   * The cached value of the '{@link #getPop() <em>Pop</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getPop() <em>Pop</em>}' reference.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getPop()
    * @generated
    * @ordered
@@ -57,9 +57,9 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
   protected Pop pop;
 
   /**
-   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getLocation()
    * @generated
    * @ordered
@@ -77,9 +77,9 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
   protected EList<Checkout> checkouts;
 
   /**
-   * The cached value of the '{@link #getActiveCheckout() <em>Active Checkout</em>}' reference. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getActiveCheckout() <em>Active Checkout</em>}' reference.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getActiveCheckout()
    * @generated
    * @ordered
@@ -88,7 +88,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CheckoutManagerImpl()
@@ -98,7 +97,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -109,7 +107,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop getPop()
@@ -129,7 +126,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop basicGetPop()
@@ -139,7 +135,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
@@ -160,7 +155,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPop(Pop newPop)
@@ -182,7 +176,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IPath getLocation()
@@ -194,7 +187,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Checkout> getCheckouts()
@@ -209,7 +201,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Checkout getActiveCheckout()
@@ -219,7 +210,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setActiveCheckout(Checkout newActiveCheckout)
@@ -233,7 +223,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -254,7 +243,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -272,7 +260,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -296,7 +283,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -321,7 +307,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -344,7 +329,6 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

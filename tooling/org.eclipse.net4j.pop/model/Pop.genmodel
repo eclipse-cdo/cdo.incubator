@@ -33,10 +33,10 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//PopElement/class"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//PopManager">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//PopManager/pops"/>
+      <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//PopManager/pops"/>
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//Pop">
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Pop/manager"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Pop/popManager"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Pop/name"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Pop/active"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Pop/developers"/>
@@ -51,7 +51,7 @@
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//PrimaryModule">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//PrimaryModule/pop"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//PrimaryModule/workspaceSpecificationPath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//PrimaryModule/specificationPath"/>
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//Repository">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Repository/pop"/>
@@ -68,20 +68,14 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Developer/entry"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Developer/exit"/>
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Developer/active"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Developer/taskGroups"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Developer/tasks"/>
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//TaskGroup">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//TaskGroup/name"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//TaskGroup/developer"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//TaskGroup/parent"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//TaskGroup/children"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//TaskGroup/tasks"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//TaskGroup/assignee"/>
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Task/mylynId"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Task/developer"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Task/taskGroup"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Task/assignee"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Pop.ecore#//Task/targets"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//CheckoutDiscriminator">
@@ -134,13 +128,11 @@
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//DevelopmentStream">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//DevelopmentStream/maintenanceStreams"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//DevelopmentStream/pop"/>
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//MaintenanceStream">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//MaintenanceStream/parent"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Pop.ecore#//MaintenanceStream/baseline"/>
-    </genClasses>
-    <genClasses ecoreClass="Pop.ecore#//RootStream">
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//RootStream/pop"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//Target">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Target/date"/>
@@ -194,6 +186,10 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//WorkspaceConfigurator/workspaceSpecification"/>
       <genOperations ecoreOperation="Pop.ecore#//WorkspaceConfigurator/validate"/>
       <genOperations ecoreOperation="Pop.ecore#//WorkspaceConfigurator/execute"/>
+    </genClasses>
+    <genClasses ecoreClass="Pop.ecore#//Assignee">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Assignee/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Assignee/taskGroups"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

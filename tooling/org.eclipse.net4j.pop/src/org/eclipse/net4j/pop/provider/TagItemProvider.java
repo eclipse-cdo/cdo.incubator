@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagItemProvider.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
+ * $Id: TagItemProvider.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Tag} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Tag} object.
+ * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class TagItemProvider extends CheckoutDiscriminatorItemProvider implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public TagItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -74,8 +74,8 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -87,8 +87,8 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This adds a property descriptor for the Tagged Element feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Tagged Element feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addTaggedElementPropertyDescriptor(Object object)
@@ -100,8 +100,8 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This returns Tag.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Tag.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -111,8 +111,8 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -124,9 +124,9 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -144,9 +144,9 @@ public class TagItemProvider extends CheckoutDiscriminatorItemProvider implement
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override

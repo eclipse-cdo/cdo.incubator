@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutState.java,v 1.2 2008-08-09 09:58:10 estepper Exp $
+ * $Id: CheckoutState.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -21,7 +21,6 @@ import java.util.List;
 /**
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '<em><b>Checkout State</b></em>', and
  * utility methods for working with them. <!-- end-user-doc -->
- * 
  * @see org.eclipse.net4j.pop.PopPackage#getCheckoutState()
  * @model
  * @generated
@@ -29,8 +28,8 @@ import java.util.List;
 public enum CheckoutState implements Enumerator
 {
   /**
-   * The '<em><b>Initial</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The '<em><b>Initial</b></em>' literal object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #INITIAL_VALUE
    * @generated
    * @ordered
@@ -38,8 +37,8 @@ public enum CheckoutState implements Enumerator
   INITIAL(0, "Initial", "Initial"), //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * The '<em><b>Specified</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The '<em><b>Specified</b></em>' literal object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #SPECIFIED_VALUE
    * @generated
    * @ordered
@@ -47,8 +46,8 @@ public enum CheckoutState implements Enumerator
   SPECIFIED(1, "Specified", "Specified"), //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * The '<em><b>Available</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The '<em><b>Available</b></em>' literal object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #AVAILABLE_VALUE
    * @generated
    * @ordered
@@ -56,13 +55,13 @@ public enum CheckoutState implements Enumerator
   AVAILABLE(2, "Available", "Available"); //$NON-NLS-1$ //$NON-NLS-2$
 
   /**
-   * The '<em><b>Initial</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Initial</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Initial</b></em>' literal object isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #INITIAL
    * @model name="Initial"
    * @generated
@@ -71,13 +70,13 @@ public enum CheckoutState implements Enumerator
   public static final int INITIAL_VALUE = 0;
 
   /**
-   * The '<em><b>Specified</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Specified</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Specified</b></em>' literal object isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #SPECIFIED
    * @model name="Specified"
    * @generated
@@ -86,13 +85,13 @@ public enum CheckoutState implements Enumerator
   public static final int SPECIFIED_VALUE = 1;
 
   /**
-   * The '<em><b>Available</b></em>' literal value. <!-- begin-user-doc -->
+   * The '<em><b>Available</b></em>' literal value.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of '<em><b>Available</b></em>' literal object isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @see #AVAILABLE
    * @model name="Available"
    * @generated
@@ -101,24 +100,24 @@ public enum CheckoutState implements Enumerator
   public static final int AVAILABLE_VALUE = 2;
 
   /**
-   * An array of all the '<em><b>Checkout State</b></em>' enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * An array of all the '<em><b>Checkout State</b></em>' enumerators.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private static final CheckoutState[] VALUES_ARRAY = new CheckoutState[] { INITIAL, SPECIFIED, AVAILABLE, };
 
   /**
-   * A public read-only list of all the '<em><b>Checkout State</b></em>' enumerators. <!-- begin-user-doc --> <!--
+   * A public read-only list of all the '<em><b>Checkout State</b></em>' enumerators.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static final List<CheckoutState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
   /**
-   * Returns the '<em><b>Checkout State</b></em>' literal with the specified literal value. <!-- begin-user-doc --> <!--
+   * Returns the '<em><b>Checkout State</b></em>' literal with the specified literal value.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static CheckoutState get(String literal)
@@ -135,9 +134,9 @@ public enum CheckoutState implements Enumerator
   }
 
   /**
-   * Returns the '<em><b>Checkout State</b></em>' literal with the specified name. <!-- begin-user-doc --> <!--
+   * Returns the '<em><b>Checkout State</b></em>' literal with the specified name.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static CheckoutState getByName(String name)
@@ -154,9 +153,9 @@ public enum CheckoutState implements Enumerator
   }
 
   /**
-   * Returns the '<em><b>Checkout State</b></em>' literal with the specified integer value. <!-- begin-user-doc --> <!--
+   * Returns the '<em><b>Checkout State</b></em>' literal with the specified integer value.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   public static CheckoutState get(int value)
@@ -175,28 +174,25 @@ public enum CheckoutState implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final int value;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final String name;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   private final String literal;
 
   /**
-   * Only this class can construct instances. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * Only this class can construct instances.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   private CheckoutState(int value, String name, String literal)
@@ -208,7 +204,6 @@ public enum CheckoutState implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public int getValue()
@@ -218,7 +213,6 @@ public enum CheckoutState implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -228,7 +222,6 @@ public enum CheckoutState implements Enumerator
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getLiteral()
@@ -237,9 +230,9 @@ public enum CheckoutState implements Enumerator
   }
 
   /**
-   * Returns the literal value of the enumerator, which is its string representation. <!-- begin-user-doc --> <!--
+   * Returns the literal value of the enumerator, which is its string representation.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @generated
    */
   @Override

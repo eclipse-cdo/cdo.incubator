@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Task.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: Task.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -16,15 +16,16 @@ import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '<em><b>Task</b></em>'. <!-- end-user-doc -->
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.Task#getMylynId <em>Mylyn Id</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.Task#getTargets <em>Targets</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Task#getMylynId <em>Mylyn Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Task#getAssignee <em>Assignee</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Task#getTargets <em>Targets</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.net4j.pop.PopPackage#getTask()
  * @model
  * @generated
@@ -32,13 +33,13 @@ import org.eclipse.emf.common.util.EList;
 public interface Task extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Mylyn Id</b></em>' attribute. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Mylyn Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Mylyn Id</em>' attribute isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Mylyn Id</em>' attribute.
    * @see #setMylynId(String)
    * @see org.eclipse.net4j.pop.PopPackage#getTask_MylynId()
@@ -59,14 +60,14 @@ public interface Task extends PopElement
   void setMylynId(String value);
 
   /**
-   * Returns the value of the '<em><b>Assignee</b></em>' container reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Assignee#getTasks <em>Tasks</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Assignee</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Assignee#getTasks <em>Tasks</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Assignee</em>' container reference isn't clear, there really should be more of a
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Assignee</em>' container reference.
    * @see #setAssignee(Assignee)
    * @see org.eclipse.net4j.pop.PopPackage#getTask_Assignee()
@@ -88,15 +89,15 @@ public interface Task extends PopElement
   void setAssignee(Assignee value);
 
   /**
-   * Returns the value of the '<em><b>Targets</b></em>' reference list. The list contents are of type
-   * {@link org.eclipse.net4j.pop.Target}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Target#getTasks <em>Tasks</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Targets</b></em>' reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.Target}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Target#getTasks <em>Tasks</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Targets</em>' reference list isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Targets</em>' reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getTask_Targets()
    * @see org.eclipse.net4j.pop.Target#getTasks

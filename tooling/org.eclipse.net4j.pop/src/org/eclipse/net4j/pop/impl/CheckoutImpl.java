@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.3 2008-08-09 09:58:10 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -33,24 +33,24 @@ import org.eclipse.core.runtime.IPath;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getManager <em>Manager</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getLocation <em>Location</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#isTransitioning <em>Transitioning</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getState <em>State</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#isActive <em>Active</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getWorkspaceSpecification <em>Workspace Specification</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getManager <em>Manager</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getDiscriminator <em>Discriminator</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getLocation <em>Location</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#isTransitioning <em>Transitioning</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getState <em>State</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.CheckoutImpl#getWorkspaceSpecification <em>Workspace Specification</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class CheckoutImpl extends PopElementImpl implements Checkout
 {
   /**
-   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getLocation() <em>Location</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getLocation()
    * @generated
    * @ordered
@@ -58,9 +58,9 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
   protected static final IPath LOCATION_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #isTransitioning() <em>Transitioning</em>}' attribute. <!-- begin-user-doc -->
+   * The default value of the '{@link #isTransitioning() <em>Transitioning</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #isTransitioning()
    * @generated
    * @ordered
@@ -99,7 +99,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected CheckoutImpl()
@@ -109,7 +108,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -120,7 +118,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CheckoutManager getManager()
@@ -132,7 +129,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetManager(CheckoutManager newManager, NotificationChain msgs)
@@ -143,7 +139,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setManager(CheckoutManager newManager)
@@ -169,7 +164,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CheckoutDiscriminator getDiscriminator()
@@ -181,7 +175,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDiscriminator(CheckoutDiscriminator newDiscriminator)
@@ -193,7 +186,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public IPath getLocation()
@@ -205,7 +197,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isTransitioning()
@@ -217,7 +208,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public CheckoutState getState()
@@ -229,7 +219,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public boolean isActive()
@@ -241,7 +230,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public WorkspaceSpecification getWorkspaceSpecification()
@@ -262,7 +250,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public WorkspaceSpecification basicGetWorkspaceSpecification()
@@ -272,7 +259,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification,
@@ -294,7 +280,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setWorkspaceSpecification(WorkspaceSpecification newWorkspaceSpecification)
@@ -319,7 +304,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -342,7 +326,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -360,7 +343,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -377,7 +359,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -407,7 +388,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -430,7 +410,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -453,7 +432,6 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStream.java,v 1.4 2008-08-09 09:58:10 estepper Exp $
+ * $Id: DevelopmentStream.java,v 1.5 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -32,15 +32,15 @@ import org.eclipse.emf.common.util.EList;
 public interface DevelopmentStream extends IntegrationStream
 {
   /**
-   * Returns the value of the '<em><b>Maintenance Streams</b></em>' containment reference list. The list contents are of
-   * type {@link org.eclipse.net4j.pop.MaintenanceStream}. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.MaintenanceStream#getParent <em>Parent</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Maintenance Streams</b></em>' containment reference list.
+   * The list contents are of type {@link org.eclipse.net4j.pop.MaintenanceStream}.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.MaintenanceStream#getParent <em>Parent</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Maintenance Streams</em>' containment reference list isn't clear, there really should be
    * more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Maintenance Streams</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getDevelopmentStream_MaintenanceStreams()
    * @see org.eclipse.net4j.pop.MaintenanceStream#getParent
@@ -50,14 +50,14 @@ public interface DevelopmentStream extends IntegrationStream
   EList<MaintenanceStream> getMaintenanceStreams();
 
   /**
-   * Returns the value of the '<em><b>Pop</b></em>' container reference. It is bidirectional and its opposite is '
-   * {@link org.eclipse.net4j.pop.Pop#getRootStream <em>Root Stream</em>}'. <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Pop</b></em>' container reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getRootStream <em>Root Stream</em>}'.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Pop</em>' container reference isn't clear, there really should be more of a description
    * here...
    * </p>
    * <!-- end-user-doc -->
-   * 
    * @return the value of the '<em>Pop</em>' container reference.
    * @see #setPop(Pop)
    * @see org.eclipse.net4j.pop.PopPackage#getDevelopmentStream_Pop()
@@ -70,9 +70,7 @@ public interface DevelopmentStream extends IntegrationStream
   /**
    * Sets the value of the '{@link org.eclipse.net4j.pop.DevelopmentStream#getPop <em>Pop</em>}' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
-   * @param value
-   *          the new value of the '<em>Pop</em>' container reference.
+   * @param value the new value of the '<em>Pop</em>' container reference.
    * @see #getPop()
    * @generated
    */

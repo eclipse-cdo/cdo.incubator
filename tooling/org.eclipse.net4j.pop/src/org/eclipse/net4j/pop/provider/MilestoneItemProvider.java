@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MilestoneItemProvider.java,v 1.2 2008-08-09 09:58:11 estepper Exp $
+ * $Id: MilestoneItemProvider.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -36,9 +36,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Milestone} object. <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.Milestone} object.
+ * <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
  * @generated
  */
 public class MilestoneItemProvider extends TargetItemProvider implements IEditingDomainItemProvider,
@@ -46,8 +46,8 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This constructs an instance from a factory and a notifier.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   public MilestoneItemProvider(AdapterFactory adapterFactory)
@@ -56,8 +56,8 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
   }
 
   /**
-   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the property descriptors for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -73,8 +73,8 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
   }
 
   /**
-   * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds a property descriptor for the Name feature.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   protected void addNamePropertyDescriptor(Object object)
@@ -89,8 +89,8 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
   }
 
   /**
-   * This returns Milestone.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns Milestone.gif.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -100,8 +100,8 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
   }
 
   /**
-   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This returns the label text for the adapted class.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -113,9 +113,9 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
-   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This handles model notifications by calling {@link #updateChildren} to update any cached
+   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
@@ -133,9 +133,9 @@ public class MilestoneItemProvider extends TargetItemProvider implements IEditin
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
-   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+   * that can be created under this object.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
   @Override
