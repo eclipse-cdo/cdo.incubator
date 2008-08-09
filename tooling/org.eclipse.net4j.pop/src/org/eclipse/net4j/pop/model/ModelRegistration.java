@@ -10,6 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.model;
 
+import org.eclipse.net4j.internal.pop.bundle.OM;
+
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -73,5 +75,17 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
   public boolean isCancelled()
   {
     return cancelled;
+  }
+
+  public void modelChanged(IModelHandler.Kind kind)
+  {
+    try
+    {
+      modelHandler.modelChanged(this, kind);
+    }
+    catch (Exception ex)
+    {
+      OM.LOG.error(ex);
+    }
   }
 }

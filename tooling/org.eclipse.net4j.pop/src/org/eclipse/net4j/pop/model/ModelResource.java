@@ -10,16 +10,14 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.model;
 
+import org.eclipse.net4j.pop.model.IModelHandler.Kind;
 import org.eclipse.net4j.util.event.Notifier;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 
 import java.util.ArrayList;
@@ -89,55 +87,7 @@ public class ModelResource extends Notifier implements IModelResource
     return Platform.getAdapterManager().getAdapter(this, adapter);
   }
 
-  public void refresh()
-  {
-    IFile file = ModelManager.getFile(uri);
-    if (file != null)
-    {
-      Resource resource = modelManager.getResource(uri);
-      if (resource != null)
-      {
-        handleExistingResource(resource, affected);
-      }
-    }
-
-    handleNonExistingResouce(uri);
-  }
-
-  private void handleMissing()
-  {
-    if (exists)
-    {
-      exists = false;
-      mo
-      fireModelEventModelEvent.Kind.MODEL_UNAVAILABLE;
-    }
-  }
-
-  private void handleExisting(Resource resource)
-  {
-    EcoreUtil.resolveAll(resource);
-    for (Resource resource : resourceSet.getResources())
-    {
-      if (!resource.equals(primaryResource))
-      {
-        IPath path = new Path(resource.getURI().path());
-        secondaryPaths.add(path);
-      }
-    }
-
-    if (exists)
-    {
-      fireModelEvent(ModelEvent.Kind.MODEL_REFRESHED);
-    }
-    else
-    {
-      exists = true;
-      fireModelEvent(ModelEvent.Kind.MODEL_AVAILABLE);
-    }
-  }
-
-  public <T extends EObject> IModelRegistration<T> addRregistration(IModelHandler<T> handler)
+  public <T extends EObject> ModelRegistration<T> addRregistration(IModelHandler<T> handler)
   {
     ModelRegistration<T> registration = new ModelRegistration<T>(this, handler);
     synchronized (registrations)
@@ -156,11 +106,65 @@ public class ModelResource extends Notifier implements IModelResource
     }
   }
 
+  public ModelRegistration<?>[] getRegistrations()
+  {
+    synchronized (registrations)
+    {
+      return registrations.toArray(new ModelRegistration<?>[registrations.size()]);
+    }
+  }
+
   public boolean hasRegistrations()
   {
     synchronized (registrations)
     {
       return !registrations.isEmpty();
+    }
+  }
+
+  public void refresh()
+  {
+    IFile file = ModelManager.getFile(uri);
+    if (file != null)
+    {
+      Resource resource = modelManager.getResource(uri);
+      if (resource != null)
+      {
+        handleExisting();
+        return;
+      }
+    }
+
+    handleMissing();
+  }
+
+  private void handleExisting()
+  {
+    if (exists)
+    {
+      notifyHandlers(IModelHandler.Kind.REFRESHED);
+    }
+    else
+    {
+      exists = true;
+      notifyHandlers(IModelHandler.Kind.AVAILABLE);
+    }
+  }
+
+  private void handleMissing()
+  {
+    if (exists)
+    {
+      exists = false;
+      notifyHandlers(IModelHandler.Kind.UNAVAILABLE);
+    }
+  }
+
+  private void notifyHandlers(Kind kind)
+  {
+    for (ModelRegistration<?> registration : getRegistrations())
+    {
+      registration.modelChanged(kind);
     }
   }
 }
