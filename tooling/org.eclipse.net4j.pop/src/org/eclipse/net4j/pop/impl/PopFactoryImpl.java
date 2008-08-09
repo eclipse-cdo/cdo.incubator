@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -26,6 +26,7 @@ import org.eclipse.net4j.pop.MaintenanceStream;
 import org.eclipse.net4j.pop.Milestone;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopFactory;
+import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
@@ -49,6 +50,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import org.eclipse.net4j.pop.*;
 import org.eclipse.core.runtime.IPath;
 
 /**
@@ -103,6 +105,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   {
     switch (eClass.getClassifierID())
     {
+    case PopPackage.POP_MANAGER:
+      return createPopManager();
     case PopPackage.POP:
       return createPop();
     case PopPackage.PRIMARY_MODULE:
@@ -206,6 +210,17 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
     default:
       throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
     }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PopManager createPopManager()
+  {
+    PopManagerImpl popManager = new PopManagerImpl();
+    return popManager;
   }
 
   /**

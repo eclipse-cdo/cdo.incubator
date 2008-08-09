@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Pop.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
+ * $Id: Pop.java,v 1.3 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.Pop#getManager <em>Manager</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Pop#getName <em>Name</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Pop#isActive <em>Active</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Pop#getDevelopers <em>Developers</em>}</li>
@@ -40,21 +40,32 @@ import org.eclipse.emf.common.util.EList;
 public interface Pop extends PopElement, Assignee
 {
   /**
-   * Returns the value of the '<em><b>Manager</b></em>' reference.
+   * Returns the value of the '<em><b>Pop Manager</b></em>' container reference.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Manager</em>' reference isn't clear,
+   * If the meaning of the '<em>Pop Manager</em>' container reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Manager</em>' reference.
-   * @see org.eclipse.net4j.pop.PopPackage#getPop_Manager()
+   * @return the value of the '<em>Pop Manager</em>' container reference.
+   * @see #setPopManager(PopManager)
+   * @see org.eclipse.net4j.pop.PopPackage#getPop_PopManager()
    * @see org.eclipse.net4j.pop.PopManager#getPops
-   * @model opposite="pops" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model opposite="pops" required="true" transient="false"
    * @generated
    */
-  PopManager getManager();
+  PopManager getPopManager();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Pop Manager</em>' container reference.
+   * @see #getPopManager()
+   * @generated
+   */
+  void setPopManager(PopManager value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

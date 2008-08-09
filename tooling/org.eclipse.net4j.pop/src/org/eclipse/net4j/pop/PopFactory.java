@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactory.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
+ * $Id: PopFactory.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -31,6 +31,15 @@ public interface PopFactory extends EFactory
    * @generated
    */
   PopFactory eINSTANCE = org.eclipse.net4j.pop.impl.PopFactoryImpl.init();
+
+  /**
+   * Returns a new object of class '<em>Manager</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Manager</em>'.
+   * @generated
+   */
+  PopManager createPopManager();
 
   /**
    * Returns a new object of class '<em>Pop</em>'.

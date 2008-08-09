@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProviderAdapterFactory.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
+ * $Id: PopItemProviderAdapterFactory.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -104,6 +104,31 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
     supportedTypes.add(ITableItemFontProvider.class);
     supportedTypes.add(IItemColorProvider.class);
     supportedTypes.add(IItemFontProvider.class);
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.PopManager} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected PopManagerItemProvider popManagerItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.PopManager}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createPopManagerAdapter()
+  {
+    if (popManagerItemProvider == null)
+    {
+      popManagerItemProvider = new PopManagerItemProvider(this);
+    }
+
+    return popManagerItemProvider;
   }
 
   /**
@@ -755,6 +780,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
    */
   public void dispose()
   {
+    if (popManagerItemProvider != null)
+      popManagerItemProvider.dispose();
     if (popItemProvider != null)
       popItemProvider.dispose();
     if (primaryModuleItemProvider != null)

@@ -10,6 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.bundle;
 
+import org.eclipse.net4j.pop.impl.PopManagerImpl;
 import org.eclipse.net4j.util.om.OSGiActivator;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -110,10 +111,12 @@ public final class Activator extends EMFPlugin
 
     protected void doStart() throws Exception
     {
+      PopManagerImpl.INSTANCE.activate();
     }
 
     protected void doStop() throws Exception
     {
+      PopManagerImpl.INSTANCE.deactivate();
     }
   }
 }

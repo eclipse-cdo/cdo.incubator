@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProvider.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
+ * $Id: PopItemProvider.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -71,26 +71,11 @@ public class PopItemProvider extends PopElementItemProvider implements IEditingD
     {
       super.getPropertyDescriptors(object);
 
-      addManagerPropertyDescriptor(object);
       addNamePropertyDescriptor(object);
       addActivePropertyDescriptor(object);
       addCheckoutManagerPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Manager feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addManagerPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Pop_manager_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Pop_manager_feature", "_UI_Pop_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        PopPackage.Literals.POP__MANAGER, false, false, false, null, null, null));
   }
 
   /**

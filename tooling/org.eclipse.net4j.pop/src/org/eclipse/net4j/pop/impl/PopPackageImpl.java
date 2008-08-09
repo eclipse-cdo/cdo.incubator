@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.3 2008-08-08 09:25:49 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.4 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -510,7 +510,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPop_Manager()
+  public EReference getPop_PopManager()
   {
     return (EReference)popEClass.getEStructuralFeatures().get(0);
   }
@@ -1778,7 +1778,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     createEReference(popManagerEClass, POP_MANAGER__POPS);
 
     popEClass = createEClass(POP);
-    createEReference(popEClass, POP__MANAGER);
+    createEReference(popEClass, POP__POP_MANAGER);
     createEAttribute(popEClass, POP__NAME);
     createEAttribute(popEClass, POP__ACTIVE);
     createEReference(popEClass, POP__DEVELOPERS);
@@ -2020,19 +2020,20 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         ecorePackage.getEString(),
         "class", null, 1, 1, PopElement.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    initEClass(popManagerEClass, PopManager.class, "PopManager", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEClass(popManagerEClass, PopManager.class,
+        "PopManager", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
         getPopManager_Pops(),
         this.getPop(),
-        this.getPop_Manager(),
-        "pops", null, 0, -1, PopManager.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        this.getPop_PopManager(),
+        "pops", null, 0, -1, PopManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(popEClass, Pop.class, "Pop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
-        getPop_Manager(),
+        getPop_PopManager(),
         this.getPopManager(),
         this.getPopManager_Pops(),
-        "manager", null, 1, 1, Pop.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "popManager", null, 1, 1, Pop.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getPop_Name(),
         ecorePackage.getEString(),

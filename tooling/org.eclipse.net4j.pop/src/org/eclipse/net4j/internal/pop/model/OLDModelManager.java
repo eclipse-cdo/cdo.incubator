@@ -12,7 +12,6 @@ package org.eclipse.net4j.internal.pop.model;
 
 import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.internal.pop.util.EMFUtil;
-import org.eclipse.net4j.pop.model.IModelEvent;
 import org.eclipse.net4j.pop.model.IModelManager;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 import org.eclipse.net4j.util.om.trace.ContextTracer;

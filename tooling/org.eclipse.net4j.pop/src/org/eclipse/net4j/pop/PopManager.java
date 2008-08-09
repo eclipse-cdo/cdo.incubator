@@ -8,16 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManager.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
+ * $Id: PopManager.java,v 1.3 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
 import org.eclipse.emf.common.util.EList;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Manager</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '<em><b>Manager</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -27,25 +25,30 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  *
  * @see org.eclipse.net4j.pop.PopPackage#getPopManager()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface PopManager extends PopElement
 {
   /**
-   * Returns the value of the '<em><b>Pops</b></em>' reference list.
+   * @ADDED
+   */
+  public static final PopManager INSTANCE = org.eclipse.net4j.pop.impl.PopManagerImpl.INSTANCE;
+
+  /**
+   * Returns the value of the '<em><b>Pops</b></em>' containment reference list.
    * The list contents are of type {@link org.eclipse.net4j.pop.Pop}.
-   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getManager <em>Manager</em>}'.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}'.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Pops</em>' reference list isn't clear,
-   * there really should be more of a description here...
+   * If the meaning of the '<em>Pops</em>' reference list isn't clear, there really should be more of a description
+   * here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Pops</em>' reference list.
+   * @return the value of the '<em>Pops</em>' containment reference list.
    * @see org.eclipse.net4j.pop.PopPackage#getPopManager_Pops()
-   * @see org.eclipse.net4j.pop.Pop#getManager
-   * @model opposite="manager" transient="true" changeable="false" volatile="true" derived="true"
+   * @see org.eclipse.net4j.pop.Pop#getPopManager
+   * @model opposite="popManager" containment="true" resolveProxies="true"
    * @generated
    */
   EList<Pop> getPops();

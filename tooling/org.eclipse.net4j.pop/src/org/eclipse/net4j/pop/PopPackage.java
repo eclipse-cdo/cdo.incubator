@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackage.java,v 1.2 2008-08-08 09:24:32 estepper Exp $
+ * $Id: PopPackage.java,v 1.3 2008-08-09 09:26:22 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -161,10 +161,10 @@ public interface PopPackage extends EPackage
   int POP_ELEMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.eclipse.net4j.pop.PopManager <em>Manager</em>}' class.
+   * The meta object id for the '{@link org.eclipse.net4j.pop.impl.PopManagerImpl <em>Manager</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.eclipse.net4j.pop.PopManager
+   * @see org.eclipse.net4j.pop.impl.PopManagerImpl
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getPopManager()
    * @generated
    */
@@ -189,7 +189,7 @@ public interface PopPackage extends EPackage
   int POP_MANAGER__CLASS = POP_ELEMENT__CLASS;
 
   /**
-   * The feature id for the '<em><b>Pops</b></em>' reference list.
+   * The feature id for the '<em><b>Pops</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -253,13 +253,13 @@ public interface PopPackage extends EPackage
   int POP__TASK_GROUPS = POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Manager</b></em>' reference.
+   * The feature id for the '<em><b>Pop Manager</b></em>' container reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POP__MANAGER = POP_ELEMENT_FEATURE_COUNT + 2;
+  int POP__POP_MANAGER = POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2609,10 +2609,10 @@ public interface PopPackage extends EPackage
   EClass getPopManager();
 
   /**
-   * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Pops</em>'.
+   * @return the meta object for the containment reference list '<em>Pops</em>'.
    * @see org.eclipse.net4j.pop.PopManager#getPops()
    * @see #getPopManager()
    * @generated
@@ -2630,15 +2630,15 @@ public interface PopPackage extends EPackage
   EClass getPop();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.Pop#getManager <em>Manager</em>}'.
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Manager</em>'.
-   * @see org.eclipse.net4j.pop.Pop#getManager()
+   * @return the meta object for the container reference '<em>Pop Manager</em>'.
+   * @see org.eclipse.net4j.pop.Pop#getPopManager()
    * @see #getPop()
    * @generated
    */
-  EReference getPop_Manager();
+  EReference getPop_PopManager();
 
   /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.Pop#getName <em>Name</em>}'.
@@ -4023,17 +4023,17 @@ public interface PopPackage extends EPackage
     EAttribute POP_ELEMENT__CLASS = eINSTANCE.getPopElement_Class();
 
     /**
-     * The meta object literal for the '{@link org.eclipse.net4j.pop.PopManager <em>Manager</em>}' class.
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.PopManagerImpl <em>Manager</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.eclipse.net4j.pop.PopManager
+     * @see org.eclipse.net4j.pop.impl.PopManagerImpl
      * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getPopManager()
      * @generated
      */
     EClass POP_MANAGER = eINSTANCE.getPopManager();
 
     /**
-     * The meta object literal for the '<em><b>Pops</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Pops</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -4051,12 +4051,12 @@ public interface PopPackage extends EPackage
     EClass POP = eINSTANCE.getPop();
 
     /**
-     * The meta object literal for the '<em><b>Manager</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Pop Manager</b></em>' container reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference POP__MANAGER = eINSTANCE.getPop_Manager();
+    EReference POP__POP_MANAGER = eINSTANCE.getPop_PopManager();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
