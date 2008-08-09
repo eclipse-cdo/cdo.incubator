@@ -117,16 +117,16 @@ public class ModelResource extends Notifier implements IModelResource
     }
   }
 
+  public void dispose()
+  {
+    ungetResource();
+    registrations = null;
+  }
+
   public synchronized void refresh()
   {
-    if (resource != null)
-    {
-      modelManager.ungetResource(resource);
-      resource = null;
-    }
-
+    ungetResource();
     resource = modelManager.getResource(uri);
-    references = null;
     for (ModelRegistration<?> registration : getRegistrations())
     {
       registration.refresh(resource);
@@ -171,5 +171,15 @@ public class ModelResource extends Notifier implements IModelResource
     }
 
     return null;
+  }
+
+  private void ungetResource()
+  {
+    references = null;
+    if (resource != null)
+    {
+      modelManager.ungetResource(resource);
+      resource = null;
+    }
   }
 }

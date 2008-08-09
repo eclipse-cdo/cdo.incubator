@@ -186,15 +186,15 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
     {
       if (!reachables.contains(secondary))
       {
-        URI uri = secondary.getURI();
         if (TRACER.isEnabled())
         {
-          TRACER.format("Unreachable: {0}", uri);
+          TRACER.format("Unreachable: {0}", secondary);
         }
 
         synchronized (modelResources)
         {
-          modelResources.remove(uri);
+          modelResources.remove(secondary.getURI());
+          secondary.dispose();
         }
       }
     }
@@ -204,6 +204,11 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
   {
     if (reachables.add(modelResource))
     {
+      if (TRACER.isEnabled())
+      {
+        TRACER.format("Reachable: {0}", modelResource);
+      }
+
       for (ModelResource reference : modelResource.getReferences())
       {
         xref(reference, reachables);
