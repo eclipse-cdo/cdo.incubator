@@ -16,29 +16,14 @@ import org.eclipse.emf.ecore.resource.Resource;
 /**
  * @author Eike Stepper
  */
-public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
+public abstract class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
 {
   public DefaultModelHandler()
   {
   }
 
-  public T locateModel(IModelRegistration<T> registration)
-  {
-    IModelResource modelResource = registration.getModelResource();
-    if (modelResource != null)
-    {
-      Resource resource = modelResource.getResource();
-      if (resource != null)
-      {
-        return locateModel(resource);
-      }
-    }
-
-    return null;
-  }
-
   @SuppressWarnings("unchecked")
-  protected T locateModel(Resource resource)
+  public T locateModel(Resource resource)
   {
     for (EObject object : resource.getContents())
     {
@@ -52,14 +37,5 @@ public class DefaultModelHandler<T extends EObject> implements IModelHandler<T>
     }
 
     return null;
-  }
-
-  public void modelChanged(IModelRegistration<T> registration, Kind kind)
-  {
-    modelChanged(registration.getModel(), kind);
-  }
-
-  protected void modelChanged(T model, Kind kind)
-  {
   }
 }

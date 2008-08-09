@@ -83,7 +83,7 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
     }
   }
 
-  public <T extends EObject> IModelRegistration<T> registerModel(URI uri, IModelHandler<T> handler)
+  public <T extends EObject> IModelRegistration<T> register(URI uri, IModelHandler<T> handler)
   {
     ModelResource modelResource;
     synchronized (modelResources)

@@ -11,15 +11,16 @@
 package org.eclipse.net4j.pop.model;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * @author Eike Stepper
  */
 public interface IModelHandler<T extends EObject>
 {
-  public T locateModel(IModelRegistration<T> registration);
+  public T locateModel(Resource resource);
 
-  public void modelChanged(IModelRegistration<T> registration, Kind kind);
+  public void modelChanged(T model, Kind kind);
 
   /**
    * @author Eike Stepper

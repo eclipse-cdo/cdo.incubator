@@ -24,15 +24,14 @@ public class Client
     URI uri = URI.createPlatformResourceURI("/cdo.pop/project.xml", false);
     DefaultModelHandler<Pop> handler = new DefaultModelHandler<Pop>()
     {
-      @Override
-      protected void modelChanged(Pop model, Kind kind)
+      public void modelChanged(Pop model, Kind kind)
       {
-        System.out.println("Model: " + model);
+        System.out.println(kind.toString() + ": " + model);
       }
     };
 
     IModelManager modelManager = new ModelManager();
-    IModelRegistration<Pop> registration = modelManager.registerModel(uri, handler);
+    IModelRegistration<Pop> registration = modelManager.register(uri, handler);
 
     Thread.sleep(10000L);
     registration.cancel();

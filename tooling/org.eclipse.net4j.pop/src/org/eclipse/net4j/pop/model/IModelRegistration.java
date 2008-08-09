@@ -21,7 +21,7 @@ public interface IModelRegistration<T extends EObject>
 
   public IModelHandler<T> getModelHandler();
 
-  public boolean isModelAvailable();
+  public boolean isAvailable();
 
   public T getModel();
 

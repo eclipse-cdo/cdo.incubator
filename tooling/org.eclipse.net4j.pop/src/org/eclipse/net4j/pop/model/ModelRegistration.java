@@ -13,6 +13,7 @@ package org.eclipse.net4j.pop.model;
 import org.eclipse.net4j.internal.pop.bundle.OM;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * @author Eike Stepper
@@ -24,6 +25,8 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
   private IModelHandler<T> modelHandler;
 
   private boolean cancelled;
+
+  private T model;
 
   public ModelRegistration(ModelResource modelResource, IModelHandler<T> modelHandler)
   {
@@ -41,15 +44,14 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
     return modelResource;
   }
 
-  public boolean isModelAvailable()
+  public boolean isAvailable()
   {
     if (cancelled)
     {
       return false;
     }
 
-    // TODO: implement ModelRegistration.isModelAvailable()
-    throw new UnsupportedOperationException();
+    return model != null;
   }
 
   public synchronized T getModel()
@@ -59,8 +61,7 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
       return null;
     }
 
-    // TODO: implement ModelRegistration.getModel()
-    throw new UnsupportedOperationException();
+    return model;
   }
 
   public synchronized void cancel()
@@ -69,6 +70,7 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
     {
       modelResource.removeRegistration(this);
       cancelled = true;
+      model = null;
     }
   }
 
@@ -77,15 +79,51 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
     return cancelled;
   }
 
-  public void modelChanged(IModelHandler.Kind kind)
+  public void refresh(Resource resource)
   {
     try
     {
-      modelHandler.modelChanged(this, kind);
+      T model = locateModel(resource);
+      IModelHandler.Kind kind = getChangeKind(model);
+      if (kind != null)
+      {
+        this.model = model;
+        modelHandler.modelChanged(model, kind);
+      }
     }
     catch (Exception ex)
     {
       OM.LOG.error(ex);
     }
+  }
+
+  private IModelHandler.Kind getChangeKind(T model)
+  {
+    if (this.model == model)
+    {
+      return null;
+    }
+
+    if (this.model == null /* && model != null */)
+    {
+      return IModelHandler.Kind.AVAILABLE;
+    }
+
+    if (/* this.model != null && */model == null)
+    {
+      return IModelHandler.Kind.UNAVAILABLE;
+    }
+
+    return IModelHandler.Kind.REFRESHED;
+  }
+
+  private T locateModel(Resource resource)
+  {
+    if (resource == null)
+    {
+      return null;
+    }
+
+    return modelHandler.locateModel(resource);
   }
 }

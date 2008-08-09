@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.model;
 
-import org.eclipse.net4j.pop.model.IModelHandler.Kind;
 import org.eclipse.net4j.util.event.Notifier;
 
 import org.eclipse.emf.common.util.URI;
@@ -124,47 +123,16 @@ public class ModelResource extends Notifier implements IModelResource
 
   public void refresh()
   {
+    Resource resource = null;
     IFile file = ModelManager.getFile(uri);
     if (file != null)
     {
-      Resource resource = modelManager.getResource(uri);
-      if (resource != null)
-      {
-        handleExisting();
-        return;
-      }
+      resource = modelManager.getResource(uri);
     }
 
-    handleMissing();
-  }
-
-  private void handleExisting()
-  {
-    if (exists)
-    {
-      notifyHandlers(IModelHandler.Kind.REFRESHED);
-    }
-    else
-    {
-      exists = true;
-      notifyHandlers(IModelHandler.Kind.AVAILABLE);
-    }
-  }
-
-  private void handleMissing()
-  {
-    if (exists)
-    {
-      exists = false;
-      notifyHandlers(IModelHandler.Kind.UNAVAILABLE);
-    }
-  }
-
-  private void notifyHandlers(Kind kind)
-  {
     for (ModelRegistration<?> registration : getRegistrations())
     {
-      registration.modelChanged(kind);
+      registration.refresh(resource);
     }
   }
 }

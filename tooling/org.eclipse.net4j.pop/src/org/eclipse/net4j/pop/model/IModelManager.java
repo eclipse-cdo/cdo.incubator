@@ -23,5 +23,5 @@ public interface IModelManager extends INotifier
 {
   public ResourceSet getResourceSet();
 
-  public <T extends EObject> IModelRegistration<T> registerModel(URI uri, IModelHandler<T> handler);
+  public <T extends EObject> IModelRegistration<T> register(URI uri, IModelHandler<T> handler);
 }
