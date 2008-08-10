@@ -10,11 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.model;
 
+import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.internal.pop.util.EMFUtil;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelResource;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.event.Notifier;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -34,6 +36,8 @@ import java.util.Set;
  */
 public class ModelResource extends Notifier implements IModelResource
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ModelResource.class);
+
   private ModelManager modelManager;
 
   private URI uri;
@@ -48,6 +52,7 @@ public class ModelResource extends Notifier implements IModelResource
   {
     this.modelManager = modelManager;
     this.uri = uri;
+    refresh();
   }
 
   public ModelManager getModelManager()
@@ -88,17 +93,28 @@ public class ModelResource extends Notifier implements IModelResource
 
   public <T extends EObject> ModelRegistration<T> addRregistration(IModelHandler<T> handler)
   {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Adding model registration: {0}", uri);
+    }
+
     ModelRegistration<T> registration = new ModelRegistration<T>(this, handler);
     synchronized (registrations)
     {
       registrations.add(registration);
     }
 
+    registration.refresh(resource);
     return registration;
   }
 
   public void removeRegistration(ModelRegistration<? extends EObject> registration)
   {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Removing model registration: {0}", uri);
+    }
+
     synchronized (registrations)
     {
       registrations.remove(registration);
@@ -158,6 +174,11 @@ public class ModelResource extends Notifier implements IModelResource
 
   public synchronized void refresh()
   {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Refreshing model resource: {0}", uri);
+    }
+
     disposeResource();
     resource = modelManager.getResource(uri);
     for (ModelRegistration<?> registration : getRegistrations())

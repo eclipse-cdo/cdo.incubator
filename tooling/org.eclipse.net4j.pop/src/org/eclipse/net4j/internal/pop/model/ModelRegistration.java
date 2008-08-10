@@ -14,6 +14,7 @@ import org.eclipse.net4j.internal.pop.bundle.OM;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelRegistration;
 import org.eclipse.net4j.pop.model.IModelResource;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -25,6 +26,8 @@ import java.text.MessageFormat;
  */
 public class ModelRegistration<T extends EObject> implements IModelRegistration<T>
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ModelRegistration.class);
+
   private ModelResource modelResource;
 
   private IModelHandler<T> modelHandler;
@@ -73,6 +76,7 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
   {
     if (!cancelled)
     {
+      modelHandler.modelChanged(this, IModelHandler.Kind.UNAVAILABLE);
       modelResource.removeRegistration(this);
       cancelled = true;
       model = null;
@@ -92,6 +96,11 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
 
   public void refresh(Resource resource)
   {
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Refreshing model registration: {0}", modelResource.getURI());
+    }
+
     try
     {
       T model = locateModel(resource);

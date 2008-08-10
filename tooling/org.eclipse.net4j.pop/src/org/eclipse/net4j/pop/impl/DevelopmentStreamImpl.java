@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DevelopmentStreamImpl.java,v 1.5 2008-08-09 18:31:09 estepper Exp $
+ * $Id: DevelopmentStreamImpl.java,v 1.6 2008-08-10 06:39:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -48,7 +48,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
   /**
    * The cached value of the '{@link #getMaintenanceStreams() <em>Maintenance Streams</em>}' containment reference list.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @see #getMaintenanceStreams()
    * @generated
    * @ordered
@@ -57,7 +56,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DevelopmentStreamImpl()
@@ -67,7 +65,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -78,7 +75,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<MaintenanceStream> getMaintenanceStreams()
@@ -93,36 +89,29 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Pop getPop()
   {
     if (eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP)
-    {
       return null;
-    }
     return (Pop)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop basicGetPop()
   {
     if (eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP)
-    {
       return null;
-    }
     return (Pop)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
@@ -133,41 +122,29 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPop(Pop newPop)
   {
-    if (newPop != eInternalContainer() || eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP && newPop != null)
+    if (newPop != eInternalContainer() || (eContainerFeatureID != PopPackage.DEVELOPMENT_STREAM__POP && newPop != null))
     {
       if (EcoreUtil.isAncestor(this, newPop))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newPop != null)
-      {
         msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__ROOT_STREAM, Pop.class, msgs);
-      }
       msgs = basicSetPop(newPop, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPMENT_STREAM__POP, newPop, newPop));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -180,9 +157,7 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getMaintenanceStreams()).basicAdd(otherEnd, msgs);
     case PopPackage.DEVELOPMENT_STREAM__POP:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetPop((Pop)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -190,7 +165,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -208,7 +182,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -224,7 +197,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -236,9 +208,7 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
       return getMaintenanceStreams();
     case PopPackage.DEVELOPMENT_STREAM__POP:
       if (resolve)
-      {
         return getPop();
-      }
       return basicGetPop();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -246,7 +216,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -268,7 +237,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -288,7 +256,6 @@ public class DevelopmentStreamImpl extends IntegrationStreamImpl implements Deve
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

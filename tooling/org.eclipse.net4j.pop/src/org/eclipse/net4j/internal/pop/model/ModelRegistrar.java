@@ -85,6 +85,17 @@ public class ModelRegistrar<T extends EObject> extends NatureManager
     }
   }
 
+  // @Override
+  // protected void doActivate() throws Exception
+  // {
+  // super.doActivate();
+  // IProject[] projects = getProjects();
+  // for (IProject project : projects)
+  // {
+  //      
+  // }
+  // }
+
   @Override
   protected void doDeactivate() throws Exception
   {

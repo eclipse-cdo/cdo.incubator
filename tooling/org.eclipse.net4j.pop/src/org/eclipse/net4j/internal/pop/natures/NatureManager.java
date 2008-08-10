@@ -60,6 +60,11 @@ public class NatureManager extends Container<IProject> implements IResourceChang
     return natureID;
   }
 
+  public IProject[] getProjects()
+  {
+    return getElements();
+  }
+
   public IProject[] getElements()
   {
     synchronized (projects)

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeveloperImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
+ * $Id: DeveloperImpl.java,v 1.5 2008-08-10 06:39:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -37,26 +37,26 @@ import java.util.Date;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTasks <em>Tasks</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTaskGroups <em>Task Groups</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getPop <em>Pop</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getRepositoryUser <em>Repository User</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getName <em>Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getEmail <em>Email</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getEntry <em>Entry</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getExit <em>Exit</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#isActive <em>Active</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getTaskGroups <em>Task Groups</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getPop <em>Pop</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getRepositoryUser <em>Repository User</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getEmail <em>Email</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getEntry <em>Entry</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#getExit <em>Exit</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.DeveloperImpl#isActive <em>Active</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class DeveloperImpl extends PopElementImpl implements Developer
 {
   /**
-   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getTasks()
    * @generated
    * @ordered
@@ -74,9 +74,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   protected EList<TaskGroup> taskGroups;
 
   /**
-   * The default value of the '{@link #getRepositoryUser() <em>Repository User</em>}' attribute. <!-- begin-user-doc -->
+   * The default value of the '{@link #getRepositoryUser() <em>Repository User</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getRepositoryUser()
    * @generated
    * @ordered
@@ -84,9 +84,9 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   protected static final String REPOSITORY_USER_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRepositoryUser() <em>Repository User</em>}' attribute. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getRepositoryUser() <em>Repository User</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * 
    * @see #getRepositoryUser()
    * @generated
    * @ordered
@@ -104,8 +104,8 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
@@ -163,8 +163,8 @@ public class DeveloperImpl extends PopElementImpl implements Developer
   protected static final Date EXIT_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
+   * The cached value of the '{@link #getExit() <em>Exit</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @see #getExit()
    * @generated
    * @ordered
@@ -183,7 +183,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected DeveloperImpl()
@@ -193,7 +192,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -204,35 +202,28 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop getPop()
   {
     if (eContainerFeatureID != PopPackage.DEVELOPER__POP)
-    {
       return null;
-    }
     return (Pop)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop basicGetPop()
   {
     if (eContainerFeatureID != PopPackage.DEVELOPER__POP)
-    {
       return null;
-    }
     return (Pop)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
@@ -243,41 +234,29 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPop(Pop newPop)
   {
-    if (newPop != eInternalContainer() || eContainerFeatureID != PopPackage.DEVELOPER__POP && newPop != null)
+    if (newPop != eInternalContainer() || (eContainerFeatureID != PopPackage.DEVELOPER__POP && newPop != null))
     {
       if (EcoreUtil.isAncestor(this, newPop))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newPop != null)
-      {
         msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__DEVELOPERS, Pop.class, msgs);
-      }
       msgs = basicSetPop(newPop, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__POP, newPop, newPop));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getRepositoryUser()
@@ -287,7 +266,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepositoryUser(String newRepositoryUser)
@@ -295,15 +273,12 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     String oldRepositoryUser = repositoryUser;
     repositoryUser = newRepositoryUser;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__REPOSITORY_USER, oldRepositoryUser,
           repositoryUser));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getName()
@@ -313,7 +288,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setName(String newName)
@@ -321,14 +295,11 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__NAME, oldName, name));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getEmail()
@@ -338,7 +309,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEmail(String newEmail)
@@ -346,14 +316,11 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     String oldEmail = email;
     email = newEmail;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__EMAIL, oldEmail, email));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getEntry()
@@ -363,7 +330,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setEntry(Date newEntry)
@@ -371,14 +337,11 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     Date oldEntry = entry;
     entry = newEntry;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__ENTRY, oldEntry, entry));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Date getExit()
@@ -388,7 +351,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setExit(Date newExit)
@@ -396,9 +358,7 @@ public class DeveloperImpl extends PopElementImpl implements Developer
     Date oldExit = exit;
     exit = newExit;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.DEVELOPER__EXIT, oldExit, exit));
-    }
   }
 
   /**
@@ -413,7 +373,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<TaskGroup> getTaskGroups()
@@ -428,7 +387,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Task> getTasks()
@@ -443,7 +401,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -458,9 +415,7 @@ public class DeveloperImpl extends PopElementImpl implements Developer
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
     case PopPackage.DEVELOPER__POP:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetPop((Pop)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -468,7 +423,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -488,7 +442,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -504,7 +457,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -518,9 +470,7 @@ public class DeveloperImpl extends PopElementImpl implements Developer
       return getTaskGroups();
     case PopPackage.DEVELOPER__POP:
       if (resolve)
-      {
         return getPop();
-      }
       return basicGetPop();
     case PopPackage.DEVELOPER__REPOSITORY_USER:
       return getRepositoryUser();
@@ -540,7 +490,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -581,7 +530,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -619,7 +567,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -652,7 +599,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -675,7 +621,6 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -698,16 +643,13 @@ public class DeveloperImpl extends PopElementImpl implements Developer
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (repositoryUser: "); //$NON-NLS-1$

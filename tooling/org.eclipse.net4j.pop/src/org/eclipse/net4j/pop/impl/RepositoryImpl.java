@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.4 2008-08-10 06:39:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -30,22 +30,22 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getPop <em>Pop</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getPop <em>Pop</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getMainBranch <em>Main Branch</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RepositoryImpl extends PopElementImpl implements Repository
 {
   /**
-   * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getAdapter()
    * @generated
    * @ordered
@@ -53,9 +53,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected static final IRepositoryAdapter ADAPTER_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getAdapterType()
    * @generated
    * @ordered
@@ -63,9 +63,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected static final String ADAPTER_TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getAdapterType() <em>Adapter Type</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getAdapterType()
    * @generated
    * @ordered
@@ -73,9 +73,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected String adapterType = ADAPTER_TYPE_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getDescriptor()
    * @generated
    * @ordered
@@ -83,9 +83,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected static final String DESCRIPTOR_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getDescriptor() <em>Descriptor</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getDescriptor()
    * @generated
    * @ordered
@@ -93,9 +93,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
   protected String descriptor = DESCRIPTOR_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference. <!-- begin-user-doc
+   * The cached value of the '{@link #getMainBranch() <em>Main Branch</em>}' containment reference.
+   * <!-- begin-user-doc
    * --> <!-- end-user-doc -->
-   * 
    * @see #getMainBranch()
    * @generated
    * @ordered
@@ -109,7 +109,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected RepositoryImpl()
@@ -119,7 +118,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -130,35 +128,28 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop getPop()
   {
     if (eContainerFeatureID != PopPackage.REPOSITORY__POP)
-    {
       return null;
-    }
     return (Pop)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Pop basicGetPop()
   {
     if (eContainerFeatureID != PopPackage.REPOSITORY__POP)
-    {
       return null;
-    }
     return (Pop)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetPop(Pop newPop, NotificationChain msgs)
@@ -169,36 +160,25 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setPop(Pop newPop)
   {
-    if (newPop != eInternalContainer() || eContainerFeatureID != PopPackage.REPOSITORY__POP && newPop != null)
+    if (newPop != eInternalContainer() || (eContainerFeatureID != PopPackage.REPOSITORY__POP && newPop != null))
     {
       if (EcoreUtil.isAncestor(this, newPop))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newPop != null)
-      {
         msgs = ((InternalEObject)newPop).eInverseAdd(this, PopPackage.POP__REPOSITORY, Pop.class, msgs);
-      }
       msgs = basicSetPop(newPop, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__POP, newPop, newPop));
-    }
   }
 
   /**
@@ -222,7 +202,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getAdapterType()
@@ -254,7 +233,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getDescriptor()
@@ -264,7 +242,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setDescriptor(String newDescriptor)
@@ -272,15 +249,12 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     String oldDescriptor = descriptor;
     descriptor = newDescriptor;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__DESCRIPTOR, oldDescriptor,
           descriptor));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MainBranch getMainBranch()
@@ -299,14 +273,10 @@ public class RepositoryImpl extends PopElementImpl implements Repository
           msgs = newMainBranch.eInverseAdd(this, PopPackage.MAIN_BRANCH__REPOSITORY, MainBranch.class, msgs);
         }
         if (msgs != null)
-        {
           msgs.dispatch();
-        }
         if (eNotificationRequired())
-        {
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, PopPackage.REPOSITORY__MAIN_BRANCH, oldMainBranch,
               mainBranch));
-        }
       }
     }
     return mainBranch;
@@ -314,7 +284,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public MainBranch basicGetMainBranch()
@@ -324,7 +293,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetMainBranch(MainBranch newMainBranch, NotificationChain msgs)
@@ -336,20 +304,15 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
           PopPackage.REPOSITORY__MAIN_BRANCH, oldMainBranch, newMainBranch);
       if (msgs == null)
-      {
         msgs = notification;
-      }
       else
-      {
         msgs.add(notification);
-      }
     }
     return msgs;
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setMainBranch(MainBranch newMainBranch)
@@ -358,31 +321,22 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
       NotificationChain msgs = null;
       if (mainBranch != null)
-      {
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, PopPackage.MAIN_BRANCH__REPOSITORY, MainBranch.class,
             msgs);
-      }
       if (newMainBranch != null)
-      {
         msgs = ((InternalEObject)newMainBranch).eInverseAdd(this, PopPackage.MAIN_BRANCH__REPOSITORY, MainBranch.class,
             msgs);
-      }
       msgs = basicSetMainBranch(newMainBranch, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__MAIN_BRANCH, newMainBranch,
           newMainBranch));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -392,16 +346,12 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY__POP:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetPop((Pop)otherEnd, msgs);
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       if (mainBranch != null)
-      {
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
             - PopPackage.REPOSITORY__MAIN_BRANCH, null, msgs);
-      }
       return basicSetMainBranch((MainBranch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -409,7 +359,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -427,7 +376,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -443,7 +391,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -453,9 +400,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY__POP:
       if (resolve)
-      {
         return getPop();
-      }
       return basicGetPop();
     case PopPackage.REPOSITORY__ADAPTER:
       return getAdapter();
@@ -465,9 +410,7 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       return getDescriptor();
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       if (resolve)
-      {
         return getMainBranch();
-      }
       return basicGetMainBranch();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -475,7 +418,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -501,7 +443,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -527,7 +468,6 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -551,16 +491,13 @@ public class RepositoryImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (adapterType: "); //$NON-NLS-1$

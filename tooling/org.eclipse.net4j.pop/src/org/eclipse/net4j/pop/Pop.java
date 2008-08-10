@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Pop.java,v 1.5 2008-08-09 18:31:09 estepper Exp $
+ * $Id: Pop.java,v 1.6 2008-08-10 06:39:59 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -38,7 +38,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Pop extends PopElement, Assignee
 {
   /**
-   * Returns the value of the '<em><b>Pop Manager</b></em>' container reference.
+   * Returns the value of the '<em><b>Pop Manager</b></em>' reference.
    * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
    * <!-- begin-user-doc -->
    * <p>
@@ -46,19 +46,19 @@ public interface Pop extends PopElement, Assignee
    * description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Pop Manager</em>' container reference.
+   * @return the value of the '<em>Pop Manager</em>' reference.
    * @see #setPopManager(PopManager)
    * @see org.eclipse.net4j.pop.PopPackage#getPop_PopManager()
    * @see org.eclipse.net4j.pop.PopManager#getPops
-   * @model opposite="pops" required="true" transient="false"
+   * @model opposite="pops" required="true"
    * @generated
    */
   PopManager getPopManager();
 
   /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}' container reference.
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}' reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Pop Manager</em>' container reference.
+   * @param value the new value of the '<em>Pop Manager</em>' reference.
    * @see #getPopManager()
    * @generated
    */

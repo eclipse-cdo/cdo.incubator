@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.7 2008-08-10 06:39:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -62,7 +62,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopManagerImpl.class);
 
   /**
-   * The cached value of the '{@link #getPops() <em>Pops</em>}' containment reference list.
+   * The cached value of the '{@link #getPops() <em>Pops</em>}' reference list.
    * <!-- begin-user-doc --> <!--
    * end-user-doc -->
    * @see #getPops()
@@ -121,7 +121,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
   {
     if (pops == null)
     {
-      pops = new EObjectContainmentWithInverseEList.Resolving<Pop>(Pop.class, this, PopPackage.POP_MANAGER__POPS,
+      pops = new EObjectWithInverseResolvingEList<Pop>(Pop.class, this, PopPackage.POP_MANAGER__POPS,
           PopPackage.POP__POP_MANAGER);
     }
     return pops;

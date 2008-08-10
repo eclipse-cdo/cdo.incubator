@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: SubBranchImpl.java,v 1.4 2008-08-10 06:39:59 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -32,20 +32,20 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTagName <em>Root Tag Name</em>}</li>
- * <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTag <em>Root Tag</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getParent <em>Parent</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTagName <em>Root Tag Name</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.SubBranchImpl#getRootTag <em>Root Tag</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class SubBranchImpl extends BranchImpl implements SubBranch
 {
   /**
-   * The default value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The default value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getRootTagName()
    * @generated
    * @ordered
@@ -53,9 +53,9 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
   protected static final String ROOT_TAG_NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getRootTagName() <em>Root Tag Name</em>}' attribute.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getRootTagName()
    * @generated
    * @ordered
@@ -69,7 +69,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected SubBranchImpl()
@@ -79,7 +78,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -90,36 +88,29 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public Branch getParent()
   {
     if (eContainerFeatureID != PopPackage.SUB_BRANCH__PARENT)
-    {
       return null;
-    }
     return (Branch)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Branch basicGetParent()
   {
     if (eContainerFeatureID != PopPackage.SUB_BRANCH__PARENT)
-    {
       return null;
-    }
     return (Branch)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetParent(Branch newParent, NotificationChain msgs)
@@ -130,41 +121,30 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setParent(Branch newParent)
   {
-    if (newParent != eInternalContainer() || eContainerFeatureID != PopPackage.SUB_BRANCH__PARENT && newParent != null)
+    if (newParent != eInternalContainer()
+        || (eContainerFeatureID != PopPackage.SUB_BRANCH__PARENT && newParent != null))
     {
       if (EcoreUtil.isAncestor(this, newParent))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newParent != null)
-      {
         msgs = ((InternalEObject)newParent).eInverseAdd(this, PopPackage.BRANCH__BRANCHES, Branch.class, msgs);
-      }
       msgs = basicSetParent(newParent, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.SUB_BRANCH__PARENT, newParent, newParent));
-    }
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public String getRootTagName()
@@ -174,19 +154,15 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRootTagName(String newRootTagName)
   {
     String oldRootTagName = rootTagName;
     rootTagName = newRootTagName;
-    rootTag = null;
     if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.SUB_BRANCH__ROOT_TAG_NAME, oldRootTagName,
           rootTagName));
-    }
   }
 
   /**
@@ -208,7 +184,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -218,9 +193,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
     case PopPackage.SUB_BRANCH__PARENT:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetParent((Branch)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -228,7 +201,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -244,7 +216,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -260,7 +231,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -270,9 +240,7 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
     {
     case PopPackage.SUB_BRANCH__PARENT:
       if (resolve)
-      {
         return getParent();
-      }
       return basicGetParent();
     case PopPackage.SUB_BRANCH__ROOT_TAG_NAME:
       return getRootTagName();
@@ -284,7 +252,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -304,7 +271,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -324,7 +290,6 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -344,16 +309,13 @@ public class SubBranchImpl extends BranchImpl implements SubBranch
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
   public String toString()
   {
     if (eIsProxy())
-    {
       return super.toString();
-    }
 
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (rootTagName: "); //$NON-NLS-1$
