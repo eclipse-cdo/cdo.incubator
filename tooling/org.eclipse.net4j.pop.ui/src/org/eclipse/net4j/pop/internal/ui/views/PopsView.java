@@ -18,8 +18,6 @@ import org.eclipse.net4j.util.ui.views.MasterDetailsView;
 
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
@@ -77,8 +75,8 @@ public class PopsView extends MasterDetailsView
   private TreeViewer createViewer(Composite parent)
   {
     TreeViewer viewer = new TreeViewer(parent, (SWT.H_SCROLL | SWT.V_SCROLL));
-    viewer.setContentProvider(new AdapterFactoryContentProvider(adapterFactory));
-    viewer.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    viewer.setContentProvider(new PopContentProvider(adapterFactory));
+    viewer.setLabelProvider(new PopLabelProvider(adapterFactory));
     return viewer;
   }
 }
