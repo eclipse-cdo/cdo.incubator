@@ -206,6 +206,15 @@
         eType="#//Delivery" eOpposite="#//Delivery/merges"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckoutManager" eSuperTypes="#//PopElement">
+    <eOperations name="hasCheckout" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eParameters name="discriminator" lowerBound="1" eType="#//CheckoutDiscriminator"/>
+    </eOperations>
+    <eOperations name="getCheckout" eType="#//Checkout">
+      <eParameters name="discriminator" lowerBound="1" eType="#//CheckoutDiscriminator"/>
+    </eOperations>
+    <eOperations name="checkout" eType="#//Checkout">
+      <eParameters name="discriminator" lowerBound="1" eType="#//CheckoutDiscriminator"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
         eOpposite="#//Pop/checkoutManager"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"

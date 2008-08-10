@@ -10,13 +10,13 @@
  **************************************************************************/
 package org.eclipse.net4j.internal.pop.util;
 
+import org.eclipse.net4j.pop.util.PopResourceFactoryImpl;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceImpl;
 
 import java.util.Map;
 
@@ -29,24 +29,10 @@ public final class EMFUtil
   {
   }
 
-  public static void prepareSupportForUUIDs(ResourceSet resourceSet)
+  public static void prepareResourceSet(ResourceSet resourceSet)
   {
     Map<String, Object> map = resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
-    map.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl()
-    {
-      @Override
-      public Resource createResource(URI uri)
-      {
-        return new XMIResourceImpl(uri)
-        {
-          @Override
-          protected boolean useUUIDs()
-          {
-            return true;
-          }
-        };
-      }
-    });
+    map.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new PopResourceFactoryImpl());
   }
 
   public static EObject getObjectById(ResourceSet resourceSet, String id)
@@ -75,13 +61,13 @@ public final class EMFUtil
     {
       return targetURI.trimFragment();
     }
-  
+
     Resource targetResource = object.eResource();
     if (targetResource != null)
     {
       return targetResource.getURI();
     }
-  
+
     return null;
   }
 }

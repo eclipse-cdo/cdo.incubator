@@ -8,14 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TagImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: TagImpl.java,v 1.4 2008-08-10 07:29:51 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.PopPackage;
+import org.eclipse.net4j.pop.Repository;
 import org.eclipse.net4j.pop.Tag;
 import org.eclipse.net4j.pop.TaggedElement;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -67,6 +70,11 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
    * @ordered
    */
   protected TaggedElement taggedElement;
+
+  /**
+   * @ADDED
+   */
+  private IRepositoryTag.Version repositoryTag;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -181,6 +189,44 @@ public class TagImpl extends CheckoutDiscriminatorImpl implements Tag
       }
     }
     return taggedElement;
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public Repository getRepository()
+  {
+    Branch branch = getBranch();
+    if (branch == null)
+    {
+      return null;
+    }
+
+    return branch.getRepository();
+  }
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public synchronized IRepositoryTag getRepositoryTag()
+  {
+    if (repositoryTag == null)
+    {
+      // TODO Listen to repository for adapter type changes
+      Repository repository = getRepository();
+      if (repository != null)
+      {
+        IRepositoryAdapter adapter = repository.getAdapter();
+        if (adapter != null)
+        {
+          repositoryTag = adapter.createVersionTag(name);
+        }
+      }
+    }
+
+    return repositoryTag;
   }
 
   /**

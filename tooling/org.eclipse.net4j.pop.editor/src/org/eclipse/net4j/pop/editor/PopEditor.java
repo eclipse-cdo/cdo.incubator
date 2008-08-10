@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopEditor.java,v 1.3 2008-08-09 18:31:13 estepper Exp $
+ * $Id: PopEditor.java,v 1.4 2008-08-10 07:29:53 estepper Exp $
  */
 package org.eclipse.net4j.pop.editor;
 
@@ -915,7 +915,7 @@ public class PopEditor extends MultiPageEditorPart implements IEditingDomainProv
     Resource resource = null;
 
     ResourceSet resourceSet = editingDomain.getResourceSet();
-    EMFUtil.prepareSupportForUUIDs(resourceSet);
+    EMFUtil.prepareResourceSet(resourceSet);
 
     try
     {

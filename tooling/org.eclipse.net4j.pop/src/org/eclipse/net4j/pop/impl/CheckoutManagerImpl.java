@@ -8,11 +8,12 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManagerImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
+ * $Id: CheckoutManagerImpl.java,v 1.5 2008-08-10 07:29:51 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.Checkout;
+import org.eclipse.net4j.pop.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.CheckoutManager;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
@@ -219,6 +220,42 @@ public class CheckoutManagerImpl extends PopElementImpl implements CheckoutManag
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.CHECKOUT_MANAGER__ACTIVE_CHECKOUT,
           oldActiveCheckout, activeCheckout));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean hasCheckout(CheckoutDiscriminator discriminator)
+  {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Checkout getCheckout(CheckoutDiscriminator discriminator)
+  {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Checkout checkout(CheckoutDiscriminator discriminator)
+  {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
   }
 
   /**

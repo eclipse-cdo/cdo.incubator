@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.7 2008-08-10 06:39:59 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.8 2008-08-10 07:29:51 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -58,6 +58,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
@@ -2263,6 +2264,16 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getCheckout(),
         null,
         "activeCheckout", null, 0, 1, CheckoutManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    EOperation op = addEOperation(checkoutManagerEClass, ecorePackage.getEBoolean(),
+        "hasCheckout", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getCheckoutDiscriminator(), "discriminator", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(checkoutManagerEClass, this.getCheckout(), "getCheckout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getCheckoutDiscriminator(), "discriminator", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(checkoutManagerEClass, this.getCheckout(), "checkout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getCheckoutDiscriminator(), "discriminator", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(checkoutEClass, Checkout.class, "Checkout", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(

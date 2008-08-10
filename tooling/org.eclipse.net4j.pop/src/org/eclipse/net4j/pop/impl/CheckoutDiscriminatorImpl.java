@@ -8,12 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutDiscriminatorImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: CheckoutDiscriminatorImpl.java,v 1.4 2008-08-10 07:29:51 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutDiscriminator;
+import org.eclipse.net4j.pop.CheckoutManager;
+import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Repository;
 import org.eclipse.net4j.pop.repository.IRepositoryTag;
@@ -66,57 +68,64 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * 
+   * @generated NOT
    */
-  public IRepositoryTag getRepositoryTag()
-  {
-    // TODO: implement this method to return the 'Repository Tag' attribute
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
+  public abstract IRepositoryTag getRepositoryTag();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * 
+   * @generated NOT
    */
   public Checkout getCheckout()
   {
-    // TODO: implement this method to return the 'Checkout' reference
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    CheckoutManager checkoutManager = getCheckoutManager();
+    if (checkoutManager == null)
+    {
+      return null;
+    }
+
+    return checkoutManager.getCheckout(this);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * 
+   * @generated NOT
    */
-  public Repository getRepository()
-  {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
+  public abstract Repository getRepository();
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * 
+   * @generated NOT
    */
   public boolean hasCheckout()
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    CheckoutManager checkoutManager = getCheckoutManager();
+    if (checkoutManager == null)
+    {
+      return false;
+    }
+
+    return checkoutManager.hasCheckout(this);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * 
+   * @generated NOT
    */
   public Checkout checkout()
   {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
+    CheckoutManager checkoutManager = getCheckoutManager();
+    if (checkoutManager == null)
+    {
+      return null;
+    }
+
+    return checkoutManager.checkout(this);
   }
 
   /**
@@ -152,6 +161,26 @@ public abstract class CheckoutDiscriminatorImpl extends PopElementImpl implement
       return getCheckout() != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * @ADDED
+   */
+  private CheckoutManager getCheckoutManager()
+  {
+    Repository repository = getRepository();
+    if (repository == null)
+    {
+      return null;
+    }
+
+    Pop pop = repository.getPop();
+    if (pop == null)
+    {
+      return null;
+    }
+
+    return pop.getCheckoutManager();
   }
 
 } // CheckoutDiscriminatorImpl

@@ -107,12 +107,12 @@
     <genClasses ecoreClass="Pop.ecore#//SubBranch">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//SubBranch/parent"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//SubBranch/rootTagName"/>
-      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//SubBranch/rootTag"/>
+      <genFeatures property="Readonly" children="true" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//SubBranch/rootTag"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//Stream">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Pop.ecore#//Stream/branch"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Stream/integrations"/>
-      <genOperations ecoreOperation="Pop.ecore#//Stream/getPopProject"/>
+      <genOperations ecoreOperation="Pop.ecore#//Stream/getPop"/>
       <genOperations ecoreOperation="Pop.ecore#//Stream/getParent"/>
       <genOperations ecoreOperation="Pop.ecore#//Stream/getStreams"/>
     </genClasses>

@@ -8,16 +8,19 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: BranchImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: BranchImpl.java,v 1.4 2008-08-10 07:29:51 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.MainBranch;
 import org.eclipse.net4j.pop.PopPackage;
+import org.eclipse.net4j.pop.Repository;
 import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.SubBranch;
 import org.eclipse.net4j.pop.Tag;
+import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositoryTag;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -94,6 +97,11 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
    * @ordered
    */
   protected Stream stream;
+
+  /**
+   * @ADDED
+   */
+  private IRepositoryTag.Branch repositoryTag;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -245,6 +253,29 @@ public abstract class BranchImpl extends CheckoutDiscriminatorImpl implements Br
    * @generated NOT
    */
   public abstract Branch getParent();
+
+  /**
+   * @ADDED
+   */
+  @Override
+  public synchronized IRepositoryTag getRepositoryTag()
+  {
+    if (repositoryTag == null)
+    {
+      // TODO Listen to repository for adapter type changes
+      Repository repository = getRepository();
+      if (repository != null)
+      {
+        IRepositoryAdapter adapter = repository.getAdapter();
+        if (adapter != null)
+        {
+          repositoryTag = adapter.createBranchTag(name);
+        }
+      }
+    }
+
+    return repositoryTag;
+  }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->

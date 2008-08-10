@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManager.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
+ * $Id: CheckoutManager.java,v 1.5 2008-08-10 07:29:51 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -121,5 +121,29 @@ public interface CheckoutManager extends PopElement
    * @generated
    */
   void setActiveCheckout(Checkout value);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model required="true" discriminatorRequired="true"
+   * @generated
+   */
+  boolean hasCheckout(CheckoutDiscriminator discriminator);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model discriminatorRequired="true"
+   * @generated
+   */
+  Checkout getCheckout(CheckoutDiscriminator discriminator);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model discriminatorRequired="true"
+   * @generated
+   */
+  Checkout checkout(CheckoutDiscriminator discriminator);
 
 } // CheckoutManager

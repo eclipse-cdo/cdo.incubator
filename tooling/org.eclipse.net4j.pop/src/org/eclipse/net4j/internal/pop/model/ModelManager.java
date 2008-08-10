@@ -222,7 +222,7 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
   public static ResourceSet createResourceSet()
   {
     ResourceSet resourceSet = new ResourceSetImpl();
-    EMFUtil.prepareSupportForUUIDs(resourceSet);
+    EMFUtil.prepareResourceSet(resourceSet);
     return resourceSet;
   }
 
