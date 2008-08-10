@@ -10,7 +10,6 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.views;
 
-import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.provider.PopItemProviderAdapterFactory;
 import org.eclipse.net4j.util.ObjectUtil;
@@ -64,10 +63,10 @@ public class PopsView extends MasterDetailsView
   @Override
   protected String[] getDetailTitles(Object masterElement)
   {
-    if (masterElement instanceof Pop)
-    {
-      return POP_DETAILS;
-    }
+    // if (masterElement instanceof Pop)
+    // {
+    // return POP_DETAILS;
+    // }
 
     return new String[0];
   }

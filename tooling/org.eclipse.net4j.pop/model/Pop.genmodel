@@ -55,7 +55,7 @@
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//Repository">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Repository/pop"/>
-      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Repository/adapter"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Repository/adapter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Repository/adapterType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Repository/descriptor"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//Repository/mainBranch"/>
@@ -164,6 +164,15 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//CheckoutManager/location"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Pop.ecore#//CheckoutManager/checkouts"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Pop.ecore#//CheckoutManager/activeCheckout"/>
+      <genOperations ecoreOperation="Pop.ecore#//CheckoutManager/hasCheckout">
+        <genParameters ecoreParameter="Pop.ecore#//CheckoutManager/hasCheckout/discriminator"/>
+      </genOperations>
+      <genOperations ecoreOperation="Pop.ecore#//CheckoutManager/getCheckout">
+        <genParameters ecoreParameter="Pop.ecore#//CheckoutManager/getCheckout/discriminator"/>
+      </genOperations>
+      <genOperations ecoreOperation="Pop.ecore#//CheckoutManager/checkout">
+        <genParameters ecoreParameter="Pop.ecore#//CheckoutManager/checkout/discriminator"/>
+      </genOperations>
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//Checkout">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Checkout/manager"/>

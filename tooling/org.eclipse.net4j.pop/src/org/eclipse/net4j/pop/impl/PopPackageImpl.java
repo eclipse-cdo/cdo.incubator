@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.8 2008-08-10 07:29:51 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.9 2008-08-10 10:26:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -1846,7 +1846,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         getPopManager_Pops(),
         this.getPop(),
         this.getPop_PopManager(),
-        "pops", null, 0, -1, PopManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+        "pops", null, 0, -1, PopManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(popEClass, Pop.class, "Pop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(

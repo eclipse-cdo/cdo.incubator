@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.3 2008-08-09 18:31:10 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.4 2008-08-10 10:26:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -69,26 +69,10 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     {
       super.getPropertyDescriptors(object);
 
-      addAdapterPropertyDescriptor(object);
       addAdapterTypePropertyDescriptor(object);
       addDescriptorPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Adapter feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addAdapterPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_Repository_adapter_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Repository_adapter_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        PopPackage.Literals.REPOSITORY__ADAPTER, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
-        null));
   }
 
   /**
@@ -190,7 +174,6 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
 
     switch (notification.getFeatureID(Repository.class))
     {
-    case PopPackage.REPOSITORY__ADAPTER:
     case PopPackage.REPOSITORY__ADAPTER_TYPE:
     case PopPackage.REPOSITORY__DESCRIPTOR:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));

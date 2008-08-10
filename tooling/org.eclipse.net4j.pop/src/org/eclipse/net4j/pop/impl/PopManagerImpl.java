@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.10 2008-08-10 08:07:48 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.11 2008-08-10 10:26:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EObjectWithInverseResolvingEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -43,10 +43,10 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.PopManagerImpl#getPops <em>Pops</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopManagerImpl#getPops <em>Pops</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class PopManagerImpl extends PopElementImpl implements PopManager
@@ -62,9 +62,9 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopManagerImpl.class);
 
   /**
-   * The cached value of the '{@link #getPops() <em>Pops</em>}' reference list. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPops() <em>Pops</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!--
    * end-user-doc -->
-   * 
    * @see #getPops()
    * @generated
    * @ordered
@@ -89,7 +89,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected PopManagerImpl()
@@ -106,7 +105,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -117,14 +115,13 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public EList<Pop> getPops()
   {
     if (pops == null)
     {
-      pops = new EObjectWithInverseResolvingEList<Pop>(Pop.class, this, PopPackage.POP_MANAGER__POPS,
+      pops = new EObjectContainmentWithInverseEList.Resolving<Pop>(Pop.class, this, PopPackage.POP_MANAGER__POPS,
           PopPackage.POP__POP_MANAGER);
     }
     return pops;
@@ -140,7 +137,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -157,7 +153,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -173,7 +168,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -189,7 +183,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -208,7 +201,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -225,7 +217,6 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

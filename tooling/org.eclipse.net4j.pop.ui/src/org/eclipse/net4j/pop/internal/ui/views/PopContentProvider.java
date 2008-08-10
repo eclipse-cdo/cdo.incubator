@@ -16,9 +16,8 @@ import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.edit.provider.IViewerNotification;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -27,7 +26,6 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -83,46 +81,40 @@ public class PopContentProvider extends AdapterFactoryContentProvider
     }
 
     @Override
-    protected void refresh(IViewerNotification notification)
+    public void run()
     {
       try
       {
-        Object[] expandedElements = null;
-        IStructuredSelection selection = null;
+        List<URI> expandedURIs = null;
+        List<URI> selectedURIs = null;
         if (viewer instanceof TreeViewer)
         {
           TreeViewer treeViewer = (TreeViewer)viewer;
-          expandedElements = treeViewer.getExpandedElements();
-          selection = (IStructuredSelection)treeViewer.getSelection();
+          expandedURIs = getURIs(treeViewer.getExpandedElements());
+          selectedURIs = getURIs(((IStructuredSelection)treeViewer.getSelection()).toArray());
         }
 
-        super.refresh(notification);
+        super.run();
         if (viewer instanceof TreeViewer)
         {
           TreeViewer treeViewer = (TreeViewer)viewer;
-          for (Object expandedElement : expandedElements)
+          for (URI expandedURI : expandedURIs)
           {
-            if (expandedElement instanceof EObject)
+            EObject object = getEObject(expandedURI);
+            if (object != null)
             {
-              EObject object = getEObject((EObject)expandedElement);
-              if (object != null)
-              {
-                treeViewer.setExpandedState(object, true);
-              }
+              treeViewer.setExpandedState(object, true);
             }
           }
 
           List<Object> list = new ArrayList<Object>();
-          for (Iterator<?> it = selection.iterator(); it.hasNext();)
+          for (URI selectedURI : selectedURIs)
           {
-            Object selectedOjbect = it.next();
-            if (selectedOjbect instanceof EObject)
+            EObject object = getEObject(selectedURI);
+            if (object != null)
             {
-              EObject object = getEObject((EObject)selectedOjbect);
-              if (object != null)
-              {
-                list.add(object);
-              }
+              treeViewer.setExpandedState(object, true);
+              list.add(object);
             }
           }
 
@@ -136,11 +128,9 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       }
     }
 
-    private EObject getEObject(EObject object)
+    private EObject getEObject(URI uri)
     {
-      URI uri = getEObjectURI(object);
-      Object element = input;
-      return getEObject(uri, element);
+      return getEObject(uri, input);
     }
 
     private EObject getEObject(URI uri, Object element)
@@ -148,7 +138,7 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       if (element instanceof EObject)
       {
         EObject elementObject = (EObject)element;
-        URI elementURI = getEObjectURI(elementObject);
+        URI elementURI = getURI(elementObject);
         if (ObjectUtil.equals(elementURI, uri))
         {
           return elementObject;
@@ -167,32 +157,44 @@ public class PopContentProvider extends AdapterFactoryContentProvider
       return null;
     }
 
-    private URI getEObjectURI(EObject object)
+    private URI getURI(Object object)
     {
-      if (object == null)
+      if (object instanceof EObject)
       {
-        return null;
+        EObject eObject = (EObject)object;
+        Resource resource = eObject.eResource();
+        if (resource != null)
+        {
+          String fragment = resource.getURIFragment(eObject);
+          if (fragment != null)
+          {
+            URI uri = resource.getURI();
+            if (uri != null)
+            {
+              return uri.appendFragment(fragment);
+            }
+          }
+        }
+
+        return ((InternalEObject)object).eProxyURI();
       }
 
-      Resource resource = object.eResource();
-      if (resource == null)
+      return null;
+    }
+
+    private List<URI> getURIs(Object[] elements)
+    {
+      List<URI> uris = new ArrayList<URI>();
+      for (Object element : elements)
       {
-        return null;
+        URI uri = getURI(element);
+        if (uri != null)
+        {
+          uris.add(uri);
+        }
       }
 
-      URI uri = resource.getURI();
-      if (uri == null)
-      {
-        return null;
-      }
-
-      String id = EcoreUtil.getID(object);
-      if (id == null)
-      {
-        return null;
-      }
-
-      return uri.appendFragment(id);
+      return uris;
     }
   }
 }

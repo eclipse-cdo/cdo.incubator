@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopImpl.java,v 1.6 2008-08-10 06:39:59 estepper Exp $
+ * $Id: PopImpl.java,v 1.7 2008-08-10 10:26:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import java.util.Collection;
@@ -76,16 +77,6 @@ public class PopImpl extends PopElementImpl implements Pop
    * @ordered
    */
   protected EList<TaskGroup> taskGroups;
-
-  /**
-   * The cached value of the '{@link #getPopManager() <em>Pop Manager</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPopManager()
-   * @generated
-   * @ordered
-   */
-  protected PopManager popManager;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -219,18 +210,9 @@ public class PopImpl extends PopElementImpl implements Pop
    */
   public PopManager getPopManager()
   {
-    if (popManager != null && popManager.eIsProxy())
-    {
-      InternalEObject oldPopManager = (InternalEObject)popManager;
-      popManager = (PopManager)eResolveProxy(oldPopManager);
-      if (popManager != oldPopManager)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PopPackage.POP__POP_MANAGER, oldPopManager,
-              popManager));
-      }
-    }
-    return popManager;
+    if (eContainerFeatureID != PopPackage.POP__POP_MANAGER)
+      return null;
+    return (PopManager)eContainer();
   }
 
   /**
@@ -239,7 +221,9 @@ public class PopImpl extends PopElementImpl implements Pop
    */
   public PopManager basicGetPopManager()
   {
-    return popManager;
+    if (eContainerFeatureID != PopPackage.POP__POP_MANAGER)
+      return null;
+    return (PopManager)eInternalContainer();
   }
 
   /**
@@ -248,17 +232,7 @@ public class PopImpl extends PopElementImpl implements Pop
    */
   public NotificationChain basicSetPopManager(PopManager newPopManager, NotificationChain msgs)
   {
-    PopManager oldPopManager = popManager;
-    popManager = newPopManager;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PopPackage.POP__POP_MANAGER,
-          oldPopManager, newPopManager);
-      if (msgs == null)
-        msgs = notification;
-      else
-        msgs.add(notification);
-    }
+    msgs = eBasicSetContainer((InternalEObject)newPopManager, PopPackage.POP__POP_MANAGER, msgs);
     return msgs;
   }
 
@@ -268,11 +242,14 @@ public class PopImpl extends PopElementImpl implements Pop
    */
   public void setPopManager(PopManager newPopManager)
   {
-    if (newPopManager != popManager)
+    if (newPopManager != eInternalContainer()
+        || (eContainerFeatureID != PopPackage.POP__POP_MANAGER && newPopManager != null))
     {
+      if (EcoreUtil.isAncestor(this, newPopManager))
+        throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
       NotificationChain msgs = null;
-      if (popManager != null)
-        msgs = ((InternalEObject)popManager).eInverseRemove(this, PopPackage.POP_MANAGER__POPS, PopManager.class, msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       if (newPopManager != null)
         msgs = ((InternalEObject)newPopManager).eInverseAdd(this, PopPackage.POP_MANAGER__POPS, PopManager.class, msgs);
       msgs = basicSetPopManager(newPopManager, msgs);
@@ -657,8 +634,8 @@ public class PopImpl extends PopElementImpl implements Pop
     case PopPackage.POP__TASK_GROUPS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getTaskGroups()).basicAdd(otherEnd, msgs);
     case PopPackage.POP__POP_MANAGER:
-      if (popManager != null)
-        msgs = ((InternalEObject)popManager).eInverseRemove(this, PopPackage.POP_MANAGER__POPS, PopManager.class, msgs);
+      if (eInternalContainer() != null)
+        msgs = eBasicRemoveFromContainer(msgs);
       return basicSetPopManager((PopManager)otherEnd, msgs);
     case PopPackage.POP__DEVELOPERS:
       return ((InternalEList<InternalEObject>)(InternalEList<?>)getDevelopers()).basicAdd(otherEnd, msgs);
@@ -713,6 +690,22 @@ public class PopImpl extends PopElementImpl implements Pop
       return basicSetCheckoutManager(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs)
+  {
+    switch (eContainerFeatureID)
+    {
+    case PopPackage.POP__POP_MANAGER:
+      return eInternalContainer().eInverseRemove(this, PopPackage.POP_MANAGER__POPS, PopManager.class, msgs);
+    }
+    return super.eBasicRemoveFromContainerFeature(msgs);
   }
 
   /**
@@ -856,7 +849,7 @@ public class PopImpl extends PopElementImpl implements Pop
     case PopPackage.POP__TASK_GROUPS:
       return taskGroups != null && !taskGroups.isEmpty();
     case PopPackage.POP__POP_MANAGER:
-      return popManager != null;
+      return basicGetPopManager() != null;
     case PopPackage.POP__NAME:
       return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     case PopPackage.POP__ACTIVE:

@@ -16,7 +16,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PopManager" eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pops" upperBound="-1" eType="#//Pop"
-        eOpposite="#//Pop/popManager"/>
+        containment="true" eOpposite="#//Pop/popManager"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Pop" eSuperTypes="#//PopElement #//Assignee">
     <eStructuralFeatures xsi:type="ecore:EReference" name="popManager" lowerBound="1"

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackage.java,v 1.6 2008-08-10 06:39:59 estepper Exp $
+ * $Id: PopPackage.java,v 1.7 2008-08-10 10:26:25 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -2415,9 +2415,9 @@ public interface PopPackage extends EPackage
   EClass getPopManager();
 
   /**
-   * Returns the meta object for the reference list '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.eclipse.net4j.pop.PopManager#getPops <em>Pops</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference list '<em>Pops</em>'.
+   * @return the meta object for the containment reference list '<em>Pops</em>'.
    * @see org.eclipse.net4j.pop.PopManager#getPops()
    * @see #getPopManager()
    * @generated
@@ -2435,9 +2435,9 @@ public interface PopPackage extends EPackage
   EClass getPop();
 
   /**
-   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}'.
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.Pop#getPopManager <em>Pop Manager</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Pop Manager</em>'.
+   * @return the meta object for the container reference '<em>Pop Manager</em>'.
    * @see org.eclipse.net4j.pop.Pop#getPopManager()
    * @see #getPop()
    * @generated
@@ -3773,7 +3773,7 @@ public interface PopPackage extends EPackage
     EClass POP_MANAGER = eINSTANCE.getPopManager();
 
     /**
-     * The meta object literal for the '<em><b>Pops</b></em>' reference list feature.
+     * The meta object literal for the '<em><b>Pops</b></em>' containment reference list feature.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * @generated
@@ -3791,7 +3791,7 @@ public interface PopPackage extends EPackage
     EClass POP = eINSTANCE.getPop();
 
     /**
-     * The meta object literal for the '<em><b>Pop Manager</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Pop Manager</b></em>' container reference feature.
      * <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      * @generated
