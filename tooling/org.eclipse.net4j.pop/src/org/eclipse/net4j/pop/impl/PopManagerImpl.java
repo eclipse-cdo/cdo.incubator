@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.7 2008-08-10 06:39:59 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.8 2008-08-10 06:57:36 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -43,10 +43,10 @@ import java.util.Collection;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.net4j.pop.impl.PopManagerImpl#getPops <em>Pops</em>}</li>
+ * <li>{@link org.eclipse.net4j.pop.impl.PopManagerImpl#getPops <em>Pops</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PopManagerImpl extends PopElementImpl implements PopManager
@@ -62,9 +62,9 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, PopManagerImpl.class);
 
   /**
-   * The cached value of the '{@link #getPops() <em>Pops</em>}' reference list.
-   * <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getPops() <em>Pops</em>}' reference list. <!-- begin-user-doc --> <!--
    * end-user-doc -->
+   * 
    * @see #getPops()
    * @generated
    * @ordered
@@ -89,6 +89,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected PopManagerImpl()
@@ -105,6 +106,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -115,6 +117,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public EList<Pop> getPops()
@@ -137,6 +140,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -153,6 +157,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -168,6 +173,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -183,6 +189,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @SuppressWarnings("unchecked")
@@ -201,6 +208,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -217,6 +225,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -255,13 +264,22 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
    */
   private final class PopHandler extends ModelHandler<Pop>
   {
+    public PopHandler()
+    {
+    }
+
+    @Override
+    public String toString()
+    {
+      return "PopHandler";
+    }
+
     @Override
     protected void modelAvailable(IModelRegistration<Pop> registration)
     {
       if (TRACER.isEnabled())
       {
-        URI uri = registration.getModelResource().getURI();
-        TRACER.format("Adding pop: {0}", uri);
+        TRACER.format("Adding pop: {0}", registration.getModelResource());
       }
 
       Pop pop = registration.getModel();
@@ -277,7 +295,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
       {
         if (TRACER.isEnabled())
         {
-          TRACER.format("Replacing pop: {0}", uri);
+          TRACER.format("Replacing pop: {0}", registration.getModelResource());
         }
 
         Pop pop = registration.getModel();
@@ -294,7 +312,7 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
       {
         if (TRACER.isEnabled())
         {
-          TRACER.format("Removing pop: {0}", uri);
+          TRACER.format("Removing pop: {0}", registration.getModelResource());
         }
 
         getPops().remove(index);

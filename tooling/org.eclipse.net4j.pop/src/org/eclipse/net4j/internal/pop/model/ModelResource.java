@@ -93,15 +93,15 @@ public class ModelResource extends Notifier implements IModelResource
 
   public <T extends EObject> ModelRegistration<T> addRregistration(IModelHandler<T> handler)
   {
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Adding model registration: {0}", uri);
-    }
-
     ModelRegistration<T> registration = new ModelRegistration<T>(this, handler);
     synchronized (registrations)
     {
       registrations.add(registration);
+    }
+
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Added: {0}", registration);
     }
 
     registration.refresh(resource);
@@ -112,7 +112,7 @@ public class ModelResource extends Notifier implements IModelResource
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("Removing model registration: {0}", uri);
+      TRACER.format("Removing: {0}", registration);
     }
 
     synchronized (registrations)
@@ -163,7 +163,8 @@ public class ModelResource extends Notifier implements IModelResource
   @Override
   public String toString()
   {
-    return MessageFormat.format("ModelResource[{0}}", uri);
+    String exists = resource == null ? "missing" : "existing";
+    return MessageFormat.format("ModelResource[{0}, {1}]", uri, exists);
   }
 
   public void dispose()
@@ -176,7 +177,7 @@ public class ModelResource extends Notifier implements IModelResource
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("Refreshing model resource: {0}", uri);
+      TRACER.format("Refreshing: {0}", this);
     }
 
     disposeResource();

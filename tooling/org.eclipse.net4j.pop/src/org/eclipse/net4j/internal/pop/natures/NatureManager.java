@@ -139,7 +139,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("Added project to nature manager: {0} --> {1}", natureID, project.getName());
+      TRACER.format("Added {0}: {1}", natureID, project.getName());
     }
   }
 
@@ -147,7 +147,7 @@ public class NatureManager extends Container<IProject> implements IResourceChang
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("Removed project from nature manager: {0} --> {1}", natureID, project.getName());
+      TRACER.format("Removed {0}: {1}", natureID, project.getName());
     }
   }
 

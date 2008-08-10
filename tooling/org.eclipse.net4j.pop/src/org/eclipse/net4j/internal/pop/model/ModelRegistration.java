@@ -91,14 +91,14 @@ public class ModelRegistration<T extends EObject> implements IModelRegistration<
   @Override
   public String toString()
   {
-    return MessageFormat.format("ModelRegistration[{0}}", modelResource.getURI());
+    return MessageFormat.format("ModelRegistration[{0}, {1}]", modelResource, modelHandler);
   }
 
   public void refresh(Resource resource)
   {
     if (TRACER.isEnabled())
     {
-      TRACER.format("Refreshing model registration: {0}", modelResource.getURI());
+      TRACER.format("Refreshing: {0}", this);
     }
 
     try
