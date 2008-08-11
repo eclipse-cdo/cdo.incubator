@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.25 2008-08-09 18:31:15 estepper Exp $
+ $Id: plugin.xml,v 1.26 2008-08-11 06:40:48 estepper Exp $
 -->
 
 <plugin>
@@ -22,13 +22,6 @@
             id="org.eclipse.net4j.pop"
             name="POP Process Tooling">
       </category>
-      <view
-            category="org.eclipse.net4j.pop"
-            class="org.eclipse.net4j.pop.internal.ui.views.StreamsView"
-            icon="icons/sample.gif"
-            id="org.eclipse.net4j.pop.StreamsView"
-            name="Streams">
-      </view>
       <view
             category="org.eclipse.net4j.pop"
             class="org.eclipse.net4j.pop.internal.ui.views.PopsView"

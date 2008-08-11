@@ -10,7 +10,7 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.internal.ui.actions;
 
-import org.eclipse.net4j.pop.project.CheckoutDiscriminator;
+import org.eclipse.net4j.pop.CheckoutDiscriminator;
 import org.eclipse.net4j.util.ui.actions.LongRunningAction;
 
 import org.eclipse.ui.IWorkbenchPage;

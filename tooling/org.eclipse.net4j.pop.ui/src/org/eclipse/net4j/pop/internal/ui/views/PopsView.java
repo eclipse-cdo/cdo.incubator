@@ -12,7 +12,6 @@ package org.eclipse.net4j.pop.internal.ui.views;
 
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.provider.PopItemProviderAdapterFactory;
-import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.ui.views.MasterDetailsView;
 
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
@@ -28,10 +27,6 @@ import org.eclipse.swt.widgets.Composite;
  */
 public class PopsView extends MasterDetailsView
 {
-  private static final String DETAILS = "Details";
-
-  private static final String[] POP_DETAILS = { DETAILS };
-
   private ComposedAdapterFactory adapterFactory;
 
   public PopsView()
@@ -52,22 +47,12 @@ public class PopsView extends MasterDetailsView
   @Override
   protected StructuredViewer createDetail(Composite parent, String title)
   {
-    if (ObjectUtil.equals(title, DETAILS))
-    {
-      return createViewer(parent);
-    }
-
     throw new IllegalArgumentException("title: " + title);
   }
 
   @Override
   protected String[] getDetailTitles(Object masterElement)
   {
-    // if (masterElement instanceof Pop)
-    // {
-    // return POP_DETAILS;
-    // }
-
     return new String[0];
   }
 
