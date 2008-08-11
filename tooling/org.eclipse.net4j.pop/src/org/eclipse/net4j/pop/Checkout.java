@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Checkout.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
+ * $Id: Checkout.java,v 1.5 2008-08-11 20:03:25 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 
 /**
@@ -100,7 +101,7 @@ public interface Checkout extends PopElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Location</em>' attribute.
    * @see org.eclipse.net4j.pop.PopPackage#getCheckout_Location()
-   * @model dataType="org.eclipse.net4j.pop.Path" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model dataType="org.eclipse.net4j.pop.IPath" required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   IPath getLocation();
@@ -176,5 +177,13 @@ public interface Checkout extends PopElement
    * @generated
    */
   void setWorkspaceSpecification(WorkspaceSpecification value);
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model dataType="org.eclipse.net4j.pop.IProject" required="true"
+   * @generated
+   */
+  IProject asProject();
 
 } // Checkout

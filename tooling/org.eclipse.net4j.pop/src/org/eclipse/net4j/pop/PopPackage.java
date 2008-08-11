@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackage.java,v 1.9 2008-08-11 09:36:04 estepper Exp $
+ * $Id: PopPackage.java,v 1.10 2008-08-11 20:03:25 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -2644,13 +2644,24 @@ public interface PopPackage extends EPackage
   int VERSION = 35;
 
   /**
-   * The meta object id for the '<em>Path</em>' data type.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * The meta object id for the '<em>IPath</em>' data type.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @see org.eclipse.core.runtime.IPath
-   * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getPath()
+   * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIPath()
    * @generated
    */
-  int PATH = 36;
+  int IPATH = 36;
+
+  /**
+   * The meta object id for the '<em>IProject</em>' data type.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.core.resources.IProject
+   * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIProject()
+   * @generated
+   */
+  int IPROJECT = 37;
 
   /**
    * The meta object id for the '<em>Repository Adapter</em>' data type.
@@ -2659,7 +2670,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryAdapter()
    * @generated
    */
-  int REPOSITORY_ADAPTER = 37;
+  int REPOSITORY_ADAPTER = 38;
 
   /**
    * The meta object id for the '<em>Repository Session</em>' data type.
@@ -2668,7 +2679,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositorySession()
    * @generated
    */
-  int REPOSITORY_SESSION = 38;
+  int REPOSITORY_SESSION = 39;
 
   /**
    * The meta object id for the '<em>Repository Folder</em>' data type.
@@ -2677,7 +2688,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryFolder()
    * @generated
    */
-  int REPOSITORY_FOLDER = 39;
+  int REPOSITORY_FOLDER = 40;
 
   /**
    * The meta object id for the '<em>Repository Tag</em>' data type.
@@ -2686,7 +2697,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryTag()
    * @generated
    */
-  int REPOSITORY_TAG = 40;
+  int REPOSITORY_TAG = 41;
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Identifiable <em>Identifiable</em>}'. <!--
@@ -4004,15 +4015,26 @@ public interface PopPackage extends EPackage
   EDataType getVersion();
 
   /**
-   * Returns the meta object for data type '{@link org.eclipse.core.runtime.IPath <em>Path</em>}'.
-   * <!-- begin-user-doc
-   * --> <!-- end-user-doc -->
-   * @return the meta object for data type '<em>Path</em>'.
+   * Returns the meta object for data type '{@link org.eclipse.core.runtime.IPath <em>IPath</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for data type '<em>IPath</em>'.
    * @see org.eclipse.core.runtime.IPath
    * @model instanceClass="org.eclipse.core.runtime.IPath"
    * @generated
    */
-  EDataType getPath();
+  EDataType getIPath();
+
+  /**
+   * Returns the meta object for data type '{@link org.eclipse.core.resources.IProject <em>IProject</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for data type '<em>IProject</em>'.
+   * @see org.eclipse.core.resources.IProject
+   * @model instanceClass="org.eclipse.core.resources.IProject"
+   * @generated
+   */
+  EDataType getIProject();
 
   /**
    * Returns the meta object for data type '{@link org.eclipse.net4j.pop.repository.IRepositoryAdapter <em>Repository Adapter</em>}'.
@@ -5156,13 +5178,24 @@ public interface PopPackage extends EPackage
     EDataType VERSION = eINSTANCE.getVersion();
 
     /**
-     * The meta object literal for the '<em>Path</em>' data type.
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The meta object literal for the '<em>IPath</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
      * @see org.eclipse.core.runtime.IPath
-     * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getPath()
+     * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIPath()
      * @generated
      */
-    EDataType PATH = eINSTANCE.getPath();
+    EDataType IPATH = eINSTANCE.getIPath();
+
+    /**
+     * The meta object literal for the '<em>IProject</em>' data type.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.core.resources.IProject
+     * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIProject()
+     * @generated
+     */
+    EDataType IPROJECT = eINSTANCE.getIProject();
 
     /**
      * The meta object literal for the '<em>Repository Adapter</em>' data type.

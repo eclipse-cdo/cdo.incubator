@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.11 2008-08-11 09:36:04 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.12 2008-08-11 20:03:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.Checkout;
@@ -290,10 +291,18 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
   private EDataType versionEDataType = null;
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  private EDataType pathEDataType = null;
+  private EDataType iPathEDataType = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EDataType iProjectEDataType = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1546,12 +1555,23 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EDataType getPath()
+  public EDataType getIPath()
   {
-    return pathEDataType;
+    return iPathEDataType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EDataType getIProject()
+  {
+    return iProjectEDataType;
   }
 
   /**
@@ -1783,7 +1803,8 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     // Create data types
     versionEDataType = createEDataType(VERSION);
-    pathEDataType = createEDataType(PATH);
+    iPathEDataType = createEDataType(IPATH);
+    iProjectEDataType = createEDataType(IPROJECT);
     repositoryAdapterEDataType = createEDataType(REPOSITORY_ADAPTER);
     repositorySessionEDataType = createEDataType(REPOSITORY_SESSION);
     repositoryFolderEDataType = createEDataType(REPOSITORY_FOLDER);
@@ -2323,7 +2344,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         "pop", null, 1, 1, CheckoutManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCheckoutManager_Location(),
-        this.getPath(),
+        this.getIPath(),
         "location", null, 1, 1, CheckoutManager.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEReference(
         getCheckoutManager_Checkouts(),
@@ -2358,7 +2379,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         "discriminator", null, 1, 1, Checkout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCheckout_Location(),
-        this.getPath(),
+        this.getIPath(),
         "location", null, 1, 1, Checkout.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getCheckout_Transitioning(),
@@ -2377,6 +2398,8 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getWorkspaceSpecification(),
         this.getWorkspaceSpecification_Checkout(),
         "workspaceSpecification", null, 0, 1, Checkout.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    addEOperation(checkoutEClass, this.getIProject(), "asProject", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(workspaceSpecificationEClass, WorkspaceSpecification.class,
         "WorkspaceSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2436,7 +2459,8 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     // Initialize data types
     initEDataType(versionEDataType, Version.class, "Version", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-    initEDataType(pathEDataType, IPath.class, "Path", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(iPathEDataType, IPath.class, "IPath", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEDataType(iProjectEDataType, IProject.class, "IProject", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEDataType(repositoryAdapterEDataType, IRepositoryAdapter.class,
         "RepositoryAdapter", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEDataType(repositorySessionEDataType, IRepositorySession.class,

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutManager.java,v 1.5 2008-08-10 07:29:51 estepper Exp $
+ * $Id: CheckoutManager.java,v 1.6 2008-08-11 20:03:25 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -74,7 +74,7 @@ public interface CheckoutManager extends PopElement
    * <!-- end-user-doc -->
    * @return the value of the '<em>Location</em>' attribute.
    * @see org.eclipse.net4j.pop.PopPackage#getCheckoutManager_Location()
-   * @model dataType="org.eclipse.net4j.pop.Path" required="true" transient="true" changeable="false" volatile="true" derived="true"
+   * @model dataType="org.eclipse.net4j.pop.IPath" required="true" transient="true" changeable="false" volatile="true" derived="true"
    * @generated
    */
   IPath getLocation();

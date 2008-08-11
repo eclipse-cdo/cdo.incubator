@@ -153,10 +153,19 @@ public final class Version implements Comparable<Version>
     return major * 1000000 ^ minor * 1000 ^ micro;
   }
 
+  public String asId(boolean forceMicro)
+  {
+    if (micro != 0 || forceMicro)
+    {
+      return MessageFormat.format("{0}_{1}_{2}", major, minor, micro);
+    }
+
+    return MessageFormat.format("{0}_{1}", major, minor);
+  }
+
   public String asId()
   {
-    // TODO Provide static helper method for producing id strings
-    return MessageFormat.format("{0}_{1}_{2}", major, minor, micro);
+    return asId(false);
   }
 
   public String toString(boolean forceMicro)
