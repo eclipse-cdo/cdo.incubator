@@ -20,6 +20,7 @@ import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.team.internal.ccvs.core.CVSException;
+import org.eclipse.team.internal.ccvs.core.CVSTag;
 
 /**
  * @author Eike Stepper
@@ -28,6 +29,8 @@ public class CvsRepositoryAdapter extends RepositoryAdapter
 {
   public static final String TYPE = "CVS";
 
+  public static final String DEFAULT_MAIN_BRANCH_NAME = CVSTag.DEFAULT.getName();
+
   public CvsRepositoryAdapter()
   {
   }
@@ -35,6 +38,11 @@ public class CvsRepositoryAdapter extends RepositoryAdapter
   public String getType()
   {
     return TYPE;
+  }
+
+  public String getDefaultMainBranchName()
+  {
+    return DEFAULT_MAIN_BRANCH_NAME;
   }
 
   public Branch createBranchTag(String name)

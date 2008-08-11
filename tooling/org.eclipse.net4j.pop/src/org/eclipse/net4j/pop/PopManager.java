@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManager.java,v 1.8 2008-08-10 10:26:25 estepper Exp $
+ * $Id: PopManager.java,v 1.9 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -54,6 +54,14 @@ public interface PopManager extends PopElement
    * @generated
    */
   EList<Pop> getPops();
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @model required="true" nameRequired="true" repositoryStrategyTypeRequired="true" repositoryAdapterTypeRequired="true" repositoryDescriptorRequired="true"
+   * @generated
+   */
+  Pop createPop(String name, String repositoryStrategyType, String repositoryAdapterType, String repositoryDescriptor);
 
   /**
    * @ADDED

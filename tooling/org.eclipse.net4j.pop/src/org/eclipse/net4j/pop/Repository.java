@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: Repository.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: Repository.java,v 1.4 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -21,6 +21,7 @@ import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.Repository#getPop <em>Pop</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.Repository#getStrategy <em>Strategy</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Repository#getAdapter <em>Adapter</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Repository#getAdapterType <em>Adapter Type</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.Repository#getDescriptor <em>Descriptor</em>}</li>
@@ -62,6 +63,34 @@ public interface Repository extends PopElement
    * @generated
    */
   void setPop(Pop value);
+
+  /**
+   * Returns the value of the '<em><b>Strategy</b></em>' containment reference.
+   * It is bidirectional and its opposite is '{@link org.eclipse.net4j.pop.RepositoryStrategy#getRepository <em>Repository</em>}'.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Strategy</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Strategy</em>' containment reference.
+   * @see #setStrategy(RepositoryStrategy)
+   * @see org.eclipse.net4j.pop.PopPackage#getRepository_Strategy()
+   * @see org.eclipse.net4j.pop.RepositoryStrategy#getRepository
+   * @model opposite="repository" containment="true" resolveProxies="true" required="true"
+   * @generated
+   */
+  RepositoryStrategy getStrategy();
+
+  /**
+   * Sets the value of the '{@link org.eclipse.net4j.pop.Repository#getStrategy <em>Strategy</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Strategy</em>' containment reference.
+   * @see #getStrategy()
+   * @generated
+   */
+  void setStrategy(RepositoryStrategy value);
 
   /**
    * Returns the value of the '<em><b>Adapter</b></em>' attribute.

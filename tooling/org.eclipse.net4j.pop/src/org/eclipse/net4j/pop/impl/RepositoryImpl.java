@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryImpl.java,v 1.4 2008-08-10 06:39:59 estepper Exp $
+ * $Id: RepositoryImpl.java,v 1.5 2008-08-11 09:36:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -16,6 +16,7 @@ import org.eclipse.net4j.pop.MainBranch;
 import org.eclipse.net4j.pop.Pop;
 import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Repository;
+import org.eclipse.net4j.pop.RepositoryStrategy;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -31,6 +32,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getPop <em>Pop</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getStrategy <em>Strategy</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getAdapter <em>Adapter</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getAdapterType <em>Adapter Type</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryImpl#getDescriptor <em>Descriptor</em>}</li>
@@ -42,6 +44,16 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
  */
 public class RepositoryImpl extends PopElementImpl implements Repository
 {
+  /**
+   * The cached value of the '{@link #getStrategy() <em>Strategy</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStrategy()
+   * @generated
+   * @ordered
+   */
+  protected RepositoryStrategy strategy;
+
   /**
    * The default value of the '{@link #getAdapter() <em>Adapter</em>}' attribute.
    * <!-- begin-user-doc --> <!--
@@ -179,6 +191,92 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__POP, newPop, newPop));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RepositoryStrategy getStrategy()
+  {
+    if (strategy != null && strategy.eIsProxy())
+    {
+      InternalEObject oldStrategy = (InternalEObject)strategy;
+      strategy = (RepositoryStrategy)eResolveProxy(oldStrategy);
+      if (strategy != oldStrategy)
+      {
+        InternalEObject newStrategy = (InternalEObject)strategy;
+        NotificationChain msgs = oldStrategy.eInverseRemove(this, PopPackage.REPOSITORY_STRATEGY__REPOSITORY,
+            RepositoryStrategy.class, null);
+        if (newStrategy.eInternalContainer() == null)
+        {
+          msgs = newStrategy.eInverseAdd(this, PopPackage.REPOSITORY_STRATEGY__REPOSITORY, RepositoryStrategy.class,
+              msgs);
+        }
+        if (msgs != null)
+          msgs.dispatch();
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, PopPackage.REPOSITORY__STRATEGY, oldStrategy,
+              strategy));
+      }
+    }
+    return strategy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RepositoryStrategy basicGetStrategy()
+  {
+    return strategy;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetStrategy(RepositoryStrategy newStrategy, NotificationChain msgs)
+  {
+    RepositoryStrategy oldStrategy = strategy;
+    strategy = newStrategy;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__STRATEGY,
+          oldStrategy, newStrategy);
+      if (msgs == null)
+        msgs = notification;
+      else
+        msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setStrategy(RepositoryStrategy newStrategy)
+  {
+    if (newStrategy != strategy)
+    {
+      NotificationChain msgs = null;
+      if (strategy != null)
+        msgs = ((InternalEObject)strategy).eInverseRemove(this, PopPackage.REPOSITORY_STRATEGY__REPOSITORY,
+            RepositoryStrategy.class, msgs);
+      if (newStrategy != null)
+        msgs = ((InternalEObject)newStrategy).eInverseAdd(this, PopPackage.REPOSITORY_STRATEGY__REPOSITORY,
+            RepositoryStrategy.class, msgs);
+      msgs = basicSetStrategy(newStrategy, msgs);
+      if (msgs != null)
+        msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY__STRATEGY, newStrategy, newStrategy));
   }
 
   /**
@@ -348,6 +446,11 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       if (eInternalContainer() != null)
         msgs = eBasicRemoveFromContainer(msgs);
       return basicSetPop((Pop)otherEnd, msgs);
+    case PopPackage.REPOSITORY__STRATEGY:
+      if (strategy != null)
+        msgs = ((InternalEObject)strategy).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+            - PopPackage.REPOSITORY__STRATEGY, null, msgs);
+      return basicSetStrategy((RepositoryStrategy)otherEnd, msgs);
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       if (mainBranch != null)
         msgs = ((InternalEObject)mainBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE
@@ -368,6 +471,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY__POP:
       return basicSetPop(null, msgs);
+    case PopPackage.REPOSITORY__STRATEGY:
+      return basicSetStrategy(null, msgs);
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       return basicSetMainBranch(null, msgs);
     }
@@ -402,6 +507,10 @@ public class RepositoryImpl extends PopElementImpl implements Repository
       if (resolve)
         return getPop();
       return basicGetPop();
+    case PopPackage.REPOSITORY__STRATEGY:
+      if (resolve)
+        return getStrategy();
+      return basicGetStrategy();
     case PopPackage.REPOSITORY__ADAPTER:
       return getAdapter();
     case PopPackage.REPOSITORY__ADAPTER_TYPE:
@@ -428,6 +537,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     case PopPackage.REPOSITORY__POP:
       setPop((Pop)newValue);
       return;
+    case PopPackage.REPOSITORY__STRATEGY:
+      setStrategy((RepositoryStrategy)newValue);
+      return;
     case PopPackage.REPOSITORY__ADAPTER_TYPE:
       setAdapterType((String)newValue);
       return;
@@ -453,6 +565,9 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     case PopPackage.REPOSITORY__POP:
       setPop((Pop)null);
       return;
+    case PopPackage.REPOSITORY__STRATEGY:
+      setStrategy((RepositoryStrategy)null);
+      return;
     case PopPackage.REPOSITORY__ADAPTER_TYPE:
       setAdapterType(ADAPTER_TYPE_EDEFAULT);
       return;
@@ -477,6 +592,8 @@ public class RepositoryImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY__POP:
       return basicGetPop() != null;
+    case PopPackage.REPOSITORY__STRATEGY:
+      return strategy != null;
     case PopPackage.REPOSITORY__ADAPTER:
       return ADAPTER_EDEFAULT == null ? getAdapter() != null : !ADAPTER_EDEFAULT.equals(getAdapter());
     case PopPackage.REPOSITORY__ADAPTER_TYPE:

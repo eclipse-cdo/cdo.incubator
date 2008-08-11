@@ -17,6 +17,12 @@
         changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PopManager" eSuperTypes="#//PopElement">
+    <eOperations name="createPop" lowerBound="1" eType="#//Pop">
+      <eParameters name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="repositoryStrategyType" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="repositoryAdapterType" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eParameters name="repositoryDescriptor" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eOperations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pops" upperBound="-1" eType="#//Pop"
         containment="true" eOpposite="#//Pop/popManager"/>
   </eClassifiers>
@@ -52,6 +58,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Repository" eSuperTypes="#//PopElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
         eOpposite="#//Pop/repository"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="strategy" lowerBound="1"
+        eType="#//RepositoryStrategy" containment="true" eOpposite="#//RepositoryStrategy/repository"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="adapter" lowerBound="1"
         eType="#//RepositoryAdapter" changeable="false" volatile="true" transient="true"
         derived="true"/>
@@ -61,6 +69,34 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="mainBranch" lowerBound="1"
         eType="#//MainBranch" containment="true" eOpposite="#//MainBranch/repository"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RepositoryStrategy" eSuperTypes="#//PopElement">
+    <eOperations name="createBranch" lowerBound="1" eType="#//Branch">
+      <eParameters name="stream" lowerBound="1" eType="#//DevelopmentStream"/>
+    </eOperations>
+    <eOperations name="createBranch" lowerBound="1" eType="#//Branch">
+      <eParameters name="stream" lowerBound="1" eType="#//MaintenanceStream"/>
+    </eOperations>
+    <eOperations name="createBranch" lowerBound="1" eType="#//Branch">
+      <eParameters name="stream" lowerBound="1" eType="#//DeliveryStream"/>
+    </eOperations>
+    <eOperations name="createRootTag" lowerBound="1" eType="#//Tag">
+      <eParameters name="branch" lowerBound="1" eType="#//Branch"/>
+    </eOperations>
+    <eOperations name="createTag" lowerBound="1" eType="#//Tag">
+      <eParameters name="delivery" lowerBound="1" eType="#//Delivery"/>
+    </eOperations>
+    <eOperations name="createTag" lowerBound="1" eType="#//Tag">
+      <eParameters name="integration" lowerBound="1" eType="#//Integration"/>
+    </eOperations>
+    <eOperations name="createTag" lowerBound="1" eType="#//Tag">
+      <eParameters name="release" lowerBound="1" eType="#//Release"/>
+    </eOperations>
+    <eOperations name="createTag" lowerBound="1" eType="#//Tag">
+      <eParameters name="milestone" lowerBound="1" eType="#//Milestone"/>
+    </eOperations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
+        eType="#//Repository" eOpposite="#//Repository/strategy"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Developer" eSuperTypes="#//PopElement #//Assignee">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"

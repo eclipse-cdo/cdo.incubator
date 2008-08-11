@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackage.java,v 1.8 2008-08-11 07:21:03 estepper Exp $
+ * $Id: PopPackage.java,v 1.9 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -528,12 +528,21 @@ public interface PopPackage extends EPackage
   int REPOSITORY__POP = POP_ELEMENT_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Strategy</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__STRATEGY = POP_ELEMENT_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Adapter</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REPOSITORY__ADAPTER = POP_ELEMENT_FEATURE_COUNT + 1;
+  int REPOSITORY__ADAPTER = POP_ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Adapter Type</b></em>' attribute.
@@ -541,7 +550,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__ADAPTER_TYPE = POP_ELEMENT_FEATURE_COUNT + 2;
+  int REPOSITORY__ADAPTER_TYPE = POP_ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Descriptor</b></em>' attribute.
@@ -549,7 +558,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__DESCRIPTOR = POP_ELEMENT_FEATURE_COUNT + 3;
+  int REPOSITORY__DESCRIPTOR = POP_ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Main Branch</b></em>' containment reference.
@@ -558,7 +567,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY__MAIN_BRANCH = POP_ELEMENT_FEATURE_COUNT + 4;
+  int REPOSITORY__MAIN_BRANCH = POP_ELEMENT_FEATURE_COUNT + 5;
 
   /**
    * The number of structural features of the '<em>Repository</em>' class.
@@ -566,7 +575,62 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int REPOSITORY_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 5;
+  int REPOSITORY_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 6;
+
+  /**
+   * The meta object id for the '{@link org.eclipse.net4j.pop.impl.RepositoryStrategyImpl <em>Repository Strategy</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.eclipse.net4j.pop.impl.RepositoryStrategyImpl
+   * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryStrategy()
+   * @generated
+   */
+  int REPOSITORY_STRATEGY = 8;
+
+  /**
+   * The feature id for the '<em><b>Id</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_STRATEGY__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_STRATEGY__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_STRATEGY__CLASS = POP_ELEMENT__CLASS;
+
+  /**
+   * The feature id for the '<em><b>Repository</b></em>' container reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_STRATEGY__REPOSITORY = POP_ELEMENT_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Repository Strategy</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY_STRATEGY_FEATURE_COUNT = POP_ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.DeveloperImpl <em>Developer</em>}' class. <!--
@@ -576,7 +640,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getDeveloper()
    * @generated
    */
-  int DEVELOPER = 8;
+  int DEVELOPER = 9;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -693,7 +757,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getTaskGroup()
    * @generated
    */
-  int TASK_GROUP = 9;
+  int TASK_GROUP = 10;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -771,7 +835,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getTask()
    * @generated
    */
-  int TASK = 10;
+  int TASK = 11;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -838,7 +902,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getCheckoutDiscriminator()
    * @generated
    */
-  int CHECKOUT_DISCRIMINATOR = 11;
+  int CHECKOUT_DISCRIMINATOR = 12;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -898,7 +962,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getTag()
    * @generated
    */
-  int TAG = 12;
+  int TAG = 13;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -980,7 +1044,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getTaggedElement()
    * @generated
    */
-  int TAGGED_ELEMENT = 13;
+  int TAGGED_ELEMENT = 14;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1032,7 +1096,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getBranch()
    * @generated
    */
-  int BRANCH = 14;
+  int BRANCH = 15;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1125,7 +1189,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getMainBranch()
    * @generated
    */
-  int MAIN_BRANCH = 15;
+  int MAIN_BRANCH = 16;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1228,7 +1292,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getSubBranch()
    * @generated
    */
-  int SUB_BRANCH = 16;
+  int SUB_BRANCH = 17;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1338,7 +1402,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getStream()
    * @generated
    */
-  int STREAM = 17;
+  int STREAM = 18;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1397,7 +1461,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getDeliveryStream()
    * @generated
    */
-  int DELIVERY_STREAM = 18;
+  int DELIVERY_STREAM = 19;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1490,7 +1554,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIntegrationStream()
    * @generated
    */
-  int INTEGRATION_STREAM = 19;
+  int INTEGRATION_STREAM = 20;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1568,7 +1632,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getDevelopmentStream()
    * @generated
    */
-  int DEVELOPMENT_STREAM = 20;
+  int DEVELOPMENT_STREAM = 21;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1663,7 +1727,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getMaintenanceStream()
    * @generated
    */
-  int MAINTENANCE_STREAM = 21;
+  int MAINTENANCE_STREAM = 22;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1758,7 +1822,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getTarget()
    * @generated
    */
-  int TARGET = 22;
+  int TARGET = 23;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1825,7 +1889,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRelease()
    * @generated
    */
-  int RELEASE = 23;
+  int RELEASE = 24;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1925,7 +1989,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getMilestone()
    * @generated
    */
-  int MILESTONE = 24;
+  int MILESTONE = 25;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2008,7 +2072,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getDelivery()
    * @generated
    */
-  int DELIVERY = 25;
+  int DELIVERY = 26;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2091,7 +2155,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getIntegration()
    * @generated
    */
-  int INTEGRATION = 26;
+  int INTEGRATION = 27;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2166,7 +2230,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getCheckoutManager()
    * @generated
    */
-  int CHECKOUT_MANAGER = 27;
+  int CHECKOUT_MANAGER = 28;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2243,7 +2307,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getCheckout()
    * @generated
    */
-  int CHECKOUT = 28;
+  int CHECKOUT = 29;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2342,7 +2406,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getWorkspaceSpecification()
    * @generated
    */
-  int WORKSPACE_SPECIFICATION = 29;
+  int WORKSPACE_SPECIFICATION = 30;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2411,7 +2475,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getSecondaryModule()
    * @generated
    */
-  int SECONDARY_MODULE = 30;
+  int SECONDARY_MODULE = 31;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2479,7 +2543,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getWorkspaceConfigurator()
    * @generated
    */
-  int WORKSPACE_CONFIGURATOR = 31;
+  int WORKSPACE_CONFIGURATOR = 32;
 
   /**
    * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2532,7 +2596,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getAssignee()
    * @generated
    */
-  int ASSIGNEE = 32;
+  int ASSIGNEE = 33;
 
   /**
    * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -2568,7 +2632,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getCheckoutState()
    * @generated
    */
-  int CHECKOUT_STATE = 33;
+  int CHECKOUT_STATE = 34;
 
   /**
    * The meta object id for the '<em>Version</em>' data type.
@@ -2577,7 +2641,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getVersion()
    * @generated
    */
-  int VERSION = 34;
+  int VERSION = 35;
 
   /**
    * The meta object id for the '<em>Path</em>' data type.
@@ -2586,7 +2650,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getPath()
    * @generated
    */
-  int PATH = 35;
+  int PATH = 36;
 
   /**
    * The meta object id for the '<em>Repository Adapter</em>' data type.
@@ -2595,7 +2659,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryAdapter()
    * @generated
    */
-  int REPOSITORY_ADAPTER = 36;
+  int REPOSITORY_ADAPTER = 37;
 
   /**
    * The meta object id for the '<em>Repository Session</em>' data type.
@@ -2604,7 +2668,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositorySession()
    * @generated
    */
-  int REPOSITORY_SESSION = 37;
+  int REPOSITORY_SESSION = 38;
 
   /**
    * The meta object id for the '<em>Repository Folder</em>' data type.
@@ -2613,7 +2677,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryFolder()
    * @generated
    */
-  int REPOSITORY_FOLDER = 38;
+  int REPOSITORY_FOLDER = 39;
 
   /**
    * The meta object id for the '<em>Repository Tag</em>' data type.
@@ -2622,7 +2686,7 @@ public interface PopPackage extends EPackage
    * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryTag()
    * @generated
    */
-  int REPOSITORY_TAG = 39;
+  int REPOSITORY_TAG = 40;
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Identifiable <em>Identifiable</em>}'. <!--
@@ -2881,6 +2945,17 @@ public interface PopPackage extends EPackage
   EReference getRepository_Pop();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.eclipse.net4j.pop.Repository#getStrategy <em>Strategy</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Strategy</em>'.
+   * @see org.eclipse.net4j.pop.Repository#getStrategy()
+   * @see #getRepository()
+   * @generated
+   */
+  EReference getRepository_Strategy();
+
+  /**
    * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.Repository#getAdapter <em>Adapter</em>}'.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Adapter</em>'.
@@ -2919,6 +2994,27 @@ public interface PopPackage extends EPackage
    * @generated
    */
   EReference getRepository_MainBranch();
+
+  /**
+   * Returns the meta object for class '{@link org.eclipse.net4j.pop.RepositoryStrategy <em>Repository Strategy</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Repository Strategy</em>'.
+   * @see org.eclipse.net4j.pop.RepositoryStrategy
+   * @generated
+   */
+  EClass getRepositoryStrategy();
+
+  /**
+   * Returns the meta object for the container reference '{@link org.eclipse.net4j.pop.RepositoryStrategy#getRepository <em>Repository</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the container reference '<em>Repository</em>'.
+   * @see org.eclipse.net4j.pop.RepositoryStrategy#getRepository()
+   * @see #getRepositoryStrategy()
+   * @generated
+   */
+  EReference getRepositoryStrategy_Repository();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Developer <em>Developer</em>}'.
@@ -4194,6 +4290,14 @@ public interface PopPackage extends EPackage
     EReference REPOSITORY__POP = eINSTANCE.getRepository_Pop();
 
     /**
+     * The meta object literal for the '<em><b>Strategy</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REPOSITORY__STRATEGY = eINSTANCE.getRepository_Strategy();
+
+    /**
      * The meta object literal for the '<em><b>Adapter</b></em>' attribute feature.
      * <!-- begin-user-doc --> <!--
      * end-user-doc -->
@@ -4224,6 +4328,24 @@ public interface PopPackage extends EPackage
      * @generated
      */
     EReference REPOSITORY__MAIN_BRANCH = eINSTANCE.getRepository_MainBranch();
+
+    /**
+     * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.RepositoryStrategyImpl <em>Repository Strategy</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.eclipse.net4j.pop.impl.RepositoryStrategyImpl
+     * @see org.eclipse.net4j.pop.impl.PopPackageImpl#getRepositoryStrategy()
+     * @generated
+     */
+    EClass REPOSITORY_STRATEGY = eINSTANCE.getRepositoryStrategy();
+
+    /**
+     * The meta object literal for the '<em><b>Repository</b></em>' container reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REPOSITORY_STRATEGY__REPOSITORY = eINSTANCE.getRepositoryStrategy_Repository();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.DeveloperImpl <em>Developer</em>}' class. <!--

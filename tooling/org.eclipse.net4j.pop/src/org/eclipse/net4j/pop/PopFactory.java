@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactory.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
+ * $Id: PopFactory.java,v 1.7 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -60,6 +60,15 @@ public interface PopFactory extends EFactory
    * @generated
    */
   Repository createRepository();
+
+  /**
+   * Returns a new object of class '<em>Repository Strategy</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Repository Strategy</em>'.
+   * @generated
+   */
+  RepositoryStrategy createRepositoryStrategy();
 
   /**
    * Returns a new object of class '<em>Developer</em>'.

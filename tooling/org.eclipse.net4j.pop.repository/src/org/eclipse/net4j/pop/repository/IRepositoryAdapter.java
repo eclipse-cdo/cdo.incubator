@@ -23,6 +23,8 @@ public interface IRepositoryAdapter extends IAdaptable
 {
   public String getType();
 
+  public String getDefaultMainBranchName();
+
   public IRepositoryTag.Branch createBranchTag(String name);
 
   public IRepositoryTag.Version createVersionTag(String name);

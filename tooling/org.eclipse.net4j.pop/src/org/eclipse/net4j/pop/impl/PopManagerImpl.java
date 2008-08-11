@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopManagerImpl.java,v 1.13 2008-08-11 07:21:04 estepper Exp $
+ * $Id: PopManagerImpl.java,v 1.14 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -125,6 +125,19 @@ public class PopManagerImpl extends PopElementImpl implements PopManager
           PopPackage.POP__POP_MANAGER);
     }
     return pops;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Pop createPop(String name, String repositoryStrategyType, String repositoryAdapterType,
+      String repositoryDescriptor)
+  {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
   }
 
   /**

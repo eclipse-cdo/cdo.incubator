@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopItemProviderAdapterFactory.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
+ * $Id: PopItemProviderAdapterFactory.java,v 1.7 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -203,6 +203,31 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
     }
 
     return repositoryItemProvider;
+  }
+
+  /**
+   * This keeps track of the one adapter used for all {@link org.eclipse.net4j.pop.RepositoryStrategy} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected RepositoryStrategyItemProvider repositoryStrategyItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.eclipse.net4j.pop.RepositoryStrategy}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createRepositoryStrategyAdapter()
+  {
+    if (repositoryStrategyItemProvider == null)
+    {
+      repositoryStrategyItemProvider = new RepositoryStrategyItemProvider(this);
+    }
+
+    return repositoryStrategyItemProvider;
   }
 
   /**
@@ -787,6 +812,8 @@ public class PopItemProviderAdapterFactory extends PopAdapterFactory implements 
       primaryModuleItemProvider.dispose();
     if (repositoryItemProvider != null)
       repositoryItemProvider.dispose();
+    if (repositoryStrategyItemProvider != null)
+      repositoryStrategyItemProvider.dispose();
     if (developerItemProvider != null)
       developerItemProvider.dispose();
     if (taskGroupItemProvider != null)

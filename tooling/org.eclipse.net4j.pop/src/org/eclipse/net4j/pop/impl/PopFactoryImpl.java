@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.6 2008-08-09 18:31:09 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.7 2008-08-11 09:36:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -31,6 +31,7 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
+import org.eclipse.net4j.pop.RepositoryStrategy;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.SubBranch;
 import org.eclipse.net4j.pop.Tag;
@@ -107,6 +108,8 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
       return createPrimaryModule();
     case PopPackage.REPOSITORY:
       return createRepository();
+    case PopPackage.REPOSITORY_STRATEGY:
+      return createRepositoryStrategy();
     case PopPackage.DEVELOPER:
       return createDeveloper();
     case PopPackage.TASK_GROUP:
@@ -242,6 +245,17 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   {
     RepositoryImpl repository = new RepositoryImpl();
     return repository;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public RepositoryStrategy createRepositoryStrategy()
+  {
+    RepositoryStrategyImpl repositoryStrategy = new RepositoryStrategyImpl();
+    return repositoryStrategy;
   }
 
   /**

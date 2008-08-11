@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.10 2008-08-11 07:21:04 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.11 2008-08-11 09:36:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -38,6 +38,7 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
+import org.eclipse.net4j.pop.RepositoryStrategy;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.SubBranch;
@@ -118,6 +119,13 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * @generated
    */
   private EClass repositoryEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass repositoryStrategyEClass = null;
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -608,19 +616,20 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRepository_Adapter()
+  public EReference getRepository_Strategy()
   {
-    return (EAttribute)repositoryEClass.getEStructuralFeatures().get(1);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(1);
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRepository_AdapterType()
+  public EAttribute getRepository_Adapter()
   {
     return (EAttribute)repositoryEClass.getEStructuralFeatures().get(2);
   }
@@ -629,7 +638,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getRepository_Descriptor()
+  public EAttribute getRepository_AdapterType()
   {
     return (EAttribute)repositoryEClass.getEStructuralFeatures().get(3);
   }
@@ -638,9 +647,38 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getRepository_Descriptor()
+  {
+    return (EAttribute)repositoryEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getRepository_MainBranch()
   {
-    return (EReference)repositoryEClass.getEStructuralFeatures().get(4);
+    return (EReference)repositoryEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getRepositoryStrategy()
+  {
+    return repositoryStrategyEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRepositoryStrategy_Repository()
+  {
+    return (EReference)repositoryStrategyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1612,10 +1650,14 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     repositoryEClass = createEClass(REPOSITORY);
     createEReference(repositoryEClass, REPOSITORY__POP);
+    createEReference(repositoryEClass, REPOSITORY__STRATEGY);
     createEAttribute(repositoryEClass, REPOSITORY__ADAPTER);
     createEAttribute(repositoryEClass, REPOSITORY__ADAPTER_TYPE);
     createEAttribute(repositoryEClass, REPOSITORY__DESCRIPTOR);
     createEReference(repositoryEClass, REPOSITORY__MAIN_BRANCH);
+
+    repositoryStrategyEClass = createEClass(REPOSITORY_STRATEGY);
+    createEReference(repositoryStrategyEClass, REPOSITORY_STRATEGY__REPOSITORY);
 
     developerEClass = createEClass(DEVELOPER);
     createEReference(developerEClass, DEVELOPER__POP);
@@ -1784,6 +1826,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     moduleEClass.getESuperTypes().add(this.getPopElement());
     primaryModuleEClass.getESuperTypes().add(this.getModule());
     repositoryEClass.getESuperTypes().add(this.getPopElement());
+    repositoryStrategyEClass.getESuperTypes().add(this.getPopElement());
     developerEClass.getESuperTypes().add(this.getPopElement());
     developerEClass.getESuperTypes().add(this.getAssignee());
     taskGroupEClass.getESuperTypes().add(this.getPopElement());
@@ -1841,6 +1884,12 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getPop(),
         this.getPop_PopManager(),
         "pops", null, 0, -1, PopManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    EOperation op = addEOperation(popManagerEClass, this.getPop(), "createPop", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, ecorePackage.getEString(), "name", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, ecorePackage.getEString(), "repositoryStrategyType", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, ecorePackage.getEString(), "repositoryAdapterType", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, ecorePackage.getEString(), "repositoryDescriptor", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(popEClass, Pop.class, "Pop", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -1911,6 +1960,11 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getPop(),
         this.getPop_Repository(),
         "pop", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+    initEReference(
+        getRepository_Strategy(),
+        this.getRepositoryStrategy(),
+        this.getRepositoryStrategy_Repository(),
+        "strategy", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
     initEAttribute(
         getRepository_Adapter(),
         this.getRepositoryAdapter(),
@@ -1928,6 +1982,38 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getMainBranch(),
         this.getMainBranch_Repository(),
         "mainBranch", null, 1, 1, Repository.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    initEClass(repositoryStrategyEClass, RepositoryStrategy.class,
+        "RepositoryStrategy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+    initEReference(
+        getRepositoryStrategy_Repository(),
+        this.getRepository(),
+        this.getRepository_Strategy(),
+        "repository", null, 1, 1, RepositoryStrategy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getBranch(), "createBranch", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getDevelopmentStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getBranch(), "createBranch", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getMaintenanceStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getBranch(), "createBranch", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getDeliveryStream(), "stream", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getTag(), "createRootTag", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getBranch(), "branch", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getTag(), "createTag", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getDelivery(), "delivery", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getTag(), "createTag", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getIntegration(), "integration", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getTag(), "createTag", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getRelease(), "release", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+
+    op = addEOperation(repositoryStrategyEClass, this.getTag(), "createTag", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    addEParameter(op, this.getMilestone(), "milestone", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(developerEClass, Developer.class, "Developer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(
@@ -2250,8 +2336,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         null,
         "activeCheckout", null, 0, 1, CheckoutManager.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
-    EOperation op = addEOperation(checkoutManagerEClass, ecorePackage.getEBoolean(),
-        "hasCheckout", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    op = addEOperation(checkoutManagerEClass, ecorePackage.getEBoolean(), "hasCheckout", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
     addEParameter(op, this.getCheckoutDiscriminator(), "discriminator", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
 
     op = addEOperation(checkoutManagerEClass, this.getCheckout(), "getCheckout", 0, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$

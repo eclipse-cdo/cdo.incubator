@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopSwitch.java,v 1.6 2008-08-11 07:21:04 estepper Exp $
+ * $Id: PopSwitch.java,v 1.7 2008-08-11 09:36:05 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
@@ -36,6 +36,7 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.PrimaryModule;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
+import org.eclipse.net4j.pop.RepositoryStrategy;
 import org.eclipse.net4j.pop.SecondaryModule;
 import org.eclipse.net4j.pop.Stream;
 import org.eclipse.net4j.pop.SubBranch;
@@ -220,6 +221,20 @@ public class PopSwitch<T>
         result = caseIdentifiable(repository);
       if (result == null)
         result = caseDisplayable(repository);
+      if (result == null)
+        result = defaultCase(theEObject);
+      return result;
+    }
+    case PopPackage.REPOSITORY_STRATEGY:
+    {
+      RepositoryStrategy repositoryStrategy = (RepositoryStrategy)theEObject;
+      T result = caseRepositoryStrategy(repositoryStrategy);
+      if (result == null)
+        result = casePopElement(repositoryStrategy);
+      if (result == null)
+        result = caseIdentifiable(repositoryStrategy);
+      if (result == null)
+        result = caseDisplayable(repositoryStrategy);
       if (result == null)
         result = defaultCase(theEObject);
       return result;
@@ -727,6 +742,22 @@ public class PopSwitch<T>
    * @generated
    */
   public T caseRepository(Repository object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Repository Strategy</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Repository Strategy</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRepositoryStrategy(RepositoryStrategy object)
   {
     return null;
   }
