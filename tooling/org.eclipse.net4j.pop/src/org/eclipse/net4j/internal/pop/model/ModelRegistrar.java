@@ -5,6 +5,11 @@ import org.eclipse.net4j.internal.pop.natures.NatureManager;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelManager;
 import org.eclipse.net4j.pop.model.IModelRegistration;
+import org.eclipse.net4j.util.container.IContainerDelta;
+import org.eclipse.net4j.util.container.IContainerEvent;
+import org.eclipse.net4j.util.event.IEvent;
+import org.eclipse.net4j.util.event.IListener;
+import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -17,22 +22,18 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class ModelRegistrar<T extends EObject> extends NatureManager
+public abstract class ModelRegistrar<T extends EObject, INCOMING> extends Lifecycle
 {
   private IModelManager modelManager;
 
   private IModelHandler<T> modelHandler;
 
-  private String resourcePath;
-
   private Map<URI, IModelRegistration<T>> registrations = new HashMap<URI, IModelRegistration<T>>();
 
-  public ModelRegistrar(IModelManager modelManager, IModelHandler<T> modelHandler, String natureID, String resourcePath)
+  public ModelRegistrar(IModelManager modelManager, IModelHandler<T> modelHandler)
   {
-    super(natureID);
     this.modelManager = modelManager;
     this.modelHandler = modelHandler;
-    this.resourcePath = resourcePath;
   }
 
   public IModelManager getModelManager()
@@ -45,18 +46,11 @@ public class ModelRegistrar<T extends EObject> extends NatureManager
     return modelHandler;
   }
 
-  public String getResourcePath()
-  {
-    return resourcePath;
-  }
-
-  @Override
-  protected void projectAdded(IProject project)
+  public void addRegistration(INCOMING object)
   {
     try
     {
-      super.projectAdded(project);
-      URI uri = getResourceURI(project);
+      URI uri = getResourceURI(object);
       IModelRegistration<T> registration = modelManager.register(uri, modelHandler);
       registrations.put(uri, registration);
     }
@@ -66,13 +60,11 @@ public class ModelRegistrar<T extends EObject> extends NatureManager
     }
   }
 
-  @Override
-  protected void projectRemoved(IProject project)
+  public void removeRegistration(INCOMING object)
   {
     try
     {
-      super.projectRemoved(project);
-      URI uri = getResourceURI(project);
+      URI uri = getResourceURI(object);
       IModelRegistration<T> registration = registrations.get(uri);
       if (registration != null)
       {
@@ -84,17 +76,6 @@ public class ModelRegistrar<T extends EObject> extends NatureManager
       OM.LOG.error(ex);
     }
   }
-
-  // @Override
-  // protected void doActivate() throws Exception
-  // {
-  // super.doActivate();
-  // IProject[] projects = getProjects();
-  // for (IProject project : projects)
-  // {
-  //      
-  // }
-  // }
 
   @Override
   protected void doDeactivate() throws Exception
@@ -108,9 +89,77 @@ public class ModelRegistrar<T extends EObject> extends NatureManager
     super.doDeactivate();
   }
 
-  private URI getResourceURI(IProject project)
+  protected abstract URI getResourceURI(INCOMING object);
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class NatureBased<T extends EObject> extends ModelRegistrar<T, IProject> implements IListener
   {
-    String path = project.getName() + "/" + resourcePath;
-    return URI.createPlatformResourceURI(path, false);
+    private NatureManager natureManager;
+
+    private String resourcePath;
+
+    public NatureBased(IModelManager modelManager, IModelHandler<T> modelHandler, String natureID, String resourcePath)
+    {
+      super(modelManager, modelHandler);
+      this.natureManager = new NatureManager(natureID);
+      this.resourcePath = resourcePath;
+    }
+
+    public NatureManager getNatureManager()
+    {
+      return natureManager;
+    }
+
+    public String getResourcePath()
+    {
+      return resourcePath;
+    }
+
+    @SuppressWarnings("unchecked")
+    public void notifyEvent(IEvent event)
+    {
+      if (event.getSource() == natureManager && event instanceof IContainerEvent)
+      {
+        IContainerEvent<IProject> e = (IContainerEvent<IProject>)event;
+        for (IContainerDelta<IProject> delta : e.getDeltas())
+        {
+          switch (delta.getKind())
+          {
+          case ADDED:
+            addRegistration(delta.getElement());
+            break;
+
+          case REMOVED:
+            removeRegistration(delta.getElement());
+            break;
+          }
+        }
+      }
+    }
+
+    @Override
+    protected void doActivate() throws Exception
+    {
+      super.doActivate();
+      natureManager.addListener(this);
+      natureManager.activate();
+    }
+
+    @Override
+    protected void doDeactivate() throws Exception
+    {
+      natureManager.deactivate();
+      natureManager.removeListener(this);
+      super.doDeactivate();
+    }
+
+    @Override
+    protected URI getResourceURI(IProject project)
+    {
+      String path = project.getName() + "/" + resourcePath;
+      return URI.createPlatformResourceURI(path, false);
+    }
   }
 }
