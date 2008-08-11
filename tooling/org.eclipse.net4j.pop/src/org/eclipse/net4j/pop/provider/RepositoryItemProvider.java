@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.6 2008-08-11 09:36:04 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.7 2008-08-11 20:03:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -69,25 +69,10 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     {
       super.getPropertyDescriptors(object);
 
-      addStrategyPropertyDescriptor(object);
       addAdapterTypePropertyDescriptor(object);
       addDescriptorPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
-  }
-
-  /**
-   * This adds a property descriptor for the Strategy feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addStrategyPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_Repository_strategy_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_Repository_strategy_feature", "_UI_Repository_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        PopPackage.Literals.REPOSITORY__STRATEGY, false, false, false, null, null, null));
   }
 
   /**
@@ -134,6 +119,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
+      childrenFeatures.add(PopPackage.Literals.REPOSITORY__STRATEGY);
       childrenFeatures.add(PopPackage.Literals.REPOSITORY__MAIN_BRANCH);
     }
     return childrenFeatures;
@@ -189,11 +175,11 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
 
     switch (notification.getFeatureID(Repository.class))
     {
-    case PopPackage.REPOSITORY__STRATEGY:
     case PopPackage.REPOSITORY__ADAPTER_TYPE:
     case PopPackage.REPOSITORY__DESCRIPTOR:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
       return;
+    case PopPackage.REPOSITORY__STRATEGY:
     case PopPackage.REPOSITORY__MAIN_BRANCH:
       fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
       return;
@@ -211,6 +197,9 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
+
+    newChildDescriptors.add(createChildParameter(PopPackage.Literals.REPOSITORY__STRATEGY, PopFactory.eINSTANCE
+        .createRepositoryStrategy()));
 
     newChildDescriptors.add(createChildParameter(PopPackage.Literals.REPOSITORY__MAIN_BRANCH, PopFactory.eINSTANCE
         .createMainBranch()));

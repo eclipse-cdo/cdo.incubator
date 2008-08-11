@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.12 2008-08-11 20:03:25 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.13 2008-08-11 20:03:38 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
-import org.eclipse.core.resources.IProject;
 import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Branch;
 import org.eclipse.net4j.pop.Checkout;
@@ -65,6 +64,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 
 /**

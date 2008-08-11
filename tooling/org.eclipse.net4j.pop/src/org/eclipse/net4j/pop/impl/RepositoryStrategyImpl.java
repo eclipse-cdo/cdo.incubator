@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryStrategyImpl.java,v 1.1 2008-08-11 09:36:04 estepper Exp $
+ * $Id: RepositoryStrategyImpl.java,v 1.2 2008-08-11 20:03:25 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -26,8 +26,10 @@ import org.eclipse.net4j.pop.PopPackage;
 import org.eclipse.net4j.pop.Release;
 import org.eclipse.net4j.pop.Repository;
 import org.eclipse.net4j.pop.RepositoryStrategy;
+import org.eclipse.net4j.pop.SubBranch;
 import org.eclipse.net4j.pop.Tag;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
+import org.eclipse.net4j.pop.repository.IRepositorySession;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -35,6 +37,9 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.runtime.NullProgressMonitor;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Repository Strategy</b></em>'. <!--
@@ -164,11 +169,7 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
     if (mainBranch == null)
     {
       mainBranch = PopFactory.eINSTANCE.createMainBranch();
-      IRepositoryAdapter adapter = repository.getAdapter();
-      if (adapter != null)
-      {
-        mainBranch.setName(adapter.getDefaultMainBranchName());
-      }
+      mainBranch.setName(getMainBranchName());
     }
 
     stream.setBranch(mainBranch);
@@ -189,10 +190,19 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
     }
 
     Release baseline = stream.getBaseline();
-    Checkout checkout = baseline.getTag().checkout();
+    Tag baselineTag = baseline.getTag();
+
+    String branchName = getMaintenanceBranchName(baseline);
+    SubBranch branch = createSubBranch(baselineTag.getBranch(), branchName);
+
+    Checkout checkout = baselineTag.checkout();
+
     IRepositoryAdapter adapter = repository.getAdapter();
-    adapter.
-    return null;
+    IContainer localRoot = checkout.asProject();
+    IRepositorySession session = adapter.openSession(repository.getDescriptor(), localRoot, true,
+        new NullProgressMonitor());
+    session.branch(branch.getName(), branch.getTag().getName(), new NullProgressMonitor());
+    return branch;
   }
 
   /**
@@ -411,6 +421,56 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
       return basicGetRepository() != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * @ADDED
+   */
+  protected SubBranch createSubBranch(Branch parent, String branchName)
+  {
+    SubBranch branch = PopFactory.eINSTANCE.createSubBranch();
+    branch.setParent(parent);
+    branch.setName(branchName);
+
+    Tag rootTag = PopFactory.eINSTANCE.createTag();
+    rootTag.setName(getRootTagName(branchName));
+    rootTag.setBranch(branch);
+    return branch;
+  }
+
+  /**
+   * @ADDED
+   */
+  protected String getRootTagName(String branchName)
+  {
+    return "Root_" + branchName;
+  }
+
+  /**
+   * @ADDED
+   */
+  protected String getMainBranchName()
+  {
+    String branchName = "HEAD";
+    Repository repository = getRepository();
+    if (repository != null)
+    {
+      IRepositoryAdapter adapter = repository.getAdapter();
+      if (adapter != null)
+      {
+        branchName = adapter.getDefaultMainBranchName();
+      }
+    }
+
+    return branchName;
+  }
+
+  /**
+   * @ADDED
+   */
+  protected String getMaintenanceBranchName(Release baseline)
+  {
+    return "R_" + baseline.getVersion().asId() + "_maintenance";
   }
 
 } // RepositoryStrategyImpl

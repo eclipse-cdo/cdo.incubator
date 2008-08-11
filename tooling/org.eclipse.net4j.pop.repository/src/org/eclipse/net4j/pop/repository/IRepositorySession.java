@@ -10,6 +10,8 @@
  **************************************************************************/
 package org.eclipse.net4j.pop.repository;
 
+import org.eclipse.core.runtime.IProgressMonitor;
+
 /**
  * @author Eike Stepper
  */
@@ -22,6 +24,8 @@ public interface IRepositorySession
   public boolean isWriteAccess();
 
   public IRepositoryFolder getFolder(IRepositoryTag tag, String path);
+
+  public IRepositoryTag.Branch branch(String branchName, String rootTagName, IProgressMonitor monitor);
 
   public void close();
 }

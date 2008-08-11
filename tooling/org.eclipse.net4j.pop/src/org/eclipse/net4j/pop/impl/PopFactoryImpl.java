@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.7 2008-08-11 09:36:05 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.8 2008-08-11 20:03:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutManager;
@@ -51,6 +52,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
+import org.eclipse.net4j.pop.*;
 import org.eclipse.core.runtime.IPath;
 
 /**
@@ -164,8 +166,10 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
       return createCheckoutStateFromString(eDataType, initialValue);
     case PopPackage.VERSION:
       return createVersionFromString(eDataType, initialValue);
-    case PopPackage.PATH:
-      return createPathFromString(eDataType, initialValue);
+    case PopPackage.IPATH:
+      return createIPathFromString(eDataType, initialValue);
+    case PopPackage.IPROJECT:
+      return createIProjectFromString(eDataType, initialValue);
     case PopPackage.REPOSITORY_ADAPTER:
       return createRepositoryAdapterFromString(eDataType, initialValue);
     case PopPackage.REPOSITORY_SESSION:
@@ -192,8 +196,10 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
       return convertCheckoutStateToString(eDataType, instanceValue);
     case PopPackage.VERSION:
       return convertVersionToString(eDataType, instanceValue);
-    case PopPackage.PATH:
-      return convertPathToString(eDataType, instanceValue);
+    case PopPackage.IPATH:
+      return convertIPathToString(eDataType, instanceValue);
+    case PopPackage.IPROJECT:
+      return convertIProjectToString(eDataType, instanceValue);
     case PopPackage.REPOSITORY_ADAPTER:
       return convertRepositoryAdapterToString(eDataType, instanceValue);
     case PopPackage.REPOSITORY_SESSION:
@@ -479,19 +485,41 @@ public class PopFactoryImpl extends EFactoryImpl implements PopFactory
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public IPath createPathFromString(EDataType eDataType, String initialValue)
+  public IPath createIPathFromString(EDataType eDataType, String initialValue)
   {
     return (IPath)super.createFromString(eDataType, initialValue);
   }
 
   /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-  public String convertPathToString(EDataType eDataType, Object instanceValue)
+  public String convertIPathToString(EDataType eDataType, Object instanceValue)
+  {
+    return super.convertToString(eDataType, instanceValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IProject createIProjectFromString(EDataType eDataType, String initialValue)
+  {
+    return (IProject)super.createFromString(eDataType, initialValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertIProjectToString(EDataType eDataType, Object instanceValue)
   {
     return super.convertToString(eDataType, instanceValue);
   }

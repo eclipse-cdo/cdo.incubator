@@ -251,19 +251,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="pop" lowerBound="1" eType="#//Pop"
         eOpposite="#//Pop/checkoutManager"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
-        eType="#//Path" changeable="false" volatile="true" transient="true" derived="true"/>
+        eType="#//IPath" changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkouts" upperBound="-1"
         eType="#//Checkout" containment="true" resolveProxies="false" eOpposite="#//Checkout/manager"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activeCheckout" eType="#//Checkout"
         resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Checkout" eSuperTypes="#//PopElement">
+    <eOperations name="asProject" lowerBound="1" eType="#//IProject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="manager" lowerBound="1"
         eType="#//CheckoutManager" resolveProxies="false" eOpposite="#//CheckoutManager/checkouts"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="discriminator" lowerBound="1"
         eType="#//CheckoutDiscriminator" resolveProxies="false" eOpposite="#//CheckoutDiscriminator/checkout.1"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" lowerBound="1"
-        eType="#//Path" changeable="false" volatile="true" transient="true" derived="true"/>
+        eType="#//IPath" changeable="false" volatile="true" transient="true" derived="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="transitioning" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" changeable="false"
         volatile="true" transient="true" derived="true"/>
@@ -300,7 +301,8 @@
     <eLiterals name="Available" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EDataType" name="Version" instanceClassName="org.eclipse.net4j.pop.Version"/>
-  <eClassifiers xsi:type="ecore:EDataType" name="Path" instanceClassName="org.eclipse.core.runtime.IPath"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IPath" instanceClassName="org.eclipse.core.runtime.IPath"/>
+  <eClassifiers xsi:type="ecore:EDataType" name="IProject" instanceClassName="org.eclipse.core.resources.IProject"/>
   <eClassifiers xsi:type="ecore:EDataType" name="RepositoryAdapter" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryAdapter"/>
   <eClassifiers xsi:type="ecore:EDataType" name="RepositorySession" instanceClassName="org.eclipse.net4j.pop.repository.IRepositorySession"/>
   <eClassifiers xsi:type="ecore:EDataType" name="RepositoryFolder" instanceClassName="org.eclipse.net4j.pop.repository.IRepositoryFolder"/>

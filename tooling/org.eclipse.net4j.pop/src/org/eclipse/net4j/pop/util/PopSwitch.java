@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopSwitch.java,v 1.7 2008-08-11 09:36:05 estepper Exp $
+ * $Id: PopSwitch.java,v 1.8 2008-08-11 20:03:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
@@ -51,6 +51,7 @@ import org.eclipse.net4j.pop.WorkspaceSpecification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.net4j.pop.*;
 import java.util.List;
 
 /**

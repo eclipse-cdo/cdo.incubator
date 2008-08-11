@@ -8,10 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: CheckoutImpl.java,v 1.4 2008-08-09 18:31:09 estepper Exp $
+ * $Id: CheckoutImpl.java,v 1.5 2008-08-11 20:03:26 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.core.resources.IProject;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutDiscriminator;
 import org.eclipse.net4j.pop.CheckoutManager;
@@ -300,6 +301,18 @@ public class CheckoutImpl extends PopElementImpl implements Checkout
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.CHECKOUT__WORKSPACE_SPECIFICATION,
           newWorkspaceSpecification, newWorkspaceSpecification));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public IProject asProject()
+  {
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
   }
 
   /**
