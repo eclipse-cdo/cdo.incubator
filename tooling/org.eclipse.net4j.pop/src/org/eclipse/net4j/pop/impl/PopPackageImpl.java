@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackageImpl.java,v 1.9 2008-08-10 10:26:25 estepper Exp $
+ * $Id: PopPackageImpl.java,v 1.10 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
@@ -406,6 +406,16 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
   public EClass getDisplayable()
   {
     return displayableEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getDisplayable_DisplayString()
+  {
+    return (EAttribute)displayableEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -928,24 +938,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
   public EReference getSubBranch_Parent()
   {
     return (EReference)subBranchEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getSubBranch_RootTagName()
-  {
-    return (EAttribute)subBranchEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  public EReference getSubBranch_RootTag()
-  {
-    return (EReference)subBranchEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1592,6 +1584,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     createEAttribute(identifiableEClass, IDENTIFIABLE__ID);
 
     displayableEClass = createEClass(DISPLAYABLE);
+    createEAttribute(displayableEClass, DISPLAYABLE__DISPLAY_STRING);
 
     popElementEClass = createEClass(POP_ELEMENT);
     createEAttribute(popElementEClass, POP_ELEMENT__CLASS);
@@ -1665,8 +1658,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     subBranchEClass = createEClass(SUB_BRANCH);
     createEReference(subBranchEClass, SUB_BRANCH__PARENT);
-    createEAttribute(subBranchEClass, SUB_BRANCH__ROOT_TAG_NAME);
-    createEReference(subBranchEClass, SUB_BRANCH__ROOT_TAG);
 
     streamEClass = createEClass(STREAM);
     createEReference(streamEClass, STREAM__BRANCH);
@@ -1804,6 +1795,7 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
     branchEClass.getESuperTypes().add(this.getCheckoutDiscriminator());
     mainBranchEClass.getESuperTypes().add(this.getBranch());
     subBranchEClass.getESuperTypes().add(this.getBranch());
+    subBranchEClass.getESuperTypes().add(this.getTaggedElement());
     streamEClass.getESuperTypes().add(this.getPopElement());
     deliveryStreamEClass.getESuperTypes().add(this.getStream());
     integrationStreamEClass.getESuperTypes().add(this.getStream());
@@ -1830,8 +1822,10 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
 
     initEClass(displayableEClass, Displayable.class,
         "Displayable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
-
-    addEOperation(displayableEClass, ecorePackage.getEString(), "getDisplayString", 1, 1, IS_UNIQUE, IS_ORDERED); //$NON-NLS-1$
+    initEAttribute(
+        getDisplayable_DisplayString(),
+        ecorePackage.getEString(),
+        "displayString", null, 1, 1, Displayable.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(popElementEClass, PopElement.class,
         "PopElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -2074,15 +2068,6 @@ public class PopPackageImpl extends EPackageImpl implements PopPackage
         this.getBranch(),
         this.getBranch_Branches(),
         "parent", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEAttribute(
-        getSubBranch_RootTagName(),
-        ecorePackage.getEString(),
-        "rootTagName", null, 1, 1, SubBranch.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
-    initEReference(
-        getSubBranch_RootTag(),
-        this.getTag(),
-        null,
-        "rootTag", null, 1, 1, SubBranch.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED); //$NON-NLS-1$
 
     initEClass(streamEClass, Stream.class, "Stream", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
     initEReference(

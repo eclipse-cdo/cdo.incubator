@@ -29,7 +29,7 @@ public interface IModelResource extends INotifier, IAdaptable
 
   public IModelResource[] getReferences();
 
-  public IModelResource[] getReferers();
+  public IModelResource[] getReferrers();
 
   public Resource getResource();
 

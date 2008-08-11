@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementItemProvider.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: PopElementItemProvider.java,v 1.4 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -71,6 +71,7 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
       super.getPropertyDescriptors(object);
 
       addIdPropertyDescriptor(object);
+      addDisplayStringPropertyDescriptor(object);
       addClassPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -89,6 +90,24 @@ public class PopElementItemProvider extends ItemProviderAdapter implements IEdit
         getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_id_feature", "_UI_Identifiable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
         PopPackage.Literals.IDENTIFIABLE__ID, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null,
         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Display String feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addDisplayStringPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors
+        .add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+            getResourceLocator(),
+            getString("_UI_Displayable_displayString_feature"), //$NON-NLS-1$
+            getString(
+                "_UI_PropertyDescriptor_description", "_UI_Displayable_displayString_feature", "_UI_Displayable_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+            PopPackage.Literals.DISPLAYABLE__DISPLAY_STRING, false, false, false,
+            ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
   }
 
   /**

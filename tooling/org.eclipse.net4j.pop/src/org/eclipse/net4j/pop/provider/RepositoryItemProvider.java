@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryItemProvider.java,v 1.4 2008-08-10 10:26:25 estepper Exp $
+ * $Id: RepositoryItemProvider.java,v 1.5 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -156,7 +156,7 @@ public class RepositoryItemProvider extends PopElementItemProvider implements IE
   @Override
   public String getText(Object object)
   {
-    String label = ((Repository)object).getId();
+    String label = ((Repository)object).getAdapterType();
     return label == null || label.length() == 0 ? getString("_UI_Repository_type") : //$NON-NLS-1$
         getString("_UI_Repository_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }

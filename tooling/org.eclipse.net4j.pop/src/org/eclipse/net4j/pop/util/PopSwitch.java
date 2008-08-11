@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopSwitch.java,v 1.5 2008-08-09 18:31:10 estepper Exp $
+ * $Id: PopSwitch.java,v 1.6 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
@@ -354,6 +354,8 @@ public class PopSwitch<T>
       T result = caseSubBranch(subBranch);
       if (result == null)
         result = caseBranch(subBranch);
+      if (result == null)
+        result = caseTaggedElement(subBranch);
       if (result == null)
         result = caseCheckoutDiscriminator(subBranch);
       if (result == null)

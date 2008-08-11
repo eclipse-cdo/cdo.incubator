@@ -8,7 +8,9 @@
         changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Displayable" abstract="true" interface="true">
-    <eOperations name="getDisplayString" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayString" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString" changeable="false"
+        volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PopElement" abstract="true" eSuperTypes="#//Identifiable #//Displayable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="class" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
@@ -124,14 +126,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="repository" lowerBound="1"
         eType="#//Repository" eOpposite="#//Repository/mainBranch"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="SubBranch" eSuperTypes="#//Branch">
+  <eClassifiers xsi:type="ecore:EClass" name="SubBranch" eSuperTypes="#//Branch #//TaggedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="parent" lowerBound="1"
         eType="#//Branch" eOpposite="#//Branch/branches"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="rootTagName" lowerBound="1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rootTag" lowerBound="1"
-        eType="#//Tag" changeable="false" volatile="true" transient="true" derived="true"
-        resolveProxies="false"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Stream" abstract="true" eSuperTypes="#//PopElement">
     <eOperations name="getPop" lowerBound="1" eType="#//Pop"/>

@@ -80,9 +80,9 @@ public class ModelResource extends Notifier implements IModelResource
     return references;
   }
 
-  public synchronized ModelResource[] getReferers()
+  public synchronized ModelResource[] getReferrers()
   {
-    return modelManager.getReferers(this);
+    return modelManager.getReferrers(this);
   }
 
   @SuppressWarnings("unchecked")

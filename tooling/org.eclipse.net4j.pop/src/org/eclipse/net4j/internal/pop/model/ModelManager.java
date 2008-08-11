@@ -113,9 +113,9 @@ public class ModelManager extends QueueWorker<List<ModelResource>> implements IM
     return modelResource;
   }
 
-  public ModelResource[] getReferers(ModelResource referenced)
+  public ModelResource[] getReferrers(ModelResource target)
   {
-    // TODO: implement ModelManager.getReferers(modelResource)
+    // TODO: implement ModelManager.getReferrers(modelResource)
     throw new UnsupportedOperationException();
   }
 

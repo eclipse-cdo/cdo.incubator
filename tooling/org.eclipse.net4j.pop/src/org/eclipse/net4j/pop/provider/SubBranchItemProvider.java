@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchItemProvider.java,v 1.4 2008-08-10 07:29:51 estepper Exp $
+ * $Id: SubBranchItemProvider.java,v 1.5 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -17,7 +17,6 @@ import org.eclipse.net4j.pop.SubBranch;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
 import org.eclipse.emf.edit.provider.IItemColorProvider;
@@ -30,8 +29,6 @@ import org.eclipse.emf.edit.provider.ITableItemColorProvider;
 import org.eclipse.emf.edit.provider.ITableItemFontProvider;
 import org.eclipse.emf.edit.provider.ITableItemLabelProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import java.util.Collection;
 import java.util.List;
@@ -68,71 +65,23 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
     {
       super.getPropertyDescriptors(object);
 
-      addRootTagNamePropertyDescriptor(object);
-      addRootTagPropertyDescriptor(object);
+      addTagPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Root Tag Name feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRootTagNamePropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(),
-        getString("_UI_SubBranch_rootTagName_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_SubBranch_rootTagName_feature", "_UI_SubBranch_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        PopPackage.Literals.SUB_BRANCH__ROOT_TAG_NAME, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-        null, null));
-  }
-
-  /**
-   * This adds a property descriptor for the Root Tag feature.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRootTagPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
-        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_SubBranch_rootTag_feature"), //$NON-NLS-1$
-        getString("_UI_PropertyDescriptor_description", "_UI_SubBranch_rootTag_feature", "_UI_SubBranch_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-        PopPackage.Literals.SUB_BRANCH__ROOT_TAG, false, false, false, null, null, null));
-  }
-
-  /**
-   * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-   * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-   * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
+   * This adds a property descriptor for the Tag feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
+  protected void addTagPropertyDescriptor(Object object)
   {
-    if (childrenFeatures == null)
-    {
-      super.getChildrenFeatures(object);
-      childrenFeatures.add(PopPackage.Literals.SUB_BRANCH__ROOT_TAG);
-    }
-    return childrenFeatures;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
-  {
-    // Check the type of the specified child object and return the proper feature to use for
-    // adding (see {@link AddCommand}) it as a child.
-
-    return super.getChildFeature(object, child);
+    itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory)adapterFactory)
+        .getRootAdapterFactory(), getResourceLocator(), getString("_UI_TaggedElement_tag_feature"), //$NON-NLS-1$
+        getString("_UI_PropertyDescriptor_description", "_UI_TaggedElement_tag_feature", "_UI_TaggedElement_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        PopPackage.Literals.TAGGED_ELEMENT__TAG, true, false, true, null, null, null));
   }
 
   /**
@@ -169,16 +118,6 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   public void notifyChanged(Notification notification)
   {
     updateChildren(notification);
-
-    switch (notification.getFeatureID(SubBranch.class))
-    {
-    case PopPackage.SUB_BRANCH__ROOT_TAG_NAME:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-      return;
-    case PopPackage.SUB_BRANCH__ROOT_TAG:
-      fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
-      return;
-    }
     super.notifyChanged(notification);
   }
 

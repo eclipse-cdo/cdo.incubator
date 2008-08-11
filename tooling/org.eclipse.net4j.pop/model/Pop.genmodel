@@ -27,7 +27,7 @@
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Identifiable/id"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//Displayable">
-      <genOperations ecoreOperation="Pop.ecore#//Displayable/getDisplayString"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Displayable/displayString"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//PopElement">
       <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//PopElement/class"/>
@@ -53,7 +53,7 @@
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//PrimaryModule/pop"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//PrimaryModule/specificationPath"/>
     </genClasses>
-    <genClasses ecoreClass="Pop.ecore#//Repository">
+    <genClasses ecoreClass="Pop.ecore#//Repository" labelFeature="#//pop/Repository/adapterType">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Repository/pop"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Repository/adapter"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Repository/adapterType"/>
@@ -73,7 +73,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//TaskGroup/name"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//TaskGroup/assignee"/>
     </genClasses>
-    <genClasses ecoreClass="Pop.ecore#//Task">
+    <genClasses ecoreClass="Pop.ecore#//Task" labelFeature="#//pop/Task/mylynId">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//Task/mylynId"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//Task/assignee"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Pop.ecore#//Task/targets"/>
@@ -106,8 +106,6 @@
     </genClasses>
     <genClasses ecoreClass="Pop.ecore#//SubBranch">
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//SubBranch/parent"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Pop.ecore#//SubBranch/rootTagName"/>
-      <genFeatures property="Readonly" children="true" createChild="false" ecoreFeature="ecore:EReference Pop.ecore#//SubBranch/rootTag"/>
     </genClasses>
     <genClasses image="false" ecoreClass="Pop.ecore#//Stream">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Pop.ecore#//Stream/branch"/>

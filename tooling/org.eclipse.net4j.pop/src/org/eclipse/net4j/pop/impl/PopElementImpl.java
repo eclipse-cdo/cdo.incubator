@@ -8,17 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopElementImpl.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: PopElementImpl.java,v 1.4 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
+import org.eclipse.net4j.pop.Displayable;
 import org.eclipse.net4j.pop.PopElement;
 import org.eclipse.net4j.pop.PopPackage;
 
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMLResource;
+import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Element</b></em>'. <!-- end-user-doc -->
@@ -26,6 +29,7 @@ import org.eclipse.emf.ecore.xmi.XMLResource;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getDisplayString <em>Display String</em>}</li>
  *   <li>{@link org.eclipse.net4j.pop.impl.PopElementImpl#getClass_ <em>Class</em>}</li>
  * </ul>
  * </p>
@@ -42,6 +46,16 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
    * @ordered
    */
   protected static final String ID_EDEFAULT = null;
+
+  /**
+   * The default value of the '{@link #getDisplayString() <em>Display String</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDisplayString()
+   * @generated
+   * @ordered
+   */
+  protected static final String DISPLAY_STRING_EDEFAULT = null;
 
   /**
    * The default value of the '{@link #getClass_() <em>Class</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -96,7 +110,20 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
    */
   public String getDisplayString()
   {
-    return toString();
+    for (Adapter adapter : eAdapters())
+    {
+      if (adapter instanceof ItemProviderAdapter)
+      {
+        ItemProviderAdapter itemProviderAdapter = (ItemProviderAdapter)adapter;
+        String translated = itemProviderAdapter.getText(this);
+        if (translated != null)
+        {
+          return translated;
+        }
+      }
+    }
+
+    return getId();
   }
 
   /**
@@ -106,7 +133,21 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
    */
   public String getClass_()
   {
-    return eClass().getName();
+    String name = eClass().getName();
+    for (Adapter adapter : eAdapters())
+    {
+      if (adapter instanceof ItemProviderAdapter)
+      {
+        ItemProviderAdapter itemProviderAdapter = (ItemProviderAdapter)adapter;
+        String translated = itemProviderAdapter.getString("_UI_" + name + "_type");
+        if (translated != null)
+        {
+          return translated;
+        }
+      }
+    }
+
+    return name;
   }
 
   /**
@@ -120,6 +161,8 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
     {
     case PopPackage.POP_ELEMENT__ID:
       return getId();
+    case PopPackage.POP_ELEMENT__DISPLAY_STRING:
+      return getDisplayString();
     case PopPackage.POP_ELEMENT__CLASS:
       return getClass_();
     }
@@ -137,10 +180,53 @@ public abstract class PopElementImpl extends EObjectImpl implements PopElement
     {
     case PopPackage.POP_ELEMENT__ID:
       return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+    case PopPackage.POP_ELEMENT__DISPLAY_STRING:
+      return DISPLAY_STRING_EDEFAULT == null ? getDisplayString() != null : !DISPLAY_STRING_EDEFAULT
+          .equals(getDisplayString());
     case PopPackage.POP_ELEMENT__CLASS:
       return CLASS_EDEFAULT == null ? getClass_() != null : !CLASS_EDEFAULT.equals(getClass_());
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Displayable.class)
+    {
+      switch (derivedFeatureID)
+      {
+      case PopPackage.POP_ELEMENT__DISPLAY_STRING:
+        return PopPackage.DISPLAYABLE__DISPLAY_STRING;
+      default:
+        return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
+
+  /**
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
+  {
+    if (baseClass == Displayable.class)
+    {
+      switch (baseFeatureID)
+      {
+      case PopPackage.DISPLAYABLE__DISPLAY_STRING:
+        return PopPackage.POP_ELEMENT__DISPLAY_STRING;
+      default:
+        return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
   }
 
 } // PopElementImpl

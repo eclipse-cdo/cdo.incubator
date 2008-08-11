@@ -5,10 +5,6 @@ import org.eclipse.net4j.internal.pop.natures.NatureManager;
 import org.eclipse.net4j.pop.model.IModelHandler;
 import org.eclipse.net4j.pop.model.IModelManager;
 import org.eclipse.net4j.pop.model.IModelRegistration;
-import org.eclipse.net4j.util.container.IContainerDelta;
-import org.eclipse.net4j.util.container.IContainerEvent;
-import org.eclipse.net4j.util.event.IEvent;
-import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
 import org.eclipse.emf.common.util.URI;
@@ -94,7 +90,7 @@ public abstract class ModelRegistrar<T extends EObject, INCOMING> extends Lifecy
   /**
    * @author Eike Stepper
    */
-  public static class NatureBased<T extends EObject> extends ModelRegistrar<T, IProject> implements IListener
+  public static class NatureBased<T extends EObject> extends ModelRegistrar<T, IProject>
   {
     private NatureManager natureManager;
 
@@ -103,8 +99,23 @@ public abstract class ModelRegistrar<T extends EObject, INCOMING> extends Lifecy
     public NatureBased(IModelManager modelManager, IModelHandler<T> modelHandler, String natureID, String resourcePath)
     {
       super(modelManager, modelHandler);
-      this.natureManager = new NatureManager(natureID);
       this.resourcePath = resourcePath;
+      natureManager = new NatureManager(natureID)
+      {
+        @Override
+        protected void projectAdded(IProject project)
+        {
+          super.projectAdded(project);
+          addRegistration(project);
+        }
+
+        @Override
+        protected void projectRemoved(IProject project)
+        {
+          super.projectRemoved(project);
+          removeRegistration(project);
+        }
+      };
     }
 
     public NatureManager getNatureManager()
@@ -117,33 +128,10 @@ public abstract class ModelRegistrar<T extends EObject, INCOMING> extends Lifecy
       return resourcePath;
     }
 
-    @SuppressWarnings("unchecked")
-    public void notifyEvent(IEvent event)
-    {
-      if (event.getSource() == natureManager && event instanceof IContainerEvent)
-      {
-        IContainerEvent<IProject> e = (IContainerEvent<IProject>)event;
-        for (IContainerDelta<IProject> delta : e.getDeltas())
-        {
-          switch (delta.getKind())
-          {
-          case ADDED:
-            addRegistration(delta.getElement());
-            break;
-
-          case REMOVED:
-            removeRegistration(delta.getElement());
-            break;
-          }
-        }
-      }
-    }
-
     @Override
     protected void doActivate() throws Exception
     {
       super.doActivate();
-      natureManager.addListener(this);
       natureManager.activate();
     }
 
@@ -151,7 +139,6 @@ public abstract class ModelRegistrar<T extends EObject, INCOMING> extends Lifecy
     protected void doDeactivate() throws Exception
     {
       natureManager.deactivate();
-      natureManager.removeListener(this);
       super.doDeactivate();
     }
 

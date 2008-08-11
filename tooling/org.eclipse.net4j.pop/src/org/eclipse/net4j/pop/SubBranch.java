@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranch.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: SubBranch.java,v 1.4 2008-08-11 07:21:03 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -19,8 +19,6 @@ package org.eclipse.net4j.pop;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.eclipse.net4j.pop.SubBranch#getParent <em>Parent</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.SubBranch#getRootTagName <em>Root Tag Name</em>}</li>
- *   <li>{@link org.eclipse.net4j.pop.SubBranch#getRootTag <em>Root Tag</em>}</li>
  * </ul>
  * </p>
  *
@@ -28,7 +26,7 @@ package org.eclipse.net4j.pop;
  * @model
  * @generated
  */
-public interface SubBranch extends Branch
+public interface SubBranch extends Branch, TaggedElement
 {
   /**
    * Returns the value of the '<em><b>Parent</b></em>' container reference.
@@ -58,45 +56,5 @@ public interface SubBranch extends Branch
    * @generated
    */
   void setParent(Branch value);
-
-  /**
-   * Returns the value of the '<em><b>Root Tag Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Root Tag Name</em>' attribute isn't clear, there really should be more of a description
-   * here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Root Tag Name</em>' attribute.
-   * @see #setRootTagName(String)
-   * @see org.eclipse.net4j.pop.PopPackage#getSubBranch_RootTagName()
-   * @model required="true"
-   * @generated
-   */
-  String getRootTagName();
-
-  /**
-   * Sets the value of the '{@link org.eclipse.net4j.pop.SubBranch#getRootTagName <em>Root Tag Name</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @param value the new value of the '<em>Root Tag Name</em>' attribute.
-   * @see #getRootTagName()
-   * @generated
-   */
-  void setRootTagName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Root Tag</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Root Tag</em>' reference isn't clear, there really should be more of a description
-   * here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Root Tag</em>' reference.
-   * @see org.eclipse.net4j.pop.PopPackage#getSubBranch_RootTag()
-   * @model resolveProxies="false" required="true" transient="true" changeable="false" volatile="true" derived="true"
-   * @generated
-   */
-  Tag getRootTag();
 
 } // SubBranch

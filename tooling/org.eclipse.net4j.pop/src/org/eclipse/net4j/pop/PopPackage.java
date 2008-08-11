@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopPackage.java,v 1.7 2008-08-10 10:26:25 estepper Exp $
+ * $Id: PopPackage.java,v 1.8 2008-08-11 07:21:03 estepper Exp $
  */
 package org.eclipse.net4j.pop;
 
@@ -107,13 +107,22 @@ public interface PopPackage extends EPackage
   int DISPLAYABLE = 1;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DISPLAYABLE__DISPLAY_STRING = 0;
+
+  /**
    * The number of structural features of the '<em>Displayable</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
    * -->
    * 
    * @generated
    * @ordered
    */
-  int DISPLAYABLE_FEATURE_COUNT = 0;
+  int DISPLAYABLE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.PopElementImpl <em>Element</em>}' class. <!--
@@ -134,12 +143,21 @@ public interface PopPackage extends EPackage
   int POP_ELEMENT__ID = IDENTIFIABLE__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_ELEMENT__DISPLAY_STRING = IDENTIFIABLE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POP_ELEMENT__CLASS = IDENTIFIABLE_FEATURE_COUNT + 0;
+  int POP_ELEMENT__CLASS = IDENTIFIABLE_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Element</em>' class.
@@ -147,7 +165,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POP_ELEMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 1;
+  int POP_ELEMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.PopManagerImpl <em>Manager</em>}' class. <!--
@@ -166,6 +184,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int POP_MANAGER__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP_MANAGER__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -209,6 +236,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int POP__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POP__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -332,6 +368,15 @@ public interface PopPackage extends EPackage
   int MODULE__ID = POP_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MODULE__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -379,6 +424,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int PRIMARY_MODULE__ID = MODULE__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRIMARY_MODULE__DISPLAY_STRING = MODULE__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -447,6 +501,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int REPOSITORY__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REPOSITORY__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -522,6 +585,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int DEVELOPER__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPER__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -632,6 +704,15 @@ public interface PopPackage extends EPackage
   int TASK_GROUP__ID = POP_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK_GROUP__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -701,6 +782,15 @@ public interface PopPackage extends EPackage
   int TASK__ID = POP_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TASK__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -759,6 +849,15 @@ public interface PopPackage extends EPackage
   int CHECKOUT_DISCRIMINATOR__ID = POP_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT_DISCRIMINATOR__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -808,6 +907,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int TAG__ID = CHECKOUT_DISCRIMINATOR__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAG__DISPLAY_STRING = CHECKOUT_DISCRIMINATOR__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -883,6 +991,15 @@ public interface PopPackage extends EPackage
   int TAGGED_ELEMENT__ID = POP_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TAGGED_ELEMENT__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -924,6 +1041,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int BRANCH__ID = CHECKOUT_DISCRIMINATOR__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BRANCH__DISPLAY_STRING = CHECKOUT_DISCRIMINATOR__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1008,6 +1134,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int MAIN_BRANCH__ID = BRANCH__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAIN_BRANCH__DISPLAY_STRING = BRANCH__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1104,6 +1239,15 @@ public interface PopPackage extends EPackage
   int SUB_BRANCH__ID = BRANCH__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUB_BRANCH__DISPLAY_STRING = BRANCH__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1162,28 +1306,21 @@ public interface PopPackage extends EPackage
   int SUB_BRANCH__STREAM = BRANCH__STREAM;
 
   /**
+   * The feature id for the '<em><b>Tag</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SUB_BRANCH__TAG = BRANCH_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Parent</b></em>' container reference.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SUB_BRANCH__PARENT = BRANCH_FEATURE_COUNT + 0;
-
-  /**
-   * The feature id for the '<em><b>Root Tag Name</b></em>' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUB_BRANCH__ROOT_TAG_NAME = BRANCH_FEATURE_COUNT + 1;
-
-  /**
-   * The feature id for the '<em><b>Root Tag</b></em>' reference.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SUB_BRANCH__ROOT_TAG = BRANCH_FEATURE_COUNT + 2;
+  int SUB_BRANCH__PARENT = BRANCH_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Sub Branch</em>' class.
@@ -1191,7 +1328,7 @@ public interface PopPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SUB_BRANCH_FEATURE_COUNT = BRANCH_FEATURE_COUNT + 3;
+  int SUB_BRANCH_FEATURE_COUNT = BRANCH_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.eclipse.net4j.pop.impl.StreamImpl <em>Stream</em>}' class. <!--
@@ -1210,6 +1347,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int STREAM__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STREAM__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1260,6 +1406,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int DELIVERY_STREAM__ID = STREAM__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELIVERY_STREAM__DISPLAY_STRING = STREAM__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1346,6 +1501,15 @@ public interface PopPackage extends EPackage
   int INTEGRATION_STREAM__ID = STREAM__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGRATION_STREAM__DISPLAY_STRING = STREAM__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1413,6 +1577,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int DEVELOPMENT_STREAM__ID = INTEGRATION_STREAM__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DEVELOPMENT_STREAM__DISPLAY_STRING = INTEGRATION_STREAM__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1501,6 +1674,15 @@ public interface PopPackage extends EPackage
   int MAINTENANCE_STREAM__ID = INTEGRATION_STREAM__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MAINTENANCE_STREAM__DISPLAY_STRING = INTEGRATION_STREAM__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1587,6 +1769,15 @@ public interface PopPackage extends EPackage
   int TARGET__ID = TAGGED_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TARGET__DISPLAY_STRING = TAGGED_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1643,6 +1834,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int RELEASE__ID = TARGET__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int RELEASE__DISPLAY_STRING = TARGET__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1736,6 +1936,15 @@ public interface PopPackage extends EPackage
   int MILESTONE__ID = TARGET__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MILESTONE__DISPLAY_STRING = TARGET__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1808,6 +2017,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int DELIVERY__ID = TAGGED_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DELIVERY__DISPLAY_STRING = TAGGED_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -1884,6 +2102,15 @@ public interface PopPackage extends EPackage
   int INTEGRATION__ID = TAGGED_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTEGRATION__DISPLAY_STRING = TAGGED_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -1948,6 +2175,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int CHECKOUT_MANAGER__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT_MANAGER__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -2016,6 +2252,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int CHECKOUT__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CHECKOUT__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -2108,6 +2353,15 @@ public interface PopPackage extends EPackage
   int WORKSPACE_SPECIFICATION__ID = POP_ELEMENT__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORKSPACE_SPECIFICATION__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -2168,6 +2422,15 @@ public interface PopPackage extends EPackage
   int SECONDARY_MODULE__ID = MODULE__ID;
 
   /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SECONDARY_MODULE__DISPLAY_STRING = MODULE__DISPLAY_STRING;
+
+  /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
    * <!-- begin-user-doc --> <!-- end-user-doc -->
    * @generated
@@ -2225,6 +2488,15 @@ public interface PopPackage extends EPackage
    * @ordered
    */
   int WORKSPACE_CONFIGURATOR__ID = POP_ELEMENT__ID;
+
+  /**
+   * The feature id for the '<em><b>Display String</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int WORKSPACE_CONFIGURATOR__DISPLAY_STRING = POP_ELEMENT__DISPLAY_STRING;
 
   /**
    * The feature id for the '<em><b>Class</b></em>' attribute.
@@ -2382,6 +2654,17 @@ public interface PopPackage extends EPackage
    * @generated
    */
   EClass getDisplayable();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.Displayable#getDisplayString <em>Display String</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Display String</em>'.
+   * @see org.eclipse.net4j.pop.Displayable#getDisplayString()
+   * @see #getDisplayable()
+   * @generated
+   */
+  EAttribute getDisplayable_DisplayString();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.PopElement <em>Element</em>}'.
@@ -2976,26 +3259,6 @@ public interface PopPackage extends EPackage
    * @generated
    */
   EReference getSubBranch_Parent();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.eclipse.net4j.pop.SubBranch#getRootTagName <em>Root Tag Name</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Root Tag Name</em>'.
-   * @see org.eclipse.net4j.pop.SubBranch#getRootTagName()
-   * @see #getSubBranch()
-   * @generated
-   */
-  EAttribute getSubBranch_RootTagName();
-
-  /**
-   * Returns the meta object for the reference '{@link org.eclipse.net4j.pop.SubBranch#getRootTag <em>Root Tag</em>}'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Root Tag</em>'.
-   * @see org.eclipse.net4j.pop.SubBranch#getRootTag()
-   * @see #getSubBranch()
-   * @generated
-   */
-  EReference getSubBranch_RootTag();
 
   /**
    * Returns the meta object for class '{@link org.eclipse.net4j.pop.Stream <em>Stream</em>}'.
@@ -3745,6 +4008,14 @@ public interface PopPackage extends EPackage
     EClass DISPLAYABLE = eINSTANCE.getDisplayable();
 
     /**
+     * The meta object literal for the '<em><b>Display String</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DISPLAYABLE__DISPLAY_STRING = eINSTANCE.getDisplayable_DisplayString();
+
+    /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.PopElementImpl <em>Element</em>}' class. <!--
      * begin-user-doc --> <!-- end-user-doc -->
      * 
@@ -4230,22 +4501,6 @@ public interface PopPackage extends EPackage
      * @generated
      */
     EReference SUB_BRANCH__PARENT = eINSTANCE.getSubBranch_Parent();
-
-    /**
-     * The meta object literal for the '<em><b>Root Tag Name</b></em>' attribute feature.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * @generated
-     */
-    EAttribute SUB_BRANCH__ROOT_TAG_NAME = eINSTANCE.getSubBranch_RootTagName();
-
-    /**
-     * The meta object literal for the '<em><b>Root Tag</b></em>' reference feature.
-     * <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     * @generated
-     */
-    EReference SUB_BRANCH__ROOT_TAG = eINSTANCE.getSubBranch_RootTag();
 
     /**
      * The meta object literal for the '{@link org.eclipse.net4j.pop.impl.StreamImpl <em>Stream</em>}' class. <!--

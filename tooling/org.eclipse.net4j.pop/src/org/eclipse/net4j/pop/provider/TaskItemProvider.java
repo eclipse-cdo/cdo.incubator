@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: TaskItemProvider.java,v 1.3 2008-08-09 18:31:09 estepper Exp $
+ * $Id: TaskItemProvider.java,v 1.4 2008-08-11 07:21:04 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -121,7 +121,7 @@ public class TaskItemProvider extends PopElementItemProvider implements IEditing
   @Override
   public String getText(Object object)
   {
-    String label = ((Task)object).getId();
+    String label = ((Task)object).getMylynId();
     return label == null || label.length() == 0 ? getString("_UI_Task_type") : //$NON-NLS-1$
         getString("_UI_Task_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
   }
