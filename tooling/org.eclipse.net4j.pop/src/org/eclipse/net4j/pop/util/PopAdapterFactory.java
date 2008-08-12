@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopAdapterFactory.java,v 1.7 2008-08-11 20:03:26 estepper Exp $
+ * $Id: PopAdapterFactory.java,v 1.8 2008-08-12 07:31:40 estepper Exp $
  */
 package org.eclipse.net4j.pop.util;
 
@@ -52,7 +52,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.net4j.pop.*;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>

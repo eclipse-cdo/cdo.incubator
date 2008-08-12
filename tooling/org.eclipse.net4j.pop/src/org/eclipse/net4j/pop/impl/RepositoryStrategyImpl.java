@@ -8,12 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: RepositoryStrategyImpl.java,v 1.2 2008-08-11 20:03:25 estepper Exp $
+ * $Id: RepositoryStrategyImpl.java,v 1.3 2008-08-12 07:31:40 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
 import org.eclipse.net4j.pop.Branch;
-import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.Delivery;
 import org.eclipse.net4j.pop.DeliveryStream;
 import org.eclipse.net4j.pop.DevelopmentStream;
@@ -29,7 +28,6 @@ import org.eclipse.net4j.pop.RepositoryStrategy;
 import org.eclipse.net4j.pop.SubBranch;
 import org.eclipse.net4j.pop.Tag;
 import org.eclipse.net4j.pop.repository.IRepositoryAdapter;
-import org.eclipse.net4j.pop.repository.IRepositorySession;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -38,8 +36,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.runtime.NullProgressMonitor;
+import java.util.Date;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Repository Strategy</b></em>'. <!--
@@ -47,17 +44,16 @@ import org.eclipse.core.runtime.NullProgressMonitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.net4j.pop.impl.RepositoryStrategyImpl#getRepository <em>Repository</em>}</li>
+ *   <li>{@link org.eclipse.net4j.pop.impl.RepositoryStrategyImpl#getRepository <em>Repository</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class RepositoryStrategyImpl extends PopElementImpl implements RepositoryStrategy
 {
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   protected RepositoryStrategyImpl()
@@ -67,7 +63,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -78,35 +73,28 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Repository getRepository()
   {
     if (eContainerFeatureID != PopPackage.REPOSITORY_STRATEGY__REPOSITORY)
-    {
       return null;
-    }
     return (Repository)eContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public Repository basicGetRepository()
   {
     if (eContainerFeatureID != PopPackage.REPOSITORY_STRATEGY__REPOSITORY)
-    {
       return null;
-    }
     return (Repository)eInternalContainer();
   }
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public NotificationChain basicSetRepository(Repository newRepository, NotificationChain msgs)
@@ -117,39 +105,28 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   public void setRepository(Repository newRepository)
   {
-    if (newRepository != eInternalContainer() || eContainerFeatureID != PopPackage.REPOSITORY_STRATEGY__REPOSITORY
-        && newRepository != null)
+    if (newRepository != eInternalContainer()
+        || (eContainerFeatureID != PopPackage.REPOSITORY_STRATEGY__REPOSITORY && newRepository != null))
     {
       if (EcoreUtil.isAncestor(this, newRepository))
-      {
         throw new IllegalArgumentException("Recursive containment not allowed for " + toString()); //$NON-NLS-1$
-      }
       NotificationChain msgs = null;
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       if (newRepository != null)
-      {
         msgs = ((InternalEObject)newRepository).eInverseAdd(this, PopPackage.REPOSITORY__STRATEGY, Repository.class,
             msgs);
-      }
       msgs = basicSetRepository(newRepository, msgs);
       if (msgs != null)
-      {
         msgs.dispatch();
-      }
     }
     else if (eNotificationRequired())
-    {
       eNotify(new ENotificationImpl(this, Notification.SET, PopPackage.REPOSITORY_STRATEGY__REPOSITORY, newRepository,
           newRepository));
-    }
   }
 
   /**
@@ -191,18 +168,17 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
     Release baseline = stream.getBaseline();
     Tag baselineTag = baseline.getTag();
-
     String branchName = getMaintenanceBranchName(baseline);
-    SubBranch branch = createSubBranch(baselineTag.getBranch(), branchName);
-
-    Checkout checkout = baselineTag.checkout();
-
-    IRepositoryAdapter adapter = repository.getAdapter();
-    IContainer localRoot = checkout.asProject();
-    IRepositorySession session = adapter.openSession(repository.getDescriptor(), localRoot, true,
-        new NullProgressMonitor());
-    session.branch(branch.getName(), branch.getTag().getName(), new NullProgressMonitor());
-    return branch;
+    return createSubBranch(baselineTag.getBranch(), branchName);
+    // Tag rootTag = branch.getTag();
+    // Checkout checkout = rootTag.checkout();
+    //
+    // IRepositoryAdapter adapter = repository.getAdapter();
+    // IContainer localRoot = checkout.asProject();
+    // IRepositorySession session = adapter.openSession(repository.getDescriptor(), localRoot, true,
+    // new NullProgressMonitor());
+    // session.branch(branch.getName(), rootTag.getName(), new NullProgressMonitor());
+    // return branch;
   }
 
   /**
@@ -218,7 +194,10 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
       return null;
     }
 
-    return null;
+    Date baseline = stream.getBaseline();
+    Tag baselineTag = baseline.getTag();
+    String branchName = getMaintenanceBranchName(baseline);
+    return createSubBranch(baselineTag.getBranch(), branchName);
   }
 
   /**
@@ -303,7 +282,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -313,9 +291,7 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY_STRATEGY__REPOSITORY:
       if (eInternalContainer() != null)
-      {
         msgs = eBasicRemoveFromContainer(msgs);
-      }
       return basicSetRepository((Repository)otherEnd, msgs);
     }
     return super.eInverseAdd(otherEnd, featureID, msgs);
@@ -323,7 +299,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -339,7 +314,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -355,7 +329,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -365,9 +338,7 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
     {
     case PopPackage.REPOSITORY_STRATEGY__REPOSITORY:
       if (resolve)
-      {
         return getRepository();
-      }
       return basicGetRepository();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -375,7 +346,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -392,7 +362,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override
@@ -409,7 +378,6 @@ public class RepositoryStrategyImpl extends PopElementImpl implements Repository
 
   /**
    * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * 
    * @generated
    */
   @Override

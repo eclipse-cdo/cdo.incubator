@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: SubBranchItemProvider.java,v 1.5 2008-08-11 07:21:04 estepper Exp $
+ * $Id: SubBranchItemProvider.java,v 1.6 2008-08-12 07:31:40 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
@@ -34,9 +34,9 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * This is the item provider adapter for a {@link org.eclipse.net4j.pop.SubBranch} object.
- * <!-- begin-user-doc --> <!--
+ * This is the item provider adapter for a {@link org.eclipse.net4j.pop.SubBranch} object. <!-- begin-user-doc --> <!--
  * end-user-doc -->
+ * 
  * @generated
  */
 public class SubBranchItemProvider extends BranchItemProvider implements IEditingDomainItemProvider,
@@ -44,8 +44,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
     ITableItemLabelProvider, ITableItemColorProvider, ITableItemFontProvider, IItemColorProvider, IItemFontProvider
 {
   /**
-   * This constructs an instance from a factory and a notifier.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   public SubBranchItemProvider(AdapterFactory adapterFactory)
@@ -54,8 +54,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This returns the property descriptors for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns the property descriptors for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -71,9 +71,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This adds a property descriptor for the Tag feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+   * This adds a property descriptor for the Tag feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   protected void addTagPropertyDescriptor(Object object)
@@ -85,8 +84,8 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This returns SubBranch.gif.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This returns SubBranch.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -96,22 +95,22 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This returns the label text for the adapted class.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
+   * This returns the label text for the adapted class. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
+   * @generated NOT
    */
   @Override
   public String getText(Object object)
   {
     String label = ((SubBranch)object).getName();
     return label == null || label.length() == 0 ? getString("_UI_SubBranch_type") : //$NON-NLS-1$
-        getString("_UI_SubBranch_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+        label;
   }
 
   /**
-   * This handles model notifications by calling {@link #updateChildren} to update any cached
-   * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This handles model notifications by calling {@link #updateChildren} to update any cached children and by creating a
+   * viewer notification, which it passes to {@link #fireNotifyChanged}. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override
@@ -122,9 +121,9 @@ public class SubBranchItemProvider extends BranchItemProvider implements IEditin
   }
 
   /**
-   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-   * that can be created under this object.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children that can be created under
+   * this object. <!-- begin-user-doc --> <!-- end-user-doc -->
+   * 
    * @generated
    */
   @Override

@@ -12,20 +12,24 @@ package org.eclipse.net4j.pop.internal.ui.views;
 
 import org.eclipse.net4j.pop.PopManager;
 import org.eclipse.net4j.pop.provider.PopItemProviderAdapterFactory;
-import org.eclipse.net4j.util.ui.views.MasterDetailsView;
+import org.eclipse.net4j.util.ui.actions.SafeAction;
+import org.eclipse.net4j.util.ui.views.MultiViewersView;
 
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 
 /**
  * @author Eike Stepper
  */
-public class PopsView extends MasterDetailsView
+public class PopsView extends MultiViewersView
 {
   private ComposedAdapterFactory adapterFactory;
 
@@ -37,30 +41,26 @@ public class PopsView extends MasterDetailsView
   }
 
   @Override
-  protected StructuredViewer createMaster(Composite parent)
-  {
-    TreeViewer viewer = createViewer(parent);
-    viewer.setInput(PopManager.INSTANCE);
-    return viewer;
-  }
-
-  @Override
-  protected StructuredViewer createDetail(Composite parent, String title)
-  {
-    throw new IllegalArgumentException("title: " + title);
-  }
-
-  @Override
-  protected String[] getDetailTitles(Object masterElement)
-  {
-    return new String[0];
-  }
-
-  private TreeViewer createViewer(Composite parent)
+  protected Control createUI(Composite parent)
   {
     TreeViewer viewer = new TreeViewer(parent, (SWT.H_SCROLL | SWT.V_SCROLL));
     viewer.setContentProvider(new PopContentProvider(adapterFactory));
     viewer.setLabelProvider(new PopLabelProvider(adapterFactory));
-    return viewer;
+    viewer.setInput(PopManager.INSTANCE);
+
+    setCurrentViewer(viewer);
+    return viewer.getTree();
+  }
+
+  @Override
+  protected void fillContextMenu(IMenuManager manager, StructuredViewer viewer, IStructuredSelection selection)
+  {
+    manager.add(new SafeAction("Test")
+    {
+      @Override
+      protected void safeRun() throws Exception
+      {
+      }
+    });
   }
 }

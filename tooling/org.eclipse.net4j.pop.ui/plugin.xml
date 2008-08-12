@@ -11,7 +11,7 @@
  Contributors:
     Eike Stepper - initial API and implementation
 
- $Id: plugin.xml,v 1.26 2008-08-11 06:40:48 estepper Exp $
+ $Id: plugin.xml,v 1.27 2008-08-12 07:31:43 estepper Exp $
 -->
 
 <plugin>
@@ -73,6 +73,22 @@
             </and>
          </enablement>
       </decorator>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="true"
+            id="org.eclipse.net4j.pop.CheckoutDiscriminatorContribution"
+            objectClass="org.eclipse.net4j.pop.CheckoutDiscriminator">
+         <action
+               class="org.eclipse.net4j.pop.internal.ui.actions.CheckoutActionDelegate"
+               enablesFor="1"
+               id="org.eclipse.net4j.pop.ui.CheckoutAction"
+               label="Checkout"
+               state="true"
+               style="push">
+         </action>
+      </objectContribution>
    </extension>
    
    <!--extension

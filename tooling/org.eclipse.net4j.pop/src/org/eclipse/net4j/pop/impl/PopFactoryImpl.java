@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: PopFactoryImpl.java,v 1.8 2008-08-11 20:03:26 estepper Exp $
+ * $Id: PopFactoryImpl.java,v 1.9 2008-08-12 07:31:40 estepper Exp $
  */
 package org.eclipse.net4j.pop.impl;
 
-import org.eclipse.core.resources.IProject;
 import org.eclipse.net4j.pop.Assignee;
 import org.eclipse.net4j.pop.Checkout;
 import org.eclipse.net4j.pop.CheckoutManager;
@@ -52,7 +51,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
-import org.eclipse.net4j.pop.*;
+import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IPath;
 
 /**
