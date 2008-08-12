@@ -8,12 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: MaintenanceStreamItemProvider.java,v 1.4 2008-08-12 07:31:40 estepper Exp $
+ * $Id: MaintenanceStreamItemProvider.java,v 1.5 2008-08-12 08:23:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
 import org.eclipse.net4j.pop.MaintenanceStream;
 import org.eclipse.net4j.pop.PopPackage;
+import org.eclipse.net4j.pop.Release;
+import org.eclipse.net4j.pop.Version;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -105,7 +107,9 @@ public class MaintenanceStreamItemProvider extends IntegrationStreamItemProvider
   @Override
   public String getText(Object object)
   {
-    String label = ((MaintenanceStream)object).getBaseline().getVersion().toString();
+    Release baseline = ((MaintenanceStream)object).getBaseline();
+    Version version = baseline == null ? null : baseline.getVersion();
+    String label = version == null ? null : version.toString();
     return label == null || label.length() == 0 ? getString("_UI_MaintenanceStream_type") : //$NON-NLS-1$
         label + " " + getString("_UI_Maintenance"); //$NON-NLS-1$ //$NON-NLS-2$
   }

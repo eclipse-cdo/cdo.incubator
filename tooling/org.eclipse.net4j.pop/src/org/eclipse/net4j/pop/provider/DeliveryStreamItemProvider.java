@@ -8,13 +8,14 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  *
- * $Id: DeliveryStreamItemProvider.java,v 1.4 2008-08-12 07:31:40 estepper Exp $
+ * $Id: DeliveryStreamItemProvider.java,v 1.5 2008-08-12 08:23:33 estepper Exp $
  */
 package org.eclipse.net4j.pop.provider;
 
 import org.eclipse.net4j.pop.DeliveryStream;
 import org.eclipse.net4j.pop.PopFactory;
 import org.eclipse.net4j.pop.PopPackage;
+import org.eclipse.net4j.pop.Task;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
@@ -156,7 +157,8 @@ public class DeliveryStreamItemProvider extends StreamItemProvider implements IE
   @Override
   public String getText(Object object)
   {
-    String label = ((DeliveryStream)object).getTask().getMylynId();
+    Task task = ((DeliveryStream)object).getTask();
+    String label = task == null ? null : task.getMylynId();
     return label == null || label.length() == 0 ? getString("_UI_DeliveryStream_type") : //$NON-NLS-1$
         label + " " + getString("_UI_Delivery"); //$NON-NLS-1$ //$NON-NLS-2$
   }

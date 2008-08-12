@@ -13,6 +13,7 @@ package org.eclipse.net4j.pop.repository.internal.ccvs;
 import org.eclipse.net4j.pop.internal.repository.RepositorySession;
 import org.eclipse.net4j.pop.repository.IRepositoryFolder;
 import org.eclipse.net4j.pop.repository.IRepositoryTag;
+import org.eclipse.net4j.pop.repository.IRepositoryTag.Branch;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -59,6 +60,12 @@ public class CvsRepositorySession extends RepositorySession
   public IRepositoryFolder getFolder(IRepositoryTag tag, String path)
   {
     return new CvsRepositoryFolder(this, (CvsRepositoryTag)tag, path);
+  }
+
+  public Branch branch(String branchName, String rootTagName, IProgressMonitor monitor)
+  {
+    // TODO: implement CvsRepositorySession.branch(branchName, rootTagName, monitor)
+    throw new UnsupportedOperationException();
   }
 
   public void close()
