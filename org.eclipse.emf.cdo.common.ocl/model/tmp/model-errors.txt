@@ -1,0 +1,10 @@
+EClass
+EClassifier
+EDataType
+EEnumLiteral
+ENamedElement
+EObject
+EOperation
+EParameter
+EStructuralFeature
+ETypedElement
