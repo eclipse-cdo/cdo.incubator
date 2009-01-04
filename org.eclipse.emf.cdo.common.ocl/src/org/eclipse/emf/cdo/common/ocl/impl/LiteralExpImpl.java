@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: LiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: LiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -26,7 +26,7 @@ import org.eclipse.ocl.util.ToStringVisitor;
  * <em><b>Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class LiteralExpImpl
@@ -34,23 +34,21 @@ public abstract class LiteralExpImpl
 		implements LiteralExp {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected LiteralExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.LITERAL_EXP;
-	}
+    return OCLPackage.Literals.LITERAL_EXP;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

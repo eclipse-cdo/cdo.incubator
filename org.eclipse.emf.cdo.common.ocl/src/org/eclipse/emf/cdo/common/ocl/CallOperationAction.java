@@ -13,7 +13,7 @@
  * 
  * </copyright>
  *
- * $Id: CallOperationAction.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: CallOperationAction.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
@@ -23,15 +23,14 @@ import org.eclipse.emf.ecore.EObject;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Call Operation Action</b></em>'. <!-- end-user-doc -->
- * 
+ *
  * <p>
  * The following features are supported:
  * <ul>
- * <li>{@link org.eclipse.emf.cdo.common.ocl.CallOperationAction#getOperation
- * <em>Operation</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.CallOperationAction#getOperation <em>Operation</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCallOperationAction()
  * @model
  * @generated

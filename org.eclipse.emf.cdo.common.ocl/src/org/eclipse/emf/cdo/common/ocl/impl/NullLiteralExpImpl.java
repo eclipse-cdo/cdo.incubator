@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NullLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: NullLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -27,7 +27,7 @@ import org.eclipse.ocl.utilities.Visitor;
  * <em><b>Null Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class NullLiteralExpImpl
@@ -35,23 +35,21 @@ public class NullLiteralExpImpl
 		implements NullLiteralExp {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected NullLiteralExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.NULL_LITERAL_EXP;
-	}
+    return OCLPackage.Literals.NULL_LITERAL_EXP;
+  }
 
 	/**
 	 * @generated NOT

@@ -24,7 +24,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="WellFormedName WellFormedInstanceTypeName"/>
       </eAnnotations>
-      <eGenericSuperTypes eClassifier="#//fake/CDODataType"/>
+      <eGenericSuperTypes eClassifier="#//fake/CDOType"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//types/CollectionType">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
         <eTypeArguments eClassifier="#//fake/CDOOperation"/>
@@ -66,7 +66,7 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
         <details key="constraints" value="WellFormedName WellFormedInstanceTypeName"/>
       </eAnnotations>
-      <eGenericSuperTypes eClassifier="#//fake/CDODataType"/>
+      <eGenericSuperTypes eClassifier="#//fake/CDOType"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//types/PrimitiveType">
         <eTypeArguments eClassifier="#//fake/CDOOperation"/>
       </eGenericSuperTypes>
@@ -90,7 +90,7 @@
         <details key="constraints" value="WellFormedName WellFormedInstanceTypeName"/>
       </eAnnotations>
       <eGenericSuperTypes eClassifier="#//fake/CDOClass"/>
-      <eGenericSuperTypes eClassifier="#//fake/CDODataType"/>
+      <eGenericSuperTypes eClassifier="#//fake/CDOType"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//types/TupleType">
         <eTypeArguments eClassifier="#//fake/CDOOperation"/>
         <eTypeArguments eClassifier="#//fake/CDOFeature"/>
@@ -394,7 +394,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="CDOFeature" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOClass"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOClassifier" abstract="true"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CDODataType"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CDOType"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOEnumLiteral"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDONamedElement" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOOperation"/>

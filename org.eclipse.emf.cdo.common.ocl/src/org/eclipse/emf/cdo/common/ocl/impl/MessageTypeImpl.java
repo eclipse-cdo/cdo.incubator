@@ -13,7 +13,7 @@
  * 
  * </copyright>
  *
- * $Id: MessageTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: MessageTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -51,15 +51,11 @@ import org.eclipse.ocl.utilities.UMLReflection;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.MessageTypeImpl#getReferredOperation
- * <em>Referred Operation</em>}</li>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.MessageTypeImpl#getReferredSignal
- * <em>Referred Signal</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageTypeImpl#getReferredOperation <em>Referred Operation</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageTypeImpl#getReferredSignal <em>Referred Signal</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class MessageTypeImpl
@@ -67,25 +63,23 @@ public class MessageTypeImpl
 		implements MessageType {
 
 	/**
-	 * The cached value of the '{@link #getReferredOperation()
-	 * <em>Referred Operation</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getReferredOperation() <em>Referred Operation</em>}' reference.
+   * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @see #getReferredOperation()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferredOperation()
+   * @generated
+   * @ordered
+   */
 	protected CDOOperation referredOperation;
 
 	/**
-	 * The cached value of the '{@link #getReferredSignal()
-	 * <em>Referred Signal</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getReferredSignal() <em>Referred Signal</em>}' reference.
+   * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @see #getReferredSignal()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferredSignal()
+   * @generated
+   * @ordered
+   */
 	protected CDOClassifier referredSignal;
 
 	private EList<CDOOperation> operations;
@@ -93,108 +87,95 @@ public class MessageTypeImpl
 	private EList<CDOFeature> properties;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected MessageTypeImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.MESSAGE_TYPE;
-	}
+    return OCLPackage.Literals.MESSAGE_TYPE;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public CDOOperation getReferredOperation() {
-		if (referredOperation != null
-			&& ((EObject) referredOperation).eIsProxy()) {
-			InternalEObject oldReferredOperation = (InternalEObject) referredOperation;
-			referredOperation = (CDOOperation) eResolveProxy(oldReferredOperation);
-			if (referredOperation != oldReferredOperation) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION,
-						oldReferredOperation, referredOperation));
-			}
-		}
-		return referredOperation;
-	}
+    if (referredOperation != null && ((EObject)referredOperation).eIsProxy())
+    {
+      InternalEObject oldReferredOperation = (InternalEObject)referredOperation;
+      referredOperation = (CDOOperation)eResolveProxy(oldReferredOperation);
+      if (referredOperation != oldReferredOperation)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION, oldReferredOperation, referredOperation));
+      }
+    }
+    return referredOperation;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public CDOOperation basicGetReferredOperation() {
-		return referredOperation;
-	}
+    return referredOperation;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setReferredOperation(CDOOperation newReferredOperation) {
-		CDOOperation oldReferredOperation = referredOperation;
-		referredOperation = newReferredOperation;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION,
-				oldReferredOperation, referredOperation));
-	}
+    CDOOperation oldReferredOperation = referredOperation;
+    referredOperation = newReferredOperation;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION, oldReferredOperation, referredOperation));
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public CDOClassifier getReferredSignal() {
-		if (referredSignal != null && ((EObject) referredSignal).eIsProxy()) {
-			InternalEObject oldReferredSignal = (InternalEObject) referredSignal;
-			referredSignal = (CDOClassifier) eResolveProxy(oldReferredSignal);
-			if (referredSignal != oldReferredSignal) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL,
-						oldReferredSignal, referredSignal));
-			}
-		}
-		return referredSignal;
-	}
+    if (referredSignal != null && ((EObject)referredSignal).eIsProxy())
+    {
+      InternalEObject oldReferredSignal = (InternalEObject)referredSignal;
+      referredSignal = (CDOClassifier)eResolveProxy(oldReferredSignal);
+      if (referredSignal != oldReferredSignal)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL, oldReferredSignal, referredSignal));
+      }
+    }
+    return referredSignal;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public CDOClassifier basicGetReferredSignal() {
-		return referredSignal;
-	}
+    return referredSignal;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setReferredSignal(CDOClassifier newReferredSignal) {
-		CDOClassifier oldReferredSignal = referredSignal;
-		referredSignal = newReferredSignal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL, oldReferredSignal,
-				referredSignal));
-	}
+    CDOClassifier oldReferredSignal = referredSignal;
+    referredSignal = newReferredSignal;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL, oldReferredSignal, referredSignal));
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -310,127 +291,123 @@ public class MessageTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION :
-				if (resolve)
-					return getReferredOperation();
-				return basicGetReferredOperation();
-			case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL :
-				if (resolve)
-					return getReferredSignal();
-				return basicGetReferredSignal();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION:
+        if (resolve) return getReferredOperation();
+        return basicGetReferredOperation();
+      case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL:
+        if (resolve) return getReferredSignal();
+        return basicGetReferredSignal();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION :
-				setReferredOperation((CDOOperation) newValue);
-				return;
-			case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL :
-				setReferredSignal((CDOClassifier) newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION:
+        setReferredOperation((CDOOperation)newValue);
+        return;
+      case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL:
+        setReferredSignal((CDOClassifier)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION :
-				setReferredOperation((CDOOperation) null);
-				return;
-			case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL :
-				setReferredSignal((CDOClassifier) null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION:
+        setReferredOperation((CDOOperation)null);
+        return;
+      case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL:
+        setReferredSignal((CDOClassifier)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION :
-				return referredOperation != null;
-			case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL :
-				return referredSignal != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION:
+        return referredOperation != null;
+      case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL:
+        return referredSignal != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == PredefinedType.class) {
-			switch (derivedFeatureID) {
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == org.eclipse.ocl.types.MessageType.class) {
-			switch (derivedFeatureID) {
-				case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION :
-					return TypesPackage.MESSAGE_TYPE__REFERRED_OPERATION;
-				case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL :
-					return TypesPackage.MESSAGE_TYPE__REFERRED_SIGNAL;
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == PredefinedType.class)
+    {
+      switch (derivedFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == org.eclipse.ocl.types.MessageType.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION: return TypesPackage.MESSAGE_TYPE__REFERRED_OPERATION;
+        case OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL: return TypesPackage.MESSAGE_TYPE__REFERRED_SIGNAL;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == PredefinedType.class) {
-			switch (baseFeatureID) {
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == org.eclipse.ocl.types.MessageType.class) {
-			switch (baseFeatureID) {
-				case TypesPackage.MESSAGE_TYPE__REFERRED_OPERATION :
-					return OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION;
-				case TypesPackage.MESSAGE_TYPE__REFERRED_SIGNAL :
-					return OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == PredefinedType.class)
+    {
+      switch (baseFeatureID)
+      {
+        default: return -1;
+      }
+    }
+    if (baseClass == org.eclipse.ocl.types.MessageType.class)
+    {
+      switch (baseFeatureID)
+      {
+        case TypesPackage.MESSAGE_TYPE__REFERRED_OPERATION: return OCLPackage.MESSAGE_TYPE__REFERRED_OPERATION;
+        case TypesPackage.MESSAGE_TYPE__REFERRED_SIGNAL: return OCLPackage.MESSAGE_TYPE__REFERRED_SIGNAL;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 } // MessageTypeImpl

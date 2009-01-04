@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: NumericLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: NumericLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EClass;
  * <em><b>Numeric Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class NumericLiteralExpImpl
@@ -33,22 +33,20 @@ public abstract class NumericLiteralExpImpl
 		implements NumericLiteralExp {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected NumericLiteralExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.NUMERIC_LITERAL_EXP;
-	}
+    return OCLPackage.Literals.NUMERIC_LITERAL_EXP;
+  }
 
 } // NumericLiteralExpImpl

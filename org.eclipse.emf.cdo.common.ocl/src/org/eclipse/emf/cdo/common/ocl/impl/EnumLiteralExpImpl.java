@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: EnumLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: EnumLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -39,12 +39,10 @@ import org.eclipse.ocl.utilities.Visitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.EnumLiteralExpImpl#getReferredEnumLiteral
- * <em>Referred Enum Literal</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.EnumLiteralExpImpl#getReferredEnumLiteral <em>Referred Enum Literal</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class EnumLiteralExpImpl
@@ -52,77 +50,68 @@ public class EnumLiteralExpImpl
 		implements EnumLiteralExp {
 
 	/**
-	 * The cached value of the '{@link #getReferredEnumLiteral()
-	 * <em>Referred Enum Literal</em>}' reference. <!-- begin-user-doc --> <!--
+   * The cached value of the '{@link #getReferredEnumLiteral() <em>Referred Enum Literal</em>}' reference.
+   * <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
-	 * @see #getReferredEnumLiteral()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getReferredEnumLiteral()
+   * @generated
+   * @ordered
+   */
 	protected CDOEnumLiteral referredEnumLiteral;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected EnumLiteralExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.ENUM_LITERAL_EXP;
-	}
+    return OCLPackage.Literals.ENUM_LITERAL_EXP;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public CDOEnumLiteral getReferredEnumLiteral() {
-		if (referredEnumLiteral != null
-			&& ((EObject) referredEnumLiteral).eIsProxy()) {
-			InternalEObject oldReferredEnumLiteral = (InternalEObject) referredEnumLiteral;
-			referredEnumLiteral = (CDOEnumLiteral) eResolveProxy(oldReferredEnumLiteral);
-			if (referredEnumLiteral != oldReferredEnumLiteral) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL,
-						oldReferredEnumLiteral, referredEnumLiteral));
-			}
-		}
-		return referredEnumLiteral;
-	}
+    if (referredEnumLiteral != null && ((EObject)referredEnumLiteral).eIsProxy())
+    {
+      InternalEObject oldReferredEnumLiteral = (InternalEObject)referredEnumLiteral;
+      referredEnumLiteral = (CDOEnumLiteral)eResolveProxy(oldReferredEnumLiteral);
+      if (referredEnumLiteral != oldReferredEnumLiteral)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL, oldReferredEnumLiteral, referredEnumLiteral));
+      }
+    }
+    return referredEnumLiteral;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public CDOEnumLiteral basicGetReferredEnumLiteral() {
-		return referredEnumLiteral;
-	}
+    return referredEnumLiteral;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setReferredEnumLiteral(CDOEnumLiteral newReferredEnumLiteral) {
-		CDOEnumLiteral oldReferredEnumLiteral = referredEnumLiteral;
-		referredEnumLiteral = newReferredEnumLiteral;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL,
-				oldReferredEnumLiteral, referredEnumLiteral));
-	}
+    CDOEnumLiteral oldReferredEnumLiteral = referredEnumLiteral;
+    referredEnumLiteral = newReferredEnumLiteral;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL, oldReferredEnumLiteral, referredEnumLiteral));
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -136,100 +125,97 @@ public class EnumLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL :
-				if (resolve)
-					return getReferredEnumLiteral();
-				return basicGetReferredEnumLiteral();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL:
+        if (resolve) return getReferredEnumLiteral();
+        return basicGetReferredEnumLiteral();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL :
-				setReferredEnumLiteral((CDOEnumLiteral) newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL:
+        setReferredEnumLiteral((CDOEnumLiteral)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL :
-				setReferredEnumLiteral((CDOEnumLiteral) null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL:
+        setReferredEnumLiteral((CDOEnumLiteral)null);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL :
-				return referredEnumLiteral != null;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL:
+        return referredEnumLiteral != null;
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == org.eclipse.ocl.expressions.EnumLiteralExp.class) {
-			switch (derivedFeatureID) {
-				case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL :
-					return ExpressionsPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL;
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == org.eclipse.ocl.expressions.EnumLiteralExp.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL: return ExpressionsPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == org.eclipse.ocl.expressions.EnumLiteralExp.class) {
-			switch (baseFeatureID) {
-				case ExpressionsPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL :
-					return OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == org.eclipse.ocl.expressions.EnumLiteralExp.class)
+    {
+      switch (baseFeatureID)
+      {
+        case ExpressionsPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL: return OCLPackage.ENUM_LITERAL_EXP__REFERRED_ENUM_LITERAL;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
 	 * @generated NOT

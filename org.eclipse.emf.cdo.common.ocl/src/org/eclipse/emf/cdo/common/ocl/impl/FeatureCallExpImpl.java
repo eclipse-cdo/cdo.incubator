@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: FeatureCallExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: FeatureCallExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -30,12 +30,10 @@ import org.eclipse.ocl.util.ToStringVisitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.FeatureCallExpImpl#isMarkedPre
- * <em>Marked Pre</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.FeatureCallExpImpl#isMarkedPre <em>Marked Pre</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class FeatureCallExpImpl
@@ -43,162 +41,150 @@ public abstract class FeatureCallExpImpl
 		implements FeatureCallExp {
 
 	/**
-	 * The default value of the '{@link #isMarkedPre() <em>Marked Pre</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #isMarkedPre()
-	 * @generated
-	 * @ordered
-	 */
+   * The default value of the '{@link #isMarkedPre() <em>Marked Pre</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @see #isMarkedPre()
+   * @generated
+   * @ordered
+   */
 	protected static final boolean MARKED_PRE_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #isMarkedPre() <em>Marked Pre</em>}'
-	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #isMarkedPre()
-	 * @generated
-	 * @ordered
-	 */
+   * The cached value of the '{@link #isMarkedPre() <em>Marked Pre</em>}' attribute.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @see #isMarkedPre()
+   * @generated
+   * @ordered
+   */
 	protected boolean markedPre = MARKED_PRE_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected FeatureCallExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.FEATURE_CALL_EXP;
-	}
+    return OCLPackage.Literals.FEATURE_CALL_EXP;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public boolean isMarkedPre() {
-		return markedPre;
-	}
+    return markedPre;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setMarkedPre(boolean newMarkedPre) {
-		boolean oldMarkedPre = markedPre;
-		markedPre = newMarkedPre;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.FEATURE_CALL_EXP__MARKED_PRE, oldMarkedPre,
-				markedPre));
-	}
+    boolean oldMarkedPre = markedPre;
+    markedPre = newMarkedPre;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.FEATURE_CALL_EXP__MARKED_PRE, oldMarkedPre, markedPre));
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE :
-				return isMarkedPre()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE:
+        return isMarkedPre() ? Boolean.TRUE : Boolean.FALSE;
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE :
-				setMarkedPre(((Boolean) newValue).booleanValue());
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE:
+        setMarkedPre(((Boolean)newValue).booleanValue());
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE :
-				setMarkedPre(MARKED_PRE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE:
+        setMarkedPre(MARKED_PRE_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE :
-				return markedPre != MARKED_PRE_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE:
+        return markedPre != MARKED_PRE_EDEFAULT;
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == org.eclipse.ocl.expressions.FeatureCallExp.class) {
-			switch (derivedFeatureID) {
-				case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE :
-					return ExpressionsPackage.FEATURE_CALL_EXP__MARKED_PRE;
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == org.eclipse.ocl.expressions.FeatureCallExp.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case OCLPackage.FEATURE_CALL_EXP__MARKED_PRE: return ExpressionsPackage.FEATURE_CALL_EXP__MARKED_PRE;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == org.eclipse.ocl.expressions.FeatureCallExp.class) {
-			switch (baseFeatureID) {
-				case ExpressionsPackage.FEATURE_CALL_EXP__MARKED_PRE :
-					return OCLPackage.FEATURE_CALL_EXP__MARKED_PRE;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == org.eclipse.ocl.expressions.FeatureCallExp.class)
+    {
+      switch (baseFeatureID)
+      {
+        case ExpressionsPackage.FEATURE_CALL_EXP__MARKED_PRE: return OCLPackage.FEATURE_CALL_EXP__MARKED_PRE;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

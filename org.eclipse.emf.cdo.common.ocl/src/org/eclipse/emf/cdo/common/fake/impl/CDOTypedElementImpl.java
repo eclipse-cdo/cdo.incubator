@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CDOTypedElementImpl.java,v 1.1 2009-01-04 17:56:37 estepper Exp $
+ * $Id: CDOTypedElementImpl.java,v 1.2 2009-01-04 19:26:03 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.fake.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <em><b>CDO Typed Element</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class CDOTypedElementImpl
@@ -24,22 +24,20 @@ public abstract class CDOTypedElementImpl
 		implements CDOTypedElement {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected CDOTypedElementImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FakePackage.Literals.CDO_TYPED_ELEMENT;
-	}
+    return FakePackage.Literals.CDO_TYPED_ELEMENT;
+  }
 
 } // CDOTypedElementImpl

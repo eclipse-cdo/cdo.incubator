@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: LoopExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: LoopExp.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
@@ -23,8 +23,8 @@ import org.eclipse.emf.cdo.common.fake.CDOParameter;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Loop Exp</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getLoopExp()
  * @model abstract="true"
  * @generated

@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: CallExp.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
+ * $Id: CallExp.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
@@ -22,8 +22,8 @@ import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Call Exp</b></em>'. <!-- end-user-doc -->
- * 
- * 
+ *
+ *
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCallExp()
  * @model abstract="true"
  * @generated

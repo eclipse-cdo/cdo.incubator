@@ -12,7 +12,7 @@
  * 
  * </copyright>
  *
- * $Id: ElementTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: ElementTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <em><b>Element Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class ElementTypeImpl
@@ -34,23 +34,21 @@ public class ElementTypeImpl
 		implements ElementType {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected ElementTypeImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.ELEMENT_TYPE;
-	}
+    return OCLPackage.Literals.ELEMENT_TYPE;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

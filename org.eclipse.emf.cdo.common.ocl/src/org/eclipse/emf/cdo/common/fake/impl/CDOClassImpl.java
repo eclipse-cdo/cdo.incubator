@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CDOClassImpl.java,v 1.1 2009-01-04 17:56:37 estepper Exp $
+ * $Id: CDOClassImpl.java,v 1.2 2009-01-04 19:26:03 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.fake.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <em><b>CDO Class</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class CDOClassImpl
@@ -24,22 +24,20 @@ public class CDOClassImpl
 		implements CDOClass {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected CDOClassImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FakePackage.Literals.CDO_CLASS;
-	}
+    return FakePackage.Literals.CDO_CLASS;
+  }
 
 } // CDOClassImpl

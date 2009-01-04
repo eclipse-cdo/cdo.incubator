@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: TupleLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: TupleLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -42,11 +42,10 @@ import org.eclipse.ocl.utilities.Visitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralExpImpl#getPart
- * <em>Part</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralExpImpl#getPart <em>Part</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class TupleLiteralExpImpl
@@ -54,47 +53,42 @@ public class TupleLiteralExpImpl
 		implements TupleLiteralExp {
 
 	/**
-	 * The cached value of the '{@link #getPart() <em>Part</em>}' containment
-	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @see #getPart()
-	 * @generated
-	 * @ordered
-	 */
+   * The cached value of the '{@link #getPart() <em>Part</em>}' containment reference list.
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @see #getPart()
+   * @generated
+   * @ordered
+   */
 	protected EList<TupleLiteralPart<CDOClassifier, CDOFeature>> part;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected TupleLiteralExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.TUPLE_LITERAL_EXP;
-	}
+    return OCLPackage.Literals.TUPLE_LITERAL_EXP;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public EList<TupleLiteralPart<CDOClassifier, CDOFeature>> getPart() {
-		if (part == null) {
-			part = new EObjectContainmentEList<TupleLiteralPart<CDOClassifier, CDOFeature>>(
-				TupleLiteralPart.class, this,
-				OCLPackage.TUPLE_LITERAL_EXP__PART);
-		}
-		return part;
-	}
+    if (part == null)
+    {
+      part = new EObjectContainmentEList<TupleLiteralPart<CDOClassifier, CDOFeature>>(TupleLiteralPart.class, this, OCLPackage.TUPLE_LITERAL_EXP__PART);
+    }
+    return part;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -119,118 +113,113 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OCLPackage.TUPLE_LITERAL_EXP__PART :
-				return ((InternalEList<?>) getPart()).basicRemove(otherEnd,
-					msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.TUPLE_LITERAL_EXP__PART:
+        return ((InternalEList<?>)getPart()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OCLPackage.TUPLE_LITERAL_EXP__PART :
-				return getPart();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.TUPLE_LITERAL_EXP__PART:
+        return getPart();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OCLPackage.TUPLE_LITERAL_EXP__PART :
-				getPart().clear();
-				getPart()
-					.addAll(
-						(Collection<? extends TupleLiteralPart<CDOClassifier, CDOFeature>>) newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.TUPLE_LITERAL_EXP__PART:
+        getPart().clear();
+        getPart().addAll((Collection<? extends TupleLiteralPart<CDOClassifier, CDOFeature>>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OCLPackage.TUPLE_LITERAL_EXP__PART :
-				getPart().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.TUPLE_LITERAL_EXP__PART:
+        getPart().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OCLPackage.TUPLE_LITERAL_EXP__PART :
-				return part != null && !part.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.TUPLE_LITERAL_EXP__PART:
+        return part != null && !part.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == org.eclipse.ocl.expressions.TupleLiteralExp.class) {
-			switch (derivedFeatureID) {
-				case OCLPackage.TUPLE_LITERAL_EXP__PART :
-					return ExpressionsPackage.TUPLE_LITERAL_EXP__PART;
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
+    if (baseClass == org.eclipse.ocl.expressions.TupleLiteralExp.class)
+    {
+      switch (derivedFeatureID)
+      {
+        case OCLPackage.TUPLE_LITERAL_EXP__PART: return ExpressionsPackage.TUPLE_LITERAL_EXP__PART;
+        default: return -1;
+      }
+    }
+    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == org.eclipse.ocl.expressions.TupleLiteralExp.class) {
-			switch (baseFeatureID) {
-				case ExpressionsPackage.TUPLE_LITERAL_EXP__PART :
-					return OCLPackage.TUPLE_LITERAL_EXP__PART;
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
+    if (baseClass == org.eclipse.ocl.expressions.TupleLiteralExp.class)
+    {
+      switch (baseFeatureID)
+      {
+        case ExpressionsPackage.TUPLE_LITERAL_EXP__PART: return OCLPackage.TUPLE_LITERAL_EXP__PART;
+        default: return -1;
+      }
+    }
+    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+  }
 
 	/**
 	 * @generated NOT

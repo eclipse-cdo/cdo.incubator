@@ -2,7 +2,7 @@
  * <copyright>
  * </copyright>
  *
- * $Id: CDOFeatureImpl.java,v 1.1 2009-01-04 17:56:37 estepper Exp $
+ * $Id: CDOFeatureImpl.java,v 1.2 2009-01-04 19:26:03 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.fake.impl;
 
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <em><b>CDO Feature</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class CDOFeatureImpl
@@ -24,22 +24,20 @@ public abstract class CDOFeatureImpl
 		implements CDOFeature {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected CDOFeatureImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return FakePackage.Literals.CDO_FEATURE;
-	}
+    return FakePackage.Literals.CDO_FEATURE;
+  }
 
 } // CDOFeatureImpl

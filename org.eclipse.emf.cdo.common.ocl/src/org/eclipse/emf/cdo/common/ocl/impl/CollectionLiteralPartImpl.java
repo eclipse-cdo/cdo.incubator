@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: CollectionLiteralPartImpl.java,v 1.3 2009-01-04 18:49:38 estepper Exp $
+ * $Id: CollectionLiteralPartImpl.java,v 1.4 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -29,7 +29,7 @@ import org.eclipse.ocl.utilities.Visitor;
  * <em><b>Collection Literal Part</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public abstract class CollectionLiteralPartImpl
@@ -37,23 +37,21 @@ public abstract class CollectionLiteralPartImpl
 		implements CollectionLiteralPart {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected CollectionLiteralPartImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.COLLECTION_LITERAL_PART;
-	}
+    return OCLPackage.Literals.COLLECTION_LITERAL_PART;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -66,15 +64,14 @@ public abstract class CollectionLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public String getName() {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -86,15 +83,14 @@ public abstract class CollectionLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setName(String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
+    // TODO: implement this method
+    // Ensure that you remove @generated or mark it @generated NOT
+    throw new UnsupportedOperationException();
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

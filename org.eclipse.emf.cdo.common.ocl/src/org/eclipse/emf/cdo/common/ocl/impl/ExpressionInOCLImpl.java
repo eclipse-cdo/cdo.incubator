@@ -12,7 +12,7 @@
  * 
  * </copyright>
  *
- * $Id: ExpressionInOCLImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: ExpressionInOCLImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -41,21 +41,13 @@ import org.eclipse.ocl.utilities.Visitor;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getBodyExpression
- * <em>Body Expression</em>}</li>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getContextVariable
- * <em>Context Variable</em>}</li>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getResultVariable
- * <em>Result Variable</em>}</li>
- * <li>
- * {@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getParameterVariable
- * <em>Parameter Variable</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getBodyExpression <em>Body Expression</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getContextVariable <em>Context Variable</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getResultVariable <em>Result Variable</em>}</li>
+ *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.ExpressionInOCLImpl#getParameterVariable <em>Parameter Variable</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ExpressionInOCLImpl
@@ -63,36 +55,33 @@ public class ExpressionInOCLImpl
 		implements ExpressionInOCL {
 
 	/**
-	 * The cached value of the '{@link #getBodyExpression()
-	 * <em>Body Expression</em>}' containment reference. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getBodyExpression() <em>Body Expression</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @see #getBodyExpression()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getBodyExpression()
+   * @generated
+   * @ordered
+   */
 	protected OCLExpression<CDOClassifier> bodyExpression;
 
 	/**
-	 * The cached value of the '{@link #getContextVariable()
-	 * <em>Context Variable</em>}' containment reference. <!-- begin-user-doc
+   * The cached value of the '{@link #getContextVariable() <em>Context Variable</em>}' containment reference.
+   * <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-	 * 
-	 * @see #getContextVariable()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getContextVariable()
+   * @generated
+   * @ordered
+   */
 	protected Variable<CDOClassifier, CDOParameter> contextVariable;
 
 	/**
-	 * The cached value of the '{@link #getResultVariable()
-	 * <em>Result Variable</em>}' containment reference. <!-- begin-user-doc -->
+   * The cached value of the '{@link #getResultVariable() <em>Result Variable</em>}' containment reference.
+   * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * 
-	 * @see #getResultVariable()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getResultVariable()
+   * @generated
+   * @ordered
+   */
 	protected Variable<CDOClassifier, CDOParameter> resultVariable;
 
 	/**
@@ -107,216 +96,167 @@ public class ExpressionInOCLImpl
 	protected EList<Variable<CDOClassifier, CDOParameter>> parameterVariable;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected ExpressionInOCLImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.EXPRESSION_IN_OCL;
-	}
+    return OCLPackage.Literals.EXPRESSION_IN_OCL;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public OCLExpression<CDOClassifier> getBodyExpression() {
-		return bodyExpression;
-	}
+    return bodyExpression;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public NotificationChain basicSetBodyExpression(
 			OCLExpression<CDOClassifier> newBodyExpression,
 			NotificationChain msgs) {
-		OCLExpression<CDOClassifier> oldBodyExpression = bodyExpression;
-		bodyExpression = newBodyExpression;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
-				OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION,
-				oldBodyExpression, newBodyExpression);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
+    OCLExpression<CDOClassifier> oldBodyExpression = bodyExpression;
+    bodyExpression = newBodyExpression;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION, oldBodyExpression, newBodyExpression);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setBodyExpression(OCLExpression<CDOClassifier> newBodyExpression) {
-		if (newBodyExpression != bodyExpression) {
-			NotificationChain msgs = null;
-			if (bodyExpression != null)
-				msgs = ((InternalEObject) bodyExpression).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION, null,
-					msgs);
-			if (newBodyExpression != null)
-				msgs = ((InternalEObject) newBodyExpression).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION, null,
-					msgs);
-			msgs = basicSetBodyExpression(newBodyExpression, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION,
-				newBodyExpression, newBodyExpression));
-	}
+    if (newBodyExpression != bodyExpression)
+    {
+      NotificationChain msgs = null;
+      if (bodyExpression != null)
+        msgs = ((InternalEObject)bodyExpression).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION, null, msgs);
+      if (newBodyExpression != null)
+        msgs = ((InternalEObject)newBodyExpression).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION, null, msgs);
+      msgs = basicSetBodyExpression(newBodyExpression, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION, newBodyExpression, newBodyExpression));
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public Variable<CDOClassifier, CDOParameter> getContextVariable() {
-		return contextVariable;
-	}
+    return contextVariable;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public NotificationChain basicSetContextVariable(
 			Variable<CDOClassifier, CDOParameter> newContextVariable,
 			NotificationChain msgs) {
-		Variable<CDOClassifier, CDOParameter> oldContextVariable = contextVariable;
-		contextVariable = newContextVariable;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
-				OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE,
-				oldContextVariable, newContextVariable);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
+    Variable<CDOClassifier, CDOParameter> oldContextVariable = contextVariable;
+    contextVariable = newContextVariable;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE, oldContextVariable, newContextVariable);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setContextVariable(
 			Variable<CDOClassifier, CDOParameter> newContextVariable) {
-		if (newContextVariable != contextVariable) {
-			NotificationChain msgs = null;
-			if (contextVariable != null)
-				msgs = ((InternalEObject) contextVariable).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE, null,
-					msgs);
-			if (newContextVariable != null)
-				msgs = ((InternalEObject) newContextVariable).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE, null,
-					msgs);
-			msgs = basicSetContextVariable(newContextVariable, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE,
-				newContextVariable, newContextVariable));
-	}
+    if (newContextVariable != contextVariable)
+    {
+      NotificationChain msgs = null;
+      if (contextVariable != null)
+        msgs = ((InternalEObject)contextVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE, null, msgs);
+      if (newContextVariable != null)
+        msgs = ((InternalEObject)newContextVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE, null, msgs);
+      msgs = basicSetContextVariable(newContextVariable, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE, newContextVariable, newContextVariable));
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public Variable<CDOClassifier, CDOParameter> getResultVariable() {
-		return resultVariable;
-	}
+    return resultVariable;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public NotificationChain basicSetResultVariable(
 			Variable<CDOClassifier, CDOParameter> newResultVariable,
 			NotificationChain msgs) {
-		Variable<CDOClassifier, CDOParameter> oldResultVariable = resultVariable;
-		resultVariable = newResultVariable;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET,
-				OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE,
-				oldResultVariable, newResultVariable);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
+    Variable<CDOClassifier, CDOParameter> oldResultVariable = resultVariable;
+    resultVariable = newResultVariable;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE, oldResultVariable, newResultVariable);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public void setResultVariable(
 			Variable<CDOClassifier, CDOParameter> newResultVariable) {
-		if (newResultVariable != resultVariable) {
-			NotificationChain msgs = null;
-			if (resultVariable != null)
-				msgs = ((InternalEObject) resultVariable).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE, null,
-					msgs);
-			if (newResultVariable != null)
-				msgs = ((InternalEObject) newResultVariable).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE, null,
-					msgs);
-			msgs = basicSetResultVariable(newResultVariable, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE,
-				newResultVariable, newResultVariable));
-	}
+    if (newResultVariable != resultVariable)
+    {
+      NotificationChain msgs = null;
+      if (resultVariable != null)
+        msgs = ((InternalEObject)resultVariable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE, null, msgs);
+      if (newResultVariable != null)
+        msgs = ((InternalEObject)newResultVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE, null, msgs);
+      msgs = basicSetResultVariable(newResultVariable, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE, newResultVariable, newResultVariable));
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	public EList<Variable<CDOClassifier, CDOParameter>> getParameterVariable() {
-		if (parameterVariable == null) {
-			parameterVariable = new EObjectContainmentEList<Variable<CDOClassifier, CDOParameter>>(
-				Variable.class, this,
-				OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE);
-		}
-		return parameterVariable;
-	}
+    if (parameterVariable == null)
+    {
+      parameterVariable = new EObjectContainmentEList<Variable<CDOClassifier, CDOParameter>>(Variable.class, this, OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE);
+    }
+    return parameterVariable;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -330,118 +270,114 @@ public class ExpressionInOCLImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION :
-				return basicSetBodyExpression(null, msgs);
-			case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE :
-				return basicSetContextVariable(null, msgs);
-			case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE :
-				return basicSetResultVariable(null, msgs);
-			case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE :
-				return ((InternalEList<?>) getParameterVariable()).basicRemove(
-					otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION:
+        return basicSetBodyExpression(null, msgs);
+      case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE:
+        return basicSetContextVariable(null, msgs);
+      case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE:
+        return basicSetResultVariable(null, msgs);
+      case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE:
+        return ((InternalEList<?>)getParameterVariable()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION :
-				return getBodyExpression();
-			case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE :
-				return getContextVariable();
-			case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE :
-				return getResultVariable();
-			case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE :
-				return getParameterVariable();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION:
+        return getBodyExpression();
+      case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE:
+        return getContextVariable();
+      case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE:
+        return getResultVariable();
+      case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE:
+        return getParameterVariable();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION :
-				setBodyExpression((OCLExpression<CDOClassifier>) newValue);
-				return;
-			case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE :
-				setContextVariable((Variable<CDOClassifier, CDOParameter>) newValue);
-				return;
-			case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE :
-				setResultVariable((Variable<CDOClassifier, CDOParameter>) newValue);
-				return;
-			case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE :
-				getParameterVariable().clear();
-				getParameterVariable()
-					.addAll(
-						(Collection<? extends Variable<CDOClassifier, CDOParameter>>) newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION:
+        setBodyExpression((OCLExpression<CDOClassifier>)newValue);
+        return;
+      case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE:
+        setContextVariable((Variable<CDOClassifier, CDOParameter>)newValue);
+        return;
+      case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE:
+        setResultVariable((Variable<CDOClassifier, CDOParameter>)newValue);
+        return;
+      case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE:
+        getParameterVariable().clear();
+        getParameterVariable().addAll((Collection<? extends Variable<CDOClassifier, CDOParameter>>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION :
-				setBodyExpression((OCLExpression<CDOClassifier>) null);
-				return;
-			case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE :
-				setContextVariable((Variable<CDOClassifier, CDOParameter>) null);
-				return;
-			case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE :
-				setResultVariable((Variable<CDOClassifier, CDOParameter>) null);
-				return;
-			case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE :
-				getParameterVariable().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION:
+        setBodyExpression((OCLExpression<CDOClassifier>)null);
+        return;
+      case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE:
+        setContextVariable((Variable<CDOClassifier, CDOParameter>)null);
+        return;
+      case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE:
+        setResultVariable((Variable<CDOClassifier, CDOParameter>)null);
+        return;
+      case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE:
+        getParameterVariable().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION :
-				return bodyExpression != null;
-			case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE :
-				return contextVariable != null;
-			case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE :
-				return resultVariable != null;
-			case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE :
-				return parameterVariable != null
-					&& !parameterVariable.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case OCLPackage.EXPRESSION_IN_OCL__BODY_EXPRESSION:
+        return bodyExpression != null;
+      case OCLPackage.EXPRESSION_IN_OCL__CONTEXT_VARIABLE:
+        return contextVariable != null;
+      case OCLPackage.EXPRESSION_IN_OCL__RESULT_VARIABLE:
+        return resultVariable != null;
+      case OCLPackage.EXPRESSION_IN_OCL__PARAMETER_VARIABLE:
+        return parameterVariable != null && !parameterVariable.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 } // ExpressionInOCLImpl

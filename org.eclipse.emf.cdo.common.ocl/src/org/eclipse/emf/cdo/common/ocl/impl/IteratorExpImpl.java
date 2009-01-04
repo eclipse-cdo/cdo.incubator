@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: IteratorExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: IteratorExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -33,7 +33,7 @@ import org.eclipse.ocl.utilities.Visitor;
  * <em><b>Iterator Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class IteratorExpImpl
@@ -41,23 +41,21 @@ public class IteratorExpImpl
 		implements IteratorExp {
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected IteratorExpImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.ITERATOR_EXP;
-	}
+    return OCLPackage.Literals.ITERATOR_EXP;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

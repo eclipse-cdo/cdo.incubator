@@ -13,7 +13,7 @@
  * 
  * </copyright>
  *
- * $Id: AnyTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: AnyTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  * <em><b>Any Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- * 
+ *
  * @generated
  */
 public class AnyTypeImpl
@@ -40,23 +40,21 @@ public class AnyTypeImpl
 	private EList<CDOOperation> operations;
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	protected AnyTypeImpl() {
-		super();
-	}
+    super();
+  }
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
+   * <!-- begin-user-doc --> <!-- end-user-doc -->
+   * @generated
+   */
 	@Override
 	protected EClass eStaticClass() {
-		return OCLPackage.Literals.ANY_TYPE;
-	}
+    return OCLPackage.Literals.ANY_TYPE;
+  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
