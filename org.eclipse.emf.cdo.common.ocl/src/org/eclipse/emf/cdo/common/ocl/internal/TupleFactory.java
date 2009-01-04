@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: TupleFactory.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: TupleFactory.java,v 1.3 2009-01-04 18:07:57 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl.internal;
@@ -21,10 +21,11 @@ package org.eclipse.emf.cdo.common.ocl.internal;
 import java.util.Collection;
 import java.util.Iterator;
 
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.impl.DynamicEObjectImpl;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
@@ -51,7 +52,7 @@ public class TupleFactory
 
 	private static final class TupleInstance
 			extends DynamicEObjectImpl
-			implements Tuple<EOperation, EStructuralFeature> {
+			implements Tuple<CDOOperation, CDOFeature> {
 
 		@Override
 		public boolean equals(Object o) {
@@ -107,7 +108,7 @@ public class TupleFactory
 			return result;
 		}
 
-		public TupleType<EOperation, EStructuralFeature> getTupleType() {
+		public TupleType<CDOOperation, CDOFeature> getTupleType() {
 			return (org.eclipse.emf.cdo.common.ocl.TupleType) eClass();
 		}
 
@@ -115,7 +116,7 @@ public class TupleFactory
 			return getValue(eClass().getEStructuralFeature(partName));
 		}
 
-		public Object getValue(EStructuralFeature part) {
+		public Object getValue(CDOFeature part) {
 			return eGet(part);
 		}
 
@@ -124,10 +125,10 @@ public class TupleFactory
 			StringBuilder result = new StringBuilder();
 			result.append("Tuple{"); //$NON-NLS-1$
 
-			for (Iterator<EStructuralFeature> iter = getTupleType()
-				.oclProperties().iterator(); iter.hasNext();) {
+			for (Iterator<CDOFeature> iter = getTupleType().oclProperties()
+				.iterator(); iter.hasNext();) {
 
-				EStructuralFeature p = iter.next();
+				CDOFeature p = iter.next();
 
 				result.append(p.getName());
 				result.append(" = "); //$NON-NLS-1$

@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: OCLFactoryImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: OCLFactoryImpl.java,v 1.3 2009-01-04 18:07:57 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.internal;
 
@@ -138,7 +138,7 @@ public class OCLFactoryImpl
 		MessageType result = OCLFactory.eINSTANCE.createMessageType();
 		result.setReferredOperation((CDOOperation) operation);
 		result.oclProperties(); // ensure that the structural features are
-								// created
+		// created
 		return (org.eclipse.ocl.types.MessageType<C, O, P>) result;
 	}
 
@@ -147,7 +147,7 @@ public class OCLFactoryImpl
 		MessageType result = OCLFactory.eINSTANCE.createMessageType();
 		result.setReferredSignal((CDOClassifier) signal);
 		result.oclProperties(); // ensure that the structural features are
-								// created
+		// created
 		return (org.eclipse.ocl.types.MessageType<C, O, P>) result;
 	}
 
