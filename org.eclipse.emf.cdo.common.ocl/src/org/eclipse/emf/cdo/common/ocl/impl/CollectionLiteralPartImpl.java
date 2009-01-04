@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: CollectionLiteralPartImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: CollectionLiteralPartImpl.java,v 1.3 2009-01-04 18:49:38 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -99,21 +99,12 @@ public abstract class CollectionLiteralPartImpl
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @generated
+	 * @generated NOT
 	 */
 	public void setType(CDOClassifier type) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated NOT
-	 */
-	public void setType(CDOClassifier type) {
-		setEType(type);
 	}
 
 	/**

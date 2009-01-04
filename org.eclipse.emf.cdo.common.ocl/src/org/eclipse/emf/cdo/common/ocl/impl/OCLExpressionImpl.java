@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: OCLExpressionImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: OCLExpressionImpl.java,v 1.3 2009-01-04 18:49:38 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -194,17 +194,6 @@ public abstract class OCLExpressionImpl
 	 * @generated
 	 */
 	public void setName(String name) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	public void setType(CDOClassifier type) {
 		// TODO: implement this method
 		// Ensure that you remove @generated or mark it @generated NOT
 		throw new UnsupportedOperationException();
