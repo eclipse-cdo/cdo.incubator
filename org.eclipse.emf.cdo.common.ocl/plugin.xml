@@ -12,7 +12,7 @@
    IBM - initial API and implementation
    Zeligsoft - Bugs 231435, 248869, 256040
 
- $Id: plugin.xml,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ $Id: plugin.xml,v 1.2 2009-01-04 17:56:37 estepper Exp $
 -->
 
 <plugin>
@@ -20,7 +20,7 @@
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/ocl/1.1.0/Ecore" 
-       class = "org.eclipse.emf.cdo.common.ocl.EcorePackage"
+       class = "org.eclipse.emf.cdo.common.ocl.OCLPackage"
        genModel = "model/OCLEcore.genmodel" /> 
   </extension>
 

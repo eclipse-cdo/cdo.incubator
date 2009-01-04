@@ -13,7 +13,7 @@
  * 
  * </copyright>
  *
- * $Id: TupleTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: TupleTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -21,77 +21,41 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.fake.impl.CDOClassImpl;
 import org.eclipse.emf.cdo.common.ocl.AnyType;
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.TupleType;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
-import org.eclipse.emf.common.notify.Notification;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.impl.EClassImpl;
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
-
-//import org.eclipse.ocl.types.util.TypesValidator;
 import org.eclipse.ocl.types.operations.TupleTypeOperations;
 import org.eclipse.ocl.util.Tuple;
-import org.eclipse.ocl.utilities.PredefinedType;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tuple Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Tuple Type</b></em>'. <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleTypeImpl#isSerializable <em>Serializable</em>}</li>
- * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TupleTypeImpl
-		extends EClassImpl
+		extends CDOClassImpl
 		implements TupleType {
 
-	/**
-	 * The default value of the '{@link #isSerializable() <em>Serializable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSerializable()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean SERIALIZABLE_EDEFAULT = true;
+	private EList<CDOOperation> operations;
+
+	private EList<CDOFeature> properties;
 
 	/**
-	 * The cached value of the '{@link #isSerializable() <em>Serializable</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isSerializable()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean serializable = SERIALIZABLE_EDEFAULT;
-
-	private EList<EOperation> operations;
-
-	private EList<EStructuralFeature> properties;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	protected TupleTypeImpl() {
@@ -103,41 +67,18 @@ public class TupleTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.TUPLE_TYPE;
+		return OCLPackage.Literals.TUPLE_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isSerializable() {
-		return serializable;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setSerializable(boolean newSerializable) {
-		boolean oldSerializable = serializable;
-		serializable = newSerializable;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_TYPE__SERIALIZABLE, oldSerializable,
-				serializable));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkTupleTypeName(DiagnosticChain diagnostics,
@@ -147,8 +88,8 @@ public class TupleTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkPartNamesUnique(DiagnosticChain diagnostics,
@@ -158,8 +99,8 @@ public class TupleTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkFeaturesOnlyProperties(DiagnosticChain diagnostics,
@@ -169,18 +110,18 @@ public class TupleTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EList<EStructuralFeature> oclProperties() {
+	public EList<CDOFeature> oclProperties() {
 		if (properties == null) {
-			properties = new DelegatingEList<EStructuralFeature>() {
+			properties = new DelegatingEList<CDOFeature>() {
 
 				private static final long serialVersionUID = -4098965170992199523L;
 
 				@Override
-				protected List<EStructuralFeature> delegateList() {
+				protected List<CDOFeature> delegateList() {
 					return getEStructuralFeatures();
 				}
 			};
@@ -189,11 +130,11 @@ public class TupleTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EList<EOperation> oclOperations() {
+	public EList<CDOOperation> oclOperations() {
 		if (operations == null) {
 			operations = ((AnyType) OCLStandardLibraryImpl.INSTANCE.getOclAny())
 				.oclOperations();
@@ -203,145 +144,8 @@ public class TupleTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case EcorePackage.TUPLE_TYPE__SERIALIZABLE :
-				return isSerializable()
-					? Boolean.TRUE
-					: Boolean.FALSE;
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case EcorePackage.TUPLE_TYPE__SERIALIZABLE :
-				setSerializable(((Boolean) newValue).booleanValue());
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case EcorePackage.TUPLE_TYPE__SERIALIZABLE :
-				setSerializable(SERIALIZABLE_EDEFAULT);
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case EcorePackage.TUPLE_TYPE__SERIALIZABLE :
-				return serializable != SERIALIZABLE_EDEFAULT;
-		}
-		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == EDataType.class) {
-			switch (derivedFeatureID) {
-				case EcorePackage.TUPLE_TYPE__SERIALIZABLE :
-					return org.eclipse.emf.ecore.EcorePackage.EDATA_TYPE__SERIALIZABLE;
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == PredefinedType.class) {
-			switch (derivedFeatureID) {
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == org.eclipse.ocl.types.TupleType.class) {
-			switch (derivedFeatureID) {
-				default :
-					return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == EDataType.class) {
-			switch (baseFeatureID) {
-				case org.eclipse.emf.ecore.EcorePackage.EDATA_TYPE__SERIALIZABLE :
-					return EcorePackage.TUPLE_TYPE__SERIALIZABLE;
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == PredefinedType.class) {
-			switch (baseFeatureID) {
-				default :
-					return -1;
-			}
-		}
-		if (baseClass == org.eclipse.ocl.types.TupleType.class) {
-			switch (baseFeatureID) {
-				default :
-					return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (serializable: "); //$NON-NLS-1$
-		result.append(serializable);
-		result.append(')');
-		return result.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -374,4 +178,4 @@ public class TupleTypeImpl
 		return name;
 	}
 
-} //TupleTypeImpl
+} // TupleTypeImpl

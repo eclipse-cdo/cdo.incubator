@@ -12,24 +12,22 @@
  *
  * </copyright>
  *
- * $Id: NullLiteralExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: NullLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.NullLiteralExp;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Null Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Null Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class NullLiteralExpImpl
@@ -37,8 +35,8 @@ public class NullLiteralExpImpl
 		implements NullLiteralExp {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected NullLiteralExpImpl() {
@@ -46,21 +44,23 @@ public class NullLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.NULL_LITERAL_EXP;
+		return OCLPackage.Literals.NULL_LITERAL_EXP;
 	}
 
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v).visitNullLiteralExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitNullLiteralExp(this);
 	}
 
-} //NullLiteralExpImpl
+} // NullLiteralExpImpl

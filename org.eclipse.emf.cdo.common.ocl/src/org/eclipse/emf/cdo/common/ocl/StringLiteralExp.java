@@ -13,23 +13,22 @@
  *
  * </copyright>
  *
- * $Id: StringLiteralExp.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: StringLiteralExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>String Literal Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getStringLiteralExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>String Literal Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getStringLiteralExp()
  * @model
  * @generated
  */
 public interface StringLiteralExp
 		extends PrimitiveLiteralExp,
-		org.eclipse.ocl.expressions.StringLiteralExp<EClassifier> {
+		org.eclipse.ocl.expressions.StringLiteralExp<CDOClassifier> {
 } // StringLiteralExp

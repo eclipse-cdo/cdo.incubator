@@ -13,59 +13,58 @@
  *
  * </copyright>
  *
- * $Id: MessageExpImpl.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: MessageExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.CallOperationAction;
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
 import org.eclipse.emf.cdo.common.ocl.MessageExp;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.SendSignalAction;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.OCLExpression;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.MessageExpOperations;
 import org.eclipse.ocl.utilities.CallingASTNode;
 import org.eclipse.ocl.utilities.UtilitiesPackage;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Message Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getPropertyStartPosition <em>Property Start Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getPropertyEndPosition <em>Property End Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getTarget <em>Target</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getArgument <em>Argument</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getCalledOperation <em>Called Operation</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getSentSignal <em>Sent Signal</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getPropertyStartPosition
+ * <em>Property Start Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getPropertyEndPosition
+ * <em>Property End Position</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getTarget <em>
+ * Target</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getArgument
+ * <em>Argument</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getCalledOperation
+ * <em>Called Operation</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.MessageExpImpl#getSentSignal
+ * <em>Sent Signal</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class MessageExpImpl
@@ -73,9 +72,10 @@ public class MessageExpImpl
 		implements MessageExp {
 
 	/**
-	 * The default value of the '{@link #getPropertyStartPosition() <em>Property Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getPropertyStartPosition()
+	 * <em>Property Start Position</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getPropertyStartPosition()
 	 * @generated
 	 * @ordered
@@ -83,9 +83,10 @@ public class MessageExpImpl
 	protected static final int PROPERTY_START_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getPropertyStartPosition() <em>Property Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getPropertyStartPosition()
+	 * <em>Property Start Position</em>}' attribute. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getPropertyStartPosition()
 	 * @generated
 	 * @ordered
@@ -93,9 +94,10 @@ public class MessageExpImpl
 	protected int propertyStartPosition = PROPERTY_START_POSITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getPropertyEndPosition() <em>Property End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getPropertyEndPosition()
+	 * <em>Property End Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getPropertyEndPosition()
 	 * @generated
 	 * @ordered
@@ -103,9 +105,10 @@ public class MessageExpImpl
 	protected static final int PROPERTY_END_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getPropertyEndPosition() <em>Property End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPropertyEndPosition()
+	 * <em>Property End Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getPropertyEndPosition()
 	 * @generated
 	 * @ordered
@@ -113,29 +116,30 @@ public class MessageExpImpl
 	protected int propertyEndPosition = PROPERTY_END_POSITION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getTarget() <em>Target</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTarget() <em>Target</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTarget()
 	 * @generated
 	 * @ordered
 	 */
-	protected OCLExpression<EClassifier> target;
+	protected OCLExpression<CDOClassifier> target;
 
 	/**
-	 * The cached value of the '{@link #getArgument() <em>Argument</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getArgument() <em>Argument</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getArgument()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OCLExpression<EClassifier>> argument;
+	protected EList<OCLExpression<CDOClassifier>> argument;
 
 	/**
-	 * The cached value of the '{@link #getCalledOperation() <em>Called Operation</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCalledOperation()
+	 * <em>Called Operation</em>}' containment reference. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCalledOperation()
 	 * @generated
 	 * @ordered
@@ -143,9 +147,9 @@ public class MessageExpImpl
 	protected CallOperationAction calledOperation;
 
 	/**
-	 * The cached value of the '{@link #getSentSignal() <em>Sent Signal</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSentSignal() <em>Sent Signal</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSentSignal()
 	 * @generated
 	 * @ordered
@@ -153,8 +157,8 @@ public class MessageExpImpl
 	protected SendSignalAction sentSignal;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected MessageExpImpl() {
@@ -162,18 +166,18 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.MESSAGE_EXP;
+		return OCLPackage.Literals.MESSAGE_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getPropertyStartPosition() {
@@ -181,8 +185,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPropertyStartPosition(int newPropertyStartPosition) {
@@ -190,13 +194,13 @@ public class MessageExpImpl
 		propertyStartPosition = newPropertyStartPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION,
+				OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION,
 				oldPropertyStartPosition, propertyStartPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getPropertyEndPosition() {
@@ -204,8 +208,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setPropertyEndPosition(int newPropertyEndPosition) {
@@ -213,31 +217,31 @@ public class MessageExpImpl
 		propertyEndPosition = newPropertyEndPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION,
+				OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION,
 				oldPropertyEndPosition, propertyEndPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OCLExpression<EClassifier> getTarget() {
+	public OCLExpression<CDOClassifier> getTarget() {
 		return target;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetTarget(
-			OCLExpression<EClassifier> newTarget, NotificationChain msgs) {
-		OCLExpression<EClassifier> oldTarget = target;
+			OCLExpression<CDOClassifier> newTarget, NotificationChain msgs) {
+		OCLExpression<CDOClassifier> oldTarget = target;
 		target = newTarget;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.MESSAGE_EXP__TARGET, oldTarget,
+				Notification.SET, OCLPackage.MESSAGE_EXP__TARGET, oldTarget,
 				newTarget);
 			if (msgs == null)
 				msgs = notification;
@@ -248,45 +252,45 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setTarget(OCLExpression<EClassifier> newTarget) {
+	public void setTarget(OCLExpression<CDOClassifier> newTarget) {
 		if (newTarget != target) {
 			NotificationChain msgs = null;
 			if (target != null)
 				msgs = ((InternalEObject) target).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.MESSAGE_EXP__TARGET,
+					EOPPOSITE_FEATURE_BASE - OCLPackage.MESSAGE_EXP__TARGET,
 					null, msgs);
 			if (newTarget != null)
 				msgs = ((InternalEObject) newTarget).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.MESSAGE_EXP__TARGET,
+					EOPPOSITE_FEATURE_BASE - OCLPackage.MESSAGE_EXP__TARGET,
 					null, msgs);
 			msgs = basicSetTarget(newTarget, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.MESSAGE_EXP__TARGET, newTarget, newTarget));
+				OCLPackage.MESSAGE_EXP__TARGET, newTarget, newTarget));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<OCLExpression<EClassifier>> getArgument() {
+	public EList<OCLExpression<CDOClassifier>> getArgument() {
 		if (argument == null) {
-			argument = new EObjectContainmentEList<OCLExpression<EClassifier>>(
-				OCLExpression.class, this, EcorePackage.MESSAGE_EXP__ARGUMENT);
+			argument = new EObjectContainmentEList<OCLExpression<CDOClassifier>>(
+				OCLExpression.class, this, OCLPackage.MESSAGE_EXP__ARGUMENT);
 		}
 		return argument;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CallOperationAction getCalledOperation() {
@@ -294,8 +298,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCalledOperation(
@@ -304,7 +308,7 @@ public class MessageExpImpl
 		calledOperation = newCalledOperation;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.MESSAGE_EXP__CALLED_OPERATION,
+				Notification.SET, OCLPackage.MESSAGE_EXP__CALLED_OPERATION,
 				oldCalledOperation, newCalledOperation);
 			if (msgs == null)
 				msgs = notification;
@@ -315,8 +319,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCalledOperation(CallOperationAction newCalledOperation) {
@@ -325,25 +329,23 @@ public class MessageExpImpl
 			if (calledOperation != null)
 				msgs = ((InternalEObject) calledOperation).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.MESSAGE_EXP__CALLED_OPERATION, null,
-					msgs);
+						- OCLPackage.MESSAGE_EXP__CALLED_OPERATION, null, msgs);
 			if (newCalledOperation != null)
 				msgs = ((InternalEObject) newCalledOperation).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.MESSAGE_EXP__CALLED_OPERATION, null,
-					msgs);
+						- OCLPackage.MESSAGE_EXP__CALLED_OPERATION, null, msgs);
 			msgs = basicSetCalledOperation(newCalledOperation, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.MESSAGE_EXP__CALLED_OPERATION, newCalledOperation,
+				OCLPackage.MESSAGE_EXP__CALLED_OPERATION, newCalledOperation,
 				newCalledOperation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public SendSignalAction getSentSignal() {
@@ -351,8 +353,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetSentSignal(SendSignalAction newSentSignal,
@@ -361,7 +363,7 @@ public class MessageExpImpl
 		sentSignal = newSentSignal;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.MESSAGE_EXP__SENT_SIGNAL,
+				Notification.SET, OCLPackage.MESSAGE_EXP__SENT_SIGNAL,
 				oldSentSignal, newSentSignal);
 			if (msgs == null)
 				msgs = notification;
@@ -372,8 +374,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSentSignal(SendSignalAction newSentSignal) {
@@ -382,23 +384,23 @@ public class MessageExpImpl
 			if (sentSignal != null)
 				msgs = ((InternalEObject) sentSignal).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.MESSAGE_EXP__SENT_SIGNAL, null, msgs);
+						- OCLPackage.MESSAGE_EXP__SENT_SIGNAL, null, msgs);
 			if (newSentSignal != null)
 				msgs = ((InternalEObject) newSentSignal).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.MESSAGE_EXP__SENT_SIGNAL, null, msgs);
+						- OCLPackage.MESSAGE_EXP__SENT_SIGNAL, null, msgs);
 			msgs = basicSetSentSignal(newSentSignal, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.MESSAGE_EXP__SENT_SIGNAL, newSentSignal,
+				OCLPackage.MESSAGE_EXP__SENT_SIGNAL, newSentSignal,
 				newSentSignal));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkOperationArguments(DiagnosticChain diagnostics,
@@ -408,8 +410,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkSignalArguments(DiagnosticChain diagnostics,
@@ -419,8 +421,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkTargetDefinesOperation(DiagnosticChain diagnostics,
@@ -430,8 +432,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkHasOperationOrSignal(DiagnosticChain diagnostics,
@@ -441,8 +443,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkTargetNotCollection(DiagnosticChain diagnostics,
@@ -452,79 +454,79 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.MESSAGE_EXP__TARGET :
+			case OCLPackage.MESSAGE_EXP__TARGET :
 				return basicSetTarget(null, msgs);
-			case EcorePackage.MESSAGE_EXP__ARGUMENT :
+			case OCLPackage.MESSAGE_EXP__ARGUMENT :
 				return ((InternalEList<?>) getArgument()).basicRemove(otherEnd,
 					msgs);
-			case EcorePackage.MESSAGE_EXP__CALLED_OPERATION :
+			case OCLPackage.MESSAGE_EXP__CALLED_OPERATION :
 				return basicSetCalledOperation(null, msgs);
-			case EcorePackage.MESSAGE_EXP__SENT_SIGNAL :
+			case OCLPackage.MESSAGE_EXP__SENT_SIGNAL :
 				return basicSetSentSignal(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION :
 				return new Integer(getPropertyStartPosition());
-			case EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION :
 				return new Integer(getPropertyEndPosition());
-			case EcorePackage.MESSAGE_EXP__TARGET :
+			case OCLPackage.MESSAGE_EXP__TARGET :
 				return getTarget();
-			case EcorePackage.MESSAGE_EXP__ARGUMENT :
+			case OCLPackage.MESSAGE_EXP__ARGUMENT :
 				return getArgument();
-			case EcorePackage.MESSAGE_EXP__CALLED_OPERATION :
+			case OCLPackage.MESSAGE_EXP__CALLED_OPERATION :
 				return getCalledOperation();
-			case EcorePackage.MESSAGE_EXP__SENT_SIGNAL :
+			case OCLPackage.MESSAGE_EXP__SENT_SIGNAL :
 				return getSentSignal();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION :
 				setPropertyStartPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION :
 				setPropertyEndPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.MESSAGE_EXP__TARGET :
-				setTarget((OCLExpression<EClassifier>) newValue);
+			case OCLPackage.MESSAGE_EXP__TARGET :
+				setTarget((OCLExpression<CDOClassifier>) newValue);
 				return;
-			case EcorePackage.MESSAGE_EXP__ARGUMENT :
+			case OCLPackage.MESSAGE_EXP__ARGUMENT :
 				getArgument().clear();
 				getArgument()
 					.addAll(
-						(Collection<? extends OCLExpression<EClassifier>>) newValue);
+						(Collection<? extends OCLExpression<CDOClassifier>>) newValue);
 				return;
-			case EcorePackage.MESSAGE_EXP__CALLED_OPERATION :
+			case OCLPackage.MESSAGE_EXP__CALLED_OPERATION :
 				setCalledOperation((CallOperationAction) newValue);
 				return;
-			case EcorePackage.MESSAGE_EXP__SENT_SIGNAL :
+			case OCLPackage.MESSAGE_EXP__SENT_SIGNAL :
 				setSentSignal((SendSignalAction) newValue);
 				return;
 		}
@@ -532,29 +534,29 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION :
 				setPropertyStartPosition(PROPERTY_START_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION :
 				setPropertyEndPosition(PROPERTY_END_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.MESSAGE_EXP__TARGET :
-				setTarget((OCLExpression<EClassifier>) null);
+			case OCLPackage.MESSAGE_EXP__TARGET :
+				setTarget((OCLExpression<CDOClassifier>) null);
 				return;
-			case EcorePackage.MESSAGE_EXP__ARGUMENT :
+			case OCLPackage.MESSAGE_EXP__ARGUMENT :
 				getArgument().clear();
 				return;
-			case EcorePackage.MESSAGE_EXP__CALLED_OPERATION :
+			case OCLPackage.MESSAGE_EXP__CALLED_OPERATION :
 				setCalledOperation((CallOperationAction) null);
 				return;
-			case EcorePackage.MESSAGE_EXP__SENT_SIGNAL :
+			case OCLPackage.MESSAGE_EXP__SENT_SIGNAL :
 				setSentSignal((SendSignalAction) null);
 				return;
 		}
@@ -562,41 +564,41 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION :
 				return propertyStartPosition != PROPERTY_START_POSITION_EDEFAULT;
-			case EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION :
+			case OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION :
 				return propertyEndPosition != PROPERTY_END_POSITION_EDEFAULT;
-			case EcorePackage.MESSAGE_EXP__TARGET :
+			case OCLPackage.MESSAGE_EXP__TARGET :
 				return target != null;
-			case EcorePackage.MESSAGE_EXP__ARGUMENT :
+			case OCLPackage.MESSAGE_EXP__ARGUMENT :
 				return argument != null && !argument.isEmpty();
-			case EcorePackage.MESSAGE_EXP__CALLED_OPERATION :
+			case OCLPackage.MESSAGE_EXP__CALLED_OPERATION :
 				return calledOperation != null;
-			case EcorePackage.MESSAGE_EXP__SENT_SIGNAL :
+			case OCLPackage.MESSAGE_EXP__SENT_SIGNAL :
 				return sentSignal != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == CallingASTNode.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION :
+				case OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION :
 					return UtilitiesPackage.CALLING_AST_NODE__PROPERTY_START_POSITION;
-				case EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION :
+				case OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION :
 					return UtilitiesPackage.CALLING_AST_NODE__PROPERTY_END_POSITION;
 				default :
 					return -1;
@@ -604,13 +606,13 @@ public class MessageExpImpl
 		}
 		if (baseClass == org.eclipse.ocl.expressions.MessageExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.MESSAGE_EXP__TARGET :
+				case OCLPackage.MESSAGE_EXP__TARGET :
 					return ExpressionsPackage.MESSAGE_EXP__TARGET;
-				case EcorePackage.MESSAGE_EXP__ARGUMENT :
+				case OCLPackage.MESSAGE_EXP__ARGUMENT :
 					return ExpressionsPackage.MESSAGE_EXP__ARGUMENT;
-				case EcorePackage.MESSAGE_EXP__CALLED_OPERATION :
+				case OCLPackage.MESSAGE_EXP__CALLED_OPERATION :
 					return ExpressionsPackage.MESSAGE_EXP__CALLED_OPERATION;
-				case EcorePackage.MESSAGE_EXP__SENT_SIGNAL :
+				case OCLPackage.MESSAGE_EXP__SENT_SIGNAL :
 					return ExpressionsPackage.MESSAGE_EXP__SENT_SIGNAL;
 				default :
 					return -1;
@@ -620,8 +622,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -629,9 +631,9 @@ public class MessageExpImpl
 		if (baseClass == CallingASTNode.class) {
 			switch (baseFeatureID) {
 				case UtilitiesPackage.CALLING_AST_NODE__PROPERTY_START_POSITION :
-					return EcorePackage.MESSAGE_EXP__PROPERTY_START_POSITION;
+					return OCLPackage.MESSAGE_EXP__PROPERTY_START_POSITION;
 				case UtilitiesPackage.CALLING_AST_NODE__PROPERTY_END_POSITION :
-					return EcorePackage.MESSAGE_EXP__PROPERTY_END_POSITION;
+					return OCLPackage.MESSAGE_EXP__PROPERTY_END_POSITION;
 				default :
 					return -1;
 			}
@@ -639,13 +641,13 @@ public class MessageExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.MessageExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.MESSAGE_EXP__TARGET :
-					return EcorePackage.MESSAGE_EXP__TARGET;
+					return OCLPackage.MESSAGE_EXP__TARGET;
 				case ExpressionsPackage.MESSAGE_EXP__ARGUMENT :
-					return EcorePackage.MESSAGE_EXP__ARGUMENT;
+					return OCLPackage.MESSAGE_EXP__ARGUMENT;
 				case ExpressionsPackage.MESSAGE_EXP__CALLED_OPERATION :
-					return EcorePackage.MESSAGE_EXP__CALLED_OPERATION;
+					return OCLPackage.MESSAGE_EXP__CALLED_OPERATION;
 				case ExpressionsPackage.MESSAGE_EXP__SENT_SIGNAL :
-					return EcorePackage.MESSAGE_EXP__SENT_SIGNAL;
+					return OCLPackage.MESSAGE_EXP__SENT_SIGNAL;
 				default :
 					return -1;
 			}
@@ -654,8 +656,8 @@ public class MessageExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -666,9 +668,11 @@ public class MessageExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, CallOperationAction, SendSignalAction, ?>) v).visitMessageExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, CallOperationAction, SendSignalAction, ?>) v)
+			.visitMessageExp(this);
 	}
 
-} //MessageExpImpl
+} // MessageExpImpl

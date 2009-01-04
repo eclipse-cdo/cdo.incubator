@@ -13,22 +13,20 @@
  *
  * </copyright>
  *
- * $Id: PrimitiveLiteralExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: PrimitiveLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.PrimitiveLiteralExp;
 import org.eclipse.emf.ecore.EClass;
 
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primitive Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Primitive Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PrimitiveLiteralExpImpl
@@ -36,8 +34,8 @@ public abstract class PrimitiveLiteralExpImpl
 		implements PrimitiveLiteralExp {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PrimitiveLiteralExpImpl() {
@@ -45,13 +43,13 @@ public abstract class PrimitiveLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.PRIMITIVE_LITERAL_EXP;
+		return OCLPackage.Literals.PRIMITIVE_LITERAL_EXP;
 	}
 
-} //PrimitiveLiteralExpImpl
+} // PrimitiveLiteralExpImpl

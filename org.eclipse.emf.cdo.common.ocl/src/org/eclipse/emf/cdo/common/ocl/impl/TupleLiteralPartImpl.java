@@ -12,34 +12,26 @@
  *   Zeligsoft - Bug 241426
  * </copyright>
  *
- * $Id: TupleLiteralPartImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: TupleLiteralPartImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.fake.impl.CDOTypedElementImpl;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.TupleLiteralPart;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.ETypedElementImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.OCLExpression;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.TupleLiteralPartOperations;
 import org.eclipse.ocl.util.ToStringVisitor;
 import org.eclipse.ocl.utilities.ASTNode;
@@ -50,31 +42,42 @@ import org.eclipse.ocl.utilities.Visitable;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tuple Literal Part</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Tuple Literal Part</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getStartPosition <em>Start Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getEndPosition <em>End Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getTypeStartPosition <em>Type Start Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getTypeEndPosition <em>Type End Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getValue <em>Value</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getAttribute <em>Attribute</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getStartPosition
+ * <em>Start Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getEndPosition
+ * <em>End Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getTypeStartPosition
+ * <em>Type Start Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getTypeEndPosition
+ * <em>Type End Position</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getValue
+ * <em>Value</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralPartImpl#getAttribute
+ * <em>Attribute</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TupleLiteralPartImpl
-		extends ETypedElementImpl
+		extends CDOTypedElementImpl
 		implements TupleLiteralPart {
 
 	/**
-	 * The default value of the '{@link #getStartPosition() <em>Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getStartPosition()
+	 * <em>Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getStartPosition()
 	 * @generated
 	 * @ordered
@@ -82,9 +85,10 @@ public class TupleLiteralPartImpl
 	protected static final int START_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getStartPosition() <em>Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStartPosition()
+	 * <em>Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getStartPosition()
 	 * @generated
 	 * @ordered
@@ -92,9 +96,9 @@ public class TupleLiteralPartImpl
 	protected int startPosition = START_POSITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getEndPosition() <em>End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getEndPosition() <em>End Position</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEndPosition()
 	 * @generated
 	 * @ordered
@@ -102,9 +106,9 @@ public class TupleLiteralPartImpl
 	protected static final int END_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getEndPosition() <em>End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getEndPosition() <em>End Position</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getEndPosition()
 	 * @generated
 	 * @ordered
@@ -112,9 +116,10 @@ public class TupleLiteralPartImpl
 	protected int endPosition = END_POSITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTypeStartPosition() <em>Type Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTypeStartPosition()
+	 * <em>Type Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeStartPosition()
 	 * @generated
 	 * @ordered
@@ -122,9 +127,10 @@ public class TupleLiteralPartImpl
 	protected static final int TYPE_START_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getTypeStartPosition() <em>Type Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTypeStartPosition()
+	 * <em>Type Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeStartPosition()
 	 * @generated
 	 * @ordered
@@ -132,9 +138,10 @@ public class TupleLiteralPartImpl
 	protected int typeStartPosition = TYPE_START_POSITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTypeEndPosition() <em>Type End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTypeEndPosition()
+	 * <em>Type End Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeEndPosition()
 	 * @generated
 	 * @ordered
@@ -142,9 +149,10 @@ public class TupleLiteralPartImpl
 	protected static final int TYPE_END_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getTypeEndPosition() <em>Type End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTypeEndPosition()
+	 * <em>Type End Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeEndPosition()
 	 * @generated
 	 * @ordered
@@ -152,28 +160,28 @@ public class TupleLiteralPartImpl
 	protected int typeEndPosition = TYPE_END_POSITION_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getValue() <em>Value</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getValue()
 	 * @generated
 	 * @ordered
 	 */
-	protected OCLExpression<EClassifier> value;
+	protected OCLExpression<CDOClassifier> value;
 
 	/**
-	 * The cached value of the '{@link #getAttribute() <em>Attribute</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAttribute() <em>Attribute</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAttribute()
 	 * @generated
 	 * @ordered
 	 */
-	protected EStructuralFeature attribute;
+	protected CDOFeature attribute;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TupleLiteralPartImpl() {
@@ -181,18 +189,18 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.TUPLE_LITERAL_PART;
+		return OCLPackage.Literals.TUPLE_LITERAL_PART;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getStartPosition() {
@@ -200,8 +208,8 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStartPosition(int newStartPosition) {
@@ -209,13 +217,13 @@ public class TupleLiteralPartImpl
 		startPosition = newStartPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_LITERAL_PART__START_POSITION,
+				OCLPackage.TUPLE_LITERAL_PART__START_POSITION,
 				oldStartPosition, startPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getEndPosition() {
@@ -223,8 +231,8 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setEndPosition(int newEndPosition) {
@@ -232,13 +240,13 @@ public class TupleLiteralPartImpl
 		endPosition = newEndPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_LITERAL_PART__END_POSITION, oldEndPosition,
+				OCLPackage.TUPLE_LITERAL_PART__END_POSITION, oldEndPosition,
 				endPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getTypeStartPosition() {
@@ -246,8 +254,8 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTypeStartPosition(int newTypeStartPosition) {
@@ -255,13 +263,13 @@ public class TupleLiteralPartImpl
 		typeStartPosition = newTypeStartPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION,
+				OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION,
 				oldTypeStartPosition, typeStartPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getTypeEndPosition() {
@@ -269,8 +277,8 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTypeEndPosition(int newTypeEndPosition) {
@@ -278,31 +286,31 @@ public class TupleLiteralPartImpl
 		typeEndPosition = newTypeEndPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION,
+				OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION,
 				oldTypeEndPosition, typeEndPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OCLExpression<EClassifier> getValue() {
+	public OCLExpression<CDOClassifier> getValue() {
 		return value;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetValue(OCLExpression<EClassifier> newValue,
-			NotificationChain msgs) {
-		OCLExpression<EClassifier> oldValue = value;
+	public NotificationChain basicSetValue(
+			OCLExpression<CDOClassifier> newValue, NotificationChain msgs) {
+		OCLExpression<CDOClassifier> oldValue = value;
 		value = newValue;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.TUPLE_LITERAL_PART__VALUE,
+				Notification.SET, OCLPackage.TUPLE_LITERAL_PART__VALUE,
 				oldValue, newValue);
 			if (msgs == null)
 				msgs = notification;
@@ -313,74 +321,74 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setValue(OCLExpression<EClassifier> newValue) {
+	public void setValue(OCLExpression<CDOClassifier> newValue) {
 		if (newValue != value) {
 			NotificationChain msgs = null;
 			if (value != null)
 				msgs = ((InternalEObject) value).eInverseRemove(this,
 					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.TUPLE_LITERAL_PART__VALUE, null, msgs);
+						- OCLPackage.TUPLE_LITERAL_PART__VALUE, null, msgs);
 			if (newValue != null)
 				msgs = ((InternalEObject) newValue).eInverseAdd(this,
 					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.TUPLE_LITERAL_PART__VALUE, null, msgs);
+						- OCLPackage.TUPLE_LITERAL_PART__VALUE, null, msgs);
 			msgs = basicSetValue(newValue, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_LITERAL_PART__VALUE, newValue, newValue));
+				OCLPackage.TUPLE_LITERAL_PART__VALUE, newValue, newValue));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EStructuralFeature getAttribute() {
+	public CDOFeature getAttribute() {
 		if (attribute != null && ((EObject) attribute).eIsProxy()) {
 			InternalEObject oldAttribute = (InternalEObject) attribute;
-			attribute = (EStructuralFeature) eResolveProxy(oldAttribute);
+			attribute = (CDOFeature) eResolveProxy(oldAttribute);
 			if (attribute != oldAttribute) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE,
-						oldAttribute, attribute));
+						OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE, oldAttribute,
+						attribute));
 			}
 		}
 		return attribute;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EStructuralFeature basicGetAttribute() {
+	public CDOFeature basicGetAttribute() {
 		return attribute;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setAttribute(EStructuralFeature newAttribute) {
-		EStructuralFeature oldAttribute = attribute;
+	public void setAttribute(CDOFeature newAttribute) {
+		CDOFeature oldAttribute = attribute;
 		attribute = newAttribute;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE, oldAttribute,
+				OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE, oldAttribute,
 				attribute));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkValueType(DiagnosticChain diagnostics,
@@ -390,57 +398,70 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EClassifier getType() {
+	public CDOClassifier getType() {
 		return getEType();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated NOT
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
 	 */
-	public void setType(EClassifier type) {
-		setEType(type);
+	public void setName(String name) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated NOT
+	 */
+	public void setType(CDOClassifier type) {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_PART__VALUE :
+			case OCLPackage.TUPLE_LITERAL_PART__VALUE :
 				return basicSetValue(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_PART__START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__START_POSITION :
 				return new Integer(getStartPosition());
-			case EcorePackage.TUPLE_LITERAL_PART__END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__END_POSITION :
 				return new Integer(getEndPosition());
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
 				return new Integer(getTypeStartPosition());
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
 				return new Integer(getTypeEndPosition());
-			case EcorePackage.TUPLE_LITERAL_PART__VALUE :
+			case OCLPackage.TUPLE_LITERAL_PART__VALUE :
 				return getValue();
-			case EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE :
+			case OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE :
 				if (resolve)
 					return getAttribute();
 				return basicGetAttribute();
@@ -449,93 +470,93 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_PART__START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__START_POSITION :
 				setStartPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__END_POSITION :
 				setEndPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
 				setTypeStartPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
 				setTypeEndPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__VALUE :
-				setValue((OCLExpression<EClassifier>) newValue);
+			case OCLPackage.TUPLE_LITERAL_PART__VALUE :
+				setValue((OCLExpression<CDOClassifier>) newValue);
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE :
-				setAttribute((EStructuralFeature) newValue);
+			case OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE :
+				setAttribute((CDOFeature) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_PART__START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__START_POSITION :
 				setStartPosition(START_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__END_POSITION :
 				setEndPosition(END_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
 				setTypeStartPosition(TYPE_START_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
 				setTypeEndPosition(TYPE_END_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__VALUE :
-				setValue((OCLExpression<EClassifier>) null);
+			case OCLPackage.TUPLE_LITERAL_PART__VALUE :
+				setValue((OCLExpression<CDOClassifier>) null);
 				return;
-			case EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE :
-				setAttribute((EStructuralFeature) null);
+			case OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE :
+				setAttribute((CDOFeature) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_PART__START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__START_POSITION :
 				return startPosition != START_POSITION_EDEFAULT;
-			case EcorePackage.TUPLE_LITERAL_PART__END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__END_POSITION :
 				return endPosition != END_POSITION_EDEFAULT;
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
 				return typeStartPosition != TYPE_START_POSITION_EDEFAULT;
-			case EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
+			case OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
 				return typeEndPosition != TYPE_END_POSITION_EDEFAULT;
-			case EcorePackage.TUPLE_LITERAL_PART__VALUE :
+			case OCLPackage.TUPLE_LITERAL_PART__VALUE :
 				return value != null;
-			case EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE :
+			case OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE :
 				return attribute != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -554,9 +575,9 @@ public class TupleLiteralPartImpl
 		}
 		if (baseClass == ASTNode.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.TUPLE_LITERAL_PART__START_POSITION :
+				case OCLPackage.TUPLE_LITERAL_PART__START_POSITION :
 					return UtilitiesPackage.AST_NODE__START_POSITION;
-				case EcorePackage.TUPLE_LITERAL_PART__END_POSITION :
+				case OCLPackage.TUPLE_LITERAL_PART__END_POSITION :
 					return UtilitiesPackage.AST_NODE__END_POSITION;
 				default :
 					return -1;
@@ -564,9 +585,9 @@ public class TupleLiteralPartImpl
 		}
 		if (baseClass == TypedASTNode.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
+				case OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION :
 					return UtilitiesPackage.TYPED_AST_NODE__TYPE_START_POSITION;
-				case EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
+				case OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION :
 					return UtilitiesPackage.TYPED_AST_NODE__TYPE_END_POSITION;
 				default :
 					return -1;
@@ -574,9 +595,9 @@ public class TupleLiteralPartImpl
 		}
 		if (baseClass == org.eclipse.ocl.expressions.TupleLiteralPart.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.TUPLE_LITERAL_PART__VALUE :
+				case OCLPackage.TUPLE_LITERAL_PART__VALUE :
 					return ExpressionsPackage.TUPLE_LITERAL_PART__VALUE;
-				case EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE :
+				case OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE :
 					return ExpressionsPackage.TUPLE_LITERAL_PART__ATTRIBUTE;
 				default :
 					return -1;
@@ -586,8 +607,8 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -607,9 +628,9 @@ public class TupleLiteralPartImpl
 		if (baseClass == ASTNode.class) {
 			switch (baseFeatureID) {
 				case UtilitiesPackage.AST_NODE__START_POSITION :
-					return EcorePackage.TUPLE_LITERAL_PART__START_POSITION;
+					return OCLPackage.TUPLE_LITERAL_PART__START_POSITION;
 				case UtilitiesPackage.AST_NODE__END_POSITION :
-					return EcorePackage.TUPLE_LITERAL_PART__END_POSITION;
+					return OCLPackage.TUPLE_LITERAL_PART__END_POSITION;
 				default :
 					return -1;
 			}
@@ -617,9 +638,9 @@ public class TupleLiteralPartImpl
 		if (baseClass == TypedASTNode.class) {
 			switch (baseFeatureID) {
 				case UtilitiesPackage.TYPED_AST_NODE__TYPE_START_POSITION :
-					return EcorePackage.TUPLE_LITERAL_PART__TYPE_START_POSITION;
+					return OCLPackage.TUPLE_LITERAL_PART__TYPE_START_POSITION;
 				case UtilitiesPackage.TYPED_AST_NODE__TYPE_END_POSITION :
-					return EcorePackage.TUPLE_LITERAL_PART__TYPE_END_POSITION;
+					return OCLPackage.TUPLE_LITERAL_PART__TYPE_END_POSITION;
 				default :
 					return -1;
 			}
@@ -627,9 +648,9 @@ public class TupleLiteralPartImpl
 		if (baseClass == org.eclipse.ocl.expressions.TupleLiteralPart.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.TUPLE_LITERAL_PART__VALUE :
-					return EcorePackage.TUPLE_LITERAL_PART__VALUE;
+					return OCLPackage.TUPLE_LITERAL_PART__VALUE;
 				case ExpressionsPackage.TUPLE_LITERAL_PART__ATTRIBUTE :
-					return EcorePackage.TUPLE_LITERAL_PART__ATTRIBUTE;
+					return OCLPackage.TUPLE_LITERAL_PART__ATTRIBUTE;
 				default :
 					return -1;
 			}
@@ -638,8 +659,8 @@ public class TupleLiteralPartImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -656,7 +677,19 @@ public class TupleLiteralPartImpl
 	 */
 	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, EStructuralFeature, ?, ?, ?, ?, ?, ?>) v).visitTupleLiteralPart(this);
+		return ((Visitor<T, CDOClassifier, ?, CDOFeature, ?, ?, ?, ?, ?, ?>) v)
+			.visitTupleLiteralPart(this);
 	}
 
-} //TupleLiteralPartImpl
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String getName() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+} // TupleLiteralPartImpl

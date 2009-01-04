@@ -13,42 +13,35 @@
  *
  * </copyright>
  *
- * $Id: StringLiteralExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: StringLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.StringLiteralExp;
 import org.eclipse.emf.common.notify.Notification;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.StringLiteralExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>String Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>String Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.StringLiteralExpImpl#getStringSymbol <em>String Symbol</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.StringLiteralExpImpl#getStringSymbol
+ * <em>String Symbol</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class StringLiteralExpImpl
@@ -56,9 +49,10 @@ public class StringLiteralExpImpl
 		implements StringLiteralExp {
 
 	/**
-	 * The default value of the '{@link #getStringSymbol() <em>String Symbol</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getStringSymbol()
+	 * <em>String Symbol</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getStringSymbol()
 	 * @generated
 	 * @ordered
@@ -66,9 +60,10 @@ public class StringLiteralExpImpl
 	protected static final String STRING_SYMBOL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getStringSymbol() <em>String Symbol</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getStringSymbol()
+	 * <em>String Symbol</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getStringSymbol()
 	 * @generated
 	 * @ordered
@@ -76,8 +71,8 @@ public class StringLiteralExpImpl
 	protected String stringSymbol = STRING_SYMBOL_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected StringLiteralExpImpl() {
@@ -85,18 +80,18 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.STRING_LITERAL_EXP;
+		return OCLPackage.Literals.STRING_LITERAL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getStringSymbol() {
@@ -104,8 +99,8 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setStringSymbol(String newStringSymbol) {
@@ -113,13 +108,13 @@ public class StringLiteralExpImpl
 		stringSymbol = newStringSymbol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL,
-				oldStringSymbol, stringSymbol));
+				OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL, oldStringSymbol,
+				stringSymbol));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkStringType(DiagnosticChain diagnostics,
@@ -129,28 +124,28 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
 				return getStringSymbol();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
 				setStringSymbol((String) newValue);
 				return;
 		}
@@ -158,14 +153,14 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
 				setStringSymbol(STRING_SYMBOL_EDEFAULT);
 				return;
 		}
@@ -173,14 +168,14 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
 				return STRING_SYMBOL_EDEFAULT == null
 					? stringSymbol != null
 					: !STRING_SYMBOL_EDEFAULT.equals(stringSymbol);
@@ -189,15 +184,15 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.StringLiteralExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+				case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
 					return ExpressionsPackage.STRING_LITERAL_EXP__STRING_SYMBOL;
 				default :
 					return -1;
@@ -207,8 +202,8 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,7 +211,7 @@ public class StringLiteralExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.StringLiteralExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
-					return EcorePackage.STRING_LITERAL_EXP__STRING_SYMBOL;
+					return OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL;
 				default :
 					return -1;
 			}
@@ -225,8 +220,8 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -237,9 +232,11 @@ public class StringLiteralExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v).visitStringLiteralExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitStringLiteralExp(this);
 	}
 
-} //StringLiteralExpImpl
+} // StringLiteralExpImpl

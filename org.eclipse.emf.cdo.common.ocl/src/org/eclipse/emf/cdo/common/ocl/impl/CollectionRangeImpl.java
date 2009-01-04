@@ -13,46 +13,39 @@
  *
  * </copyright>
  *
- * $Id: CollectionRangeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: CollectionRangeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.CollectionRange;
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.OCLExpression;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.CollectionRangeOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Collection Range</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Collection Range</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionRangeImpl#getFirst <em>First</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionRangeImpl#getLast <em>Last</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionRangeImpl#getFirst
+ * <em>First</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionRangeImpl#getLast
+ * <em>Last</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CollectionRangeImpl
@@ -60,28 +53,28 @@ public class CollectionRangeImpl
 		implements CollectionRange {
 
 	/**
-	 * The cached value of the '{@link #getFirst() <em>First</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getFirst() <em>First</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getFirst()
 	 * @generated
 	 * @ordered
 	 */
-	protected OCLExpression<EClassifier> first;
+	protected OCLExpression<CDOClassifier> first;
 
 	/**
-	 * The cached value of the '{@link #getLast() <em>Last</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getLast() <em>Last</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getLast()
 	 * @generated
 	 * @ordered
 	 */
-	protected OCLExpression<EClassifier> last;
+	protected OCLExpression<CDOClassifier> last;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CollectionRangeImpl() {
@@ -89,37 +82,37 @@ public class CollectionRangeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.COLLECTION_RANGE;
+		return OCLPackage.Literals.COLLECTION_RANGE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OCLExpression<EClassifier> getFirst() {
+	public OCLExpression<CDOClassifier> getFirst() {
 		return first;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetFirst(OCLExpression<EClassifier> newFirst,
-			NotificationChain msgs) {
-		OCLExpression<EClassifier> oldFirst = first;
+	public NotificationChain basicSetFirst(
+			OCLExpression<CDOClassifier> newFirst, NotificationChain msgs) {
+		OCLExpression<CDOClassifier> oldFirst = first;
 		first = newFirst;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.COLLECTION_RANGE__FIRST,
-				oldFirst, newFirst);
+				Notification.SET, OCLPackage.COLLECTION_RANGE__FIRST, oldFirst,
+				newFirst);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -129,50 +122,50 @@ public class CollectionRangeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setFirst(OCLExpression<EClassifier> newFirst) {
+	public void setFirst(OCLExpression<CDOClassifier> newFirst) {
 		if (newFirst != first) {
 			NotificationChain msgs = null;
 			if (first != null)
-				msgs = ((InternalEObject) first).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.COLLECTION_RANGE__FIRST, null, msgs);
+				msgs = ((InternalEObject) first)
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- OCLPackage.COLLECTION_RANGE__FIRST, null, msgs);
 			if (newFirst != null)
-				msgs = ((InternalEObject) newFirst).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.COLLECTION_RANGE__FIRST, null, msgs);
+				msgs = ((InternalEObject) newFirst)
+					.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- OCLPackage.COLLECTION_RANGE__FIRST, null, msgs);
 			msgs = basicSetFirst(newFirst, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.COLLECTION_RANGE__FIRST, newFirst, newFirst));
+				OCLPackage.COLLECTION_RANGE__FIRST, newFirst, newFirst));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OCLExpression<EClassifier> getLast() {
+	public OCLExpression<CDOClassifier> getLast() {
 		return last;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetLast(OCLExpression<EClassifier> newLast,
+	public NotificationChain basicSetLast(OCLExpression<CDOClassifier> newLast,
 			NotificationChain msgs) {
-		OCLExpression<EClassifier> oldLast = last;
+		OCLExpression<CDOClassifier> oldLast = last;
 		last = newLast;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.COLLECTION_RANGE__LAST, oldLast,
+				Notification.SET, OCLPackage.COLLECTION_RANGE__LAST, oldLast,
 				newLast);
 			if (msgs == null)
 				msgs = notification;
@@ -183,32 +176,32 @@ public class CollectionRangeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setLast(OCLExpression<EClassifier> newLast) {
+	public void setLast(OCLExpression<CDOClassifier> newLast) {
 		if (newLast != last) {
 			NotificationChain msgs = null;
 			if (last != null)
 				msgs = ((InternalEObject) last).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.COLLECTION_RANGE__LAST, null, msgs);
+					EOPPOSITE_FEATURE_BASE - OCLPackage.COLLECTION_RANGE__LAST,
+					null, msgs);
 			if (newLast != null)
 				msgs = ((InternalEObject) newLast).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE
-						- EcorePackage.COLLECTION_RANGE__LAST, null, msgs);
+					EOPPOSITE_FEATURE_BASE - OCLPackage.COLLECTION_RANGE__LAST,
+					null, msgs);
 			msgs = basicSetLast(newLast, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.COLLECTION_RANGE__LAST, newLast, newLast));
+				OCLPackage.COLLECTION_RANGE__LAST, newLast, newLast));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkRangeType(DiagnosticChain diagnostics,
@@ -218,103 +211,103 @@ public class CollectionRangeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_RANGE__FIRST :
+			case OCLPackage.COLLECTION_RANGE__FIRST :
 				return basicSetFirst(null, msgs);
-			case EcorePackage.COLLECTION_RANGE__LAST :
+			case OCLPackage.COLLECTION_RANGE__LAST :
 				return basicSetLast(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_RANGE__FIRST :
+			case OCLPackage.COLLECTION_RANGE__FIRST :
 				return getFirst();
-			case EcorePackage.COLLECTION_RANGE__LAST :
+			case OCLPackage.COLLECTION_RANGE__LAST :
 				return getLast();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_RANGE__FIRST :
-				setFirst((OCLExpression<EClassifier>) newValue);
+			case OCLPackage.COLLECTION_RANGE__FIRST :
+				setFirst((OCLExpression<CDOClassifier>) newValue);
 				return;
-			case EcorePackage.COLLECTION_RANGE__LAST :
-				setLast((OCLExpression<EClassifier>) newValue);
+			case OCLPackage.COLLECTION_RANGE__LAST :
+				setLast((OCLExpression<CDOClassifier>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_RANGE__FIRST :
-				setFirst((OCLExpression<EClassifier>) null);
+			case OCLPackage.COLLECTION_RANGE__FIRST :
+				setFirst((OCLExpression<CDOClassifier>) null);
 				return;
-			case EcorePackage.COLLECTION_RANGE__LAST :
-				setLast((OCLExpression<EClassifier>) null);
+			case OCLPackage.COLLECTION_RANGE__LAST :
+				setLast((OCLExpression<CDOClassifier>) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_RANGE__FIRST :
+			case OCLPackage.COLLECTION_RANGE__FIRST :
 				return first != null;
-			case EcorePackage.COLLECTION_RANGE__LAST :
+			case OCLPackage.COLLECTION_RANGE__LAST :
 				return last != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.CollectionRange.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.COLLECTION_RANGE__FIRST :
+				case OCLPackage.COLLECTION_RANGE__FIRST :
 					return ExpressionsPackage.COLLECTION_RANGE__FIRST;
-				case EcorePackage.COLLECTION_RANGE__LAST :
+				case OCLPackage.COLLECTION_RANGE__LAST :
 					return ExpressionsPackage.COLLECTION_RANGE__LAST;
 				default :
 					return -1;
@@ -324,8 +317,8 @@ public class CollectionRangeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -333,9 +326,9 @@ public class CollectionRangeImpl
 		if (baseClass == org.eclipse.ocl.expressions.CollectionRange.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.COLLECTION_RANGE__FIRST :
-					return EcorePackage.COLLECTION_RANGE__FIRST;
+					return OCLPackage.COLLECTION_RANGE__FIRST;
 				case ExpressionsPackage.COLLECTION_RANGE__LAST :
-					return EcorePackage.COLLECTION_RANGE__LAST;
+					return OCLPackage.COLLECTION_RANGE__LAST;
 				default :
 					return -1;
 			}
@@ -346,9 +339,11 @@ public class CollectionRangeImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v).visitCollectionRange(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitCollectionRange(this);
 	}
 
-} //CollectionRangeImpl
+} // CollectionRangeImpl

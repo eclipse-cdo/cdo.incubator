@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: TupleFactory.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: TupleFactory.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl.internal;
@@ -34,35 +34,39 @@ import org.eclipse.ocl.util.ObjectUtil;
 import org.eclipse.ocl.util.Tuple;
 
 /**
- * A specialized factory that creates tuple instances implementing
- * value equality.
+ * A specialized factory that creates tuple instances implementing value
+ * equality.
  * 
  * @author Christian W. Damus (cdamus)
  */
-public class TupleFactory extends EFactoryImpl {
+public class TupleFactory
+		extends EFactoryImpl {
+
 	@Override
-    protected EObject basicCreate(EClass eClass) {
+	protected EObject basicCreate(EClass eClass) {
 		TupleInstance result = new TupleInstance();
 		result.eSetClass(eClass);
 		return result;
 	}
-	
+
 	private static final class TupleInstance
 			extends DynamicEObjectImpl
 			implements Tuple<EOperation, EStructuralFeature> {
-		
+
 		@Override
-        public boolean equals(Object o) {
+		public boolean equals(Object o) {
 			if (!(o instanceof TupleInstance)) {
 				return false;
 			}
-			
+
 			TupleInstance other = (TupleInstance) o;
 			EClass otherType = other.eClass();
-			
-			EList<EStructuralFeature> myFeatures = eClass().getEStructuralFeatures();
-			EList<EStructuralFeature> otherFeatures = otherType.getEStructuralFeatures();
-			
+
+			EList<EStructuralFeature> myFeatures = eClass()
+				.getEStructuralFeatures();
+			EList<EStructuralFeature> otherFeatures = otherType
+				.getEStructuralFeatures();
+
 			if (myFeatures.size() != otherFeatures.size()) {
 				return false;
 			}
@@ -70,36 +74,36 @@ public class TupleFactory extends EFactoryImpl {
 			Iterator<EStructuralFeature> iter = myFeatures.iterator();
 
 			boolean result = true; // assume equality unless ...
-			
+
 			while (result && iter.hasNext()) {
 				EStructuralFeature next = iter.next();
-				
+
 				Object myValue = eGet(next);
-				
-				EStructuralFeature otherNext = otherType.getEStructuralFeature(
-							next.getName());
+
+				EStructuralFeature otherNext = otherType
+					.getEStructuralFeature(next.getName());
 				if (otherNext == null) {
 					result = false;
 				} else {
 					Object otherValue = other.eGet(next);
-					
+
 					result = ObjectUtil.equal(myValue, otherValue);
 				}
 			}
-			
+
 			return result;
 		}
-		
+
 		@Override
-        public int hashCode() {
+		public int hashCode() {
 			int result = 0;
-			
+
 			for (EStructuralFeature next : eClass().getEStructuralFeatures()) {
 				Object myValue = eGet(next);
-				
+
 				result = 31 * result + ObjectUtil.hashCode(myValue);
 			}
-			
+
 			return result;
 		}
 
@@ -114,40 +118,40 @@ public class TupleFactory extends EFactoryImpl {
 		public Object getValue(EStructuralFeature part) {
 			return eGet(part);
 		}
-        
-        @Override
-        public String toString() {
-            StringBuilder result = new StringBuilder();
-            result.append("Tuple{"); //$NON-NLS-1$
-            
-            for (Iterator<EStructuralFeature> iter =  getTupleType().oclProperties().iterator();
-                    iter.hasNext();) {
-                
-                EStructuralFeature p = iter.next();
-                
-                result.append(p.getName());
-                result.append(" = "); //$NON-NLS-1$
-                result.append(toString(getValue(p)));
-                
-                if (iter.hasNext()) {
-                    result.append(", "); //$NON-NLS-1$
-                }
-            }
-            
-            result.append("}"); //$NON-NLS-1$
-            return result.toString();
-        }
-        
-        private String toString(Object o) {
-            if (o instanceof String) {
-                return "'" + (String) o + "'"; //$NON-NLS-1$ //$NON-NLS-2$
-            } else if (o instanceof Collection) {
-                return CollectionUtil.toString((Collection<?>) o);
-            } else if (o == null) {
-                return "null"; //$NON-NLS-1$
-            } else {
-                return o.toString();
-            }
-        }
+
+		@Override
+		public String toString() {
+			StringBuilder result = new StringBuilder();
+			result.append("Tuple{"); //$NON-NLS-1$
+
+			for (Iterator<EStructuralFeature> iter = getTupleType()
+				.oclProperties().iterator(); iter.hasNext();) {
+
+				EStructuralFeature p = iter.next();
+
+				result.append(p.getName());
+				result.append(" = "); //$NON-NLS-1$
+				result.append(toString(getValue(p)));
+
+				if (iter.hasNext()) {
+					result.append(", "); //$NON-NLS-1$
+				}
+			}
+
+			result.append("}"); //$NON-NLS-1$
+			return result.toString();
+		}
+
+		private String toString(Object o) {
+			if (o instanceof String) {
+				return "'" + (String) o + "'"; //$NON-NLS-1$ //$NON-NLS-2$
+			} else if (o instanceof Collection) {
+				return CollectionUtil.toString((Collection<?>) o);
+			} else if (o == null) {
+				return "null"; //$NON-NLS-1$
+			} else {
+				return o.toString();
+			}
+		}
 	}
 }

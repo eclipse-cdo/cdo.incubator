@@ -12,14 +12,13 @@
  *
  * </copyright>
  *
- * $Id: OCLDebugOptions.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: OCLDebugOptions.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl.internal;
 
-
 /**
- * @author Yasser Lulu  
+ * @author Yasser Lulu
  */
 public final class OCLDebugOptions {
 
@@ -29,13 +28,17 @@ public final class OCLDebugOptions {
 	private OCLDebugOptions() {
 		super();
 	}
-	
+
 	public static final String DEBUG = OCLEcorePlugin.getPluginId() + "/debug"; //$NON-NLS-1$
 
-	public static final String EXCEPTIONS_CATCHING = DEBUG + "/exceptions/catching"; //$NON-NLS-1$
-	public static final String EXCEPTIONS_THROWING = DEBUG + "/exceptions/throwing"; //$NON-NLS-1$
+	public static final String EXCEPTIONS_CATCHING = DEBUG
+		+ "/exceptions/catching"; //$NON-NLS-1$
+
+	public static final String EXCEPTIONS_THROWING = DEBUG
+		+ "/exceptions/throwing"; //$NON-NLS-1$
 
 	public static final String METHODS_ENTERING = DEBUG + "/methods/entering"; //$NON-NLS-1$
+
 	public static final String METHODS_EXITING = DEBUG + "/methods/exiting"; //$NON-NLS-1$
 
 }

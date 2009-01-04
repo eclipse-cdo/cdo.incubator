@@ -13,45 +13,38 @@
  *
  * </copyright>
  *
- * $Id: VariableExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: VariableExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.VariableExp;
 import org.eclipse.emf.common.notify.Notification;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.Variable;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.VariableExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Variable Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.VariableExpImpl#getReferredVariable <em>Referred Variable</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.VariableExpImpl#getReferredVariable
+ * <em>Referred Variable</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class VariableExpImpl
@@ -59,18 +52,19 @@ public class VariableExpImpl
 		implements VariableExp {
 
 	/**
-	 * The cached value of the '{@link #getReferredVariable() <em>Referred Variable</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getReferredVariable()
+	 * <em>Referred Variable</em>}' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getReferredVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected Variable<EClassifier, EParameter> referredVariable;
+	protected Variable<CDOClassifier, CDOParameter> referredVariable;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected VariableExpImpl() {
@@ -78,29 +72,29 @@ public class VariableExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.VARIABLE_EXP;
+		return OCLPackage.Literals.VARIABLE_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
-	public Variable<EClassifier, EParameter> getReferredVariable() {
+	public Variable<CDOClassifier, CDOParameter> getReferredVariable() {
 		if (referredVariable != null && referredVariable.eIsProxy()) {
 			InternalEObject oldReferredVariable = (InternalEObject) referredVariable;
-			referredVariable = (Variable<EClassifier, EParameter>) eResolveProxy(oldReferredVariable);
+			referredVariable = (Variable<CDOClassifier, CDOParameter>) eResolveProxy(oldReferredVariable);
 			if (referredVariable != oldReferredVariable) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE,
+						OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE,
 						oldReferredVariable, referredVariable));
 			}
 		}
@@ -108,32 +102,32 @@ public class VariableExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public Variable<EClassifier, EParameter> basicGetReferredVariable() {
+	public Variable<CDOClassifier, CDOParameter> basicGetReferredVariable() {
 		return referredVariable;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setReferredVariable(
-			Variable<EClassifier, EParameter> newReferredVariable) {
-		Variable<EClassifier, EParameter> oldReferredVariable = referredVariable;
+			Variable<CDOClassifier, CDOParameter> newReferredVariable) {
+		Variable<CDOClassifier, CDOParameter> oldReferredVariable = referredVariable;
 		referredVariable = newReferredVariable;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE,
+				OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE,
 				oldReferredVariable, referredVariable));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkVarType(DiagnosticChain diagnostics,
@@ -142,14 +136,14 @@ public class VariableExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE :
+			case OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE :
 				if (resolve)
 					return getReferredVariable();
 				return basicGetReferredVariable();
@@ -158,60 +152,60 @@ public class VariableExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE :
-				setReferredVariable((Variable<EClassifier, EParameter>) newValue);
+			case OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE :
+				setReferredVariable((Variable<CDOClassifier, CDOParameter>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE :
-				setReferredVariable((Variable<EClassifier, EParameter>) null);
+			case OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE :
+				setReferredVariable((Variable<CDOClassifier, CDOParameter>) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE :
+			case OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE :
 				return referredVariable != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.VariableExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE :
+				case OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE :
 					return ExpressionsPackage.VARIABLE_EXP__REFERRED_VARIABLE;
 				default :
 					return -1;
@@ -221,8 +215,8 @@ public class VariableExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -230,7 +224,7 @@ public class VariableExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.VariableExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.VARIABLE_EXP__REFERRED_VARIABLE :
-					return EcorePackage.VARIABLE_EXP__REFERRED_VARIABLE;
+					return OCLPackage.VARIABLE_EXP__REFERRED_VARIABLE;
 				default :
 					return -1;
 			}
@@ -239,8 +233,8 @@ public class VariableExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -251,9 +245,11 @@ public class VariableExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, EParameter, ?, ?, ?, ?>) v).visitVariableExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, CDOParameter, ?, ?, ?, ?>) v)
+			.visitVariableExp(this);
 	}
 
-} //VariableExpImpl
+} // VariableExpImpl

@@ -13,24 +13,23 @@
  *
  * </copyright>
  *
- * $Id: LetExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: LetExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Let Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getLetExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Let Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getLetExp()
  * @model
  * @generated
  */
 public interface LetExp
 		extends OCLExpression,
-		org.eclipse.ocl.expressions.LetExp<EClassifier, EParameter> {
+		org.eclipse.ocl.expressions.LetExp<CDOClassifier, CDOParameter> {
 } // LetExp

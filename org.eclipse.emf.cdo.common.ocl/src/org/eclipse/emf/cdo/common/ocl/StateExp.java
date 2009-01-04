@@ -13,24 +13,23 @@
  *
  * </copyright>
  *
- * $Id: StateExp.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: StateExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDORevision;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>State Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getStateExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>State Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getStateExp()
  * @model
  * @generated
  */
 public interface StateExp
 		extends OCLExpression,
-		org.eclipse.ocl.expressions.StateExp<EClassifier, EObject> {
+		org.eclipse.ocl.expressions.StateExp<CDOClassifier, CDORevision> {
 } // StateExp

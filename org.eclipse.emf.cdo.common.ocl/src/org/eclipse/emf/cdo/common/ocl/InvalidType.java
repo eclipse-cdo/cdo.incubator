@@ -13,24 +13,23 @@
  * 
  * </copyright>
  *
- * $Id: InvalidType.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: InvalidType.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Invalid Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getInvalidType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Invalid Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getInvalidType()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName WellFormedInstanceTypeName'"
  * @generated
  */
 public interface InvalidType
-		extends EClassifier, org.eclipse.ocl.types.InvalidType<EOperation> {
+		extends CDOClassifier, org.eclipse.ocl.types.InvalidType<CDOOperation> {
 	// no additional features
 } // InvalidType

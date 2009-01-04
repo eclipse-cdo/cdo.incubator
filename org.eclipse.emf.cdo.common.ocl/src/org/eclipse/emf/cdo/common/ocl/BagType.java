@@ -13,25 +13,24 @@
  * 
  * </copyright>
  *
- * $Id: BagType.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: BagType.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Bag Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getBagType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Bag Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getBagType()
  * @model
  * @generated
  */
 public interface BagType
 		extends CollectionType,
-		org.eclipse.ocl.types.BagType<EClassifier, EOperation> {
+		org.eclipse.ocl.types.BagType<CDOClassifier, CDOOperation> {
 	// no additional features
 } // BagType

@@ -13,26 +13,25 @@
  * 
  * </copyright>
  *
- * $Id: CollectionType.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: CollectionType.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDODataType;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCollectionType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Collection Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCollectionType()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName WellFormedInstanceTypeName'"
  * @generated
  */
 public interface CollectionType
-		extends EDataType,
-		org.eclipse.ocl.types.CollectionType<EClassifier, EOperation> {
+		extends CDODataType,
+		org.eclipse.ocl.types.CollectionType<CDOClassifier, CDOOperation> {
 	// no additional features
 } // CollectionType

@@ -12,145 +12,147 @@
  *
  * </copyright>
  *
- * $Id: OCLHelperImpl.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: OCLHelperImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl;
 
 import java.util.List;
 
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.ocl.Environment;
 import org.eclipse.ocl.ParserException;
 import org.eclipse.ocl.helper.Choice;
 import org.eclipse.ocl.helper.ConstraintKind;
 import org.eclipse.ocl.helper.OCLHelper;
 
-
 /**
  * Implementation of the {@link OCL.Helper} convenience interface.
  * 
  * @author Christian W. Damus (cdamus)
  */
-class OCLHelperImpl implements OCL.Helper {
-    private final OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> delegate;
+class OCLHelperImpl
+		implements OCL.Helper {
 
-    OCLHelperImpl(OCLHelper<EClassifier, EOperation, EStructuralFeature, Constraint> delegate) {
-        this.delegate = delegate;
-    }
+	private final OCLHelper<CDOClassifier, CDOOperation, CDOFeature, Constraint> delegate;
 
-    public OCL getOCL() {
-        return (OCL) delegate.getOCL();
-    }
-    
-    public Environment<?, EClassifier, EOperation, EStructuralFeature, ?, ?, ?, ?, ?, Constraint, ?, ?> getEnvironment() {
-        return delegate.getEnvironment();
-    }
-    
-    public Constraint createConstraint(ConstraintKind kind, String expression)
-        throws ParserException {
-        return delegate.createConstraint(kind, expression);
-    }
-    
-    public Constraint createBodyCondition(String expression)
-        throws ParserException {
-        return delegate.createBodyCondition(expression);
-    }
+	OCLHelperImpl(
+			OCLHelper<CDOClassifier, CDOOperation, CDOFeature, Constraint> delegate) {
+		this.delegate = delegate;
+	}
 
-    public Constraint createDerivedValueExpression(String expression)
-        throws ParserException {
-        return delegate.createDerivedValueExpression(expression);
-    }
+	public OCL getOCL() {
+		return (OCL) delegate.getOCL();
+	}
 
-    public Constraint createInitialValueExpression(String expression)
-        throws ParserException {
-        return delegate.createInitialValueExpression(expression);
-    }
+	public Environment<?, CDOClassifier, CDOOperation, CDOFeature, ?, ?, ?, ?, ?, Constraint, ?, ?> getEnvironment() {
+		return delegate.getEnvironment();
+	}
 
-    public Constraint createInvariant(String expression)
-        throws ParserException {
-        return delegate.createInvariant(expression);
-    }
+	public Constraint createConstraint(ConstraintKind kind, String expression)
+			throws ParserException {
+		return delegate.createConstraint(kind, expression);
+	}
 
-    public Constraint createPostcondition(String expression)
-        throws ParserException {
-        return delegate.createPostcondition(expression);
-    }
+	public Constraint createBodyCondition(String expression)
+			throws ParserException {
+		return delegate.createBodyCondition(expression);
+	}
 
-    public Constraint createPrecondition(String expression)
-        throws ParserException {
-        return delegate.createPrecondition(expression);
-    }
+	public Constraint createDerivedValueExpression(String expression)
+			throws ParserException {
+		return delegate.createDerivedValueExpression(expression);
+	}
 
-    public OCLExpression createQuery(String expression)
-        throws ParserException {
-        return (OCLExpression) delegate.createQuery(expression);
-    }
+	public Constraint createInitialValueExpression(String expression)
+			throws ParserException {
+		return delegate.createInitialValueExpression(expression);
+	}
 
-    public EStructuralFeature defineAttribute(String defExpression)
-        throws ParserException {
-        return delegate.defineAttribute(defExpression);
-    }
+	public Constraint createInvariant(String expression)
+			throws ParserException {
+		return delegate.createInvariant(expression);
+	}
 
-    public EOperation defineOperation(String defExpression)
-        throws ParserException {
-        return delegate.defineOperation(defExpression);
-    }
+	public Constraint createPostcondition(String expression)
+			throws ParserException {
+		return delegate.createPostcondition(expression);
+	}
 
-    public EStructuralFeature getContextAttribute() {
-        return delegate.getContextAttribute();
-    }
+	public Constraint createPrecondition(String expression)
+			throws ParserException {
+		return delegate.createPrecondition(expression);
+	}
 
-    public EClassifier getContextClassifier() {
-        return delegate.getContextClassifier();
-    }
+	public OCLExpression createQuery(String expression)
+			throws ParserException {
+		return (OCLExpression) delegate.createQuery(expression);
+	}
 
-    public EOperation getContextOperation() {
-        return delegate.getContextOperation();
-    }
+	public CDOFeature defineAttribute(String defExpression)
+			throws ParserException {
+		return delegate.defineAttribute(defExpression);
+	}
 
-    public List<Choice> getSyntaxHelp(ConstraintKind constraintType, String txt) {
-        return delegate.getSyntaxHelp(constraintType, txt);
-    }
+	public CDOOperation defineOperation(String defExpression)
+			throws ParserException {
+		return delegate.defineOperation(defExpression);
+	}
 
-    public boolean isValidating() {
-        return delegate.isValidating();
-    }
+	public CDOFeature getContextAttribute() {
+		return delegate.getContextAttribute();
+	}
 
-    public void setContext(EClassifier context) {
-        delegate.setContext(context);
-    }
+	public CDOClassifier getContextClassifier() {
+		return delegate.getContextClassifier();
+	}
 
-    public void setAttributeContext(EClassifier context, EStructuralFeature property) {
-        delegate.setAttributeContext(context, property);
-    }
+	public CDOOperation getContextOperation() {
+		return delegate.getContextOperation();
+	}
 
-    public void setOperationContext(EClassifier context, EOperation operation) {
-        delegate.setOperationContext(context, operation);
-    }
+	public List<Choice> getSyntaxHelp(ConstraintKind constraintType, String txt) {
+		return delegate.getSyntaxHelp(constraintType, txt);
+	}
 
-    public void setInstanceContext(Object instance) {
-        delegate.setInstanceContext(instance);
-    }
-    
-    public void setInstanceOperationContext(Object instance,
-            EOperation operation) {
-        delegate.setInstanceOperationContext(instance, operation);
-    }
-    
-    public void setInstanceAttributeContext(Object instance,
-            EStructuralFeature property) {
-        delegate.setInstanceAttributeContext(instance, property);
-    }
-    
-    public void setValidating(boolean validating) {
-        delegate.setValidating(validating);
-    }
-    
-    public Diagnostic getProblems() {
-    	return delegate.getProblems();
-    }
+	public boolean isValidating() {
+		return delegate.isValidating();
+	}
+
+	public void setContext(CDOClassifier context) {
+		delegate.setContext(context);
+	}
+
+	public void setAttributeContext(CDOClassifier context, CDOFeature property) {
+		delegate.setAttributeContext(context, property);
+	}
+
+	public void setOperationContext(CDOClassifier context,
+			CDOOperation operation) {
+		delegate.setOperationContext(context, operation);
+	}
+
+	public void setInstanceContext(Object instance) {
+		delegate.setInstanceContext(instance);
+	}
+
+	public void setInstanceOperationContext(Object instance,
+			CDOOperation operation) {
+		delegate.setInstanceOperationContext(instance, operation);
+	}
+
+	public void setInstanceAttributeContext(Object instance, CDOFeature property) {
+		delegate.setInstanceAttributeContext(instance, property);
+	}
+
+	public void setValidating(boolean validating) {
+		delegate.setValidating(validating);
+	}
+
+	public Diagnostic getProblems() {
+		return delegate.getProblems();
+	}
 }

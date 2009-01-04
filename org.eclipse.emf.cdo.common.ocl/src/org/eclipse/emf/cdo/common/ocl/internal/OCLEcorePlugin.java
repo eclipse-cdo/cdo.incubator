@@ -9,7 +9,7 @@
  *     IBM Corporation - initial API and implementation
  *     Zeligsoft - Bug 256040
  * 
- * $Id: OCLEcorePlugin.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: OCLEcorePlugin.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  * 
  *******************************************************************************/
 package org.eclipse.emf.cdo.common.ocl.internal;
@@ -45,10 +45,10 @@ public class OCLEcorePlugin
 
 	private static final String PREFIX_CATCHING = "CAUGHT "; //$NON-NLS-1$
 
-	//The shared instance.
+	// The shared instance.
 	public static OCLEcorePlugin INSTANCE = new OCLEcorePlugin();
 
-	//The shared Eclipse plug-in instance
+	// The shared Eclipse plug-in instance
 	private static Implementation plugin;
 
 	/**
@@ -116,7 +116,7 @@ public class OCLEcorePlugin
 	 *            The name of the method in which the throwable is being caught.
 	 * @param throwable
 	 *            The throwable that is being caught.
-	 *  
+	 * 
 	 */
 	public static void catching(Class<?> clazz, String methodName,
 			Throwable throwable) {
@@ -159,7 +159,7 @@ public class OCLEcorePlugin
 	 *            The status code for the log.
 	 * @param message
 	 *            The message for the log.
-	 *  
+	 * 
 	 */
 	public static void error(int code, String message) {
 		error(code, message, null);
@@ -175,7 +175,7 @@ public class OCLEcorePlugin
 	 *            The message for the log.
 	 * @param throwable
 	 *            The throwable for the log.
-	 *  
+	 * 
 	 */
 	public static void error(int code, String message, Throwable throwable) {
 		log(IStatus.ERROR, code, message, throwable);
@@ -187,7 +187,7 @@ public class OCLEcorePlugin
 	 * 
 	 * @param message
 	 *            The message for the log.
-	 *  
+	 * 
 	 */
 	public static void info(String message) {
 		info(OCLStatusCodes.OK, message);
@@ -201,7 +201,7 @@ public class OCLEcorePlugin
 	 *            The status code for the log.
 	 * @param message
 	 *            The message for the log.
-	 *  
+	 * 
 	 */
 	public static void info(int code, String message) {
 		info(code, message, null);
@@ -217,7 +217,7 @@ public class OCLEcorePlugin
 	 *            The message for the log.
 	 * @param throwable
 	 *            The throwable for the log.
-	 *  
+	 * 
 	 */
 	public static void info(int code, String message, Throwable throwable) {
 		log(IStatus.INFO, code, message, throwable);
@@ -231,7 +231,7 @@ public class OCLEcorePlugin
 	 *            The status code for the log.
 	 * @param message
 	 *            The message for the log.
-	 *  
+	 * 
 	 */
 	public static void warning(int code, String message) {
 		warning(code, message, null);
@@ -247,7 +247,7 @@ public class OCLEcorePlugin
 	 *            The message for the log.
 	 * @param throwable
 	 *            The throwable for the log.
-	 *  
+	 * 
 	 */
 	public static void warning(int code, String message, Throwable throwable) {
 		log(IStatus.WARNING, code, message, throwable);
@@ -303,27 +303,31 @@ public class OCLEcorePlugin
 	 * @return the best available Ecore resource factory
 	 */
 	public static Resource.Factory getEcoreResourceFactory() {
-		//        Resource.Factory result;
-		//        Object maybeFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(
+		// Resource.Factory result;
+		// Object maybeFactory =
+		// Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(
 		//            "ecore"); //$NON-NLS-1$
-		//        if (maybeFactory instanceof Resource.Factory.Descriptor) {
-		//            result = ((Resource.Factory.Descriptor) maybeFactory).createFactory();
-		//        } else if (maybeFactory instanceof Resource.Factory) {
-		//            result = (Resource.Factory) maybeFactory;
-		//        } else {
-		//            maybeFactory = Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(
-		//                Resource.Factory.Registry.DEFAULT_EXTENSION);
+		// if (maybeFactory instanceof Resource.Factory.Descriptor) {
+		// result = ((Resource.Factory.Descriptor)
+		// maybeFactory).createFactory();
+		// } else if (maybeFactory instanceof Resource.Factory) {
+		// result = (Resource.Factory) maybeFactory;
+		// } else {
+		// maybeFactory =
+		// Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().get(
+		// Resource.Factory.Registry.DEFAULT_EXTENSION);
 		//            
-		//            if (maybeFactory instanceof Resource.Factory.Descriptor) {
-		//                result = ((Resource.Factory.Descriptor) maybeFactory).createFactory();
-		//            } else if (maybeFactory instanceof Resource.Factory) {
-		//                result = (Resource.Factory) maybeFactory;
-		//            } else {
-		//                result = new ResourceFactoryImpl();
-		//            }
-		//        }
+		// if (maybeFactory instanceof Resource.Factory.Descriptor) {
+		// result = ((Resource.Factory.Descriptor)
+		// maybeFactory).createFactory();
+		// } else if (maybeFactory instanceof Resource.Factory) {
+		// result = (Resource.Factory) maybeFactory;
+		// } else {
+		// result = new ResourceFactoryImpl();
+		// }
+		// }
 		//        
-		//        return result;
+		// return result;
 		// TODO: The EcoreResourceImpl should work!
 		return new ResourceFactoryImpl() {
 

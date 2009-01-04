@@ -13,28 +13,27 @@
  * 
  * </copyright>
  *
- * $Id: MessageType.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: MessageType.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.cdo.common.fake.CDOClass;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Message Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getMessageType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Message Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getMessageType()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName WellFormedInstanceTypeName'"
  * @generated
  */
 public interface MessageType
 		extends
-		EClass,
-		org.eclipse.ocl.types.MessageType<EClassifier, EOperation, EStructuralFeature> {
+		CDOClass,
+		org.eclipse.ocl.types.MessageType<CDOClassifier, CDOOperation, CDOFeature> {
 	// no additional features
 } // MessageType

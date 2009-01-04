@@ -13,26 +13,26 @@
  * 
  * </copyright>
  *
- * $Id: CallOperationAction.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: CallOperationAction.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Call Operation Action</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Call Operation Action</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.CallOperationAction#getOperation <em>Operation</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.CallOperationAction#getOperation
+ * <em>Operation</em>}</li>
  * </ul>
  * </p>
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCallOperationAction()
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCallOperationAction()
  * @model
  * @generated
  */
@@ -40,29 +40,33 @@ public interface CallOperationAction
 		extends EObject {
 
 	/**
-	 * Returns the value of the '<em><b>Operation</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Operation</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Operation</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Operation</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Operation</em>' reference.
-	 * @see #setOperation(EOperation)
-	 * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCallOperationAction_Operation()
+	 * @see #setOperation(CDOOperation)
+	 * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCallOperationAction_Operation()
 	 * @model required="true"
 	 * @generated
 	 */
-	EOperation getOperation();
+	CDOOperation getOperation();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.cdo.common.ocl.CallOperationAction#getOperation <em>Operation</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Operation</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.cdo.common.ocl.CallOperationAction#getOperation
+	 * <em>Operation</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Operation</em>' reference.
 	 * @see #getOperation()
 	 * @generated
 	 */
-	void setOperation(EOperation value);
+	void setOperation(CDOOperation value);
 
 } // CallOperationAction

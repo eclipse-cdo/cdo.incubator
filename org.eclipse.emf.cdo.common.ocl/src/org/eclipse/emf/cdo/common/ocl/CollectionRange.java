@@ -13,23 +13,22 @@
  *
  * </copyright>
  *
- * $Id: CollectionRange.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: CollectionRange.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Range</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCollectionRange()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Collection Range</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCollectionRange()
  * @model
  * @generated
  */
 public interface CollectionRange
 		extends CollectionLiteralPart,
-		org.eclipse.ocl.expressions.CollectionRange<EClassifier> {
+		org.eclipse.ocl.expressions.CollectionRange<CDOClassifier> {
 } // CollectionRange

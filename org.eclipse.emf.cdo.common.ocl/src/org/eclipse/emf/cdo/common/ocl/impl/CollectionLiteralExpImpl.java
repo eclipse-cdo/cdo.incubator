@@ -13,54 +13,50 @@
  *
  * </copyright>
  *
- * $Id: CollectionLiteralExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: CollectionLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.CollectionLiteralExp;
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.expressions.CollectionLiteralPart;
 import org.eclipse.ocl.expressions.CollectionRange;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.CollectionLiteralExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Collection Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Collection Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionLiteralExpImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionLiteralExpImpl#getPart <em>Part</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.CollectionLiteralExpImpl#isSimpleRange <em>Simple Range</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.CollectionLiteralExpImpl#getKind
+ * <em>Kind</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.CollectionLiteralExpImpl#getPart
+ * <em>Part</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.CollectionLiteralExpImpl#isSimpleRange
+ * <em>Simple Range</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CollectionLiteralExpImpl
@@ -69,8 +65,8 @@ public class CollectionLiteralExpImpl
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getKind()
 	 * @generated
 	 * @ordered
@@ -79,8 +75,8 @@ public class CollectionLiteralExpImpl
 
 	/**
 	 * The cached value of the '{@link #getKind() <em>Kind</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getKind()
 	 * @generated
 	 * @ordered
@@ -88,19 +84,19 @@ public class CollectionLiteralExpImpl
 	protected CollectionKind kind = KIND_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPart() <em>Part</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPart() <em>Part</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPart()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CollectionLiteralPart<EClassifier>> part;
+	protected EList<CollectionLiteralPart<CDOClassifier>> part;
 
 	/**
-	 * The default value of the '{@link #isSimpleRange() <em>Simple Range</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #isSimpleRange() <em>Simple Range</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #isSimpleRange()
 	 * @generated
 	 * @ordered
@@ -108,8 +104,8 @@ public class CollectionLiteralExpImpl
 	protected static final boolean SIMPLE_RANGE_EDEFAULT = false;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CollectionLiteralExpImpl() {
@@ -117,18 +113,18 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.COLLECTION_LITERAL_EXP;
+		return OCLPackage.Literals.COLLECTION_LITERAL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CollectionKind getKind() {
@@ -136,8 +132,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setKind(CollectionKind newKind) {
@@ -147,34 +143,34 @@ public class CollectionLiteralExpImpl
 			: newKind;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.COLLECTION_LITERAL_EXP__KIND, oldKind, kind));
+				OCLPackage.COLLECTION_LITERAL_EXP__KIND, oldKind, kind));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<CollectionLiteralPart<EClassifier>> getPart() {
+	public EList<CollectionLiteralPart<CDOClassifier>> getPart() {
 		if (part == null) {
-			part = new EObjectContainmentEList<CollectionLiteralPart<EClassifier>>(
+			part = new EObjectContainmentEList<CollectionLiteralPart<CDOClassifier>>(
 				CollectionLiteralPart.class, this,
-				EcorePackage.COLLECTION_LITERAL_EXP__PART);
+				OCLPackage.COLLECTION_LITERAL_EXP__PART);
 		}
 		return part;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean isSimpleRange() {
-		EList<CollectionLiteralPart<EClassifier>> partsList = getPart();
+		EList<CollectionLiteralPart<CDOClassifier>> partsList = getPart();
 
 		int size = partsList.size();
 		if (size == 1) {
-			CollectionLiteralPart<EClassifier> part = partsList.get(0);
+			CollectionLiteralPart<CDOClassifier> part = partsList.get(0);
 
 			return part instanceof CollectionRange;
 		}
@@ -183,8 +179,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkNoCollectionInstances(DiagnosticChain diagnostics,
@@ -194,8 +190,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkSetKind(DiagnosticChain diagnostics,
@@ -205,8 +201,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkSequenceKind(DiagnosticChain diagnostics,
@@ -216,8 +212,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkBagKind(DiagnosticChain diagnostics,
@@ -227,8 +223,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkElementType(DiagnosticChain diagnostics,
@@ -238,15 +234,15 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_LITERAL_EXP__PART :
+			case OCLPackage.COLLECTION_LITERAL_EXP__PART :
 				return ((InternalEList<?>) getPart()).basicRemove(otherEnd,
 					msgs);
 		}
@@ -254,18 +250,18 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_LITERAL_EXP__KIND :
+			case OCLPackage.COLLECTION_LITERAL_EXP__KIND :
 				return getKind();
-			case EcorePackage.COLLECTION_LITERAL_EXP__PART :
+			case OCLPackage.COLLECTION_LITERAL_EXP__PART :
 				return getPart();
-			case EcorePackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
+			case OCLPackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
 				return isSimpleRange()
 					? Boolean.TRUE
 					: Boolean.FALSE;
@@ -274,39 +270,39 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_LITERAL_EXP__KIND :
+			case OCLPackage.COLLECTION_LITERAL_EXP__KIND :
 				setKind((CollectionKind) newValue);
 				return;
-			case EcorePackage.COLLECTION_LITERAL_EXP__PART :
+			case OCLPackage.COLLECTION_LITERAL_EXP__PART :
 				getPart().clear();
 				getPart()
 					.addAll(
-						(Collection<? extends CollectionLiteralPart<EClassifier>>) newValue);
+						(Collection<? extends CollectionLiteralPart<CDOClassifier>>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_LITERAL_EXP__KIND :
+			case OCLPackage.COLLECTION_LITERAL_EXP__KIND :
 				setKind(KIND_EDEFAULT);
 				return;
-			case EcorePackage.COLLECTION_LITERAL_EXP__PART :
+			case OCLPackage.COLLECTION_LITERAL_EXP__PART :
 				getPart().clear();
 				return;
 		}
@@ -314,37 +310,37 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.COLLECTION_LITERAL_EXP__KIND :
+			case OCLPackage.COLLECTION_LITERAL_EXP__KIND :
 				return kind != KIND_EDEFAULT;
-			case EcorePackage.COLLECTION_LITERAL_EXP__PART :
+			case OCLPackage.COLLECTION_LITERAL_EXP__PART :
 				return part != null && !part.isEmpty();
-			case EcorePackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
+			case OCLPackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
 				return isSimpleRange() != SIMPLE_RANGE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.CollectionLiteralExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.COLLECTION_LITERAL_EXP__KIND :
+				case OCLPackage.COLLECTION_LITERAL_EXP__KIND :
 					return ExpressionsPackage.COLLECTION_LITERAL_EXP__KIND;
-				case EcorePackage.COLLECTION_LITERAL_EXP__PART :
+				case OCLPackage.COLLECTION_LITERAL_EXP__PART :
 					return ExpressionsPackage.COLLECTION_LITERAL_EXP__PART;
-				case EcorePackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
+				case OCLPackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
 					return ExpressionsPackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE;
 				default :
 					return -1;
@@ -354,8 +350,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -363,11 +359,11 @@ public class CollectionLiteralExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.CollectionLiteralExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.COLLECTION_LITERAL_EXP__KIND :
-					return EcorePackage.COLLECTION_LITERAL_EXP__KIND;
+					return OCLPackage.COLLECTION_LITERAL_EXP__KIND;
 				case ExpressionsPackage.COLLECTION_LITERAL_EXP__PART :
-					return EcorePackage.COLLECTION_LITERAL_EXP__PART;
+					return OCLPackage.COLLECTION_LITERAL_EXP__PART;
 				case ExpressionsPackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE :
-					return EcorePackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE;
+					return OCLPackage.COLLECTION_LITERAL_EXP__SIMPLE_RANGE;
 				default :
 					return -1;
 			}
@@ -376,8 +372,8 @@ public class CollectionLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -388,9 +384,11 @@ public class CollectionLiteralExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v).visitCollectionLiteralExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitCollectionLiteralExp(this);
 	}
 
-} //CollectionLiteralExpImpl
+} // CollectionLiteralExpImpl

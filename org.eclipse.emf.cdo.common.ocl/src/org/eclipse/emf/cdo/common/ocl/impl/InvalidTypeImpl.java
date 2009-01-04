@@ -12,39 +12,36 @@
  * 
  * </copyright>
  *
- * $Id: InvalidTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: InvalidTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.fake.impl.CDOClassifierImpl;
 import org.eclipse.emf.cdo.common.ocl.InvalidType;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EOperation;
 
-import org.eclipse.emf.ecore.impl.EClassifierImpl;
-
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Invalid Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Invalid Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class InvalidTypeImpl
-		extends EClassifierImpl
+		extends CDOClassifierImpl
 		implements InvalidType {
 
 	private EList<EOperation> operations;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected InvalidTypeImpl() {
@@ -52,18 +49,18 @@ public class InvalidTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.INVALID_TYPE;
+		return OCLPackage.Literals.INVALID_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -72,11 +69,11 @@ public class InvalidTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EList<EOperation> oclOperations() {
+	public EList<CDOOperation> oclOperations() {
 		if (operations == null) {
 			InvalidType prototype = (InvalidType) OCLStandardLibraryImpl.INSTANCE
 				.getInvalid();
@@ -93,4 +90,4 @@ public class InvalidTypeImpl
 		return operations;
 	}
 
-} //InvalidTypeImpl
+} // InvalidTypeImpl

@@ -13,22 +13,21 @@
  *
  * </copyright>
  *
- * $Id: IfExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: IfExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>If Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getIfExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>If Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getIfExp()
  * @model
  * @generated
  */
 public interface IfExp
-		extends OCLExpression, org.eclipse.ocl.expressions.IfExp<EClassifier> {
+		extends OCLExpression, org.eclipse.ocl.expressions.IfExp<CDOClassifier> {
 } // IfExp

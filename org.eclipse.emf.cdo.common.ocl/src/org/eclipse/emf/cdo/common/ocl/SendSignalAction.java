@@ -13,26 +13,26 @@
  * 
  * </copyright>
  *
- * $Id: SendSignalAction.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: SendSignalAction.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.cdo.common.fake.CDOClass;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Send Signal Action</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Send Signal Action</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.SendSignalAction#getSignal <em>Signal</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.SendSignalAction#getSignal <em>
+ * Signal</em>}</li>
  * </ul>
  * </p>
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getSendSignalAction()
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getSendSignalAction()
  * @model
  * @generated
  */
@@ -40,29 +40,33 @@ public interface SendSignalAction
 		extends EObject {
 
 	/**
-	 * Returns the value of the '<em><b>Signal</b></em>' reference.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Signal</b></em>' reference. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Signal</em>' reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Signal</em>' reference isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Signal</em>' reference.
-	 * @see #setSignal(EClass)
-	 * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getSendSignalAction_Signal()
+	 * @see #setSignal(CDOClass)
+	 * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getSendSignalAction_Signal()
 	 * @model required="true"
 	 * @generated
 	 */
-	EClass getSignal();
+	CDOClass getSignal();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.emf.cdo.common.ocl.SendSignalAction#getSignal <em>Signal</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Signal</em>' reference.
+	 * Sets the value of the '
+	 * {@link org.eclipse.emf.cdo.common.ocl.SendSignalAction#getSignal
+	 * <em>Signal</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Signal</em>' reference.
 	 * @see #getSignal()
 	 * @generated
 	 */
-	void setSignal(EClass value);
+	void setSignal(CDOClass value);
 
 } // SendSignalAction

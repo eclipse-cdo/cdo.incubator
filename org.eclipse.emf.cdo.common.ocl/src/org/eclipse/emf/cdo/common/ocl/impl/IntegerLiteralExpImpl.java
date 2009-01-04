@@ -13,42 +13,35 @@
  *
  * </copyright>
  *
- * $Id: IntegerLiteralExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: IntegerLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.IntegerLiteralExp;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.IntegerLiteralExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Integer Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Integer Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.IntegerLiteralExpImpl#getIntegerSymbol <em>Integer Symbol</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.IntegerLiteralExpImpl#getIntegerSymbol
+ * <em>Integer Symbol</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class IntegerLiteralExpImpl
@@ -56,9 +49,10 @@ public class IntegerLiteralExpImpl
 		implements IntegerLiteralExp {
 
 	/**
-	 * The default value of the '{@link #getIntegerSymbol() <em>Integer Symbol</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getIntegerSymbol()
+	 * <em>Integer Symbol</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getIntegerSymbol()
 	 * @generated
 	 * @ordered
@@ -66,9 +60,10 @@ public class IntegerLiteralExpImpl
 	protected static final Integer INTEGER_SYMBOL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIntegerSymbol() <em>Integer Symbol</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getIntegerSymbol()
+	 * <em>Integer Symbol</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getIntegerSymbol()
 	 * @generated
 	 * @ordered
@@ -76,8 +71,8 @@ public class IntegerLiteralExpImpl
 	protected Integer integerSymbol = INTEGER_SYMBOL_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected IntegerLiteralExpImpl() {
@@ -85,18 +80,18 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.INTEGER_LITERAL_EXP;
+		return OCLPackage.Literals.INTEGER_LITERAL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Integer getIntegerSymbol() {
@@ -104,8 +99,8 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setIntegerSymbol(Integer newIntegerSymbol) {
@@ -113,13 +108,13 @@ public class IntegerLiteralExpImpl
 		integerSymbol = newIntegerSymbol;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL,
+				OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL,
 				oldIntegerSymbol, integerSymbol));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkIntegerType(DiagnosticChain diagnostics,
@@ -129,28 +124,28 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
+			case OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
 				return getIntegerSymbol();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
+			case OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
 				setIntegerSymbol((Integer) newValue);
 				return;
 		}
@@ -158,14 +153,14 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
+			case OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
 				setIntegerSymbol(INTEGER_SYMBOL_EDEFAULT);
 				return;
 		}
@@ -173,14 +168,14 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
+			case OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
 				return INTEGER_SYMBOL_EDEFAULT == null
 					? integerSymbol != null
 					: !INTEGER_SYMBOL_EDEFAULT.equals(integerSymbol);
@@ -189,15 +184,15 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.IntegerLiteralExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
+				case OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
 					return ExpressionsPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL;
 				default :
 					return -1;
@@ -207,8 +202,8 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -216,7 +211,7 @@ public class IntegerLiteralExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.IntegerLiteralExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL :
-					return EcorePackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL;
+					return OCLPackage.INTEGER_LITERAL_EXP__INTEGER_SYMBOL;
 				default :
 					return -1;
 			}
@@ -225,8 +220,8 @@ public class IntegerLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -237,9 +232,11 @@ public class IntegerLiteralExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v).visitIntegerLiteralExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitIntegerLiteralExp(this);
 	}
 
-} //IntegerLiteralExpImpl
+} // IntegerLiteralExpImpl

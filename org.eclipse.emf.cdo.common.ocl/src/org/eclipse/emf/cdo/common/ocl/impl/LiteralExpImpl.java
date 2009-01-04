@@ -12,22 +12,21 @@
  *
  * </copyright>
  *
- * $Id: LiteralExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: LiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
 import org.eclipse.emf.cdo.common.ocl.LiteralExp;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.ocl.util.ToStringVisitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class LiteralExpImpl
@@ -35,8 +34,8 @@ public abstract class LiteralExpImpl
 		implements LiteralExp {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LiteralExpImpl() {
@@ -44,18 +43,18 @@ public abstract class LiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.LITERAL_EXP;
+		return OCLPackage.Literals.LITERAL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -67,4 +66,4 @@ public abstract class LiteralExpImpl
 		return accept(ToStringVisitor.getInstance(this));
 	}
 
-} //LiteralExpImpl
+} // LiteralExpImpl

@@ -13,24 +13,23 @@
  *
  * </copyright>
  *
- * $Id: LoopExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: LoopExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Loop Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getLoopExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Loop Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getLoopExp()
  * @model abstract="true"
  * @generated
  */
 public interface LoopExp
 		extends CallExp,
-		org.eclipse.ocl.expressions.LoopExp<EClassifier, EParameter> {
+		org.eclipse.ocl.expressions.LoopExp<CDOClassifier, CDOParameter> {
 } // LoopExp

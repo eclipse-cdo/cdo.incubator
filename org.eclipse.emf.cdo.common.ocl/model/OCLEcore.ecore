@@ -52,7 +52,7 @@
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//types/MessageType">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
         <eTypeArguments eClassifier="#//fake/CDOOperation"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OrderedSetType">
@@ -93,7 +93,7 @@
       <eGenericSuperTypes eClassifier="#//fake/CDODataType"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//types/TupleType">
         <eTypeArguments eClassifier="#//fake/CDOOperation"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TypeType">
@@ -151,7 +151,7 @@
       <eGenericSuperTypes eClassifier="#//ocl/NavigationCallExp"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/AssociationClassCallExp">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BooleanLiteralExp">
@@ -276,7 +276,7 @@
       <eGenericSuperTypes eClassifier="#//ocl/FeatureCallExp"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/NavigationCallExp">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="NullLiteralExp">
@@ -320,7 +320,7 @@
       <eGenericSuperTypes eClassifier="#//ocl/NavigationCallExp"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/PropertyCallExp">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="RealLiteralExp">
@@ -333,7 +333,7 @@
       <eGenericSuperTypes eClassifier="#//ocl/OCLExpression"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/StateExp">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
-        <eTypeArguments eClassifier="#//fake/CDOObject"/>
+        <eTypeArguments eClassifier="#//fake/CDORevision"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="StringLiteralExp">
@@ -346,7 +346,7 @@
       <eGenericSuperTypes eClassifier="#//ocl/LiteralExp"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/TupleLiteralExp">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TupleLiteralPart">
@@ -356,7 +356,7 @@
       <eGenericSuperTypes eClassifier="#//fake/CDOTypedElement"/>
       <eGenericSuperTypes eClassifier="ecore:EClass platform:/plugin/org.eclipse.ocl/model/OCL.ecore#//expressions/TupleLiteralPart">
         <eTypeArguments eClassifier="#//fake/CDOClassifier"/>
-        <eTypeArguments eClassifier="#//fake/CDOStructuralFeature"/>
+        <eTypeArguments eClassifier="#//fake/CDOFeature"/>
       </eGenericSuperTypes>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TypeExp">
@@ -390,17 +390,15 @@
     </eClassifiers>
   </eSubpackages>
   <eSubpackages name="fake" nsURI="http://www.eclipse.org/ocl/2.0.0/CDO/Fake" nsPrefix="ocl.cdo.fake">
-    <eClassifiers xsi:type="ecore:EClass" name="CDOClass" instanceClassName="org.eclipse.emf.cdo.common.model.CDOClass"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CDOClassifier" instanceClassName="org.eclipse.emf.cdo.common.model.CDOClass"
-        abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CDORevision"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CDOFeature" abstract="true"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CDOClass"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CDOClassifier" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDODataType"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOEnumLiteral"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDONamedElement" abstract="true"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CDOObject" instanceClassName="org.eclipse.emf.cdo.common.revision.CDORevision"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOOperation"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOParameter"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CDOStructuralFeature" instanceClassName="org.eclipse.emf.cdo.common.model.CDOFeature"
-        abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="CDOTypedElement" abstract="true"/>
   </eSubpackages>
 </ecore:EPackage>

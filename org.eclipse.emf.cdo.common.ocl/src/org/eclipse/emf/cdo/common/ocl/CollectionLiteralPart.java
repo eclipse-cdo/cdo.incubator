@@ -13,25 +13,24 @@
  *
  * </copyright>
  *
- * $Id: CollectionLiteralPart.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: CollectionLiteralPart.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOTypedElement;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Literal Part</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCollectionLiteralPart()
- * @model abstract="true"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName'"
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Collection Literal Part</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCollectionLiteralPart()
+ * @model abstract="true" annotation=
+ *        "http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName'"
  * @generated
  */
 public interface CollectionLiteralPart
-		extends ETypedElement,
-		org.eclipse.ocl.expressions.CollectionLiteralPart<EClassifier> {
+		extends CDOTypedElement,
+		org.eclipse.ocl.expressions.CollectionLiteralPart<CDOClassifier> {
 } // CollectionLiteralPart

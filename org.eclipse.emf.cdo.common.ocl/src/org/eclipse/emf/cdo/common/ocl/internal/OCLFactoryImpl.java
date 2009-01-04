@@ -12,25 +12,25 @@
  *
  * </copyright>
  *
- * $Id: OCLFactoryImpl.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: OCLFactoryImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.internal;
 
 import java.util.List;
 
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 import org.eclipse.emf.cdo.common.ocl.BagType;
 import org.eclipse.emf.cdo.common.ocl.CollectionType;
-import org.eclipse.emf.cdo.common.ocl.EcoreFactory;
 import org.eclipse.emf.cdo.common.ocl.MessageType;
+import org.eclipse.emf.cdo.common.ocl.OCLFactory;
 import org.eclipse.emf.cdo.common.ocl.OrderedSetType;
 import org.eclipse.emf.cdo.common.ocl.SequenceType;
 import org.eclipse.emf.cdo.common.ocl.SetType;
 import org.eclipse.emf.cdo.common.ocl.TupleType;
 import org.eclipse.emf.cdo.common.ocl.impl.TypeTypeImpl;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.ocl.Environment;
 import org.eclipse.ocl.expressions.AssociationClassCallExp;
 import org.eclipse.ocl.expressions.BooleanLiteralExp;
@@ -59,243 +59,240 @@ import org.eclipse.ocl.expressions.UnlimitedNaturalLiteralExp;
 import org.eclipse.ocl.expressions.UnspecifiedValueExp;
 import org.eclipse.ocl.expressions.Variable;
 import org.eclipse.ocl.expressions.VariableExp;
-import org.eclipse.ocl.utilities.OCLFactory;
 import org.eclipse.ocl.utilities.TypedElement;
 import org.eclipse.ocl.utilities.UMLReflection;
 
-
 /**
  * Implementation of the {@link OCLFactory} API for the Ecore binding.
- *
+ * 
  * @author Christian W. Damus (cdamus)
  */
 @SuppressWarnings("unchecked")
-public class OCLFactoryImpl implements OCLFactory {
-    public static OCLFactory INSTANCE = new OCLFactoryImpl();
-    
-    private OCLFactoryImpl() {
-        super();
-    }
+public class OCLFactoryImpl
+		implements OCLFactory {
 
-    public <C, O> org.eclipse.ocl.types.BagType<C, O> createBagType(C elementType) {
-        BagType result = EcoreFactory.eINSTANCE.createBagType();
-        result.setElementType((EClassifier) elementType);
-        
-        return (org.eclipse.ocl.types.BagType<C, O>) result;
-    }
+	public static OCLFactory INSTANCE = new OCLFactoryImpl();
 
-    public <C, O> org.eclipse.ocl.types.OrderedSetType<C, O> createOrderedSetType(C elementType) {
-        OrderedSetType result = EcoreFactory.eINSTANCE.createOrderedSetType();
-        result.setElementType((EClassifier) elementType);
-        
-        return (org.eclipse.ocl.types.OrderedSetType<C, O>) result;
-    }
+	private OCLFactoryImpl() {
+		super();
+	}
 
-    public <C, O> org.eclipse.ocl.types.SequenceType<C, O> createSequenceType(C elementType) {
-        SequenceType result = EcoreFactory.eINSTANCE.createSequenceType();
-        result.setElementType((EClassifier) elementType);
-        
-        return (org.eclipse.ocl.types.SequenceType<C, O>) result;
-    }
+	public <C, O> org.eclipse.ocl.types.BagType<C, O> createBagType(
+			C elementType) {
+		BagType result = OCLFactory.eINSTANCE.createBagType();
+		result.setElementType((CDOClassifier) elementType);
 
-    public <C, O> org.eclipse.ocl.types.SetType<C, O> createSetType(C elementType) {
-        SetType result = EcoreFactory.eINSTANCE.createSetType();
-        result.setElementType((EClassifier) elementType);
-        
-        return (org.eclipse.ocl.types.SetType<C, O>) result;
-    }
+		return (org.eclipse.ocl.types.BagType<C, O>) result;
+	}
 
-    public <C, O> org.eclipse.ocl.types.CollectionType<C, O> createCollectionType(C elementType) {
-        CollectionType result = EcoreFactory.eINSTANCE.createCollectionType();
-        result.setElementType((EClassifier) elementType);
-        
-        return (org.eclipse.ocl.types.CollectionType<C, O>) result;
-    }
+	public <C, O> org.eclipse.ocl.types.OrderedSetType<C, O> createOrderedSetType(
+			C elementType) {
+		OrderedSetType result = OCLFactory.eINSTANCE.createOrderedSetType();
+		result.setElementType((CDOClassifier) elementType);
 
-    public <C, O> org.eclipse.ocl.types.CollectionType<C, O> createCollectionType(
-            CollectionKind kind, C elementType) {
-        switch (kind) {
-        case BAG_LITERAL:
-            return createBagType(elementType);
-        case SET_LITERAL:
-            return createSetType(elementType);
-        case SEQUENCE_LITERAL:
-            return createSequenceType(elementType);
-        case ORDERED_SET_LITERAL:
-            return createOrderedSetType(elementType);
-        default:
-            return createCollectionType(elementType);
-        }
-    }
+		return (org.eclipse.ocl.types.OrderedSetType<C, O>) result;
+	}
 
-    public <C, O, P> org.eclipse.ocl.types.MessageType<C, O, P> createOperationMessageType(O operation) {
-        MessageType result = EcoreFactory.eINSTANCE.createMessageType();
-        result.setReferredOperation((EOperation) operation);
-        result.oclProperties(); // ensure that the structural features are created
-        return (org.eclipse.ocl.types.MessageType<C, O, P>) result;
-    }
+	public <C, O> org.eclipse.ocl.types.SequenceType<C, O> createSequenceType(
+			C elementType) {
+		SequenceType result = OCLFactory.eINSTANCE.createSequenceType();
+		result.setElementType((CDOClassifier) elementType);
 
-    public <C, O, P> org.eclipse.ocl.types.MessageType<C, O, P> createSignalMessageType(C signal) {
-        MessageType result = EcoreFactory.eINSTANCE.createMessageType();
-        result.setReferredSignal((EClassifier) signal);
-        result.oclProperties(); // ensure that the structural features are created
-        return (org.eclipse.ocl.types.MessageType<C, O, P>) result;
-    }
+		return (org.eclipse.ocl.types.SequenceType<C, O>) result;
+	}
 
-    public <C, O, P> org.eclipse.ocl.types.TupleType<O, P> createTupleType(
-            List<? extends TypedElement<C>> parts) {
-        TupleType result = EcoreFactory.eINSTANCE.createTupleType();
-        
-        if (!parts.isEmpty()) {
-            Environment<?, C, O, P, ?, ?, ?, ?, ?, ?, ?, ?> env =
-                Environment.Registry.INSTANCE.getEnvironmentFor(parts.get(0));
-            UMLReflection<?, C, O, P, ?, ?, ?, ?, ?, ?>
-            uml = env.getUMLReflection();
-            
-            EList<EStructuralFeature> properties = result.oclProperties();
-            
-            for (TypedElement<C> part : parts) {
-                properties.add((EStructuralFeature) uml.createProperty(
-                        part.getName(), part.getType()));
-            }
-        }
-        
-        return (org.eclipse.ocl.types.TupleType<O, P>) result;
-    }
+	public <C, O> org.eclipse.ocl.types.SetType<C, O> createSetType(
+			C elementType) {
+		SetType result = OCLFactory.eINSTANCE.createSetType();
+		result.setElementType((CDOClassifier) elementType);
 
-    public <C, O> org.eclipse.ocl.types.TypeType<C, O> createTypeType(
-            C type) {
-        return (org.eclipse.ocl.types.TypeType<C, O>)
-            TypeTypeImpl.createTypeType((EClassifier) type);
-    }
+		return (org.eclipse.ocl.types.SetType<C, O>) result;
+	}
 
-    public <C, P> AssociationClassCallExp<C, P> createAssociationClassCallExp() {
-        return (AssociationClassCallExp<C, P>)
-            EcoreFactory.eINSTANCE.createAssociationClassCallExp();
-    }
+	public <C, O> org.eclipse.ocl.types.CollectionType<C, O> createCollectionType(
+			C elementType) {
+		CollectionType result = OCLFactory.eINSTANCE.createCollectionType();
+		result.setElementType((CDOClassifier) elementType);
 
-    public <C> BooleanLiteralExp<C> createBooleanLiteralExp() {
-        return (BooleanLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createBooleanLiteralExp();
-    }
+		return (org.eclipse.ocl.types.CollectionType<C, O>) result;
+	}
 
-    public <C> CollectionItem<C> createCollectionItem() {
-        return (CollectionItem<C>)
-            EcoreFactory.eINSTANCE.createCollectionItem();
-    }
+	public <C, O> org.eclipse.ocl.types.CollectionType<C, O> createCollectionType(
+			CollectionKind kind, C elementType) {
+		switch (kind) {
+			case BAG_LITERAL :
+				return createBagType(elementType);
+			case SET_LITERAL :
+				return createSetType(elementType);
+			case SEQUENCE_LITERAL :
+				return createSequenceType(elementType);
+			case ORDERED_SET_LITERAL :
+				return createOrderedSetType(elementType);
+			default :
+				return createCollectionType(elementType);
+		}
+	}
 
-    public <C> CollectionLiteralExp<C> createCollectionLiteralExp() {
-        return (CollectionLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createCollectionLiteralExp();
-    }
+	public <C, O, P> org.eclipse.ocl.types.MessageType<C, O, P> createOperationMessageType(
+			O operation) {
+		MessageType result = OCLFactory.eINSTANCE.createMessageType();
+		result.setReferredOperation((CDOOperation) operation);
+		result.oclProperties(); // ensure that the structural features are
+								// created
+		return (org.eclipse.ocl.types.MessageType<C, O, P>) result;
+	}
 
-    public <C> CollectionRange<C> createCollectionRange() {
-        return (CollectionRange<C>)
-            EcoreFactory.eINSTANCE.createCollectionRange();
-    }
+	public <C, O, P> org.eclipse.ocl.types.MessageType<C, O, P> createSignalMessageType(
+			C signal) {
+		MessageType result = OCLFactory.eINSTANCE.createMessageType();
+		result.setReferredSignal((CDOClassifier) signal);
+		result.oclProperties(); // ensure that the structural features are
+								// created
+		return (org.eclipse.ocl.types.MessageType<C, O, P>) result;
+	}
 
-    public <C, EL> EnumLiteralExp<C, EL> createEnumLiteralExp() {
-        return (EnumLiteralExp<C, EL>)
-            EcoreFactory.eINSTANCE.createEnumLiteralExp();
-    }
+	public <C, O, P> org.eclipse.ocl.types.TupleType<O, P> createTupleType(
+			List<? extends TypedElement<C>> parts) {
+		TupleType result = OCLFactory.eINSTANCE.createTupleType();
 
-    public <C> IfExp<C> createIfExp() {
-        return (IfExp<C>)
-            EcoreFactory.eINSTANCE.createIfExp();
-    }
+		if (!parts.isEmpty()) {
+			Environment<?, C, O, P, ?, ?, ?, ?, ?, ?, ?, ?> env = Environment.Registry.INSTANCE
+				.getEnvironmentFor(parts.get(0));
+			UMLReflection<?, C, O, P, ?, ?, ?, ?, ?, ?> uml = env
+				.getUMLReflection();
 
-    public <C> IntegerLiteralExp<C> createIntegerLiteralExp() {
-        return (IntegerLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createIntegerLiteralExp();
-    }
+			EList<CDOFeature> properties = result.oclProperties();
 
-    public <C> InvalidLiteralExp<C> createInvalidLiteralExp() {
-        return (InvalidLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createInvalidLiteralExp();
-    }
+			for (TypedElement<C> part : parts) {
+				properties.add((CDOFeature) uml.createProperty(part.getName(),
+					part.getType()));
+			}
+		}
 
-    public <C, PM> IterateExp<C, PM> createIterateExp() {
-        return (IterateExp<C, PM>)
-            EcoreFactory.eINSTANCE.createIterateExp();
-    }
+		return (org.eclipse.ocl.types.TupleType<O, P>) result;
+	}
 
-    public <C, PM> IteratorExp<C, PM> createIteratorExp() {
-        return (IteratorExp<C, PM>)
-            EcoreFactory.eINSTANCE.createIteratorExp();
-    }
+	public <C, O> org.eclipse.ocl.types.TypeType<C, O> createTypeType(C type) {
+		return (org.eclipse.ocl.types.TypeType<C, O>) TypeTypeImpl
+			.createTypeType((CDOClassifier) type);
+	}
 
-    public <C, PM> LetExp<C, PM> createLetExp() {
-        return (LetExp<C, PM>)
-            EcoreFactory.eINSTANCE.createLetExp();
-    }
+	public <C, P> AssociationClassCallExp<C, P> createAssociationClassCallExp() {
+		return (AssociationClassCallExp<C, P>) OCLFactory.eINSTANCE
+			.createAssociationClassCallExp();
+	}
 
-    public <C, COA, SSA> MessageExp<C, COA, SSA> createMessageExp() {
-        return (MessageExp<C, COA, SSA>)
-            EcoreFactory.eINSTANCE.createMessageExp();
-    }
+	public <C> BooleanLiteralExp<C> createBooleanLiteralExp() {
+		return (BooleanLiteralExp<C>) OCLFactory.eINSTANCE
+			.createBooleanLiteralExp();
+	}
 
-    public <C> NullLiteralExp<C> createNullLiteralExp() {
-        return (NullLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createNullLiteralExp();
-    }
+	public <C> CollectionItem<C> createCollectionItem() {
+		return (CollectionItem<C>) OCLFactory.eINSTANCE.createCollectionItem();
+	}
 
-    public <C, O> OperationCallExp<C, O> createOperationCallExp() {
-        return (OperationCallExp<C, O>)
-            EcoreFactory.eINSTANCE.createOperationCallExp();
-    }
+	public <C> CollectionLiteralExp<C> createCollectionLiteralExp() {
+		return (CollectionLiteralExp<C>) OCLFactory.eINSTANCE
+			.createCollectionLiteralExp();
+	}
 
-    public <C, P> PropertyCallExp<C, P> createPropertyCallExp() {
-        return (PropertyCallExp<C, P>)
-            EcoreFactory.eINSTANCE.createPropertyCallExp();
-    }
+	public <C> CollectionRange<C> createCollectionRange() {
+		return (CollectionRange<C>) OCLFactory.eINSTANCE
+			.createCollectionRange();
+	}
 
-    public <C> RealLiteralExp<C> createRealLiteralExp() {
-        return (RealLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createRealLiteralExp();
-    }
+	public <C, EL> EnumLiteralExp<C, EL> createEnumLiteralExp() {
+		return (EnumLiteralExp<C, EL>) OCLFactory.eINSTANCE
+			.createEnumLiteralExp();
+	}
 
-    public <C, S> StateExp<C, S> createStateExp() {
-        return (StateExp<C, S>)
-            EcoreFactory.eINSTANCE.createStateExp();
-    }
+	public <C> IfExp<C> createIfExp() {
+		return (IfExp<C>) OCLFactory.eINSTANCE.createIfExp();
+	}
 
-    public <C> StringLiteralExp<C> createStringLiteralExp() {
-        return (StringLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createStringLiteralExp();
-    }
+	public <C> IntegerLiteralExp<C> createIntegerLiteralExp() {
+		return (IntegerLiteralExp<C>) OCLFactory.eINSTANCE
+			.createIntegerLiteralExp();
+	}
 
-    public <C, P> TupleLiteralExp<C, P> createTupleLiteralExp() {
-        return (TupleLiteralExp<C, P>)
-            EcoreFactory.eINSTANCE.createTupleLiteralExp();
-    }
+	public <C> InvalidLiteralExp<C> createInvalidLiteralExp() {
+		return (InvalidLiteralExp<C>) OCLFactory.eINSTANCE
+			.createInvalidLiteralExp();
+	}
 
-    public <C, P> TupleLiteralPart<C, P> createTupleLiteralPart() {
-        return (TupleLiteralPart<C, P>)
-            EcoreFactory.eINSTANCE.createTupleLiteralPart();
-    }
+	public <C, PM> IterateExp<C, PM> createIterateExp() {
+		return (IterateExp<C, PM>) OCLFactory.eINSTANCE.createIterateExp();
+	}
 
-    public <C> TypeExp<C> createTypeExp() {
-        return (TypeExp<C>)
-            EcoreFactory.eINSTANCE.createTypeExp();
-    }
+	public <C, PM> IteratorExp<C, PM> createIteratorExp() {
+		return (IteratorExp<C, PM>) OCLFactory.eINSTANCE.createIteratorExp();
+	}
 
-    public <C> UnlimitedNaturalLiteralExp<C> createUnlimitedNaturalLiteralExp() {
-        return (UnlimitedNaturalLiteralExp<C>)
-            EcoreFactory.eINSTANCE.createUnlimitedNaturalLiteralExp();
-    }
+	public <C, PM> LetExp<C, PM> createLetExp() {
+		return (LetExp<C, PM>) OCLFactory.eINSTANCE.createLetExp();
+	}
 
-    public <C> UnspecifiedValueExp<C> createUnspecifiedValueExp() {
-        return (UnspecifiedValueExp<C>)
-            EcoreFactory.eINSTANCE.createUnspecifiedValueExp();
-    }
+	public <C, COA, SSA> MessageExp<C, COA, SSA> createMessageExp() {
+		return (MessageExp<C, COA, SSA>) OCLFactory.eINSTANCE
+			.createMessageExp();
+	}
 
-    public <C, PM> Variable<C, PM> createVariable() {
-        return (Variable<C, PM>)
-            EcoreFactory.eINSTANCE.createVariable();
-    }
+	public <C> NullLiteralExp<C> createNullLiteralExp() {
+		return (NullLiteralExp<C>) OCLFactory.eINSTANCE.createNullLiteralExp();
+	}
 
-    public <C, PM> VariableExp<C, PM> createVariableExp() {
-        return (VariableExp<C, PM>)
-            EcoreFactory.eINSTANCE.createVariableExp();
-    }
+	public <C, O> OperationCallExp<C, O> createOperationCallExp() {
+		return (OperationCallExp<C, O>) OCLFactory.eINSTANCE
+			.createOperationCallExp();
+	}
+
+	public <C, P> PropertyCallExp<C, P> createPropertyCallExp() {
+		return (PropertyCallExp<C, P>) OCLFactory.eINSTANCE
+			.createPropertyCallExp();
+	}
+
+	public <C> RealLiteralExp<C> createRealLiteralExp() {
+		return (RealLiteralExp<C>) OCLFactory.eINSTANCE.createRealLiteralExp();
+	}
+
+	public <C, S> StateExp<C, S> createStateExp() {
+		return (StateExp<C, S>) OCLFactory.eINSTANCE.createStateExp();
+	}
+
+	public <C> StringLiteralExp<C> createStringLiteralExp() {
+		return (StringLiteralExp<C>) OCLFactory.eINSTANCE
+			.createStringLiteralExp();
+	}
+
+	public <C, P> TupleLiteralExp<C, P> createTupleLiteralExp() {
+		return (TupleLiteralExp<C, P>) OCLFactory.eINSTANCE
+			.createTupleLiteralExp();
+	}
+
+	public <C, P> TupleLiteralPart<C, P> createTupleLiteralPart() {
+		return (TupleLiteralPart<C, P>) OCLFactory.eINSTANCE
+			.createTupleLiteralPart();
+	}
+
+	public <C> TypeExp<C> createTypeExp() {
+		return (TypeExp<C>) OCLFactory.eINSTANCE.createTypeExp();
+	}
+
+	public <C> UnlimitedNaturalLiteralExp<C> createUnlimitedNaturalLiteralExp() {
+		return (UnlimitedNaturalLiteralExp<C>) OCLFactory.eINSTANCE
+			.createUnlimitedNaturalLiteralExp();
+	}
+
+	public <C> UnspecifiedValueExp<C> createUnspecifiedValueExp() {
+		return (UnspecifiedValueExp<C>) OCLFactory.eINSTANCE
+			.createUnspecifiedValueExp();
+	}
+
+	public <C, PM> Variable<C, PM> createVariable() {
+		return (Variable<C, PM>) OCLFactory.eINSTANCE.createVariable();
+	}
+
+	public <C, PM> VariableExp<C, PM> createVariableExp() {
+		return (VariableExp<C, PM>) OCLFactory.eINSTANCE.createVariableExp();
+	}
 }

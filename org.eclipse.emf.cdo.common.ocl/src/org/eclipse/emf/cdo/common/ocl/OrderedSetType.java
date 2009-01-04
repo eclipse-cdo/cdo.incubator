@@ -13,25 +13,24 @@
  * 
  * </copyright>
  *
- * $Id: OrderedSetType.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: OrderedSetType.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Ordered Set Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getOrderedSetType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Ordered Set Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getOrderedSetType()
  * @model
  * @generated
  */
 public interface OrderedSetType
 		extends CollectionType,
-		org.eclipse.ocl.types.OrderedSetType<EClassifier, EOperation> {
+		org.eclipse.ocl.types.OrderedSetType<CDOClassifier, CDOOperation> {
 	// no additional features
 } // OrderedSetType

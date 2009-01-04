@@ -13,46 +13,38 @@
  *
  * </copyright>
  *
- * $Id: IterateExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: IterateExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
 import org.eclipse.emf.cdo.common.ocl.IterateExp;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.Variable;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.IterateExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Iterate Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Iterate Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.IterateExpImpl#getResult <em>Result</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.IterateExpImpl#getResult <em>
+ * Result</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class IterateExpImpl
@@ -60,18 +52,18 @@ public class IterateExpImpl
 		implements IterateExp {
 
 	/**
-	 * The cached value of the '{@link #getResult() <em>Result</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResult() <em>Result</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResult()
 	 * @generated
 	 * @ordered
 	 */
-	protected Variable<EClassifier, EParameter> result;
+	protected Variable<CDOClassifier, CDOParameter> result;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected IterateExpImpl() {
@@ -79,36 +71,37 @@ public class IterateExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.ITERATE_EXP;
+		return OCLPackage.Literals.ITERATE_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public Variable<EClassifier, EParameter> getResult() {
+	public Variable<CDOClassifier, CDOParameter> getResult() {
 		return result;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetResult(
-			Variable<EClassifier, EParameter> newResult, NotificationChain msgs) {
-		Variable<EClassifier, EParameter> oldResult = result;
+			Variable<CDOClassifier, CDOParameter> newResult,
+			NotificationChain msgs) {
+		Variable<CDOClassifier, CDOParameter> oldResult = result;
 		result = newResult;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.ITERATE_EXP__RESULT, oldResult,
+				Notification.SET, OCLPackage.ITERATE_EXP__RESULT, oldResult,
 				newResult);
 			if (msgs == null)
 				msgs = notification;
@@ -119,32 +112,32 @@ public class IterateExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setResult(Variable<EClassifier, EParameter> newResult) {
+	public void setResult(Variable<CDOClassifier, CDOParameter> newResult) {
 		if (newResult != result) {
 			NotificationChain msgs = null;
 			if (result != null)
 				msgs = ((InternalEObject) result).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.ITERATE_EXP__RESULT,
+					EOPPOSITE_FEATURE_BASE - OCLPackage.ITERATE_EXP__RESULT,
 					null, msgs);
 			if (newResult != null)
 				msgs = ((InternalEObject) newResult).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.ITERATE_EXP__RESULT,
+					EOPPOSITE_FEATURE_BASE - OCLPackage.ITERATE_EXP__RESULT,
 					null, msgs);
 			msgs = basicSetResult(newResult, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.ITERATE_EXP__RESULT, newResult, newResult));
+				OCLPackage.ITERATE_EXP__RESULT, newResult, newResult));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkIterateType(DiagnosticChain diagnostics,
@@ -154,8 +147,8 @@ public class IterateExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkBodyType(DiagnosticChain diagnostics,
@@ -164,8 +157,8 @@ public class IterateExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkResultInit(DiagnosticChain diagnostics,
@@ -174,89 +167,89 @@ public class IterateExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.ITERATE_EXP__RESULT :
+			case OCLPackage.ITERATE_EXP__RESULT :
 				return basicSetResult(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.ITERATE_EXP__RESULT :
+			case OCLPackage.ITERATE_EXP__RESULT :
 				return getResult();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.ITERATE_EXP__RESULT :
-				setResult((Variable<EClassifier, EParameter>) newValue);
+			case OCLPackage.ITERATE_EXP__RESULT :
+				setResult((Variable<CDOClassifier, CDOParameter>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.ITERATE_EXP__RESULT :
-				setResult((Variable<EClassifier, EParameter>) null);
+			case OCLPackage.ITERATE_EXP__RESULT :
+				setResult((Variable<CDOClassifier, CDOParameter>) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.ITERATE_EXP__RESULT :
+			case OCLPackage.ITERATE_EXP__RESULT :
 				return result != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.IterateExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.ITERATE_EXP__RESULT :
+				case OCLPackage.ITERATE_EXP__RESULT :
 					return ExpressionsPackage.ITERATE_EXP__RESULT;
 				default :
 					return -1;
@@ -266,8 +259,8 @@ public class IterateExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -275,7 +268,7 @@ public class IterateExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.IterateExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.ITERATE_EXP__RESULT :
-					return EcorePackage.ITERATE_EXP__RESULT;
+					return OCLPackage.ITERATE_EXP__RESULT;
 				default :
 					return -1;
 			}
@@ -286,9 +279,11 @@ public class IterateExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, EParameter, ?, ?, ?, ?>) v).visitIterateExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, CDOParameter, ?, ?, ?, ?>) v)
+			.visitIterateExp(this);
 	}
 
-} //IterateExpImpl
+} // IterateExpImpl

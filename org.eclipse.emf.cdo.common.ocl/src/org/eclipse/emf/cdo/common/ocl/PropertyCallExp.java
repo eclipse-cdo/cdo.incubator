@@ -13,25 +13,23 @@
  *
  * </copyright>
  *
- * $Id: PropertyCallExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: PropertyCallExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Property Call Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getPropertyCallExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Property Call Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getPropertyCallExp()
  * @model
  * @generated
  */
 public interface PropertyCallExp
-		extends
-		NavigationCallExp,
-		org.eclipse.ocl.expressions.PropertyCallExp<EClassifier, EStructuralFeature> {
+		extends NavigationCallExp,
+		org.eclipse.ocl.expressions.PropertyCallExp<CDOClassifier, CDOFeature> {
 } // PropertyCallExp

@@ -13,23 +13,22 @@
  *
  * </copyright>
  *
- * $Id: NumericLiteralExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: NumericLiteralExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Numeric Literal Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getNumericLiteralExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Numeric Literal Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getNumericLiteralExp()
  * @model abstract="true"
  * @generated
  */
 public interface NumericLiteralExp
 		extends PrimitiveLiteralExp,
-		org.eclipse.ocl.expressions.NumericLiteralExp<EClassifier> {
+		org.eclipse.ocl.expressions.NumericLiteralExp<CDOClassifier> {
 } // NumericLiteralExp

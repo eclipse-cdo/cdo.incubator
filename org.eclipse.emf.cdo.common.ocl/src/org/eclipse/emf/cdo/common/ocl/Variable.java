@@ -13,25 +13,25 @@
  *
  * </copyright>
  *
- * $Id: Variable.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: Variable.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
-import org.eclipse.emf.ecore.ETypedElement;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
+import org.eclipse.emf.cdo.common.fake.CDOTypedElement;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Variable</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getVariable()
- * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName'"
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Variable</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getVariable()
+ * @model annotation=
+ *        "http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName'"
  * @generated
  */
 public interface Variable
-		extends ETypedElement,
-		org.eclipse.ocl.expressions.Variable<EClassifier, EParameter> {
+		extends CDOTypedElement,
+		org.eclipse.ocl.expressions.Variable<CDOClassifier, CDOParameter> {
 } // Variable

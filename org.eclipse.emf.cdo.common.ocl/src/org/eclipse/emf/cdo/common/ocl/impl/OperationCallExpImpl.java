@@ -13,39 +13,30 @@
  *
  * </copyright>
  *
- * $Id: OperationCallExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: OperationCallExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Collection;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.OperationCallExp;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.Environment;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.OCLExpression;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.OperationCallExpOperations;
 import org.eclipse.ocl.util.OCLStandardLibraryUtil;
 import org.eclipse.ocl.util.TypeUtil;
@@ -53,18 +44,23 @@ import org.eclipse.ocl.utilities.PredefinedType;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Operation Call Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Operation Call Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.OperationCallExpImpl#getArgument <em>Argument</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.OperationCallExpImpl#getReferredOperation <em>Referred Operation</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.OperationCallExpImpl#getOperationCode <em>Operation Code</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.OperationCallExpImpl#getArgument
+ * <em>Argument</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.OperationCallExpImpl#getReferredOperation
+ * <em>Referred Operation</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.OperationCallExpImpl#getOperationCode
+ * <em>Operation Code</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class OperationCallExpImpl
@@ -72,29 +68,31 @@ public class OperationCallExpImpl
 		implements OperationCallExp {
 
 	/**
-	 * The cached value of the '{@link #getArgument() <em>Argument</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getArgument() <em>Argument</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getArgument()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OCLExpression<EClassifier>> argument;
+	protected EList<OCLExpression<CDOClassifier>> argument;
 
 	/**
-	 * The cached value of the '{@link #getReferredOperation() <em>Referred Operation</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getReferredOperation()
+	 * <em>Referred Operation</em>}' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getReferredOperation()
 	 * @generated
 	 * @ordered
 	 */
-	protected EOperation referredOperation;
+	protected CDOOperation referredOperation;
 
 	/**
-	 * The default value of the '{@link #getOperationCode() <em>Operation Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getOperationCode()
+	 * <em>Operation Code</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getOperationCode()
 	 * @generated
 	 * @ordered
@@ -104,8 +102,8 @@ public class OperationCallExpImpl
 	private int operationCode = -1;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected OperationCallExpImpl() {
@@ -113,43 +111,43 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.OPERATION_CALL_EXP;
+		return OCLPackage.Literals.OPERATION_CALL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<OCLExpression<EClassifier>> getArgument() {
+	public EList<OCLExpression<CDOClassifier>> getArgument() {
 		if (argument == null) {
-			argument = new EObjectContainmentEList<OCLExpression<EClassifier>>(
+			argument = new EObjectContainmentEList<OCLExpression<CDOClassifier>>(
 				OCLExpression.class, this,
-				EcorePackage.OPERATION_CALL_EXP__ARGUMENT);
+				OCLPackage.OPERATION_CALL_EXP__ARGUMENT);
 		}
 		return argument;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EOperation getReferredOperation() {
+	public CDOOperation getReferredOperation() {
 		if (referredOperation != null
 			&& ((EObject) referredOperation).eIsProxy()) {
 			InternalEObject oldReferredOperation = (InternalEObject) referredOperation;
-			referredOperation = (EOperation) eResolveProxy(oldReferredOperation);
+			referredOperation = (CDOOperation) eResolveProxy(oldReferredOperation);
 			if (referredOperation != oldReferredOperation) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION,
+						OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION,
 						oldReferredOperation, referredOperation));
 			}
 		}
@@ -157,39 +155,39 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EOperation basicGetReferredOperation() {
+	public CDOOperation basicGetReferredOperation() {
 		return referredOperation;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setReferredOperation(EOperation newReferredOperation) {
-		EOperation oldReferredOperation = referredOperation;
+	public void setReferredOperation(CDOOperation newReferredOperation) {
+		CDOOperation oldReferredOperation = referredOperation;
 		referredOperation = newReferredOperation;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION,
+				OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION,
 				oldReferredOperation, referredOperation));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public int getOperationCode() {
 		if (operationCode < 0) {
 			if ((getSource() != null) && (getReferredOperation() != null)) {
-				Environment<?, EClassifier, EOperation, ?, ?, ?, ?, ?, ?, ?, ?, ?> env = Environment.Registry.INSTANCE
+				Environment<?, CDOClassifier, CDOOperation, ?, ?, ?, ?, ?, ?, ?, ?, ?> env = Environment.Registry.INSTANCE
 					.getEnvironmentFor(getSource());
-				EClassifier type = getSource().getType();
+				CDOClassifier type = getSource().getType();
 
 				if (env != null) {
 					String operName = getReferredOperation().getName();
@@ -199,9 +197,9 @@ public class OperationCallExpImpl
 							.getOperationCode(operName);
 					} else if (TypeUtil.isOclAnyOperation(env,
 						getReferredOperation())) {
-						// not a predefined type?  Model types have the AnyType
-						//    operations (except in the case that a model type
-						//    defines the corresponding operation)
+						// not a predefined type? Model types have the AnyType
+						// operations (except in the case that a model type
+						// defines the corresponding operation)
 						operationCode = OCLStandardLibraryUtil
 							.getOclAnyOperationCode(operName);
 					}
@@ -215,8 +213,8 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public void setOperationCode(int newOperationCode) {
@@ -224,8 +222,8 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkArgumentsConform(DiagnosticChain diagnostics,
@@ -235,8 +233,8 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkArgumentCount(DiagnosticChain diagnostics,
@@ -246,15 +244,15 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.OPERATION_CALL_EXP__ARGUMENT :
+			case OCLPackage.OPERATION_CALL_EXP__ARGUMENT :
 				return ((InternalEList<?>) getArgument()).basicRemove(otherEnd,
 					msgs);
 		}
@@ -262,44 +260,44 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.OPERATION_CALL_EXP__ARGUMENT :
+			case OCLPackage.OPERATION_CALL_EXP__ARGUMENT :
 				return getArgument();
-			case EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
+			case OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
 				if (resolve)
 					return getReferredOperation();
 				return basicGetReferredOperation();
-			case EcorePackage.OPERATION_CALL_EXP__OPERATION_CODE :
+			case OCLPackage.OPERATION_CALL_EXP__OPERATION_CODE :
 				return new Integer(getOperationCode());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.OPERATION_CALL_EXP__ARGUMENT :
+			case OCLPackage.OPERATION_CALL_EXP__ARGUMENT :
 				getArgument().clear();
 				getArgument()
 					.addAll(
-						(Collection<? extends OCLExpression<EClassifier>>) newValue);
+						(Collection<? extends OCLExpression<CDOClassifier>>) newValue);
 				return;
-			case EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
-				setReferredOperation((EOperation) newValue);
+			case OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
+				setReferredOperation((CDOOperation) newValue);
 				return;
-			case EcorePackage.OPERATION_CALL_EXP__OPERATION_CODE :
+			case OCLPackage.OPERATION_CALL_EXP__OPERATION_CODE :
 				setOperationCode(((Integer) newValue).intValue());
 				return;
 		}
@@ -307,20 +305,20 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.OPERATION_CALL_EXP__ARGUMENT :
+			case OCLPackage.OPERATION_CALL_EXP__ARGUMENT :
 				getArgument().clear();
 				return;
-			case EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
-				setReferredOperation((EOperation) null);
+			case OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
+				setReferredOperation((CDOOperation) null);
 				return;
-			case EcorePackage.OPERATION_CALL_EXP__OPERATION_CODE :
+			case OCLPackage.OPERATION_CALL_EXP__OPERATION_CODE :
 				setOperationCode(OPERATION_CODE_EDEFAULT);
 				return;
 		}
@@ -328,37 +326,37 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.OPERATION_CALL_EXP__ARGUMENT :
+			case OCLPackage.OPERATION_CALL_EXP__ARGUMENT :
 				return argument != null && !argument.isEmpty();
-			case EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
+			case OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
 				return referredOperation != null;
-			case EcorePackage.OPERATION_CALL_EXP__OPERATION_CODE :
+			case OCLPackage.OPERATION_CALL_EXP__OPERATION_CODE :
 				return getOperationCode() != OPERATION_CODE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.OperationCallExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.OPERATION_CALL_EXP__ARGUMENT :
+				case OCLPackage.OPERATION_CALL_EXP__ARGUMENT :
 					return ExpressionsPackage.OPERATION_CALL_EXP__ARGUMENT;
-				case EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
+				case OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
 					return ExpressionsPackage.OPERATION_CALL_EXP__REFERRED_OPERATION;
-				case EcorePackage.OPERATION_CALL_EXP__OPERATION_CODE :
+				case OCLPackage.OPERATION_CALL_EXP__OPERATION_CODE :
 					return ExpressionsPackage.OPERATION_CALL_EXP__OPERATION_CODE;
 				default :
 					return -1;
@@ -368,8 +366,8 @@ public class OperationCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -377,11 +375,11 @@ public class OperationCallExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.OperationCallExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.OPERATION_CALL_EXP__ARGUMENT :
-					return EcorePackage.OPERATION_CALL_EXP__ARGUMENT;
+					return OCLPackage.OPERATION_CALL_EXP__ARGUMENT;
 				case ExpressionsPackage.OPERATION_CALL_EXP__REFERRED_OPERATION :
-					return EcorePackage.OPERATION_CALL_EXP__REFERRED_OPERATION;
+					return OCLPackage.OPERATION_CALL_EXP__REFERRED_OPERATION;
 				case ExpressionsPackage.OPERATION_CALL_EXP__OPERATION_CODE :
-					return EcorePackage.OPERATION_CALL_EXP__OPERATION_CODE;
+					return OCLPackage.OPERATION_CALL_EXP__OPERATION_CODE;
 				default :
 					return -1;
 			}
@@ -392,9 +390,11 @@ public class OperationCallExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, EOperation, ?, ?, ?, ?, ?, ?, ?>) v).visitOperationCallExp(this);
+		return ((Visitor<T, CDOClassifier, CDOOperation, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitOperationCallExp(this);
 	}
 
-} //OperationCallExpImpl
+} // OperationCallExpImpl

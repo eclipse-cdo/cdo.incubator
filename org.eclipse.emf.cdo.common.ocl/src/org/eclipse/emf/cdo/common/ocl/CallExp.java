@@ -13,22 +13,22 @@
  *
  * </copyright>
  *
- * $Id: CallExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: CallExp.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Call Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCallExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Call Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCallExp()
  * @model abstract="true"
  * @generated
  */
 public interface CallExp
-		extends OCLExpression, org.eclipse.ocl.expressions.CallExp<EClassifier> {
+		extends OCLExpression,
+		org.eclipse.ocl.expressions.CallExp<CDOClassifier> {
 } // CallExp

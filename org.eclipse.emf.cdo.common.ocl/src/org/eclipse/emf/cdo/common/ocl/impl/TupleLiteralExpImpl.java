@@ -13,49 +13,40 @@
  *
  * </copyright>
  *
- * $Id: TupleLiteralExpImpl.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: TupleLiteralExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Collection;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.TupleLiteralExp;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.TupleLiteralPart;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.TupleLiteralExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Tuple Literal Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Tuple Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralExpImpl#getPart <em>Part</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TupleLiteralExpImpl#getPart
+ * <em>Part</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TupleLiteralExpImpl
@@ -63,18 +54,18 @@ public class TupleLiteralExpImpl
 		implements TupleLiteralExp {
 
 	/**
-	 * The cached value of the '{@link #getPart() <em>Part</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getPart() <em>Part</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getPart()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<TupleLiteralPart<EClassifier, EStructuralFeature>> part;
+	protected EList<TupleLiteralPart<CDOClassifier, CDOFeature>> part;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TupleLiteralExpImpl() {
@@ -82,32 +73,32 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.TUPLE_LITERAL_EXP;
+		return OCLPackage.Literals.TUPLE_LITERAL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<TupleLiteralPart<EClassifier, EStructuralFeature>> getPart() {
+	public EList<TupleLiteralPart<CDOClassifier, CDOFeature>> getPart() {
 		if (part == null) {
-			part = new EObjectContainmentEList<TupleLiteralPart<EClassifier, EStructuralFeature>>(
+			part = new EObjectContainmentEList<TupleLiteralPart<CDOClassifier, CDOFeature>>(
 				TupleLiteralPart.class, this,
-				EcorePackage.TUPLE_LITERAL_EXP__PART);
+				OCLPackage.TUPLE_LITERAL_EXP__PART);
 		}
 		return part;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkTupleType(DiagnosticChain diagnostics,
@@ -117,8 +108,8 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkPartsUnique(DiagnosticChain diagnostics,
@@ -128,15 +119,15 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_EXP__PART :
+			case OCLPackage.TUPLE_LITERAL_EXP__PART :
 				return ((InternalEList<?>) getPart()).basicRemove(otherEnd,
 					msgs);
 		}
@@ -144,47 +135,47 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_EXP__PART :
+			case OCLPackage.TUPLE_LITERAL_EXP__PART :
 				return getPart();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_EXP__PART :
+			case OCLPackage.TUPLE_LITERAL_EXP__PART :
 				getPart().clear();
 				getPart()
 					.addAll(
-						(Collection<? extends TupleLiteralPart<EClassifier, EStructuralFeature>>) newValue);
+						(Collection<? extends TupleLiteralPart<CDOClassifier, CDOFeature>>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_EXP__PART :
+			case OCLPackage.TUPLE_LITERAL_EXP__PART :
 				getPart().clear();
 				return;
 		}
@@ -192,29 +183,29 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.TUPLE_LITERAL_EXP__PART :
+			case OCLPackage.TUPLE_LITERAL_EXP__PART :
 				return part != null && !part.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.TupleLiteralExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.TUPLE_LITERAL_EXP__PART :
+				case OCLPackage.TUPLE_LITERAL_EXP__PART :
 					return ExpressionsPackage.TUPLE_LITERAL_EXP__PART;
 				default :
 					return -1;
@@ -224,8 +215,8 @@ public class TupleLiteralExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -233,7 +224,7 @@ public class TupleLiteralExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.TupleLiteralExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.TUPLE_LITERAL_EXP__PART :
-					return EcorePackage.TUPLE_LITERAL_EXP__PART;
+					return OCLPackage.TUPLE_LITERAL_EXP__PART;
 				default :
 					return -1;
 			}
@@ -244,9 +235,11 @@ public class TupleLiteralExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, EStructuralFeature, ?, ?, ?, ?, ?, ?>) v).visitTupleLiteralExp(this);
+		return ((Visitor<T, CDOClassifier, ?, CDOFeature, ?, ?, ?, ?, ?, ?>) v)
+			.visitTupleLiteralExp(this);
 	}
 
-} //TupleLiteralExpImpl
+} // TupleLiteralExpImpl

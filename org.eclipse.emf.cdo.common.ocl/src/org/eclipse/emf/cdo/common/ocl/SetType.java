@@ -13,25 +13,24 @@
  * 
  * </copyright>
  *
- * $Id: SetType.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: SetType.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Set Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getSetType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Set Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getSetType()
  * @model
  * @generated
  */
 public interface SetType
 		extends CollectionType,
-		org.eclipse.ocl.types.SetType<EClassifier, EOperation> {
+		org.eclipse.ocl.types.SetType<CDOClassifier, CDOOperation> {
 	// no additional features
 } // SetType

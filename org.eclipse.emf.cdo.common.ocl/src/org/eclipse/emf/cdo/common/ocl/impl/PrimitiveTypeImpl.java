@@ -13,36 +13,35 @@
  * 
  * </copyright>
  *
- * $Id: PrimitiveTypeImpl.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: PrimitiveTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.fake.impl.CDODataTypeImpl;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.PrimitiveType;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
-import org.eclipse.emf.ecore.impl.EDataTypeImpl;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primitive Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Primitive Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class PrimitiveTypeImpl
-		extends EDataTypeImpl
+		extends CDODataTypeImpl
 		implements PrimitiveType {
 
-	protected EList<EOperation> operations;
+	protected EList<CDOOperation> operations;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PrimitiveTypeImpl() {
@@ -50,21 +49,32 @@ public class PrimitiveTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.PRIMITIVE_TYPE;
+		return OCLPackage.Literals.PRIMITIVE_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	public String getName() {
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EList<EOperation> oclOperations() {
+	public EList<CDOOperation> oclOperations() {
 		if (operations == null) {
 			PrimitiveType prototype;
 			String myName = getName();
@@ -98,4 +108,4 @@ public class PrimitiveTypeImpl
 		return operations;
 	}
 
-} //PrimitiveTypeImpl
+} // PrimitiveTypeImpl

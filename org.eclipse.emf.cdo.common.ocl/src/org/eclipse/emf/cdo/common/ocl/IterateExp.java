@@ -13,24 +13,23 @@
  *
  * </copyright>
  *
- * $Id: IterateExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: IterateExp.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Iterate Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getIterateExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Iterate Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getIterateExp()
  * @model
  * @generated
  */
 public interface IterateExp
 		extends LoopExp,
-		org.eclipse.ocl.expressions.IterateExp<EClassifier, EParameter> {
+		org.eclipse.ocl.expressions.IterateExp<CDOClassifier, CDOParameter> {
 } // IterateExp

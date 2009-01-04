@@ -13,24 +13,23 @@
  * 
  * </copyright>
  *
- * $Id: AnyType.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: AnyType.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Any Type</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getAnyType()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Any Type</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getAnyType()
  * @model annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName WellFormedInstanceTypeName'"
  * @generated
  */
 public interface AnyType
-		extends EClassifier, org.eclipse.ocl.types.AnyType<EOperation> {
+		extends CDOClassifier, org.eclipse.ocl.types.AnyType<CDOOperation> {
 	// no additional features
 } // AnyType

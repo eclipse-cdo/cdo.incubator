@@ -13,32 +13,35 @@
  *
  * </copyright>
  *
- * $Id: UnspecifiedValueExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: UnspecifiedValueExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.UnspecifiedValueExp;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.ocl.utilities.TypedASTNode;
 import org.eclipse.ocl.utilities.UtilitiesPackage;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Unspecified Value Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Unspecified Value Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.UnspecifiedValueExpImpl#getTypeStartPosition <em>Type Start Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.UnspecifiedValueExpImpl#getTypeEndPosition <em>Type End Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.UnspecifiedValueExpImpl#getTypeStartPosition
+ * <em>Type Start Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.UnspecifiedValueExpImpl#getTypeEndPosition
+ * <em>Type End Position</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class UnspecifiedValueExpImpl
@@ -46,9 +49,10 @@ public class UnspecifiedValueExpImpl
 		implements UnspecifiedValueExp {
 
 	/**
-	 * The default value of the '{@link #getTypeStartPosition() <em>Type Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTypeStartPosition()
+	 * <em>Type Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeStartPosition()
 	 * @generated
 	 * @ordered
@@ -56,9 +60,10 @@ public class UnspecifiedValueExpImpl
 	protected static final int TYPE_START_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getTypeStartPosition() <em>Type Start Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTypeStartPosition()
+	 * <em>Type Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeStartPosition()
 	 * @generated
 	 * @ordered
@@ -66,9 +71,10 @@ public class UnspecifiedValueExpImpl
 	protected int typeStartPosition = TYPE_START_POSITION_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getTypeEndPosition() <em>Type End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getTypeEndPosition()
+	 * <em>Type End Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeEndPosition()
 	 * @generated
 	 * @ordered
@@ -76,9 +82,10 @@ public class UnspecifiedValueExpImpl
 	protected static final int TYPE_END_POSITION_EDEFAULT = -1;
 
 	/**
-	 * The cached value of the '{@link #getTypeEndPosition() <em>Type End Position</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTypeEndPosition()
+	 * <em>Type End Position</em>}' attribute. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getTypeEndPosition()
 	 * @generated
 	 * @ordered
@@ -86,8 +93,8 @@ public class UnspecifiedValueExpImpl
 	protected int typeEndPosition = TYPE_END_POSITION_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected UnspecifiedValueExpImpl() {
@@ -95,18 +102,18 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.UNSPECIFIED_VALUE_EXP;
+		return OCLPackage.Literals.UNSPECIFIED_VALUE_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getTypeStartPosition() {
@@ -114,8 +121,8 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTypeStartPosition(int newTypeStartPosition) {
@@ -123,13 +130,13 @@ public class UnspecifiedValueExpImpl
 		typeStartPosition = newTypeStartPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION,
+				OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION,
 				oldTypeStartPosition, typeStartPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getTypeEndPosition() {
@@ -137,8 +144,8 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setTypeEndPosition(int newTypeEndPosition) {
@@ -146,38 +153,38 @@ public class UnspecifiedValueExpImpl
 		typeEndPosition = newTypeEndPosition;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION,
+				OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION,
 				oldTypeEndPosition, typeEndPosition));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
 				return new Integer(getTypeStartPosition());
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
 				return new Integer(getTypeEndPosition());
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
 				setTypeStartPosition(((Integer) newValue).intValue());
 				return;
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
 				setTypeEndPosition(((Integer) newValue).intValue());
 				return;
 		}
@@ -185,17 +192,17 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
 				setTypeStartPosition(TYPE_START_POSITION_EDEFAULT);
 				return;
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
 				setTypeEndPosition(TYPE_END_POSITION_EDEFAULT);
 				return;
 		}
@@ -203,33 +210,33 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
 				return typeStartPosition != TYPE_START_POSITION_EDEFAULT;
-			case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
+			case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
 				return typeEndPosition != TYPE_END_POSITION_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == TypedASTNode.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
+				case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION :
 					return UtilitiesPackage.TYPED_AST_NODE__TYPE_START_POSITION;
-				case EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
+				case OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION :
 					return UtilitiesPackage.TYPED_AST_NODE__TYPE_END_POSITION;
 				default :
 					return -1;
@@ -245,8 +252,8 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -254,9 +261,9 @@ public class UnspecifiedValueExpImpl
 		if (baseClass == TypedASTNode.class) {
 			switch (baseFeatureID) {
 				case UtilitiesPackage.TYPED_AST_NODE__TYPE_START_POSITION :
-					return EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION;
+					return OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_START_POSITION;
 				case UtilitiesPackage.TYPED_AST_NODE__TYPE_END_POSITION :
-					return EcorePackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION;
+					return OCLPackage.UNSPECIFIED_VALUE_EXP__TYPE_END_POSITION;
 				default :
 					return -1;
 			}
@@ -271,8 +278,8 @@ public class UnspecifiedValueExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -283,9 +290,11 @@ public class UnspecifiedValueExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v).visitUnspecifiedValueExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, ?, ?, ?, ?, ?>) v)
+			.visitUnspecifiedValueExp(this);
 	}
 
-} //UnspecifiedValueExpImpl
+} // UnspecifiedValueExpImpl

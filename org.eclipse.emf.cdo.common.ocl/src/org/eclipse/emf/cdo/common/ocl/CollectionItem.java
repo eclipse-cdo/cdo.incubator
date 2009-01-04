@@ -13,23 +13,22 @@
  *
  * </copyright>
  *
- * $Id: CollectionItem.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: CollectionItem.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Collection Item</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getCollectionItem()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Collection Item</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getCollectionItem()
  * @model
  * @generated
  */
 public interface CollectionItem
 		extends CollectionLiteralPart,
-		org.eclipse.ocl.expressions.CollectionItem<EClassifier> {
+		org.eclipse.ocl.expressions.CollectionItem<CDOClassifier> {
 } // CollectionItem

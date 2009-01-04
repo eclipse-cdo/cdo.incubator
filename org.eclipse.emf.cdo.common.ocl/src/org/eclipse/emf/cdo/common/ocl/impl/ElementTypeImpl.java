@@ -12,33 +12,30 @@
  * 
  * </copyright>
  *
- * $Id: ElementTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: ElementTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.impl.CDOClassImpl;
 import org.eclipse.emf.cdo.common.ocl.ElementType;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.EClassImpl;
-
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Element Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Element Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class ElementTypeImpl
-		extends EClassImpl
+		extends CDOClassImpl
 		implements ElementType {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ElementTypeImpl() {
@@ -46,18 +43,18 @@ public class ElementTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.ELEMENT_TYPE;
+		return OCLPackage.Literals.ELEMENT_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -69,4 +66,4 @@ public class ElementTypeImpl
 		return name;
 	}
 
-} //ElementTypeImpl
+} // ElementTypeImpl

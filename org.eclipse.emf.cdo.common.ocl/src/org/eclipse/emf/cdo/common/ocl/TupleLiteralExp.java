@@ -13,25 +13,23 @@
  *
  * </copyright>
  *
- * $Id: TupleLiteralExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: TupleLiteralExp.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Tuple Literal Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getTupleLiteralExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Tuple Literal Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getTupleLiteralExp()
  * @model
  * @generated
  */
 public interface TupleLiteralExp
-		extends
-		LiteralExp,
-		org.eclipse.ocl.expressions.TupleLiteralExp<EClassifier, EStructuralFeature> {
+		extends LiteralExp,
+		org.eclipse.ocl.expressions.TupleLiteralExp<CDOClassifier, CDOFeature> {
 } // TupleLiteralExp

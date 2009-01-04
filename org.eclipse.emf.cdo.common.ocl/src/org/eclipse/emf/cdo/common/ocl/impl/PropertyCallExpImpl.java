@@ -13,45 +13,38 @@
  *
  * </copyright>
  *
- * $Id: PropertyCallExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: PropertyCallExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.PropertyCallExp;
 import org.eclipse.emf.common.notify.Notification;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.PropertyCallExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Property Call Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Property Call Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.PropertyCallExpImpl#getReferredProperty <em>Referred Property</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.PropertyCallExpImpl#getReferredProperty
+ * <em>Referred Property</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class PropertyCallExpImpl
@@ -59,18 +52,19 @@ public class PropertyCallExpImpl
 		implements PropertyCallExp {
 
 	/**
-	 * The cached value of the '{@link #getReferredProperty() <em>Referred Property</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getReferredProperty()
+	 * <em>Referred Property</em>}' reference. <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
+	 * 
 	 * @see #getReferredProperty()
 	 * @generated
 	 * @ordered
 	 */
-	protected EStructuralFeature referredProperty;
+	protected CDOFeature referredProperty;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected PropertyCallExpImpl() {
@@ -78,28 +72,28 @@ public class PropertyCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.PROPERTY_CALL_EXP;
+		return OCLPackage.Literals.PROPERTY_CALL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EStructuralFeature getReferredProperty() {
+	public CDOFeature getReferredProperty() {
 		if (referredProperty != null && ((EObject) referredProperty).eIsProxy()) {
 			InternalEObject oldReferredProperty = (InternalEObject) referredProperty;
-			referredProperty = (EStructuralFeature) eResolveProxy(oldReferredProperty);
+			referredProperty = (CDOFeature) eResolveProxy(oldReferredProperty);
 			if (referredProperty != oldReferredProperty) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY,
+						OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY,
 						oldReferredProperty, referredProperty));
 			}
 		}
@@ -107,31 +101,31 @@ public class PropertyCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EStructuralFeature basicGetReferredProperty() {
+	public CDOFeature basicGetReferredProperty() {
 		return referredProperty;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setReferredProperty(EStructuralFeature newReferredProperty) {
-		EStructuralFeature oldReferredProperty = referredProperty;
+	public void setReferredProperty(CDOFeature newReferredProperty) {
+		CDOFeature oldReferredProperty = referredProperty;
 		referredProperty = newReferredProperty;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY,
+				OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY,
 				oldReferredProperty, referredProperty));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkPropertyType(DiagnosticChain diagnostics,
@@ -141,14 +135,14 @@ public class PropertyCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
+			case OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
 				if (resolve)
 					return getReferredProperty();
 				return basicGetReferredProperty();
@@ -157,59 +151,59 @@ public class PropertyCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
-				setReferredProperty((EStructuralFeature) newValue);
+			case OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
+				setReferredProperty((CDOFeature) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
-				setReferredProperty((EStructuralFeature) null);
+			case OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
+				setReferredProperty((CDOFeature) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
+			case OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
 				return referredProperty != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.PropertyCallExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
+				case OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
 					return ExpressionsPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY;
 				default :
 					return -1;
@@ -219,8 +213,8 @@ public class PropertyCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -228,7 +222,7 @@ public class PropertyCallExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.PropertyCallExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY :
-					return EcorePackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY;
+					return OCLPackage.PROPERTY_CALL_EXP__REFERRED_PROPERTY;
 				default :
 					return -1;
 			}
@@ -239,9 +233,11 @@ public class PropertyCallExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, EStructuralFeature, ?, ?, ?, ?, ?, ?>) v).visitPropertyCallExp(this);
+		return ((Visitor<T, CDOClassifier, ?, CDOFeature, ?, ?, ?, ?, ?, ?>) v)
+			.visitPropertyCallExp(this);
 	}
 
-} //PropertyCallExpImpl
+} // PropertyCallExpImpl

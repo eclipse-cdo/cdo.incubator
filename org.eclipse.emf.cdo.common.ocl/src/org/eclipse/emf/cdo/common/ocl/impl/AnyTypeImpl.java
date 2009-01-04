@@ -13,39 +13,35 @@
  * 
  * </copyright>
  *
- * $Id: AnyTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: AnyTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.fake.impl.CDOClassifierImpl;
 import org.eclipse.emf.cdo.common.ocl.AnyType;
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
-
-import org.eclipse.emf.ecore.impl.EClassifierImpl;
-
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Any Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Any Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class AnyTypeImpl
-		extends EClassifierImpl
+		extends CDOClassifierImpl
 		implements AnyType {
 
-	private EList<EOperation> operations;
+	private EList<CDOOperation> operations;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AnyTypeImpl() {
@@ -53,18 +49,18 @@ public class AnyTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.ANY_TYPE;
+		return OCLPackage.Literals.ANY_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -77,11 +73,11 @@ public class AnyTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EList<EOperation> oclOperations() {
+	public EList<CDOOperation> oclOperations() {
 		if (operations == null) {
 			AnyType prototype = (AnyType) OCLStandardLibraryImpl.INSTANCE
 				.getOclAny();
@@ -98,4 +94,4 @@ public class AnyTypeImpl
 		return operations;
 	}
 
-} //AnyTypeImpl
+} // AnyTypeImpl

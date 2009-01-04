@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: QueryImpl.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: QueryImpl.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl;
@@ -21,31 +21,33 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.cdo.common.fake.CDOClass;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDORevision;
 import org.eclipse.ocl.EvaluationEnvironment;
 import org.eclipse.ocl.Query;
-
 
 /**
  * Implementation of the {@link OCL.Query} convenience interface.
  * 
  * @author Christian W. Damus (cdamus)
  */
-class QueryImpl implements OCL.Query {
-    private final Query<EClassifier, EClass, EObject> delegate;
-    private final OCL ocl;
-    
-    QueryImpl(Query<EClassifier, EClass, EObject> delegate, OCL ocl) {
-        this.delegate = delegate;
-        this.ocl = ocl;
-    }
+class QueryImpl
+		implements OCL.Query {
 
-    public OCL getOCL() {
-    	return ocl;
-    }
-    
+	private final Query<CDOClassifier, CDOClass, CDORevision> delegate;
+
+	private final OCL ocl;
+
+	QueryImpl(Query<CDOClassifier, CDOClass, CDORevision> delegate, OCL ocl) {
+		this.delegate = delegate;
+		this.ocl = ocl;
+	}
+
+	public OCL getOCL() {
+		return ocl;
+	}
+
 	public boolean check(List<?> objects) {
 		return delegate.check(objects);
 	}
@@ -66,7 +68,7 @@ class QueryImpl implements OCL.Query {
 		return delegate.evaluate(obj);
 	}
 
-	public EvaluationEnvironment<EClassifier, ?, ?, EClass, EObject> getEvaluationEnvironment() {
+	public EvaluationEnvironment<CDOClassifier, ?, ?, CDOClass, CDORevision> getEvaluationEnvironment() {
 		return delegate.getEvaluationEnvironment();
 	}
 
@@ -74,7 +76,7 @@ class QueryImpl implements OCL.Query {
 		return (OCLExpression) delegate.getExpression();
 	}
 
-	public Map<EClass, ? extends Set<? extends EObject>> getExtentMap() {
+	public Map<CDOClass, ? extends Set<? extends CDORevision>> getExtentMap() {
 		return delegate.getExtentMap();
 	}
 
@@ -86,7 +88,7 @@ class QueryImpl implements OCL.Query {
 		return delegate.reject(objects);
 	}
 
-	public EClassifier resultType() {
+	public CDOClassifier resultType() {
 		return delegate.resultType();
 	}
 

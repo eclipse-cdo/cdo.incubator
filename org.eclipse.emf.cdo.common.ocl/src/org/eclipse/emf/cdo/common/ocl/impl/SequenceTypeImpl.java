@@ -13,28 +13,27 @@
  * 
  * </copyright>
  *
- * $Id: SequenceTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: SequenceTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.SequenceType;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.operations.SequenceTypeOperations;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Sequence Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Sequence Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class SequenceTypeImpl
@@ -42,8 +41,8 @@ public class SequenceTypeImpl
 		implements SequenceType {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	protected SequenceTypeImpl() {
@@ -52,28 +51,28 @@ public class SequenceTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	protected SequenceTypeImpl(EClassifier elementType) {
+	protected SequenceTypeImpl(CDOClassifier elementType) {
 		super(elementType);
 		setInstanceClass(List.class);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.SEQUENCE_TYPE;
+		return OCLPackage.Literals.SEQUENCE_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -82,8 +81,8 @@ public class SequenceTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -93,4 +92,4 @@ public class SequenceTypeImpl
 			diagnostics, context);
 	}
 
-} //SequenceTypeImpl
+} // SequenceTypeImpl

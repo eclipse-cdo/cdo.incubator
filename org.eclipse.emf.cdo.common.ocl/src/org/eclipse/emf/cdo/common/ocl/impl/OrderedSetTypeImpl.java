@@ -13,28 +13,27 @@
  * 
  * </copyright>
  *
- * $Id: OrderedSetTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: OrderedSetTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.OrderedSetType;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.operations.OrderedSetTypeOperations;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Ordered Set Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Ordered Set Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class OrderedSetTypeImpl
@@ -42,8 +41,8 @@ public class OrderedSetTypeImpl
 		implements OrderedSetType {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	protected OrderedSetTypeImpl() {
@@ -52,28 +51,28 @@ public class OrderedSetTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	protected OrderedSetTypeImpl(EClassifier elementType) {
+	protected OrderedSetTypeImpl(CDOClassifier elementType) {
 		super(elementType);
 		setInstanceClass(LinkedHashSet.class);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.ORDERED_SET_TYPE;
+		return OCLPackage.Literals.ORDERED_SET_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -82,8 +81,8 @@ public class OrderedSetTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -93,4 +92,4 @@ public class OrderedSetTypeImpl
 			diagnostics, context);
 	}
 
-} //OrderedSetTypeImpl
+} // OrderedSetTypeImpl

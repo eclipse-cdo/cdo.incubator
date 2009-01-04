@@ -13,25 +13,24 @@
  * 
  * </copyright>
  *
- * $Id: ExpressionInOCL.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: ExpressionInOCL.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Expression In OCL</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getExpressionInOCL()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Expression In OCL</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getExpressionInOCL()
  * @model extendedMetaData="name='ExpressionInOcl'"
  * @generated
  */
 public interface ExpressionInOCL
 		extends
-		org.eclipse.ocl.utilities.ExpressionInOCL<EClassifier, EParameter> {
+		org.eclipse.ocl.utilities.ExpressionInOCL<CDOClassifier, CDOParameter> {
 	// no additional features
 } // ExpressionInOCL

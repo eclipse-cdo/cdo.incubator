@@ -13,32 +13,31 @@
  * 
  * </copyright>
  *
- * $Id: SendSignalActionImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: SendSignalActionImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClass;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.SendSignalAction;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
-
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Send Signal Action</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Send Signal Action</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.SendSignalActionImpl#getSignal <em>Signal</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.SendSignalActionImpl#getSignal
+ * <em>Signal</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class SendSignalActionImpl
@@ -47,17 +46,17 @@ public class SendSignalActionImpl
 
 	/**
 	 * The cached value of the '{@link #getSignal() <em>Signal</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSignal()
 	 * @generated
 	 * @ordered
 	 */
-	protected EClass signal;
+	protected CDOClass signal;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected SendSignalActionImpl() {
@@ -65,28 +64,28 @@ public class SendSignalActionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.SEND_SIGNAL_ACTION;
+		return OCLPackage.Literals.SEND_SIGNAL_ACTION;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EClass getSignal() {
+	public CDOClass getSignal() {
 		if (signal != null && signal.eIsProxy()) {
 			InternalEObject oldSignal = (InternalEObject) signal;
-			signal = (EClass) eResolveProxy(oldSignal);
+			signal = (CDOClass) eResolveProxy(oldSignal);
 			if (signal != oldSignal) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-						EcorePackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal,
+						OCLPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal,
 						signal));
 			}
 		}
@@ -94,36 +93,36 @@ public class SendSignalActionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EClass basicGetSignal() {
+	public CDOClass basicGetSignal() {
 		return signal;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setSignal(EClass newSignal) {
-		EClass oldSignal = signal;
+	public void setSignal(CDOClass newSignal) {
+		CDOClass oldSignal = signal;
 		signal = newSignal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
+				OCLPackage.SEND_SIGNAL_ACTION__SIGNAL, oldSignal, signal));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.SEND_SIGNAL_ACTION__SIGNAL :
+			case OCLPackage.SEND_SIGNAL_ACTION__SIGNAL :
 				if (resolve)
 					return getSignal();
 				return basicGetSignal();
@@ -132,47 +131,47 @@ public class SendSignalActionImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.SEND_SIGNAL_ACTION__SIGNAL :
-				setSignal((EClass) newValue);
+			case OCLPackage.SEND_SIGNAL_ACTION__SIGNAL :
+				setSignal((CDOClass) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.SEND_SIGNAL_ACTION__SIGNAL :
-				setSignal((EClass) null);
+			case OCLPackage.SEND_SIGNAL_ACTION__SIGNAL :
+				setSignal((CDOClass) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.SEND_SIGNAL_ACTION__SIGNAL :
+			case OCLPackage.SEND_SIGNAL_ACTION__SIGNAL :
 				return signal != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //SendSignalActionImpl
+} // SendSignalActionImpl

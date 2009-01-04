@@ -13,24 +13,23 @@
  *
  * </copyright>
  *
- * $Id: MessageExp.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: MessageExp.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Message Exp</b></em>'.
- * <!-- end-user-doc -->
- *
- *
- * @see org.eclipse.emf.cdo.common.ocl.EcorePackage#getMessageExp()
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Message Exp</b></em>'. <!-- end-user-doc -->
+ * 
+ * 
+ * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getMessageExp()
  * @model
  * @generated
  */
 public interface MessageExp
 		extends
 		OCLExpression,
-		org.eclipse.ocl.expressions.MessageExp<EClassifier, CallOperationAction, SendSignalAction> {
+		org.eclipse.ocl.expressions.MessageExp<CDOClassifier, CallOperationAction, SendSignalAction> {
 } // MessageExp

@@ -13,48 +13,40 @@
  *
  * </copyright>
  *
- * $Id: LetExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: LetExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOParameter;
 import org.eclipse.emf.cdo.common.ocl.LetExp;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-//import org.eclipse.emf.common.util.BasicDiagnostic;
-//import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EParameter;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-//import org.eclipse.emf.ecore.plugin.EcorePlugin;
-//import org.eclipse.emf.ecore.util.EObjectValidator;
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.expressions.OCLExpression;
 import org.eclipse.ocl.expressions.Variable;
-
-//import org.eclipse.ocl.expressions.util.ExpressionsValidator;
 import org.eclipse.ocl.expressions.operations.LetExpOperations;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Let Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Let Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.LetExpImpl#getIn <em>In</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.LetExpImpl#getVariable <em>Variable</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.LetExpImpl#getIn <em>In</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.LetExpImpl#getVariable <em>
+ * Variable</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class LetExpImpl
@@ -62,28 +54,28 @@ public class LetExpImpl
 		implements LetExp {
 
 	/**
-	 * The cached value of the '{@link #getIn() <em>In</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getIn() <em>In</em>}' containment
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getIn()
 	 * @generated
 	 * @ordered
 	 */
-	protected OCLExpression<EClassifier> in;
+	protected OCLExpression<CDOClassifier> in;
 
 	/**
-	 * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getVariable() <em>Variable</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getVariable()
 	 * @generated
 	 * @ordered
 	 */
-	protected Variable<EClassifier, EParameter> variable;
+	protected Variable<CDOClassifier, CDOParameter> variable;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected LetExpImpl() {
@@ -91,36 +83,36 @@ public class LetExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.LET_EXP;
+		return OCLPackage.Literals.LET_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OCLExpression<EClassifier> getIn() {
+	public OCLExpression<CDOClassifier> getIn() {
 		return in;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetIn(OCLExpression<EClassifier> newIn,
+	public NotificationChain basicSetIn(OCLExpression<CDOClassifier> newIn,
 			NotificationChain msgs) {
-		OCLExpression<EClassifier> oldIn = in;
+		OCLExpression<CDOClassifier> oldIn = in;
 		in = newIn;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.LET_EXP__IN, oldIn, newIn);
+				Notification.SET, OCLPackage.LET_EXP__IN, oldIn, newIn);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -130,51 +122,51 @@ public class LetExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setIn(OCLExpression<EClassifier> newIn) {
+	public void setIn(OCLExpression<CDOClassifier> newIn) {
 		if (newIn != in) {
 			NotificationChain msgs = null;
 			if (in != null)
-				msgs = ((InternalEObject) in).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.LET_EXP__IN, null,
-					msgs);
+				msgs = ((InternalEObject) in)
+					.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+						- OCLPackage.LET_EXP__IN, null, msgs);
 			if (newIn != null)
-				msgs = ((InternalEObject) newIn).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.LET_EXP__IN, null,
-					msgs);
+				msgs = ((InternalEObject) newIn)
+					.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+						- OCLPackage.LET_EXP__IN, null, msgs);
 			msgs = basicSetIn(newIn, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.LET_EXP__IN, newIn, newIn));
+				OCLPackage.LET_EXP__IN, newIn, newIn));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public Variable<EClassifier, EParameter> getVariable() {
+	public Variable<CDOClassifier, CDOParameter> getVariable() {
 		return variable;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetVariable(
-			Variable<EClassifier, EParameter> newVariable,
+			Variable<CDOClassifier, CDOParameter> newVariable,
 			NotificationChain msgs) {
-		Variable<EClassifier, EParameter> oldVariable = variable;
+		Variable<CDOClassifier, CDOParameter> oldVariable = variable;
 		variable = newVariable;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-				Notification.SET, EcorePackage.LET_EXP__VARIABLE, oldVariable,
+				Notification.SET, OCLPackage.LET_EXP__VARIABLE, oldVariable,
 				newVariable);
 			if (msgs == null)
 				msgs = notification;
@@ -185,32 +177,32 @@ public class LetExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setVariable(Variable<EClassifier, EParameter> newVariable) {
+	public void setVariable(Variable<CDOClassifier, CDOParameter> newVariable) {
 		if (newVariable != variable) {
 			NotificationChain msgs = null;
 			if (variable != null)
 				msgs = ((InternalEObject) variable).eInverseRemove(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.LET_EXP__VARIABLE,
+					EOPPOSITE_FEATURE_BASE - OCLPackage.LET_EXP__VARIABLE,
 					null, msgs);
 			if (newVariable != null)
 				msgs = ((InternalEObject) newVariable).eInverseAdd(this,
-					EOPPOSITE_FEATURE_BASE - EcorePackage.LET_EXP__VARIABLE,
+					EOPPOSITE_FEATURE_BASE - OCLPackage.LET_EXP__VARIABLE,
 					null, msgs);
 			msgs = basicSetVariable(newVariable, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-				EcorePackage.LET_EXP__VARIABLE, newVariable, newVariable));
+				OCLPackage.LET_EXP__VARIABLE, newVariable, newVariable));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	public boolean checkLetType(DiagnosticChain diagnostics,
@@ -219,103 +211,103 @@ public class LetExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case EcorePackage.LET_EXP__IN :
+			case OCLPackage.LET_EXP__IN :
 				return basicSetIn(null, msgs);
-			case EcorePackage.LET_EXP__VARIABLE :
+			case OCLPackage.LET_EXP__VARIABLE :
 				return basicSetVariable(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.LET_EXP__IN :
+			case OCLPackage.LET_EXP__IN :
 				return getIn();
-			case EcorePackage.LET_EXP__VARIABLE :
+			case OCLPackage.LET_EXP__VARIABLE :
 				return getVariable();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.LET_EXP__IN :
-				setIn((OCLExpression<EClassifier>) newValue);
+			case OCLPackage.LET_EXP__IN :
+				setIn((OCLExpression<CDOClassifier>) newValue);
 				return;
-			case EcorePackage.LET_EXP__VARIABLE :
-				setVariable((Variable<EClassifier, EParameter>) newValue);
+			case OCLPackage.LET_EXP__VARIABLE :
+				setVariable((Variable<CDOClassifier, CDOParameter>) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.LET_EXP__IN :
-				setIn((OCLExpression<EClassifier>) null);
+			case OCLPackage.LET_EXP__IN :
+				setIn((OCLExpression<CDOClassifier>) null);
 				return;
-			case EcorePackage.LET_EXP__VARIABLE :
-				setVariable((Variable<EClassifier, EParameter>) null);
+			case OCLPackage.LET_EXP__VARIABLE :
+				setVariable((Variable<CDOClassifier, CDOParameter>) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.LET_EXP__IN :
+			case OCLPackage.LET_EXP__IN :
 				return in != null;
-			case EcorePackage.LET_EXP__VARIABLE :
+			case OCLPackage.LET_EXP__VARIABLE :
 				return variable != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.LetExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.LET_EXP__IN :
+				case OCLPackage.LET_EXP__IN :
 					return ExpressionsPackage.LET_EXP__IN;
-				case EcorePackage.LET_EXP__VARIABLE :
+				case OCLPackage.LET_EXP__VARIABLE :
 					return ExpressionsPackage.LET_EXP__VARIABLE;
 				default :
 					return -1;
@@ -325,8 +317,8 @@ public class LetExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -334,9 +326,9 @@ public class LetExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.LetExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.LET_EXP__IN :
-					return EcorePackage.LET_EXP__IN;
+					return OCLPackage.LET_EXP__IN;
 				case ExpressionsPackage.LET_EXP__VARIABLE :
-					return EcorePackage.LET_EXP__VARIABLE;
+					return OCLPackage.LET_EXP__VARIABLE;
 				default :
 					return -1;
 			}
@@ -345,8 +337,8 @@ public class LetExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -357,9 +349,11 @@ public class LetExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, ?, ?, EParameter, ?, ?, ?, ?>) v).visitLetExp(this);
+		return ((Visitor<T, CDOClassifier, ?, ?, ?, CDOParameter, ?, ?, ?, ?>) v)
+			.visitLetExp(this);
 	}
 
-} //LetExpImpl
+} // LetExpImpl

@@ -13,37 +13,34 @@
  *
  * </copyright>
  *
- * $Id: AssociationClassCallExpImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: AssociationClassCallExpImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.fake.CDOFeature;
 import org.eclipse.emf.cdo.common.ocl.AssociationClassCallExp;
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-
 import org.eclipse.ocl.expressions.ExpressionsPackage;
 import org.eclipse.ocl.utilities.Visitor;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Association Class Call Exp</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Association Class Call Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.AssociationClassCallExpImpl#getReferredAssociationClass <em>Referred Association Class</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.AssociationClassCallExpImpl#getReferredAssociationClass
+ * <em>Referred Association Class</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class AssociationClassCallExpImpl
@@ -51,18 +48,19 @@ public class AssociationClassCallExpImpl
 		implements AssociationClassCallExp {
 
 	/**
-	 * The cached value of the '{@link #getReferredAssociationClass() <em>Referred Association Class</em>}' reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getReferredAssociationClass()
+	 * <em>Referred Association Class</em>}' reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getReferredAssociationClass()
 	 * @generated
 	 * @ordered
 	 */
-	protected EClassifier referredAssociationClass;
+	protected CDOClassifier referredAssociationClass;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected AssociationClassCallExpImpl() {
@@ -70,31 +68,31 @@ public class AssociationClassCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.ASSOCIATION_CLASS_CALL_EXP;
+		return OCLPackage.Literals.ASSOCIATION_CLASS_CALL_EXP;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EClassifier getReferredAssociationClass() {
+	public CDOClassifier getReferredAssociationClass() {
 		if (referredAssociationClass != null
 			&& ((EObject) referredAssociationClass).eIsProxy()) {
 			InternalEObject oldReferredAssociationClass = (InternalEObject) referredAssociationClass;
-			referredAssociationClass = (EClassifier) eResolveProxy(oldReferredAssociationClass);
+			referredAssociationClass = (CDOClassifier) eResolveProxy(oldReferredAssociationClass);
 			if (referredAssociationClass != oldReferredAssociationClass) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(
 						this,
 						Notification.RESOLVE,
-						EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS,
+						OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS,
 						oldReferredAssociationClass, referredAssociationClass));
 			}
 		}
@@ -102,40 +100,40 @@ public class AssociationClassCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EClassifier basicGetReferredAssociationClass() {
+	public CDOClassifier basicGetReferredAssociationClass() {
 		return referredAssociationClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setReferredAssociationClass(
-			EClassifier newReferredAssociationClass) {
-		EClassifier oldReferredAssociationClass = referredAssociationClass;
+			CDOClassifier newReferredAssociationClass) {
+		CDOClassifier oldReferredAssociationClass = referredAssociationClass;
 		referredAssociationClass = newReferredAssociationClass;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(
 				this,
 				Notification.SET,
-				EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS,
+				OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS,
 				oldReferredAssociationClass, referredAssociationClass));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
+			case OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
 				if (resolve)
 					return getReferredAssociationClass();
 				return basicGetReferredAssociationClass();
@@ -144,59 +142,59 @@ public class AssociationClassCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
-				setReferredAssociationClass((EClassifier) newValue);
+			case OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
+				setReferredAssociationClass((CDOClassifier) newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
-				setReferredAssociationClass((EClassifier) null);
+			case OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
+				setReferredAssociationClass((CDOClassifier) null);
 				return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
+			case OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
 				return referredAssociationClass != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == org.eclipse.ocl.expressions.AssociationClassCallExp.class) {
 			switch (derivedFeatureID) {
-				case EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
+				case OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
 					return ExpressionsPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS;
 				default :
 					return -1;
@@ -206,8 +204,8 @@ public class AssociationClassCallExpImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -215,7 +213,7 @@ public class AssociationClassCallExpImpl
 		if (baseClass == org.eclipse.ocl.expressions.AssociationClassCallExp.class) {
 			switch (baseFeatureID) {
 				case ExpressionsPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS :
-					return EcorePackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS;
+					return OCLPackage.ASSOCIATION_CLASS_CALL_EXP__REFERRED_ASSOCIATION_CLASS;
 				default :
 					return -1;
 			}
@@ -226,9 +224,11 @@ public class AssociationClassCallExpImpl
 	/**
 	 * @generated NOT
 	 */
-	@Override @SuppressWarnings("unchecked")
+	@Override
+	@SuppressWarnings("unchecked")
 	public <T, U extends Visitor<T, ?, ?, ?, ?, ?, ?, ?, ?, ?>> T accept(U v) {
-		return ((Visitor<T, EClassifier, ?, EStructuralFeature, ?, ?, ?, ?, ?, ?>) v).visitAssociationClassCallExp(this);
+		return ((Visitor<T, CDOClassifier, ?, CDOFeature, ?, ?, ?, ?, ?, ?>) v)
+			.visitAssociationClassCallExp(this);
 	}
 
-} //AssociationClassCallExpImpl
+} // AssociationClassCallExpImpl

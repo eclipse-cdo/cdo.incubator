@@ -12,14 +12,13 @@
  *
  * </copyright>
  *
- * $Id: OCLStatusCodes.java,v 1.1 2009-01-04 15:49:08 estepper Exp $
+ * $Id: OCLStatusCodes.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl.internal;
 
-
 /**
- * @author Yasser Lulu  
+ * @author Yasser Lulu
  */
 public final class OCLStatusCodes {
 
@@ -29,13 +28,18 @@ public final class OCLStatusCodes {
 	private OCLStatusCodes() {
 		super();
 	}
-	
+
 	public static final int OK = 0;
+
 	public static final int ERROR = 1;
+
 	public static final int IGNORED_EXCEPTION_WARNING = 10;
 
 	public static final int USERMODELSUPPORT_MISSING_NSURI = 20;
+
 	public static final int USERMODELSUPPORT_MISSING_CLASS = 21;
+
 	public static final int USERMODELSUPPORT_UNRESOLVED_NSURI = 22;
+
 	public static final int USERMODELSUPPORT_FACTORY_FAILED = 23;
 }

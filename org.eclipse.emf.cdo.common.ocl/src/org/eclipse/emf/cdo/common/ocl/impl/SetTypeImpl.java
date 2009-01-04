@@ -13,28 +13,27 @@
  * 
  * </copyright>
  *
- * $Id: SetTypeImpl.java,v 1.1 2009-01-04 15:49:06 estepper Exp $
+ * $Id: SetTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.SetType;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.ocl.expressions.CollectionKind;
 import org.eclipse.ocl.types.operations.SetTypeOperations;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Set Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Set Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class SetTypeImpl
@@ -42,8 +41,8 @@ public class SetTypeImpl
 		implements SetType {
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	protected SetTypeImpl() {
@@ -52,28 +51,28 @@ public class SetTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	protected SetTypeImpl(EClassifier elementType) {
+	protected SetTypeImpl(CDOClassifier elementType) {
 		super(elementType);
 		setInstanceClass(Set.class);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.SET_TYPE;
+		return OCLPackage.Literals.SET_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -82,8 +81,8 @@ public class SetTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -93,4 +92,4 @@ public class SetTypeImpl
 			context);
 	}
 
-} //SetTypeImpl
+} // SetTypeImpl

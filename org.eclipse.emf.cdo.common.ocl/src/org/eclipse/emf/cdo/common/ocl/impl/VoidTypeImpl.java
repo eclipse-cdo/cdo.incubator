@@ -13,39 +13,35 @@
  * 
  * </copyright>
  *
- * $Id: VoidTypeImpl.java,v 1.1 2009-01-04 15:49:07 estepper Exp $
+ * $Id: VoidTypeImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.ocl.EcorePackage;
+import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.fake.impl.CDOClassifierImpl;
+import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.VoidType;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EOperation;
-
-import org.eclipse.emf.ecore.impl.EClassifierImpl;
-
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Void Type</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Void Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class VoidTypeImpl
-		extends EClassifierImpl
+		extends CDOClassifierImpl
 		implements VoidType {
 
-	private EList<EOperation> operations;
+	private EList<CDOOperation> operations;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected VoidTypeImpl() {
@@ -53,18 +49,18 @@ public class VoidTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return EcorePackage.Literals.VOID_TYPE;
+		return OCLPackage.Literals.VOID_TYPE;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
 	@Override
@@ -73,11 +69,11 @@ public class VoidTypeImpl
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated NOT
 	 */
-	public EList<EOperation> oclOperations() {
+	public EList<CDOOperation> oclOperations() {
 		if (operations == null) {
 			VoidType prototype = (VoidType) OCLStandardLibraryImpl.INSTANCE
 				.getOclVoid();
@@ -94,4 +90,4 @@ public class VoidTypeImpl
 		return operations;
 	}
 
-} //VoidTypeImpl
+} // VoidTypeImpl
