@@ -13,7 +13,7 @@
  * 
  * </copyright>
  *
- * $Id: TupleTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: TupleTypeImpl.java,v 1.4 2009-01-07 07:21:26 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -21,13 +21,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.fake.CDOFeature;
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
-import org.eclipse.emf.cdo.common.fake.impl.CDOClassImpl;
+import org.eclipse.emf.cdo.common.model.CDOFeature;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.cdo.common.ocl.AnyType;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.TupleType;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
+import org.eclipse.emf.cdo.internal.common.model.CDOClassImpl;
 import org.eclipse.emf.common.util.DelegatingEList;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
@@ -42,7 +42,7 @@ import org.eclipse.ocl.util.Tuple;
  * <em><b>Tuple Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class TupleTypeImpl
@@ -67,13 +67,14 @@ public class TupleTypeImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.TUPLE_TYPE;
-  }
+		return OCLPackage.Literals.TUPLE_TYPE;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

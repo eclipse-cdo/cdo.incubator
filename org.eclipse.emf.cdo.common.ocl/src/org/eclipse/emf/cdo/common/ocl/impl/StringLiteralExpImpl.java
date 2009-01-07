@@ -13,13 +13,13 @@
  *
  * </copyright>
  *
- * $Id: StringLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: StringLiteralExpImpl.java,v 1.4 2009-01-07 07:21:27 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.StringLiteralExp;
 import org.eclipse.emf.common.notify.Notification;
@@ -36,10 +36,12 @@ import org.eclipse.ocl.utilities.Visitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.StringLiteralExpImpl#getStringSymbol <em>String Symbol</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.StringLiteralExpImpl#getStringSymbol
+ * <em>String Symbol</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class StringLiteralExpImpl
@@ -47,60 +49,68 @@ public class StringLiteralExpImpl
 		implements StringLiteralExp {
 
 	/**
-   * The default value of the '{@link #getStringSymbol() <em>String Symbol</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getStringSymbol()
+	 * <em>String Symbol</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @see #getStringSymbol()
-   * @generated
-   * @ordered
-   */
+	 * 
+	 * @see #getStringSymbol()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String STRING_SYMBOL_EDEFAULT = null;
 
 	/**
-   * The cached value of the '{@link #getStringSymbol() <em>String Symbol</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getStringSymbol()
+	 * <em>String Symbol</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @see #getStringSymbol()
-   * @generated
-   * @ordered
-   */
+	 * 
+	 * @see #getStringSymbol()
+	 * @generated
+	 * @ordered
+	 */
 	protected String stringSymbol = STRING_SYMBOL_EDEFAULT;
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected StringLiteralExpImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.STRING_LITERAL_EXP;
-  }
+		return OCLPackage.Literals.STRING_LITERAL_EXP;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public String getStringSymbol() {
-    return stringSymbol;
-  }
+		return stringSymbol;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public void setStringSymbol(String newStringSymbol) {
-    String oldStringSymbol = stringSymbol;
-    stringSymbol = newStringSymbol;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL, oldStringSymbol, stringSymbol));
-  }
+		String oldStringSymbol = stringSymbol;
+		stringSymbol = newStringSymbol;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL, oldStringSymbol,
+				stringSymbol));
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -114,96 +124,100 @@ public class StringLiteralExpImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID)
-    {
-      case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL:
-        return getStringSymbol();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+				return getStringSymbol();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID)
-    {
-      case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL:
-        setStringSymbol((String)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+				setStringSymbol((String) newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL:
-        setStringSymbol(STRING_SYMBOL_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+				setStringSymbol(STRING_SYMBOL_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL:
-        return STRING_SYMBOL_EDEFAULT == null ? stringSymbol != null : !STRING_SYMBOL_EDEFAULT.equals(stringSymbol);
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+				return STRING_SYMBOL_EDEFAULT == null
+					? stringSymbol != null
+					: !STRING_SYMBOL_EDEFAULT.equals(stringSymbol);
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == org.eclipse.ocl.expressions.StringLiteralExp.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL: return ExpressionsPackage.STRING_LITERAL_EXP__STRING_SYMBOL;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == org.eclipse.ocl.expressions.StringLiteralExp.class) {
+			switch (derivedFeatureID) {
+				case OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+					return ExpressionsPackage.STRING_LITERAL_EXP__STRING_SYMBOL;
+				default :
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == org.eclipse.ocl.expressions.StringLiteralExp.class)
-    {
-      switch (baseFeatureID)
-      {
-        case ExpressionsPackage.STRING_LITERAL_EXP__STRING_SYMBOL: return OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == org.eclipse.ocl.expressions.StringLiteralExp.class) {
+			switch (baseFeatureID) {
+				case ExpressionsPackage.STRING_LITERAL_EXP__STRING_SYMBOL :
+					return OCLPackage.STRING_LITERAL_EXP__STRING_SYMBOL;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

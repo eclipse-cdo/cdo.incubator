@@ -13,18 +13,18 @@
  *
  * </copyright>
  *
- * $Id: TupleLiteralExp.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
+ * $Id: TupleLiteralExp.java,v 1.4 2009-01-07 07:21:33 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOFeature;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOFeature;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Tuple Literal Exp</b></em>'. <!-- end-user-doc -->
- *
- *
+ * 
+ * 
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getTupleLiteralExp()
  * @model
  * @generated

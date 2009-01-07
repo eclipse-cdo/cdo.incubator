@@ -12,12 +12,12 @@
  *
  * </copyright>
  *
- * $Id: OCLExpressionImpl.java,v 1.4 2009-01-04 19:26:02 estepper Exp $
+ * $Id: OCLExpressionImpl.java,v 1.5 2009-01-07 07:21:27 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.impl.CDOTypedElementImpl;
+import org.eclipse.emf.cdo.common.CDOTypedElementStub;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.OCLExpression;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.notify.Notification;
@@ -36,109 +36,127 @@ import org.eclipse.ocl.utilities.Visitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.OCLExpressionImpl#getStartPosition <em>Start Position</em>}</li>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.OCLExpressionImpl#getEndPosition <em>End Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.OCLExpressionImpl#getStartPosition
+ * <em>Start Position</em>}</li>
+ * <li>
+ * {@link org.eclipse.emf.cdo.common.ocl.impl.OCLExpressionImpl#getEndPosition
+ * <em>End Position</em>}</li>
  * </ul>
  * </p>
- *
- * @generated
+ * 
+ * @generated not
  */
 public abstract class OCLExpressionImpl
-		extends CDOTypedElementImpl
+		extends CDOTypedElementStub
 		implements OCLExpression {
 
 	/**
-   * The default value of the '{@link #getStartPosition() <em>Start Position</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+	 * The default value of the '{@link #getStartPosition()
+	 * <em>Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @see #getStartPosition()
-   * @generated
-   * @ordered
-   */
+	 * 
+	 * @see #getStartPosition()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final int START_POSITION_EDEFAULT = -1;
 
 	/**
-   * The cached value of the '{@link #getStartPosition() <em>Start Position</em>}' attribute.
-   * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getStartPosition()
+	 * <em>Start Position</em>}' attribute. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @see #getStartPosition()
-   * @generated
-   * @ordered
-   */
+	 * 
+	 * @see #getStartPosition()
+	 * @generated
+	 * @ordered
+	 */
 	protected int startPosition = START_POSITION_EDEFAULT;
 
 	/**
-   * The default value of the '{@link #getEndPosition() <em>End Position</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getEndPosition()
-   * @generated
-   * @ordered
-   */
+	 * The default value of the '{@link #getEndPosition() <em>End Position</em>}
+	 * ' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getEndPosition()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final int END_POSITION_EDEFAULT = -1;
 
 	/**
-   * The cached value of the '{@link #getEndPosition() <em>End Position</em>}' attribute.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @see #getEndPosition()
-   * @generated
-   * @ordered
-   */
+	 * The cached value of the '{@link #getEndPosition() <em>End Position</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @see #getEndPosition()
+	 * @generated
+	 * @ordered
+	 */
 	protected int endPosition = END_POSITION_EDEFAULT;
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected OCLExpressionImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.OCL_EXPRESSION;
-  }
+		return OCLPackage.Literals.OCL_EXPRESSION;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public int getStartPosition() {
-    return startPosition;
-  }
+		return startPosition;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public void setStartPosition(int newStartPosition) {
-    int oldStartPosition = startPosition;
-    startPosition = newStartPosition;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.OCL_EXPRESSION__START_POSITION, oldStartPosition, startPosition));
-  }
+		int oldStartPosition = startPosition;
+		startPosition = newStartPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				OCLPackage.OCL_EXPRESSION__START_POSITION, oldStartPosition,
+				startPosition));
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public int getEndPosition() {
-    return endPosition;
-  }
+		return endPosition;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public void setEndPosition(int newEndPosition) {
-    int oldEndPosition = endPosition;
-    endPosition = newEndPosition;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.OCL_EXPRESSION__END_POSITION, oldEndPosition, endPosition));
-  }
+		int oldEndPosition = endPosition;
+		endPosition = newEndPosition;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				OCLPackage.OCL_EXPRESSION__END_POSITION, oldEndPosition,
+				endPosition));
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -151,33 +169,13 @@ public abstract class OCLExpressionImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-	public String getName() {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
 	 */
 	public CDOClassifier getType() {
-		return getEType();
+		return super.getType();
 	}
-
-	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-	public void setName(String name) {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -185,154 +183,152 @@ public abstract class OCLExpressionImpl
 	 * @generated NOT
 	 */
 	public void setType(CDOClassifier type) {
-		setEType(type);
+		super.setType(type);
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID)
-    {
-      case OCLPackage.OCL_EXPRESSION__START_POSITION:
-        return new Integer(getStartPosition());
-      case OCLPackage.OCL_EXPRESSION__END_POSITION:
-        return new Integer(getEndPosition());
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case OCLPackage.OCL_EXPRESSION__START_POSITION :
+				return new Integer(getStartPosition());
+			case OCLPackage.OCL_EXPRESSION__END_POSITION :
+				return new Integer(getEndPosition());
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID)
-    {
-      case OCLPackage.OCL_EXPRESSION__START_POSITION:
-        setStartPosition(((Integer)newValue).intValue());
-        return;
-      case OCLPackage.OCL_EXPRESSION__END_POSITION:
-        setEndPosition(((Integer)newValue).intValue());
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case OCLPackage.OCL_EXPRESSION__START_POSITION :
+				setStartPosition(((Integer) newValue).intValue());
+				return;
+			case OCLPackage.OCL_EXPRESSION__END_POSITION :
+				setEndPosition(((Integer) newValue).intValue());
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.OCL_EXPRESSION__START_POSITION:
-        setStartPosition(START_POSITION_EDEFAULT);
-        return;
-      case OCLPackage.OCL_EXPRESSION__END_POSITION:
-        setEndPosition(END_POSITION_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.OCL_EXPRESSION__START_POSITION :
+				setStartPosition(START_POSITION_EDEFAULT);
+				return;
+			case OCLPackage.OCL_EXPRESSION__END_POSITION :
+				setEndPosition(END_POSITION_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.OCL_EXPRESSION__START_POSITION:
-        return startPosition != START_POSITION_EDEFAULT;
-      case OCLPackage.OCL_EXPRESSION__END_POSITION:
-        return endPosition != END_POSITION_EDEFAULT;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.OCL_EXPRESSION__START_POSITION :
+				return startPosition != START_POSITION_EDEFAULT;
+			case OCLPackage.OCL_EXPRESSION__END_POSITION :
+				return endPosition != END_POSITION_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == TypedElement.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Visitable.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == ASTNode.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case OCLPackage.OCL_EXPRESSION__START_POSITION: return UtilitiesPackage.AST_NODE__START_POSITION;
-        case OCLPackage.OCL_EXPRESSION__END_POSITION: return UtilitiesPackage.AST_NODE__END_POSITION;
-        default: return -1;
-      }
-    }
-    if (baseClass == org.eclipse.ocl.expressions.OCLExpression.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == TypedElement.class) {
+			switch (derivedFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == Visitable.class) {
+			switch (derivedFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == ASTNode.class) {
+			switch (derivedFeatureID) {
+				case OCLPackage.OCL_EXPRESSION__START_POSITION :
+					return UtilitiesPackage.AST_NODE__START_POSITION;
+				case OCLPackage.OCL_EXPRESSION__END_POSITION :
+					return UtilitiesPackage.AST_NODE__END_POSITION;
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == org.eclipse.ocl.expressions.OCLExpression.class) {
+			switch (derivedFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == TypedElement.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == Visitable.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == ASTNode.class)
-    {
-      switch (baseFeatureID)
-      {
-        case UtilitiesPackage.AST_NODE__START_POSITION: return OCLPackage.OCL_EXPRESSION__START_POSITION;
-        case UtilitiesPackage.AST_NODE__END_POSITION: return OCLPackage.OCL_EXPRESSION__END_POSITION;
-        default: return -1;
-      }
-    }
-    if (baseClass == org.eclipse.ocl.expressions.OCLExpression.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == TypedElement.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == Visitable.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == ASTNode.class) {
+			switch (baseFeatureID) {
+				case UtilitiesPackage.AST_NODE__START_POSITION :
+					return OCLPackage.OCL_EXPRESSION__START_POSITION;
+				case UtilitiesPackage.AST_NODE__END_POSITION :
+					return OCLPackage.OCL_EXPRESSION__END_POSITION;
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == org.eclipse.ocl.expressions.OCLExpression.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

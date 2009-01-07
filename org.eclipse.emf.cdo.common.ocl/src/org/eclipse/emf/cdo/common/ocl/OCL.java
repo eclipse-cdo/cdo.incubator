@@ -12,19 +12,19 @@
  *
  * </copyright>
  *
- * $Id: OCL.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: OCL.java,v 1.3 2009-01-07 07:21:30 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClass;
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOEnumLiteral;
-import org.eclipse.emf.cdo.common.fake.CDOFeature;
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
-import org.eclipse.emf.cdo.common.fake.CDOParameter;
-import org.eclipse.emf.cdo.common.fake.CDORevision;
+import org.eclipse.emf.cdo.common.model.CDOClass;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOEnumLiteral;
+import org.eclipse.emf.cdo.common.model.CDOFeature;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.cdo.common.model.CDOPackage;
+import org.eclipse.emf.cdo.common.model.CDOParameter;
+import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.ocl.Environment;
 import org.eclipse.ocl.EnvironmentFactory;

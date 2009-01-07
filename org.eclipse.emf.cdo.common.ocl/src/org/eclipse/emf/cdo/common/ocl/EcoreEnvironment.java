@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: EcoreEnvironment.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
+ * $Id: EcoreEnvironment.java,v 1.3 2009-01-07 07:21:33 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl;
@@ -22,19 +22,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.fake.CDOClass;
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOEnumLiteral;
-import org.eclipse.emf.cdo.common.fake.CDOFeature;
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
-import org.eclipse.emf.cdo.common.fake.CDOParameter;
-import org.eclipse.emf.cdo.common.fake.CDORevision;
+import org.eclipse.emf.cdo.common.model.CDOClass;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOEnumLiteral;
+import org.eclipse.emf.cdo.common.model.CDOFeature;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.cdo.common.model.CDOPackage;
+import org.eclipse.emf.cdo.common.model.CDOParameter;
 import org.eclipse.emf.cdo.common.ocl.internal.EcoreForeignMethods;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLFactoryImpl;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
 import org.eclipse.emf.cdo.common.ocl.internal.TypeResolverImpl;
 import org.eclipse.emf.cdo.common.ocl.internal.UMLReflectionImpl;
+import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAnnotation;

@@ -13,18 +13,18 @@
  * 
  * </copyright>
  *
- * $Id: ExpressionInOCL.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
+ * $Id: ExpressionInOCL.java,v 1.4 2009-01-07 07:21:33 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOParameter;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOParameter;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Expression In OCL</b></em>'. <!-- end-user-doc -->
- *
- *
+ * 
+ * 
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getExpressionInOCL()
  * @model extendedMetaData="name='ExpressionInOcl'"
  * @generated

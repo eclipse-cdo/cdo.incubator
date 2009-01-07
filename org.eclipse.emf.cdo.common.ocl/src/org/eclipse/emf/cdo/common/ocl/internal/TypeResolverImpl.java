@@ -13,16 +13,16 @@
  *
  * </copyright>
  *
- * $Id: TypeResolverImpl.java,v 1.2 2009-01-04 17:56:36 estepper Exp $
+ * $Id: TypeResolverImpl.java,v 1.3 2009-01-07 07:21:34 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.internal;
 
-import org.eclipse.emf.cdo.common.fake.CDOClass;
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOFeature;
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
-import org.eclipse.emf.cdo.common.fake.CDOParameter;
+import org.eclipse.emf.cdo.common.model.CDOClass;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOFeature;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.cdo.common.model.CDOPackage;
+import org.eclipse.emf.cdo.common.model.CDOParameter;
 import org.eclipse.emf.cdo.common.ocl.EcoreEnvironment;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EClass;

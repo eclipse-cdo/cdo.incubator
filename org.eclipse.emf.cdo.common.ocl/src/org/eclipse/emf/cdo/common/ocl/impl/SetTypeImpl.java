@@ -13,14 +13,14 @@
  * 
  * </copyright>
  *
- * $Id: SetTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: SetTypeImpl.java,v 1.4 2009-01-07 07:21:28 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.SetType;
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -33,7 +33,7 @@ import org.eclipse.ocl.types.operations.SetTypeOperations;
  * <em><b>Set Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class SetTypeImpl
@@ -61,13 +61,14 @@ public class SetTypeImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.SET_TYPE;
-  }
+		return OCLPackage.Literals.SET_TYPE;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

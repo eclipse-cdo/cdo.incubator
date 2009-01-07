@@ -13,24 +13,25 @@
  * 
  * </copyright>
  *
- * $Id: SendSignalAction.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
+ * $Id: SendSignalAction.java,v 1.4 2009-01-07 07:21:33 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClass;
+import org.eclipse.emf.cdo.common.model.CDOClass;
 import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Send Signal Action</b></em>'. <!-- end-user-doc -->
- *
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.SendSignalAction#getSignal <em>Signal</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.SendSignalAction#getSignal <em>
+ * Signal</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getSendSignalAction()
  * @model
  * @generated

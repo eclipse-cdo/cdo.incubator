@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: TupleFactory.java,v 1.3 2009-01-04 18:07:57 estepper Exp $
+ * $Id: TupleFactory.java,v 1.4 2009-01-07 07:21:34 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl.internal;
@@ -21,8 +21,8 @@ package org.eclipse.emf.cdo.common.ocl.internal;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.emf.cdo.common.fake.CDOFeature;
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
+import org.eclipse.emf.cdo.common.model.CDOFeature;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;

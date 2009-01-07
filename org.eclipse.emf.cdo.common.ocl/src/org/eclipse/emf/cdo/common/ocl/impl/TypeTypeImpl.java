@@ -13,16 +13,16 @@
  * 
  * </copyright>
  *
- * $Id: TypeTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: TypeTypeImpl.java,v 1.4 2009-01-07 07:21:27 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
-import org.eclipse.emf.cdo.common.fake.impl.CDOClassifierImpl;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.TypeType;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
+import org.eclipse.emf.cdo.internal.common.model.CDOClassifierImpl;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
@@ -38,10 +38,11 @@ import org.eclipse.ocl.utilities.PredefinedType;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TypeTypeImpl#getReferredType <em>Referred Type</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.TypeTypeImpl#getReferredType
+ * <em>Referred Type</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TypeTypeImpl
@@ -51,22 +52,24 @@ public class TypeTypeImpl
 	private EList<CDOOperation> operations;
 
 	/**
-   * The cached value of the '{@link #getReferredType() <em>Referred Type</em>}' reference.
-   * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getReferredType()
+	 * <em>Referred Type</em>}' reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @see #getReferredType()
-   * @generated
-   * @ordered
-   */
+	 * 
+	 * @see #getReferredType()
+	 * @generated
+	 * @ordered
+	 */
 	protected CDOClassifier referredType;
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected TypeTypeImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -84,50 +87,56 @@ public class TypeTypeImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.TYPE_TYPE;
-  }
+		return OCLPackage.Literals.TYPE_TYPE;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public CDOClassifier getReferredType() {
-    if (referredType != null && ((EObject)referredType).eIsProxy())
-    {
-      InternalEObject oldReferredType = (InternalEObject)referredType;
-      referredType = (CDOClassifier)eResolveProxy(oldReferredType);
-      if (referredType != oldReferredType)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCLPackage.TYPE_TYPE__REFERRED_TYPE, oldReferredType, referredType));
-      }
-    }
-    return referredType;
-  }
+		if (referredType != null && ((EObject) referredType).eIsProxy()) {
+			InternalEObject oldReferredType = (InternalEObject) referredType;
+			referredType = (CDOClassifier) eResolveProxy(oldReferredType);
+			if (referredType != oldReferredType) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						OCLPackage.TYPE_TYPE__REFERRED_TYPE, oldReferredType,
+						referredType));
+			}
+		}
+		return referredType;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public CDOClassifier basicGetReferredType() {
-    return referredType;
-  }
+		return referredType;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public void setReferredType(CDOClassifier newReferredType) {
-    CDOClassifier oldReferredType = referredType;
-    referredType = newReferredType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.TYPE_TYPE__REFERRED_TYPE, oldReferredType, referredType));
-  }
+		CDOClassifier oldReferredType = referredType;
+		referredType = newReferredType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				OCLPackage.TYPE_TYPE__REFERRED_TYPE, oldReferredType,
+				referredType));
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -171,110 +180,111 @@ public class TypeTypeImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID)
-    {
-      case OCLPackage.TYPE_TYPE__REFERRED_TYPE:
-        if (resolve) return getReferredType();
-        return basicGetReferredType();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case OCLPackage.TYPE_TYPE__REFERRED_TYPE :
+				if (resolve)
+					return getReferredType();
+				return basicGetReferredType();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID)
-    {
-      case OCLPackage.TYPE_TYPE__REFERRED_TYPE:
-        setReferredType((CDOClassifier)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case OCLPackage.TYPE_TYPE__REFERRED_TYPE :
+				setReferredType((CDOClassifier) newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.TYPE_TYPE__REFERRED_TYPE:
-        setReferredType((CDOClassifier)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.TYPE_TYPE__REFERRED_TYPE :
+				setReferredType((CDOClassifier) null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.TYPE_TYPE__REFERRED_TYPE:
-        return referredType != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.TYPE_TYPE__REFERRED_TYPE :
+				return referredType != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == PredefinedType.class)
-    {
-      switch (derivedFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == org.eclipse.ocl.types.TypeType.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case OCLPackage.TYPE_TYPE__REFERRED_TYPE: return TypesPackage.TYPE_TYPE__REFERRED_TYPE;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == PredefinedType.class) {
+			switch (derivedFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == org.eclipse.ocl.types.TypeType.class) {
+			switch (derivedFeatureID) {
+				case OCLPackage.TYPE_TYPE__REFERRED_TYPE :
+					return TypesPackage.TYPE_TYPE__REFERRED_TYPE;
+				default :
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == PredefinedType.class)
-    {
-      switch (baseFeatureID)
-      {
-        default: return -1;
-      }
-    }
-    if (baseClass == org.eclipse.ocl.types.TypeType.class)
-    {
-      switch (baseFeatureID)
-      {
-        case TypesPackage.TYPE_TYPE__REFERRED_TYPE: return OCLPackage.TYPE_TYPE__REFERRED_TYPE;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == PredefinedType.class) {
+			switch (baseFeatureID) {
+				default :
+					return -1;
+			}
+		}
+		if (baseClass == org.eclipse.ocl.types.TypeType.class) {
+			switch (baseFeatureID) {
+				case TypesPackage.TYPE_TYPE__REFERRED_TYPE :
+					return OCLPackage.TYPE_TYPE__REFERRED_TYPE;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 } // TypeTypeImpl

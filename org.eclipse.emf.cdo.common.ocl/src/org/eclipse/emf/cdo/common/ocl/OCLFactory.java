@@ -13,7 +13,7 @@
  * 
  * </copyright>
  *
- * $Id: OCLFactory.java,v 1.2 2009-01-04 19:26:03 estepper Exp $
+ * $Id: OCLFactory.java,v 1.3 2009-01-07 07:21:30 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EFactory;
 /**
  * <!-- begin-user-doc --> The <b>Factory</b> for the model. It provides a
  * create method for each non-abstract class of the model. <!-- end-user-doc -->
+ * 
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage
  * @generated
  */
@@ -29,29 +30,30 @@ public interface OCLFactory
 		extends EFactory {
 
 	/**
-   * The singleton instance of the factory.
-   * <!-- begin-user-doc --> <!--
+	 * The singleton instance of the factory. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @generated
-   */
-	OCLFactory eINSTANCE = org.eclipse.emf.cdo.common.ocl.impl.OCLFactoryImpl.init();
+	 * 
+	 * @generated
+	 */
+	OCLFactory eINSTANCE = org.eclipse.emf.cdo.common.ocl.impl.OCLFactoryImpl
+		.init();
 
 	/**
-   * Returns a new object of class '<em>Any Type</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Any Type</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Any Type</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Any Type</em>'.
+	 * @generated
+	 */
 	AnyType createAnyType();
 
 	/**
-   * Returns a new object of class '<em>Bag Type</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Bag Type</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Bag Type</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Bag Type</em>'.
+	 * @generated
+	 */
 	BagType createBagType();
 
 	/**
@@ -118,39 +120,39 @@ public interface OCLFactory
 	SequenceType createSequenceType();
 
 	/**
-   * Returns a new object of class '<em>Set Type</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Set Type</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Set Type</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Set Type</em>'.
+	 * @generated
+	 */
 	SetType createSetType();
 
 	/**
-   * Returns a new object of class '<em>Tuple Type</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Tuple Type</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Tuple Type</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Tuple Type</em>'.
+	 * @generated
+	 */
 	TupleType createTupleType();
 
 	/**
-   * Returns a new object of class '<em>Type Type</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Type Type</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Type Type</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Type Type</em>'.
+	 * @generated
+	 */
 	TypeType createTypeType();
 
 	/**
-   * Returns a new object of class '<em>Void Type</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Void Type</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Void Type</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Void Type</em>'.
+	 * @generated
+	 */
 	VoidType createVoidType();
 
 	/**
@@ -163,12 +165,12 @@ public interface OCLFactory
 	CallOperationAction createCallOperationAction();
 
 	/**
-   * Returns a new object of class '<em>Constraint</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Constraint</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Constraint</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Constraint</em>'.
+	 * @generated
+	 */
 	Constraint createConstraint();
 
 	/**
@@ -244,12 +246,12 @@ public interface OCLFactory
 	EnumLiteralExp createEnumLiteralExp();
 
 	/**
-   * Returns a new object of class '<em>If Exp</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>If Exp</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @return a new object of class '<em>If Exp</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>If Exp</em>'.
+	 * @generated
+	 */
 	IfExp createIfExp();
 
 	/**
@@ -262,11 +264,12 @@ public interface OCLFactory
 	IntegerLiteralExp createIntegerLiteralExp();
 
 	/**
-   * Returns a new object of class '<em>Unlimited Natural Literal Exp</em>'.
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Unlimited Natural Literal Exp</em>'.
-   * @generated
-   */
+	 * Returns a new object of class '<em>Unlimited Natural Literal Exp</em>'.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return a new object of class '<em>Unlimited Natural Literal Exp</em>'.
+	 * @generated
+	 */
 	UnlimitedNaturalLiteralExp createUnlimitedNaturalLiteralExp();
 
 	/**
@@ -279,12 +282,12 @@ public interface OCLFactory
 	InvalidLiteralExp createInvalidLiteralExp();
 
 	/**
-   * Returns a new object of class '<em>Iterate Exp</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Iterate Exp</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Iterate Exp</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Iterate Exp</em>'.
+	 * @generated
+	 */
 	IterateExp createIterateExp();
 
 	/**
@@ -297,21 +300,21 @@ public interface OCLFactory
 	IteratorExp createIteratorExp();
 
 	/**
-   * Returns a new object of class '<em>Let Exp</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Let Exp</em>'. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @return a new object of class '<em>Let Exp</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Let Exp</em>'.
+	 * @generated
+	 */
 	LetExp createLetExp();
 
 	/**
-   * Returns a new object of class '<em>Message Exp</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Message Exp</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Message Exp</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Message Exp</em>'.
+	 * @generated
+	 */
 	MessageExp createMessageExp();
 
 	/**
@@ -351,12 +354,12 @@ public interface OCLFactory
 	RealLiteralExp createRealLiteralExp();
 
 	/**
-   * Returns a new object of class '<em>State Exp</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>State Exp</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>State Exp</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>State Exp</em>'.
+	 * @generated
+	 */
 	StateExp createStateExp();
 
 	/**
@@ -387,12 +390,12 @@ public interface OCLFactory
 	TupleLiteralPart createTupleLiteralPart();
 
 	/**
-   * Returns a new object of class '<em>Type Exp</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Type Exp</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Type Exp</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Type Exp</em>'.
+	 * @generated
+	 */
 	TypeExp createTypeExp();
 
 	/**
@@ -405,12 +408,12 @@ public interface OCLFactory
 	UnspecifiedValueExp createUnspecifiedValueExp();
 
 	/**
-   * Returns a new object of class '<em>Variable</em>'.
-   * <!-- begin-user-doc
+	 * Returns a new object of class '<em>Variable</em>'. <!-- begin-user-doc
 	 * --> <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable</em>'.
-   * @generated
-   */
+	 * 
+	 * @return a new object of class '<em>Variable</em>'.
+	 * @generated
+	 */
 	Variable createVariable();
 
 	/**
@@ -423,12 +426,12 @@ public interface OCLFactory
 	VariableExp createVariableExp();
 
 	/**
-   * Returns the package supported by this factory.
-   * <!-- begin-user-doc -->
+	 * Returns the package supported by this factory. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-   * @return the package supported by this factory.
-   * @generated
-   */
+	 * 
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
 	OCLPackage getOCLPackage();
 
 } // OCLFactory

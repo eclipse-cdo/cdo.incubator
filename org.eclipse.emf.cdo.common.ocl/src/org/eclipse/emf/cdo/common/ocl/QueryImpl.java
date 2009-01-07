@@ -12,7 +12,7 @@
  *
  * </copyright>
  *
- * $Id: QueryImpl.java,v 1.2 2009-01-04 17:56:37 estepper Exp $
+ * $Id: QueryImpl.java,v 1.3 2009-01-07 07:21:34 estepper Exp $
  */
 
 package org.eclipse.emf.cdo.common.ocl;
@@ -21,9 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.emf.cdo.common.fake.CDOClass;
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDORevision;
+import org.eclipse.emf.cdo.common.model.CDOClass;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.ocl.EvaluationEnvironment;
 import org.eclipse.ocl.Query;
 

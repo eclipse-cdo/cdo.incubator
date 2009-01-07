@@ -13,7 +13,7 @@
  *
  * </copyright>
  *
- * $Id: PrimitiveLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: PrimitiveLiteralExpImpl.java,v 1.4 2009-01-07 07:21:29 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.EClass;
  * <em><b>Primitive Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public abstract class PrimitiveLiteralExpImpl
@@ -34,20 +34,22 @@ public abstract class PrimitiveLiteralExpImpl
 		implements PrimitiveLiteralExp {
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected PrimitiveLiteralExpImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.PRIMITIVE_LITERAL_EXP;
-  }
+		return OCLPackage.Literals.PRIMITIVE_LITERAL_EXP;
+	}
 
 } // PrimitiveLiteralExpImpl

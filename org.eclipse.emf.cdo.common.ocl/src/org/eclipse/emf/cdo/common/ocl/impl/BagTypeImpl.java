@@ -13,13 +13,13 @@
  * 
  * </copyright>
  *
- * $Id: BagTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: BagTypeImpl.java,v 1.4 2009-01-07 07:21:27 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.BagType;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -33,7 +33,7 @@ import org.eclipse.ocl.util.Bag;
  * <em><b>Bag Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class BagTypeImpl
@@ -61,13 +61,14 @@ public class BagTypeImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.BAG_TYPE;
-  }
+		return OCLPackage.Literals.BAG_TYPE;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

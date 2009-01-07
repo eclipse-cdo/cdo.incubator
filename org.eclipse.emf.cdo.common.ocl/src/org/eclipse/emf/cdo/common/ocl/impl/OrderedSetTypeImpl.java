@@ -13,14 +13,14 @@
  * 
  * </copyright>
  *
- * $Id: OrderedSetTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: OrderedSetTypeImpl.java,v 1.4 2009-01-07 07:21:29 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
 import java.util.LinkedHashSet;
 import java.util.Map;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.OrderedSetType;
 import org.eclipse.emf.common.util.DiagnosticChain;
@@ -33,7 +33,7 @@ import org.eclipse.ocl.types.operations.OrderedSetTypeOperations;
  * <em><b>Ordered Set Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class OrderedSetTypeImpl
@@ -61,13 +61,14 @@ public class OrderedSetTypeImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.ORDERED_SET_TYPE;
-  }
+		return OCLPackage.Literals.ORDERED_SET_TYPE;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

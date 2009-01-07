@@ -13,15 +13,15 @@
  * 
  * </copyright>
  *
- * $Id: AnyTypeImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: AnyTypeImpl.java,v 1.4 2009-01-07 07:21:29 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.fake.CDOOperation;
-import org.eclipse.emf.cdo.common.fake.impl.CDOClassifierImpl;
+import org.eclipse.emf.cdo.common.model.CDOOperation;
 import org.eclipse.emf.cdo.common.ocl.AnyType;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.internal.OCLStandardLibraryImpl;
+import org.eclipse.emf.cdo.internal.common.model.CDOClassifierImpl;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
@@ -30,7 +30,7 @@ import org.eclipse.emf.ecore.EClass;
  * <em><b>Any Type</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class AnyTypeImpl
@@ -40,21 +40,23 @@ public class AnyTypeImpl
 	private EList<CDOOperation> operations;
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected AnyTypeImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.ANY_TYPE;
-  }
+		return OCLPackage.Literals.ANY_TYPE;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->

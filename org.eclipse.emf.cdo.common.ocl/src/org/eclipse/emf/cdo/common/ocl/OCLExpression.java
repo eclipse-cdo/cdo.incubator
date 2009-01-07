@@ -13,22 +13,21 @@
  *
  * </copyright>
  *
- * $Id: OCLExpression.java,v 1.3 2009-01-04 19:26:03 estepper Exp $
+ * $Id: OCLExpression.java,v 1.4 2009-01-07 07:21:32 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDOTypedElement;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOTypedElement;
 
 /**
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>OCL Expression</b></em>'. <!-- end-user-doc -->
- *
- *
+ * 
+ * 
  * @see org.eclipse.emf.cdo.common.ocl.OCLPackage#getOCLExpression()
- * @model abstract="true"
- *        extendedMetaData="name='OclExpression'"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName'"
+ * @model abstract="true" extendedMetaData="name='OclExpression'" annotation=
+ *        "http://www.eclipse.org/emf/2002/Ecore constraints='WellFormedName'"
  * @generated
  */
 public interface OCLExpression

@@ -12,11 +12,11 @@
  *
  * </copyright>
  *
- * $Id: InvalidLiteralExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: InvalidLiteralExpImpl.java,v 1.4 2009-01-07 07:21:29 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.InvalidLiteralExp;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.ecore.EClass;
@@ -27,7 +27,7 @@ import org.eclipse.ocl.utilities.Visitor;
  * <em><b>Invalid Literal Exp</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
+ * 
  * @generated
  */
 public class InvalidLiteralExpImpl
@@ -35,21 +35,23 @@ public class InvalidLiteralExpImpl
 		implements InvalidLiteralExp {
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected InvalidLiteralExpImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.INVALID_LITERAL_EXP;
-  }
+		return OCLPackage.Literals.INVALID_LITERAL_EXP;
+	}
 
 	/**
 	 * @generated NOT

@@ -12,12 +12,12 @@
  *
  * </copyright>
  *
- * $Id: CollectionLiteralPartImpl.java,v 1.4 2009-01-04 19:26:02 estepper Exp $
+ * $Id: CollectionLiteralPartImpl.java,v 1.5 2009-01-07 07:21:28 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.impl.CDOTypedElementImpl;
+import org.eclipse.emf.cdo.common.CDOTypedElementStub;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.CollectionLiteralPart;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.ecore.EClass;
@@ -29,29 +29,31 @@ import org.eclipse.ocl.utilities.Visitor;
  * <em><b>Collection Literal Part</b></em>'. <!-- end-user-doc -->
  * <p>
  * </p>
- *
- * @generated
+ * 
+ * @generated not
  */
 public abstract class CollectionLiteralPartImpl
-		extends CDOTypedElementImpl
+		extends CDOTypedElementStub
 		implements CollectionLiteralPart {
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected CollectionLiteralPartImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.COLLECTION_LITERAL_PART;
-  }
+		return OCLPackage.Literals.COLLECTION_LITERAL_PART;
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -64,33 +66,13 @@ public abstract class CollectionLiteralPartImpl
 	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-	public String getName() {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
-
-	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @generated NOT
 	 */
 	public CDOClassifier getType() {
-		return getEType();
+		return super.getType();
 	}
-
-	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
-	public void setName(String name) {
-    // TODO: implement this method
-    // Ensure that you remove @generated or mark it @generated NOT
-    throw new UnsupportedOperationException();
-  }
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -98,9 +80,7 @@ public abstract class CollectionLiteralPartImpl
 	 * @generated NOT
 	 */
 	public void setType(CDOClassifier type) {
-		// TODO: implement this method
-		// Ensure that you remove @generated or mark it @generated NOT
-		throw new UnsupportedOperationException();
+		super.setType(type);
 	}
 
 	/**

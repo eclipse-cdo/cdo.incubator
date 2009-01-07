@@ -13,14 +13,14 @@
  *
  * </copyright>
  *
- * $Id: StateExpImpl.java,v 1.3 2009-01-04 19:26:02 estepper Exp $
+ * $Id: StateExpImpl.java,v 1.4 2009-01-07 07:21:29 estepper Exp $
  */
 package org.eclipse.emf.cdo.common.ocl.impl;
 
-import org.eclipse.emf.cdo.common.fake.CDOClassifier;
-import org.eclipse.emf.cdo.common.fake.CDORevision;
+import org.eclipse.emf.cdo.common.model.CDOClassifier;
 import org.eclipse.emf.cdo.common.ocl.OCLPackage;
 import org.eclipse.emf.cdo.common.ocl.StateExp;
+import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -35,10 +35,11 @@ import org.eclipse.ocl.utilities.Visitor;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.eclipse.emf.cdo.common.ocl.impl.StateExpImpl#getReferredState <em>Referred State</em>}</li>
+ * <li>{@link org.eclipse.emf.cdo.common.ocl.impl.StateExpImpl#getReferredState
+ * <em>Referred State</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class StateExpImpl
@@ -46,162 +47,173 @@ public class StateExpImpl
 		implements StateExp {
 
 	/**
-   * The cached value of the '{@link #getReferredState() <em>Referred State</em>}' reference.
-   * <!-- begin-user-doc --> <!--
+	 * The cached value of the '{@link #getReferredState()
+	 * <em>Referred State</em>}' reference. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-   * @see #getReferredState()
-   * @generated
-   * @ordered
-   */
+	 * 
+	 * @see #getReferredState()
+	 * @generated
+	 * @ordered
+	 */
 	protected CDORevision referredState;
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	protected StateExpImpl() {
-    super();
-  }
+		super();
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-    return OCLPackage.Literals.STATE_EXP;
-  }
+		return OCLPackage.Literals.STATE_EXP;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@SuppressWarnings("cast")
 	public CDORevision getReferredState() {
-    if (referredState != null && ((EObject)referredState).eIsProxy())
-    {
-      InternalEObject oldReferredState = (InternalEObject)referredState;
-      referredState = (CDORevision)eResolveProxy(oldReferredState);
-      if (referredState != oldReferredState)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, OCLPackage.STATE_EXP__REFERRED_STATE, oldReferredState, referredState));
-      }
-    }
-    return referredState;
-  }
+		if (referredState != null && ((EObject) referredState).eIsProxy()) {
+			InternalEObject oldReferredState = (InternalEObject) referredState;
+			referredState = (CDORevision) eResolveProxy(oldReferredState);
+			if (referredState != oldReferredState) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+						OCLPackage.STATE_EXP__REFERRED_STATE, oldReferredState,
+						referredState));
+			}
+		}
+		return referredState;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public CDORevision basicGetReferredState() {
-    return referredState;
-  }
+		return referredState;
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	public void setReferredState(CDORevision newReferredState) {
-    CDORevision oldReferredState = referredState;
-    referredState = newReferredState;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, OCLPackage.STATE_EXP__REFERRED_STATE, oldReferredState, referredState));
-  }
+		CDORevision oldReferredState = referredState;
+		referredState = newReferredState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+				OCLPackage.STATE_EXP__REFERRED_STATE, oldReferredState,
+				referredState));
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID)
-    {
-      case OCLPackage.STATE_EXP__REFERRED_STATE:
-        if (resolve) return getReferredState();
-        return basicGetReferredState();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case OCLPackage.STATE_EXP__REFERRED_STATE :
+				if (resolve)
+					return getReferredState();
+				return basicGetReferredState();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-    switch (featureID)
-    {
-      case OCLPackage.STATE_EXP__REFERRED_STATE:
-        setReferredState((CDORevision)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case OCLPackage.STATE_EXP__REFERRED_STATE :
+				setReferredState((CDORevision) newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.STATE_EXP__REFERRED_STATE:
-        setReferredState((CDORevision)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.STATE_EXP__REFERRED_STATE :
+				setReferredState((CDORevision) null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-    switch (featureID)
-    {
-      case OCLPackage.STATE_EXP__REFERRED_STATE:
-        return referredState != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case OCLPackage.STATE_EXP__REFERRED_STATE :
+				return referredState != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-    if (baseClass == org.eclipse.ocl.expressions.StateExp.class)
-    {
-      switch (derivedFeatureID)
-      {
-        case OCLPackage.STATE_EXP__REFERRED_STATE: return ExpressionsPackage.STATE_EXP__REFERRED_STATE;
-        default: return -1;
-      }
-    }
-    return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-  }
+		if (baseClass == org.eclipse.ocl.expressions.StateExp.class) {
+			switch (derivedFeatureID) {
+				case OCLPackage.STATE_EXP__REFERRED_STATE :
+					return ExpressionsPackage.STATE_EXP__REFERRED_STATE;
+				default :
+					return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
 
 	/**
-   * <!-- begin-user-doc --> <!-- end-user-doc -->
-   * @generated
-   */
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-    if (baseClass == org.eclipse.ocl.expressions.StateExp.class)
-    {
-      switch (baseFeatureID)
-      {
-        case ExpressionsPackage.STATE_EXP__REFERRED_STATE: return OCLPackage.STATE_EXP__REFERRED_STATE;
-        default: return -1;
-      }
-    }
-    return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-  }
+		if (baseClass == org.eclipse.ocl.expressions.StateExp.class) {
+			switch (baseFeatureID) {
+				case ExpressionsPackage.STATE_EXP__REFERRED_STATE :
+					return OCLPackage.STATE_EXP__REFERRED_STATE;
+				default :
+					return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
