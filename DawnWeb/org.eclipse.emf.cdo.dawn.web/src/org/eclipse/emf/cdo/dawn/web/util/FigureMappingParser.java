@@ -32,6 +32,7 @@ public class FigureMappingParser
     try
     {
       Document document = saxReader.read(url);
+      @SuppressWarnings("unchecked")
       List<Element> selectNodes = document.selectNodes("//figureMapping"); // XPATH
 
       for (Element figureMappingElement : selectNodes)
@@ -44,6 +45,7 @@ public class FigureMappingParser
         String javaScriptClassName = javaScriptClassElement.attributeValue("name");
 
         figureMapping.setJavaScriptClass(javaScriptClassName);
+        @SuppressWarnings("unchecked")
         List<Element> viewAttributeElements = figureMappingElement.selectNodes("viewAttribute");
 
         for (Element viewAttributeElement : viewAttributeElements)
@@ -66,6 +68,7 @@ public class FigureMappingParser
           }
         }
 
+        @SuppressWarnings("unchecked")
         List<Element> viewPatternElements = figureMappingElement.selectNodes("viewPattern");
         for (Element viewPattern : viewPatternElements)
         {

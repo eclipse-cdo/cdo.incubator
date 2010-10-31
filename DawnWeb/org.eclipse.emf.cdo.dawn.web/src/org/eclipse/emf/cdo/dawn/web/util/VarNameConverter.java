@@ -10,14 +10,11 @@
  */
 package org.eclipse.emf.cdo.dawn.web.util;
 
+/**
+ * @author Martin Fluegge
+ */
 public class VarNameConverter
 {
-  /**
-   * converts a String into a valid varName
-   * 
-   * @param name
-   * @return
-   */
   public static String convert(String name)
   {
     String ret = name;
