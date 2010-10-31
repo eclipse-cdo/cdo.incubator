@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Draw2d
 Bundle-SymbolicName: org.eclipse.emf.cdo.dawn.web.js.draw2d;singleton:=true
 Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.emf.cdo.dawn.web;bundle-version="[1.0.0,2.0.0)",
  org.eclipse.emf;bundle-version="[2.6.0,3.0.0)",
  org.eclipse.gmf.runtime.notation;bundle-version="[1.4.1,2.0.0)",
