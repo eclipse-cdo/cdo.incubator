@@ -33,8 +33,6 @@ public class GetVersionFromProjectServlet extends HttpServlet
     HttpSession httpSession = request.getSession();
     String resourceURILiteral = request.getParameter("resourceURI");
 
-    // System.out.println(resourceURILiteral);
-
     URI uri = URI.createURI(resourceURILiteral);
     DawnResourceRegistry.instance.getResource(uri, httpSession.getId());
 

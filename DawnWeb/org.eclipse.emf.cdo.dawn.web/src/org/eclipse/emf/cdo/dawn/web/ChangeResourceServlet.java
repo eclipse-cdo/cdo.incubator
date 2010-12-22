@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.dawn.web;
 
 import org.eclipse.emf.cdo.common.id.CDOID;
 import org.eclipse.emf.cdo.common.id.CDOIDUtil;
+import org.eclipse.emf.cdo.dawn.internal.web.OM;
 import org.eclipse.emf.cdo.dawn.util.DawnResourceHelper;
 import org.eclipse.emf.cdo.dawn.web.registry.DawnResourceRegistry;
 import org.eclipse.emf.cdo.dawn.web.util.DawnWebUtil;
@@ -20,6 +21,8 @@ import org.eclipse.emf.cdo.transaction.CDOTransaction;
 import org.eclipse.emf.cdo.util.CDOUtil;
 import org.eclipse.emf.cdo.util.CommitException;
 import org.eclipse.emf.cdo.view.CDOView;
+
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -38,6 +41,8 @@ import java.io.IOException;
 
 public class ChangeResourceServlet extends HttpServlet
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_OBJECT, ChangeResourceServlet.class);
+
   private static final long serialVersionUID = 1L;
 
   private HttpSession httpSession;
@@ -52,9 +57,12 @@ public class ChangeResourceServlet extends HttpServlet
     resourceURI = URI.createURI(request.getParameter("resourceURI"));
     String uuid = request.getParameter("uuid");
 
-    System.err.println("URI " + resourceURI);
-    System.err.println("UUID:" + uuid);
-    System.err.println("method:" + method);
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Resource URI: {0}", resourceURI); //$NON-NLS-1$
+      TRACER.format("UUID: {0}", uuid); //$NON-NLS-1$
+      TRACER.format("method: {0}", method); //$NON-NLS-1$
+    }
 
     if (method.equals("moveNode"))
     {

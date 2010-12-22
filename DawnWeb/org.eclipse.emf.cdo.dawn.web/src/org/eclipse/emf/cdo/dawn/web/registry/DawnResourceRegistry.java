@@ -65,7 +65,6 @@ public class DawnResourceRegistry
   {
     ResourceInfo resourceInfo;
     CDOResource resource;
-    System.err.println("Creating new Resource");
     CDOConnectionUtil.instance.init("repo1", "tcp", "localhost");
     CDOSession session = CDOConnectionUtil.instance.openSession();
     CDOView view = session.openTransaction();

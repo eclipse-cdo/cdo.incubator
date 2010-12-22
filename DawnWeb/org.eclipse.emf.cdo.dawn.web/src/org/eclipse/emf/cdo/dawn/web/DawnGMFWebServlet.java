@@ -26,7 +26,6 @@ public class DawnGMFWebServlet extends HttpServlet
     AcorePackage.eINSTANCE.getClass();
 
     HttpSession httpSession = request.getSession();
-    System.out.println(httpSession.getId());
 
     String projectPluginId = request.getParameter("pluginid");
     String resourcePath = request.getParameter("path");

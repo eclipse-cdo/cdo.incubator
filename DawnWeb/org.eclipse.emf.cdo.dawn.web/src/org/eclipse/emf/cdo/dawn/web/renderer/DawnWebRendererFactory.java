@@ -22,7 +22,6 @@ import java.util.Map;
  */
 public class DawnWebRendererFactory
 {
-
   public static DawnWebRendererFactory instance = new DawnWebRendererFactory();
 
   public static String EXTENSION_POINT_ID = "org.eclipse.emf.cdo.dawn.web.renderer";
@@ -53,7 +52,6 @@ public class DawnWebRendererFactory
 
         if (e.getAttribute("type").equals(type))
         {
-          System.out.println("Evaluating extension");
           return (IDawnWebRenderer)e.createExecutableExtension("renderer");
         }
       }
