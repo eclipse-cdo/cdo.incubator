@@ -10,13 +10,15 @@
  */
 package org.eclipse.emf.cdo.dawn.web.util;
 
-import org.dom4j.Attribute;
-import org.dom4j.Document;
-import org.dom4j.DocumentException;
-import org.dom4j.Element;
-import org.dom4j.io.SAXReader;
+import org.w3c.dom.Document;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilderFactory;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,63 +27,98 @@ public class FigureMappingParser
 
   public HashMap<String, FigureMapping> parse(URL url)
   {
-
     HashMap<String, FigureMapping> ret = new HashMap<String, FigureMapping>();
 
-    SAXReader saxReader = new SAXReader();
+    Document document;
     try
     {
-      Document document = saxReader.read(url);
-      @SuppressWarnings("unchecked")
-      List<Element> selectNodes = document.selectNodes("//figureMapping"); // XPATH
+      document = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(url.openStream());
 
-      for (Element figureMappingElement : selectNodes)
+      Node root = document.getFirstChild();
+
+      List<Node> childNodes = getNodesByName(root, "figureMapping");
+
+      for (Node node : childNodes)
       {
-        FigureMapping figureMapping = new FigureMapping();
 
-        Attribute attribute = figureMappingElement.attribute("type");
-        String type = attribute.getValue();
-        Element javaScriptClassElement = figureMappingElement.element("javaScriptClass");
-        String javaScriptClassName = javaScriptClassElement.attributeValue("name");
+        String type = getAttributeValue(node, "type");
+        FigureMapping figureMapping = createFigureMapping(node);
 
-        figureMapping.setJavaScriptClass(javaScriptClassName);
-        @SuppressWarnings("unchecked")
-        List<Element> viewAttributeElements = figureMappingElement.selectNodes("viewAttribute");
-
-        for (Element viewAttributeElement : viewAttributeElements)
-        {
-          ViewAttribute v = null;
-          if (viewAttributeElement.getName().equals("viewAttribute"))
-          {
-            v = new ViewAttribute();
-
-          }
-          // else if (viewAttributeElement.getName().equals("viewLiteral"))
-          // {
-          // v = new ViewLiteral();
-          //
-          // }
-          if (v != null)
-          {
-            v.setName(viewAttributeElement.attributeValue("name"));
-            figureMapping.addAttribute(v);
-          }
-        }
-
-        @SuppressWarnings("unchecked")
-        List<Element> viewPatternElements = figureMappingElement.selectNodes("viewPattern");
-        for (Element viewPattern : viewPatternElements)
-        {
-          figureMapping.setViewPattern(viewPattern.attributeValue("name"));
-        }
         ret.put(type, figureMapping);
       }
     }
-    catch (DocumentException e)
+    catch (Exception ex)
     {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
+      throw new RuntimeException(ex);
+    }
+
+    return ret;
+  }
+
+  private FigureMapping createFigureMapping(Node figureMappingNode)
+  {
+    FigureMapping figureMapping = new FigureMapping();
+
+    List<Node> javaScriptClass = getNodesByName(figureMappingNode, "javaScriptClass");
+    String javaScriptClassName = getAttributeValue(javaScriptClass.get(0), "name");
+
+    figureMapping.setJavaScriptClass(javaScriptClassName);
+
+    List<ViewAttribute> viewAttributes = getViewAttributes(figureMappingNode);
+    figureMapping.setViewAttributes(viewAttributes);
+
+    List<Node> viewPatternNodes = getNodesByName(figureMappingNode, "viewPattern");
+    if (viewPatternNodes.size() > 0)
+    {
+      String viewPattern = getAttributeValue(viewPatternNodes.get(0), "name");
+      figureMapping.setViewPattern(viewPattern);
+    }
+
+    return figureMapping;
+  }
+
+  private List<ViewAttribute> getViewAttributes(Node figureMappingNode)
+  {
+    List<Node> viewAttributes = getNodesByName(figureMappingNode, "viewAttribute");
+
+    List<ViewAttribute> ret = new ArrayList<ViewAttribute>();
+
+    for (Node node : viewAttributes)
+    {
+      ViewAttribute viewAttribute = new ViewAttribute();
+      String name = getAttributeValue(node, "name");
+      viewAttribute.setName(name);
+      ret.add(viewAttribute);
     }
     return ret;
+  }
+
+  private List<Node> getNodesByName(Node figureMappingNode, String name)
+  {
+    NodeList childNodes = figureMappingNode.getChildNodes();
+
+    List<Node> nodes = new ArrayList<Node>();
+    for (int i = 0; i < childNodes.getLength(); i++)
+    {
+      Node item = childNodes.item(i);
+      String nodeName = item.getNodeName();
+
+      if (name.equals(nodeName))
+      {
+        nodes.add(item);
+      }
+    }
+    return nodes;
+  }
+
+  private String getAttributeValue(Node figureMappingNode, String name)
+  {
+    NamedNodeMap attributes = figureMappingNode.getAttributes();
+    if (attributes != null)
+    {
+      Node namedItem = attributes.getNamedItem(name);
+      return namedItem.getNodeValue();
+    }
+    return "";
   }
 }
