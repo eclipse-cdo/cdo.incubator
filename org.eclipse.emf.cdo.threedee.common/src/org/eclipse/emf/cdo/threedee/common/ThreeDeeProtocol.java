@@ -17,5 +17,7 @@ public interface ThreeDeeProtocol
 {
   public static final String PROTOCOL_NAME = "threedee";
 
+  public static final int PROTOCOL_PORT = 2040;
+
   public static final short SIGNAL_OPEN_SESSION = 0;
 }

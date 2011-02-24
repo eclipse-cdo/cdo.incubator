@@ -39,4 +39,9 @@ public class Agent
   {
     return id;
   }
+
+  public void close()
+  {
+    protocol.close();
+  }
 }

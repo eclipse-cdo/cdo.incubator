@@ -10,6 +10,9 @@
  */
 package org.eclipse.emf.cdo.threedee.agent.bundle;
 
+import org.eclipse.emf.cdo.threedee.agent.Agent;
+import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
+
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.OSGiActivator;
@@ -36,9 +39,27 @@ public abstract class OM
    */
   public static final class Activator extends OSGiActivator
   {
+    private Agent agent;
+
     public Activator()
     {
       super(BUNDLE);
+    }
+
+    @Override
+    protected void doStart() throws Exception
+    {
+      agent = new Agent("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
+    }
+
+    @Override
+    protected void doStop() throws Exception
+    {
+      if (agent != null)
+      {
+        agent.close();
+        agent = null;
+      }
     }
   }
 }
