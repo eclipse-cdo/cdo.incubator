@@ -13,7 +13,7 @@ package org.eclipse.emf.cdo.threedee.common;
 /**
  * @author Eike Stepper
  */
-public class Galaxis
+public class Observer
 {
 
 }
