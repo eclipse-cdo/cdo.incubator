@@ -86,6 +86,12 @@ public class Server extends Container<Session>
   }
 
   @Override
+  public String toString()
+  {
+    return "CDO3D Server";
+  }
+
+  @Override
   protected void doActivate() throws Exception
   {
     super.doActivate();
@@ -127,6 +133,12 @@ public class Server extends Container<Session>
     public ServerProtocol getProtocol()
     {
       return protocol;
+    }
+
+    @Override
+    public String toString()
+    {
+      return "Session " + id;
     }
   }
 }
