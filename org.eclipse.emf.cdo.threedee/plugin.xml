@@ -7,4 +7,27 @@
       <startup class="org.eclipse.emf.cdo.threedee.bundle.Startup"/>
    </extension>
 
+	<extension
+		point="org.eclipse.net4j.util.factories">
+		<factory
+			productGroup="org.eclipse.net4j.serverProtocols"
+			type="threedee"
+			class="org.eclipse.emf.cdo.threedee.ServerProtocol$Factory"/>
+	</extension>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="org.eclipse.emf.cdo.threedee"
+            name="ThreeDee">
+      </category>
+      <view
+            category="org.eclipse.emf.cdo.threedee"
+            class="org.eclipse.emf.cdo.threedee.ServerView"
+            icon="platform:/plugin/org.eclipse.net4j.ui.shared/icons/full/view16/acceptors.gif"
+            id="org.eclipse.emf.cdo.threedee.ServerView"
+            name="ThreeDee">
+      </view>
+   </extension>
+
 </plugin>

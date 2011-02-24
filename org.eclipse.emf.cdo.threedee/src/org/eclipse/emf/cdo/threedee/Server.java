@@ -88,7 +88,7 @@ public class Server extends Container<Session>
   @Override
   public String toString()
   {
-    return "CDO3D Server";
+    return "Frontend";
   }
 
   @Override
@@ -138,7 +138,7 @@ public class Server extends Container<Session>
     @Override
     public String toString()
     {
-      return "Session " + id;
+      return "Agent " + id;
     }
   }
 }
