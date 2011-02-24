@@ -58,7 +58,8 @@ public final class Element
     for (int i = 0; i < size; i++)
     {
       int target = in.readInt();
-
+      Element element = provider.getElement(target);
+      references.add(element);
     }
   }
 
