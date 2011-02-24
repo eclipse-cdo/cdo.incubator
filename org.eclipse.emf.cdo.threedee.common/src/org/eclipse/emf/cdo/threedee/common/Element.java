@@ -44,6 +44,10 @@ public final class Element
     id = in.readInt();
     String descriptorName = in.readString();
     descriptor = ElementDescriptor.get(descriptorName);
+    if (descriptor == null)
+    {
+      throw new IllegalStateException("Descriptor missing: " + descriptorName);
+    }
 
     int size = in.readInt();
     for (int i = 0; i < size; i++)

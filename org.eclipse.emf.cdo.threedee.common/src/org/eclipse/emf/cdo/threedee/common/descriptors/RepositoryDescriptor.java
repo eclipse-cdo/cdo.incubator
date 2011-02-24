@@ -34,7 +34,8 @@ public class RepositoryDescriptor extends ElementDescriptor
     attributes.put("name", repository.getName());
 
     Set<Element> references = element.getReferences();
-    for (Object target : repository.getElements())
+    Object[] elements = repository.getElements();
+    for (Object target : elements)
     {
       Element targetElement = provider.getElement(target);
       if (targetElement != null)
@@ -51,7 +52,7 @@ public class RepositoryDescriptor extends ElementDescriptor
   {
     public Factory()
     {
-      super("org.eclipse.emf.cdo.internal.server.Repository.Default");
+      super("org.eclipse.emf.cdo.internal.server.Repository$Default");
     }
 
     public Object create(String description) throws ProductCreationException

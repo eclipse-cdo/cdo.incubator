@@ -7,7 +7,7 @@
       <factory
             class="org.eclipse.emf.cdo.threedee.common.descriptors.RepositoryDescriptor$Factory"
             productGroup="org.eclipse.emf.cdo.threedee.elementDescriptors"
-            type="org.eclipse.emf.cdo.internal.server.Repository.Default">
+            type="org.eclipse.emf.cdo.internal.server.Repository$Default">
       </factory>
    </extension>
 

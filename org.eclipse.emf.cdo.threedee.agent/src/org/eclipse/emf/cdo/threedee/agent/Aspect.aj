@@ -16,34 +16,38 @@ package org.eclipse.emf.cdo.threedee.agent;
 public aspect Aspect
 {
   pointcut publicMethods() :
-    //execution(public * *.*(..)) ||
+    !execution(public * *.get*()) &&
+    !execution(public String *.toString()) &&
+    !execution(public boolean *.equals(Object)) &&
+    !execution(public int *.hashCode()) &&
+    (
+      execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.LockManager.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.QueryManager.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.SessionManager.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.Session.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.View.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.Transaction.*(..)) ||
 
-    execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.LockManager.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.QueryManager.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.SessionManager.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.Session.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.View.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.Transaction.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStore.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStoreAccessor.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStoreChunkReader.*(..)) ||
 
-    execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStore.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStoreAccessor.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStoreChunkReader.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) ||
 
-    execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionManagerImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionCacheImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.spi.common.revision.AbstractCDORevision.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.spi.common.revision.BaseCDORevision.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionImpl.*(..)) ||
 
-    execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionManagerImpl.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionCacheImpl.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.spi.common.revision.AbstractCDORevision.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.spi.common.revision.BaseCDORevision.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionImpl.*(..)) ||
-
-    execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) ||
-    execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..));
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..))
+    );
 
   before(Object target) : publicMethods() && target(target)
   {

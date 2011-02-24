@@ -1,5 +1,6 @@
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.net4j.util.container.FactoryNotFoundException;
 import org.eclipse.net4j.util.container.IPluginContainer;
 
 /**
@@ -29,9 +30,16 @@ public abstract class ElementDescriptor
 
   public static ElementDescriptor get(String name)
   {
-    ElementDescriptor element = (ElementDescriptor)IPluginContainer.INSTANCE.getElement(PRODUCT_GROUP, name, null);
-    element.setName(name);
-    return element;
+    try
+    {
+      ElementDescriptor element = (ElementDescriptor)IPluginContainer.INSTANCE.getElement(PRODUCT_GROUP, name, null);
+      element.setName(name);
+      return element;
+    }
+    catch (FactoryNotFoundException ex)
+    {
+      return null;
+    }
   }
 
   /**
