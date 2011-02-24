@@ -10,13 +10,19 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
+import org.eclipse.emf.cdo.threedee.common.Observer;
+import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
+import org.eclipse.emf.cdo.threedee.common.ObserverEvent.Call.When;
+
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
 import java.util.Map;
+import java.util.Queue;
 import java.util.WeakHashMap;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author Eike Stepper
@@ -32,6 +38,8 @@ public class Agent extends Lifecycle
   private int id;
 
   private Map<Object, Observer> observers = new WeakHashMap<Object, Observer>();
+
+  private Queue<ObserverEvent> queue = new LinkedBlockingQueue<ObserverEvent>();
 
   private Agent()
   {
@@ -67,6 +75,7 @@ public class Agent extends Lifecycle
       {
         observer = createObserver(observable);
         observers.put(observable, observer);
+        queue.add(new ObserverEvent.Creation(observer));
       }
     }
 
@@ -92,5 +101,32 @@ public class Agent extends Lifecycle
   {
     protocol.close();
     super.doDeactivate();
+  }
+
+  public void beforeCall(Object sourceObservable, Object targetObservable)
+  {
+    call(sourceObservable, targetObservable, When.BEFORE);
+  }
+
+  public void afterCall(Object sourceObservable, Object targetObservable)
+  {
+    call(sourceObservable, targetObservable, When.AFTER);
+  }
+
+  private void call(Object sourceObservable, Object targetObservable, When when)
+  {
+    Observer sourceObserver = getObserver(sourceObservable);
+    if (sourceObserver == null)
+    {
+      return;
+    }
+
+    Observer targetObserver = getObserver(targetObservable);
+    if (targetObserver == null)
+    {
+      return;
+    }
+
+    queue.add(new ObserverEvent.Call(sourceObserver, targetObserver, when));
   }
 }

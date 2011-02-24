@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.agent;
+package org.eclipse.emf.cdo.threedee.common;
 
 /**
  * @author Eike Stepper

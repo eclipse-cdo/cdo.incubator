@@ -10,7 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
-import org.eclipse.emf.cdo.threedee.Server.Session;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.signal.IndicationWithResponse;

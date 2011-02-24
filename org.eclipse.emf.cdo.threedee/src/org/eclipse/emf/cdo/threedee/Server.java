@@ -10,7 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
-import org.eclipse.emf.cdo.threedee.Server.Session;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.tcp.ITCPAcceptor;
@@ -108,37 +107,5 @@ public class Server extends Container<Session>
     }
 
     super.doDeactivate();
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  public static class Session
-  {
-    private ServerProtocol protocol;
-
-    private int id;
-
-    public Session(int id, ServerProtocol protocol)
-    {
-      this.id = id;
-      this.protocol = protocol;
-    }
-
-    public int getID()
-    {
-      return id;
-    }
-
-    public ServerProtocol getProtocol()
-    {
-      return protocol;
-    }
-
-    @Override
-    public String toString()
-    {
-      return "Agent " + id;
-    }
   }
 }

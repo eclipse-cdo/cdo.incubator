@@ -34,7 +34,7 @@ public class Hook
         return;
       }
 
-      before(source, target);
+      Agent.INSTANCE.beforeCall(source, target);
     }
 
     stack.add(target);
@@ -52,7 +52,7 @@ public class Hook
         return;
       }
 
-      after(source, target);
+      Agent.INSTANCE.afterCall(source, target);
       stack.remove(last);
     }
   }
@@ -68,23 +68,5 @@ public class Hook
     }
 
     return stack;
-  }
-
-  private static void before(Object source, Object target)
-  {
-    String sourceName = source.getClass().getName();
-    if (!"org.eclipse.internal.net4j.buffer.BufferPool$Monitor".equals(sourceName))
-    {
-      System.err.println("3D-BEFORE: " + sourceName + " --> " + target.getClass().getName());
-    }
-  }
-
-  private static void after(Object source, Object target)
-  {
-    String sourceName = source.getClass().getName();
-    if (!"org.eclipse.internal.net4j.buffer.BufferPool$Monitor".equals(sourceName))
-    {
-      System.err.println("3D-AFTER: " + sourceName + " --> " + target.getClass().getName());
-    }
   }
 }
