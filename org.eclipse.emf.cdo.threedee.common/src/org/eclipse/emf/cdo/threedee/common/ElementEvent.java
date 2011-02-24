@@ -18,21 +18,21 @@ import java.io.IOException;
 /**
  * @author Eike Stepper
  */
-public abstract class ObserverEvent
+public abstract class ElementEvent
 {
   public abstract int getType();
 
   public abstract void write(ExtendedDataOutputStream out) throws IOException;
 
-  public static ObserverEvent read(ExtendedDataInputStream in, byte type) throws IOException
+  public static ElementEvent read(ExtendedDataInputStream in, ElementProvider provider, byte type) throws IOException
   {
     switch (type)
     {
     case Creation.TYPE:
-      return new Creation(in);
+      return new Creation(in, provider);
 
     case Call.TYPE:
-      return new Call(in);
+      return new Call(in, provider);
 
     default:
       throw new RuntimeException();
@@ -42,26 +42,25 @@ public abstract class ObserverEvent
   /**
    * @author Eike Stepper
    */
-  public static class Creation extends ObserverEvent
+  public static class Creation extends ElementEvent
   {
     public static final byte TYPE = 1;
 
-    private Observer observer;
+    private Element element;
 
-    public Creation(Observer observer)
+    public Creation(Element element)
     {
-      this.observer = observer;
+      this.element = element;
     }
 
-    public Creation(ExtendedDataInputStream in) throws IOException
+    public Creation(ExtendedDataInputStream in, ElementProvider provider) throws IOException
     {
-      int id = in.readInt();
-      new Observer(id);
+      element = new Element(in, provider);
     }
 
-    public Observer getObserver()
+    public Element getElement()
     {
-      return observer;
+      return element;
     }
 
     @Override
@@ -73,31 +72,31 @@ public abstract class ObserverEvent
     @Override
     public void write(ExtendedDataOutputStream out) throws IOException
     {
-      out.writeInt(observer.getID());
+      element.write(out);
     }
   }
 
   /**
    * @author Eike Stepper
    */
-  public static class Call extends ObserverEvent
+  public static class Call extends ElementEvent
   {
     public static final byte TYPE = 2;
 
-    private Observer source;
+    private Element source;
 
-    private Observer target;
+    private Element target;
 
     private When when;
 
-    public Call(Observer source, Observer target, When when)
+    public Call(Element source, Element target, When when)
     {
       this.source = source;
       this.target = target;
       this.when = when;
     }
 
-    public Call(ExtendedDataInputStream in) throws IOException
+    public Call(ExtendedDataInputStream in, ElementProvider provider) throws IOException
     {
       int sourceID = in.readInt();
       int targetID = in.readInt();
@@ -109,12 +108,12 @@ public abstract class ObserverEvent
       return when;
     }
 
-    public Observer getSource()
+    public Element getSource()
     {
       return source;
     }
 
-    public Observer getTarget()
+    public Element getTarget()
     {
       return target;
     }

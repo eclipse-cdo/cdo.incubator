@@ -13,25 +13,7 @@ package org.eclipse.emf.cdo.threedee.common;
 /**
  * @author Eike Stepper
  */
-public class Observer
+public interface ElementProvider
 {
-  private static int lastID;
-
-  private int id;
-
-  public Observer(Object observable)
-  {
-    id = ++lastID;
-    // TODO Store values
-  }
-
-  public Observer(int id)
-  {
-    this.id = id;
-  }
-
-  public int getID()
-  {
-    return id;
-  }
+  public Element getElement(int id);
 }

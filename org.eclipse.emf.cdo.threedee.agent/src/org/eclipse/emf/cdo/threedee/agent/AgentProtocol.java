@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.connector.IConnector;
@@ -58,7 +58,7 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
     }
   }
 
-  public void sendEvent(final ObserverEvent event)
+  public void sendEvent(final ElementEvent event)
   {
     try
     {

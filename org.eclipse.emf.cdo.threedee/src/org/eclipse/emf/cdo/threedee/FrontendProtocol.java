@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.signal.Indication;
@@ -63,9 +63,10 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
         @Override
         protected void indicating(ExtendedDataInputStream in) throws Exception
         {
+          Session session = getInfraStructure();
           byte type = in.readByte();
-          ObserverEvent event = ObserverEvent.read(in, type);
-          getInfraStructure().handleEvent(event);
+          ElementEvent event = ElementEvent.read(in, session, type);
+          session.handleEvent(event);
         }
       };
 

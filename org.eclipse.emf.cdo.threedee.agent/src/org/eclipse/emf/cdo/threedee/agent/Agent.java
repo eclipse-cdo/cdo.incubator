@@ -10,9 +10,10 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
-import org.eclipse.emf.cdo.threedee.common.Observer;
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent.Call.When;
+import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
 
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
@@ -25,7 +26,7 @@ import java.util.WeakHashMap;
 /**
  * @author Eike Stepper
  */
-public class Agent extends QueueWorker<ObserverEvent>
+public class Agent extends QueueWorker<ElementEvent>
 {
   public static final Agent INSTANCE = new Agent();
 
@@ -35,7 +36,9 @@ public class Agent extends QueueWorker<ObserverEvent>
 
   private int id;
 
-  private Map<Object, Observer> observers = new WeakHashMap<Object, Observer>();
+  private Map<Object, Element> elements = new WeakHashMap<Object, Element>();
+
+  private int lastEelementID;
 
   private Agent()
   {
@@ -61,26 +64,27 @@ public class Agent extends QueueWorker<ObserverEvent>
     return id;
   }
 
-  public Observer getObserver(Object observable)
+  public Element getElement(Object object)
   {
-    Observer observer;
-    synchronized (observers)
+    Element element;
+    synchronized (elements)
     {
-      observer = observers.get(observable);
-      if (observer == null)
+      element = elements.get(object);
+      if (element == null)
       {
-        observer = createObserver(observable);
-        observers.put(observable, observer);
-        addWork(new ObserverEvent.Creation(observer));
+        element = createElement(object);
+        elements.put(object, element);
+        addWork(new ElementEvent.Creation(element));
       }
     }
 
-    return observer;
+    return element;
   }
 
-  private Observer createObserver(Object observable)
+  private Element createElement(Object object)
   {
-    return new Observer(observable);
+    ElementDescriptor descriptor = ElementDescriptor.getByObject(object);
+    return new Element(++lastEelementID, descriptor, object);
   }
 
   @Override
@@ -100,35 +104,35 @@ public class Agent extends QueueWorker<ObserverEvent>
   }
 
   @Override
-  protected void work(WorkContext context, ObserverEvent event)
+  protected void work(WorkContext context, ElementEvent event)
   {
     protocol.sendEvent(event);
   }
 
-  public void beforeCall(Object sourceObservable, Object targetObservable)
+  public void beforeCall(Object source, Object target)
   {
-    call(sourceObservable, targetObservable, When.BEFORE);
+    call(source, target, When.BEFORE);
   }
 
-  public void afterCall(Object sourceObservable, Object targetObservable)
+  public void afterCall(Object source, Object target)
   {
-    call(sourceObservable, targetObservable, When.AFTER);
+    call(source, target, When.AFTER);
   }
 
-  private void call(Object sourceObservable, Object targetObservable, When when)
+  private void call(Object sourceObject, Object targetObject, When when)
   {
-    Observer sourceObserver = getObserver(sourceObservable);
-    if (sourceObserver == null)
+    Element sourceElement = getElement(sourceObject);
+    if (sourceElement == null)
     {
       return;
     }
 
-    Observer targetObserver = getObserver(targetObservable);
-    if (targetObserver == null)
+    Element targetElement = getElement(targetObject);
+    if (targetElement == null)
     {
       return;
     }
 
-    addWork(new ObserverEvent.Call(sourceObserver, targetObserver, when));
+    addWork(new ElementEvent.Call(sourceElement, targetElement, when));
   }
 }

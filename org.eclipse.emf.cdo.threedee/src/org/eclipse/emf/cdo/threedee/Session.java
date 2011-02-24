@@ -1,9 +1,10 @@
 package org.eclipse.emf.cdo.threedee;
 
-import org.eclipse.emf.cdo.threedee.common.Observer;
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent.Call;
-import org.eclipse.emf.cdo.threedee.common.ObserverEvent.Creation;
+import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Creation;
+import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,13 +12,13 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class Session
+public class Session implements ElementProvider
 {
   private FrontendProtocol protocol;
 
   private int id;
 
-  private Map<Integer, Observer> observers = new HashMap<Integer, Observer>();
+  private Map<Integer, Element> elements = new HashMap<Integer, Element>();
 
   public Session(int id, FrontendProtocol protocol)
   {
@@ -35,7 +36,12 @@ public class Session
     return protocol;
   }
 
-  public void handleEvent(ObserverEvent event)
+  public Element getElement(int id)
+  {
+    return elements.get(id);
+  }
+
+  public void handleEvent(ElementEvent event)
   {
     int type = event.getType();
     switch (type)
