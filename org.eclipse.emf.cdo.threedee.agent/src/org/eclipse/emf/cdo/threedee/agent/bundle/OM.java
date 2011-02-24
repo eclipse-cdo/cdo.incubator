@@ -39,8 +39,6 @@ public abstract class OM
    */
   public static final class Activator extends OSGiActivator
   {
-    private Agent agent;
-
     public Activator()
     {
       super(BUNDLE);
@@ -49,17 +47,14 @@ public abstract class OM
     @Override
     protected void doStart() throws Exception
     {
-      agent = new Agent("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
+      Agent.INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
+      Agent.INSTANCE.activate();
     }
 
     @Override
     protected void doStop() throws Exception
     {
-      if (agent != null)
-      {
-        agent.close();
-        agent = null;
-      }
+      Agent.INSTANCE.deactivate();
     }
   }
 }

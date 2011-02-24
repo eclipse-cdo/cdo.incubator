@@ -13,21 +13,38 @@ package org.eclipse.emf.cdo.threedee.agent;
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.lifecycle.Lifecycle;
+
+import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * @author Eike Stepper
  */
-public class Agent
+public class Agent extends Lifecycle
 {
+  public static final Agent INSTANCE = new Agent();
+
+  private String server;
+
   private AgentProtocol protocol;
 
   private int id;
 
-  public Agent(String server)
+  private Map<Object, Observer> observers = new WeakHashMap<Object, Observer>();
+
+  private Agent()
   {
-    ITCPConnector connector = TCPUtil.getConnector(IPluginContainer.INSTANCE, server);
-    protocol = new AgentProtocol(this, connector);
-    id = protocol.openSession();
+  }
+
+  public String getServer()
+  {
+    return server;
+  }
+
+  public void setServer(String server)
+  {
+    this.server = server;
   }
 
   public AgentProtocol getProtocol()
@@ -40,8 +57,36 @@ public class Agent
     return id;
   }
 
-  public void close()
+  public Observer getObserver(Object observable)
+  {
+    Observer observer = observers.get(observable);
+    if (observer == null)
+    {
+      observer = createObserver(observable);
+      observers.put(observable, observer);
+    }
+
+    return observer;
+  }
+
+  private Observer createObserver(Object observable)
+  {
+    return new Observer(observable);
+  }
+
+  @Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    ITCPConnector connector = TCPUtil.getConnector(IPluginContainer.INSTANCE, server);
+    protocol = new AgentProtocol(this, connector);
+    id = protocol.openSession();
+  }
+
+  @Override
+  protected void doDeactivate() throws Exception
   {
     protocol.close();
+    super.doDeactivate();
   }
 }

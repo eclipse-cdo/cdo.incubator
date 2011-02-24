@@ -8,12 +8,32 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common;
+package org.eclipse.emf.cdo.threedee.agent;
 
 /**
  * @author Eike Stepper
  */
 public class Observer
 {
+  private static int lastID;
 
+  private int id;
+
+  private Object observable;
+
+  public Observer(Object observable)
+  {
+    id = ++lastID;
+    this.observable = observable;
+  }
+
+  public int getID()
+  {
+    return id;
+  }
+
+  public Object getObservable()
+  {
+    return observable;
+  }
 }
