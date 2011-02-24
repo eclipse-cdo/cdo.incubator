@@ -6,13 +6,15 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Creation;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
+import org.eclipse.net4j.util.container.Container;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author Eike Stepper
  */
-public class Session implements ElementProvider
+public class Session extends Container<Element> implements ElementProvider
 {
   private FrontendProtocol protocol;
 
@@ -36,6 +38,23 @@ public class Session implements ElementProvider
     return protocol;
   }
 
+  @Override
+  public boolean isEmpty()
+  {
+    synchronized (elements)
+    {
+      return elements.isEmpty();
+    }
+  }
+
+  public Element[] getElements()
+  {
+    synchronized (elements)
+    {
+      return elements.values().toArray(new Element[elements.size()]);
+    }
+  }
+
   public Element getElement(Object object)
   {
     throw new UnsupportedOperationException();
@@ -43,7 +62,10 @@ public class Session implements ElementProvider
 
   public Element getElement(int id)
   {
-    return elements.get(id);
+    synchronized (elements)
+    {
+      return elements.get(id);
+    }
   }
 
   public void handleEvent(ElementEvent event)
