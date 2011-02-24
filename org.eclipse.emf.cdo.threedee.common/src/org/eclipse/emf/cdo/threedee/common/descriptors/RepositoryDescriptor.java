@@ -25,17 +25,19 @@ import java.util.Set;
  */
 public class RepositoryDescriptor extends ElementDescriptor
 {
+  public RepositoryDescriptor()
+  {
+    super("Repository");
+  }
+
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Map<String, String> attributes, Set<Element> references,
+      ElementProvider provider)
   {
     IRepository repository = (IRepository)object;
-
-    Map<String, String> attributes = element.getAttributes();
     attributes.put("name", repository.getName());
 
-    Set<Element> references = element.getReferences();
-    Object[] elements = repository.getElements();
-    for (Object target : elements)
+    for (Object target : repository.getElements())
     {
       Element targetElement = provider.getElement(target);
       if (targetElement != null)
@@ -43,12 +45,6 @@ public class RepositoryDescriptor extends ElementDescriptor
         references.add(targetElement);
       }
     }
-  }
-
-  @Override
-  public String getLabel(Element element)
-  {
-    return "Repository " + element.getAttributes().get("name");
   }
 
   /**

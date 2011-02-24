@@ -3,6 +3,9 @@ package org.eclipse.emf.cdo.threedee.common;
 import org.eclipse.net4j.util.container.FactoryNotFoundException;
 import org.eclipse.net4j.util.container.IPluginContainer;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author Eike Stepper
  */
@@ -12,8 +15,20 @@ public abstract class ElementDescriptor
 
   private String name;
 
+  private String typeLabel;
+
+  public ElementDescriptor(String typeLabel)
+  {
+    this.typeLabel = typeLabel;
+  }
+
   protected ElementDescriptor()
   {
+  }
+
+  public String getTypeLabel()
+  {
+    return typeLabel;
   }
 
   public String getName()
@@ -26,9 +41,13 @@ public abstract class ElementDescriptor
     this.name = name;
   }
 
-  public abstract void initElement(Object object, Element element, ElementProvider provider);
+  public abstract void initElement(Object object, Map<String, String> attributes, Set<Element> references,
+      ElementProvider provider);
 
-  public abstract String getLabel(Element element);
+  public String getLabel(Element element)
+  {
+    return typeLabel + " " + element.getAttributes().get("name");
+  }
 
   public static ElementDescriptor get(String name)
   {

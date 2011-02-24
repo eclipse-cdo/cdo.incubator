@@ -81,7 +81,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
         element = new Element(++lastEelementID, descriptor);
         elements.put(object, element);
-        descriptor.initElement(object, element, this);
+        descriptor.initElement(object, element.getAttributes(), element.getReferences(), this);
 
         addWork(new ElementEvent.Creation(element));
       }
