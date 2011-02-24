@@ -34,6 +34,15 @@ public class Server extends Container<Session>
   {
   }
 
+  @Override
+  public boolean isEmpty()
+  {
+    synchronized (sessions)
+    {
+      return sessions.isEmpty();
+    }
+  }
+
   public Session[] getElements()
   {
     synchronized (sessions)
