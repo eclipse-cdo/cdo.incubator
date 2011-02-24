@@ -10,17 +10,42 @@
  */
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.net4j.util.io.ExtendedDataInputStream;
+import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
+
+import java.io.IOException;
+
 /**
  * @author Eike Stepper
  */
 public abstract class ObserverEvent
 {
+  public abstract int getType();
+
+  public abstract void write(ExtendedDataOutputStream out) throws IOException;
+
+  public static ObserverEvent read(ExtendedDataInputStream in, byte type) throws IOException
+  {
+    switch (type)
+    {
+    case Creation.TYPE:
+      return new Creation(in);
+
+    case Call.TYPE:
+      return new Call(in);
+
+    default:
+      throw new RuntimeException();
+    }
+  }
 
   /**
    * @author Eike Stepper
    */
   public static class Creation extends ObserverEvent
   {
+    public static final byte TYPE = 1;
+
     private Observer observer;
 
     public Creation(Observer observer)
@@ -28,9 +53,27 @@ public abstract class ObserverEvent
       this.observer = observer;
     }
 
+    public Creation(ExtendedDataInputStream in) throws IOException
+    {
+      int id = in.readInt();
+      new Observer(id);
+    }
+
     public Observer getObserver()
     {
       return observer;
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
+    }
+
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
+    {
+      out.writeInt(observer.getID());
     }
   }
 
@@ -39,6 +82,8 @@ public abstract class ObserverEvent
    */
   public static class Call extends ObserverEvent
   {
+    public static final byte TYPE = 2;
+
     private Observer source;
 
     private Observer target;
@@ -50,6 +95,13 @@ public abstract class ObserverEvent
       this.source = source;
       this.target = target;
       this.when = when;
+    }
+
+    public Call(ExtendedDataInputStream in) throws IOException
+    {
+      int sourceID = in.readInt();
+      int targetID = in.readInt();
+      when = in.readBoolean() ? When.BEFORE : When.AFTER;
     }
 
     public When getWhen()
@@ -65,6 +117,20 @@ public abstract class ObserverEvent
     public Observer getTarget()
     {
       return target;
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
+    }
+
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
+    {
+      out.writeInt(source.getID());
+      out.writeInt(target.getID());
+      out.writeBoolean(when == When.BEFORE);
     }
 
     /**

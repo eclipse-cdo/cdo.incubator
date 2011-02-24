@@ -20,4 +20,6 @@ public interface ThreeDeeProtocol
   public static final int PROTOCOL_PORT = 2040;
 
   public static final short SIGNAL_OPEN_SESSION = 0;
+
+  public static final short SIGNAL_SEND_EVENT = 1;
 }

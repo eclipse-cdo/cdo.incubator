@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.bundle;
 
-import org.eclipse.emf.cdo.threedee.Server;
+import org.eclipse.emf.cdo.threedee.Frontend;
 
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.om.OMBundle;
@@ -47,14 +47,14 @@ public abstract class OM
     @Override
     protected void doStart() throws Exception
     {
-      Server.INSTANCE.activate();
-      IPluginContainer.INSTANCE.putElement("threedee.servers", "default", null, Server.INSTANCE);
+      Frontend.INSTANCE.activate();
+      IPluginContainer.INSTANCE.putElement("threedee.frontends", "default", null, Frontend.INSTANCE);
     }
 
     @Override
     protected void doStop() throws Exception
     {
-      Server.INSTANCE.deactivate();
+      Frontend.INSTANCE.deactivate();
     }
   }
 }

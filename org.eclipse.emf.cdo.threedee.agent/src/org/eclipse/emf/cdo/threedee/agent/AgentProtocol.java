@@ -10,9 +10,11 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
+import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.connector.IConnector;
+import org.eclipse.net4j.signal.Request;
 import org.eclipse.net4j.signal.RequestWithConfirmation;
 import org.eclipse.net4j.signal.SignalProtocol;
 import org.eclipse.net4j.signal.SignalReactor;
@@ -49,6 +51,26 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
           return in.readInt();
         }
       }.send(DEFAULT_TIMEOUT);
+    }
+    catch (Exception ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
+  }
+
+  public void sendEvent(final ObserverEvent event)
+  {
+    try
+    {
+      new Request(this, SIGNAL_SEND_EVENT)
+      {
+        @Override
+        protected void requesting(ExtendedDataOutputStream out) throws Exception
+        {
+          out.writeByte(event.getType());
+          event.write(out);
+        }
+      }.sendAsync();
     }
     catch (Exception ex)
     {

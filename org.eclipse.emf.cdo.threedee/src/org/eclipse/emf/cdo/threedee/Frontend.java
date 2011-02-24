@@ -25,9 +25,9 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class Server extends Container<Session>
+public class Frontend extends Container<Session>
 {
-  public static final Server INSTANCE = new Server();
+  public static final Frontend INSTANCE = new Frontend();
 
   private ITCPAcceptor acceptor;
 
@@ -35,7 +35,7 @@ public class Server extends Container<Session>
 
   private int lastSessionID;
 
-  private Server()
+  private Frontend()
   {
   }
 
@@ -56,7 +56,7 @@ public class Server extends Container<Session>
     }
   }
 
-  public Session openSession(ServerProtocol protocol)
+  public Session openSession(FrontendProtocol protocol)
   {
     int id = ++lastSessionID;
     final Session session = new Session(id, protocol);

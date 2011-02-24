@@ -19,21 +19,19 @@ public class Observer
 
   private int id;
 
-  private Object observable;
-
   public Observer(Object observable)
   {
     id = ++lastID;
-    this.observable = observable;
+    // TODO Store values
+  }
+
+  public Observer(int id)
+  {
+    this.id = id;
   }
 
   public int getID()
   {
     return id;
-  }
-
-  public Object getObservable()
-  {
-    return observable;
   }
 }

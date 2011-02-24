@@ -12,7 +12,7 @@
 		<factory
 			productGroup="org.eclipse.net4j.serverProtocols"
 			type="threedee"
-			class="org.eclipse.emf.cdo.threedee.ServerProtocol$Factory"/>
+			class="org.eclipse.emf.cdo.threedee.FrontendProtocol$Factory"/>
 	</extension>
 
    <extension
@@ -23,9 +23,9 @@
       </category>
       <view
             category="org.eclipse.emf.cdo.threedee"
-            class="org.eclipse.emf.cdo.threedee.ServerView"
+            class="org.eclipse.emf.cdo.threedee.FrontendView"
             icon="platform:/plugin/org.eclipse.net4j.ui.shared/icons/full/view16/acceptors.gif"
-            id="org.eclipse.emf.cdo.threedee.ServerView"
+            id="org.eclipse.emf.cdo.threedee.FrontendView"
             name="ThreeDee">
       </view>
    </extension>

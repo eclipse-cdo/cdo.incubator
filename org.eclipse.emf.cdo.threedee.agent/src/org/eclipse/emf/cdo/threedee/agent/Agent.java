@@ -16,18 +16,16 @@ import org.eclipse.emf.cdo.threedee.common.ObserverEvent.Call.When;
 
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
+import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.IPluginContainer;
-import org.eclipse.net4j.util.lifecycle.Lifecycle;
 
 import java.util.Map;
-import java.util.Queue;
 import java.util.WeakHashMap;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * @author Eike Stepper
  */
-public class Agent extends Lifecycle
+public class Agent extends QueueWorker<ObserverEvent>
 {
   public static final Agent INSTANCE = new Agent();
 
@@ -38,8 +36,6 @@ public class Agent extends Lifecycle
   private int id;
 
   private Map<Object, Observer> observers = new WeakHashMap<Object, Observer>();
-
-  private Queue<ObserverEvent> queue = new LinkedBlockingQueue<ObserverEvent>();
 
   private Agent()
   {
@@ -75,7 +71,7 @@ public class Agent extends Lifecycle
       {
         observer = createObserver(observable);
         observers.put(observable, observer);
-        queue.add(new ObserverEvent.Creation(observer));
+        addWork(new ObserverEvent.Creation(observer));
       }
     }
 
@@ -103,6 +99,12 @@ public class Agent extends Lifecycle
     super.doDeactivate();
   }
 
+  @Override
+  protected void work(WorkContext context, ObserverEvent event)
+  {
+    protocol.sendEvent(event);
+  }
+
   public void beforeCall(Object sourceObservable, Object targetObservable)
   {
     call(sourceObservable, targetObservable, When.BEFORE);
@@ -127,6 +129,6 @@ public class Agent extends Lifecycle
       return;
     }
 
-    queue.add(new ObserverEvent.Call(sourceObserver, targetObserver, when));
+    addWork(new ObserverEvent.Call(sourceObserver, targetObserver, when));
   }
 }

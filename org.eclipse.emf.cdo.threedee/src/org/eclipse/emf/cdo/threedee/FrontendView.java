@@ -20,7 +20,7 @@ import org.eclipse.net4j.util.ui.views.IElementFilter;
 /**
  * @author Eike Stepper
  */
-public class ServerView extends ContainerView
+public class FrontendView extends ContainerView
 {
   @Override
   protected IManagedContainer getContainer()
@@ -35,7 +35,7 @@ public class ServerView extends ContainerView
     {
       public boolean filter(Object element)
       {
-        return element instanceof Server;
+        return element instanceof Frontend;
       }
     });
   }

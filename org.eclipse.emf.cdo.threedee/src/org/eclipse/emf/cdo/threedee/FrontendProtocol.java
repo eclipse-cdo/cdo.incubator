@@ -10,8 +10,10 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
+import org.eclipse.emf.cdo.threedee.common.ObserverEvent;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
+import org.eclipse.net4j.signal.Indication;
 import org.eclipse.net4j.signal.IndicationWithResponse;
 import org.eclipse.net4j.signal.SignalProtocol;
 import org.eclipse.net4j.signal.SignalReactor;
@@ -23,9 +25,9 @@ import org.eclipse.spi.net4j.ServerProtocolFactory;
 /**
  * @author Eike Stepper
  */
-public class ServerProtocol extends SignalProtocol<Session> implements ThreeDeeProtocol
+public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDeeProtocol
 {
-  public ServerProtocol()
+  public FrontendProtocol()
   {
     super(PROTOCOL_NAME);
   }
@@ -43,7 +45,7 @@ public class ServerProtocol extends SignalProtocol<Session> implements ThreeDeeP
         @Override
         protected void indicating(ExtendedDataInputStream in) throws Exception
         {
-          Session session = Server.INSTANCE.openSession(ServerProtocol.this);
+          Session session = Frontend.INSTANCE.openSession(FrontendProtocol.this);
           setInfraStructure(session);
           id = session.getID();
         }
@@ -52,6 +54,18 @@ public class ServerProtocol extends SignalProtocol<Session> implements ThreeDeeP
         protected void responding(ExtendedDataOutputStream out) throws Exception
         {
           out.writeInt(id);
+        }
+      };
+
+    case SIGNAL_SEND_EVENT:
+      return new Indication(this, SIGNAL_SEND_EVENT)
+      {
+        @Override
+        protected void indicating(ExtendedDataInputStream in) throws Exception
+        {
+          byte type = in.readByte();
+          ObserverEvent event = ObserverEvent.read(in, type);
+          getInfraStructure().handleEvent(event);
         }
       };
 
@@ -70,9 +84,9 @@ public class ServerProtocol extends SignalProtocol<Session> implements ThreeDeeP
       super(PROTOCOL_NAME);
     }
 
-    public ServerProtocol create(String description)
+    public FrontendProtocol create(String description)
     {
-      return new ServerProtocol();
+      return new FrontendProtocol();
     }
   }
 }
