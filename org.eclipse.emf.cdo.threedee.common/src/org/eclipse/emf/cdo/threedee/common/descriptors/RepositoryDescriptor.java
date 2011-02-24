@@ -15,6 +15,8 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
+import org.eclipse.net4j.util.factory.ProductCreationException;
+
 import java.util.Map;
 import java.util.Set;
 
@@ -39,6 +41,22 @@ public class RepositoryDescriptor extends ElementDescriptor
       {
         references.add(targetElement);
       }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Factory extends DescriptorFactory
+  {
+    public Factory()
+    {
+      super("org.eclipse.emf.cdo.internal.server.Repository.Default");
+    }
+
+    public Object create(String description) throws ProductCreationException
+    {
+      return new RepositoryDescriptor();
     }
   }
 }

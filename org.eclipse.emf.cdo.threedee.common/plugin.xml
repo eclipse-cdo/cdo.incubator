@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.net4j.util.factories">
+      <factory
+            class="org.eclipse.emf.cdo.threedee.common.descriptors.RepositoryDescriptor$Factory"
+            productGroup="org.eclipse.emf.cdo.threedee.elementDescriptors"
+            type="org.eclipse.emf.cdo.internal.server.Repository.Default">
+      </factory>
+   </extension>
+
+</plugin>

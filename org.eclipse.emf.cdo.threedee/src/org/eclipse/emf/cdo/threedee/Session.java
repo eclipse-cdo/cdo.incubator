@@ -74,7 +74,8 @@ public class Session extends Container<Element> implements ElementProvider
     switch (type)
     {
     case Creation.TYPE:
-
+      Element element = ((Creation)event).getElement();
+      addElement(element);
       break;
 
     case Call.TYPE:
@@ -89,5 +90,15 @@ public class Session extends Container<Element> implements ElementProvider
   public String toString()
   {
     return "Agent " + id;
+  }
+
+  private void addElement(Element element)
+  {
+    synchronized (elements)
+    {
+      elements.put(element.getID(), element);
+    }
+
+    fireElementAddedEvent(element);
   }
 }
