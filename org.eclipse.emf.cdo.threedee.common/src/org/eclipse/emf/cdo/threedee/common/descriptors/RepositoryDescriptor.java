@@ -15,6 +15,9 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
+import java.util.Map;
+import java.util.Set;
+
 /**
  * @author Eike Stepper
  */
@@ -24,12 +27,18 @@ public class RepositoryDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element, ElementProvider provider)
   {
     IRepository repository = (IRepository)object;
-    element.getAttributes().put("name", repository.getName());
 
+    Map<String, String> attributes = element.getAttributes();
+    attributes.put("name", repository.getName());
+
+    Set<Element> references = element.getReferences();
     for (Object target : repository.getElements())
     {
       Element targetElement = provider.getElement(target);
-      element.getReferences().add(targetElement);
+      if (targetElement != null)
+      {
+        references.add(targetElement);
+      }
     }
   }
 }

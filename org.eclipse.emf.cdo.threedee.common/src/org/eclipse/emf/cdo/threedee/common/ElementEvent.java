@@ -58,9 +58,10 @@ public abstract class ElementEvent
       element = new Element(in, provider);
     }
 
-    public Element getElement()
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
     {
-      return element;
+      element.write(out);
     }
 
     @Override
@@ -69,10 +70,9 @@ public abstract class ElementEvent
       return TYPE;
     }
 
-    @Override
-    public void write(ExtendedDataOutputStream out) throws IOException
+    public Element getElement()
     {
-      element.write(out);
+      return element;
     }
   }
 
@@ -99,13 +99,26 @@ public abstract class ElementEvent
     public Call(ExtendedDataInputStream in, ElementProvider provider) throws IOException
     {
       int sourceID = in.readInt();
+      source = provider.getElement(sourceID);
+
       int targetID = in.readInt();
+      target = provider.getElement(targetID);
+
       when = in.readBoolean() ? When.BEFORE : When.AFTER;
     }
 
-    public When getWhen()
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
     {
-      return when;
+      out.writeInt(source.getID());
+      out.writeInt(target.getID());
+      out.writeBoolean(when == When.BEFORE);
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
     }
 
     public Element getSource()
@@ -118,18 +131,9 @@ public abstract class ElementEvent
       return target;
     }
 
-    @Override
-    public int getType()
+    public When getWhen()
     {
-      return TYPE;
-    }
-
-    @Override
-    public void write(ExtendedDataOutputStream out) throws IOException
-    {
-      out.writeInt(source.getID());
-      out.writeInt(target.getID());
-      out.writeBoolean(when == When.BEFORE);
+      return when;
     }
 
     /**
