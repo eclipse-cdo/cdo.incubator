@@ -33,18 +33,17 @@ public final class Element
 
   private Set<Element> references = new HashSet<Element>();
 
-  public Element(int id, ElementDescriptor descriptor, Object object)
+  public Element(int id, ElementDescriptor descriptor)
   {
     this.id = id;
     this.descriptor = descriptor;
-    descriptor.initElement(this, object);
   }
 
   public Element(ExtendedDataInputStream in, ElementProvider provider) throws IOException
   {
     id = in.readInt();
     String descriptorName = in.readString();
-    descriptor = ElementDescriptor.getByName(descriptorName);
+    descriptor = ElementDescriptor.get(descriptorName);
 
     int size = in.readInt();
     for (int i = 0; i < size; i++)

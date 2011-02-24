@@ -15,5 +15,7 @@ package org.eclipse.emf.cdo.threedee.common;
  */
 public interface ElementProvider
 {
+  public Element getElement(Object object);
+
   public Element getElement(int id);
 }

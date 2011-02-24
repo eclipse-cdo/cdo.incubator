@@ -1,16 +1,20 @@
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.net4j.util.container.IPluginContainer;
 
 /**
  * @author Eike Stepper
  */
-public class ElementDescriptor
+public abstract class ElementDescriptor
 {
+  private static final String PRODUCT_GROUP = "org.eclipse.emf.cdo.threedee.elementDescriptors";
+
+  private static final String FACTORY_TYPE = "default";
+
   private String name;
 
-  protected ElementDescriptor(String name)
+  protected ElementDescriptor()
   {
-    this.name = name;
   }
 
   public String getName()
@@ -18,21 +22,29 @@ public class ElementDescriptor
     return name;
   }
 
-  public void initElement(Element element, Object object)
+  private void setName(String name)
   {
-    // TODO: implement ElementDescriptor.initElement(element, object)
-    throw new UnsupportedOperationException();
+    this.name = name;
   }
 
-  public static ElementDescriptor getByName(String descriptorName)
+  public abstract void initElement(Object object, Element element, ElementProvider provider);
+
+  public static ElementDescriptor get(String name)
   {
-    // TODO: implement ElementDescriptor.get(descriptorName)
-    throw new UnsupportedOperationException();
+    ElementDescriptor element = (ElementDescriptor)IPluginContainer.INSTANCE.getElement(PRODUCT_GROUP, FACTORY_TYPE,
+        name);
+    element.setName(name);
+    return element;
   }
 
-  public static ElementDescriptor getByObject(Object object)
+  /**
+   * @author Eike Stepper
+   */
+  public static abstract class Factory extends org.eclipse.net4j.util.factory.Factory
   {
-    // TODO: implement ElementDescriptor.getByObject(object)
-    throw new UnsupportedOperationException();
+    public Factory()
+    {
+      super(PRODUCT_GROUP, FACTORY_TYPE);
+    }
   }
 }

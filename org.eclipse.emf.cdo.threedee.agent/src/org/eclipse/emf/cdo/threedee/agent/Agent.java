@@ -14,6 +14,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
+import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
@@ -26,7 +27,7 @@ import java.util.WeakHashMap;
 /**
  * @author Eike Stepper
  */
-public class Agent extends QueueWorker<ElementEvent>
+public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 {
   public static final Agent INSTANCE = new Agent();
 
@@ -72,8 +73,16 @@ public class Agent extends QueueWorker<ElementEvent>
       element = elements.get(object);
       if (element == null)
       {
-        element = createElement(object);
+        ElementDescriptor descriptor = ElementDescriptor.get(object.getClass().getName());
+        if (descriptor == null)
+        {
+          return null;
+        }
+
+        element = new Element(++lastEelementID, descriptor);
         elements.put(object, element);
+        descriptor.initElement(object, element, this);
+
         addWork(new ElementEvent.Creation(element));
       }
     }
@@ -81,10 +90,10 @@ public class Agent extends QueueWorker<ElementEvent>
     return element;
   }
 
-  private Element createElement(Object object)
+  public Element getElement(int id)
   {
-    ElementDescriptor descriptor = ElementDescriptor.getByObject(object);
-    return new Element(++lastEelementID, descriptor, object);
+    // TODO: implement Agent.getElement(id)
+    throw new UnsupportedOperationException();
   }
 
   @Override

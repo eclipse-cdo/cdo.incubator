@@ -36,6 +36,11 @@ public class Session implements ElementProvider
     return protocol;
   }
 
+  public Element getElement(Object object)
+  {
+    throw new UnsupportedOperationException();
+  }
+
   public Element getElement(int id)
   {
     return elements.get(id);
