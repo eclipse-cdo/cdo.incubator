@@ -4,9 +4,7 @@
 
    <extension
          point="org.eclipse.ui.startup">
-      <startup
-            class="org.eclipse.emf.cdo.threedee.bundle.Startup">
-      </startup>
+      <startup class="org.eclipse.emf.cdo.threedee.bundle.Startup"/>
    </extension>
 
 </plugin>

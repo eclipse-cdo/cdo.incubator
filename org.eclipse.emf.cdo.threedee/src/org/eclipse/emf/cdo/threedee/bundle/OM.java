@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.bundle;
 
 import org.eclipse.emf.cdo.threedee.Server;
 
+import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.OSGiActivator;
@@ -47,6 +48,7 @@ public abstract class OM
     protected void doStart() throws Exception
     {
       Server.INSTANCE.activate();
+      IPluginContainer.INSTANCE.putElement("threedee.servers", "default", null, Server.INSTANCE);
     }
 
     @Override
