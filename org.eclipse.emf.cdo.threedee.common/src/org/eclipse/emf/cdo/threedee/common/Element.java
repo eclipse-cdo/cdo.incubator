@@ -104,4 +104,10 @@ public final class Element
   {
     return references;
   }
+
+  @Override
+  public String toString()
+  {
+    return descriptor.getLabel(this);
+  }
 }

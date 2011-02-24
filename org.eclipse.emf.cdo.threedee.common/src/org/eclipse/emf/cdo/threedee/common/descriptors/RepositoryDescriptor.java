@@ -45,6 +45,12 @@ public class RepositoryDescriptor extends ElementDescriptor
     }
   }
 
+  @Override
+  public String getLabel(Element element)
+  {
+    return "Repository " + element.getAttributes().get("name");
+  }
+
   /**
    * @author Eike Stepper
    */

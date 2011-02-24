@@ -28,6 +28,8 @@ public abstract class ElementDescriptor
 
   public abstract void initElement(Object object, Element element, ElementProvider provider);
 
+  public abstract String getLabel(Element element);
+
   public static ElementDescriptor get(String name)
   {
     try

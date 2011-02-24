@@ -60,6 +60,7 @@ public class Frontend extends Container<Session>
   {
     int id = ++lastSessionID;
     final Session session = new Session(id, protocol);
+    session.activate();
 
     protocol.addListener(new LifecycleEventAdapter()
     {
@@ -71,6 +72,7 @@ public class Frontend extends Container<Session>
           sessions.remove(session);
         }
 
+        session.deactivate();
         fireElementRemovedEvent(session);
       }
     });
