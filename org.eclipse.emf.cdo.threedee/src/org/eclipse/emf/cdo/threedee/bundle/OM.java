@@ -10,6 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee.bundle;
 
+import org.eclipse.emf.cdo.threedee.Server;
+
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.OSGiActivator;
@@ -39,6 +41,18 @@ public abstract class OM
     public Activator()
     {
       super(BUNDLE);
+    }
+
+    @Override
+    protected void doStart() throws Exception
+    {
+      Server.INSTANCE.activate();
+    }
+
+    @Override
+    protected void doStop() throws Exception
+    {
+      Server.INSTANCE.deactivate();
     }
   }
 }

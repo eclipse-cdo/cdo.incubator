@@ -11,8 +11,12 @@
 package org.eclipse.emf.cdo.threedee;
 
 import org.eclipse.emf.cdo.threedee.Server.Session;
+import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
+import org.eclipse.net4j.tcp.ITCPAcceptor;
+import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.container.Container;
+import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
 
@@ -25,6 +29,8 @@ import java.util.Map;
 public class Server extends Container<Session>
 {
   public static final Server INSTANCE = new Server();
+
+  private ITCPAcceptor acceptor;
 
   private Map<Integer, Session> sessions = new HashMap<Integer, Session>();
 
@@ -77,6 +83,25 @@ public class Server extends Container<Session>
 
     fireElementAddedEvent(session);
     return session;
+  }
+
+  @Override
+  protected void doActivate() throws Exception
+  {
+    super.doActivate();
+    acceptor = TCPUtil.getAcceptor(IPluginContainer.INSTANCE, "0.0.0.0:" + ThreeDeeProtocol.PROTOCOL_PORT);
+  }
+
+  @Override
+  protected void doDeactivate() throws Exception
+  {
+    if (acceptor != null)
+    {
+      acceptor.close();
+      acceptor = null;
+    }
+
+    super.doDeactivate();
   }
 
   /**
