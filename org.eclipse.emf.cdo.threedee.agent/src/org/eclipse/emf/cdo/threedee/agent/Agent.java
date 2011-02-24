@@ -59,11 +59,15 @@ public class Agent extends Lifecycle
 
   public Observer getObserver(Object observable)
   {
-    Observer observer = observers.get(observable);
-    if (observer == null)
+    Observer observer;
+    synchronized (observers)
     {
-      observer = createObserver(observable);
-      observers.put(observable, observer);
+      observer = observers.get(observable);
+      if (observer == null)
+      {
+        observer = createObserver(observable);
+        observers.put(observable, observer);
+      }
     }
 
     return observer;
