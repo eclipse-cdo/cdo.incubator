@@ -156,13 +156,13 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     id = protocol.openSession();
 
     addElement(container);
-    container.addListener(elementListener);
+    // container.addListener(elementListener);
   }
 
   @Override
   protected void doDeactivate() throws Exception
   {
-    IPluginContainer.INSTANCE.removeListener(elementListener);
+    // IPluginContainer.INSTANCE.removeListener(elementListener);
     protocol.close();
     super.doDeactivate();
   }
@@ -185,8 +185,8 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private void called(Object sourceObject, Object targetObject, When when)
   {
-    System.err.println(when.toString() + ": " + sourceObject.getClass().getName() + " --> "
-        + targetObject.getClass().getName());
+    // System.err.println(when.toString() + ": " + sourceObject.getClass().getName() + " --> "
+    // + targetObject.getClass().getName());
 
     Element targetElement = getElement(targetObject);
     if (targetElement == null)
