@@ -32,6 +32,6 @@ public class PackageDescriptor extends ElementDescriptor
   {
     EPackage ePackage = (EPackage)object;
     element.setIDAttribute(ePackage.getNsURI());
-    element.addReferences(ePackage.getEClassifiers(), provider);
+    element.addReferences(true, ePackage.getEClassifiers(), provider);
   }
 }

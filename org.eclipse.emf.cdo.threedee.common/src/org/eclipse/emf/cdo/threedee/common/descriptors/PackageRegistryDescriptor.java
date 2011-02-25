@@ -30,6 +30,6 @@ public class PackageRegistryDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element, ElementProvider provider)
   {
     CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
-    element.addReferences(packageRegistry.getPackageUnits(), provider);
+    element.addReferences(true, packageRegistry.getPackageUnits(), provider);
   }
 }

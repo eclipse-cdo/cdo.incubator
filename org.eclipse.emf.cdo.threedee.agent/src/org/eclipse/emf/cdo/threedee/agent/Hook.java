@@ -10,9 +10,9 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.WeakHashMap;
 
 /**
@@ -20,53 +20,61 @@ import java.util.WeakHashMap;
  */
 public class Hook
 {
-  private static Map<Thread, List<Object>> stacks = new WeakHashMap<Thread, List<Object>>();
+  private static Map<Thread, Stack> stacks = new WeakHashMap<Thread, Stack>();
 
   public static void before(Object target)
   {
-    List<Object> stack = getStack();
-    int last = stack.size() - 1;
-    if (last >= 0)
+    Stack stack = getStack();
+    Object last = stack.peek();
+    stack.push(target);
+    if (target != last && last != null)
     {
-      Object source = stack.get(last);
-      if (source == target)
-      {
-        return;
-      }
-
-      Agent.INSTANCE.beforeCall(source, target);
+      Agent.INSTANCE.beforeCall(last, target);
     }
-
-    stack.add(target);
   }
 
   public static void after(Object target)
   {
-    List<Object> stack = getStack();
-    int last = stack.size() - 1;
-    if (last - 1 >= 0)
+    Stack stack = getStack();
+    stack.pop();
+    Object last = stack.peek();
+    if (target != last && last != null)
     {
-      Object source = stack.get(last - 1);
-      if (source == target)
-      {
-        return;
-      }
-
-      Agent.INSTANCE.afterCall(source, target);
-      stack.remove(last);
+      // Agent.INSTANCE.afterCall(last, target);
     }
   }
 
-  private static List<Object> getStack()
+  private static Stack getStack()
   {
     Thread thread = Thread.currentThread();
-    List<Object> stack = stacks.get(thread);
+    Stack stack = stacks.get(thread);
     if (stack == null)
     {
-      stack = new ArrayList<Object>();
+      stack = new Stack();
       stacks.put(thread, stack);
     }
 
     return stack;
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private static final class Stack extends LinkedList<Object>
+  {
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    public Object pop()
+    {
+      try
+      {
+        return super.pop();
+      }
+      catch (NoSuchElementException ex)
+      {
+        return null;
+      }
+    }
   }
 }

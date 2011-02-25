@@ -31,6 +31,9 @@ public abstract class ElementEvent
     case Creation.TYPE:
       return new Creation(in, provider);
 
+    case Removal.TYPE:
+      return new Removal(in);
+
     case Call.TYPE:
       return new Call(in, provider);
 
@@ -79,9 +82,46 @@ public abstract class ElementEvent
   /**
    * @author Eike Stepper
    */
-  public static class Call extends ElementEvent
+  public static class Removal extends ElementEvent
   {
     public static final byte TYPE = 2;
+
+    private int id;
+
+    public Removal(int id)
+    {
+      this.id = id;
+    }
+
+    public Removal(ExtendedDataInputStream in) throws IOException
+    {
+      id = in.readInt();
+    }
+
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
+    {
+      out.writeInt(id);
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
+    }
+
+    public int getID()
+    {
+      return id;
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Call extends ElementEvent
+  {
+    public static final byte TYPE = 3;
 
     private Element source;
 

@@ -10,21 +10,22 @@
  */
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * @author Eike Stepper
  */
-public final class Element
+public final class Element extends Container<Element>
 {
   public static final String ID_ATTRIBUTE = "id";
 
@@ -38,18 +39,23 @@ public final class Element
 
   private ElementDescriptor descriptor;
 
+  private ElementProvider provider;
+
   private Map<String, String> attributes = new HashMap<String, String>();
 
-  private Set<Element> references = new HashSet<Element>();
+  private Map<Integer, Boolean> references = new HashMap<Integer, Boolean>();
 
-  public Element(int id, ElementDescriptor descriptor)
+  public Element(int id, ElementDescriptor descriptor, ElementProvider provider)
   {
     this.id = id;
     this.descriptor = descriptor;
+    this.provider = provider;
+    activate();
   }
 
   public Element(ExtendedDataInputStream in, ElementProvider provider) throws IOException
   {
+    this.provider = provider;
     id = in.readInt();
     String descriptorName = in.readString();
     descriptor = ElementDescriptor.Registry.INSTANCE.get(descriptorName);
@@ -70,9 +76,10 @@ public final class Element
     for (int i = 0; i < size; i++)
     {
       int target = in.readInt();
-      Element element = provider.getElement(target);
-      references.add(element);
+      references.put(Math.abs(target), target < 0 ? Boolean.TRUE : Boolean.FALSE);
     }
+
+    activate();
   }
 
   public void write(ExtendedDataOutputStream out) throws IOException
@@ -88,9 +95,15 @@ public final class Element
     }
 
     out.writeInt(references.size());
-    for (Element target : references)
+    for (Entry<Integer, Boolean> entry : references.entrySet())
     {
-      out.writeInt(target.getID());
+      int target = entry.getKey();
+      if (Boolean.TRUE.equals(entry.getValue()))
+      {
+        target = -target;
+      }
+
+      out.writeInt(target);
     }
   }
 
@@ -109,7 +122,7 @@ public final class Element
     return attributes;
   }
 
-  public Set<Element> getReferences()
+  public Map<Integer, Boolean> getReferences()
   {
     return references;
   }
@@ -142,38 +155,71 @@ public final class Element
     setAttribute(LABEL_ATTRIBUTE, value);
   }
 
-  public void addReference(Object object, ElementProvider provider)
+  public void addReference(boolean containment, Object object, ElementProvider provider)
   {
     if (object != null)
     {
       Element element = provider.getElement(object);
       if (element != null)
       {
-        references.add(element);
+        references.put(element.getID(), containment);
       }
     }
   }
 
-  public void addReferences(Collection<?> objects, ElementProvider provider)
+  public void addReferences(boolean containment, Collection<?> objects, ElementProvider provider)
   {
     if (objects != null)
     {
       for (Object object : objects)
       {
-        addReference(object, provider);
+        addReference(containment, object, provider);
       }
     }
   }
 
-  public void addReferences(Object[] objects, ElementProvider provider)
+  public void addReferences(boolean containment, Object[] objects, ElementProvider provider)
   {
     if (objects != null)
     {
       for (Object object : objects)
       {
-        addReference(object, provider);
+        addReference(containment, object, provider);
       }
     }
+  }
+
+  public Element[] getElements()
+  {
+    List<Element> result = new ArrayList<Element>();
+    for (Entry<Integer, Boolean> entry : references.entrySet())
+    {
+      if (Boolean.TRUE.equals(entry.getValue()))
+      {
+        int id = entry.getKey();
+        Element element = provider.getElement(id);
+        if (element != null)
+        {
+          result.add(element);
+        }
+      }
+    }
+
+    return result.toArray(new Element[result.size()]);
+  }
+
+  @Override
+  public boolean isEmpty()
+  {
+    for (Entry<Integer, Boolean> entry : references.entrySet())
+    {
+      if (Boolean.TRUE.equals(entry.getValue()))
+      {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   @Override

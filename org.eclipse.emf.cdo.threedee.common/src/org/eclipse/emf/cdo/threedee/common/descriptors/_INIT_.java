@@ -19,6 +19,7 @@ public class _INIT_
 {
   public static void init(Registry registry)
   {
+    registry.register(new ManagedContainerDescriptor());
     registry.register(new RepositoryDescriptor());
     registry.register(new BranchManagerDescriptor());
     registry.register(new BranchDescriptor());
@@ -27,5 +28,8 @@ public class _INIT_
     registry.register(new PackageInfoDescriptor());
     registry.register(new PackageDescriptor());
     registry.register(new ClassDescriptor());
+    registry.register(new RevisionManagerDescriptor());
+    registry.register(new RevisionCacheDescriptor());
+    registry.register(new RevisionDescriptor());
   }
 }

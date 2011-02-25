@@ -37,7 +37,7 @@ public class PackageInfoDescriptor extends ElementDescriptor
     EPackage ePackage = packageInfo.getEPackage(false);
     if (ePackage != null)
     {
-      element.addReferences(ePackage.getEClassifiers(), provider);
+      element.addReferences(true, ePackage.getEClassifiers(), provider);
     }
   }
 }

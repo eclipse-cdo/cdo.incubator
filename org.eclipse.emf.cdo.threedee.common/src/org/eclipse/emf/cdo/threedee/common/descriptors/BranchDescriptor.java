@@ -30,8 +30,8 @@ public class BranchDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element, final ElementProvider provider)
   {
     CDOBranch branch = (CDOBranch)object;
-    element.setNameAttribute(branch.getPathName());
-    element.addReference(branch.getBase().getBranch(), provider);
-    element.addReference(branch.getBranches(), provider);
+    element.setNameAttribute(branch.getName());
+    element.addReference(false, branch.getBase().getBranch(), provider);
+    element.addReference(true, branch.getBranches(), provider);
   }
 }

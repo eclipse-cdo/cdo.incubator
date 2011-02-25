@@ -70,8 +70,8 @@ public class Session extends Container<Element> implements ElementProvider
 
   public void handleEvent(ElementEvent event)
   {
-    int type = event.getType();
-    switch (type)
+    System.out.println("Handling event " + event);
+    switch (event.getType())
     {
     case Creation.TYPE:
       Element element = ((Creation)event).getElement();

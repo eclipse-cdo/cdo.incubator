@@ -19,7 +19,11 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
+import org.eclipse.net4j.util.container.ContainerEventAdapter;
+import org.eclipse.net4j.util.container.IContainer;
+import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.event.EventUtil;
 import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
 import java.util.HashSet;
@@ -45,7 +49,35 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private Map<Object, Element> elements = new WeakHashMap<Object, Element>();
 
-  private int lastEelementID;
+  private int rootElementID;
+
+  private int lastElementID;
+
+  private ContainerEventAdapter<Object> elementListener = new ContainerEventAdapter<Object>()
+  {
+    @Override
+    protected void onAdded(IContainer<Object> container, Object object)
+    {
+      Element containerElement = getElement(object);
+      if (containerElement != null)
+      {
+        Element objectElement = createElement(object);
+        if (objectElement != null)
+        {
+          containerElement.getReferences().put(objectElement.getID(), true);
+        }
+      }
+
+      EventUtil.addListener(object, elementListener);
+    }
+
+    @Override
+    protected void onRemoved(IContainer<Object> container, Object object)
+    {
+      EventUtil.removeListener(object, elementListener);
+      removeElement(object);
+    }
+  };
 
   private Agent()
   {
@@ -79,32 +111,20 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   public Element getElement(Object object)
   {
-    processPendingObjects();
-    return getElementNoPending(object);
-  }
-
-  private void rememberPendingObject(Object object)
-  {
-    synchronized (pendingObjects)
+    synchronized (elements)
     {
-      pendingObjects.add(object);
-    }
-  }
-
-  private void processPendingObjects()
-  {
-    synchronized (pendingObjects)
-    {
-      for (Iterator<Object> it = pendingObjects.iterator(); it.hasNext();)
+      try
       {
-        Object pendingObject = it.next();
-        Element pendingElement = getElementNoPending(pendingObject);
-        if (pendingElement != null)
-        {
-          it.remove();
-        }
+        return elements.get(object);
+      }
+      catch (Exception ex)
+      {
+        return null;
       }
     }
+
+    // processPendingObjects();
+    // return getElementNoPending(object);
   }
 
   private Element getElementNoPending(Object object)
@@ -117,33 +137,99 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
     synchronized (elements)
     {
-      Element element = elements.get(object);
-      if (element != null)
-      {
-        return null;
-      }
-
-      ElementDescriptor descriptor = ElementDescriptor.Registry.INSTANCE.match(object);
-      if (descriptor == null)
-      {
-        return null;
-      }
-
-      element = new Element(++lastEelementID, descriptor);
-      elements.put(object, element);
-
       try
       {
-        descriptor.initElement(object, element, this);
+        Element element = elements.get(object);
+        if (element != null)
+        {
+          return element;
+        }
       }
       catch (Exception ex)
       {
-        rememberPendingObject(object);
-        elements.remove(object);
+        // rememberPendingObject(object);
+        return null;
       }
 
-      addWork(new ElementEvent.Creation(element));
-      return element;
+      return createElement(object);
+    }
+  }
+
+  private Element createElement(Object object)
+  {
+    ElementDescriptor descriptor = ElementDescriptor.Registry.INSTANCE.match(object);
+    if (descriptor == null)
+    {
+      return null;
+    }
+
+    Element element = new Element(++lastElementID, descriptor, this);
+    elements.put(object, element);
+
+    try
+    {
+      descriptor.initElement(object, element, this);
+    }
+    catch (Exception ex)
+    {
+      rememberPendingObject(object);
+      elements.remove(object);
+      return null;
+    }
+
+    addWork(new ElementEvent.Creation(element));
+    return element;
+  }
+
+  private void removeElement(Object object)
+  {
+    Element element;
+    synchronized (elements)
+    {
+      element = elements.remove(object);
+    }
+
+    if (element != null)
+    {
+      addWork(new ElementEvent.Removal(element.getID()));
+    }
+  }
+
+  private void rememberPendingObject(Object object)
+  {
+    synchronized (pendingObjects)
+    {
+      try
+      {
+        pendingObjects.add(object);
+      }
+      catch (Exception ex)
+      {
+        // Ignore
+      }
+    }
+  }
+
+  private void processPendingObjects()
+  {
+    synchronized (pendingObjects)
+    {
+      for (Iterator<Object> it = pendingObjects.iterator(); it.hasNext();)
+      {
+        try
+        {
+          Object pendingObject = it.next();
+          Element pendingElement = getElementNoPending(pendingObject);
+          if (pendingElement != null)
+          {
+            it.remove();
+          }
+        }
+        catch (Exception ex)
+        {
+          // Ignore
+        }
+      }
     }
   }
 
@@ -151,14 +237,27 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   protected void doActivate() throws Exception
   {
     super.doActivate();
-    ITCPConnector connector = TCPUtil.getConnector(IPluginContainer.INSTANCE, server);
+
+    IManagedContainer container = IPluginContainer.INSTANCE;
+    ITCPConnector connector = TCPUtil.getConnector(container, server);
     protocol = new AgentProtocol(this, connector);
     id = protocol.openSession();
+
+    Element containerElement = createElement(container);
+    rootElementID = containerElement.getID();
+
+    for (Object object : container.getElements())
+    {
+      createElement(object);
+    }
+
+    container.addListener(elementListener);
   }
 
   @Override
   protected void doDeactivate() throws Exception
   {
+    IPluginContainer.INSTANCE.removeListener(elementListener);
     protocol.close();
     super.doDeactivate();
   }

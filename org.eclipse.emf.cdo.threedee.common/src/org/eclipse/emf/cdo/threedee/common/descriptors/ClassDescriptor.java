@@ -32,6 +32,6 @@ public class ClassDescriptor extends ElementDescriptor
   {
     EClass eClass = (EClass)object;
     element.setNameAttribute(eClass.getName());
-    element.addReferences(eClass.getEStructuralFeatures(), provider);
+    element.addReferences(true, eClass.getEStructuralFeatures(), provider);
   }
 }

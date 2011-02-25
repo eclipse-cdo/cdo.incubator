@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.server.IRepository;
+import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
@@ -18,19 +18,18 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 /**
  * @author Eike Stepper
  */
-public class RepositoryDescriptor extends ElementDescriptor
+public class RevisionDescriptor extends ElementDescriptor
 {
   @Override
   public boolean matches(Object object)
   {
-    return object instanceof IRepository;
+    return object instanceof CDORevision;
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element, final ElementProvider provider)
   {
-    IRepository repository = (IRepository)object;
-    element.setNameAttribute(repository.getName());
-    element.addReferences(true, repository.getElements(), provider);
+    CDORevision revision = (CDORevision)object;
+    element.setKeyAttribute(revision.toString());
   }
 }
