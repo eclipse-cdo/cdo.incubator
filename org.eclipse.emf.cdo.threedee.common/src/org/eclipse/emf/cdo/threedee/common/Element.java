@@ -11,9 +11,14 @@
 package org.eclipse.emf.cdo.threedee.common;
 
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo.Attribute;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo.Reference;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo.Reference.Kind;
 
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
+import org.eclipse.net4j.util.event.Event;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
@@ -198,10 +203,19 @@ public final class Element extends Container<Element>
     }
   }
 
-  public ElementEvent.Change compare(Element oldElement)
+  public Change compare(Element oldElement)
   {
-    Change result = new Change();
+    Change result = new Change(id);
 
+    compareAttributes(oldElement, result);
+
+    compareReferences(oldElement, result);
+
+    return result.isEmpty() ? null : result;
+  }
+
+  private void compareAttributes(Element oldElement, Change result)
+  {
     Map<String, String> oldAttributes = oldElement.getAttributes();
     for (Entry<String, String> entry : attributes.entrySet())
     {
@@ -221,7 +235,10 @@ public final class Element extends Container<Element>
         result.attributeRemoved(key);
       }
     }
+  }
 
+  private void compareReferences(Element oldElement, Change result)
+  {
     Map<Integer, Boolean> oldReferences = oldElement.getReferences();
     for (Entry<Integer, Boolean> entry : references.entrySet())
     {
@@ -284,8 +301,47 @@ public final class Element extends Container<Element>
         result.referenceRemoved(id);
       }
     }
+  }
 
-    return result.isEmpty() ? null : result;
+  public void apply(Change event)
+  {
+    for (ChangeInfo changeInfo : event.getChangeInfos())
+    {
+      if (changeInfo instanceof Attribute)
+      {
+        Attribute attributeChange = (Attribute)changeInfo;
+        String key = attributeChange.getKey();
+        String value = attributeChange.getValue();
+        if (value == null)
+        {
+          attributes.remove(key);
+        }
+        else
+        {
+          attributes.put(key, value);
+        }
+      }
+      else
+      {
+        Reference referenceChange = (Reference)changeInfo;
+        Kind kind = referenceChange.getKind();
+        int id = referenceChange.getID();
+        boolean containment = referenceChange.isContainment();
+
+        switch (kind)
+        {
+        case ADDED:
+        case TYPE:
+          references.put(id, containment);
+          break;
+        case REMOVED:
+          references.remove(id);
+          break;
+        }
+      }
+    }
+
+    fireEvent(new Event(this));
   }
 
   public Element[] getElements()

@@ -3,6 +3,7 @@ package org.eclipse.emf.cdo.threedee;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Creation;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
@@ -74,16 +75,32 @@ public class Session extends Container<Element> implements ElementProvider
     switch (event.getType())
     {
     case Creation.TYPE:
-      Element element = ((Creation)event).getElement();
-      addElement(element);
+      handleCreationEvent((Creation)event);
       break;
 
     case Call.TYPE:
       break;
 
+    case Change.TYPE:
+      handleChangeEvent((Change)event);
+      break;
+
     default:
       throw new RuntimeException();
     }
+  }
+
+  private void handleCreationEvent(Creation event)
+  {
+    Element element = event.getElement();
+    addElement(element);
+  }
+
+  private void handleChangeEvent(Change event)
+  {
+    int id = event.getID();
+    Element element = getElement(id);
+    element.apply(event);
   }
 
   @Override

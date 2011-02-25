@@ -160,14 +160,18 @@ public abstract class ElementEvent
   {
     public static final byte TYPE = 3;
 
+    private int id;
+
     private List<ChangeInfo> changeInfos;
 
-    public Change()
+    public Change(int id)
     {
+      this.id = id;
     }
 
     public Change(ExtendedDataInputStream in) throws IOException
     {
+      id = in.readInt();
       int size = in.readInt();
       changeInfos = new ArrayList<ChangeInfo>(size);
       for (int i = 0; i < size; i++)
@@ -186,6 +190,7 @@ public abstract class ElementEvent
     @Override
     public void write(ExtendedDataOutputStream out) throws IOException
     {
+      out.writeInt(id);
       out.writeInt(changeInfos.size());
       for (ChangeInfo changeInfo : changeInfos)
       {
@@ -198,6 +203,11 @@ public abstract class ElementEvent
     public int getType()
     {
       return TYPE;
+    }
+
+    public int getID()
+    {
+      return id;
     }
 
     public List<ChangeInfo> getChangeInfos()
