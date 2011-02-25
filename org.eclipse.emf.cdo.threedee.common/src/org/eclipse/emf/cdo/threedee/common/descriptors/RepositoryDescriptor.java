@@ -13,6 +13,9 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.server.IRepository;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
@@ -31,5 +34,11 @@ public class RepositoryDescriptor extends ElementDescriptor
     IRepository repository = (IRepository)object;
     element.setNameAttribute(repository.getName());
     element.addReferences(true, repository.getElements());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

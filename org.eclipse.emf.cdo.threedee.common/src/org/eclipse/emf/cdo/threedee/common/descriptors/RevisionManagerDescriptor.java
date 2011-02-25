@@ -13,6 +13,9 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevisionManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
@@ -30,5 +33,11 @@ public class RevisionManagerDescriptor extends ElementDescriptor
   {
     InternalCDORevisionManager revisionManager = (InternalCDORevisionManager)object;
     element.addReference(true, revisionManager.getCache());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

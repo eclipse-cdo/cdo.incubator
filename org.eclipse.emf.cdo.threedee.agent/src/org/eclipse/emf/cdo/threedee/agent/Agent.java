@@ -185,8 +185,8 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private void called(Object sourceObject, Object targetObject, When when)
   {
-    // System.err.println(when.toString() + ": " + sourceObject.getClass().getName() + " --> "
-    // + targetObject.getClass().getName());
+    System.err.println(when.toString() + ": " + (sourceObject == null ? "" : sourceObject.getClass().getName())
+        + " --> " + targetObject.getClass().getName());
 
     Element targetElement = getElement(targetObject);
     if (targetElement == null)
