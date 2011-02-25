@@ -24,12 +24,8 @@ import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.event.EventUtil;
-import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.WeakHashMap;
 
 /**
@@ -45,11 +41,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private int id;
 
-  private Set<Object> pendingObjects = new HashSet<Object>();
-
   private Map<Object, Element> elements = new WeakHashMap<Object, Element>();
-
-  private int rootElementID;
 
   private int lastElementID;
 
@@ -61,7 +53,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       Element containerElement = getElement(object);
       if (containerElement != null)
       {
-        Element objectElement = createElement(object);
+        Element objectElement = addElement(object);
         if (objectElement != null)
         {
           containerElement.getReferences().put(objectElement.getID(), true);
@@ -119,43 +111,13 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       }
       catch (Exception ex)
       {
+        ex.printStackTrace();
         return null;
       }
     }
-
-    // processPendingObjects();
-    // return getElementNoPending(object);
   }
 
-  private Element getElementNoPending(Object object)
-  {
-    if (!LifecycleUtil.isActive(object))
-    {
-      rememberPendingObject(object);
-      return null;
-    }
-
-    synchronized (elements)
-    {
-      try
-      {
-        Element element = elements.get(object);
-        if (element != null)
-        {
-          return element;
-        }
-      }
-      catch (Exception ex)
-      {
-        // rememberPendingObject(object);
-        return null;
-      }
-
-      return createElement(object);
-    }
-  }
-
-  private Element createElement(Object object)
+  private Element addElement(Object object)
   {
     ElementDescriptor descriptor = ElementDescriptor.Registry.INSTANCE.match(object);
     if (descriptor == null)
@@ -164,16 +126,15 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     }
 
     Element element = new Element(++lastElementID, descriptor, this);
-    elements.put(object, element);
 
     try
     {
       descriptor.initElement(object, element, this);
+      elements.put(object, element);
     }
     catch (Exception ex)
     {
-      rememberPendingObject(object);
-      elements.remove(object);
+      ex.printStackTrace();
       return null;
     }
 
@@ -186,50 +147,20 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     Element element;
     synchronized (elements)
     {
-      element = elements.remove(object);
+      try
+      {
+        element = elements.remove(object);
+      }
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+        return;
+      }
     }
 
     if (element != null)
     {
       addWork(new ElementEvent.Removal(element.getID()));
-    }
-  }
-
-  private void rememberPendingObject(Object object)
-  {
-    synchronized (pendingObjects)
-    {
-      try
-      {
-        pendingObjects.add(object);
-      }
-      catch (Exception ex)
-      {
-        // Ignore
-      }
-    }
-  }
-
-  private void processPendingObjects()
-  {
-    synchronized (pendingObjects)
-    {
-      for (Iterator<Object> it = pendingObjects.iterator(); it.hasNext();)
-      {
-        try
-        {
-          Object pendingObject = it.next();
-          Element pendingElement = getElementNoPending(pendingObject);
-          if (pendingElement != null)
-          {
-            it.remove();
-          }
-        }
-        catch (Exception ex)
-        {
-          // Ignore
-        }
-      }
     }
   }
 
@@ -243,14 +174,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     protocol = new AgentProtocol(this, connector);
     id = protocol.openSession();
 
-    Element containerElement = createElement(container);
-    rootElementID = containerElement.getID();
-
-    for (Object object : container.getElements())
-    {
-      createElement(object);
-    }
-
+    addElement(container);
     container.addListener(elementListener);
   }
 
@@ -260,13 +184,6 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     IPluginContainer.INSTANCE.removeListener(elementListener);
     protocol.close();
     super.doDeactivate();
-  }
-
-  @Override
-  protected void work(WorkContext context) throws Exception
-  {
-    processPendingObjects();
-    super.work(context);
   }
 
   @Override
