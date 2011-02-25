@@ -206,11 +206,8 @@ public final class Element extends Container<Element>
   public Change compare(Element oldElement)
   {
     Change result = new Change(id);
-
     compareAttributes(oldElement, result);
-
     compareReferences(oldElement, result);
-
     return result.isEmpty() ? null : result;
   }
 

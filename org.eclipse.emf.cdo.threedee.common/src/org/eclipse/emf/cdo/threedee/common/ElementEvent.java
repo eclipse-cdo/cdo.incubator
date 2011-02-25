@@ -82,6 +82,12 @@ public abstract class ElementEvent
     {
       return element;
     }
+
+    @Override
+    public String toString()
+    {
+      return "Creation " + element;
+    }
   }
 
   /**
@@ -142,6 +148,12 @@ public abstract class ElementEvent
     public When getWhen()
     {
       return when;
+    }
+
+    @Override
+    public String toString()
+    {
+      return "Call " + when;
     }
 
     /**
@@ -249,6 +261,12 @@ public abstract class ElementEvent
       changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.TYPE, id, containment));
     }
 
+    @Override
+    public String toString()
+    {
+      return "Change " + id + " " + changeInfos;
+    }
+
     private List<ChangeInfo> ensureChangeInfos()
     {
       if (changeInfos == null)
@@ -303,6 +321,12 @@ public abstract class ElementEvent
         {
           return value;
         }
+
+        @Override
+        public String toString()
+        {
+          return "SET " + key + "=" + value;
+        }
       }
 
       /**
@@ -346,6 +370,12 @@ public abstract class ElementEvent
         public boolean isContainment()
         {
           return id < 0;
+        }
+
+        @Override
+        public String toString()
+        {
+          return kind.toString() + " " + getID() + "=" + isContainment();
         }
 
         /**
@@ -393,6 +423,12 @@ public abstract class ElementEvent
     public int getID()
     {
       return id;
+    }
+
+    @Override
+    public String toString()
+    {
+      return "Removal " + id;
     }
   }
 }
