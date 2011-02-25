@@ -20,8 +20,12 @@ import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 import java.util.WeakHashMap;
 
 /**
@@ -36,6 +40,8 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   private AgentProtocol protocol;
 
   private int id;
+
+  private Set<Object> pendingObjects = new HashSet<Object>();
 
   private Map<Object, Element> elements = new WeakHashMap<Object, Element>();
 
@@ -65,35 +71,80 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     return id;
   }
 
-  public Element getElement(Object object)
-  {
-    Element element;
-    synchronized (elements)
-    {
-      element = elements.get(object);
-      if (element == null)
-      {
-        ElementDescriptor descriptor = ElementDescriptor.get(object.getClass().getName());
-        if (descriptor == null)
-        {
-          return null;
-        }
-
-        element = new Element(++lastEelementID, descriptor);
-        elements.put(object, element);
-        descriptor.initElement(object, element.getAttributes(), element.getReferences(), this);
-
-        addWork(new ElementEvent.Creation(element));
-      }
-    }
-
-    return element;
-  }
-
   public Element getElement(int id)
   {
     // TODO: implement Agent.getElement(id)
     throw new UnsupportedOperationException();
+  }
+
+  public Element getElement(Object object)
+  {
+    processPendingObjects();
+    return getElementNoPending(object);
+  }
+
+  private void rememberPendingObject(Object object)
+  {
+    synchronized (pendingObjects)
+    {
+      pendingObjects.add(object);
+    }
+  }
+
+  private void processPendingObjects()
+  {
+    synchronized (pendingObjects)
+    {
+      for (Iterator<Object> it = pendingObjects.iterator(); it.hasNext();)
+      {
+        Object pendingObject = it.next();
+        Element pendingElement = getElementNoPending(pendingObject);
+        if (pendingElement != null)
+        {
+          it.remove();
+        }
+      }
+    }
+  }
+
+  private Element getElementNoPending(Object object)
+  {
+    if (!LifecycleUtil.isActive(object))
+    {
+      rememberPendingObject(object);
+      return null;
+    }
+
+    synchronized (elements)
+    {
+      Element element = elements.get(object);
+      if (element != null)
+      {
+        return null;
+      }
+
+      ElementDescriptor descriptor = ElementDescriptor.get(object.getClass().getName());
+      if (descriptor == null)
+      {
+        return null;
+      }
+
+      element = new Element(++lastEelementID, descriptor);
+      elements.put(object, element);
+
+      try
+      {
+        descriptor.initElement(object, element.getAttributes(), element.getReferences(), this);
+      }
+      catch (Exception ex)
+      {
+        rememberPendingObject(object);
+        elements.remove(object);
+      }
+
+      addWork(new ElementEvent.Creation(element));
+      return element;
+    }
   }
 
   @Override
@@ -110,6 +161,13 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   {
     protocol.close();
     super.doDeactivate();
+  }
+
+  @Override
+  protected void work(WorkContext context) throws Exception
+  {
+    processPendingObjects();
+    super.work(context);
   }
 
   @Override
@@ -130,6 +188,8 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private void call(Object sourceObject, Object targetObject, When when)
   {
+    System.err.println("CALL " + sourceObject.getClass().getName() + " --> " + targetObject.getClass().getName());
+
     Element sourceElement = getElement(sourceObject);
     if (sourceElement == null)
     {

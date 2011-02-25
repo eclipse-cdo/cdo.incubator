@@ -5,10 +5,21 @@
    <extension
          point="org.eclipse.net4j.util.factories">
       <factory
-            class="org.eclipse.emf.cdo.threedee.common.descriptors.RepositoryDescriptor$Factory"
             productGroup="org.eclipse.emf.cdo.threedee.elementDescriptors"
-            type="org.eclipse.emf.cdo.internal.server.Repository$Default">
-      </factory>
+            type="org.eclipse.emf.cdo.internal.server.Repository$Default"
+            class="org.eclipse.emf.cdo.threedee.common.descriptors.RepositoryDescriptor$Factory"/>
+      <factory
+            productGroup="org.eclipse.emf.cdo.threedee.elementDescriptors"
+            type="org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl"
+            class="org.eclipse.emf.cdo.threedee.common.descriptors.BranchManagerDescriptor$Factory"/>
+      <factory
+            productGroup="org.eclipse.emf.cdo.threedee.elementDescriptors"
+            type="org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl"
+            class="org.eclipse.emf.cdo.threedee.common.descriptors.BranchDescriptor$Factory"/>
+      <factory
+            productGroup="org.eclipse.emf.cdo.threedee.elementDescriptors"
+            type="org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl$Main"
+            class="org.eclipse.emf.cdo.threedee.common.descriptors.BranchDescriptor$MainFactory"/>
    </extension>
 
 </plugin>

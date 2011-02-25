@@ -11,6 +11,14 @@ import java.util.Set;
  */
 public abstract class ElementDescriptor
 {
+  public static final String ID_ATTRIBUTE = "id";
+
+  public static final String KEY_ATTRIBUTE = "key";
+
+  public static final String NAME_ATTRIBUTE = "name";
+
+  public static final String LABEL_ATTRIBUTE = "label";
+
   private static final String PRODUCT_GROUP = "org.eclipse.emf.cdo.threedee.elementDescriptors";
 
   private String name;
@@ -46,7 +54,25 @@ public abstract class ElementDescriptor
 
   public String getLabel(Element element)
   {
-    return typeLabel + " " + element.getAttributes().get("name");
+    String label = element.getAttributes().get(ID_ATTRIBUTE);
+    if (label == null)
+    {
+      label = element.getAttributes().get(KEY_ATTRIBUTE);
+      if (label == null)
+      {
+        label = element.getAttributes().get(NAME_ATTRIBUTE);
+        if (label == null)
+        {
+          label = element.getAttributes().get(LABEL_ATTRIBUTE);
+          if (label == null)
+          {
+            return typeLabel;
+          }
+        }
+      }
+    }
+
+    return typeLabel + " " + label;
   }
 
   public static ElementDescriptor get(String name)
