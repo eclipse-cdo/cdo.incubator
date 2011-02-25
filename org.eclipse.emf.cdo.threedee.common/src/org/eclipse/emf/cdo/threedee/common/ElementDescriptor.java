@@ -1,13 +1,6 @@
 package org.eclipse.emf.cdo.threedee.common;
 
-import org.eclipse.emf.cdo.threedee.common.descriptors.BranchDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.BranchManagerDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.ClassDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.PackageDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.PackageInfoDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.PackageRegistryDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.PackageUnitDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.RepositoryDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors._INIT_;
 
 import java.util.HashMap;
 
@@ -101,14 +94,7 @@ public abstract class ElementDescriptor
 
     static
     {
-      INSTANCE.register(new RepositoryDescriptor());
-      INSTANCE.register(new BranchManagerDescriptor());
-      INSTANCE.register(new BranchDescriptor());
-      INSTANCE.register(new PackageRegistryDescriptor());
-      INSTANCE.register(new PackageUnitDescriptor());
-      INSTANCE.register(new PackageInfoDescriptor());
-      INSTANCE.register(new PackageDescriptor());
-      INSTANCE.register(new ClassDescriptor());
+      _INIT_.init(INSTANCE);
     }
   }
 }
