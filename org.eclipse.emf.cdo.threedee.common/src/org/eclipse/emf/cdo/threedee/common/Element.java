@@ -19,6 +19,8 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo.Refere
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.event.Event;
+import org.eclipse.net4j.util.event.IEvent;
+import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
@@ -34,7 +36,7 @@ import java.util.Set;
 /**
  * @author Eike Stepper
  */
-public final class Element extends Container<Element>
+public final class Element extends Container<Element> implements IListener
 {
   public static final String ID_ATTRIBUTE = "id";
 
@@ -173,7 +175,7 @@ public final class Element extends Container<Element>
   {
     if (object != null)
     {
-      Element element = provider.getElement(object);
+      Element element = provider.getElement(object, containment);
       if (element != null)
       {
         references.put(element.getID(), containment);
@@ -372,6 +374,10 @@ public final class Element extends Container<Element>
     }
 
     return true;
+  }
+
+  public void notifyEvent(IEvent event)
+  {
   }
 
   @Override

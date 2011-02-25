@@ -56,7 +56,7 @@ public class Session extends Container<Element> implements ElementProvider
     }
   }
 
-  public Element getElement(Object object)
+  public Element getElement(Object object, boolean addOnDemand)
   {
     throw new UnsupportedOperationException();
   }

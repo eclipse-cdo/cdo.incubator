@@ -17,10 +17,13 @@ public aspect Aspect
 {
   pointcut publicMethods() :
     !execution(public * *.get*()) &&
+    !execution(public * *.is*()) &&
     !execution(public String *.toString()) &&
     !execution(public boolean *.equals(Object)) &&
     !execution(public int *.hashCode()) &&
     (
+      execution(public * org.eclipse.net4j.util.container.ManagedContainer.*(..)) ||
+
       execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.server.LockManager.*(..)) ||
@@ -51,11 +54,11 @@ public aspect Aspect
 
   before(Object target) : publicMethods() && target(target)
   {
-    Hook.before(target);
+    Hook.before(target, thisJoinPointStaticPart.getSignature().getName());
   }
 
   after(Object target) : publicMethods() && target(target)
   {
-    Hook.after(target);
+    Hook.after(target, thisJoinPointStaticPart.getSignature().getName());
   }
 }

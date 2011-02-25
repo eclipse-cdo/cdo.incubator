@@ -21,11 +21,8 @@ import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
-import org.eclipse.net4j.util.container.ContainerEventAdapter;
-import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
-import org.eclipse.net4j.util.event.EventUtil;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -46,32 +43,6 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   private Map<Object, Element> elements = new IdentityHashMap<Object, Element>();
 
   private int lastElementID;
-
-  private ContainerEventAdapter<Object> elementListener = new ContainerEventAdapter<Object>()
-  {
-    @Override
-    protected void onAdded(IContainer<Object> container, Object object)
-    {
-      Element containerElement = getElement(object);
-      if (containerElement != null)
-      {
-        Element objectElement = addElement(object);
-        if (objectElement != null)
-        {
-          containerElement.getReferences().put(objectElement.getID(), true);
-        }
-      }
-
-      EventUtil.addListener(object, elementListener);
-    }
-
-    @Override
-    protected void onRemoved(IContainer<Object> container, Object object)
-    {
-      EventUtil.removeListener(object, elementListener);
-      removeElement(object);
-    }
-  };
 
   private Agent()
   {
@@ -103,11 +74,17 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     throw new UnsupportedOperationException();
   }
 
-  public Element getElement(Object object)
+  public Element getElement(Object object, boolean addOnDemand)
   {
     synchronized (elements)
     {
-      return elements.get(object);
+      Element element = elements.get(object);
+      if (element == null && addOnDemand)
+      {
+        element = addElement(object);
+      }
+
+      return element;
     }
   }
 
@@ -156,13 +133,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     id = protocol.openSession();
 
     addElement(container);
-    // container.addListener(elementListener);
   }
 
   @Override
   protected void doDeactivate() throws Exception
   {
-    // IPluginContainer.INSTANCE.removeListener(elementListener);
     protocol.close();
     super.doDeactivate();
   }
@@ -173,31 +148,33 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     protocol.sendEvent(event);
   }
 
-  public void beforeCall(Object source, Object target)
+  public void beforeCall(Object source, Object target, Object signature)
   {
-    called(source, target, When.BEFORE);
+    called(source, target, signature, When.BEFORE);
   }
 
-  public void afterCall(Object source, Object target)
+  public void afterCall(Object source, Object target, Object signature)
   {
-    called(source, target, When.AFTER);
+    called(source, target, signature, When.AFTER);
   }
 
-  private void called(Object sourceObject, Object targetObject, When when)
+  private void called(Object sourceObject, Object targetObject, Object signature, When when)
   {
-    System.err.println(when.toString() + ": " + (sourceObject == null ? "" : sourceObject.getClass().getName())
-        + " --> " + targetObject.getClass().getName());
-
-    Element targetElement = getElement(targetObject);
+    Element targetElement = getElement(targetObject, false);
     if (targetElement == null)
     {
       return;
     }
 
-    Element sourceElement = getElement(sourceObject);
+    ElementDescriptor descriptor = targetElement.getDescriptor();
+
+    Element sourceElement = getElement(sourceObject, false);
     if (sourceElement != null && sourceElement != targetElement)
     {
-      ElementEvent.Call event = targetElement.getDescriptor().createCallEvent(sourceElement, targetElement, when);
+      System.err.println(when.toString() + ": " + (sourceObject == null ? "" : sourceObject.getClass().getName())
+          + " --> " + targetObject.getClass().getName() + "." + signature + "()");
+
+      ElementEvent.Call event = descriptor.createCallEvent(sourceElement, targetElement, when);
       if (event != null)
       {
         addWork(event);
@@ -206,9 +183,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
     if (when == When.AFTER)
     {
-      Pair<Change, Element> pair = targetElement.getDescriptor().createChangeEvent(targetElement, targetObject);
+      Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
       if (pair != null)
       {
+        System.err.println("CHANGED " + targetObject.getClass().getName() + "." + signature + "()");
+
         ElementEvent.Change event = pair.getElement1();
         Element newElement = pair.getElement2();
 
