@@ -29,6 +29,7 @@ public class BranchDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element)
   {
     InternalCDOBranch branch = (InternalCDOBranch)object;
+    element.setIDAttribute(Integer.toString(branch.getID()));
 
     if (!branch.isProxy())
     {

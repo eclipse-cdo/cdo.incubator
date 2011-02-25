@@ -40,13 +40,13 @@ import java.util.Set;
  */
 public final class Element extends Container<Element> implements IListener
 {
-  public static final String ID_ATTRIBUTE = "id";
-
-  public static final String KEY_ATTRIBUTE = "key";
+  public static final String LABEL_ATTRIBUTE = "label";
 
   public static final String NAME_ATTRIBUTE = "name";
 
-  public static final String LABEL_ATTRIBUTE = "label";
+  public static final String KEY_ATTRIBUTE = "key";
+
+  public static final String ID_ATTRIBUTE = "id";
 
   private int id;
 

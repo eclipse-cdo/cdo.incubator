@@ -31,5 +31,8 @@ public class _INIT_
     registry.register(new RevisionManagerDescriptor());
     registry.register(new RevisionCacheDescriptor());
     registry.register(new RevisionDescriptor());
+    registry.register(new SessionManagerDescriptor());
+    registry.register(new SessionDescriptor());
+    registry.register(new ViewDescriptor());
   }
 }

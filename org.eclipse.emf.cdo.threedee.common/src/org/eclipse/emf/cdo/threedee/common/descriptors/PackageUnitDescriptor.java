@@ -33,6 +33,7 @@ public class PackageUnitDescriptor extends ElementDescriptor
   {
     CDOPackageUnit packageUnit = (CDOPackageUnit)object;
     element.setIDAttribute(packageUnit.getID());
+    element.setAttribute("type", packageUnit.getOriginalType().toString());
     element.addReferences(true, packageUnit.getPackageInfos());
   }
 

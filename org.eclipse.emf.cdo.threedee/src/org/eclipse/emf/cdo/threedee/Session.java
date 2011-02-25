@@ -21,6 +21,10 @@ public class Session extends Container<Element> implements ElementProvider
 
   private int id;
 
+  private int sequenceNumber;
+
+  private Map<Integer, ElementEvent> outOfSequence = new HashMap<Integer, ElementEvent>();
+
   private Map<Integer, Element> cache = new HashMap<Integer, Element>();
 
   private Element[] elements = {};
@@ -77,7 +81,22 @@ public class Session extends Container<Element> implements ElementProvider
     return "Agent " + id;
   }
 
-  public void handleEvent(ElementEvent event)
+  public void handleEvent(int agentSequenceNumber, ElementEvent event)
+  {
+    if (agentSequenceNumber > sequenceNumber)
+    {
+      outOfSequence.put(agentSequenceNumber, event);
+    }
+
+    ElementEvent elementEvent;
+    while ((elementEvent = outOfSequence.remove(sequenceNumber + 1)) != null)
+    {
+      handleEvent(elementEvent);
+      ++sequenceNumber;
+    }
+  }
+
+  private void handleEvent(ElementEvent event)
   {
     System.err.println("EVENT: " + event);
 

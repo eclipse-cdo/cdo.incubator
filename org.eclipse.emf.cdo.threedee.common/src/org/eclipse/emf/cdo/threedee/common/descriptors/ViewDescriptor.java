@@ -10,26 +10,28 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.model.CDOPackageInfo;
+import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
+import org.eclipse.emf.cdo.spi.server.InternalView;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class PackageInfoDescriptor extends ElementDescriptor
+public class ViewDescriptor extends ElementDescriptor
 {
   @Override
   public boolean matches(Object object)
   {
-    return object instanceof CDOPackageInfo;
+    return object instanceof InternalView;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOPackageInfo packageInfo = (CDOPackageInfo)object;
-    element.setIDAttribute(packageInfo.getPackageURI());
-    element.addReference(true, packageInfo.getEPackage(false));
+    InternalView view = (InternalView)object;
+    element.setIDAttribute(Integer.toString(view.getViewID()));
+    element.addReference(false, view.getBranch());
+    element.setAttribute("timeStamp", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));
   }
 }

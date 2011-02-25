@@ -34,16 +34,16 @@ public abstract class ElementDescriptor
 
   public String getLabel(Element element)
   {
-    String label = element.getAttributes().get(Element.ID_ATTRIBUTE);
+    String label = element.getAttributes().get(Element.LABEL_ATTRIBUTE);
     if (label == null)
     {
-      label = element.getAttributes().get(Element.KEY_ATTRIBUTE);
+      label = element.getAttributes().get(Element.NAME_ATTRIBUTE);
       if (label == null)
       {
-        label = element.getAttributes().get(Element.NAME_ATTRIBUTE);
+        label = element.getAttributes().get(Element.KEY_ATTRIBUTE);
         if (label == null)
         {
-          label = element.getAttributes().get(Element.LABEL_ATTRIBUTE);
+          label = element.getAttributes().get(Element.ID_ATTRIBUTE);
           if (label == null)
           {
             return name;

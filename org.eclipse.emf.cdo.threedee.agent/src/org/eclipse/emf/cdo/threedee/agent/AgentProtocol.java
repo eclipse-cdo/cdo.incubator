@@ -27,6 +27,8 @@ import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
  */
 public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProtocol
 {
+  private int sequenceNumber;
+
   public AgentProtocol(Agent agent, IConnector connector)
   {
     super(PROTOCOL_NAME);
@@ -67,6 +69,7 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
         @Override
         protected void requesting(ExtendedDataOutputStream out) throws Exception
         {
+          out.writeInt(++sequenceNumber);
           out.writeByte(event.getType());
           event.write(out);
         }

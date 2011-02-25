@@ -64,9 +64,10 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
         protected void indicating(ExtendedDataInputStream in) throws Exception
         {
           Session session = getInfraStructure();
+          int agentSequenceNumber = in.readInt();
           byte type = in.readByte();
           ElementEvent event = ElementEvent.read(in, session, type);
-          session.handleEvent(event);
+          session.handleEvent(agentSequenceNumber, event);
         }
       };
 

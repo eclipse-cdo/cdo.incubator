@@ -10,26 +10,25 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.model.CDOPackageInfo;
+import org.eclipse.emf.cdo.spi.server.InternalSessionManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class PackageInfoDescriptor extends ElementDescriptor
+public class SessionManagerDescriptor extends ElementDescriptor
 {
   @Override
   public boolean matches(Object object)
   {
-    return object instanceof CDOPackageInfo;
+    return object instanceof InternalSessionManager;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOPackageInfo packageInfo = (CDOPackageInfo)object;
-    element.setIDAttribute(packageInfo.getPackageURI());
-    element.addReference(true, packageInfo.getEPackage(false));
+    InternalSessionManager sessionManager = (InternalSessionManager)object;
+    element.addReferences(true, sessionManager.getSessions());
   }
 }
