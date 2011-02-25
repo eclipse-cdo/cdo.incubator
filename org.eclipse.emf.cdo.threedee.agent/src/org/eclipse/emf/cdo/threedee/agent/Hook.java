@@ -27,10 +27,7 @@ public class Hook
     Stack stack = getStack();
     Object last = stack.peek();
     stack.push(target);
-    // if (target != last && last != null)
-    {
-      Agent.INSTANCE.beforeCall(last, target);
-    }
+    Agent.INSTANCE.beforeCall(last, target);
   }
 
   public static void after(Object target)
@@ -38,10 +35,7 @@ public class Hook
     Stack stack = getStack();
     stack.pop();
     Object last = stack.peek();
-    // if (target != last && last != null)
-    {
-      Agent.INSTANCE.afterCall(last, target);
-    }
+    Agent.INSTANCE.afterCall(last, target);
   }
 
   private static Stack getStack()

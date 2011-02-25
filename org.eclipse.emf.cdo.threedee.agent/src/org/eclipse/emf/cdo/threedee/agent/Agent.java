@@ -25,8 +25,8 @@ import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.event.EventUtil;
 
+import java.util.IdentityHashMap;
 import java.util.Map;
-import java.util.WeakHashMap;
 
 /**
  * @author Eike Stepper
@@ -41,7 +41,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private int id;
 
-  private Map<Object, Element> elements = new WeakHashMap<Object, Element>();
+  private Map<Object, Element> elements = new IdentityHashMap<Object, Element>();
 
   private int lastElementID;
 
@@ -105,15 +105,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   {
     synchronized (elements)
     {
-      try
-      {
-        return elements.get(object);
-      }
-      catch (Exception ex)
-      {
-        ex.printStackTrace();
-        return null;
-      }
+      return elements.get(object);
     }
   }
 
@@ -126,16 +118,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     }
 
     Element element = new Element(++lastElementID, descriptor, this);
+    descriptor.initElement(object, element);
 
-    try
+    synchronized (elements)
     {
-      descriptor.initElement(object, element);
       elements.put(object, element);
-    }
-    catch (Exception ex)
-    {
-      ex.printStackTrace();
-      return null;
     }
 
     addWork(new ElementEvent.Creation(element));
@@ -147,15 +134,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     Element element;
     synchronized (elements)
     {
-      try
-      {
-        element = elements.remove(object);
-      }
-      catch (Exception ex)
-      {
-        ex.printStackTrace();
-        return;
-      }
+      element = elements.remove(object);
     }
 
     if (element != null)
@@ -204,7 +183,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private void called(Object sourceObject, Object targetObject, When when)
   {
-    System.err.println(when.toString() + sourceObject.getClass().getName() + " --> "
+    System.err.println(when.toString() + ": " + sourceObject.getClass().getName() + " --> "
         + targetObject.getClass().getName());
 
     Element targetElement = getElement(targetObject);
