@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.branch.CDOBranch;
+import org.eclipse.emf.cdo.spi.common.branch.InternalCDOBranch;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
@@ -22,15 +22,20 @@ public class BranchDescriptor extends ElementDescriptor
   @Override
   public boolean matches(Object object)
   {
-    return object instanceof CDOBranch;
+    return object instanceof InternalCDOBranch;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOBranch branch = (CDOBranch)object;
-    element.setNameAttribute(branch.getName());
-    element.addReference(false, branch.getBase().getBranch());
-    element.addReference(true, branch.getBranches());
+    InternalCDOBranch branch = (InternalCDOBranch)object;
+
+    if (!branch.isProxy())
+    {
+      element.setNameAttribute(branch.getName());
+      element.addReference(false, branch.getBase().getBranch());
+    }
+
+    element.addReferences(true, branch.getBranches(false));
   }
 }

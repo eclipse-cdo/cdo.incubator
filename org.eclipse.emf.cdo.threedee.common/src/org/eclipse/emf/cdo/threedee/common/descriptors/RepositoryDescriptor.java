@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.server.IRepository;
+import org.eclipse.emf.cdo.spi.server.InternalRepository;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
@@ -25,13 +25,13 @@ public class RepositoryDescriptor extends ElementDescriptor
   @Override
   public boolean matches(Object object)
   {
-    return object instanceof IRepository;
+    return object instanceof InternalRepository;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    IRepository repository = (IRepository)object;
+    InternalRepository repository = (InternalRepository)object;
     element.setNameAttribute(repository.getName());
     element.addReferences(true, repository.getElements());
   }

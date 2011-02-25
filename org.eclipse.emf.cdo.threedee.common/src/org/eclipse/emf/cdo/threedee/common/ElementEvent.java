@@ -56,20 +56,25 @@ public abstract class ElementEvent
 
     private Element element;
 
-    public Creation(Element element)
+    private boolean root;
+
+    public Creation(Element element, boolean root)
     {
       this.element = element;
+      this.root = root;
     }
 
     public Creation(ExtendedDataInputStream in, ElementProvider provider) throws IOException
     {
       element = new Element(in, provider);
+      root = in.readBoolean();
     }
 
     @Override
     public void write(ExtendedDataOutputStream out) throws IOException
     {
       element.write(out);
+      out.writeBoolean(root);
     }
 
     @Override
@@ -81,6 +86,11 @@ public abstract class ElementEvent
     public Element getElement()
     {
       return element;
+    }
+
+    public boolean isRoot()
+    {
+      return root;
     }
 
     @Override

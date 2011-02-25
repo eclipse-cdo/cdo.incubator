@@ -21,7 +21,9 @@ public class Session extends Container<Element> implements ElementProvider
 
   private int id;
 
-  private Map<Integer, Element> elements = new HashMap<Integer, Element>();
+  private Map<Integer, Element> cache = new HashMap<Integer, Element>();
+
+  private Element[] elements = {};
 
   public Session(int id, FrontendProtocol protocol)
   {
@@ -42,17 +44,17 @@ public class Session extends Container<Element> implements ElementProvider
   @Override
   public boolean isEmpty()
   {
-    synchronized (elements)
+    synchronized (cache)
     {
-      return elements.isEmpty();
+      return elements.length == 0;
     }
   }
 
   public Element[] getElements()
   {
-    synchronized (elements)
+    synchronized (cache)
     {
-      return elements.values().toArray(new Element[elements.size()]);
+      return elements;
     }
   }
 
@@ -63,10 +65,16 @@ public class Session extends Container<Element> implements ElementProvider
 
   public Element getElement(int id)
   {
-    synchronized (elements)
+    synchronized (cache)
     {
-      return elements.get(id);
+      return cache.get(id);
     }
+  }
+
+  @Override
+  public String toString()
+  {
+    return "Agent " + id;
   }
 
   public void handleEvent(ElementEvent event)
@@ -94,7 +102,7 @@ public class Session extends Container<Element> implements ElementProvider
   private void handleCreationEvent(Creation event)
   {
     Element element = event.getElement();
-    addElement(element);
+    addElement(element, event.isRoot());
   }
 
   private void handleChangeEvent(Change event)
@@ -104,19 +112,16 @@ public class Session extends Container<Element> implements ElementProvider
     element.apply(event);
   }
 
-  @Override
-  public String toString()
+  private void addElement(Element element, boolean root)
   {
-    return "Agent " + id;
-  }
-
-  private void addElement(Element element)
-  {
-    synchronized (elements)
+    synchronized (cache)
     {
-      elements.put(element.getID(), element);
+      cache.put(element.getID(), element);
+      if (root)
+      {
+        elements = new Element[] { element };
+        fireElementAddedEvent(element);
+      }
     }
-
-    fireElementAddedEvent(element);
   }
 }

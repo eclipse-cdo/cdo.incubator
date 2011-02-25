@@ -18,6 +18,8 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo.Refere
 
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
+import org.eclipse.net4j.util.container.ContainerEvent;
+import org.eclipse.net4j.util.container.IContainerDelta;
 import org.eclipse.net4j.util.event.Event;
 import org.eclipse.net4j.util.event.IEvent;
 import org.eclipse.net4j.util.event.IListener;
@@ -304,6 +306,9 @@ public final class Element extends Container<Element> implements IListener
 
   public void apply(Change event)
   {
+    boolean attrChanges = false;
+    ContainerEvent<Element> containerEvent = null;
+
     for (ChangeInfo changeInfo : event.getChangeInfos())
     {
       if (changeInfo instanceof Attribute)
@@ -319,28 +324,59 @@ public final class Element extends Container<Element> implements IListener
         {
           attributes.put(key, value);
         }
+
+        attrChanges = true;
       }
       else
       {
+        if (containerEvent == null)
+        {
+          containerEvent = new ContainerEvent<Element>(this);
+        }
+
         Reference referenceChange = (Reference)changeInfo;
         Kind kind = referenceChange.getKind();
         int id = referenceChange.getID();
         boolean containment = referenceChange.isContainment();
+        Element element = provider.getElement(id);
 
         switch (kind)
         {
         case ADDED:
+          references.put(id, containment);
+          if (element != null)
+          {
+            containerEvent.addDelta(element, IContainerDelta.Kind.ADDED);
+          }
+          break;
+
         case TYPE:
           references.put(id, containment);
+          if (element != null)
+          {
+            containerEvent.addDelta(element, containment ? IContainerDelta.Kind.ADDED : IContainerDelta.Kind.REMOVED);
+          }
           break;
+
         case REMOVED:
           references.remove(id);
+          if (element != null)
+          {
+            containerEvent.addDelta(element, IContainerDelta.Kind.REMOVED);
+          }
           break;
         }
       }
     }
 
-    fireEvent(new Event(this));
+    if (containerEvent != null)
+    {
+      fireEvent(containerEvent);
+    }
+    else if (attrChanges)
+    {
+      fireEvent(new Event(this));
+    }
   }
 
   public Element[] getElements()

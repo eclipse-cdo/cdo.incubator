@@ -16,6 +16,7 @@ package org.eclipse.emf.cdo.threedee.agent;
 public aspect Aspect
 {
   pointcut publicMethods() :
+    !execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.getBranches(boolean)) &&
     !execution(public * *.get*()) &&
     !execution(public * *.is*()) &&
     !execution(public String *.toString()) &&

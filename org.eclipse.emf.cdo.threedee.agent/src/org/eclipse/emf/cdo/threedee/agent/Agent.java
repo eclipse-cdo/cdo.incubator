@@ -23,6 +23,7 @@ import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -70,8 +71,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   public Element getElement(int id)
   {
-    // TODO: implement Agent.getElement(id)
-    throw new UnsupportedOperationException();
+    return null;
   }
 
   public Element getElement(Object object, boolean addOnDemand)
@@ -79,16 +79,16 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     synchronized (elements)
     {
       Element element = elements.get(object);
-      if (element == null && addOnDemand)
+      if (element == null && addOnDemand && LifecycleUtil.isActive(object))
       {
-        element = addElement(object);
+        element = addElement(object, false);
       }
 
       return element;
     }
   }
 
-  private Element addElement(Object object)
+  private Element addElement(Object object, boolean root)
   {
     ElementDescriptor descriptor = ElementDescriptor.Registry.INSTANCE.match(object);
     if (descriptor == null)
@@ -104,7 +104,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       elements.put(object, element);
     }
 
-    addWork(new ElementEvent.Creation(element));
+    addWork(new ElementEvent.Creation(element, root));
     return element;
   }
 
@@ -132,7 +132,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     protocol = new AgentProtocol(this, connector);
     id = protocol.openSession();
 
-    addElement(container);
+    addElement(container, true);
   }
 
   @Override
