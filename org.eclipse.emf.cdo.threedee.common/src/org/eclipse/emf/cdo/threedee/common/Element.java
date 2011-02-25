@@ -10,6 +10,9 @@
  */
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
@@ -21,6 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * @author Eike Stepper
@@ -194,10 +198,94 @@ public final class Element extends Container<Element>
     }
   }
 
-  public ElementChange compare(Element oldElement)
+  public ElementEvent.Change compare(Element oldElement)
   {
-    // TODO: implement Element.compare(oldElement)
-    throw new UnsupportedOperationException();
+    Change result = new Change();
+
+    Map<String, String> oldAttributes = oldElement.getAttributes();
+    for (Entry<String, String> entry : attributes.entrySet())
+    {
+      String key = entry.getKey();
+      String newValue = entry.getValue();
+      String oldValue = oldAttributes.get(key);
+      if (!ObjectUtil.equals(oldValue, newValue))
+      {
+        result.attributeChanged(key, newValue);
+      }
+    }
+
+    for (String key : oldAttributes.keySet())
+    {
+      if (!attributes.containsKey(key))
+      {
+        result.attributeRemoved(key);
+      }
+    }
+
+    Map<Integer, Boolean> oldReferences = oldElement.getReferences();
+    for (Entry<Integer, Boolean> entry : references.entrySet())
+    {
+      int id = entry.getKey();
+      Boolean newContainment = entry.getValue();
+      Boolean oldContainment = oldReferences.get(id);
+
+      if (oldContainment == Boolean.TRUE)
+      {
+        if (newContainment == Boolean.TRUE)
+        {
+          // Do nothing
+        }
+        else if (newContainment == Boolean.FALSE)
+        {
+          result.referenceType(id, false);
+        }
+        else
+        {
+          result.referenceRemoved(id);
+        }
+      }
+      else if (oldContainment == Boolean.FALSE)
+      {
+        if (newContainment == Boolean.TRUE)
+        {
+          result.referenceType(id, true);
+        }
+        else if (newContainment == Boolean.FALSE)
+        {
+          // Do nothing
+        }
+        else
+        {
+          result.referenceRemoved(id);
+        }
+      }
+      else
+      {
+        if (newContainment == Boolean.TRUE)
+        {
+          result.referenceAdded(id, true);
+        }
+        else if (newContainment == Boolean.FALSE)
+        {
+          result.referenceAdded(id, false);
+        }
+        else
+        {
+          // Do nothing
+        }
+      }
+    }
+
+    Set<Integer> keySet = oldReferences.keySet();
+    for (Integer id : keySet)
+    {
+      if (!references.containsKey(id))
+      {
+        result.referenceRemoved(id);
+      }
+    }
+
+    return result.isEmpty() ? null : result;
   }
 
   public Element[] getElements()

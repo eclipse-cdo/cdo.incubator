@@ -14,6 +14,8 @@ import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Eike Stepper
@@ -35,7 +37,7 @@ public abstract class ElementEvent
       return new Call(in, provider);
 
     case Change.TYPE:
-      return new Change(in, provider);
+      return new Change(in);
 
     case Removal.TYPE:
       return new Removal(in);
@@ -158,23 +160,192 @@ public abstract class ElementEvent
   {
     public static final byte TYPE = 3;
 
+    private List<ChangeInfo> changeInfos;
+
     public Change()
     {
     }
 
-    public Change(ExtendedDataInputStream in, ElementProvider provider) throws IOException
+    public Change(ExtendedDataInputStream in) throws IOException
     {
+      int size = in.readInt();
+      changeInfos = new ArrayList<ChangeInfo>(size);
+      for (int i = 0; i < size; i++)
+      {
+        if (in.readBoolean())
+        {
+          changeInfos.add(new ChangeInfo.Attribute(in));
+        }
+        else
+        {
+          changeInfos.add(new ChangeInfo.Reference(in));
+        }
+      }
     }
 
     @Override
     public void write(ExtendedDataOutputStream out) throws IOException
     {
+      out.writeInt(changeInfos.size());
+      for (ChangeInfo changeInfo : changeInfos)
+      {
+        out.writeBoolean(changeInfo instanceof ChangeInfo.Attribute);
+        changeInfo.write(out);
+      }
     }
 
     @Override
     public int getType()
     {
       return TYPE;
+    }
+
+    public List<ChangeInfo> getChangeInfos()
+    {
+      return changeInfos;
+    }
+
+    public boolean isEmpty()
+    {
+      return changeInfos == null;
+    }
+
+    public void attributeChanged(String key, String newValue)
+    {
+      List<ChangeInfo> changeInfo = ensureChangeInfos();
+      changeInfo.add(new ChangeInfo.Attribute(key, newValue));
+    }
+
+    public void attributeRemoved(String key)
+    {
+      attributeChanged(key, null);
+    }
+
+    public void referenceAdded(int id, boolean containment)
+    {
+      List<ChangeInfo> changeInfo = ensureChangeInfos();
+      changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.ADDED, id, containment));
+    }
+
+    public void referenceRemoved(int id)
+    {
+      List<ChangeInfo> changeInfo = ensureChangeInfos();
+      changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.REMOVED, id, false));
+    }
+
+    public void referenceType(int id, boolean containment)
+    {
+      List<ChangeInfo> changeInfo = ensureChangeInfos();
+      changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.TYPE, id, containment));
+    }
+
+    private List<ChangeInfo> ensureChangeInfos()
+    {
+      if (changeInfos == null)
+      {
+        changeInfos = new ArrayList<ChangeInfo>();
+      }
+
+      return changeInfos;
+    }
+
+    /**
+     * @author Eike Stepper
+     */
+    public static abstract class ChangeInfo
+    {
+      public abstract void write(ExtendedDataOutputStream out) throws IOException;
+
+      /**
+       * @author Eike Stepper
+       */
+      public static class Attribute extends ChangeInfo
+      {
+        private String key;
+
+        private String value;
+
+        public Attribute(String key, String value)
+        {
+          this.key = key;
+          this.value = value;
+        }
+
+        public Attribute(ExtendedDataInputStream in) throws IOException
+        {
+          key = in.readString();
+          value = in.readString();
+        }
+
+        @Override
+        public void write(ExtendedDataOutputStream out) throws IOException
+        {
+          out.writeString(key);
+          out.writeString(value);
+        }
+
+        public String getKey()
+        {
+          return key;
+        }
+
+        public String getValue()
+        {
+          return value;
+        }
+      }
+
+      /**
+       * @author Eike Stepper
+       */
+      public static class Reference extends ChangeInfo
+      {
+        private Kind kind;
+
+        private int id;
+
+        public Reference(Kind kind, int id, boolean containment)
+        {
+          this.kind = kind;
+          this.id = containment ? -id : id;
+        }
+
+        public Reference(ExtendedDataInputStream in) throws IOException
+        {
+          kind = Kind.values()[in.readByte()];
+          id = in.readInt();
+        }
+
+        @Override
+        public void write(ExtendedDataOutputStream out) throws IOException
+        {
+          out.writeByte(kind.ordinal());
+          out.writeInt(id);
+        }
+
+        public Kind getKind()
+        {
+          return kind;
+        }
+
+        public int getID()
+        {
+          return Math.abs(id);
+        }
+
+        public boolean isContainment()
+        {
+          return id < 0;
+        }
+
+        /**
+         * @author Eike Stepper
+         */
+        public static enum Kind
+        {
+          ADDED, REMOVED, TYPE
+        }
+      }
     }
   }
 

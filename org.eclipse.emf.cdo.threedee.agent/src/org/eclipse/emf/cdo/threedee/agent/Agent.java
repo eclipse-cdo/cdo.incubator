@@ -14,10 +14,12 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
+import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;
@@ -204,9 +206,17 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
     if (when == When.AFTER)
     {
-      ElementEvent.Change event = targetElement.getDescriptor().createChangeEvent(targetElement, targetObject);
-      if (event != null)
+      Pair<Change, Element> pair = targetElement.getDescriptor().createChangeEvent(targetElement, targetObject);
+      if (pair != null)
       {
+        ElementEvent.Change event = pair.getElement1();
+        Element newElement = pair.getElement2();
+
+        synchronized (elements)
+        {
+          elements.put(targetObject, newElement);
+        }
+
         addWork(event);
       }
     }
