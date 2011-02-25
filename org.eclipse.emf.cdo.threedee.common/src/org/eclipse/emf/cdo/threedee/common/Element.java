@@ -14,6 +14,7 @@ import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,6 +26,14 @@ import java.util.Set;
  */
 public final class Element
 {
+  public static final String ID_ATTRIBUTE = "id";
+
+  public static final String KEY_ATTRIBUTE = "key";
+
+  public static final String NAME_ATTRIBUTE = "name";
+
+  public static final String LABEL_ATTRIBUTE = "label";
+
   private int id;
 
   private ElementDescriptor descriptor;
@@ -43,7 +52,7 @@ public final class Element
   {
     id = in.readInt();
     String descriptorName = in.readString();
-    descriptor = ElementDescriptor.get(descriptorName);
+    descriptor = ElementDescriptor.Registry.INSTANCE.get(descriptorName);
     if (descriptor == null)
     {
       throw new IllegalStateException("Descriptor missing: " + descriptorName);
@@ -103,6 +112,68 @@ public final class Element
   public Set<Element> getReferences()
   {
     return references;
+  }
+
+  public void setAttribute(String key, String value)
+  {
+    if (key != null && value != null)
+    {
+      attributes.put(key, value);
+    }
+  }
+
+  public void setIDAttribute(String value)
+  {
+    setAttribute(ID_ATTRIBUTE, value);
+  }
+
+  public void setKeyAttribute(String value)
+  {
+    setAttribute(KEY_ATTRIBUTE, value);
+  }
+
+  public void setNameAttribute(String value)
+  {
+    setAttribute(NAME_ATTRIBUTE, value);
+  }
+
+  public void setLabelAttribute(String value)
+  {
+    setAttribute(LABEL_ATTRIBUTE, value);
+  }
+
+  public void addReference(Object object, ElementProvider provider)
+  {
+    if (object != null)
+    {
+      Element element = provider.getElement(object);
+      if (element != null)
+      {
+        references.add(element);
+      }
+    }
+  }
+
+  public void addReferences(Collection<?> objects, ElementProvider provider)
+  {
+    if (objects != null)
+    {
+      for (Object object : objects)
+      {
+        addReference(object, provider);
+      }
+    }
+  }
+
+  public void addReferences(Object[] objects, ElementProvider provider)
+  {
+    if (objects != null)
+    {
+      for (Object object : objects)
+      {
+        addReference(object, provider);
+      }
+    }
   }
 
   @Override

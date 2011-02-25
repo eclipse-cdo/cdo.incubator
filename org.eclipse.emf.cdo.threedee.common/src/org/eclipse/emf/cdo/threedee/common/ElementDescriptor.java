@@ -1,42 +1,33 @@
 package org.eclipse.emf.cdo.threedee.common;
 
-import org.eclipse.net4j.util.container.FactoryNotFoundException;
-import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.emf.cdo.threedee.common.descriptors.BranchDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.BranchManagerDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.ClassDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.PackageDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.PackageInfoDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.PackageRegistryDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.PackageUnitDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.RepositoryDescriptor;
 
-import java.util.Map;
-import java.util.Set;
+import java.util.HashMap;
 
 /**
  * @author Eike Stepper
  */
 public abstract class ElementDescriptor
 {
-  public static final String ID_ATTRIBUTE = "id";
-
-  public static final String KEY_ATTRIBUTE = "key";
-
-  public static final String NAME_ATTRIBUTE = "name";
-
-  public static final String LABEL_ATTRIBUTE = "label";
-
-  private static final String PRODUCT_GROUP = "org.eclipse.emf.cdo.threedee.elementDescriptors";
-
   private String name;
 
-  private String typeLabel;
-
-  public ElementDescriptor(String typeLabel)
+  public ElementDescriptor(String name)
   {
-    this.typeLabel = typeLabel;
+    this.name = name;
   }
 
-  protected ElementDescriptor()
+  public ElementDescriptor()
   {
-  }
-
-  public String getTypeLabel()
-  {
-    return typeLabel;
+    name = getClass().getSimpleName();
+    name = strip(name, "ElementDescriptor");
+    name = strip(name, "Descriptor");
   }
 
   public String getName()
@@ -44,59 +35,80 @@ public abstract class ElementDescriptor
     return name;
   }
 
-  private void setName(String name)
-  {
-    this.name = name;
-  }
-
-  public abstract void initElement(Object object, Map<String, String> attributes, Set<Element> references,
-      ElementProvider provider);
-
   public String getLabel(Element element)
   {
-    String label = element.getAttributes().get(ID_ATTRIBUTE);
+    String label = element.getAttributes().get(Element.ID_ATTRIBUTE);
     if (label == null)
     {
-      label = element.getAttributes().get(KEY_ATTRIBUTE);
+      label = element.getAttributes().get(Element.KEY_ATTRIBUTE);
       if (label == null)
       {
-        label = element.getAttributes().get(NAME_ATTRIBUTE);
+        label = element.getAttributes().get(Element.NAME_ATTRIBUTE);
         if (label == null)
         {
-          label = element.getAttributes().get(LABEL_ATTRIBUTE);
+          label = element.getAttributes().get(Element.LABEL_ATTRIBUTE);
           if (label == null)
           {
-            return typeLabel;
+            return name;
           }
         }
       }
     }
 
-    return typeLabel + " " + label;
+    return name + " " + label;
   }
 
-  public static ElementDescriptor get(String name)
+  public abstract boolean matches(Object object);
+
+  public abstract void initElement(Object object, Element element, ElementProvider provider);
+
+  private static String strip(String string, String suffix)
   {
-    try
+    if (string.endsWith(suffix))
     {
-      ElementDescriptor element = (ElementDescriptor)IPluginContainer.INSTANCE.getElement(PRODUCT_GROUP, name, null);
-      element.setName(name);
-      return element;
+      return string.substring(0, string.length() - suffix.length());
     }
-    catch (FactoryNotFoundException ex)
-    {
-      return null;
-    }
+
+    return string;
   }
 
   /**
    * @author Eike Stepper
    */
-  public static abstract class DescriptorFactory extends org.eclipse.net4j.util.factory.Factory
+  public static class Registry extends HashMap<String, ElementDescriptor>
   {
-    public DescriptorFactory(String name)
+    public static final Registry INSTANCE = new Registry();
+
+    private static final long serialVersionUID = 1L;
+
+    public void register(ElementDescriptor descriptor)
     {
-      super(PRODUCT_GROUP, name);
+      put(descriptor.getName(), descriptor);
+    }
+
+    public ElementDescriptor match(Object object)
+    {
+      for (ElementDescriptor descriptor : values())
+      {
+        if (descriptor.matches(object))
+        {
+          return descriptor;
+        }
+      }
+
+      return null;
+    }
+
+    static
+    {
+      INSTANCE.register(new RepositoryDescriptor());
+      INSTANCE.register(new BranchManagerDescriptor());
+      INSTANCE.register(new BranchDescriptor());
+      INSTANCE.register(new PackageRegistryDescriptor());
+      INSTANCE.register(new PackageUnitDescriptor());
+      INSTANCE.register(new PackageInfoDescriptor());
+      INSTANCE.register(new PackageDescriptor());
+      INSTANCE.register(new ClassDescriptor());
     }
   }
 }

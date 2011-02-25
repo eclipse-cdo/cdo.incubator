@@ -123,7 +123,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
         return null;
       }
 
-      ElementDescriptor descriptor = ElementDescriptor.get(object.getClass().getName());
+      ElementDescriptor descriptor = ElementDescriptor.Registry.INSTANCE.match(object);
       if (descriptor == null)
       {
         return null;
@@ -134,7 +134,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
       try
       {
-        descriptor.initElement(object, element.getAttributes(), element.getReferences(), this);
+        descriptor.initElement(object, element, this);
       }
       catch (Exception ex)
       {

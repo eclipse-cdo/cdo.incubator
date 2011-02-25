@@ -10,26 +10,28 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.branch.CDOBranchManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
  * @author Eike Stepper
  */
-public class BranchManagerDescriptor extends ElementDescriptor
+public class ClassDescriptor extends ElementDescriptor
 {
   @Override
   public boolean matches(Object object)
   {
-    return object instanceof CDOBranchManager;
+    return object instanceof EClass;
   }
 
   @Override
   public void initElement(Object object, Element element, ElementProvider provider)
   {
-    CDOBranchManager branchManager = (CDOBranchManager)object;
-    element.addReference(branchManager.getMainBranch(), provider);
+    EClass eClass = (EClass)object;
+    element.setNameAttribute(eClass.getName());
+    element.addReferences(eClass.getEStructuralFeatures(), provider);
   }
 }
