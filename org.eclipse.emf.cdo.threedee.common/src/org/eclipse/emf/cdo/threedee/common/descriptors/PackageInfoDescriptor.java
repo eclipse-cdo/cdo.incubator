@@ -13,7 +13,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.common.model.CDOPackageInfo;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.emf.ecore.EPackage;
 
@@ -29,7 +28,7 @@ public class PackageInfoDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     CDOPackageInfo packageInfo = (CDOPackageInfo)object;
     element.setIDAttribute(packageInfo.getPackageURI());
@@ -37,7 +36,7 @@ public class PackageInfoDescriptor extends ElementDescriptor
     EPackage ePackage = packageInfo.getEPackage(false);
     if (ePackage != null)
     {
-      element.addReferences(true, ePackage.getEClassifiers(), provider);
+      element.addReferences(true, ePackage.getEClassifiers());
     }
   }
 }

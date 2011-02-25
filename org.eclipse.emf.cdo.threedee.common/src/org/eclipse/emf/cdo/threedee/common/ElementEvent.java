@@ -31,11 +31,14 @@ public abstract class ElementEvent
     case Creation.TYPE:
       return new Creation(in, provider);
 
-    case Removal.TYPE:
-      return new Removal(in);
-
     case Call.TYPE:
       return new Call(in, provider);
+
+    case Change.TYPE:
+      return new Change(in, provider);
+
+    case Removal.TYPE:
+      return new Removal(in);
 
     default:
       throw new RuntimeException();
@@ -82,46 +85,9 @@ public abstract class ElementEvent
   /**
    * @author Eike Stepper
    */
-  public static class Removal extends ElementEvent
-  {
-    public static final byte TYPE = 2;
-
-    private int id;
-
-    public Removal(int id)
-    {
-      this.id = id;
-    }
-
-    public Removal(ExtendedDataInputStream in) throws IOException
-    {
-      id = in.readInt();
-    }
-
-    @Override
-    public void write(ExtendedDataOutputStream out) throws IOException
-    {
-      out.writeInt(id);
-    }
-
-    @Override
-    public int getType()
-    {
-      return TYPE;
-    }
-
-    public int getID()
-    {
-      return id;
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
   public static class Call extends ElementEvent
   {
-    public static final byte TYPE = 3;
+    public static final byte TYPE = 2;
 
     private Element source;
 
@@ -182,6 +148,70 @@ public abstract class ElementEvent
     public static enum When
     {
       BEFORE, AFTER
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Change extends ElementEvent
+  {
+    public static final byte TYPE = 3;
+
+    public Change()
+    {
+    }
+
+    public Change(ExtendedDataInputStream in, ElementProvider provider) throws IOException
+    {
+    }
+
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
+    {
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Removal extends ElementEvent
+  {
+    public static final byte TYPE = 4;
+
+    private int id;
+
+    public Removal(int id)
+    {
+      this.id = id;
+    }
+
+    public Removal(ExtendedDataInputStream in) throws IOException
+    {
+      id = in.readInt();
+    }
+
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
+    {
+      out.writeInt(id);
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
+    }
+
+    public int getID()
+    {
+      return id;
     }
   }
 }

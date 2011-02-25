@@ -117,6 +117,11 @@ public final class Element extends Container<Element>
     return descriptor;
   }
 
+  public ElementProvider getProvider()
+  {
+    return provider;
+  }
+
   public Map<String, String> getAttributes()
   {
     return attributes;
@@ -155,7 +160,7 @@ public final class Element extends Container<Element>
     setAttribute(LABEL_ATTRIBUTE, value);
   }
 
-  public void addReference(boolean containment, Object object, ElementProvider provider)
+  public void addReference(boolean containment, Object object)
   {
     if (object != null)
     {
@@ -167,26 +172,32 @@ public final class Element extends Container<Element>
     }
   }
 
-  public void addReferences(boolean containment, Collection<?> objects, ElementProvider provider)
+  public void addReferences(boolean containment, Collection<?> objects)
   {
     if (objects != null)
     {
       for (Object object : objects)
       {
-        addReference(containment, object, provider);
+        addReference(containment, object);
       }
     }
   }
 
-  public void addReferences(boolean containment, Object[] objects, ElementProvider provider)
+  public void addReferences(boolean containment, Object[] objects)
   {
     if (objects != null)
     {
       for (Object object : objects)
       {
-        addReference(containment, object, provider);
+        addReference(containment, object);
       }
     }
+  }
+
+  public ElementChange compare(Element oldElement)
+  {
+    // TODO: implement Element.compare(oldElement)
+    throw new UnsupportedOperationException();
   }
 
   public Element[] getElements()

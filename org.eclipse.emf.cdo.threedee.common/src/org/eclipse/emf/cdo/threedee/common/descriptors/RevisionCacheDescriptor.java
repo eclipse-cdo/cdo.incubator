@@ -14,7 +14,6 @@ import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevisionCache;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import java.util.List;
 
@@ -30,12 +29,12 @@ public class RevisionCacheDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     InternalCDORevisionCache revisionCache = (InternalCDORevisionCache)object;
     for (List<CDORevision> list : revisionCache.getAllRevisions().values())
     {
-      element.addReferences(true, list, provider);
+      element.addReferences(true, list);
     }
   }
 }

@@ -13,7 +13,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.common.model.CDOPackageUnit;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 /**
  * @author Eike Stepper
@@ -27,10 +26,10 @@ public class PackageUnitDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     CDOPackageUnit packageUnit = (CDOPackageUnit)object;
     element.setIDAttribute(packageUnit.getID());
-    element.addReferences(true, packageUnit.getPackageInfos(), provider);
+    element.addReferences(true, packageUnit.getPackageInfos());
   }
 }

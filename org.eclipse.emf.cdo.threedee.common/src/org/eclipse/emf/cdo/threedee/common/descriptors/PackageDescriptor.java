@@ -12,7 +12,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.emf.ecore.EPackage;
 
@@ -28,10 +27,10 @@ public class PackageDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     EPackage ePackage = (EPackage)object;
     element.setIDAttribute(ePackage.getNsURI());
-    element.addReferences(true, ePackage.getEClassifiers(), provider);
+    element.addReferences(true, ePackage.getEClassifiers());
   }
 }

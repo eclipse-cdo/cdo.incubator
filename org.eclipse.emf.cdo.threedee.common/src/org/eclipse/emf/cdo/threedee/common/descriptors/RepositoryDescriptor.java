@@ -13,7 +13,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.server.IRepository;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 /**
  * @author Eike Stepper
@@ -27,10 +26,10 @@ public class RepositoryDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     IRepository repository = (IRepository)object;
     element.setNameAttribute(repository.getName());
-    element.addReferences(true, repository.getElements(), provider);
+    element.addReferences(true, repository.getElements());
   }
 }

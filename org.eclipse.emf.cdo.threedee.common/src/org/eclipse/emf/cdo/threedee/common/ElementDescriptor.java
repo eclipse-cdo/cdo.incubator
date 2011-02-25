@@ -1,5 +1,6 @@
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
 import org.eclipse.emf.cdo.threedee.common.descriptors._INIT_;
 
 import java.util.HashMap;
@@ -53,7 +54,21 @@ public abstract class ElementDescriptor
 
   public abstract boolean matches(Object object);
 
-  public abstract void initElement(Object object, Element element, ElementProvider provider);
+  public abstract void initElement(Object object, Element element);
+
+  public ElementEvent.Call createCallEvent(Element sourceElement, Element targetElement, When when)
+  {
+    return new ElementEvent.Call(sourceElement, targetElement, when);
+  }
+
+  public ElementEvent.Change createChangeEvent(Element oldElement, Object newObject)
+  {
+    Element newElement = new Element(oldElement.getID(), oldElement.getDescriptor(), oldElement.getProvider());
+    initElement(newObject, newElement);
+
+    newElement.compare(oldElement);
+    return null;
+  }
 
   private static String strip(String string, String suffix)
   {

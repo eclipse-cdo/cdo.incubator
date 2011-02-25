@@ -129,7 +129,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
     try
     {
-      descriptor.initElement(object, element, this);
+      descriptor.initElement(object, element);
       elements.put(object, element);
     }
     catch (Exception ex)
@@ -194,23 +194,18 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   public void beforeCall(Object source, Object target)
   {
-    call(source, target, When.BEFORE);
+    called(source, target, When.BEFORE);
   }
 
   public void afterCall(Object source, Object target)
   {
-    call(source, target, When.AFTER);
+    called(source, target, When.AFTER);
   }
 
-  private void call(Object sourceObject, Object targetObject, When when)
+  private void called(Object sourceObject, Object targetObject, When when)
   {
-    System.err.println("CALL " + sourceObject.getClass().getName() + " --> " + targetObject.getClass().getName());
-
-    Element sourceElement = getElement(sourceObject);
-    if (sourceElement == null)
-    {
-      return;
-    }
+    System.err.println(when.toString() + sourceObject.getClass().getName() + " --> "
+        + targetObject.getClass().getName());
 
     Element targetElement = getElement(targetObject);
     if (targetElement == null)
@@ -218,6 +213,23 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       return;
     }
 
-    addWork(new ElementEvent.Call(sourceElement, targetElement, when));
+    Element sourceElement = getElement(sourceObject);
+    if (sourceElement != null && sourceElement != targetElement)
+    {
+      ElementEvent.Call event = targetElement.getDescriptor().createCallEvent(sourceElement, targetElement, when);
+      if (event != null)
+      {
+        addWork(event);
+      }
+    }
+
+    if (when == When.AFTER)
+    {
+      ElementEvent.Change event = targetElement.getDescriptor().createChangeEvent(targetElement, targetObject);
+      if (event != null)
+      {
+        addWork(event);
+      }
+    }
   }
 }

@@ -12,7 +12,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.net4j.util.container.IManagedContainer;
 
@@ -28,9 +27,9 @@ public class ManagedContainerDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     IManagedContainer container = (IManagedContainer)object;
-    element.addReferences(true, container.getElements(), provider);
+    element.addReferences(true, container.getElements());
   }
 }

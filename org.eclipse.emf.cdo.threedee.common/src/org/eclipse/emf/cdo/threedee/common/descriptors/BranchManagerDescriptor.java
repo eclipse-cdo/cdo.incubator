@@ -13,7 +13,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.spi.common.branch.InternalCDOBranchManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 /**
  * @author Eike Stepper
@@ -27,9 +26,9 @@ public class BranchManagerDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     InternalCDOBranchManager branchManager = (InternalCDOBranchManager)object;
-    element.addReference(true, branchManager.getMainBranch(), provider);
+    element.addReference(true, branchManager.getMainBranch());
   }
 }

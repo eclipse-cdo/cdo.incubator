@@ -13,7 +13,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 /**
  * @author Eike Stepper
@@ -27,7 +26,7 @@ public class RevisionDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element, final ElementProvider provider)
+  public void initElement(Object object, Element element)
   {
     CDORevision revision = (CDORevision)object;
     element.setKeyAttribute(revision.toString());
