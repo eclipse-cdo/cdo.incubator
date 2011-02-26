@@ -11,26 +11,27 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.util.collection.Pair;
-
-import org.eclipse.emf.ecore.EDataType;
+import org.eclipse.emf.ecore.EAnnotation;
 
 /**
  * @author Eike Stepper
  */
-public class DataTypeDescriptor extends ClassifierDescriptor
+public class EAnnotationDescriptor extends EModelElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EDataType.class;
+    return EAnnotation.class;
   }
 
   @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  public void initElement(Object object, Element element)
   {
-    return null;
+    super.initElement(object, element);
+
+    EAnnotation eAnnotation = (EAnnotation)object;
+    element.setKeyAttribute(eAnnotation.getSource());
+    element.addReferences(true, eAnnotation.getDetails().entrySet());
   }
 }

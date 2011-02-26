@@ -11,17 +11,13 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
-
-import org.eclipse.net4j.util.collection.Pair;
 
 import org.eclipse.emf.ecore.EClassifier;
 
 /**
  * @author Eike Stepper
  */
-public class ClassifierDescriptor extends ElementDescriptor
+public class EClassifierDescriptor extends ENamedElementDescriptor
 {
   @Override
   public Class<?> getType()
@@ -32,14 +28,9 @@ public class ClassifierDescriptor extends ElementDescriptor
   @Override
   public void initElement(Object object, Element element)
   {
-    EClassifier eClassifier = (EClassifier)object;
-    element.setNameAttribute(eClassifier.getName());
-    element.setAttribute("instanceClassName", eClassifier.getInstanceClassName());
-  }
+    super.initElement(object, element);
 
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
+    EClassifier eClassifier = (EClassifier)object;
+    element.setAttribute("instanceClassName", eClassifier.getInstanceClassName());
   }
 }

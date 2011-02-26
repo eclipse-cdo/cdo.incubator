@@ -11,21 +11,18 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.util.collection.Pair;
-
-import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EEnumLiteral;
 
 /**
  * @author Eike Stepper
  */
-public class ReferenceDescriptor extends StructuralFeatureDescriptor
+public class EEnumLiteralDescriptor extends ENamedElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EReference.class;
+    return EEnumLiteral.class;
   }
 
   @Override
@@ -33,15 +30,9 @@ public class ReferenceDescriptor extends StructuralFeatureDescriptor
   {
     super.initElement(object, element);
 
-    EReference eReference = (EReference)object;
-    element.setAttribute("containment", eReference.isContainment());
-    element.setAttribute("container", eReference.isContainer());
-    element.addReference(false, eReference.getEOpposite());
-  }
+    EEnumLiteral eEnumLiteral = (EEnumLiteral)object;
+    element.setNameAttribute(eEnumLiteral.getName());
+    element.setAttribute("value", eEnumLiteral.getValue());
 
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
   }
 }

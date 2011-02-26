@@ -11,35 +11,27 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.util.collection.Pair;
-
-import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EOperation;
 
 /**
  * @author Eike Stepper
  */
-public class PackageDescriptor extends ElementDescriptor
+public class EOperationDescriptor extends ETypedElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EPackage.class;
+    return EOperation.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    EPackage ePackage = (EPackage)object;
-    element.setIDAttribute(ePackage.getNsURI());
-    element.addReferences(true, ePackage.getEClassifiers());
-  }
+    super.initElement(object, element);
 
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
+    EOperation eOperation = (EOperation)object;
+    element.addReferences(true, eOperation.getEParameters());
+    element.addReferences(false, eOperation.getEExceptions());
   }
 }

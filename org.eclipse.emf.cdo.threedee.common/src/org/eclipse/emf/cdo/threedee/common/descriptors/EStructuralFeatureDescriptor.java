@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 /**
  * @author Eike Stepper
  */
-public class StructuralFeatureDescriptor extends ElementDescriptor
+public class EStructuralFeatureDescriptor extends ETypedElementDescriptor
 {
   @Override
   public Class<?> getType()
@@ -32,19 +31,16 @@ public class StructuralFeatureDescriptor extends ElementDescriptor
   @Override
   public void initElement(Object object, Element element)
   {
+    super.initElement(object, element);
+
     EStructuralFeature eStructuralFeature = (EStructuralFeature)object;
     element.setIDAttribute(eStructuralFeature.getFeatureID());
     element.setNameAttribute(eStructuralFeature.getName());
-    element.setAttribute("lowerBound", eStructuralFeature.getLowerBound());
-    element.setAttribute("upperBound", eStructuralFeature.getUpperBound());
     element.setAttribute("changeable", eStructuralFeature.isChangeable());
     element.setAttribute("derived", eStructuralFeature.isDerived());
-    element.setAttribute("ordered", eStructuralFeature.isOrdered());
     element.setAttribute("transient", eStructuralFeature.isTransient());
-    element.setAttribute("unique", eStructuralFeature.isUnique());
     element.setAttribute("unsettable", eStructuralFeature.isUnsettable());
     element.setAttribute("volatile", eStructuralFeature.isVolatile());
-    element.addReference(false, eStructuralFeature.getEType());
   }
 
   @Override

@@ -11,40 +11,26 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
-import org.eclipse.emf.ecore.EPackage;
-
-import java.util.Collection;
+import org.eclipse.emf.ecore.ENamedElement;
 
 /**
  * @author Eike Stepper
  */
-public class GlobalPackageRegistryDescriptor extends ElementDescriptor
+public class ENamedElementDescriptor extends EModelElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EPackage.Registry.class;
-  }
-
-  @Override
-  public boolean matches(Object object)
-  {
-    return object == EPackage.Registry.INSTANCE;
+    return ENamedElement.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    EPackage.Registry packageRegistry = (EPackage.Registry)object;
-    Collection<Object> values = packageRegistry.values();
-    for (Object value : values)
-    {
-      if (value instanceof EPackage)
-      {
-        element.addReference(true, value);
-      }
-    }
+    super.initElement(object, element);
+
+    ENamedElement eNamedElement = (ENamedElement)object;
+    element.setNameAttribute(eNamedElement.getName());
   }
 }

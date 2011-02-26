@@ -11,35 +11,40 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
-import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.emf.ecore.EPackage;
 
-import org.eclipse.emf.ecore.EClass;
+import java.util.Collection;
 
 /**
  * @author Eike Stepper
  */
-public class ClassDescriptor extends ClassifierDescriptor
+public class EPackageRegistryDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EClass.class;
+    return EPackage.Registry.class;
+  }
+
+  @Override
+  public boolean matches(Object object)
+  {
+    return object == EPackage.Registry.INSTANCE;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    super.initElement(object, element);
-
-    EClass eClass = (EClass)object;
-    element.addReferences(true, eClass.getEStructuralFeatures());
-  }
-
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
+    EPackage.Registry packageRegistry = (EPackage.Registry)object;
+    Collection<Object> values = packageRegistry.values();
+    for (Object value : values)
+    {
+      if (value instanceof EPackage)
+      {
+        element.addReference(true, value);
+      }
+    }
   }
 }

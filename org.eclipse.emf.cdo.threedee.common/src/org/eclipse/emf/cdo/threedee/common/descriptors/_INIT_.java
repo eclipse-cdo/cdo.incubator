@@ -20,17 +20,24 @@ public class _INIT_
   public static void init(Registry registry)
   {
     registry.register(new ManagedContainerDescriptor());
+    registry.register(new MapEntryDescriptor());
 
-    registry.register(new GlobalPackageRegistryDescriptor());
-    registry.register(new PackageDescriptor());
-    registry.register(new ClassifierDescriptor());
-    registry.register(new DataTypeDescriptor());
-    registry.register(new EnumDescriptor());
-    registry.register(new EnumLiteralDescriptor());
-    registry.register(new ClassDescriptor());
-    registry.register(new StructuralFeatureDescriptor());
-    registry.register(new AttributeDescriptor());
-    registry.register(new ReferenceDescriptor());
+    registry.register(new EModelElementDescriptor());
+    registry.register(new ENamedElementDescriptor());
+    registry.register(new ETypedElementDescriptor());
+    registry.register(new EAnnotationDescriptor());
+    registry.register(new EPackageRegistryDescriptor());
+    registry.register(new EPackageDescriptor());
+    registry.register(new EClassifierDescriptor());
+    registry.register(new EDataTypeDescriptor());
+    registry.register(new EEnumDescriptor());
+    registry.register(new EEnumLiteralDescriptor());
+    registry.register(new EClassDescriptor());
+    registry.register(new EStructuralFeatureDescriptor());
+    registry.register(new EAttributeDescriptor());
+    registry.register(new EReferenceDescriptor());
+    registry.register(new EOperationDescriptor());
+    registry.register(new EParameterDescriptor());
 
     registry.register(new RepositoryDescriptor());
 

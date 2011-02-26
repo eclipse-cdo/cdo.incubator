@@ -11,36 +11,27 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.util.collection.Pair;
-
-import org.eclipse.emf.ecore.EEnumLiteral;
+import org.eclipse.emf.ecore.EEnum;
 
 /**
  * @author Eike Stepper
  */
-public class EnumLiteralDescriptor extends ElementDescriptor
+public class EEnumDescriptor extends EClassifierDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EEnumLiteral.class;
+    return EEnum.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    EEnumLiteral eEnumLiteral = (EEnumLiteral)object;
-    element.setNameAttribute(eEnumLiteral.getName());
-    element.setAttribute("value", eEnumLiteral.getValue());
+    super.initElement(object, element);
 
-  }
+    EEnum eEnum = (EEnum)object;
+    element.addReferences(true, eEnum.getELiterals());
 
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
   }
 }

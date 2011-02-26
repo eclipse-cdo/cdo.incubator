@@ -11,21 +11,18 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.util.collection.Pair;
-
-import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * @author Eike Stepper
  */
-public class AttributeDescriptor extends StructuralFeatureDescriptor
+public class EClassDescriptor extends EClassifierDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return EAttribute.class;
+    return EClass.class;
   }
 
   @Override
@@ -33,13 +30,9 @@ public class AttributeDescriptor extends StructuralFeatureDescriptor
   {
     super.initElement(object, element);
 
-    EAttribute eAttribute = (EAttribute)object;
-    element.setAttribute("defaultValue", eAttribute.getDefaultValueLiteral());
-  }
-
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
+    EClass eClass = (EClass)object;
+    element.addReferences(true, eClass.getEStructuralFeatures());
+    element.addReferences(true, eClass.getEOperations());
+    element.addReferences(false, eClass.getESuperTypes());
   }
 }

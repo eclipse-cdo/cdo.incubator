@@ -11,36 +11,35 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
-import org.eclipse.net4j.util.collection.Pair;
-
-import org.eclipse.emf.ecore.EEnum;
+import java.util.Map;
 
 /**
  * @author Eike Stepper
  */
-public class EnumDescriptor extends ClassifierDescriptor
+public class MapEntryDescriptor extends ElementDescriptor
 {
+  public static final String VALUE_ATTRIBUTE = "value";
+
   @Override
   public Class<?> getType()
   {
-    return EEnum.class;
+    return Map.Entry.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    super.initElement(object, element);
-
-    EEnum eEnum = (EEnum)object;
-    element.addReferences(true, eEnum.getELiterals());
-
+    Map.Entry<?, ?> mapEntry = (Map.Entry<?, ?>)object;
+    element.setKeyAttribute(mapEntry.getKey());
+    element.setAttribute(VALUE_ATTRIBUTE, mapEntry.getValue());
   }
 
   @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  public String getLabel(Element element)
   {
-    return null;
+    Map<String, String> attributes = element.getAttributes();
+    return attributes.get(Element.KEY_ATTRIBUTE) + " = " + attributes.get(VALUE_ATTRIBUTE);
   }
 }
