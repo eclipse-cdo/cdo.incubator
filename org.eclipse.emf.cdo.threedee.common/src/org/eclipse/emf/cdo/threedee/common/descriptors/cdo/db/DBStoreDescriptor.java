@@ -11,11 +11,9 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
 
 import org.eclipse.emf.cdo.server.db.IDBStore;
+import org.eclipse.emf.cdo.server.db.mapping.IMappingStrategy;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.StoreDescriptor;
-
-import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
@@ -29,21 +27,23 @@ public class DBStoreDescriptor extends StoreDescriptor
   }
 
   @Override
+  @SuppressWarnings("restriction")
   public void initElement(Object object, Element element)
   {
     super.initElement(object, element);
 
     IDBStore store = (IDBStore)object;
+    IMappingStrategy mappingStrategy = store.getMappingStrategy();
+    if (mappingStrategy instanceof org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.HorizontalMappingStrategy)
+    {
+      mappingStrategy = ((org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.HorizontalMappingStrategy)mappingStrategy)
+          .getDelegate();
+
+    }
     element.addReference(true, store.getDBAdapter());
     element.addReference(true, store.getDBSchema());
     element.addReference(true, store.getIDHandler());
-    element.addReference(true, store.getMappingStrategy());
+    element.addReference(true, mappingStrategy);
     element.addReference(true, store.getMetaDataManager());
-  }
-
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
   }
 }

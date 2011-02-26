@@ -10,25 +10,25 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
 
-import org.eclipse.emf.cdo.server.db.mapping.IMappingStrategy;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
+@SuppressWarnings("restriction")
 public class MappingStrategyDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return IMappingStrategy.class;
+    return org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    IMappingStrategy mappingStrategy = (IMappingStrategy)object;
+    org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy mappingStrategy = (org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy)object;
     element.setAttributes(mappingStrategy.getProperties());
     element.addReference(true, mappingStrategy.getClassMappings(false).values());
   }

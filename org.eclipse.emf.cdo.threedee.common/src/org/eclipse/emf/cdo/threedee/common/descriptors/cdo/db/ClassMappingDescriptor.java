@@ -13,9 +13,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
 import org.eclipse.emf.cdo.server.db.mapping.IClassMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
-
-import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
@@ -37,11 +34,5 @@ public class ClassMappingDescriptor extends ElementDescriptor
     element.addReference(false, classMapping.getDBTables());
     element.addReference(true, classMapping.getValueMappings());
     element.addReference(true, classMapping.getListMappings());
-  }
-
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
   }
 }
