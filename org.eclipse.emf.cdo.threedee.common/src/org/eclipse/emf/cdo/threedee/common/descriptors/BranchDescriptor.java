@@ -20,16 +20,16 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class BranchDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalCDOBranch;
+    return InternalCDOBranch.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
     InternalCDOBranch branch = (InternalCDOBranch)object;
-    element.setIDAttribute(Integer.toString(branch.getID()));
+    element.setIDAttribute(branch.getID());
 
     if (!branch.isProxy())
     {

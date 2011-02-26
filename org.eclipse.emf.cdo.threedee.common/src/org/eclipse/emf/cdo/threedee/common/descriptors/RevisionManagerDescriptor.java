@@ -23,9 +23,9 @@ import org.eclipse.net4j.util.collection.Pair;
 public class RevisionManagerDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalCDORevisionManager;
+    return InternalCDORevisionManager.class;
   }
 
   @Override

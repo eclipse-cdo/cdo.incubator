@@ -20,9 +20,9 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class PackageInfoDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof CDOPackageInfo;
+    return CDOPackageInfo.class;
   }
 
   @Override
@@ -30,6 +30,6 @@ public class PackageInfoDescriptor extends ElementDescriptor
   {
     CDOPackageInfo packageInfo = (CDOPackageInfo)object;
     element.setIDAttribute(packageInfo.getPackageURI());
-    element.addReference(true, packageInfo.getEPackage(false));
+    element.addReference(false, packageInfo.getEPackage(false));
   }
 }

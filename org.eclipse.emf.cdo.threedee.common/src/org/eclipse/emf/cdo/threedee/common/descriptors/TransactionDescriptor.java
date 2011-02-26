@@ -10,25 +10,16 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.model.CDOPackageRegistry;
-import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.spi.server.InternalTransaction;
 
 /**
  * @author Eike Stepper
  */
-public class PackageRegistryDescriptor extends ElementDescriptor
+public class TransactionDescriptor extends ViewDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return CDOPackageRegistry.class;
-  }
-
-  @Override
-  public void initElement(Object object, Element element)
-  {
-    CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
-    element.addReferences(true, packageRegistry.getPackageUnits());
+    return InternalTransaction.class;
   }
 }

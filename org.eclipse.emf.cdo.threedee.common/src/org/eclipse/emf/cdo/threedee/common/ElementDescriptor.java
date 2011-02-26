@@ -6,12 +6,16 @@ import org.eclipse.emf.cdo.threedee.common.descriptors._INIT_;
 
 import org.eclipse.net4j.util.collection.Pair;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * @author Eike Stepper
  */
-public abstract class ElementDescriptor
+public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 {
   private String name;
 
@@ -27,7 +31,36 @@ public abstract class ElementDescriptor
     name = strip(name, "Descriptor");
   }
 
+  public abstract Class<?> getType();
+
+  public int compareTo(ElementDescriptor d2)
+  {
+    Class<?> t1 = getType();
+    Class<?> t2 = d2.getType();
+
+    boolean a = t1.isAssignableFrom(t2);
+    boolean b = t2.isAssignableFrom(t1);
+
+    if (a && !b)
+    {
+      return 1;
+    }
+
+    if (b && !a)
+    {
+      return -1;
+    }
+
+    return t1.getName().compareTo(t2.getName());
+  }
+
   public String getName()
+  {
+    return name;
+  }
+
+  @Override
+  public String toString()
   {
     return name;
   }
@@ -55,7 +88,10 @@ public abstract class ElementDescriptor
     return name + " " + label;
   }
 
-  public abstract boolean matches(Object object);
+  public boolean matches(Object object)
+  {
+    return getType().isInstance(object);
+  }
 
   public abstract void initElement(Object object, Element element);
 
@@ -97,9 +133,30 @@ public abstract class ElementDescriptor
 
     private static final long serialVersionUID = 1L;
 
+    private List<ElementDescriptor> values;
+
     public void register(ElementDescriptor descriptor)
     {
       put(descriptor.getName(), descriptor);
+    }
+
+    @Override
+    public ElementDescriptor put(String key, ElementDescriptor value)
+    {
+      values = null;
+      return super.put(key, value);
+    }
+
+    @Override
+    public Collection<ElementDescriptor> values()
+    {
+      if (values == null)
+      {
+        values = new ArrayList<ElementDescriptor>(super.values());
+        Collections.sort(values);
+      }
+
+      return values;
     }
 
     public ElementDescriptor match(Object object)

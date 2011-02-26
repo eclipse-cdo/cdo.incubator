@@ -145,30 +145,30 @@ public final class Element extends Container<Element> implements IListener
     return references;
   }
 
-  public void setAttribute(String key, String value)
+  public void setAttribute(String key, Object value)
   {
     if (key != null && value != null)
     {
-      attributes.put(key, value);
+      attributes.put(key, String.valueOf(value));
     }
   }
 
-  public void setIDAttribute(String value)
+  public void setIDAttribute(Object value)
   {
     setAttribute(ID_ATTRIBUTE, value);
   }
 
-  public void setKeyAttribute(String value)
+  public void setKeyAttribute(Object value)
   {
     setAttribute(KEY_ATTRIBUTE, value);
   }
 
-  public void setNameAttribute(String value)
+  public void setNameAttribute(Object value)
   {
     setAttribute(NAME_ATTRIBUTE, value);
   }
 
-  public void setLabelAttribute(String value)
+  public void setLabelAttribute(Object value)
   {
     setAttribute(LABEL_ATTRIBUTE, value);
   }

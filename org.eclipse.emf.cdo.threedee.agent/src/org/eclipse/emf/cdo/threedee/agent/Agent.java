@@ -47,6 +47,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private Agent()
   {
+    setActivationTimeout(60 * 1000);
   }
 
   public String getServer()

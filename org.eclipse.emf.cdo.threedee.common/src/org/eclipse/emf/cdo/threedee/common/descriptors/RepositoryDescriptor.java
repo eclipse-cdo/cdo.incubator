@@ -23,9 +23,9 @@ import org.eclipse.net4j.util.collection.Pair;
 public class RepositoryDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalRepository;
+    return InternalRepository.class;
   }
 
   @Override

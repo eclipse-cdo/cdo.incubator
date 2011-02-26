@@ -20,9 +20,9 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class SessionManagerDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalSessionManager;
+    return InternalSessionManager.class;
   }
 
   @Override

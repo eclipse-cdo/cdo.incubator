@@ -10,25 +10,38 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.model.CDOPackageRegistry;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
+
+import org.eclipse.emf.ecore.EReference;
 
 /**
  * @author Eike Stepper
  */
-public class PackageRegistryDescriptor extends ElementDescriptor
+public class ReferenceDescriptor extends StructuralFeatureDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return CDOPackageRegistry.class;
+    return EReference.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
-    element.addReferences(true, packageRegistry.getPackageUnits());
+    super.initElement(object, element);
+
+    EReference eReference = (EReference)object;
+    element.setAttribute("containment", eReference.isContainment());
+    element.setAttribute("container", eReference.isContainer());
+    element.addReference(false, eReference.getEOpposite());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

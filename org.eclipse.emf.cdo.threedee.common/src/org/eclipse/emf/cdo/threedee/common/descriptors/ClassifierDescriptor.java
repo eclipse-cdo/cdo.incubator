@@ -10,25 +10,36 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.model.CDOPackageRegistry;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
+
+import org.eclipse.emf.ecore.EClassifier;
 
 /**
  * @author Eike Stepper
  */
-public class PackageRegistryDescriptor extends ElementDescriptor
+public class ClassifierDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return CDOPackageRegistry.class;
+    return EClassifier.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
-    element.addReferences(true, packageRegistry.getPackageUnits());
+    EClassifier eClassifier = (EClassifier)object;
+    element.setNameAttribute(eClassifier.getName());
+    element.setAttribute("instanceClassName", eClassifier.getInstanceClassName());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

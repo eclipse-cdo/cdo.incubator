@@ -23,9 +23,9 @@ import java.util.List;
 public class RevisionCacheDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalCDORevisionCache;
+    return InternalCDORevisionCache.class;
   }
 
   @Override

@@ -21,16 +21,16 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class ViewDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalView;
+    return InternalView.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
     InternalView view = (InternalView)object;
-    element.setIDAttribute(Integer.toString(view.getViewID()));
+    element.setIDAttribute(view.getViewID());
     element.addReference(false, view.getBranch());
     element.setAttribute("timeStamp", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));
   }

@@ -16,14 +16,14 @@ package org.eclipse.emf.cdo.threedee.agent;
 public aspect Aspect
 {
   pointcut publicMethods() :
-    !execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.getBranches(boolean)) &&
-    !execution(public * org.eclipse.emf.cdo.common.model.CDOPackageInfo.getEPackage(boolean)) &&
     !execution(public * *.get*()) &&
     !execution(public * *.is*()) &&
     !execution(public String *.toString()) &&
     !execution(public boolean *.equals(Object)) &&
     !execution(public int *.hashCode()) &&
     (
+      execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.*(..)) && !execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.values()) ||
+
       execution(public * org.eclipse.net4j.util.container.ManagedContainer.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
@@ -40,7 +40,7 @@ public aspect Aspect
       execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStoreChunkReader.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.getBranches(boolean)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionManagerImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionCacheImpl.*(..)) ||
@@ -50,7 +50,7 @@ public aspect Aspect
 
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.common.model.CDOPackageInfo.getEPackage(boolean)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..))
     );
 

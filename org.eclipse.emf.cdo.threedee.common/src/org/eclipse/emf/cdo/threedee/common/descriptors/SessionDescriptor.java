@@ -20,16 +20,16 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class SessionDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof InternalSession;
+    return InternalSession.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
     InternalSession session = (InternalSession)object;
-    element.setIDAttribute(Integer.toString(session.getSessionID()));
+    element.setIDAttribute(session.getSessionID());
     element.setAttribute("user", session.getUserID());
     element.addReferences(true, session.getViews());
   }

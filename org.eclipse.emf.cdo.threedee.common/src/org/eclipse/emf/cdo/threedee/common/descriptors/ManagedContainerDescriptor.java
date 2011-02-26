@@ -15,21 +15,24 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.net4j.util.container.IManagedContainer;
 
+import org.eclipse.emf.ecore.EPackage;
+
 /**
  * @author Eike Stepper
  */
 public class ManagedContainerDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof IManagedContainer;
+    return IManagedContainer.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
     IManagedContainer container = (IManagedContainer)object;
+    element.addReference(true, EPackage.Registry.INSTANCE);
     element.addReferences(true, container.getElements());
   }
 }

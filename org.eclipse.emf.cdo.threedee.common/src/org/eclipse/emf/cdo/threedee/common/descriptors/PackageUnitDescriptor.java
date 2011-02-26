@@ -23,9 +23,9 @@ import org.eclipse.net4j.util.collection.Pair;
 public class PackageUnitDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof CDOPackageUnit;
+    return CDOPackageUnit.class;
   }
 
   @Override
@@ -33,7 +33,7 @@ public class PackageUnitDescriptor extends ElementDescriptor
   {
     CDOPackageUnit packageUnit = (CDOPackageUnit)object;
     element.setIDAttribute(packageUnit.getID());
-    element.setAttribute("type", packageUnit.getOriginalType().toString());
+    element.setAttribute("type", packageUnit.getOriginalType());
     element.addReferences(true, packageUnit.getPackageInfos());
   }
 

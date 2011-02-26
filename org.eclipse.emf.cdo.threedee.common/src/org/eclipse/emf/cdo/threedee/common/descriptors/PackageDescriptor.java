@@ -24,9 +24,9 @@ import org.eclipse.emf.ecore.EPackage;
 public class PackageDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof EPackage;
+    return EPackage.class;
   }
 
   @Override

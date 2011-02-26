@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -21,19 +20,20 @@ import org.eclipse.emf.ecore.EClass;
 /**
  * @author Eike Stepper
  */
-public class ClassDescriptor extends ElementDescriptor
+public class ClassDescriptor extends ClassifierDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof EClass;
+    return EClass.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
+    super.initElement(object, element);
+
     EClass eClass = (EClass)object;
-    element.setNameAttribute(eClass.getName());
     element.addReferences(true, eClass.getEStructuralFeatures());
   }
 

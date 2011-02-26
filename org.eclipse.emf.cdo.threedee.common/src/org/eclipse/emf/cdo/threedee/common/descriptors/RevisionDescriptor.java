@@ -23,16 +23,16 @@ import org.eclipse.net4j.util.collection.Pair;
 public class RevisionDescriptor extends ElementDescriptor
 {
   @Override
-  public boolean matches(Object object)
+  public Class<?> getType()
   {
-    return object instanceof CDORevision;
+    return CDORevision.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
     CDORevision revision = (CDORevision)object;
-    element.setKeyAttribute(revision.toString());
+    element.setKeyAttribute(revision);
   }
 
   @Override

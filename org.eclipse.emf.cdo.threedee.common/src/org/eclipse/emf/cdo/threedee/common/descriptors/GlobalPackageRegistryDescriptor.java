@@ -10,25 +10,41 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
-import org.eclipse.emf.cdo.common.model.CDOPackageRegistry;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+
+import org.eclipse.emf.ecore.EPackage;
+
+import java.util.Collection;
 
 /**
  * @author Eike Stepper
  */
-public class PackageRegistryDescriptor extends ElementDescriptor
+public class GlobalPackageRegistryDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return CDOPackageRegistry.class;
+    return EPackage.Registry.class;
+  }
+
+  @Override
+  public boolean matches(Object object)
+  {
+    return object == EPackage.Registry.INSTANCE;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
-    element.addReferences(true, packageRegistry.getPackageUnits());
+    EPackage.Registry packageRegistry = (EPackage.Registry)object;
+    Collection<Object> values = packageRegistry.values();
+    for (Object value : values)
+    {
+      if (value instanceof EPackage)
+      {
+        element.addReference(true, value);
+      }
+    }
   }
 }
