@@ -42,10 +42,4 @@ public class EStructuralFeatureDescriptor extends ETypedElementDescriptor
     element.setAttribute("unsettable", eStructuralFeature.isUnsettable());
     element.setAttribute("volatile", eStructuralFeature.isVolatile());
   }
-
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
-  }
 }
