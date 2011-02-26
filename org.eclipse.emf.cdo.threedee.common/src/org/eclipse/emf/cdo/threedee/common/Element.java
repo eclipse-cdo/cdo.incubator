@@ -145,11 +145,30 @@ public final class Element extends Container<Element> implements IListener
     return references;
   }
 
+  public void setAttributes(Map<?, ?> map)
+  {
+    for (Entry<?, ?> entry : map.entrySet())
+    {
+      Object key = entry.getKey();
+      if (key != null)
+      {
+        setAttribute(String.valueOf(key), entry.getValue());
+      }
+    }
+  }
+
   public void setAttribute(String key, Object value)
   {
-    if (key != null && value != null)
+    if (key != null)
     {
-      attributes.put(key, String.valueOf(value));
+      if (value != null)
+      {
+        attributes.put(key, String.valueOf(value));
+      }
+      else
+      {
+        attributes.remove(key);
+      }
     }
   }
 

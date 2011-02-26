@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
+import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
 import org.eclipse.emf.cdo.spi.server.InternalRepository;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
@@ -32,7 +33,18 @@ public class RepositoryDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element)
   {
     InternalRepository repository = (InternalRepository)object;
+    element.setIDAttribute(repository.getUUID());
     element.setNameAttribute(repository.getName());
+    element.setAttribute("creationTime", CDOCommonUtil.formatTimeStamp(repository.getCreationTime()));
+    element.setAttribute("objectIDTypes", repository.getObjectIDTypes());
+    element.setAttribute("rootResourceID", repository.getRootResourceID());
+    element.setAttribute("type", repository.getType());
+    element.setAttribute("storeType", repository.getStoreType());
+    element.setAttribute("state", repository.getState());
+    element.setAttribute("supportingAudits", repository.isSupportingAudits());
+    element.setAttribute("supportingBranches", repository.isSupportingBranches());
+    element.setAttribute("supportingEcore", repository.isSupportingEcore());
+    element.setAttribute("referentialIntegrity", repository.isEnsuringReferentialIntegrity());
     element.addReferences(true, repository.getElements());
   }
 

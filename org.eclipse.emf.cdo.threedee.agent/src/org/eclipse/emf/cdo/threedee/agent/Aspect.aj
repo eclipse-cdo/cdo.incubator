@@ -54,6 +54,19 @@ public aspect Aspect
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.doGetEPackage(boolean)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..)) ||
 
+      execution(public * org.eclipse.emf.cdo.spi.server.Store.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.server.internal.db.DBStore.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.AbstractHorizontalClassMapping.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.server.internal.db.MetaDataManager.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.server.db.mapping.AbstractTypeMapping.*(..)) ||
+
+      execution(public * org.eclipse.net4j.spi.db.DBAdapter.*(..)) ||
+      execution(public * org.eclipse.net4j.spi.db.DBSchema.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.db.ddl.DBField.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.db.ddl.DBIndex.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.db.ddl.DBTable.*(..)) ||
+
       execution(public * org.eclipse.spi.net4j.Acceptor.*(..)) ||
       execution(public * org.eclipse.spi.net4j.Channel.*(..)) ||
       execution(public * org.eclipse.spi.net4j.ChannelMultiplexer.*(..)) ||

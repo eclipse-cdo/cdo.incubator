@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db._INIT_CDO_DB_;
 
 /**
  * @author Eike Stepper
@@ -19,6 +20,8 @@ public class _INIT_CDO_
 {
   public static void init(Registry registry)
   {
+    _INIT_CDO_DB_.init(registry);
+
     registry.register(new BranchDescriptor());
     registry.register(new BranchManagerDescriptor());
     registry.register(new PackageInfoDescriptor());
@@ -30,6 +33,7 @@ public class _INIT_CDO_
     registry.register(new RevisionManagerDescriptor());
     registry.register(new SessionDescriptor());
     registry.register(new SessionManagerDescriptor());
+    registry.register(new StoreDescriptor());
     registry.register(new TransactionDescriptor());
     registry.register(new ViewDescriptor());
   }
