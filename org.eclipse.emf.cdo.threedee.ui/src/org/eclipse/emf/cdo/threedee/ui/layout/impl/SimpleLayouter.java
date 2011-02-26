@@ -10,7 +10,10 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.layout.impl;
 
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layout.ILayouter;
+
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import javax.media.j3d.Bounds;
 import javax.media.j3d.Node;
@@ -26,6 +29,8 @@ import java.util.List;
  */
 public class SimpleLayouter implements ILayouter
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, SimpleLayouter.class);
+
   private List<Node> nodes = new ArrayList<Node>();
 
   private static final float moveDistance = .3f;
@@ -87,9 +92,13 @@ public class SimpleLayouter implements ILayouter
 
     float[] flo = new float[3];
     locationVec.get(flo);
-    System.out.print(flo[0] + " ");
-    System.out.print(flo[1] + " ");
-    System.out.println(flo[2]);
+    if (TRACER.isEnabled())
+    {
+      //      TRACER.format("Register: {0}", object); //$NON-NLS-1$
+      // System.out.print(flo[0] + " ");
+      // System.out.print(flo[1] + " ");
+      // System.out.println(flo[2]);
+    }
 
     return locationVec;
   }

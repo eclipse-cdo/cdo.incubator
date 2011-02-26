@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
+import org.eclipse.emf.cdo.threedee.agent.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
@@ -23,6 +24,7 @@ import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -33,6 +35,8 @@ import java.util.Map;
 public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 {
   public static final Agent INSTANCE = new Agent();
+
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, Agent.class);
 
   private String server;
 
@@ -177,8 +181,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     Element sourceElement = getElement(sourceObject, false);
     if (sourceElement != null && sourceElement != targetElement)
     {
-      System.err.println(when.toString() + ": " + (sourceObject == null ? "" : sourceObject.getClass().getName())
-          + " --> " + targetObject.getClass().getName() + "." + signature + "()");
+      if (TRACER.isEnabled())
+      {
+        TRACER.trace(when.toString() + ": " + (sourceObject == null ? "" : sourceObject.getClass().getName()) + " --> "
+            + targetObject.getClass().getName() + "." + signature + "()");
+      }
 
       ElementEvent.Call event = descriptor.createCallEvent(sourceElement, targetElement, when);
       if (event != null)
@@ -192,7 +199,10 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
       if (pair != null)
       {
-        System.err.println("CHANGED " + targetObject.getClass().getName() + "." + signature + "()");
+        if (TRACER.isEnabled())
+        {
+          TRACER.trace("CHANGED " + targetObject.getClass().getName() + "." + signature + "()");
+        }
 
         ElementEvent.Change event = pair.getElement1();
         Element newElement = pair.getElement2();

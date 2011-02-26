@@ -10,8 +10,11 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.composites;
 
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layout.ILayouter;
 import org.eclipse.emf.cdo.threedee.ui.layout.impl.SimpleLayouter;
+
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
@@ -47,6 +50,8 @@ import java.awt.GraphicsConfiguration;
  */
 public class ThreeDeeWorldComposite extends Composite
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldComposite.class);
+
   private SimpleUniverse universe;
 
   private BranchGroup scene;
@@ -141,7 +146,10 @@ public class ThreeDeeWorldComposite extends Composite
     t3d.setTranslation(vector);
     transformGroup.setTransform(t3d);
 
-    System.out.println("Bounds: " + node.getBounds());
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
+    }
   }
 
   // private Vector3f calculateTranslationVector()

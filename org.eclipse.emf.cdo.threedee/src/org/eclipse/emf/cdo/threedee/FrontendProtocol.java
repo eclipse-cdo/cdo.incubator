@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
+import org.eclipse.emf.cdo.threedee.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
@@ -19,6 +20,7 @@ import org.eclipse.net4j.signal.SignalProtocol;
 import org.eclipse.net4j.signal.SignalReactor;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import org.eclipse.spi.net4j.ServerProtocolFactory;
 
@@ -27,6 +29,8 @@ import org.eclipse.spi.net4j.ServerProtocolFactory;
  */
 public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDeeProtocol
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, FrontendProtocol.class);
+
   public FrontendProtocol()
   {
     super(PROTOCOL_NAME);
@@ -68,7 +72,11 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
           byte type = in.readByte();
           ElementEvent event = ElementEvent.read(in, session, type);
 
-          System.err.println("RECEIVE EVENT " + agentSequenceNumber + ": " + event);
+          if (TRACER.isEnabled())
+          {
+            TRACER.trace("RECEIVE EVENT " + agentSequenceNumber + ": " + event);
+          }
+
           session.handleEvent(agentSequenceNumber, event);
         }
       };

@@ -1,5 +1,6 @@
 package org.eclipse.emf.cdo.threedee;
 
+import org.eclipse.emf.cdo.threedee.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
@@ -8,6 +9,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Creation;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.net4j.util.container.Container;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,6 +19,8 @@ import java.util.Map;
  */
 public class Session extends Container<Element> implements ElementProvider
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, Session.class);
+
   private FrontendProtocol protocol;
 
   private int id;
@@ -90,7 +94,12 @@ public class Session extends Container<Element> implements ElementProvider
       ElementEvent elementEvent;
       while ((elementEvent = outOfSequence.remove(sequenceNumber + 1)) != null)
       {
-        System.err.println("HANDLE EVENT " + ++sequenceNumber + ": " + event);
+        ++sequenceNumber;
+        if (TRACER.isEnabled())
+        {
+          TRACER.trace("HANDLE EVENT " + sequenceNumber + ": " + event);
+        }
+
         handleEvent(elementEvent);
       }
     }

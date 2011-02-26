@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
+import org.eclipse.emf.cdo.threedee.agent.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
@@ -21,6 +22,7 @@ import org.eclipse.net4j.signal.SignalReactor;
 import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
+import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,6 +31,8 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProtocol
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, AgentProtocol.class);
+
   private AtomicInteger sequenceNumber = new AtomicInteger();
 
   public AgentProtocol(Agent agent, IConnector connector)
@@ -72,7 +76,10 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
         protected void requesting(ExtendedDataOutputStream out) throws Exception
         {
           int agentSequenceNumber = sequenceNumber.incrementAndGet();
-          System.err.println("SEND EVENT " + agentSequenceNumber + ": " + event);
+          if (TRACER.isEnabled())
+          {
+            TRACER.trace("SEND EVENT " + agentSequenceNumber + ": " + event);
+          }
 
           out.writeInt(agentSequenceNumber);
           out.writeByte(event.getType());
