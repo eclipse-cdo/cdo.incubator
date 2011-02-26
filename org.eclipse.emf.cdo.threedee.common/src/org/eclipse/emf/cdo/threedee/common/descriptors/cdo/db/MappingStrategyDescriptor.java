@@ -37,7 +37,7 @@ public class MappingStrategyDescriptor extends ElementDescriptor
     = (org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy)object;
     element.setAttributes(mappingStrategy.getProperties());
 
-    Map<EClass, IClassMapping> classMappings = mappingStrategy.getClassMappings(false);
-    element.addReference(true, classMappings.values());
+    Map<EClass, IClassMapping> classMappings = mappingStrategy.doGetClassMappings(false);
+    element.addReferences(true, classMappings.values());
   }
 }

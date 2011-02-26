@@ -57,7 +57,7 @@ public aspect Aspect
       execution(public * org.eclipse.emf.cdo.spi.server.Store.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.internal.db.DBStore.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.AbstractHorizontalClassMapping.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.*(..)) ||
+      execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.*(..)) && !execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.doGetClassMappings(boolean)) ||
       execution(public * org.eclipse.emf.cdo.server.internal.db.MetaDataManager.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.db.mapping.AbstractTypeMapping.*(..)) ||
 

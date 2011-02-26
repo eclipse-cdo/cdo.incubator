@@ -31,7 +31,7 @@ public class DBTableDescriptor extends ElementDescriptor
   {
     IDBTable table = (IDBTable)object;
     element.setNameAttribute(table.getName());
-    element.addReference(true, table.getFields());
-    element.addReference(true, table.getIndices());
+    element.addReferences(true, table.getFields());
+    element.addReferences(true, table.getIndices());
   }
 }

@@ -31,6 +31,6 @@ public class DBSchemaDescriptor extends ElementDescriptor
   {
     IDBSchema schema = (IDBSchema)object;
     element.setNameAttribute(schema.getName());
-    element.addReference(true, schema.getTables());
+    element.addReferences(true, schema.getTables());
   }
 }

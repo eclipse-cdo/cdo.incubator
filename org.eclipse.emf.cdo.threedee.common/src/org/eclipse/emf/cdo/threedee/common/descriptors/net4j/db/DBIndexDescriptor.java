@@ -32,6 +32,6 @@ public class DBIndexDescriptor extends ElementDescriptor
     IDBIndex index = (IDBIndex)object;
     element.setNameAttribute(index.getName());
     element.setAttribute("type", index.getType());
-    element.addReference(false, index.getFields());
+    element.addReferences(false, index.getFields());
   }
 }
