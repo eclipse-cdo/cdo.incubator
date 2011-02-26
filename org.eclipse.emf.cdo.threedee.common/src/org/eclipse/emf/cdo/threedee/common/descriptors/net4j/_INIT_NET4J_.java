@@ -8,25 +8,24 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
-import org.eclipse.emf.cdo.threedee.common.descriptors.cdo._INIT_CDO_;
-import org.eclipse.emf.cdo.threedee.common.descriptors.emf._INIT_EMF_;
-import org.eclipse.emf.cdo.threedee.common.descriptors.net4j._INIT_NET4J_;
 
 /**
  * @author Eike Stepper
  */
-public class _INIT_
+public class _INIT_NET4J_
 {
   public static void init(Registry registry)
   {
-    _INIT_NET4J_.init(registry);
-    _INIT_EMF_.init(registry);
-    _INIT_CDO_.init(registry);
-
-    registry.register(new ManagedContainerDescriptor());
-    registry.register(new MapEntryDescriptor());
+    registry.register(new AcceptorDescriptor());
+    registry.register(new ChannelDescriptor());
+    registry.register(new ChannelMultiplexerDescriptor());
+    registry.register(new ConnectorDescriptor());
+    registry.register(new ProtocolDescriptor());
+    registry.register(new TCPAcceptorDescriptor());
+    registry.register(new TCPConnectorDescriptor());
+    registry.register(new TCPSelectorDescriptor());
   }
 }

@@ -16,6 +16,7 @@ package org.eclipse.emf.cdo.threedee.agent;
 public aspect Aspect
 {
   pointcut publicMethods() :
+    !execution(* org.eclipse.net4j.buffer.IBufferProvider.*(..)) &&
     !execution(public * *.get*()) &&
     !execution(public * *.is*()) &&
     !execution(public String *.toString()) &&
@@ -51,7 +52,16 @@ public aspect Aspect
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.doGetEPackage(boolean)) ||
-      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..))
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..)) ||
+
+      execution(public * org.eclipse.spi.net4j.Acceptor.*(..)) ||
+      execution(public * org.eclipse.spi.net4j.Channel.*(..)) ||
+      execution(public * org.eclipse.spi.net4j.ChannelMultiplexer.*(..)) ||
+      execution(public * org.eclipse.spi.net4j.Connector.*(..)) ||
+      execution(public * org.eclipse.spi.net4j.Protocol.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.tcp.TCPAcceptor.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.tcp.TCPConnector.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.tcp.TCPSelector.*(..))
     );
 
   before(Object target) : publicMethods() && target(target)
