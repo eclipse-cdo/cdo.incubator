@@ -22,12 +22,14 @@ import org.eclipse.net4j.util.WrappedException;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * @author Eike Stepper
  */
 public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProtocol
 {
-  private int sequenceNumber;
+  private AtomicInteger sequenceNumber = new AtomicInteger();
 
   public AgentProtocol(Agent agent, IConnector connector)
   {
@@ -40,7 +42,7 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
   {
     try
     {
-      return new RequestWithConfirmation<Integer>(this, SIGNAL_OPEN_SESSION)
+      return new RequestWithConfirmation<Integer>(this, SIGNAL_OPEN_SESSION, "SIGNAL_OPEN_SESSION")
       {
         @Override
         protected void requesting(ExtendedDataOutputStream out) throws Exception
@@ -64,12 +66,15 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
   {
     try
     {
-      new Request(this, SIGNAL_SEND_EVENT)
+      new Request(this, SIGNAL_SEND_EVENT, "SIGNAL_SEND_EVENT")
       {
         @Override
         protected void requesting(ExtendedDataOutputStream out) throws Exception
         {
-          out.writeInt(++sequenceNumber);
+          int agentSequenceNumber = sequenceNumber.incrementAndGet();
+          System.err.println("SEND EVENT " + agentSequenceNumber + ": " + event);
+
+          out.writeInt(agentSequenceNumber);
           out.writeByte(event.getType());
           event.write(out);
         }

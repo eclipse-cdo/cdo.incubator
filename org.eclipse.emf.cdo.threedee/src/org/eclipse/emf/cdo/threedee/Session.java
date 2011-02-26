@@ -83,23 +83,21 @@ public class Session extends Container<Element> implements ElementProvider
 
   public void handleEvent(int agentSequenceNumber, ElementEvent event)
   {
-    if (agentSequenceNumber > sequenceNumber)
+    synchronized (outOfSequence)
     {
       outOfSequence.put(agentSequenceNumber, event);
-    }
 
-    ElementEvent elementEvent;
-    while ((elementEvent = outOfSequence.remove(sequenceNumber + 1)) != null)
-    {
-      handleEvent(elementEvent);
-      ++sequenceNumber;
+      ElementEvent elementEvent;
+      while ((elementEvent = outOfSequence.remove(sequenceNumber + 1)) != null)
+      {
+        System.err.println("HANDLE EVENT " + ++sequenceNumber + ": " + event);
+        handleEvent(elementEvent);
+      }
     }
   }
 
   private void handleEvent(ElementEvent event)
   {
-    System.err.println("EVENT: " + event);
-
     switch (event.getType())
     {
     case Creation.TYPE:

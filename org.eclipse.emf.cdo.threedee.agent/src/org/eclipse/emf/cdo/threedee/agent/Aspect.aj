@@ -17,6 +17,7 @@ public aspect Aspect
 {
   pointcut publicMethods() :
     !execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.getBranches(boolean)) &&
+    !execution(public * org.eclipse.emf.cdo.common.model.CDOPackageInfo.getEPackage(boolean)) &&
     !execution(public * *.get*()) &&
     !execution(public * *.is*()) &&
     !execution(public String *.toString()) &&

@@ -38,7 +38,7 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
     switch (signalID)
     {
     case SIGNAL_OPEN_SESSION:
-      return new IndicationWithResponse(this, SIGNAL_OPEN_SESSION)
+      return new IndicationWithResponse(this, SIGNAL_OPEN_SESSION, "SIGNAL_OPEN_SESSION")
       {
         private int id;
 
@@ -58,7 +58,7 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
       };
 
     case SIGNAL_SEND_EVENT:
-      return new Indication(this, SIGNAL_SEND_EVENT)
+      return new Indication(this, SIGNAL_SEND_EVENT, "SIGNAL_SEND_EVENT")
       {
         @Override
         protected void indicating(ExtendedDataInputStream in) throws Exception
@@ -67,6 +67,8 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
           int agentSequenceNumber = in.readInt();
           byte type = in.readByte();
           ElementEvent event = ElementEvent.read(in, session, type);
+
+          System.err.println("RECEIVE EVENT " + agentSequenceNumber + ": " + event);
           session.handleEvent(agentSequenceNumber, event);
         }
       };
