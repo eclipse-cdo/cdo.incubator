@@ -113,6 +113,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     return element;
   }
 
+  @SuppressWarnings("unused")
   private void removeElement(Object object)
   {
     Element element;

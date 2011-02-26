@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
@@ -14,9 +14,9 @@ import org.eclipse.emf.cdo.threedee.Frontend;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.viewers.ThreeDeeWorldViewer;
 
-import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;
+import org.eclipse.net4j.util.event.EventUtil;
 import org.eclipse.net4j.util.event.IEvent;
 import org.eclipse.net4j.util.event.IListener;
 
@@ -40,45 +40,41 @@ public class ThreeDeeWorldView extends ViewPart
   public void createPartControl(Composite parent)
   {
     viewer = new ThreeDeeWorldViewer(parent);
-
     addFrontendListener();
   }
 
   private void addFrontendListener()
   {
-    final IListener listener = new ContainerEventAdapter<Container<?>>()
+    final IListener listener = new ContainerEventAdapter<Object>()
     {
       @Override
-      protected void onAdded(IContainer<Container<?>> container, Container<?> element)
+      protected void onAdded(IContainer<Object> container, Object object)
       {
-        super.onAdded(container, element);
-        element.addListener(this);
-        System.out.println("Regsiter: " + element);
-        if (element instanceof Element)
+        System.out.println("Register: " + object);
+        if (object instanceof Element)
         {
-          viewer.addElement((Element)element);
+          viewer.addElement((Element)object);
         }
+
+        EventUtil.addListener(object, this);
       }
 
       @Override
-      protected void onRemoved(IContainer<Container<?>> container, Container<?> element)
+      protected void onRemoved(IContainer<Object> container, Object object)
       {
-        super.onRemoved(container, element);
-        element.removeListener(this);
-
-        if (element instanceof Element)
+        EventUtil.removeListener(object, this);
+        if (object instanceof Element)
         {
-          super.onRemoved(container, element);
-          viewer.removeElement((Element)element);
+          viewer.removeElement((Element)object);
         }
       }
 
       @Override
       protected void notifyOtherEvent(IEvent event)
       {
-
       }
     };
+
     Frontend.INSTANCE.addListener(listener);
   }
 

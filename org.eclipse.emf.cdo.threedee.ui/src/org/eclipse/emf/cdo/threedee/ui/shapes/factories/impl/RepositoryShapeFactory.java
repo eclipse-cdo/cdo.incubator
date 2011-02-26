@@ -27,7 +27,7 @@ import java.awt.Color;
  */
 public class RepositoryShapeFactory implements IShapeFactory
 {
-  public Node create(Element element)
+  public Node createShape(Element element)
   {
     RepositoryShape3D repositoryShape = new RepositoryShape3D(.1f, .1f, .1f, Primitive.GENERATE_TEXTURE_COORDS,
         ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(Color.green)));

@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
@@ -37,15 +37,16 @@ public class SimpleLayouter implements ILayouter
 
     while (collidesWithOtherNodes(newCenter, nodes))
     {
-
       switch (modified)
       {
       case 0:
         newCenter.x = newCenter.x + moveDistance;
         break;
+
       case 1:
         newCenter.x = newCenter.x - 2 * moveDistance;
         break;
+
       case 2:
         newCenter.y = newCenter.y + moveDistance;
         break;
@@ -66,11 +67,11 @@ public class SimpleLayouter implements ILayouter
         modified = 0;
         break;
       }
+
       modified++;
-
     }
-    Vector3f translationVector = new Vector3f(newCenter);
 
+    Vector3f translationVector = new Vector3f(newCenter);
     nodes.add(node);
 
     return translationVector;

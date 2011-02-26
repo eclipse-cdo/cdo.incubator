@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
@@ -41,8 +41,6 @@ import javax.vecmath.Vector3f;
 
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 
 /**
  * @author Martin Fluegge
@@ -55,13 +53,12 @@ public class ThreeDeeWorldComposite extends Composite
 
   private TransformGroup sphereTransformGroup;
 
-  private ILayouter layouter;
+  private ILayouter layouter = new SimpleLayouter();
 
   public ThreeDeeWorldComposite(Composite parent, int style)
   {
     super(parent, style);
     init();
-    layouter = new SimpleLayouter();
   }
 
   private void init()
@@ -69,9 +66,11 @@ public class ThreeDeeWorldComposite extends Composite
     GraphicsConfiguration config = createGraphicsConfiguration();
     Canvas3D canvas = new Canvas3D(config);
     universe = new SimpleUniverse(canvas);
+
     positionViewer(universe.getViewingPlatform());
     scene = createScene();
     addNavigation(scene);
+
     // compile objects should be better ???
     // contentBranchGroup.compile();
 
@@ -97,7 +96,6 @@ public class ThreeDeeWorldComposite extends Composite
     addChild(transformGroup, node);
     branchGroup.addChild(transformGroup);
     universe.addBranchGraph(branchGroup);
-
     universe.addBranchGraph(createCoordinateSystem());
   }
 
@@ -259,47 +257,7 @@ public class ThreeDeeWorldComposite extends Composite
       tg.addChild(cylinder);
       group.addChild(tg);
     }
+
     return group;
-  }
-
-  /**
-   * @author Martin Fluegge
-   */
-  private class MouseListener implements java.awt.event.MouseListener, MouseMotionListener
-  {
-    public void mouseDragged(MouseEvent arg0)
-    {
-      // System.out.println("mouse");
-    }
-
-    public void mouseMoved(MouseEvent arg0)
-    {
-      // System.out.println("mouse");
-    }
-
-    public void mouseClicked(MouseEvent e)
-    {
-      // System.out.println("mouse");
-    }
-
-    public void mouseEntered(MouseEvent e)
-    {
-      // System.out.println("mouse");
-    }
-
-    public void mouseExited(MouseEvent e)
-    {
-      // System.out.println("mouse");
-    }
-
-    public void mousePressed(MouseEvent e)
-    {
-      // System.out.println("mouse");
-    }
-
-    public void mouseReleased(MouseEvent e)
-    {
-      // System.out.println("mouse");
-    }
   }
 }

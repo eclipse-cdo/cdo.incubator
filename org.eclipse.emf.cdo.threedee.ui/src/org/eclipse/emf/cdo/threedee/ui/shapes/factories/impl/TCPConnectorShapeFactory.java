@@ -21,7 +21,7 @@ import javax.media.j3d.Node;
  */
 public class TCPConnectorShapeFactory implements IShapeFactory
 {
-  public Node create(Element element)
+  public Node createShape(Element element)
   {
     TCPConnectorShape3D repositoryShape = new TCPConnectorShape3D();
     return repositoryShape;

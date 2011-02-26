@@ -137,8 +137,12 @@ public class Session extends Container<Element> implements ElementProvider
       if (root)
       {
         elements = new Element[] { element };
-        fireElementAddedEvent(element);
       }
+    }
+
+    if (root)
+    {
+      fireElementAddedEvent(element);
     }
   }
 }

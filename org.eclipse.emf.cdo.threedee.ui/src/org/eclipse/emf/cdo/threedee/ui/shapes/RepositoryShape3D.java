@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
@@ -15,7 +15,6 @@ import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 import com.sun.j3d.utils.geometry.Box;
 import com.sun.j3d.utils.image.TextureLoader;
 
-import javax.imageio.ImageIO;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Material;
@@ -27,7 +26,6 @@ import javax.vecmath.Color4f;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -42,7 +40,6 @@ public class RepositoryShape3D extends Box
   public RepositoryShape3D(float f, float g, float h, int generateTextureCoords, Appearance appearance)
   {
     super(f, g, h, generateTextureCoords, appearance);
-
     createDefaultAppearance();
   }
 
@@ -77,11 +74,10 @@ public class RepositoryShape3D extends Box
     frontShape.setAppearance(ap);
     // BufferedImage frontImage = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
 
-    BufferedImage frontImage = ImageIO.read(new File(
-        "D:\\Development\\CDO_EclipseCon\\org.eclipse.emf.cdo.threedee.ui\\icons\\Eike2.jpg"));
-
+    // BufferedImage frontImage = ImageIO.read(new File(
+    // "D:\\Development\\CDO_EclipseCon\\org.eclipse.emf.cdo.threedee.ui\\icons\\Eike2.jpg"));
     //
-    addTexture(frontImage, frontShape);
+    // addTexture(frontImage, frontShape);
   }
 
   public void addTexture(BufferedImage image, Shape3D shape)
@@ -98,7 +94,6 @@ public class RepositoryShape3D extends Box
     Color3f col = new Color3f(0.0f, 0.0f, 1.0f);
     ColoringAttributes ca = new ColoringAttributes(col, ColoringAttributes.NICEST);
     appearance.setColoringAttributes(ca);
-
   }
 
   public void changeTexture(Texture texture, BufferedImage image, Shape3D shape, Appearance appearance)

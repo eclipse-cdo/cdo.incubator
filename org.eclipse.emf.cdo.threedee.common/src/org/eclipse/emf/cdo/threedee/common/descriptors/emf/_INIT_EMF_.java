@@ -12,6 +12,10 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.emf;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
+import org.eclipse.net4j.util.container.IPluginContainer;
+
+import org.eclipse.emf.ecore.EPackage;
+
 /**
  * @author Eike Stepper
  */
@@ -19,6 +23,9 @@ public class _INIT_EMF_
 {
   public static void init(Registry registry)
   {
+    IPluginContainer.INSTANCE.putElement("org.eclipse.emf.ecore.packageRegisties", "default", null,
+        EPackage.Registry.INSTANCE);
+
     registry.register(new EAnnotationDescriptor());
     registry.register(new EAttributeDescriptor());
     registry.register(new EClassDescriptor());

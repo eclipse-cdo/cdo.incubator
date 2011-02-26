@@ -21,7 +21,7 @@ import javax.media.j3d.Node;
  */
 public class EPackageRegistryShapeFactory implements IShapeFactory
 {
-  public Node create(Element element)
+  public Node createShape(Element element)
   {
     EPackageRegistryShape3D repositoryShape = new EPackageRegistryShape3D();
     return repositoryShape;

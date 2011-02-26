@@ -15,8 +15,6 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.net4j.util.container.IManagedContainer;
 
-import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.spi.net4j.Protocol;
 
 /**
@@ -34,7 +32,7 @@ public class ManagedContainerDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element)
   {
     IManagedContainer container = (IManagedContainer)object;
-    element.addReference(true, EPackage.Registry.INSTANCE);
+    // element.addReference(true, EPackage.Registry.INSTANCE);
     for (Object child : container.getElements())
     {
       if (child instanceof Protocol)
