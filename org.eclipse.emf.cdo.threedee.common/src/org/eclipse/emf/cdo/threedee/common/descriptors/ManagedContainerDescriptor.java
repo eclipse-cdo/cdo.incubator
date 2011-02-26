@@ -17,6 +17,8 @@ import org.eclipse.net4j.util.container.IManagedContainer;
 
 import org.eclipse.emf.ecore.EPackage;
 
+import org.eclipse.spi.net4j.Protocol;
+
 /**
  * @author Eike Stepper
  */
@@ -33,6 +35,16 @@ public class ManagedContainerDescriptor extends ElementDescriptor
   {
     IManagedContainer container = (IManagedContainer)object;
     element.addReference(true, EPackage.Registry.INSTANCE);
-    element.addReferences(true, container.getElements());
+    for (Object child : container.getElements())
+    {
+      if (child instanceof Protocol)
+      {
+        // Do nothing
+      }
+      else
+      {
+        element.addReference(true, child);
+      }
+    }
   }
 }
