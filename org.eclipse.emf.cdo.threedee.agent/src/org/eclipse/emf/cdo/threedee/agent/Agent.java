@@ -23,7 +23,6 @@ import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
-import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -80,7 +79,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     synchronized (elements)
     {
       Element element = elements.get(object);
-      if (element == null && addOnDemand && LifecycleUtil.isActive(object))
+      if (element == null && addOnDemand)
       {
         element = addElement(object, false);
       }
@@ -93,6 +92,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   {
     ElementDescriptor descriptor = ElementDescriptor.Registry.INSTANCE.match(object);
     if (descriptor == null)
+    {
+      return null;
+    }
+
+    if (!descriptor.isActive(object))
     {
       return null;
     }

@@ -13,6 +13,12 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 import org.eclipse.emf.cdo.common.model.CDOPackageInfo;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
+
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * @author Eike Stepper
@@ -26,10 +32,29 @@ public class PackageInfoDescriptor extends ElementDescriptor
   }
 
   @Override
+  @SuppressWarnings("restriction")
   public void initElement(Object object, Element element)
   {
-    CDOPackageInfo packageInfo = (CDOPackageInfo)object;
+    org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl packageInfo = (org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl)object;
     element.setIDAttribute(packageInfo.getPackageURI());
-    element.addReference(false, packageInfo.getEPackage(false));
+
+    EPackage ePackage = packageInfo.doGetEPackage(false);
+    if (ePackage != null)
+    {
+      if (ePackage.getClass() == EPackageImpl.class)
+      {
+        element.addReference(true, ePackage);
+      }
+      else
+      {
+        element.addReference(false, ePackage);
+      }
+    }
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return doCreateChangeEvent(oldElement, newObject);
   }
 }

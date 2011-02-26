@@ -50,7 +50,7 @@ public aspect Aspect
 
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.common.model.CDOPackageInfo.getEPackage(boolean)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.doGetEPackage(boolean)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..))
     );
 

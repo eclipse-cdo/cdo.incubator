@@ -5,6 +5,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.descriptors._INIT_;
 
 import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -93,6 +94,11 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     return getType().isInstance(object);
   }
 
+  public boolean isActive(Object object)
+  {
+    return LifecycleUtil.isActive(object);
+  }
+
   public abstract void initElement(Object object, Element element);
 
   public ElementEvent.Call createCallEvent(Element sourceElement, Element targetElement, When when)
@@ -101,6 +107,11 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
   }
 
   public Pair<ElementEvent.Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return doCreateChangeEvent(oldElement, newObject);
+  }
+
+  protected final Pair<ElementEvent.Change, Element> doCreateChangeEvent(Element oldElement, Object newObject)
   {
     Element newElement = new Element(oldElement.getID(), oldElement.getDescriptor(), oldElement.getProvider());
     initElement(newObject, newElement);
