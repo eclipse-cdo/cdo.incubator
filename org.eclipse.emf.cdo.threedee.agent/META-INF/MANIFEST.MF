@@ -13,6 +13,7 @@ Export-Package: org.eclipse.emf.cdo.threedee.agent;version="1.0.0",
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.emf.cdo.threedee.agent.bundle.OM$Activator
+Bundle-Localization: plugin
 Eclipse-SupplementBundle: org.eclipse.emf.cdo.common,
  org.eclipse.emf.cdo.server,
  org.eclipse.emf.cdo.server.db,
@@ -20,4 +21,3 @@ Eclipse-SupplementBundle: org.eclipse.emf.cdo.common,
  org.eclipse.net4j.db,
  org.eclipse.net4j.util,
  org.eclipse.emf.ecore
-Bundle-Localization: plugin
