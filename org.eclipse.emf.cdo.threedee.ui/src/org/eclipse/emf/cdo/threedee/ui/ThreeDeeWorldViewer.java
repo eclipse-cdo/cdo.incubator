@@ -56,6 +56,11 @@ public class ThreeDeeWorldViewer
       Node shape = factory.createShape(element);
       threeDeeWorldComposite.addShape(shape);
     }
+
+    for (Element child : element.getElements())
+    {
+      addElement(child);
+    }
   }
 
   public void removeElement(Element element)
