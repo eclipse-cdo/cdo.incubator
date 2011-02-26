@@ -11,9 +11,6 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
-
-import org.eclipse.net4j.util.collection.Pair;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
 
