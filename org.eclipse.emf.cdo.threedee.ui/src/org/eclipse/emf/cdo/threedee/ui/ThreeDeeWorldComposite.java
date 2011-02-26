@@ -8,11 +8,10 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.composites;
+package org.eclipse.emf.cdo.threedee.ui;
 
-import org.eclipse.emf.cdo.threedee.ui.ILayouter;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-import org.eclipse.emf.cdo.threedee.ui.layout.impl.SimpleLayouter;
+import org.eclipse.emf.cdo.threedee.ui.layouts.SimpleLayouter;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -207,19 +206,6 @@ public class ThreeDeeWorldComposite extends Composite
     parent.addChild(child);
   }
 
-  public static void addLights(BranchGroup group)
-  {
-    Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
-    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
-    Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
-    DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
-    light1.setInfluencingBounds(bounds);
-    group.addChild(light1);
-    AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
-    light2.setInfluencingBounds(bounds);
-    group.addChild(light2);
-  }
-
   private BranchGroup createCoordinateSystem()
   {
     BranchGroup group = new BranchGroup();
@@ -267,5 +253,18 @@ public class ThreeDeeWorldComposite extends Composite
     }
 
     return group;
+  }
+
+  public static void addLights(BranchGroup group)
+  {
+    Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
+    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+    Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
+    DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
+    light1.setInfluencingBounds(bounds);
+    group.addChild(light1);
+    AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
+    light2.setInfluencingBounds(bounds);
+    group.addChild(light2);
   }
 }

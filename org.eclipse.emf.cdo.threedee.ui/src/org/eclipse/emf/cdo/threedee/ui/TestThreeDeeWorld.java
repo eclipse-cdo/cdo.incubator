@@ -14,7 +14,6 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.RepositoryDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EPackageRegistryDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
-import org.eclipse.emf.cdo.threedee.ui.viewers.ThreeDeeWorldViewer;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;

@@ -8,12 +8,11 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.views;
+package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.Frontend;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-import org.eclipse.emf.cdo.threedee.ui.viewers.ThreeDeeWorldViewer;
 
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;

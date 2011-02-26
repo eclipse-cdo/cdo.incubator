@@ -8,7 +8,7 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.layout.impl;
+package org.eclipse.emf.cdo.threedee.ui.layouts;
 
 import org.eclipse.emf.cdo.threedee.ui.ILayouter;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;

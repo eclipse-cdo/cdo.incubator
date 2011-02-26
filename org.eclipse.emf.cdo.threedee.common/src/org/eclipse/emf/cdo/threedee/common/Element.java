@@ -397,6 +397,7 @@ public final class Element extends Container<Element> implements IListener
 
     if (containerEvent != null)
     {
+      System.err.println(containerEvent);
       fireEvent(containerEvent);
     }
     else

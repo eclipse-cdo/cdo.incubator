@@ -8,7 +8,7 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.layout;
+package org.eclipse.emf.cdo.threedee.ui;
 
 import javax.media.j3d.Node;
 import javax.vecmath.Vector3f;

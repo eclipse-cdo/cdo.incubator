@@ -10,7 +10,7 @@
       </category>
       <view
             category="org.eclipse.emf.cdo.threedee.ui"
-            class="org.eclipse.emf.cdo.threedee.ui.views.ThreeDeeWorldView"
+            class="org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldView"
             icon="icons/sample.gif"
             id="org.eclipse.emf.cdo.threedee.ui.views.ThreeDeeWorldView"
             name="Three Dee World View">

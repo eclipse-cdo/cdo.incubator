@@ -8,10 +8,9 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.viewers;
+package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.composites.ThreeDeeWorldComposite;
 import org.eclipse.emf.cdo.threedee.ui.shapes.factories.IShapeFactory;
 
 import org.eclipse.swt.SWT;
