@@ -8,12 +8,12 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.shapes;
+package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.shapes.factories.impl.EPackageRegistryShapeFactory;
-import org.eclipse.emf.cdo.threedee.ui.shapes.factories.impl.RepositoryShapeFactory;
-import org.eclipse.emf.cdo.threedee.ui.shapes.factories.impl.TCPConnectorShapeFactory;
+import org.eclipse.emf.cdo.threedee.ui.shapes.EPackageRegistryShape;
+import org.eclipse.emf.cdo.threedee.ui.shapes.RepositoryShape;
+import org.eclipse.emf.cdo.threedee.ui.shapes.TCPConnectorShape;
 
 import javax.media.j3d.Node;
 
@@ -37,9 +37,9 @@ public interface IShapeFactory
 
     static
     {
-      INSTANCE.put("Repository", new RepositoryShapeFactory());
-      INSTANCE.put("TCPConnector", new TCPConnectorShapeFactory());
-      INSTANCE.put("EPackageRegistry", new EPackageRegistryShapeFactory());
+      INSTANCE.put("Repository", new RepositoryShape.Factory());
+      INSTANCE.put("TCPConnector", new TCPConnectorShape.Factory());
+      INSTANCE.put("EPackageRegistry", new EPackageRegistryShape.Factory());
     }
   }
 }
