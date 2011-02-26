@@ -11,8 +11,8 @@
 package org.eclipse.emf.cdo.threedee.ui.shapes.factories.impl;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.shapes.IShapeFactory;
 import org.eclipse.emf.cdo.threedee.ui.shapes.RepositoryShape3D;
-import org.eclipse.emf.cdo.threedee.ui.shapes.factories.IShapeFactory;
 import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import com.sun.j3d.utils.geometry.Primitive;

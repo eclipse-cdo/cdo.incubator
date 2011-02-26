@@ -8,7 +8,7 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.shapes.factories;
+package org.eclipse.emf.cdo.threedee.ui.shapes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.shapes.factories.impl.EPackageRegistryShapeFactory;

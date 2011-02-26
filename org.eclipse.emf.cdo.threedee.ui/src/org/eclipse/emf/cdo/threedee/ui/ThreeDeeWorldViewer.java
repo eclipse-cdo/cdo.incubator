@@ -11,7 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.shapes.factories.IShapeFactory;
+import org.eclipse.emf.cdo.threedee.ui.shapes.IShapeFactory;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;

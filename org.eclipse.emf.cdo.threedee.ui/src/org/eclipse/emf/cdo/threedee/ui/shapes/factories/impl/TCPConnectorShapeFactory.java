@@ -11,8 +11,8 @@
 package org.eclipse.emf.cdo.threedee.ui.shapes.factories.impl;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.shapes.IShapeFactory;
 import org.eclipse.emf.cdo.threedee.ui.shapes.TCPConnectorShape3D;
-import org.eclipse.emf.cdo.threedee.ui.shapes.factories.IShapeFactory;
 
 import javax.media.j3d.Node;
 
