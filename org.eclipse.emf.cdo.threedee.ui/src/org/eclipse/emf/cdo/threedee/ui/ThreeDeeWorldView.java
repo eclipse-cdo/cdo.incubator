@@ -55,30 +55,51 @@ public class ThreeDeeWorldView extends ViewPart
       {
         if (TRACER.isEnabled())
         {
-          TRACER.format("Register: {0}", object); //$NON-NLS-1$
+          TRACER.format("onAdded: {0}", object); //$NON-NLS-1$
         }
 
-        if (object instanceof Element)
-        {
-          viewer.addElement((Element)object);
-        }
-
-        EventUtil.addListener(object, this);
+        addElement(object);
       }
 
       @Override
       protected void onRemoved(IContainer<Object> container, Object object)
       {
-        EventUtil.removeListener(object, this);
-        if (object instanceof Element)
-        {
-          viewer.removeElement((Element)object);
-        }
+        removeElement(object);
       }
 
       @Override
       protected void notifyOtherEvent(IEvent event)
       {
+      }
+
+      private void addElement(Object object)
+      {
+        if (object instanceof Element)
+        {
+          Element element = (Element)object;
+          viewer.addElement(element);
+          for (Element child : element.getElements())
+          {
+            addElement(child);
+          }
+        }
+
+        EventUtil.addListener(object, this);
+      }
+
+      private void removeElement(Object object)
+      {
+        EventUtil.removeListener(object, this);
+        if (object instanceof Element)
+        {
+          Element element = (Element)object;
+          for (Element child : element.getElements())
+          {
+            removeElement(child);
+          }
+
+          viewer.removeElement(element);
+        }
       }
     };
 
