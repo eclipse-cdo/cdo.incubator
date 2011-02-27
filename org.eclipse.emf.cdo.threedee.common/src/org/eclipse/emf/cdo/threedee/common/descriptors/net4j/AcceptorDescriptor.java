@@ -30,7 +30,6 @@ public class AcceptorDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element)
   {
     Acceptor acceptor = (Acceptor)object;
-    element.setLabelAttribute(acceptor.toString());
     element.addReferences(true, acceptor.getAcceptedConnectors());
   }
 }

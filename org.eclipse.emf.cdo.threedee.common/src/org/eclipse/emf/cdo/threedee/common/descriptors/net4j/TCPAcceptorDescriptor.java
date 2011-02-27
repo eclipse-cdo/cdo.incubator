@@ -30,6 +30,7 @@ public class TCPAcceptorDescriptor extends AcceptorDescriptor
     super.initElement(object, element);
 
     org.eclipse.net4j.internal.tcp.TCPAcceptor acceptor = (org.eclipse.net4j.internal.tcp.TCPAcceptor)object;
+    element.setLabelAttribute(acceptor.getAddress() + ":" + acceptor.getPort());
     element.addReference(false, acceptor.getSelector());
   }
 }
