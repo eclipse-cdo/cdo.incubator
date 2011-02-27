@@ -24,6 +24,11 @@ public class _INIT_CDO_
 
     registry.register(new BranchDescriptor());
     registry.register(new BranchManagerDescriptor());
+    registry.register(new CDOObjectDescriptor());
+    registry.register(new CDOSavepointDescriptor());
+    registry.register(new CDOSessionDescriptor());
+    registry.register(new CDOTransactionDescriptor());
+    registry.register(new CDOViewDescriptor());
     registry.register(new PackageInfoDescriptor());
     registry.register(new PackageRegistryDescriptor());
     registry.register(new PackageUnitDescriptor());

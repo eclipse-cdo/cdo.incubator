@@ -10,27 +10,27 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
+import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class SessionDescriptor extends ElementDescriptor
+public class CDOObjectDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return org.eclipse.emf.cdo.internal.server.Session.class;
+    return CDOObject.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
-    element.setIDAttribute(session.getSessionID());
-    element.setAttribute("user", session.getUserID());
-    element.addReferences(true, session.getViews());
+    CDOObject cdoObject = (CDOObject)object;
+    element.setIDAttribute(cdoObject.cdoID());
+    element.setAttribute("state", cdoObject.cdoState());
+    element.addReference(false, cdoObject.cdoRevision());
   }
 }

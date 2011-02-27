@@ -10,7 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
-import org.eclipse.emf.cdo.common.CDOCommonView;
 import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
@@ -21,18 +20,19 @@ import org.eclipse.net4j.util.collection.Pair;
 /**
  * @author Eike Stepper
  */
+@SuppressWarnings("restriction")
 public class ViewDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return CDOCommonView.class;
+    return org.eclipse.emf.cdo.internal.server.View.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOCommonView view = (CDOCommonView)object;
+    org.eclipse.emf.cdo.internal.server.View view = (org.eclipse.emf.cdo.internal.server.View)object;
     element.setIDAttribute(view.getViewID());
     element.addReference(false, view.getBranch());
     element.setAttribute("timeStamp", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));

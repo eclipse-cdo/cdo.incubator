@@ -11,26 +11,34 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
 @SuppressWarnings("restriction")
-public class SessionDescriptor extends ElementDescriptor
+public class CDOTransactionDescriptor extends CDOViewDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return org.eclipse.emf.cdo.internal.server.Session.class;
+    return org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
-    element.setIDAttribute(session.getSessionID());
-    element.setAttribute("user", session.getUserID());
-    element.addReferences(true, session.getViews());
+    super.initElement(object, element);
+
+    org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl transaction = (org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl)object;
+    element.setAttribute("dirty", transaction.isDirty());
+    element.setAttribute("conflict", transaction.hasConflict());
+    element.addReference(true, transaction.getLastSavepoint());
+    element.addReference(false, transaction.getViewSet());
+  }
+
+  @Override
+  public String getLabel(Element element)
+  {
+    return super.getLabel(element).substring(3);
   }
 }

@@ -18,7 +18,8 @@ public aspect Aspect
   pointcut publicMethods() :
     !execution(* org.eclipse.net4j.buffer.IBufferProvider.*(..)) &&
     !execution(public * *.get*()) &&
-    !execution(public * *.is*()) &&
+    !execution(public boolean *.is*()) &&
+    !execution(public boolean *.has*()) &&
     !execution(public String *.toString()) &&
     !execution(public boolean *.equals(Object)) &&
     !execution(public int *.hashCode()) &&
@@ -30,6 +31,8 @@ public aspect Aspect
       execution(public * org.eclipse.emf.internal.cdo.view.AbstractCDOView.*(..)) ||
       execution(public * org.eclipse.emf.internal.cdo.view.CDOViewImpl.*(..)) ||
       execution(public * org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl.*(..)) ||
+      execution(public * org.eclipse.emf.internal.cdo.transaction.CDOSavepointImpl.*(..)) ||
+      execution(public * org.eclipse.emf.internal.cdo.CDOObjectImpl.*(..)) && !execution(public * org.eclipse.emf.internal.cdo.CDOObjectImpl.cdo*()) ||
 
       execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||

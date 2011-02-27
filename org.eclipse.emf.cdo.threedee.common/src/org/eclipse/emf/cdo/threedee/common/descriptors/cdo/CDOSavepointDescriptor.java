@@ -12,25 +12,33 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.transaction.CDOSavepoint;
 
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class SessionDescriptor extends ElementDescriptor
+public class CDOSavepointDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return org.eclipse.emf.cdo.internal.server.Session.class;
+    return CDOSavepoint.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
-    element.setIDAttribute(session.getSessionID());
-    element.setAttribute("user", session.getUserID());
-    element.addReferences(true, session.getViews());
+    CDOSavepoint savepoint = (CDOSavepoint)object;
+    CDOSavepoint previousSavepoint = savepoint.getPreviousSavepoint();
+    if (previousSavepoint != null)
+    {
+      element.addReference(true, previousSavepoint);
+    }
+  }
+
+  @Override
+  public String getLabel(Element element)
+  {
+    return super.getLabel(element).substring(3);
   }
 }

@@ -17,20 +17,30 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
  * @author Eike Stepper
  */
 @SuppressWarnings("restriction")
-public class SessionDescriptor extends ElementDescriptor
+public class CDOSessionDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return org.eclipse.emf.cdo.internal.server.Session.class;
+    return org.eclipse.emf.internal.cdo.session.CDOSessionImpl.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
+    org.eclipse.emf.internal.cdo.session.CDOSessionImpl session = (org.eclipse.emf.internal.cdo.session.CDOSessionImpl)object;
     element.setIDAttribute(session.getSessionID());
     element.setAttribute("user", session.getUserID());
+    element.addReference(true, session.getRepositoryInfo());
+    element.addReference(true, session.getPackageRegistry());
+    element.addReference(true, session.getBranchManager());
+    element.addReference(true, session.getRevisionManager());
     element.addReferences(true, session.getViews());
+  }
+
+  @Override
+  public String getLabel(Element element)
+  {
+    return super.getLabel(element).substring(3);
   }
 }
