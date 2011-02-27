@@ -12,7 +12,9 @@ package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
+import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.util.container.IManagedContainer;
 
 import org.eclipse.spi.net4j.Protocol;
@@ -32,17 +34,22 @@ public class ManagedContainerDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element)
   {
     IManagedContainer container = (IManagedContainer)object;
-    // element.addReference(true, EPackage.Registry.INSTANCE);
     for (Object child : container.getElements())
     {
       if (child instanceof Protocol)
       {
-        // Do nothing
+        continue;
       }
-      else
+
+      if (child instanceof ITCPConnector)
       {
-        element.addReference(true, child);
+        if (((ITCPConnector)child).getPort() == ThreeDeeProtocol.PROTOCOL_PORT)
+        {
+          continue;
+        }
       }
+
+      element.addReference(true, child);
     }
   }
 }

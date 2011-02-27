@@ -31,7 +31,7 @@ public class TCPConnectorDescriptor extends ConnectorDescriptor
 
     org.eclipse.net4j.internal.tcp.TCPConnector connector = (org.eclipse.net4j.internal.tcp.TCPConnector)object;
     element.addReference(true, connector.getSocketChannel());
-    element.addReference(true, connector.getWriteQueue());
+    // element.addReference(true, connector.getWriteQueue());
     element.addReference(false, connector.getSelector());
   }
 }

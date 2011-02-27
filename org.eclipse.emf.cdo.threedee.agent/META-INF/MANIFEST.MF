@@ -19,5 +19,6 @@ Eclipse-SupplementBundle: org.eclipse.emf.cdo.common,
  org.eclipse.emf.cdo.server.db,
  org.eclipse.net4j,
  org.eclipse.net4j.db,
+ org.eclipse.net4j.tcp,
  org.eclipse.net4j.util,
  org.eclipse.emf.ecore
