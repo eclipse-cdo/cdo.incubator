@@ -179,7 +179,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     ElementDescriptor descriptor = targetElement.getDescriptor();
 
     Element sourceElement = getElement(sourceObject, false);
-    if (sourceElement != null && sourceElement != targetElement)
+    if (sourceElement != null /* && sourceElement != targetElement */)
     {
       ElementEvent.Call event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
       if (event != null)

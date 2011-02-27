@@ -8,30 +8,28 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
+package org.eclipse.emf.cdo.threedee.common.descriptors;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+
+import java.util.Collection;
 
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class TCPConnectorDescriptor extends ConnectorDescriptor
+public class CollectionDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return org.eclipse.net4j.internal.tcp.TCPConnector.class;
+    return Collection.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    super.initElement(object, element);
-
-    org.eclipse.net4j.internal.tcp.TCPConnector connector = (org.eclipse.net4j.internal.tcp.TCPConnector)object;
-    element.addReference(true, connector.getSocketChannel());
-    element.addReference(true, connector.getWriteQueue());
-    element.addReference(false, connector.getSelector());
+    Collection<?> collection = (Collection<?>)object;
+    element.addReferences(true, collection);
   }
 }

@@ -10,6 +10,10 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
+import org.eclipse.emf.cdo.threedee.agent.bundle.OM;
+
+import org.eclipse.net4j.util.om.trace.ContextTracer;
+
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -20,6 +24,10 @@ import java.util.WeakHashMap;
  */
 public class Hook
 {
+  private static final ContextTracer TRACER_BEFORE = new ContextTracer(OM.DEBUG_HOOK_CALL_BEFORE, Agent.class);
+
+  private static final ContextTracer TRACER_AFTER = new ContextTracer(OM.DEBUG_HOOK_CALL_AFTER, Agent.class);
+
   private static Map<Thread, Stack> stacks = new WeakHashMap<Thread, Stack>();
 
   public static void before(Object target, String what)
@@ -27,6 +35,12 @@ public class Hook
     Stack stack = getStack();
     Object last = stack.peek();
     stack.push(target);
+
+    if (TRACER_BEFORE.isEnabled())
+    {
+      TRACER_AFTER.trace(format(last, target, what));
+    }
+
     Agent.INSTANCE.beforeCall(last, target, what);
   }
 
@@ -35,7 +49,24 @@ public class Hook
     Stack stack = getStack();
     stack.pop();
     Object last = stack.peek();
+
+    if (TRACER_AFTER.isEnabled())
+    {
+      TRACER_BEFORE.trace(format(last, target, what));
+    }
+
     Agent.INSTANCE.afterCall(last, target, what);
+  }
+
+  private static String format(Object source, Object target, String what)
+  {
+    String string = " --> " + target.getClass().getName() + "." + what + "()";
+    if (source == null)
+    {
+      return string;
+    }
+
+    return source.getClass().getName() + string;
   }
 
   private static Stack getStack()
@@ -56,14 +87,33 @@ public class Hook
    */
   private static final class Stack extends LinkedList<Object>
   {
+    private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_HOOK_STACK, Agent.class);
+
     private static final long serialVersionUID = 1L;
+
+    @Override
+    public void push(Object object)
+    {
+      if (TRACER.isEnabled())
+      {
+        TRACER.trace("PUSH " + object.getClass().getName()); //$NON-NLS-1$
+      }
+
+      super.push(object);
+    }
 
     @Override
     public Object pop()
     {
       try
       {
-        return super.pop();
+        Object object = super.pop();
+        if (TRACER.isEnabled())
+        {
+          TRACER.trace("POP " + object.getClass().getName()); //$NON-NLS-1$
+        }
+
+        return object;
       }
       catch (NoSuchElementException ex)
       {

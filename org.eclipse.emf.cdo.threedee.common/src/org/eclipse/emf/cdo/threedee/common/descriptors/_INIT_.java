@@ -28,5 +28,6 @@ public class _INIT_
 
     registry.register(new ManagedContainerDescriptor());
     registry.register(new MapEntryDescriptor());
+    registry.register(new CollectionDescriptor());
   }
 }

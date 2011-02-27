@@ -35,5 +35,6 @@ public class ChannelDescriptor extends ElementDescriptor
     element.setAttribute("user", channel.getUserID());
     // element.addReference(false, channel.getMultiplexer());
     element.addReference(true, channel.getReceiveHandler());
+    element.addReference(true, channel.getSendQueue());
   }
 }

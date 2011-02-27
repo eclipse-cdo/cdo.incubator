@@ -36,6 +36,16 @@ public abstract class OM
 
   public static final OMTracer DEBUG_EVENT_SEND = DEBUG_EVENT.tracer("send"); //$NON-NLS-1$
 
+  public static final OMTracer DEBUG_HOOK = DEBUG.tracer("hook"); //$NON-NLS-1$
+
+  public static final OMTracer DEBUG_HOOK_STACK = DEBUG_HOOK.tracer("stack"); //$NON-NLS-1$
+
+  public static final OMTracer DEBUG_HOOK_CALL = DEBUG_HOOK.tracer("call"); //$NON-NLS-1$
+
+  public static final OMTracer DEBUG_HOOK_CALL_BEFORE = DEBUG_HOOK_CALL.tracer("before"); //$NON-NLS-1$
+
+  public static final OMTracer DEBUG_HOOK_CALL_AFTER = DEBUG_HOOK_CALL.tracer("after"); //$NON-NLS-1$
+
   public static final OMLogger LOG = BUNDLE.logger();
 
   /**
