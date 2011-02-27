@@ -11,9 +11,6 @@
 package org.eclipse.emf.cdo.threedee.ui.layouts;
 
 import org.eclipse.emf.cdo.threedee.ui.ILayouter;
-import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-
-import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import javax.media.j3d.Bounds;
 import javax.media.j3d.Node;
@@ -29,8 +26,6 @@ import java.util.List;
  */
 public class SimpleLayouter implements ILayouter
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, SimpleLayouter.class);
-
   private List<Node> nodes = new ArrayList<Node>();
 
   private static final float moveDistance = .3f;

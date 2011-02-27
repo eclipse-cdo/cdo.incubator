@@ -12,7 +12,6 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.RepositoryDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EPackageRegistryDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
 
 import org.eclipse.swt.SWT;
@@ -33,15 +32,38 @@ public class TestThreeDeeWorld
     shell.setSize(800, 600);
     shell.setLayout(new FillLayout(SWT.VERTICAL));
 
-    ThreeDeeWorldViewer viewer = new ThreeDeeWorldViewer(shell);
+    final ThreeDeeWorldViewer viewer = new ThreeDeeWorldViewer(shell);
     // ThreeDeeWorldComposite composite = new ThreeDeeWorldComposite(shell, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 
     viewer.addElement(new Element(0, new RepositoryDescriptor(), null));
-    viewer.addElement(new Element(0, new TCPConnectorDescriptor(), null));
-    viewer.addElement(new Element(0, new TCPConnectorDescriptor(), null));
-    viewer.addElement(new Element(0, new TCPConnectorDescriptor(), null));
-    viewer.addElement(new Element(0, new TCPConnectorDescriptor(), null));
-    viewer.addElement(new Element(0, new EPackageRegistryDescriptor(), null));
+
+    Thread t = new Thread(new Runnable()
+    {
+
+      public void run()
+      {
+        for (int i = 0; i < 1000; i++)
+        {
+          viewer.addElement(new Element(i, new TCPConnectorDescriptor(), null));
+          try
+          {
+            Thread.sleep(10);
+          }
+          catch (InterruptedException ex)
+          {
+            ex.printStackTrace();
+          }
+        }
+      }
+    });
+
+    t.start();
+
+    // for (int i = 0; i < 14; i++)
+    // {
+    // viewer.addElement(new Element(i, new TCPConnectorDescriptor(), null));
+    // }
+    // viewer.addElement(new Element(0, new EPackageRegistryDescriptor(), null));
     // composite.pack();
 
     // shell.pack();
@@ -54,5 +76,6 @@ public class TestThreeDeeWorld
       }
     }
     display.dispose();
+
   }
 }
