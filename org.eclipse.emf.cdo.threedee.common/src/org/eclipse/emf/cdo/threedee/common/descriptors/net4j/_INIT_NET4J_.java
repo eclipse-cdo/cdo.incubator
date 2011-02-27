@@ -27,6 +27,7 @@ public class _INIT_NET4J_
     registry.register(new ChannelMultiplexerDescriptor());
     registry.register(new ConnectorDescriptor());
     registry.register(new ProtocolDescriptor());
+    registry.register(new SocketChannelDescriptor());
     registry.register(new TCPAcceptorDescriptor());
     registry.register(new TCPConnectorDescriptor());
     registry.register(new TCPSelectorDescriptor());

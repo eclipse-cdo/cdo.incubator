@@ -11,26 +11,34 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
+
+import java.nio.channels.SocketChannel;
 
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class TCPConnectorDescriptor extends ConnectorDescriptor
+public class SocketChannelDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return org.eclipse.net4j.internal.tcp.TCPConnector.class;
+    return SocketChannel.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    // SocketChannel socketChannel = (SocketChannel)object;
+    // element.setIDAttribute(socketChannel.getID());
+  }
 
-    org.eclipse.net4j.internal.tcp.TCPConnector connector = (org.eclipse.net4j.internal.tcp.TCPConnector)object;
-    element.addReference(true, connector.getSocketChannel());
-    element.addReference(false, connector.getSelector());
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }
