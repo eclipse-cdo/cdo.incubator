@@ -10,7 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
-import org.eclipse.emf.cdo.spi.server.InternalSession;
+import org.eclipse.emf.cdo.common.CDOCommonSession;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
@@ -22,13 +22,13 @@ public class SessionDescriptor extends ElementDescriptor
   @Override
   public Class<?> getType()
   {
-    return InternalSession.class;
+    return CDOCommonSession.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    InternalSession session = (InternalSession)object;
+    CDOCommonSession session = (CDOCommonSession)object;
     element.setIDAttribute(session.getSessionID());
     element.setAttribute("user", session.getUserID());
     element.addReferences(true, session.getViews());

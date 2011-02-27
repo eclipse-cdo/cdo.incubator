@@ -24,8 +24,12 @@ public aspect Aspect
     !execution(public int *.hashCode()) &&
     (
       execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.*(..)) && !execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.values()) ||
-
       execution(public * org.eclipse.net4j.util.container.ManagedContainer.*(..)) ||
+
+      execution(public * org.eclipse.emf.internal.cdo.session.CDOSessionImpl.*(..)) ||
+      execution(public * org.eclipse.emf.internal.cdo.view.AbstractCDOView.*(..)) ||
+      execution(public * org.eclipse.emf.internal.cdo.view.CDOViewImpl.*(..)) ||
+      execution(public * org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||

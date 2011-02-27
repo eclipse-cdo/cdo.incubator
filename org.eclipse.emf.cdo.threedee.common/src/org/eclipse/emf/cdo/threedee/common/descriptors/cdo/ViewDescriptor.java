@@ -10,8 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
+import org.eclipse.emf.cdo.common.CDOCommonView;
 import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
-import org.eclipse.emf.cdo.spi.server.InternalView;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
@@ -26,13 +26,13 @@ public class ViewDescriptor extends ElementDescriptor
   @Override
   public Class<?> getType()
   {
-    return InternalView.class;
+    return CDOCommonView.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    InternalView view = (InternalView)object;
+    CDOCommonView view = (CDOCommonView)object;
     element.setIDAttribute(view.getViewID());
     element.addReference(false, view.getBranch());
     element.setAttribute("timeStamp", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));

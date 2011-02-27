@@ -8,18 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.agent.bundle;
 
-import org.eclipse.emf.cdo.common.CDOCommonTransaction;
+import org.eclipse.ui.IStartup;
 
 /**
  * @author Eike Stepper
  */
-public class TransactionDescriptor extends ViewDescriptor
+public class Startup implements IStartup
 {
-  @Override
-  public Class<?> getType()
+  public void earlyStartup()
   {
-    return CDOCommonTransaction.class;
+    // Do nothing
   }
 }

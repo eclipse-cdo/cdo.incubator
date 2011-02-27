@@ -2,6 +2,11 @@
 <?eclipse version="3.4"?>
 <plugin>
 
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup class="org.eclipse.emf.cdo.threedee.agent.bundle.Startup"/>
+   </extension>
+
 	 <extension
 	       point="org.eclipse.emf.cdo.server.appExtensions">
 	    <appExtension
