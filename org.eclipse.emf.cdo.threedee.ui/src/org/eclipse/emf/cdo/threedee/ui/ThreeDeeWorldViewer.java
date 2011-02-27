@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.shapes.DefaultShape;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -51,11 +52,8 @@ public class ThreeDeeWorldViewer
   {
     String name = element.getDescriptor().getName();
     IShapeFactory factory = IShapeFactory.Registry.INSTANCE.get(name);
-    if (factory != null)
-    {
-      Node shape = factory.createShape(element);
-      threeDeeWorldComposite.addShape(shape);
-    }
+    Node shape = factory != null ? factory.createShape(element) : new DefaultShape();
+    threeDeeWorldComposite.addShape(shape);
   }
 
   public void removeElement(Element element)
