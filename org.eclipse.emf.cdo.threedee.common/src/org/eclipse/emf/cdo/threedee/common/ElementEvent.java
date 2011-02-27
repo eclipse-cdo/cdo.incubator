@@ -176,7 +176,14 @@ public abstract class ElementEvent
     @Override
     public String toString()
     {
-      return "CALL " + when + " " + source.getDescriptor() + " --> " + target.getDescriptor() + "." + what + "()";
+      String prefix = "CALL " + when + " ";
+      String suffix = target.getDescriptor() + "." + what + "()";
+      if (source == null)
+      {
+        return prefix + suffix;
+      }
+
+      return prefix + source.getDescriptor() + " --> " + suffix;
     }
 
     /**

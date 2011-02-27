@@ -33,23 +33,37 @@ public class ManagedContainerDescriptor extends ElementDescriptor
   @Override
   public void initElement(Object object, Element element)
   {
-    IManagedContainer container = (IManagedContainer)object;
-    for (Object child : container.getElements())
+    try
     {
-      if (child instanceof Protocol)
+      IManagedContainer container = (IManagedContainer)object;
+      for (Object child : container.getElements())
       {
-        continue;
-      }
-
-      if (child instanceof ITCPConnector)
-      {
-        if (((ITCPConnector)child).getPort() == ThreeDeeProtocol.PROTOCOL_PORT)
+        try
         {
-          continue;
+          if (child instanceof Protocol)
+          {
+            continue;
+          }
+
+          if (child instanceof ITCPConnector)
+          {
+            if (((ITCPConnector)child).getPort() == ThreeDeeProtocol.PROTOCOL_PORT)
+            {
+              continue;
+            }
+          }
+
+          element.addReference(true, child);
+        }
+        catch (Exception ex)
+        {
+          // Ignore
         }
       }
-
-      element.addReference(true, child);
+    }
+    catch (Exception ex)
+    {
+      // Ignore
     }
   }
 }
