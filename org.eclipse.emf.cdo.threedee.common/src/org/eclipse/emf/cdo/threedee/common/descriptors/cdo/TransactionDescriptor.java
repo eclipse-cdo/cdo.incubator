@@ -10,16 +10,15 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
-import org.eclipse.emf.cdo.common.CDOCommonTransaction;
-
 /**
  * @author Eike Stepper
  */
+@SuppressWarnings("restriction")
 public class TransactionDescriptor extends ViewDescriptor
 {
   @Override
   public Class<?> getType()
   {
-    return CDOCommonTransaction.class;
+    return org.eclipse.emf.cdo.internal.server.Transaction.class;
   }
 }
