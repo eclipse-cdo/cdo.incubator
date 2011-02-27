@@ -106,6 +106,11 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     return new ElementEvent.Call(sourceElement, targetElement, what, when);
   }
 
+  public ElementEvent createTransmitEvent(Element connector)
+  {
+    return new ElementEvent.Transmit(connector);
+  }
+
   public Pair<ElementEvent.Change, Element> createChangeEvent(Element oldElement, Object newObject)
   {
     return doCreateChangeEvent(oldElement, newObject);

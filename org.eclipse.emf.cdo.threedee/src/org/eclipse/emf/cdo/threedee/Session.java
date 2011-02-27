@@ -6,7 +6,9 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Create;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Transmit;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
 
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
@@ -33,20 +35,20 @@ public class Session extends Container<Element> implements ElementProvider
 
   private Element[] elements = {};
 
-  public Session(int id, FrontendProtocol protocol)
+  public Session(FrontendProtocol protocol, int id)
   {
     this.id = id;
     this.protocol = protocol;
   }
 
-  public int getID()
-  {
-    return id;
-  }
-
   public FrontendProtocol getProtocol()
   {
     return protocol;
+  }
+
+  public int getID()
+  {
+    return id;
   }
 
   @Override
@@ -116,6 +118,10 @@ public class Session extends Container<Element> implements ElementProvider
     case Call.TYPE:
       break;
 
+    case Transmit.TYPE:
+      handleTransmitEvent((Transmit)event);
+      break;
+
     case Change.TYPE:
       handleChangeEvent((Change)event);
       break;
@@ -128,7 +134,23 @@ public class Session extends Container<Element> implements ElementProvider
   private void handleCreationEvent(Create event)
   {
     Element element = event.getElement();
+    if (element.getDescriptor().getClass() == TCPConnectorDescriptor.class)
+    {
+      String local = element.getAttributes().get("local");
+      Frontend.INSTANCE.putConnector(local, element);
+    }
+
     addElement(element, event.isRoot());
+  }
+
+  private void handleTransmitEvent(Transmit event)
+  {
+    Element transmitter = event.getTransmitter();
+
+    String remote = transmitter.getAttributes().get("remote");
+    Element receiver = Frontend.INSTANCE.getConnector(remote);
+
+    transmitter.fireTransmissionEvent(receiver);
   }
 
   private void handleChangeEvent(Change event)

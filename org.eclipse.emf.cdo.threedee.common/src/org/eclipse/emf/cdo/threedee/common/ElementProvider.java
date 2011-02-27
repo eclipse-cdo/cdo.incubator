@@ -15,6 +15,8 @@ package org.eclipse.emf.cdo.threedee.common;
  */
 public interface ElementProvider
 {
+  public int getID();
+
   public Element getElement(Object object, boolean addOnDemand);
 
   public Element getElement(int id);

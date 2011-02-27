@@ -36,6 +36,9 @@ public abstract class ElementEvent
     case Call.TYPE:
       return new Call(in, provider);
 
+    case Transmit.TYPE:
+      return new Transmit(in, provider);
+
     case Change.TYPE:
       return new Change(in);
 
@@ -188,9 +191,53 @@ public abstract class ElementEvent
   /**
    * @author Eike Stepper
    */
-  public static class Change extends ElementEvent
+  public static class Transmit extends ElementEvent
   {
     public static final byte TYPE = 3;
+
+    private Element transmitter;
+
+    public Transmit(Element transmitter)
+    {
+      this.transmitter = transmitter;
+    }
+
+    public Transmit(ExtendedDataInputStream in, ElementProvider provider) throws IOException
+    {
+      int connectorID = in.readInt();
+      transmitter = provider.getElement(connectorID);
+    }
+
+    @Override
+    public void write(ExtendedDataOutputStream out) throws IOException
+    {
+      out.writeInt(transmitter.getID());
+    }
+
+    @Override
+    public int getType()
+    {
+      return TYPE;
+    }
+
+    public Element getTransmitter()
+    {
+      return transmitter;
+    }
+
+    @Override
+    public String toString()
+    {
+      return "TRANSMIT " + transmitter;
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public static class Change extends ElementEvent
+  {
+    public static final byte TYPE = 5;
 
     private int id;
 

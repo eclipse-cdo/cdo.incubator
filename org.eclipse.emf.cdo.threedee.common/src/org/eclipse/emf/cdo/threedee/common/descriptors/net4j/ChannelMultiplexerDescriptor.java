@@ -30,7 +30,7 @@ public class ChannelMultiplexerDescriptor extends ElementDescriptor
   public void initElement(Object object, Element element)
   {
     ChannelMultiplexer channelMultiplexer = (ChannelMultiplexer)object;
-    element.setLabelAttribute(channelMultiplexer.getLocation());
+    element.setAttribute("location", channelMultiplexer.getLocation());
     element.addReferences(true, channelMultiplexer.getChannels());
   }
 }

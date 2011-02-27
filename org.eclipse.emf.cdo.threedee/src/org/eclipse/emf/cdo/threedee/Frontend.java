@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
+import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.tcp.ITCPAcceptor;
@@ -32,6 +33,8 @@ public class Frontend extends Container<Session>
   private ITCPAcceptor acceptor;
 
   private Map<Integer, Session> sessions = new HashMap<Integer, Session>();
+
+  private Map<String, Element> connectors = new HashMap<String, Element>();
 
   private int lastSessionID;
 
@@ -56,10 +59,26 @@ public class Frontend extends Container<Session>
     }
   }
 
+  public void putConnector(String local, Element connector)
+  {
+    synchronized (connectors)
+    {
+      connectors.put(local, connector);
+    }
+  }
+
+  public Element getConnector(String local)
+  {
+    synchronized (connectors)
+    {
+      return connectors.get(local);
+    }
+  }
+
   public Session openSession(FrontendProtocol protocol)
   {
     int id = ++lastSessionID;
-    final Session session = new Session(id, protocol);
+    final Session session = new Session(protocol, id);
     session.activate();
 
     protocol.addListener(new LifecycleEventAdapter()

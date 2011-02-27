@@ -12,6 +12,8 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 
+import java.net.Socket;
+
 /**
  * @author Eike Stepper
  */
@@ -30,8 +32,15 @@ public class TCPConnectorDescriptor extends ConnectorDescriptor
     super.initElement(object, element);
 
     org.eclipse.net4j.internal.tcp.TCPConnector connector = (org.eclipse.net4j.internal.tcp.TCPConnector)object;
+    Socket socket = connector.getSocketChannel().socket();
+
+    String local = socket.getLocalAddress().getHostAddress() + ":" + socket.getLocalPort();
+    String remote = socket.getInetAddress().getHostAddress() + ":" + socket.getPort();
+
+    element.setLabelAttribute(local + " --> " + remote);
+    element.setAttribute("local", local);
+    element.setAttribute("remote", remote);
     element.addReference(true, connector.getSocketChannel());
-    // element.addReference(true, connector.getWriteQueue());
     element.addReference(false, connector.getSelector());
   }
 }

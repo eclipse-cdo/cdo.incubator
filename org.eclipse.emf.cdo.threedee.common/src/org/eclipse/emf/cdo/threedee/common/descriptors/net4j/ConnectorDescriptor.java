@@ -31,7 +31,6 @@ public class ConnectorDescriptor extends ChannelMultiplexerDescriptor
     super.initElement(object, element);
 
     Connector connector = (Connector)object;
-    element.setLabelAttribute(connector.getURL());
     element.setAttribute("state", connector.getState());
   }
 }

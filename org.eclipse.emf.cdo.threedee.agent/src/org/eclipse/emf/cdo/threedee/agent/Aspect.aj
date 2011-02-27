@@ -76,7 +76,7 @@ public aspect Aspect
       execution(public * org.eclipse.net4j.internal.tcp.TCPConnector.*(..)) ||
       execution(public * org.eclipse.net4j.internal.tcp.TCPClientConnector.*(..)) ||
       execution(public * org.eclipse.net4j.internal.tcp.TCPServerConnector.*(..)) ||
-//      execution(public * org.eclipse.net4j.internal.tcp.TCPSelector.*(..)) ||
+      // execution(public * org.eclipse.net4j.internal.tcp.TCPSelector.*(..)) ||
       execution(public * java.nio.channels.SocketChannel.*(..))
     );
 

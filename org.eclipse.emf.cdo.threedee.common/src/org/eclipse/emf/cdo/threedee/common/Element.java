@@ -22,7 +22,6 @@ import org.eclipse.net4j.util.container.ContainerEvent;
 import org.eclipse.net4j.util.container.IContainerDelta;
 import org.eclipse.net4j.util.event.Event;
 import org.eclipse.net4j.util.event.IEvent;
-import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.io.ExtendedDataInputStream;
 import org.eclipse.net4j.util.io.ExtendedDataOutputStream;
 
@@ -38,7 +37,7 @@ import java.util.Set;
 /**
  * @author Eike Stepper
  */
-public final class Element extends Container<Element> implements IListener
+public final class Element extends Container<Element>
 {
   public static final String LABEL_ATTRIBUTE = "label";
 
@@ -397,7 +396,6 @@ public final class Element extends Container<Element> implements IListener
 
     if (containerEvent != null)
     {
-      System.err.println(containerEvent);
       fireEvent(containerEvent);
     }
     else
@@ -439,13 +437,49 @@ public final class Element extends Container<Element> implements IListener
     return true;
   }
 
-  public void notifyEvent(IEvent event)
+  public void fireTransmissionEvent(Element receiver)
   {
+    IEvent event = new TransmissionEvent(receiver);
+    System.err.println(event);
+    fireEvent(event);
   }
 
   @Override
   public String toString()
   {
     return descriptor.getLabel(this);
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public final class TransmissionEvent extends Event
+  {
+    private static final long serialVersionUID = 1L;
+
+    private Element receiver;
+
+    private TransmissionEvent(Element receiver)
+    {
+      super(Element.this);
+      this.receiver = receiver;
+    }
+
+    @Override
+    public Element getSource()
+    {
+      return (Element)super.getSource();
+    }
+
+    public Element getReceiver()
+    {
+      return receiver;
+    }
+
+    @Override
+    public String toString()
+    {
+      return "TRANSMISSION " + getSource();
+    }
   }
 }

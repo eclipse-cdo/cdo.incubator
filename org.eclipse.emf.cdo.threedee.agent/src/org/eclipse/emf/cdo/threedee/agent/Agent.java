@@ -168,6 +168,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     called(source, target, what, When.AFTER);
   }
 
+  @SuppressWarnings("restriction")
   private void called(Object sourceObject, Object targetObject, String what, When when)
   {
     Element targetElement = getElement(targetObject, false);
@@ -179,9 +180,9 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     ElementDescriptor descriptor = targetElement.getDescriptor();
 
     Element sourceElement = getElement(sourceObject, false);
-    if (sourceElement != null /* && sourceElement != targetElement */)
+    if (sourceElement != null && sourceElement != targetElement)
     {
-      ElementEvent.Call event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
+      ElementEvent event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
       if (event != null)
       {
         if (TRACER.isEnabled())
@@ -193,12 +194,28 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       }
     }
 
-    if (when == When.AFTER)
+    if (when == When.BEFORE)
+    {
+      if (targetObject instanceof org.eclipse.net4j.internal.tcp.TCPConnector && "handleWrite".equals(what))
+      {
+        ElementEvent event = descriptor.createTransmitEvent(targetElement);
+        if (event != null)
+        {
+          if (TRACER.isEnabled())
+          {
+            TRACER.trace(event.toString());
+          }
+
+          addWork(event);
+        }
+      }
+    }
+    else
     {
       Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
       if (pair != null)
       {
-        ElementEvent.Change event = pair.getElement1();
+        ElementEvent event = pair.getElement1();
         Element newElement = pair.getElement2();
 
         if (TRACER.isEnabled())
