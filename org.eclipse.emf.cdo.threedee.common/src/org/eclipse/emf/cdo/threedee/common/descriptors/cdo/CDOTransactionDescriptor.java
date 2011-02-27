@@ -29,16 +29,11 @@ public class CDOTransactionDescriptor extends CDOViewDescriptor
   {
     super.initElement(object, element);
 
-    org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl transaction = (org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl)object;
-    element.setAttribute("dirty", transaction.isDirty());
-    element.setAttribute("conflict", transaction.hasConflict());
+    // org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl transaction =
+    // (org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl)object;
+    // element.setAttribute("dirty", transaction.isDirty());
+    // element.setAttribute("conflict", transaction.hasConflict());
     // element.addReference(true, transaction.getLastSavepoint());
     // element.addReference(false, transaction.getViewSet());
-  }
-
-  @Override
-  public String getLabel(Element element)
-  {
-    return super.getLabel(element);
   }
 }
