@@ -19,7 +19,6 @@ import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
 
 import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
-import com.sun.j3d.utils.behaviors.mouse.MouseBehavior;
 import com.sun.j3d.utils.behaviors.mouse.MouseRotate;
 import com.sun.j3d.utils.behaviors.mouse.MouseTranslate;
 import com.sun.j3d.utils.behaviors.mouse.MouseWheelZoom;
@@ -80,9 +79,7 @@ public class ThreeDeeWorldComposite extends Composite
 
     // add the branch group to the locale (which is the root)
     universe.addBranchGraph(scene);
-
-    // PickCanvas pickCanvas = new PickCanvas(canvas, group);
-    // pickCanvas.setMode(PickInfo.PICK_BOUNDS);
+    universe.addBranchGraph(createCoordinateSystem());
 
     Frame frame = SWT_AWT.new_Frame(this);
 
@@ -100,7 +97,6 @@ public class ThreeDeeWorldComposite extends Composite
     addChild(transformGroup, node);
     branchGroup.addChild(transformGroup);
     universe.addBranchGraph(branchGroup);
-    universe.addBranchGraph(createCoordinateSystem());
   }
 
   private void addNavigation(BranchGroup branchGroup)
@@ -114,7 +110,7 @@ public class ThreeDeeWorldComposite extends Composite
   {
     BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Float.MAX_VALUE);
 
-    MouseTranslate mouseTranslate = new MouseTranslate(MouseBehavior.INVERT_INPUT);
+    MouseTranslate mouseTranslate = new MouseTranslate();
     mouseTranslate.setTransformGroup(viewTransformGroup);
     mouseTranslate.setSchedulingBounds(mouseZone);
     branchGroup.addChild(mouseTranslate);
@@ -124,7 +120,7 @@ public class ThreeDeeWorldComposite extends Composite
     mouseZoom.setSchedulingBounds(mouseZone);
     branchGroup.addChild(mouseZoom);
 
-    MouseRotate mouseRotate = new MouseRotate(MouseBehavior.INVERT_INPUT);
+    MouseRotate mouseRotate = new MouseRotate();
     mouseRotate.setTransformGroup(viewTransformGroup);
     mouseRotate.setSchedulingBounds(mouseZone);
     branchGroup.addChild(mouseRotate);
@@ -150,13 +146,6 @@ public class ThreeDeeWorldComposite extends Composite
       TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
     }
   }
-
-  // private Vector3f calculateTranslationVector()
-  // {
-  // // Vector3f vector = new Vector3f();
-  // // vector.x = 0.2f;
-  // // return vector;
-  // }
 
   // private void addMouseListeners(Canvas3D canvas, Frame frame)
   // {
@@ -266,5 +255,16 @@ public class ThreeDeeWorldComposite extends Composite
     AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
     light2.setInfluencingBounds(bounds);
     group.addChild(light2);
+  }
+
+  public void addReferenceShape(Node shapeLine)
+  {
+    TransformGroup transformGroupLine = new TransformGroup();
+    addChild(transformGroupLine, shapeLine);
+
+    BranchGroup branchGroup = new BranchGroup();
+
+    branchGroup.addChild(transformGroupLine);
+    universe.addBranchGraph(branchGroup);
   }
 }

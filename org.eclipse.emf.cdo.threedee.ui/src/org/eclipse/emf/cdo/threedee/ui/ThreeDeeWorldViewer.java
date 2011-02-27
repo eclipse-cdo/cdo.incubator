@@ -11,16 +11,25 @@
 package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementProvider;
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.shapes.DefaultShape;
+import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
+import org.eclipse.net4j.util.om.trace.ContextTracer;
+
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
+import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.Shape3D;
+import javax.vecmath.Point3f;
 
+import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +38,9 @@ import java.util.Map;
  */
 public class ThreeDeeWorldViewer
 {
-  Map<Element, Shape3D> shapes = new HashMap<Element, Shape3D>();
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
+
+  Map<Element, Node> shapes = new HashMap<Element, Node>();
 
   private ThreeDeeWorldComposite threeDeeWorldComposite;
 
@@ -50,10 +61,73 @@ public class ThreeDeeWorldViewer
 
   public void addElement(Element element)
   {
+    if (shapes.get(element) != null)
+    {
+      return;
+    }
+
+    Node shape = createShape(element);
+    threeDeeWorldComposite.addShape(shape);
+
+    ElementProvider provider = element.getProvider();
+
+    Map<Integer, Boolean> references = element.getReferences();
+    for (int elementId : references.keySet())
+    {
+      Element referenceElement = provider.getElement(elementId);
+
+      Node referenceShape = shapes.get(referenceElement);
+
+      if (referenceShape == null)
+      {
+        referenceShape = createShape(referenceElement);
+        threeDeeWorldComposite.addShape(referenceShape);
+      }
+
+      Node shapeLine = createReferenceShape(element, referenceElement, references.get(elementId));
+      threeDeeWorldComposite.addReferenceShape(shapeLine);
+    }
+  }
+
+  private Node createShape(Element element)
+  {
     String name = element.getDescriptor().getName();
     IShapeFactory factory = IShapeFactory.Registry.INSTANCE.get(name);
-    Node shape = factory != null ? factory.createShape(element) : new DefaultShape();
-    threeDeeWorldComposite.addShape(shape);
+
+    System.out.println("ret.put(\"" + name + "\", Color.orange);");
+
+    if (factory == null)
+    {
+      factory = IShapeFactory.Registry.INSTANCE.get(DefaultShape.Factory.ID);
+    }
+
+    Node shape = factory.createShape(element);
+    shapes.put(element, shape);
+    return shape;
+  }
+
+  private Node createReferenceShape(Element from, Element to, Boolean isContainment)
+  {
+    Node shape = shapes.get(from);
+    Node referenceShape = shapes.get(to);
+    Assert.isNotNull(shape);
+    Assert.isNotNull(referenceShape);
+
+    Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
+    Point3f referencePosition = ThreeDeeWorldUtil.getPositionAsPoint3f(referenceShape);
+
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Drawing connection from {0} to {1}", elementPosition, referencePosition); //$NON-NLS-1$
+    }
+
+    Point3f[] points = new Point3f[2];
+    points[0] = elementPosition;
+    points[1] = referencePosition;
+    LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
+    lineArray.setCoordinates(0, points);
+    return new Shape3D(lineArray, ThreeDeeWorldUtil.getDefaultAppearance(isContainment == true ? Color.red
+        : Color.green));
   }
 
   public void removeElement(Element element)

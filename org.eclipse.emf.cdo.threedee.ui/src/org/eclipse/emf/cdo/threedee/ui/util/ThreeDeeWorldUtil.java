@@ -10,14 +10,22 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.util;
 
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+
+import org.eclipse.net4j.util.om.trace.ContextTracer;
+
 import javax.media.j3d.Appearance;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Material;
+import javax.media.j3d.Node;
 import javax.media.j3d.Texture;
 import javax.media.j3d.Texture2D;
 import javax.media.j3d.TextureAttributes;
+import javax.media.j3d.Transform3D;
 import javax.vecmath.Color3f;
 import javax.vecmath.Color4f;
+import javax.vecmath.Point3f;
+import javax.vecmath.Vector3f;
 
 import java.awt.Color;
 
@@ -26,6 +34,8 @@ import java.awt.Color;
  */
 public class ThreeDeeWorldUtil
 {
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldUtil.class);
+
   public static Appearance getDefaultAppearance(Color3f color)
   {
     Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
@@ -49,5 +59,40 @@ public class ThreeDeeWorldUtil
   public static Appearance getDefaultAppearance(Color color)
   {
     return ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(color));
+  }
+
+  public static Vector3f getPosition(Node shape)
+  {
+    Transform3D positionTrans = new Transform3D();
+    shape.getLocalToVworld(positionTrans);
+
+    Vector3f locationVec = new Vector3f();
+    positionTrans.get(locationVec);
+
+    float[] flo = new float[3];
+    locationVec.get(flo);
+    if (TRACER.isEnabled())
+    {
+      //      TRACER.format("Register: {0}", object); //$NON-NLS-1$
+      // System.out.print(flo[0] + " ");
+      // System.out.print(flo[1] + " ");
+      // System.out.println(flo[2]);
+    }
+    return locationVec;
+  }
+
+  public static Point3f getPositionAsPoint3f(Node shape)
+  {
+
+    Transform3D positionTrans = new Transform3D();
+    shape.getLocalToVworld(positionTrans);
+
+    Vector3f locationVec = new Vector3f();
+    positionTrans.get(locationVec);
+
+    // float[] flo = new float[3];
+    // locationVec.get(flo);
+
+    return new Point3f(locationVec);
   }
 }

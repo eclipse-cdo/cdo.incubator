@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.shapes.DefaultShape;
 import org.eclipse.emf.cdo.threedee.ui.shapes.EPackageRegistryShape;
 import org.eclipse.emf.cdo.threedee.ui.shapes.RepositoryShape;
 import org.eclipse.emf.cdo.threedee.ui.shapes.TCPConnectorShape;
@@ -40,6 +41,7 @@ public interface IShapeFactory
       INSTANCE.put("Repository", new RepositoryShape.Factory());
       INSTANCE.put("TCPConnector", new TCPConnectorShape.Factory());
       INSTANCE.put("EPackageRegistry", new EPackageRegistryShape.Factory());
+      INSTANCE.put(DefaultShape.Factory.ID, new DefaultShape.Factory());
     }
   }
 }

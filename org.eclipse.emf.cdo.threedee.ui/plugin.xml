@@ -4,12 +4,8 @@
 
    <extension
          point="org.eclipse.ui.views">
-      <category
-            id="org.eclipse.emf.cdo.threedee.ui"
-            name="Three Dee Category">
-      </category>
       <view
-            category="org.eclipse.emf.cdo.threedee.ui"
+            category="org.eclipse.emf.cdo.threedee"
             class="org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldView"
             icon="icons/sample.gif"
             id="org.eclipse.emf.cdo.threedee.ui.views.ThreeDeeWorldView"
