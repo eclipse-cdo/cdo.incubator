@@ -31,7 +31,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProtocol
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, AgentProtocol.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_EVENT_SEND, AgentProtocol.class);
 
   private AtomicInteger sequenceNumber = new AtomicInteger();
 
@@ -78,7 +78,7 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
           int agentSequenceNumber = sequenceNumber.incrementAndGet();
           if (TRACER.isEnabled())
           {
-            TRACER.trace("SEND EVENT " + agentSequenceNumber + ": " + event);
+            TRACER.trace("Send event " + agentSequenceNumber + ": " + event);
           }
 
           out.writeInt(agentSequenceNumber);

@@ -32,6 +32,12 @@ public abstract class OM
 
   public static final OMTracer DEBUG = BUNDLE.tracer("debug"); //$NON-NLS-1$
 
+  public static final OMTracer DEBUG_EVENT = DEBUG.tracer("event"); //$NON-NLS-1$
+
+  public static final OMTracer DEBUG_EVENT_RECEIVE = DEBUG_EVENT.tracer("receive"); //$NON-NLS-1$
+
+  public static final OMTracer DEBUG_EVENT_HANDLE = DEBUG_EVENT.tracer("handle"); //$NON-NLS-1$
+
   public static final OMLogger LOG = BUNDLE.logger();
 
   /**

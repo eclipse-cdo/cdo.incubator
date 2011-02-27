@@ -36,7 +36,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 {
   public static final Agent INSTANCE = new Agent();
 
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, Agent.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_EVENT, Agent.class);
 
   private String server;
 
@@ -113,7 +113,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       elements.put(object, element);
     }
 
-    addWork(new ElementEvent.Creation(element, root));
+    addWork(new ElementEvent.Create(element, root));
     return element;
   }
 
@@ -128,7 +128,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
     if (element != null)
     {
-      addWork(new ElementEvent.Removal(element.getID()));
+      addWork(new ElementEvent.Remove(element.getID()));
     }
   }
 
@@ -158,17 +158,17 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     protocol.sendEvent(event);
   }
 
-  public void beforeCall(Object source, Object target, Object signature)
+  public void beforeCall(Object source, Object target, String what)
   {
-    called(source, target, signature, When.BEFORE);
+    called(source, target, what, When.BEFORE);
   }
 
-  public void afterCall(Object source, Object target, Object signature)
+  public void afterCall(Object source, Object target, String what)
   {
-    called(source, target, signature, When.AFTER);
+    called(source, target, what, When.AFTER);
   }
 
-  private void called(Object sourceObject, Object targetObject, Object signature, When when)
+  private void called(Object sourceObject, Object targetObject, String what, When when)
   {
     Element targetElement = getElement(targetObject, false);
     if (targetElement == null)
@@ -181,15 +181,14 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     Element sourceElement = getElement(sourceObject, false);
     if (sourceElement != null && sourceElement != targetElement)
     {
-      if (TRACER.isEnabled())
-      {
-        TRACER.trace(when.toString() + ": " + (sourceObject == null ? "" : sourceObject.getClass().getName()) + " --> "
-            + targetObject.getClass().getName() + "." + signature + "()");
-      }
-
-      ElementEvent.Call event = descriptor.createCallEvent(sourceElement, targetElement, when);
+      ElementEvent.Call event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
       if (event != null)
       {
+        if (TRACER.isEnabled())
+        {
+          TRACER.trace(event.toString());
+        }
+
         addWork(event);
       }
     }
@@ -199,13 +198,13 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
       Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
       if (pair != null)
       {
-        if (TRACER.isEnabled())
-        {
-          TRACER.trace("CHANGED " + targetObject.getClass().getName() + "." + signature + "()");
-        }
-
         ElementEvent.Change event = pair.getElement1();
         Element newElement = pair.getElement2();
+
+        if (TRACER.isEnabled())
+        {
+          TRACER.trace(event.toString());
+        }
 
         synchronized (elements)
         {

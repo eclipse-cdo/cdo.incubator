@@ -29,7 +29,7 @@ import org.eclipse.spi.net4j.ServerProtocolFactory;
  */
 public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDeeProtocol
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, FrontendProtocol.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_EVENT_RECEIVE, FrontendProtocol.class);
 
   public FrontendProtocol()
   {
@@ -74,7 +74,7 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
 
           if (TRACER.isEnabled())
           {
-            TRACER.trace("RECEIVE EVENT " + agentSequenceNumber + ": " + event);
+            TRACER.trace("Receive event " + agentSequenceNumber + ": " + event);
           }
 
           session.handleEvent(agentSequenceNumber, event);

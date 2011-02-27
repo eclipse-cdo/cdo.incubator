@@ -1,3 +1,5 @@
 # Debugging and tracing options
 
 org.eclipse.emf.cdo.threedee.agent/debug = true
+org.eclipse.emf.cdo.threedee.agent/debug.event = true
+org.eclipse.emf.cdo.threedee.agent/debug.event.send = true

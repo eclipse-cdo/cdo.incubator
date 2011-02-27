@@ -5,7 +5,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Creation;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Create;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 
 import org.eclipse.net4j.util.container.Container;
@@ -19,7 +19,7 @@ import java.util.Map;
  */
 public class Session extends Container<Element> implements ElementProvider
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, Session.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_EVENT_HANDLE, Session.class);
 
   private FrontendProtocol protocol;
 
@@ -97,7 +97,7 @@ public class Session extends Container<Element> implements ElementProvider
         ++sequenceNumber;
         if (TRACER.isEnabled())
         {
-          TRACER.trace("HANDLE EVENT " + sequenceNumber + ": " + event);
+          TRACER.trace("Handle event " + sequenceNumber + ": " + event);
         }
 
         handleEvent(elementEvent);
@@ -109,8 +109,8 @@ public class Session extends Container<Element> implements ElementProvider
   {
     switch (event.getType())
     {
-    case Creation.TYPE:
-      handleCreationEvent((Creation)event);
+    case Create.TYPE:
+      handleCreationEvent((Create)event);
       break;
 
     case Call.TYPE:
@@ -125,7 +125,7 @@ public class Session extends Container<Element> implements ElementProvider
     }
   }
 
-  private void handleCreationEvent(Creation event)
+  private void handleCreationEvent(Create event)
   {
     Element element = event.getElement();
     addElement(element, event.isRoot());

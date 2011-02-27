@@ -30,8 +30,8 @@ public abstract class ElementEvent
   {
     switch (type)
     {
-    case Creation.TYPE:
-      return new Creation(in, provider);
+    case Create.TYPE:
+      return new Create(in, provider);
 
     case Call.TYPE:
       return new Call(in, provider);
@@ -39,8 +39,8 @@ public abstract class ElementEvent
     case Change.TYPE:
       return new Change(in);
 
-    case Removal.TYPE:
-      return new Removal(in);
+    case Remove.TYPE:
+      return new Remove(in);
 
     default:
       throw new RuntimeException();
@@ -50,7 +50,7 @@ public abstract class ElementEvent
   /**
    * @author Eike Stepper
    */
-  public static class Creation extends ElementEvent
+  public static class Create extends ElementEvent
   {
     public static final byte TYPE = 1;
 
@@ -58,13 +58,13 @@ public abstract class ElementEvent
 
     private boolean root;
 
-    public Creation(Element element, boolean root)
+    public Create(Element element, boolean root)
     {
       this.element = element;
       this.root = root;
     }
 
-    public Creation(ExtendedDataInputStream in, ElementProvider provider) throws IOException
+    public Create(ExtendedDataInputStream in, ElementProvider provider) throws IOException
     {
       element = new Element(in, provider);
       root = in.readBoolean();
@@ -96,7 +96,7 @@ public abstract class ElementEvent
     @Override
     public String toString()
     {
-      return "Creation " + element;
+      return "CREATE " + element;
     }
   }
 
@@ -111,12 +111,15 @@ public abstract class ElementEvent
 
     private Element target;
 
+    private String what;
+
     private When when;
 
-    public Call(Element source, Element target, When when)
+    public Call(Element source, Element target, String what, When when)
     {
       this.source = source;
       this.target = target;
+      this.what = what;
       this.when = when;
     }
 
@@ -128,6 +131,7 @@ public abstract class ElementEvent
       int targetID = in.readInt();
       target = provider.getElement(targetID);
 
+      what = in.readString();
       when = in.readBoolean() ? When.BEFORE : When.AFTER;
     }
 
@@ -136,6 +140,7 @@ public abstract class ElementEvent
     {
       out.writeInt(source.getID());
       out.writeInt(target.getID());
+      out.writeString(what);
       out.writeBoolean(when == When.BEFORE);
     }
 
@@ -155,6 +160,11 @@ public abstract class ElementEvent
       return target;
     }
 
+    public String getWhat()
+    {
+      return what;
+    }
+
     public When getWhen()
     {
       return when;
@@ -163,7 +173,7 @@ public abstract class ElementEvent
     @Override
     public String toString()
     {
-      return "Call " + when;
+      return "CALL " + when + " " + source.getDescriptor() + " --> " + target.getDescriptor() + "." + what + "()";
     }
 
     /**
@@ -274,7 +284,7 @@ public abstract class ElementEvent
     @Override
     public String toString()
     {
-      return "Change " + id + " " + changeInfos;
+      return "CHANGE " + id + " " + changeInfos;
     }
 
     private List<ChangeInfo> ensureChangeInfos()
@@ -402,18 +412,18 @@ public abstract class ElementEvent
   /**
    * @author Eike Stepper
    */
-  public static class Removal extends ElementEvent
+  public static class Remove extends ElementEvent
   {
     public static final byte TYPE = 4;
 
     private int id;
 
-    public Removal(int id)
+    public Remove(int id)
     {
       this.id = id;
     }
 
-    public Removal(ExtendedDataInputStream in) throws IOException
+    public Remove(ExtendedDataInputStream in) throws IOException
     {
       id = in.readInt();
     }
@@ -438,7 +448,7 @@ public abstract class ElementEvent
     @Override
     public String toString()
     {
-      return "Removal " + id;
+      return "REMOVE " + id;
     }
   }
 }

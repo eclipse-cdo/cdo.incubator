@@ -22,20 +22,20 @@ public class Hook
 {
   private static Map<Thread, Stack> stacks = new WeakHashMap<Thread, Stack>();
 
-  public static void before(Object target, Object signature)
+  public static void before(Object target, String what)
   {
     Stack stack = getStack();
     Object last = stack.peek();
     stack.push(target);
-    Agent.INSTANCE.beforeCall(last, target, signature);
+    Agent.INSTANCE.beforeCall(last, target, what);
   }
 
-  public static void after(Object target, Object signature)
+  public static void after(Object target, String what)
   {
     Stack stack = getStack();
     stack.pop();
     Object last = stack.peek();
-    Agent.INSTANCE.afterCall(last, target, signature);
+    Agent.INSTANCE.afterCall(last, target, what);
   }
 
   private static Stack getStack()
