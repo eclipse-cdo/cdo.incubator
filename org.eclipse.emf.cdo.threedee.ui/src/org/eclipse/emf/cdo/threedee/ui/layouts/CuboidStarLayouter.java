@@ -10,7 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.layouts;
 
-import org.eclipse.emf.cdo.threedee.ui.ILayouter;
 
 import javax.media.j3d.Bounds;
 import javax.media.j3d.Node;
@@ -24,7 +23,7 @@ import java.util.List;
 /**
  * @author Martin Fluegge
  */
-public class CuboidStarLayouter implements ILayouter
+public class CuboidStarLayouter implements ILayout
 {
   private List<Node> nodes = new ArrayList<Node>();
 

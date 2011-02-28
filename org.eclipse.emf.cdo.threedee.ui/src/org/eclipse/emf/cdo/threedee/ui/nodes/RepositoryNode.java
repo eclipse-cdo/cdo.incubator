@@ -8,10 +8,9 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.shapes;
+package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.IShapeFactory;
 import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import com.sun.j3d.utils.geometry.Box;
@@ -35,13 +34,13 @@ import java.io.IOException;
 /**
  * @author Martin Fluegge
  */
-public class RepositoryShape extends Box
+public class RepositoryNode extends Box
 {
   private TextureLoader loader;
 
   private Texture texture;
 
-  public RepositoryShape(float f, float g, float h, int generateTextureCoords, Appearance appearance)
+  public RepositoryNode(float f, float g, float h, int generateTextureCoords, Appearance appearance)
   {
     super(f, g, h, generateTextureCoords, appearance);
     createDefaultAppearance();
@@ -125,11 +124,11 @@ public class RepositoryShape extends Box
   /**
    * @author Martin Fluegge
    */
-  public static class Factory implements IShapeFactory
+  public static class Factory implements INodeFactory
   {
-    public Node createShape(Element element)
+    public Node createNode(Element element)
     {
-      return new RepositoryShape(.1f, .1f, .1f, Primitive.GENERATE_TEXTURE_COORDS,
+      return new RepositoryNode(.1f, .1f, .1f, Primitive.GENERATE_TEXTURE_COORDS,
           ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(Color.green)));
     }
   }

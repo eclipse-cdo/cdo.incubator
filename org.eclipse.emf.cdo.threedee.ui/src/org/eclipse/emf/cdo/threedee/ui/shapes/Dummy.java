@@ -8,18 +8,12 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui;
-
-import javax.media.j3d.Node;
-import javax.vecmath.Vector3f;
+package org.eclipse.emf.cdo.threedee.ui.shapes;
 
 /**
  * @author Martin Fluegge
  */
-public interface ILayouter
+public class Dummy
 {
-  /**
-   * searches for the best free position for the given node
-   */
-  public Vector3f getAvailablePosition(Node node);
+
 }

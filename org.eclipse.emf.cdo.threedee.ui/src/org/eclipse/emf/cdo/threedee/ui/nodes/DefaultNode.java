@@ -8,10 +8,9 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.shapes;
+package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.IShapeFactory;
 import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import com.sun.j3d.utils.geometry.Sphere;
@@ -26,14 +25,14 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class DefaultShape extends Sphere
+public class DefaultNode extends Sphere
 {
-  public DefaultShape()
+  public DefaultNode()
   {
     super(.1f, ThreeDeeWorldUtil.getDefaultAppearance(Color.orange));
   }
 
-  public DefaultShape(Appearance appearance)
+  public DefaultNode(Appearance appearance)
   {
     super(.1f, appearance);
   }
@@ -41,13 +40,13 @@ public class DefaultShape extends Sphere
   /**
    * @author Martin Fluegge
    */
-  public static class Factory implements IShapeFactory
+  public static class Factory implements INodeFactory
   {
     public static final String ID = "DEFAULT";
 
     private Map<String, Color> colors = init();
 
-    public Node createShape(Element element)
+    public Node createNode(Element element)
     {
       Color color = colors.get(element.getDescriptor().getName());
 
@@ -56,7 +55,7 @@ public class DefaultShape extends Sphere
         color = Color.orange;
       }
 
-      return new DefaultShape(ThreeDeeWorldUtil.getDefaultAppearance(color));
+      return new DefaultNode(ThreeDeeWorldUtil.getDefaultAppearance(color));
     }
 
     private Map<String, Color> init()

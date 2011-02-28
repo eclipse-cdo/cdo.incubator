@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
+import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -56,7 +57,7 @@ public class ThreeDeeWorldComposite extends Composite
 
   private TransformGroup sphereTransformGroup;
 
-  private ILayouter layouter = new CuboidStarLayouter();// new SimpleLayouter();
+  private ILayout layouter = new CuboidStarLayouter();// new SimpleLayouter();
 
   public ThreeDeeWorldComposite(Composite parent, int style)
   {

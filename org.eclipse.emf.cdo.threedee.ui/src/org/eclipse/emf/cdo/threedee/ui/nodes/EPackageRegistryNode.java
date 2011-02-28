@@ -8,10 +8,9 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.shapes;
+package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.IShapeFactory;
 import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import com.sun.j3d.utils.geometry.Sphere;
@@ -23,9 +22,9 @@ import java.awt.Color;
 /**
  * @author Martin Fluegge
  */
-public class EPackageRegistryShape extends Sphere
+public class EPackageRegistryNode extends Sphere
 {
-  public EPackageRegistryShape()
+  public EPackageRegistryNode()
   {
     super(.1f, ThreeDeeWorldUtil.getDefaultAppearance(Color.green));
   }
@@ -33,11 +32,11 @@ public class EPackageRegistryShape extends Sphere
   /**
    * @author Martin Fluegge
    */
-  public static class Factory implements IShapeFactory
+  public static class Factory implements INodeFactory
   {
-    public Node createShape(Element element)
+    public Node createNode(Element element)
     {
-      return new EPackageRegistryShape();
+      return new EPackageRegistryNode();
     }
   }
 }

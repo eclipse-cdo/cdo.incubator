@@ -13,7 +13,8 @@ package org.eclipse.emf.cdo.threedee.ui;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-import org.eclipse.emf.cdo.threedee.ui.shapes.DefaultShape;
+import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultNode;
+import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
 import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
@@ -92,16 +93,16 @@ public class ThreeDeeWorldViewer
   private Node createShape(Element element)
   {
     String name = element.getDescriptor().getName();
-    IShapeFactory factory = IShapeFactory.Registry.INSTANCE.get(name);
+    INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
 
     System.out.println("ret.put(\"" + name + "\", Color.orange);");
 
     if (factory == null)
     {
-      factory = IShapeFactory.Registry.INSTANCE.get(DefaultShape.Factory.ID);
+      factory = INodeFactory.Registry.INSTANCE.get(DefaultNode.Factory.ID);
     }
 
-    Node shape = factory.createShape(element);
+    Node shape = factory.createNode(element);
     shapes.put(element, shape);
     return shape;
   }
