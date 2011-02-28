@@ -15,7 +15,6 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultNode;
 import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
-import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 

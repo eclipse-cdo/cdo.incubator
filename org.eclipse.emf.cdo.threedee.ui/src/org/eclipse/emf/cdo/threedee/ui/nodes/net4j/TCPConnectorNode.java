@@ -11,8 +11,8 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
 import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
-import org.eclipse.emf.cdo.threedee.ui.util.ThreeDeeWorldUtil;
 
 import com.sun.j3d.utils.geometry.Sphere;
 
