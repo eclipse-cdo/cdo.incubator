@@ -11,6 +11,9 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.nodes.cdo.RepositoryNode;
+import org.eclipse.emf.cdo.threedee.ui.nodes.emf.EPackageRegistryNode;
+import org.eclipse.emf.cdo.threedee.ui.nodes.net4j.TCPConnectorNode;
 
 import javax.media.j3d.Node;
 
@@ -37,7 +40,6 @@ public interface INodeFactory
       INSTANCE.put("Repository", new RepositoryNode.Factory());
       INSTANCE.put("TCPConnector", new TCPConnectorNode.Factory());
       INSTANCE.put("EPackageRegistry", new EPackageRegistryNode.Factory());
-      INSTANCE.put(DefaultNode.Factory.ID, new DefaultNode.Factory());
     }
   }
 }

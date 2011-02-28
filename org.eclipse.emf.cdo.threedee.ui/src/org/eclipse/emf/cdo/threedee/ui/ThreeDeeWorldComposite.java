@@ -88,7 +88,7 @@ public class ThreeDeeWorldComposite extends Composite
     frame.add(canvas);
   }
 
-  public void addShape(Node node)
+  public void addNode(Node node)
   {
     BranchGroup branchGroup = new BranchGroup();
     TransformGroup transformGroup = createTransformGroup();

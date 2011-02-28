@@ -67,8 +67,8 @@ public class ThreeDeeWorldViewer
       return;
     }
 
-    Node shape = createShape(element);
-    threeDeeWorldComposite.addShape(shape);
+    Node shape = createNode(element);
+    threeDeeWorldComposite.addNode(shape);
 
     ElementProvider provider = element.getProvider();
 
@@ -77,12 +77,12 @@ public class ThreeDeeWorldViewer
     {
       Element referenceElement = provider.getElement(elementId);
 
-      Node referenceShape = shapes.get(referenceElement);
+      Node referenceNode = shapes.get(referenceElement);
 
-      if (referenceShape == null)
+      if (referenceNode == null)
       {
-        referenceShape = createShape(referenceElement);
-        threeDeeWorldComposite.addShape(referenceShape);
+        referenceNode = createNode(referenceElement);
+        threeDeeWorldComposite.addNode(referenceNode);
       }
 
       Node shapeLine = createReferenceShape(element, referenceElement, references.get(elementId));
@@ -90,19 +90,11 @@ public class ThreeDeeWorldViewer
     }
   }
 
-  private Node createShape(Element element)
+  private Node createNode(Element element)
   {
     String name = element.getDescriptor().getName();
     INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
-
-    System.out.println("ret.put(\"" + name + "\", Color.orange);");
-
-    if (factory == null)
-    {
-      factory = INodeFactory.Registry.INSTANCE.get(DefaultNode.Factory.ID);
-    }
-
-    Node shape = factory.createNode(element);
+    Node shape = factory != null ? factory.createNode(element) : new DefaultNode(element);
     shapes.put(element, shape);
     return shape;
   }
