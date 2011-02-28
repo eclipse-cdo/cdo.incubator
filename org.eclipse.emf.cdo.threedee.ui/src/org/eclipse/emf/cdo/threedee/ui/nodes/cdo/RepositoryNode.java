@@ -79,7 +79,7 @@ public class RepositoryNode extends Box
     // BufferedImage frontImage = new BufferedImage(imageWidth, imageHeight, BufferedImage.TYPE_INT_RGB);
 
     // BufferedImage frontImage = ImageIO.read(new File(
-    // "D:\\Development\\CDO_EclipseCon\\org.eclipse.emf.cdo.threedee.ui\\icons\\Eike2.jpg"));
+    // "D:\\Development\\CDO_EclipseCon\\org.eclipse.emf.cdo.threedee.ui\\images\\Eike2.jpg"));
     //
     // addTexture(frontImage, frontShape);
   }
