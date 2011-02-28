@@ -45,7 +45,7 @@ public class DefaultNode extends Sphere
     {
       color = Color.orange;
     }
-  
+
     return ThreeDeeWorldUtil.getDefaultAppearance(color);
   }
 

@@ -10,7 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.layouts;
 
-
 import javax.media.j3d.Bounds;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;

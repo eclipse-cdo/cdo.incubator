@@ -12,18 +12,12 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 
-
-
 /**
- * @author Martin Fluegge
+ * @author Eike Stepper
  */
-public interface INode
+public class NodeData
 {
-  public ILayout getLayout();
+  public ILayout layout;
 
-  public void setLayout(ILayout layout);
-
-  public Object getLayoutData();
-
-  public void setLayoutData(Object data);
+  public Object layoutData;
 }

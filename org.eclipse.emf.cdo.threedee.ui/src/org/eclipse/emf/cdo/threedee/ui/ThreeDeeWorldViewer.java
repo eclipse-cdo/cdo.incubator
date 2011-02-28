@@ -102,8 +102,9 @@ public class ThreeDeeWorldViewer
   private Node createReferenceShape(Element from, Element to, Boolean isContainment)
   {
     Node shape = shapes.get(from);
-    Node referenceShape = shapes.get(to);
     Assert.isNotNull(shape);
+
+    Node referenceShape = shapes.get(to);
     Assert.isNotNull(referenceShape);
 
     Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
