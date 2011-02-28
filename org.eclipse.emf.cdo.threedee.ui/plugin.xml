@@ -7,7 +7,7 @@
       <view
             category="org.eclipse.emf.cdo.threedee"
             class="org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldView"
-            icon="icons/sample.gif"
+            icon="images/sample.gif"
             id="org.eclipse.emf.cdo.threedee.ui.views.ThreeDeeWorldView"
             name="Three Dee World View">
       </view>
