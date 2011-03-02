@@ -67,8 +67,7 @@ public class ThreeDeeWorldViewer
       return;
     }
 
-    Node shape = createNode(element);
-    threeDeeWorldComposite.addNode(shape);
+    ContainmentGroup shape = (ContainmentGroup)createNode(element);
 
     ElementProvider provider = element.getProvider();
 
@@ -82,8 +81,15 @@ public class ThreeDeeWorldViewer
       if (referenceNode == null)
       {
         referenceNode = createNode(referenceElement);
-        threeDeeWorldComposite.addNode(referenceNode);
+        shape.addChild(referenceNode);
       }
+    }
+    // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
+    threeDeeWorldComposite.addNode(shape);
+    shape.layoutChildren();
+    for (int elementId : references.keySet())
+    {
+      Element referenceElement = provider.getElement(elementId);
 
       Node shapeLine = createReferenceShape(element, referenceElement, references.get(elementId));
       threeDeeWorldComposite.addReferenceShape(shapeLine);
@@ -95,18 +101,20 @@ public class ThreeDeeWorldViewer
     String name = element.getDescriptor().getName();
     INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
     Node shape = factory != null ? factory.createNode(element) : new DefaultNode(element);
+
     ContainmentGroup group = new ContainmentGroup();
     group.setShape(shape);
+
     shapes.put(element, group);
     return group;
   }
 
   private Node createReferenceShape(Element from, Element to, Boolean isContainment)
   {
-    Node shape = shapes.get(from);
+    Node shape = ((ContainmentGroup)shapes.get(from)).getShape();
     Assert.isNotNull(shape);
 
-    Node referenceShape = shapes.get(to);
+    Node referenceShape = ((ContainmentGroup)shapes.get(to)).getShape();
     Assert.isNotNull(referenceShape);
 
     Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
