@@ -1,0 +1,104 @@
+/**
+ * Copyright (c) 2004 - 2011 Eike Stepper (Berlin, Germany) and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *    Eike Stepper - initial API and implementation
+ */
+package org.eclipse.emf.cdo.threedee.agent;
+
+/**
+ * @author Eike Stepper
+ */
+public aspect Aspect
+{
+  pointcut excludes() :
+    call(* org.eclipse.net4j.buffer.IBufferProvider+.*(..)) ||
+    call(public * *.get*()) ||
+    call(public boolean *.is*()) ||
+    call(public boolean *.has*()) ||
+    call(public String *.toString()) ||
+    call(public boolean *.equals(Object)) ||
+    call(public int *.hashCode());
+
+  pointcut publicMethods() :
+    !excludes() &&
+    (
+      target(org.eclipse.emf.ecore.EPackage.Registry+) && call(public !static * org.eclipse.emf.ecore.EPackage.Registry.*(..)) && !call(* org.eclipse.emf.ecore.EPackage.Registry.values()) ||
+      target(org.eclipse.net4j.util.container.IManagedContainer+) && call(public !static * org.eclipse.net4j.util.container.IManagedContainer.*(..)) ||
+
+      target(org.eclipse.emf.cdo.common.CDOCommonSession+) && call(public !static * org.eclipse.emf.cdo.common.CDOCommonSession.*(..)) ||
+      target(org.eclipse.emf.cdo.common.CDOCommonView+) && call(public !static * org.eclipse.emf.cdo.common.CDOCommonView.*(..)) ||
+      target(org.eclipse.emf.cdo.transaction.CDOUserSavepoint+) && call(public !static * org.eclipse.emf.cdo.transaction.CDOUserSavepoint.*(..)) ||
+      target(org.eclipse.emf.internal.cdo.CDOObjectImpl) && call(public !static * org.eclipse.emf.internal.cdo.CDOObjectImpl.*(..)) && !call(* org.eclipse.emf.internal.cdo.CDOObjectImpl.cdo*()) ||
+
+      target(org.eclipse.emf.cdo.internal.server.Repository) && call(public !static * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.CommitManager) && call(public !static * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.LockManager) && call(public !static * org.eclipse.emf.cdo.internal.server.LockManager.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.QueryManager) && call(public !static * org.eclipse.emf.cdo.internal.server.QueryManager.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.SessionManager) && call(public !static * org.eclipse.emf.cdo.internal.server.SessionManager.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.Session) && call(public !static * org.eclipse.emf.cdo.internal.server.Session.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.View) && call(public !static * org.eclipse.emf.cdo.internal.server.View.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.Transaction) && call(public !static * org.eclipse.emf.cdo.internal.server.Transaction.*(..)) ||
+
+      target(org.eclipse.emf.cdo.spi.server.Store) && call(public !static * org.eclipse.emf.cdo.spi.server.Store.*(..)) ||
+      target(org.eclipse.emf.cdo.spi.server.StoreAccessor) && call(public !static * org.eclipse.emf.cdo.spi.server.StoreAccessor.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.mem.MEMStore) && call(public !static * org.eclipse.emf.cdo.internal.server.mem.MEMStore.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.mem.MEMStoreAccessor) && call(public !static * org.eclipse.emf.cdo.internal.server.mem.MEMStoreAccessor.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.server.mem.MEMStoreChunkReader) && call(public !static * org.eclipse.emf.cdo.internal.server.mem.MEMStoreChunkReader.*(..)) ||
+
+      target(org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) && !call(* org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.getBranches(boolean)) ||
+
+      target(org.eclipse.emf.cdo.internal.common.revision.CDORevisionManagerImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.revision.CDORevisionManagerImpl.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.common.revision.CDORevisionCacheImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.revision.CDORevisionCacheImpl.*(..)) ||
+      target(org.eclipse.emf.cdo.spi.common.revision.AbstractCDORevision) && call(public !static * org.eclipse.emf.cdo.spi.common.revision.AbstractCDORevision.*(..)) ||
+      target(org.eclipse.emf.cdo.spi.common.revision.BaseCDORevision) && call(public !static * org.eclipse.emf.cdo.spi.common.revision.BaseCDORevision.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.common.revision.CDORevisionImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.revision.CDORevisionImpl.*(..)) ||
+
+      target(org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
+      target(org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !call(* org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.doGetEPackage(boolean)) ||
+      target(org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl) && call(public !static * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..)) ||
+
+      target(org.eclipse.emf.cdo.server.internal.db.DBStore) && call(public !static * org.eclipse.emf.cdo.server.internal.db.DBStore.*(..)) ||
+      target(org.eclipse.emf.cdo.server.internal.db.DBStoreAccessor) && call(public !static * org.eclipse.emf.cdo.server.internal.db.DBStoreAccessor.*(..)) ||
+      target(org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.AbstractHorizontalClassMapping) && call(public !static * org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.AbstractHorizontalClassMapping.*(..)) ||
+      target(org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy) && call(public !static * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.*(..)) && !call(* org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.doGetClassMappings(boolean)) ||
+      target(org.eclipse.emf.cdo.server.internal.db.MetaDataManager) && call(public !static * org.eclipse.emf.cdo.server.internal.db.MetaDataManager.*(..)) ||
+      target(org.eclipse.emf.cdo.server.db.mapping.AbstractTypeMapping) && call(public !static * org.eclipse.emf.cdo.server.db.mapping.AbstractTypeMapping.*(..)) ||
+
+      target(org.eclipse.net4j.spi.db.DBAdapter) && call(public !static * org.eclipse.net4j.spi.db.DBAdapter.*(..)) ||
+      target(org.eclipse.net4j.spi.db.DBSchema) && call(public !static * org.eclipse.net4j.spi.db.DBSchema.*(..)) ||
+      target(org.eclipse.net4j.internal.db.ddl.DBField) && call(public !static * org.eclipse.net4j.internal.db.ddl.DBField.*(..)) ||
+      target(org.eclipse.net4j.internal.db.ddl.DBIndex) && call(public !static * org.eclipse.net4j.internal.db.ddl.DBIndex.*(..)) ||
+      target(org.eclipse.net4j.internal.db.ddl.DBTable) && call(public !static * org.eclipse.net4j.internal.db.ddl.DBTable.*(..)) ||
+
+      target(org.eclipse.spi.net4j.Acceptor) && call(public !static * org.eclipse.spi.net4j.Acceptor.*(..)) ||
+      target(org.eclipse.spi.net4j.Channel) && call(public !static * org.eclipse.spi.net4j.Channel.*(..)) ||
+      target(org.eclipse.spi.net4j.ChannelMultiplexer) && call(public !static * org.eclipse.spi.net4j.ChannelMultiplexer.*(..)) ||
+      target(org.eclipse.spi.net4j.Connector) && call(public !static * org.eclipse.spi.net4j.Connector.*(..)) ||
+      target(org.eclipse.spi.net4j.Protocol) && call(public !static * org.eclipse.spi.net4j.Protocol.*(..)) ||
+      target(org.eclipse.net4j.internal.tcp.TCPAcceptor) && call(public !static * org.eclipse.net4j.internal.tcp.TCPAcceptor.*(..)) ||
+      target(org.eclipse.net4j.internal.tcp.TCPConnector) && call(public !static * org.eclipse.net4j.internal.tcp.TCPConnector.*(..)) ||
+      target(org.eclipse.net4j.internal.tcp.TCPClientConnector) && call(public !static * org.eclipse.net4j.internal.tcp.TCPClientConnector.*(..)) ||
+      target(org.eclipse.net4j.internal.tcp.TCPServerConnector) && call(public !static * org.eclipse.net4j.internal.tcp.TCPServerConnector.*(..)) ||
+      target(java.nio.channels.SocketChannel) && call(public !static * java.nio.channels.SocketChannel.*(..))
+    );
+
+  Object around() : publicMethods()
+  {
+    try
+    {
+      Hook.before(thisJoinPoint);
+      return proceed();
+    }
+    finally
+    {
+      Hook.after(thisJoinPoint);
+    }
+  }
+}
