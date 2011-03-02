@@ -13,6 +13,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultNode;
 import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
 
@@ -94,8 +95,10 @@ public class ThreeDeeWorldViewer
     String name = element.getDescriptor().getName();
     INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
     Node shape = factory != null ? factory.createNode(element) : new DefaultNode(element);
-    shapes.put(element, shape);
-    return shape;
+    ContainmentGroup group = new ContainmentGroup();
+    group.setShape(shape);
+    shapes.put(element, group);
+    return group;
   }
 
   private Node createReferenceShape(Element from, Element to, Boolean isContainment)

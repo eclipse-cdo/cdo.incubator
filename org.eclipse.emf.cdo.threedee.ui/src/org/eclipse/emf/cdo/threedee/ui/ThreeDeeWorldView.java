@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.Frontend;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.Element.TransmissionEvent;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
@@ -70,6 +71,11 @@ public class ThreeDeeWorldView extends ViewPart
       @Override
       protected void notifyOtherEvent(IEvent event)
       {
+        if (event instanceof TransmissionEvent)
+        {
+          // TODO implement logic
+        }
+
       }
 
       private void addElement(Object object)
