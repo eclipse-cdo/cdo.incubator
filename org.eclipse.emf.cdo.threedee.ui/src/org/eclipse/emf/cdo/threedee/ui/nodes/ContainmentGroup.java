@@ -57,9 +57,9 @@ public class ContainmentGroup extends TransformGroup
     }
     allChildren = getAllChildren();
 
-    float radius = 0.5f;
+    float radius = 0.7f;
     float angle = 0f;
-    float distanceAngle = 360 / elements.size();
+    float distanceAngle = 360f / (elements.size() - 1);
     for (Node node : elements)
     {
       if (node != shape)
