@@ -34,6 +34,7 @@ import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
+import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
@@ -42,7 +43,10 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
 import java.awt.Frame;
+import java.awt.GraphicsConfigTemplate;
 import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 /**
  * @author Martin Fluegge
@@ -65,27 +69,70 @@ public class ThreeDeeWorldComposite extends Composite
     init();
   }
 
+  @SuppressWarnings({ "unchecked", "rawtypes" })
   private void init()
   {
-    GraphicsConfiguration config = createGraphicsConfiguration();
-    Canvas3D canvas = new Canvas3D(config);
-    universe = new SimpleUniverse(canvas);
+    GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
+    String stereo;
 
-    positionViewer(universe.getViewingPlatform());
-    scene = createScene();
-    addNavigation(scene);
+    // Check if the user has set the Java 3D stereo option.
+    // Getting the system properties causes appletviewer to fail with a
+    // security exception without a try/catch.
 
-    // compile objects should be better ???
-    // contentBranchGroup.compile();
+    stereo = (String)java.security.AccessController.doPrivileged(new java.security.PrivilegedAction()
+    {
+      public Object run()
+      {
+        return System.getProperty("j3d.stereo");
+      }
+    });
 
-    // add the branch group to the locale (which is the root)
-    universe.addBranchGraph(scene);
-    universe.addBranchGraph(createCoordinateSystem());
+    // update template based on properties.
+    if (stereo != null)
+    {
+      if (stereo.equals("REQUIRED"))
+      {
+        template.setStereo(GraphicsConfigTemplate.REQUIRED);
+      }
+      else if (stereo.equals("PREFERRED"))
+      {
+        template.setStereo(GraphicsConfigTemplate.PREFERRED);
+      }
+    }
 
-    Frame frame = SWT_AWT.new_Frame(this);
+    for (GraphicsDevice graphicsDevice : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
+    {
+      try
+      {
+        GraphicsConfiguration config = graphicsDevice.getBestConfiguration(template);
 
-    // addMouseListeners(canvas, frame);
-    frame.add(canvas);
+        Canvas3D canvas = new Canvas3D(config);
+        universe = new SimpleUniverse(canvas);
+
+        positionViewer(universe.getViewingPlatform());
+        scene = createScene();
+        addNavigation(scene);
+
+        // compile objects should be better ???
+        // contentBranchGroup.compile();
+
+        // add the branch group to the locale (which is the root)
+        universe.addBranchGraph(scene);
+        universe.addBranchGraph(createCoordinateSystem());
+
+        Frame frame = SWT_AWT.new_Frame(this);
+
+        // addMouseListeners(canvas, frame);
+        frame.add(canvas); // Can fail on multi display systems
+        return;
+      }
+      catch (Exception ex)
+      {
+        // Try next display
+      }
+    }
+
+    throw new IllegalStateException("Could not initialize");
   }
 
   public void addNode(Node node)
@@ -157,12 +204,6 @@ public class ThreeDeeWorldComposite extends Composite
   //
   // frame.addMouseListener(listener);
   // }
-
-  private GraphicsConfiguration createGraphicsConfiguration()
-  {
-    GraphicsConfiguration config = SimpleUniverse.getPreferredConfiguration();
-    return config;
-  }
 
   public void positionViewer(ViewingPlatform vp)
   {
