@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.agent.bundle;
 
 import org.eclipse.emf.cdo.threedee.agent.Agent;
-import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
@@ -58,12 +57,12 @@ public abstract class OM
       super(BUNDLE);
     }
 
-    @Override
-    protected void doStart() throws Exception
-    {
-      Agent.INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
-      Agent.INSTANCE.activate();
-    }
+    // @Override
+    // protected void doStart() throws Exception
+    // {
+    // Agent.INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
+    // Agent.INSTANCE.activate();
+    // }
 
     @Override
     protected void doStop() throws Exception

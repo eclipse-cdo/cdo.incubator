@@ -10,6 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee.agent.bundle;
 
+import org.eclipse.emf.cdo.threedee.agent.Agent;
+
 import org.eclipse.ui.IStartup;
 
 /**
@@ -19,6 +21,6 @@ public class Startup implements IStartup
 {
   public void earlyStartup()
   {
-    // Do nothing
+    Agent.start();
   }
 }

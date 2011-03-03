@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.agent.bundle;
 
 import org.eclipse.emf.cdo.spi.server.IAppExtension;
+import org.eclipse.emf.cdo.threedee.agent.Agent;
 
 import java.io.File;
 
@@ -25,6 +26,7 @@ public class ThreeDeeAppExtension implements IAppExtension
 
   public void start(File configFile) throws Exception
   {
+    Agent.start();
     OM.LOG.info("ThreeDee extension started"); //$NON-NLS-1$
   }
 

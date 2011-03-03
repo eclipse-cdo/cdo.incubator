@@ -10,6 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
+import org.eclipse.net4j.buffer.IBuffer;
+
 /**
  * @author Eike Stepper
  */
@@ -75,7 +77,7 @@ public aspect Aspect
       execution(public * org.eclipse.net4j.internal.db.ddl.DBTable.*(..)) ||
 
       execution(public * org.eclipse.spi.net4j.Acceptor.*(..)) ||
-      execution(public * org.eclipse.spi.net4j.Channel.*(..)) ||
+      execution(public * org.eclipse.spi.net4j.Channel.*(..)) && !execution(public * org.eclipse.spi.net4j.Channel.handleBufferFromMultiplexer(IBuffer)) ||
       execution(public * org.eclipse.spi.net4j.ChannelMultiplexer.*(..)) ||
       execution(public * org.eclipse.spi.net4j.Connector.*(..)) ||
       execution(public * org.eclipse.spi.net4j.Protocol.*(..)) ||

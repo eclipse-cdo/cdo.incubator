@@ -17,6 +17,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
+import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
@@ -231,5 +232,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
         addWork(event);
       }
     }
+  }
+
+  public static void start()
+  {
+    INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
+    INSTANCE.activate();
   }
 }
