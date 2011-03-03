@@ -49,6 +49,8 @@ public final class Element extends Container<Element>
 
   private int id;
 
+  private int containerID;
+
   private ElementDescriptor descriptor;
 
   private ElementProvider provider;
@@ -69,6 +71,7 @@ public final class Element extends Container<Element>
   {
     this.provider = provider;
     id = in.readInt();
+    containerID = in.readInt();
     String descriptorName = in.readString();
     descriptor = ElementDescriptor.Registry.INSTANCE.get(descriptorName);
     if (descriptor == null)
@@ -97,6 +100,7 @@ public final class Element extends Container<Element>
   public void write(ExtendedDataOutputStream out) throws IOException
   {
     out.writeInt(id);
+    out.writeInt(containerID);
     out.writeString(descriptor.getName());
 
     out.writeInt(attributes.size());
@@ -122,6 +126,11 @@ public final class Element extends Container<Element>
   public int getID()
   {
     return id;
+  }
+
+  public int getContainerID()
+  {
+    return containerID;
   }
 
   public ElementDescriptor getDescriptor()
@@ -191,15 +200,24 @@ public final class Element extends Container<Element>
     setAttribute(LABEL_ATTRIBUTE, value);
   }
 
+  private void addReference(boolean containment, Element element)
+  {
+    if (element != null)
+    {
+      references.put(element.getID(), containment);
+      if (containment)
+      {
+        element.containerID = id;
+      }
+    }
+  }
+
   public void addReference(boolean containment, Object object)
   {
     if (object != null)
     {
       Element element = provider.getElement(object, containment);
-      if (element != null)
-      {
-        references.put(element.getID(), containment);
-      }
+      addReference(containment, element);
     }
   }
 
@@ -356,6 +374,7 @@ public final class Element extends Container<Element>
           references.put(id, containment);
           if (element != null && containment)
           {
+            element.containerID = this.id;
             if (containerEvent == null)
             {
               containerEvent = new ContainerEvent<Element>(this);
@@ -367,14 +386,23 @@ public final class Element extends Container<Element>
 
         case TYPE:
           references.put(id, containment);
-          if (element != null && containment)
+          if (element != null)
           {
             if (containerEvent == null)
             {
               containerEvent = new ContainerEvent<Element>(this);
             }
 
-            containerEvent.addDelta(element, containment ? IContainerDelta.Kind.ADDED : IContainerDelta.Kind.REMOVED);
+            if (containment)
+            {
+              element.containerID = this.id;
+              containerEvent.addDelta(element, IContainerDelta.Kind.ADDED);
+            }
+            else
+            {
+              element.containerID = 0;
+              containerEvent.addDelta(element, IContainerDelta.Kind.REMOVED);
+            }
           }
           break;
 
@@ -382,6 +410,7 @@ public final class Element extends Container<Element>
           references.remove(id);
           if (element != null && containment)
           {
+            element.containerID = 0;
             if (containerEvent == null)
             {
               containerEvent = new ContainerEvent<Element>(this);
