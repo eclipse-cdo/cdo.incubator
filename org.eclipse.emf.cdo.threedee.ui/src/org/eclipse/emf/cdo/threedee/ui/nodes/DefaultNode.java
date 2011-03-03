@@ -16,6 +16,8 @@ import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
 import com.sun.j3d.utils.geometry.Sphere;
 
 import javax.media.j3d.Appearance;
+import javax.media.j3d.RenderingAttributes;
+import javax.media.j3d.TransformGroup;
 
 import java.awt.Color;
 import java.util.HashMap;
@@ -31,11 +33,33 @@ public class DefaultNode extends Sphere
   public DefaultNode(Element element)
   {
     super(.1f, defaultAppearance(element));
+    setDefaultCapabilities();
   }
 
   public DefaultNode(Appearance appearance)
   {
     super(.1f, appearance);
+
+    setDefaultCapabilities();
+  }
+
+  private void setDefaultCapabilities()
+  {
+    setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
+    // setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
+
+    Appearance appearance = getAppearance();
+    appearance.setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
+    appearance.setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
+    RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
+    if (renderingAttributes == null)
+    {
+      renderingAttributes = new RenderingAttributes();
+      renderingAttributes.setCapability(RenderingAttributes.ALLOW_VISIBLE_WRITE);
+      appearance.setRenderingAttributes(renderingAttributes);
+    }
   }
 
   private static Appearance defaultAppearance(Element element)

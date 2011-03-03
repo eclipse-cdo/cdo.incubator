@@ -20,6 +20,7 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,13 +44,22 @@ public class ThreeDeeWorldTest
 
     Element element = dummyElementProvider.createElement();
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 5; i++)
     {
       Element child = dummyElementProvider.createElement();
       element.getReferences().put(child.getID(), true);
+      for (int a = 0; a < 3; a++)
+      {
+        Element level2Child = dummyElementProvider.createElement();
+        child.getReferences().put(level2Child.getID(), true);
+      }
     }
 
     viewer.addElement(element);
+
+    ArrayList<String> elementsToBeHidden = new ArrayList<String>();
+    // elementsToBeHidden.add("Acceptor");
+    viewer.filter(elementsToBeHidden);
 
     // Thread t = new Thread(new Runnable()
     // {
@@ -93,7 +103,6 @@ public class ThreeDeeWorldTest
 
   private static class DummyElementProvider implements ElementProvider
   {
-
     private Map<Integer, Element> elements = new HashMap<Integer, Element>();
 
     private int id = 0;
@@ -113,7 +122,7 @@ public class ThreeDeeWorldTest
       return elements.get(id);
     }
 
-    public Element createElement()
+    public synchronized Element createElement()
     {
       Element element = new Element(id++, new AcceptorDescriptor(), this);
 

@@ -25,13 +25,18 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
+import com.sun.j3d.utils.geometry.Sphere;
+
+import javax.media.j3d.Appearance;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
+import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Shape3D;
 import javax.vecmath.Point3f;
 
 import java.awt.Color;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -72,6 +77,29 @@ public class ThreeDeeWorldViewer
     ElementProvider provider = element.getProvider();
 
     Map<Integer, Boolean> references = element.getReferences();
+    createChildren(shape, provider, references);
+    // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
+    threeDeeWorldComposite.addNode(shape);
+    shape.layoutChildren();
+
+    createReferences(element, provider, references);
+  }
+
+  private void createReferences(Element element, ElementProvider provider, Map<Integer, Boolean> references)
+  {
+    for (int elementId : references.keySet())
+    {
+      Element referenceElement = provider.getElement(elementId);
+
+      Node shapeLine = createReferenceShape(element, referenceElement, references.get(elementId));
+      threeDeeWorldComposite.addReferenceShape(shapeLine);
+
+      createReferences(referenceElement, provider, referenceElement.getReferences());
+    }
+  }
+
+  private void createChildren(ContainmentGroup shape, ElementProvider provider, Map<Integer, Boolean> references)
+  {
     for (int elementId : references.keySet())
     {
       Element referenceElement = provider.getElement(elementId);
@@ -82,17 +110,8 @@ public class ThreeDeeWorldViewer
       {
         referenceNode = createNode(referenceElement);
         shape.addChild(referenceNode);
+        createChildren((ContainmentGroup)referenceNode, provider, referenceElement.getReferences());
       }
-    }
-    // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
-    threeDeeWorldComposite.addNode(shape);
-    shape.layoutChildren();
-    for (int elementId : references.keySet())
-    {
-      Element referenceElement = provider.getElement(elementId);
-
-      Node shapeLine = createReferenceShape(element, referenceElement, references.get(elementId));
-      threeDeeWorldComposite.addReferenceShape(shapeLine);
     }
   }
 
@@ -136,5 +155,41 @@ public class ThreeDeeWorldViewer
 
   public void removeElement(Element element)
   {
+  }
+
+  public void filter(List<String> elementsToBeHidden)
+  {
+    for (Element element : shapes.keySet())
+    {
+      Node node = shapes.get(element);
+      if (node instanceof ContainmentGroup)
+      {
+        node = ((ContainmentGroup)node).getShape();
+      }
+
+      if (elementsToBeHidden.contains(element.getDescriptor().getName()))
+      {
+        setVisible(node, false);
+        // javax.media.j3d.Appearance.getRenderingAttributes().setVisible()
+      }
+      else
+      {
+        setVisible(node, true);
+      }
+    }
+  }
+
+  private void setVisible(Node node, boolean visible)
+  {
+    if (node instanceof Sphere)
+    {
+      Appearance appearance = ((Sphere)node).getAppearance();
+      System.out.println(appearance.getCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE));
+      RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
+      if (renderingAttributes != null)
+      {
+        renderingAttributes.setVisible(visible);
+      }
+    }
   }
 }

@@ -112,6 +112,11 @@ public class ThreeDeeWorldView extends ViewPart
     Frontend.INSTANCE.addListener(listener);
   }
 
+  public ThreeDeeWorldViewer getViewer()
+  {
+    return viewer;
+  }
+
   @Override
   public void setFocus()
   {

@@ -16,6 +16,7 @@ import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
 
 import com.sun.j3d.utils.geometry.Sphere;
 
+import javax.media.j3d.Appearance;
 import javax.media.j3d.Node;
 
 import java.awt.Color;
@@ -28,6 +29,8 @@ public class EPackageRegistryNode extends Sphere
   public EPackageRegistryNode()
   {
     super(.1f, ThreeDeeWorldUtil.getDefaultAppearance(Color.green));
+    setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
+    setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
   }
 
   /**

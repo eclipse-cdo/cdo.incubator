@@ -10,6 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
+import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
+
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
@@ -26,7 +28,7 @@ public class ContainmentGroup extends TransformGroup
 {
   private Node shape;
 
-  List<ContainmentGroup> cildren = new ArrayList<ContainmentGroup>();
+  // List<ContainmentGroup> cildren = new ArrayList<ContainmentGroup>();
 
   public ContainmentGroup()
   {
@@ -45,36 +47,55 @@ public class ContainmentGroup extends TransformGroup
     return shape;
   }
 
+  CuboidStarLayouter layout = new CuboidStarLayouter();
+
   public void layoutChildren()
+  {
+    // Vector3f pos = layout.getAvailablePosition(this);
+    // Transform3D transform = new Transform3D();
+    // transform.setTranslation(pos);
+    // setTransform(transform);
+
+    List<ContainmentGroup> elements = getChildren();
+    // allChildren = getAllChildren();
+
+    placeChildren(elements);
+
+  }
+
+  public List<ContainmentGroup> getChildren()
   {
     @SuppressWarnings("rawtypes")
     Enumeration allChildren = getAllChildren();
-
-    List<Node> elements = new ArrayList<Node>();
+    List<ContainmentGroup> elements = new ArrayList<ContainmentGroup>();
     while (allChildren.hasMoreElements())
     {
-      elements.add((Node)allChildren.nextElement());
-    }
-    allChildren = getAllChildren();
-
-    float radius = 0.7f;
-    float angle = 0f;
-    float distanceAngle = 360f / (elements.size() - 1);
-    for (Node node : elements)
-    {
-      if (node != shape)
+      Node nextElement = (Node)allChildren.nextElement();
+      if (nextElement != shape)
       {
-        ContainmentGroup group = (ContainmentGroup)node;
-
-        float x = (float)(0 + radius * Math.cos(Math.toRadians(angle)));
-        float y = (float)(0 + radius * Math.sin(Math.toRadians(angle)));
-
-        Vector3f availablePosition = new Vector3f(x, y, 0f);
-        Transform3D t1 = new Transform3D();
-        t1.setTranslation(availablePosition);
-        group.setTransform(t1);
-        angle += distanceAngle;
+        elements.add((ContainmentGroup)nextElement);
       }
+    }
+    return elements;
+  }
+
+  private void placeChildren(List<ContainmentGroup> elements)
+  {
+    float radius = 2f;
+    float angle = 0f;
+    float distanceAngle = 360f / elements.size();
+    for (ContainmentGroup group : elements)
+    {
+      float x = (float)(0 + radius * Math.cos(Math.toRadians(angle)));
+      float y = (float)(0 + radius * Math.sin(Math.toRadians(angle)));
+
+      Vector3f availablePosition = new Vector3f(x, y, 1f);
+      Transform3D t1 = new Transform3D();
+      t1.setTranslation(availablePosition);
+      group.setTransform(t1);
+      angle += distanceAngle;
+
+      placeChildren(group.getChildren());
     }
   }
 }
