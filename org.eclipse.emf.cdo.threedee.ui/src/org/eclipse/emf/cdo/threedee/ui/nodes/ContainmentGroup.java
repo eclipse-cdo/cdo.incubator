@@ -28,8 +28,6 @@ public class ContainmentGroup extends TransformGroup
 {
   private Node shape;
 
-  // List<ContainmentGroup> cildren = new ArrayList<ContainmentGroup>();
-
   public ContainmentGroup()
   {
     setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
