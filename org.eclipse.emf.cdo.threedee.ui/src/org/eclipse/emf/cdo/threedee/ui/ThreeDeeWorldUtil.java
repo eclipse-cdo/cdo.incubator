@@ -34,6 +34,7 @@ import java.awt.Color;
  */
 public class ThreeDeeWorldUtil
 {
+  @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldUtil.class);
 
   public static Appearance getDefaultAppearance(Color3f color)
