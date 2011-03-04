@@ -71,27 +71,16 @@ public class ThreeDeeWorldUtil
 
     float[] flo = new float[3];
     locationVec.get(flo);
-    if (TRACER.isEnabled())
-    {
-      //      TRACER.format("Register: {0}", object); //$NON-NLS-1$
-      // System.out.print(flo[0] + " ");
-      // System.out.print(flo[1] + " ");
-      // System.out.println(flo[2]);
-    }
     return locationVec;
   }
 
   public static Point3f getPositionAsPoint3f(Node shape)
   {
-
     Transform3D positionTrans = new Transform3D();
     shape.getLocalToVworld(positionTrans);
 
     Vector3f locationVec = new Vector3f();
     positionTrans.get(locationVec);
-
-    // float[] flo = new float[3];
-    // locationVec.get(flo);
 
     return new Point3f(locationVec);
   }

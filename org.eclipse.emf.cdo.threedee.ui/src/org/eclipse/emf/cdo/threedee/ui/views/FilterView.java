@@ -60,14 +60,11 @@ public class FilterView extends ViewPart
         if (event.getChecked())
         {
           elementsToBeHidden.add(name);
-          // . . . check all its children
           // viewer.setSubtreeChecked(event.getElement(), true);
-          System.out.println("add " + name);
         }
         else
         {
           elementsToBeHidden.remove(name);
-          System.out.println("remove " + name);
         }
         ThreeDeeWorldView threeDeeWorldView = (ThreeDeeWorldView)getSite().getPage().findView(ThreeDeeWorldView.ID);
         ThreeDeeWorldViewer threeDeeWorldViewViewer = threeDeeWorldView.getViewer();
