@@ -99,7 +99,7 @@ public class Hook
         TRACER.trace("PUSH " + object.getClass().getName()); //$NON-NLS-1$
       }
 
-      super.push(object);
+      addFirst(object);
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Hook
     {
       try
       {
-        Object object = super.pop();
+        Object object = removeFirst();
         if (TRACER.isEnabled())
         {
           TRACER.trace("POP " + object.getClass().getName()); //$NON-NLS-1$
