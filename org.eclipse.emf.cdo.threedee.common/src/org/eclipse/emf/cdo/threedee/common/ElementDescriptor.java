@@ -166,6 +166,8 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
     private List<ElementDescriptor> values;
 
+    private List<ElementDescriptor> rootDescriptors;
+
     private Map<String, List<ElementDescriptor>> subDescriptors;
 
     public void register(ElementDescriptor descriptor)
@@ -177,6 +179,7 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     public ElementDescriptor put(String key, ElementDescriptor value)
     {
       values = null;
+      rootDescriptors = null;
       subDescriptors = null;
       return super.put(key, value);
     }
@@ -193,14 +196,38 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
       return values;
     }
 
+    public List<ElementDescriptor> getRootDescriptors()
+    {
+      if (rootDescriptors == null)
+      {
+        initHierarchy();
+      }
+
+      return rootDescriptors;
+    }
+
     public List<ElementDescriptor> getSubDescriptors(String name)
     {
-      if (subDescriptors == null)
+
+      List<ElementDescriptor> result = subDescriptors.get(name);
+      if (result == null)
       {
-        subDescriptors = new HashMap<String, List<ElementDescriptor>>();
-        for (ElementDescriptor descriptor : values())
+        return Collections.emptyList();
+      }
+
+      return result;
+    }
+
+    private void initHierarchy()
+    {
+      rootDescriptors = new ArrayList<ElementDescriptor>();
+      subDescriptors = new HashMap<String, List<ElementDescriptor>>();
+      for (ElementDescriptor descriptor : values())
+      {
+        String superName = descriptor.getSuperDescriptorName();
+        ElementDescriptor superDescriptor = get(superName);
+        if (superDescriptor != null)
         {
-          String superName = descriptor.getSuperDescriptorName();
           List<ElementDescriptor> list = subDescriptors.get(superName);
           if (list == null)
           {
@@ -210,9 +237,11 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
           list.add(descriptor);
         }
+        else
+        {
+          rootDescriptors.add(descriptor);
+        }
       }
-
-      return subDescriptors.get(name);
     }
 
     public ElementDescriptor match(Object object)

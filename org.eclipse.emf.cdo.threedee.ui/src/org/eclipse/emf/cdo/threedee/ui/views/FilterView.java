@@ -46,7 +46,7 @@ public class FilterView extends ViewPart
     viewer.setContentProvider(new ViewContentProvider());
     viewer.setLabelProvider(new ViewLabelProvider());
     viewer.setSorter(new NameSorter());
-    viewer.setInput(getViewSite());
+    viewer.setInput(ElementDescriptor.Registry.INSTANCE);
 
     viewer.addCheckStateListener(new ICheckStateListener()
     {
@@ -93,22 +93,40 @@ public class FilterView extends ViewPart
 
     public Object[] getElements(Object parent)
     {
-      return ElementDescriptor.Registry.INSTANCE.values().toArray();
+      return getChildren(parent);
     }
 
     public Object[] getChildren(Object parentElement)
     {
-      return ElementDescriptor.Registry.INSTANCE.values().toArray();
+      if (parentElement instanceof ElementDescriptor)
+      {
+        ElementDescriptor descriptor = (ElementDescriptor)parentElement;
+        return descriptor.getSubDescriptors().toArray();
+      }
+
+      if (parentElement == ElementDescriptor.Registry.INSTANCE)
+      {
+        return ElementDescriptor.Registry.INSTANCE.getRootDescriptors().toArray();
+      }
+
+      return new Object[0];
     }
 
     public Object getParent(Object element)
     {
+      if (element instanceof ElementDescriptor)
+      {
+        ElementDescriptor descriptor = (ElementDescriptor)element;
+        return descriptor.getSuperDescriptor();
+      }
+
       return null;
     }
 
     public boolean hasChildren(Object element)
     {
-      return false;
+      Object[] children = getChildren(element);
+      return children != null && children.length != 0;
     }
   }
 
