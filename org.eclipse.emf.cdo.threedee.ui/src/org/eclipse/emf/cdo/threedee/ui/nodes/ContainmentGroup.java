@@ -81,7 +81,7 @@ public class ContainmentGroup extends TransformGroup
 
   private void placeChildren(List<ContainmentGroup> elements)
   {
-    float radius = 2f;
+    float radius = 0.4f;
     float angle = 0f;
     float distanceAngle = 360f / elements.size();
     for (ContainmentGroup group : elements)

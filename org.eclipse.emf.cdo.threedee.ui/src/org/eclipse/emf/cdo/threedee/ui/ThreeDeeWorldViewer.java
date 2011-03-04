@@ -32,6 +32,7 @@ import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Shape3D;
+import javax.media.j3d.TransparencyAttributes;
 import javax.vecmath.Point3f;
 
 import java.awt.Color;
@@ -46,7 +47,7 @@ public class ThreeDeeWorldViewer
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
 
-  Map<Element, Node> shapes = new HashMap<Element, Node>();
+  private Map<Element, Node> shapes = new HashMap<Element, Node>();
 
   private ThreeDeeWorldComposite threeDeeWorldComposite;
 
@@ -128,7 +129,7 @@ public class ThreeDeeWorldViewer
     return group;
   }
 
-  private Node createReferenceShape(Element from, Element to, Boolean isContainment)
+  private Node createReferenceShape(Element from, Element to, boolean isContainment)
   {
     Node shape = ((ContainmentGroup)shapes.get(from)).getShape();
     Assert.isNotNull(shape);
@@ -149,8 +150,19 @@ public class ThreeDeeWorldViewer
     points[1] = referencePosition;
     LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
     lineArray.setCoordinates(0, points);
-    return new Shape3D(lineArray, ThreeDeeWorldUtil.getDefaultAppearance(isContainment == true ? Color.red
-        : Color.green));
+
+    Appearance appearance = ThreeDeeWorldUtil.getDefaultAppearance(isContainment == true ? Color.white : Color.gray);
+
+    TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
+    if (transparencyAttributes == null)
+    {
+      transparencyAttributes = new TransparencyAttributes();
+      appearance.setTransparencyAttributes(transparencyAttributes);
+    }
+
+    transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
+    transparencyAttributes.setTransparency(0.9f);
+    return new Shape3D(lineArray, appearance);
   }
 
   public void removeElement(Element element)
@@ -170,7 +182,6 @@ public class ThreeDeeWorldViewer
       if (elementsToBeHidden.contains(element.getDescriptor().getName()))
       {
         setVisible(node, false);
-        // javax.media.j3d.Appearance.getRenderingAttributes().setVisible()
       }
       else
       {
@@ -184,7 +195,6 @@ public class ThreeDeeWorldViewer
     if (node instanceof Sphere)
     {
       Appearance appearance = ((Sphere)node).getAppearance();
-      System.out.println(appearance.getCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE));
       RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
       if (renderingAttributes != null)
       {

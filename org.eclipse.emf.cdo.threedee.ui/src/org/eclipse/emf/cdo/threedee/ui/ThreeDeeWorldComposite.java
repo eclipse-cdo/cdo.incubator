@@ -25,7 +25,10 @@ import com.sun.j3d.utils.behaviors.mouse.MouseTranslate;
 import com.sun.j3d.utils.behaviors.mouse.MouseWheelZoom;
 import com.sun.j3d.utils.geometry.Cone;
 import com.sun.j3d.utils.geometry.Cylinder;
+import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.geometry.Sphere;
+import com.sun.j3d.utils.picking.PickCanvas;
+import com.sun.j3d.utils.picking.PickResult;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
@@ -36,10 +39,12 @@ import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Node;
+import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
+import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
 import java.awt.Frame;
@@ -47,6 +52,8 @@ import java.awt.GraphicsConfigTemplate;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 /**
  * @author Martin Fluegge
@@ -62,6 +69,10 @@ public class ThreeDeeWorldComposite extends Composite
   private TransformGroup sphereTransformGroup;
 
   private ILayout layouter = new CuboidStarLayouter();// new SimpleLayouter();
+
+  private PickCanvas pickCanvas;
+
+  private Canvas3D canvas;
 
   public ThreeDeeWorldComposite(Composite parent, int style)
   {
@@ -106,24 +117,26 @@ public class ThreeDeeWorldComposite extends Composite
       {
         GraphicsConfiguration config = graphicsDevice.getBestConfiguration(template);
 
-        Canvas3D canvas = new Canvas3D(config);
+        canvas = new Canvas3D(config);
+
         universe = new SimpleUniverse(canvas);
 
         positionViewer(universe.getViewingPlatform());
         scene = createScene();
         addNavigation(scene);
 
-        // compile objects should be better ???
-        // contentBranchGroup.compile();
-
         // add the branch group to the locale (which is the root)
         universe.addBranchGraph(scene);
+
         universe.addBranchGraph(createCoordinateSystem());
 
         Frame frame = SWT_AWT.new_Frame(this);
 
-        // addMouseListeners(canvas, frame);
         frame.add(canvas); // Can fail on multi display systems
+
+        pickCanvas = new PickCanvas(canvas, scene);
+        pickCanvas.setMode(PickCanvas.BOUNDS);
+        canvas.addMouseListener(new PickingMouseListener());
         return;
       }
       catch (Exception ex)
@@ -156,7 +169,7 @@ public class ThreeDeeWorldComposite extends Composite
 
   private void addMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
   {
-    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Float.MAX_VALUE);
+    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), 100f);
 
     MouseTranslate mouseTranslate = new MouseTranslate();
     mouseTranslate.setTransformGroup(viewTransformGroup);
@@ -309,4 +322,119 @@ public class ThreeDeeWorldComposite extends Composite
     branchGroup.addChild(transformGroupLine);
     universe.addBranchGraph(branchGroup);
   }
+
+  /*
+ * 
+ */
+  private class PickingMouseListener implements MouseListener
+  {
+    public void mouseClicked(MouseEvent e)
+    {
+      pickCanvas.setShapeLocation(e);
+      System.out.println(getPosition(e));
+      PickResult result = pickCanvas.pickClosest();
+
+      if (result == null)
+      {
+
+        System.out.println("Nothing picked");
+
+      }
+      else
+      {
+        Primitive p = (Primitive)result.getNode(PickResult.PRIMITIVE);
+        Shape3D s = (Shape3D)result.getNode(PickResult.SHAPE3D);
+
+        if (p != null)
+        {
+          System.out.println(p.getClass().getName());
+        }
+        else if (s != null)
+        {
+          System.out.println(s.getClass().getName());
+        }
+        else
+        {
+          System.out.println("null");
+        }
+      }
+    }
+
+    public void mouseEntered(MouseEvent arg0)
+    {
+    }
+
+    public void mouseExited(MouseEvent arg0)
+    {
+    }
+
+    public void mousePressed(MouseEvent arg0)
+    {
+    }
+
+    public void mouseReleased(MouseEvent arg0)
+    {
+    }
+
+    public Point3d getPosition(MouseEvent event)
+    {
+      Point3d eyePos = new Point3d();
+      Point3d mousePos = new Point3d();
+      canvas.getCenterEyeInImagePlate(eyePos);
+      canvas.getPixelLocationInImagePlate(event.getX(), event.getY(), mousePos);
+      Transform3D transform = new Transform3D();
+      canvas.getImagePlateToVworld(transform);
+      transform.transform(eyePos);
+      transform.transform(mousePos);
+      Vector3d direction = new Vector3d(eyePos);
+      direction.sub(mousePos);
+      // three points on the plane
+      Point3d p1 = new Point3d(.5, -.5, .5);
+      Point3d p2 = new Point3d(.5, .5, .5);
+      Point3d p3 = new Point3d(-.5, .5, .5);
+      Transform3D currentTransform = new Transform3D();
+      scene.getLocalToVworld(currentTransform);
+      currentTransform.transform(p1);
+      currentTransform.transform(p2);
+      currentTransform.transform(p3);
+      Point3d intersection = getIntersection(eyePos, mousePos, p1, p2, p3);
+      currentTransform.invert();
+      currentTransform.transform(intersection);
+      return intersection;
+    }
+
+    /**
+     * Returns the point where a line crosses a plane
+     */
+    Point3d getIntersection(Point3d line1, Point3d line2, Point3d plane1, Point3d plane2, Point3d plane3)
+    {
+      Vector3d p1 = new Vector3d(plane1);
+      Vector3d p2 = new Vector3d(plane2);
+      Vector3d p3 = new Vector3d(plane3);
+      Vector3d p2minusp1 = new Vector3d(p2);
+      p2minusp1.sub(p1);
+      Vector3d p3minusp1 = new Vector3d(p3);
+      p3minusp1.sub(p1);
+      Vector3d normal = new Vector3d();
+      normal.cross(p2minusp1, p3minusp1);
+      // The plane can be defined by p1, n + d = 0
+      double d = -p1.dot(normal);
+      Vector3d i1 = new Vector3d(line1);
+      Vector3d direction = new Vector3d(line1);
+      direction.sub(line2);
+      double dot = direction.dot(normal);
+      if (dot == 0)
+      {
+        return null;
+      }
+      double t = (-d - i1.dot(normal)) / dot;
+      Vector3d intersection = new Vector3d(line1);
+      Vector3d scaledDirection = new Vector3d(direction);
+      scaledDirection.scale(t);
+      intersection.add(scaledDirection);
+      Point3d intersectionPoint = new Point3d(intersection);
+      return intersectionPoint;
+    }
+  }
+
 }

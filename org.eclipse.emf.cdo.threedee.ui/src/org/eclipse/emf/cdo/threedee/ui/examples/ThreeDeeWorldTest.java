@@ -44,11 +44,11 @@ public class ThreeDeeWorldTest
 
     Element element = dummyElementProvider.createElement();
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 10; i++)
     {
       Element child = dummyElementProvider.createElement();
       element.getReferences().put(child.getID(), true);
-      for (int a = 0; a < 3; a++)
+      for (int a = 0; a < 10; a++)
       {
         Element level2Child = dummyElementProvider.createElement();
         child.getReferences().put(level2Child.getID(), true);
@@ -99,6 +99,7 @@ public class ThreeDeeWorldTest
       }
     }
     display.dispose();
+    System.exit(0);
   }
 
   private static class DummyElementProvider implements ElementProvider
