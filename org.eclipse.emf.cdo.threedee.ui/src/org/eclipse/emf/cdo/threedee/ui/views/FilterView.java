@@ -47,6 +47,7 @@ public class FilterView extends ViewPart
     viewer.setLabelProvider(new ViewLabelProvider());
     viewer.setSorter(new NameSorter());
     viewer.setInput(ElementDescriptor.Registry.INSTANCE);
+    viewer.setAllChecked(true);
 
     viewer.addCheckStateListener(new ICheckStateListener()
     {
@@ -55,21 +56,46 @@ public class FilterView extends ViewPart
       public void checkStateChanged(CheckStateChangedEvent event)
       {
         ElementDescriptor descriptor = (ElementDescriptor)event.getElement();
-        String name = descriptor.getName();
 
         if (event.getChecked())
         {
-          elementsToBeHidden.add(name);
-          // viewer.setSubtreeChecked(event.getElement(), true);
+          changeElementsToBeHidden(descriptor, false);
+          viewer.setSubtreeChecked(descriptor, true);
         }
         else
         {
-          elementsToBeHidden.remove(name);
+          changeElementsToBeHidden(descriptor, true);
+          viewer.setSubtreeChecked(descriptor, false);
+
         }
         ThreeDeeWorldView threeDeeWorldView = (ThreeDeeWorldView)getSite().getPage().findView(ThreeDeeWorldView.ID);
         ThreeDeeWorldViewer threeDeeWorldViewViewer = threeDeeWorldView.getViewer();
         threeDeeWorldViewViewer.filter(new ArrayList<String>(elementsToBeHidden));
       }
+
+      private void changeElementsToBeHidden(ElementDescriptor descriptor, boolean addFilter)
+      {
+        String name = descriptor.getName();
+        System.out.println(name);
+        if (addFilter)
+        {
+          elementsToBeHidden.add(name);
+        }
+        else
+        {
+          elementsToBeHidden.remove(name);
+        }
+
+        for (ElementDescriptor child : descriptor.getSubDescriptors())
+        {
+          changeElementsToBeHidden(child, addFilter);
+        }
+      }
+
+      // private void addElementsToBeHidden(String name)
+      // {
+      // elementsToBeHidden.add(name);
+      // }
     });
 
     PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.eclipse.emf.cdo.threedee.ui.viewer");
