@@ -21,7 +21,7 @@ import org.eclipse.net4j.db.ddl.IDBField;
 public class DBFieldDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IDBField.class;
   }

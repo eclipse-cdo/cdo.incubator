@@ -21,7 +21,7 @@ import org.eclipse.spi.net4j.Channel;
 public class ChannelDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return Channel.class;
   }

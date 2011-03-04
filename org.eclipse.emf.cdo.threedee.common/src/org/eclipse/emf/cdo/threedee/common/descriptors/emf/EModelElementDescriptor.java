@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.EModelElement;
 public class EModelElementDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EModelElement.class;
   }

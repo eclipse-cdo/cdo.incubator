@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EEnumLiteral;
 public class EEnumLiteralDescriptor extends ENamedElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EEnumLiteral.class;
   }

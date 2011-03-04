@@ -24,7 +24,7 @@ import java.nio.channels.SocketChannel;
 public class SocketChannelDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return SocketChannel.class;
   }

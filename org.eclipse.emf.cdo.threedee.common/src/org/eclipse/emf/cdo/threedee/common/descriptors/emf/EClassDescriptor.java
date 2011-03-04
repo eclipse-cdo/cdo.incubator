@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EClass;
 public class EClassDescriptor extends EClassifierDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EClass.class;
   }

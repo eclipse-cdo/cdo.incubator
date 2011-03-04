@@ -21,7 +21,7 @@ import org.eclipse.net4j.db.ddl.IDBIndex;
 public class DBIndexDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IDBIndex.class;
   }

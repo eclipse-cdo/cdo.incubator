@@ -23,7 +23,7 @@ import org.eclipse.net4j.util.collection.Pair;
 public class StoreDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IStore.class;
   }

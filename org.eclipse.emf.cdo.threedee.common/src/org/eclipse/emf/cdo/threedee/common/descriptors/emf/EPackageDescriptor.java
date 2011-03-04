@@ -24,7 +24,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 public class EPackageDescriptor extends ENamedElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EPackage.class;
   }

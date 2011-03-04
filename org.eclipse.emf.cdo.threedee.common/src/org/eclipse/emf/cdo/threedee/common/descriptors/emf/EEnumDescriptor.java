@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EEnum;
 public class EEnumDescriptor extends EClassifierDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EEnum.class;
   }

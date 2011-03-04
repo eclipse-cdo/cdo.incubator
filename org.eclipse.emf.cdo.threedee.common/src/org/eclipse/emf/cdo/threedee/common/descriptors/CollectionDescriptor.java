@@ -21,7 +21,7 @@ import java.util.Collection;
 public class CollectionDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return Collection.class;
   }

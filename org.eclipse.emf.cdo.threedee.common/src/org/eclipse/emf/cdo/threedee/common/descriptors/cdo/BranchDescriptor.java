@@ -20,7 +20,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class BranchDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return InternalCDOBranch.class;
   }

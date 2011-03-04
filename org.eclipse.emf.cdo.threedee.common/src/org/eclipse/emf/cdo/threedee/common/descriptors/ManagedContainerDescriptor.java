@@ -25,7 +25,7 @@ import org.eclipse.spi.net4j.Protocol;
 public class ManagedContainerDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IManagedContainer.class;
   }

@@ -21,7 +21,7 @@ import java.net.Socket;
 public class TCPConnectorDescriptor extends ConnectorDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.net4j.internal.tcp.TCPConnector.class;
   }

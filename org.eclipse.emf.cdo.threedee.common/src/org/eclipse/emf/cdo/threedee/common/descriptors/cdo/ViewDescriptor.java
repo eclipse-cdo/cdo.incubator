@@ -24,7 +24,7 @@ import org.eclipse.net4j.util.collection.Pair;
 public class ViewDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.emf.cdo.internal.server.View.class;
   }

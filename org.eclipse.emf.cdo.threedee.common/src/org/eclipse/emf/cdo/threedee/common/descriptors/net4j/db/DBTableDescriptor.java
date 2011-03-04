@@ -21,7 +21,7 @@ import org.eclipse.net4j.db.ddl.IDBTable;
 public class DBTableDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IDBTable.class;
   }

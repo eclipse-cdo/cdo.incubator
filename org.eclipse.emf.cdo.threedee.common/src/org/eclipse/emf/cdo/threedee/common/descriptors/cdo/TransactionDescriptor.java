@@ -17,7 +17,7 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 public class TransactionDescriptor extends ViewDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.emf.cdo.internal.server.Transaction.class;
   }

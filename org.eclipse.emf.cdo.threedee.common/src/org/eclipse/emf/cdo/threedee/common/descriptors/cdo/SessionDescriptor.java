@@ -20,7 +20,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 public class SessionDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.emf.cdo.internal.server.Session.class;
   }

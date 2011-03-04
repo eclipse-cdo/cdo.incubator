@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EAttribute;
 public class EAttributeDescriptor extends EStructuralFeatureDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EAttribute.class;
   }

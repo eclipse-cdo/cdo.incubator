@@ -23,7 +23,7 @@ import org.eclipse.net4j.util.collection.Pair;
 public class IDHandlerDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IIDHandler.class;
   }

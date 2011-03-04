@@ -23,7 +23,7 @@ import java.util.Collection;
 public class EPackageRegistryDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EPackage.Registry.class;
   }

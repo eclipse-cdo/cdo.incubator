@@ -20,7 +20,7 @@ import org.eclipse.emf.cdo.transaction.CDOSavepoint;
 public class CDOSavepointDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return CDOSavepoint.class;
   }

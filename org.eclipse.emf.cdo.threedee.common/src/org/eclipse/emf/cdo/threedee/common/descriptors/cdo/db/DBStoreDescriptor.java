@@ -21,7 +21,7 @@ import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.StoreDescriptor;
 public class DBStoreDescriptor extends StoreDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IDBStore.class;
   }

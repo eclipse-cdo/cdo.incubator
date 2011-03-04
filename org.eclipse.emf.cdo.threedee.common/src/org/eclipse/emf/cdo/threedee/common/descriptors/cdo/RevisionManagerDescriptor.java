@@ -23,7 +23,7 @@ import org.eclipse.net4j.util.collection.Pair;
 public class RevisionManagerDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return InternalCDORevisionManager.class;
   }

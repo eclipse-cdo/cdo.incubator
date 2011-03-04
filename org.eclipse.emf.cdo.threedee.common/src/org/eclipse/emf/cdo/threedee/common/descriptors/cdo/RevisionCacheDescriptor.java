@@ -23,7 +23,7 @@ import java.util.List;
 public class RevisionCacheDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return InternalCDORevisionCache.class;
   }

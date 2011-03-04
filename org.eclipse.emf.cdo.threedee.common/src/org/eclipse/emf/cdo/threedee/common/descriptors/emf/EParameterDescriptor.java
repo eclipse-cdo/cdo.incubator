@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EParameter;
 public class EParameterDescriptor extends ETypedElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EParameter.class;
   }

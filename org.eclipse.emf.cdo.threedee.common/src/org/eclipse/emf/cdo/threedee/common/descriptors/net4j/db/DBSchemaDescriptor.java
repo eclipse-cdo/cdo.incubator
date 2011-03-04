@@ -21,7 +21,7 @@ import org.eclipse.net4j.db.ddl.IDBSchema;
 public class DBSchemaDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IDBSchema.class;
   }

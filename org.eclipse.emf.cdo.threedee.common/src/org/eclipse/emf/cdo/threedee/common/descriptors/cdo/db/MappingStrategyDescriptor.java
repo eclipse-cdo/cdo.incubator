@@ -25,7 +25,7 @@ import java.util.Map;
 public class MappingStrategyDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.class;
   }

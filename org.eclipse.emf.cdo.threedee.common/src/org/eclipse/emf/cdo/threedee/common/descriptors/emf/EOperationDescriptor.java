@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EOperation;
 public class EOperationDescriptor extends ETypedElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EOperation.class;
   }

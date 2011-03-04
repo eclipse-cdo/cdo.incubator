@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 public class PackageInfoDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return CDOPackageInfo.class;
   }

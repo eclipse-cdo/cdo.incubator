@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.EReference;
 public class EReferenceDescriptor extends EStructuralFeatureDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EReference.class;
   }

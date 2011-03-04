@@ -21,7 +21,7 @@ import org.eclipse.spi.net4j.ChannelMultiplexer;
 public class ChannelMultiplexerDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return ChannelMultiplexer.class;
   }

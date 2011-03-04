@@ -20,7 +20,7 @@ import org.eclipse.spi.net4j.Connector;
 public class ConnectorDescriptor extends ChannelMultiplexerDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return Connector.class;
   }

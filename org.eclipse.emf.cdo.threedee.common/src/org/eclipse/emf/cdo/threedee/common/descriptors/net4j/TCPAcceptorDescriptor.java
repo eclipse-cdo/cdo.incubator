@@ -19,7 +19,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 public class TCPAcceptorDescriptor extends AcceptorDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.net4j.internal.tcp.TCPAcceptor.class;
   }

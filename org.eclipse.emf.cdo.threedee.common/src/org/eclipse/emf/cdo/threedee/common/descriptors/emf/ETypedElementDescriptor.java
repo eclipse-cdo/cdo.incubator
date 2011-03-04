@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.ETypedElement;
 public class ETypedElementDescriptor extends ENamedElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return ETypedElement.class;
   }

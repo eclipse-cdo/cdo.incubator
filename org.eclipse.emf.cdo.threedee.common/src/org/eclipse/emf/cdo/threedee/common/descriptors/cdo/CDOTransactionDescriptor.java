@@ -19,7 +19,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 public class CDOTransactionDescriptor extends CDOViewDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl.class;
   }

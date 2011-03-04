@@ -12,58 +12,30 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Eike Stepper
  */
 public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 {
-  private String name;
-
-  public ElementDescriptor(String name)
-  {
-    this.name = name;
-  }
-
   public ElementDescriptor()
   {
-    name = getClass().getSimpleName();
-    name = strip(name, "ElementDescriptor");
-    name = strip(name, "Descriptor");
   }
 
-  public abstract Class<?> getType();
+  public abstract Class<?> getElementType();
 
-  public int compareTo(ElementDescriptor d2)
+  public final String getName()
   {
-    Class<?> t1 = getType();
-    Class<?> t2 = d2.getType();
-
-    boolean a = t1.isAssignableFrom(t2);
-    boolean b = t2.isAssignableFrom(t1);
-
-    if (a && !b)
-    {
-      return 1;
-    }
-
-    if (b && !a)
-    {
-      return -1;
-    }
-
-    return t1.getName().compareTo(t2.getName());
+    return getClass().getSimpleName();
   }
 
-  public String getName()
+  public String getLabel()
   {
-    return name;
-  }
-
-  @Override
-  public String toString()
-  {
-    return name;
+    String label = getClass().getSimpleName();
+    label = strip(label, "ElementDescriptor");
+    label = strip(label, "Descriptor");
+    return label;
   }
 
   public String getLabel(Element element)
@@ -80,18 +52,34 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
           label = element.getAttributes().get(Element.ID_ATTRIBUTE);
           if (label == null)
           {
-            return name;
+            return getLabel();
           }
         }
       }
     }
 
-    return name + " " + label;
+    return getLabel() + " " + label;
+  }
+
+  public ElementDescriptor getSuperDescriptor()
+  {
+    String superName = getSuperDescriptorName();
+    return Registry.INSTANCE.get(superName);
+  }
+
+  private String getSuperDescriptorName()
+  {
+    return getClass().getSuperclass().getSimpleName();
+  }
+
+  public List<ElementDescriptor> getSubDescriptors()
+  {
+    return Registry.INSTANCE.getSubDescriptors(getName());
   }
 
   public boolean matches(Object object)
   {
-    return getType().isInstance(object);
+    return getElementType().isInstance(object);
   }
 
   public boolean isActive(Object object)
@@ -130,6 +118,33 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     return new Pair<Change, Element>(event, newElement);
   }
 
+  public int compareTo(ElementDescriptor d2)
+  {
+    Class<?> t1 = getElementType();
+    Class<?> t2 = d2.getElementType();
+
+    boolean a = t1.isAssignableFrom(t2);
+    boolean b = t2.isAssignableFrom(t1);
+
+    if (a && !b)
+    {
+      return 1;
+    }
+
+    if (b && !a)
+    {
+      return -1;
+    }
+
+    return t1.getName().compareTo(t2.getName());
+  }
+
+  @Override
+  public String toString()
+  {
+    return getName();
+  }
+
   private static String strip(String string, String suffix)
   {
     if (string.endsWith(suffix))
@@ -151,6 +166,8 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
     private List<ElementDescriptor> values;
 
+    private Map<String, List<ElementDescriptor>> subDescriptors;
+
     public void register(ElementDescriptor descriptor)
     {
       put(descriptor.getName(), descriptor);
@@ -160,6 +177,7 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     public ElementDescriptor put(String key, ElementDescriptor value)
     {
       values = null;
+      subDescriptors = null;
       return super.put(key, value);
     }
 
@@ -173,6 +191,28 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
       }
 
       return values;
+    }
+
+    public List<ElementDescriptor> getSubDescriptors(String name)
+    {
+      if (subDescriptors == null)
+      {
+        subDescriptors = new HashMap<String, List<ElementDescriptor>>();
+        for (ElementDescriptor descriptor : values())
+        {
+          String superName = descriptor.getSuperDescriptorName();
+          List<ElementDescriptor> list = subDescriptors.get(superName);
+          if (list == null)
+          {
+            list = new ArrayList<ElementDescriptor>();
+            subDescriptors.put(superName, list);
+          }
+
+          list.add(descriptor);
+        }
+      }
+
+      return subDescriptors.get(name);
     }
 
     public ElementDescriptor match(Object object)

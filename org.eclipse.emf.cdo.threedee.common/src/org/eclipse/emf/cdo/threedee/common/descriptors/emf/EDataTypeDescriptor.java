@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EDataType;
 public class EDataTypeDescriptor extends EClassifierDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return EDataType.class;
   }

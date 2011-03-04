@@ -21,7 +21,7 @@ import org.eclipse.net4j.db.IDBAdapter;
 public class DBAdapterDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return IDBAdapter.class;
   }

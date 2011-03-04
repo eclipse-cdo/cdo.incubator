@@ -21,7 +21,7 @@ import org.eclipse.spi.net4j.Acceptor;
 public class AcceptorDescriptor extends ElementDescriptor
 {
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return Acceptor.class;
   }

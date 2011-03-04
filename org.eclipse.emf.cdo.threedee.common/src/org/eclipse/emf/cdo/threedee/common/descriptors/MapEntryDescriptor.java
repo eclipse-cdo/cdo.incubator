@@ -23,7 +23,7 @@ public class MapEntryDescriptor extends ElementDescriptor
   public static final String VALUE_ATTRIBUTE = "value";
 
   @Override
-  public Class<?> getType()
+  public Class<?> getElementType()
   {
     return Map.Entry.class;
   }
