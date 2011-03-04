@@ -91,7 +91,6 @@ public class Hook
 
     private static final long serialVersionUID = 1L;
 
-    @Override
     public void push(Object object)
     {
       if (TRACER.isEnabled())
@@ -102,7 +101,6 @@ public class Hook
       addFirst(object);
     }
 
-    @Override
     public Object pop()
     {
       try
