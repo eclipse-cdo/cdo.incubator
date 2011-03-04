@@ -64,11 +64,14 @@ public class DefaultNode extends Sphere
 
   private static Appearance defaultAppearance(Element element)
   {
-    Color color = COLORS.get(element.getDescriptor().getName());
-    if (color == null)
-    {
-      color = Color.orange;
-    }
+    String name = element.getDescriptor().getName();
+    int rgb = name.hashCode() & 0xffffff;
+
+    Color color = new Color(rgb);// COLORS.get(name);
+    // if (color == null)
+    // {
+    // color = Color.orange;
+    // }
 
     return ThreeDeeWorldUtil.getDefaultAppearance(color);
   }

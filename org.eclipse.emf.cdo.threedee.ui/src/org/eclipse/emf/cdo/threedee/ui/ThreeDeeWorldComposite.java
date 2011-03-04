@@ -13,6 +13,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -134,16 +135,27 @@ public class ThreeDeeWorldComposite extends Composite
     throw new IllegalStateException("Could not initialize");
   }
 
-  public void addNode(Node node)
+  public void addNode(Node node, ContainmentGroup containerContainmentGroup)
   {
-    BranchGroup branchGroup = new BranchGroup();
-    TransformGroup transformGroup = createTransformGroup();
+    if (containerContainmentGroup == null)
+    {
+      BranchGroup branchGroup = new BranchGroup();
+      TransformGroup transformGroup = createTransformGroup();
 
-    positionNewObject(transformGroup, node);
+      positionNewObject(transformGroup, node);
 
-    addChild(transformGroup, node);
-    branchGroup.addChild(transformGroup);
-    universe.addBranchGraph(branchGroup);
+      addChild(transformGroup, node);
+      branchGroup.addChild(transformGroup);
+      branchGroup.compile();
+      universe.addBranchGraph(branchGroup);
+    }
+    else
+    {
+      BranchGroup group = new BranchGroup();
+      group.addChild(node);
+      group.compile();
+      containerContainmentGroup.addChild(group);
+    }
   }
 
   private void addNavigation(BranchGroup branchGroup)
@@ -157,7 +169,7 @@ public class ThreeDeeWorldComposite extends Composite
   {
     BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
 
-    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE);
+    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
     ob.setSchedulingBounds(mouseZone);
     universe.getViewingPlatform().setViewPlatformBehavior(ob);
   }

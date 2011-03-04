@@ -47,7 +47,7 @@ public class ThreeDeeWorldViewer
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
 
-  private Map<Element, Node> shapes = new HashMap<Element, Node>();
+  private Map<Element, Node> containmentGroups = new HashMap<Element, Node>();
 
   private ThreeDeeWorldComposite threeDeeWorldComposite;
 
@@ -68,20 +68,32 @@ public class ThreeDeeWorldViewer
 
   public void addElement(Element element)
   {
-    if (shapes.get(element) != null)
+    if (containmentGroups.get(element) != null)
     {
       return;
     }
 
-    ContainmentGroup shape = (ContainmentGroup)createNode(element);
+    Element containerElement = element.getProvider().getElement(element.getContainerID());
+
+    ContainmentGroup containerContainmentGroup = (ContainmentGroup)containmentGroups.get(containerElement);
+
+    ContainmentGroup containmentGroup = (ContainmentGroup)createNode(element);
 
     ElementProvider provider = element.getProvider();
 
     Map<Integer, Boolean> references = element.getReferences();
-    createChildren(shape, provider, references);
+    createChildren(containmentGroup, provider, references);
     // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
-    threeDeeWorldComposite.addNode(shape);
-    shape.layoutChildren();
+    threeDeeWorldComposite.addNode(containmentGroup, containerContainmentGroup);
+
+    if (containerContainmentGroup != null)
+    {
+      containerContainmentGroup.layoutChildren();
+    }
+    else
+    {
+      containmentGroup.layoutChildren();
+    }
 
     createReferences(element, provider, references);
   }
@@ -105,7 +117,7 @@ public class ThreeDeeWorldViewer
     {
       Element referenceElement = provider.getElement(elementId);
 
-      Node referenceNode = shapes.get(referenceElement);
+      Node referenceNode = containmentGroups.get(referenceElement);
 
       if (referenceNode == null)
       {
@@ -125,16 +137,16 @@ public class ThreeDeeWorldViewer
     ContainmentGroup group = new ContainmentGroup();
     group.setShape(shape);
 
-    shapes.put(element, group);
+    containmentGroups.put(element, group);
     return group;
   }
 
   private Node createReferenceShape(Element from, Element to, boolean isContainment)
   {
-    Node shape = ((ContainmentGroup)shapes.get(from)).getShape();
+    Node shape = ((ContainmentGroup)containmentGroups.get(from)).getShape();
     Assert.isNotNull(shape);
 
-    Node referenceShape = ((ContainmentGroup)shapes.get(to)).getShape();
+    Node referenceShape = ((ContainmentGroup)containmentGroups.get(to)).getShape();
     Assert.isNotNull(referenceShape);
 
     Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
@@ -171,9 +183,9 @@ public class ThreeDeeWorldViewer
 
   public void filter(List<String> elementsToBeHidden)
   {
-    for (Element element : shapes.keySet())
+    for (Element element : containmentGroups.keySet())
     {
-      Node node = shapes.get(element);
+      Node node = containmentGroups.get(element);
       if (node instanceof ContainmentGroup)
       {
         node = ((ContainmentGroup)node).getShape();

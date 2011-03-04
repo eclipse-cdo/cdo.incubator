@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 
+import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
@@ -32,6 +33,9 @@ public class ContainmentGroup extends TransformGroup
   {
     setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
     setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
+    setCapability(TransformGroup.ALLOW_CHILDREN_READ);
+    setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
   }
 
   public void setShape(Node shape)
@@ -71,7 +75,14 @@ public class ContainmentGroup extends TransformGroup
       Node nextElement = (Node)allChildren.nextElement();
       if (nextElement != shape)
       {
-        elements.add((ContainmentGroup)nextElement);
+        if (nextElement instanceof ContainmentGroup)
+        {
+          elements.add((ContainmentGroup)nextElement);
+        }
+        else
+        {
+          elements.add((ContainmentGroup)((BranchGroup)nextElement).getChild(0));
+        }
       }
     }
     return elements;

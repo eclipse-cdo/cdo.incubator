@@ -40,23 +40,45 @@ public class ThreeDeeWorldTest
     final ThreeDeeWorldViewer viewer = new ThreeDeeWorldViewer(shell);
     // ThreeDeeWorldComposite composite = new ThreeDeeWorldComposite(shell, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 
-    DummyElementProvider dummyElementProvider = new DummyElementProvider();
+    final DummyElementProvider dummyElementProvider = new DummyElementProvider();
 
-    Element element = dummyElementProvider.createElement();
+    final Element element = dummyElementProvider.createElement();
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 3; i++)
     {
       Element child = dummyElementProvider.createElement();
-      element.getReferences().put(child.getID(), true);
-      for (int a = 0; a < 10; a++)
+      // element.getReferences().put(child.getID(), true);
+      element.addReference(true, child.getID());
+      for (int a = 0; a < 2; a++)
       {
         Element level2Child = dummyElementProvider.createElement();
-        child.getReferences().put(level2Child.getID(), true);
+        // child.getReferences().put(level2Child.getID(), true);
+        child.addReference(true, level2Child.getID());
       }
     }
 
     viewer.addElement(element);
 
+    Thread t = new Thread(new Runnable()
+    {
+      public void run()
+      {
+        try
+        {
+          Thread.sleep(3000);
+        }
+        catch (InterruptedException ex)
+        {
+          ex.printStackTrace();
+        }
+        Element element2 = dummyElementProvider.createElement();
+        element.addReference(true, element2.getID());
+        // element.getReferences().put(element2.getID(), true);
+        viewer.addElement(element2);
+      }
+    });
+
+    t.start();
     ArrayList<String> elementsToBeHidden = new ArrayList<String>();
     // elementsToBeHidden.add("Acceptor");
     viewer.filter(elementsToBeHidden);
@@ -110,12 +132,12 @@ public class ThreeDeeWorldTest
 
     public int getID()
     {
-      return 0;
+      return id;
     }
 
     public Element getElement(Object object, boolean addOnDemand)
     {
-      return null;
+      return elements.get(id);
     }
 
     public Element getElement(int id)
@@ -125,7 +147,7 @@ public class ThreeDeeWorldTest
 
     public synchronized Element createElement()
     {
-      Element element = new Element(id++, new AcceptorDescriptor(), this);
+      Element element = new Element(++id, new AcceptorDescriptor(), this);
 
       elements.put(element.getID(), element);
       return element;
