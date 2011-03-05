@@ -161,7 +161,6 @@ public class ThreeDeeWorldComposite extends Composite
   private BranchGroup createScene()
   {
     BranchGroup scene = new BranchGroup();
-    scene.setCapability(BranchGroup.ALLOW_DETACH);
     addLights(scene);
     sphereTransformGroup = createTransformGroup();
 
@@ -187,23 +186,22 @@ public class ThreeDeeWorldComposite extends Composite
     {
       public void run()
       {
-        BranchGroup branchGroup = new BranchGroup();
-        branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-
         if (containerContainmentGroup == null)
         {
           TransformGroup transformGroup = createTransformGroup();
-
           positionNewObject(transformGroup, node);
 
           addChild(transformGroup, node);
+
+          BranchGroup branchGroup = new BranchGroup();
+          branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
           branchGroup.addChild(transformGroup);
+
           universe.addBranchGraph(branchGroup);
         }
         else
         {
-          branchGroup.addChild(node);
-          containerContainmentGroup.addChild(branchGroup);
+          containerContainmentGroup.addChild(node);
         }
       }
     });
@@ -229,25 +227,11 @@ public class ThreeDeeWorldComposite extends Composite
 
   public void removeNode(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
   {
-    // System.err.println("containmentGroup: " + containmentGroup);
-    // System.err.println("containerContainmentGroup: " + containerContainmentGroup);
-
     schedule(new Runnable()
     {
       public void run()
       {
-        Node parent = containmentGroup.getParent();
-        if (parent == containerContainmentGroup)
-        {
-          containerContainmentGroup.removeChild(containmentGroup);
-        }
-        else
-        {
-          if (parent instanceof BranchGroup)
-          {
-            containerContainmentGroup.removeChild(parent);
-          }
-        }
+        containerContainmentGroup.removeChild(containmentGroup);
       }
     });
   }

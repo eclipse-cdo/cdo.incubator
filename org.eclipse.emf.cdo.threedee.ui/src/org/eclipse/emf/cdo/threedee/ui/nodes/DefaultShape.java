@@ -26,17 +26,17 @@ import java.util.Map;
 /**
  * @author Eike Stepper
  */
-public class DefaultNode extends Sphere
+public class DefaultShape extends Sphere
 {
   private static Map<String, Color> COLORS = new HashMap<String, Color>();
 
-  public DefaultNode(Element element)
+  public DefaultShape(Element element)
   {
     super(.1f, defaultAppearance(element));
     setDefaultCapabilities();
   }
 
-  public DefaultNode(Appearance appearance)
+  public DefaultShape(Appearance appearance)
   {
     super(.1f, appearance);
 

@@ -26,20 +26,27 @@ import java.util.List;
 /**
  * @author Martin Fluegge
  */
-public class ContainmentGroup extends TransformGroup
+public class ContainmentGroup extends BranchGroup
 {
-  private Node shape;
+  private Element element;
 
-  private final Element element;
+  private TransformGroup transformGroup;
+
+  private Node shape;
 
   public ContainmentGroup(Element element)
   {
     this.element = element;
-    setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-    setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-    setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
-    setCapability(TransformGroup.ALLOW_CHILDREN_READ);
-    setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+
+    transformGroup = new TransformGroup();
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
+    transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
+    transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+
+    setCapability(BranchGroup.ALLOW_DETACH);
+    super.addChild(transformGroup);
   }
 
   public Element getElement()
@@ -50,7 +57,7 @@ public class ContainmentGroup extends TransformGroup
   public void setShape(Node shape)
   {
     this.shape = shape;
-    addChild(shape);
+    transformGroup.addChild(shape);
   }
 
   public Node getShape()
@@ -74,27 +81,40 @@ public class ContainmentGroup extends TransformGroup
 
   }
 
+  @Override
+  public void addChild(Node child)
+  {
+    transformGroup.addChild(child);
+  }
+
+  @Override
+  public void removeChild(Node child)
+  {
+    transformGroup.removeChild(child);
+  }
+
   public List<ContainmentGroup> getChildren()
   {
+    List<ContainmentGroup> result = new ArrayList<ContainmentGroup>();
+
     @SuppressWarnings("rawtypes")
-    Enumeration allChildren = getAllChildren();
-    List<ContainmentGroup> elements = new ArrayList<ContainmentGroup>();
+    Enumeration allChildren = transformGroup.getAllChildren();
+
     while (allChildren.hasMoreElements())
     {
       Node nextElement = (Node)allChildren.nextElement();
       if (nextElement != shape)
       {
-        if (nextElement instanceof ContainmentGroup)
-        {
-          elements.add((ContainmentGroup)nextElement);
-        }
-        else
-        {
-          elements.add((ContainmentGroup)((BranchGroup)nextElement).getChild(0));
-        }
+        result.add((ContainmentGroup)nextElement);
       }
     }
-    return elements;
+
+    return result;
+  }
+
+  public void setTransform(Transform3D transform)
+  {
+    transformGroup.setTransform(transform);
   }
 
   private void placeChildren(List<ContainmentGroup> elements)

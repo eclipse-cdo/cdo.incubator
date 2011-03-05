@@ -14,7 +14,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
-import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultNode;
+import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
@@ -163,7 +163,7 @@ public class ThreeDeeWorldViewer
   {
     String name = element.getDescriptor().getName();
     INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
-    Node shape = factory != null ? factory.createNode(element) : new DefaultNode(element);
+    Node shape = factory != null ? factory.createNode(element) : new DefaultShape(element);
 
     ContainmentGroup group = new ContainmentGroup(element);
     group.setShape(shape);
