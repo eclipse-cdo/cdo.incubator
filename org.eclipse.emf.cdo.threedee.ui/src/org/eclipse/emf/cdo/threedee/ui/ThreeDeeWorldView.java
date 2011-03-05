@@ -30,6 +30,7 @@ import org.eclipse.ui.part.ViewPart;
  * <ul>
  * <li>Filter check profiles
  * <li>Colored element icons
+ * <li>Implement object picker and camera navigation to the selected element
  * </ul>
  * 
  * @author Martin Fluegge
