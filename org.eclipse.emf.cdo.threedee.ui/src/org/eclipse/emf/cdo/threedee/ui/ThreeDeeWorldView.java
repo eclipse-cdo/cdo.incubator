@@ -26,6 +26,12 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.part.ViewPart;
 
 /**
+ * TODO
+ * <ul>
+ * <li>Filter check profiles<br>
+ * <li>Colored element icons
+ * </ul>
+ * 
  * @author Martin Fluegge
  */
 public class ThreeDeeWorldView extends ViewPart
