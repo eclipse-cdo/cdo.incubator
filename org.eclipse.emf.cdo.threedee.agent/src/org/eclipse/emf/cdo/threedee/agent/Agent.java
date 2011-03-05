@@ -22,9 +22,13 @@ import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 import org.eclipse.net4j.tcp.ITCPConnector;
 import org.eclipse.net4j.tcp.TCPUtil;
 import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 import org.eclipse.net4j.util.concurrent.QueueWorker;
 import org.eclipse.net4j.util.container.IManagedContainer;
 import org.eclipse.net4j.util.container.IPluginContainer;
+import org.eclipse.net4j.util.lifecycle.ILifecycle;
+import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
+import org.eclipse.net4j.util.lifecycle.LifecycleState;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import java.util.IdentityHashMap;
@@ -40,6 +44,8 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_EVENT, Agent.class);
 
   private String server;
+
+  private boolean connected;
 
   private AgentProtocol protocol;
 
@@ -137,13 +143,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   protected void doActivate() throws Exception
   {
     super.doActivate();
-
-    IManagedContainer container = IPluginContainer.INSTANCE;
-    ITCPConnector connector = TCPUtil.getConnector(container, server);
-    protocol = new AgentProtocol(this, connector);
-    id = protocol.openSession();
-
-    addElement(container, true);
+    connect();
   }
 
   @Override
@@ -153,9 +153,20 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     super.doDeactivate();
   }
 
+  protected void connect()
+  {
+    Thread thread = new ConnectThread();
+    thread.start();
+  }
+
   @Override
   protected void work(WorkContext context, ElementEvent event)
   {
+    while (!connected)
+    {
+      ConcurrencyUtil.sleep(100L);
+    }
+
     protocol.sendEvent(event);
   }
 
@@ -248,5 +259,66 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   {
     INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
     INSTANCE.activate();
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ConnectThread extends Thread
+  {
+    @Override
+    public void run()
+    {
+      IManagedContainer container = IPluginContainer.INSTANCE;
+      while (isActive() || getLifecycleState() == LifecycleState.ACTIVATING)
+      {
+        ITCPConnector connector = null;
+
+        try
+        {
+          connector = TCPUtil.getConnector(container, server);
+          connector.waitForConnection(500L);
+          protocol = new AgentProtocol(Agent.this, connector);
+          protocol.addListener(new LifecycleEventAdapter()
+          {
+            @Override
+            protected void onDeactivated(ILifecycle lifecycle)
+            {
+              connected = false;
+              protocol = null;
+
+              if (TRACER.isEnabled())
+              {
+                TRACER.format("Disconnected agent {0}", id); //$NON-NLS-1$
+              }
+
+              connect();
+            }
+          });
+
+          id = protocol.openSession();
+          addElement(container, true);
+          connected = true;
+
+          if (TRACER.isEnabled())
+          {
+            TRACER.format("Connected as agent {0}", id); //$NON-NLS-1$
+          }
+
+          break;
+        }
+        catch (Exception ex)
+        {
+          if (connector != null)
+          {
+            String[] key = container.getElementKey(connector);
+            if (key != null)
+            {
+              container.removeElement(key[0], key[1], key[2]);
+            }
+          }
+        }
+      }
+    }
   }
 }
