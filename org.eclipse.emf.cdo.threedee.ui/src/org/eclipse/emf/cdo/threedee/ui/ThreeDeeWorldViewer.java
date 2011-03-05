@@ -13,29 +13,52 @@ package org.eclipse.emf.cdo.threedee.ui;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
+import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 
+import org.eclipse.net4j.util.concurrent.QueueRunner;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
+import org.eclipse.net4j.util.ui.UIQueueRunner;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 
+import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
+import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
+import com.sun.j3d.utils.geometry.Cone;
+import com.sun.j3d.utils.geometry.Cylinder;
 import com.sun.j3d.utils.geometry.Sphere;
+import com.sun.j3d.utils.universe.SimpleUniverse;
+import com.sun.j3d.utils.universe.ViewingPlatform;
 
+import javax.media.j3d.AmbientLight;
 import javax.media.j3d.Appearance;
+import javax.media.j3d.BoundingSphere;
+import javax.media.j3d.BranchGroup;
+import javax.media.j3d.Canvas3D;
+import javax.media.j3d.DirectionalLight;
+import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
-import javax.media.j3d.Shape3D;
-import javax.media.j3d.TransparencyAttributes;
+import javax.media.j3d.Transform3D;
+import javax.media.j3d.TransformGroup;
+import javax.vecmath.Color3f;
+import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
+import javax.vecmath.Vector3f;
 
-import java.awt.Color;
+import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,18 +70,38 @@ public class ThreeDeeWorldViewer
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
 
-  private Map<Element, Node> containmentGroups = new HashMap<Element, Node>();
+  private Map<Element, Node> elementNodeMapping = new HashMap<Element, Node>();
 
-  private ThreeDeeWorldComposite threeDeeWorldComposite;
+  private Map<Element, Map<Element, ReferenceShape>> elementReferenceMapping = new HashMap<Element, Map<Element, ReferenceShape>>();
 
   private Composite container;
 
+  private QueueRunner runner;
+
+  private SimpleUniverse universe;
+
+  private BranchGroup scene;
+
+  private TransformGroup sphereTransformGroup;
+
+  private ILayout layouter = new CuboidStarLayouter();// new SimpleLayouter();
+
+  private Canvas3D canvas;
+
   public ThreeDeeWorldViewer(Composite parent)
   {
-    container = new Composite(parent, SWT.NONE);
+    container = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
     container.setLayout(new FillLayout());
 
-    threeDeeWorldComposite = new ThreeDeeWorldComposite(container, SWT.EMBEDDED | SWT.NO_BACKGROUND);
+    runner = new UIQueueRunner(parent.getDisplay());
+    runner.activate();
+    runner.addWork(new Runnable()
+    {
+      public void run()
+      {
+        init();
+      }
+    });
   }
 
   public Control getControl()
@@ -68,7 +111,7 @@ public class ThreeDeeWorldViewer
 
   public void addElement(Element element)
   {
-    if (containmentGroups.get(element) != null)
+    if (elementNodeMapping.get(element) != null)
     {
       return;
     }
@@ -82,64 +125,63 @@ public class ThreeDeeWorldViewer
     createChildren(containmentGroup, provider, references);
 
     // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
-    threeDeeWorldComposite.addNode(containmentGroup, containerContainmentGroup);
-    layout(containmentGroup, containerContainmentGroup);
-
-    createReferences(element, provider, references);
+    addNode(containmentGroup, containerContainmentGroup);
   }
 
   public void removeElement(Element element)
   {
-    ContainmentGroup containmentGroup = (ContainmentGroup)containmentGroups.remove(element);
+    ContainmentGroup containmentGroup = (ContainmentGroup)elementNodeMapping.remove(element);
+
+    Element containerElement = getContainerElement(element);
+
+    if (containerElement != null)
+    {
+      containerElement.getReferences().remove(element.getID());
+    }
+
     if (containmentGroup == null)
     {
       return;
     }
 
     ContainmentGroup containerContainmentGroup = getContainerContainmentGroup(element);
+    removeNode(containmentGroup, containerContainmentGroup);
+    clearReferenceNodes(element);
+
     if (containerContainmentGroup != null)
     {
-      threeDeeWorldComposite.removeNode(containmentGroup, containerContainmentGroup);
+      clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
+
+      updateReferences(containerElement);
       layout(null, containerContainmentGroup);
     }
   }
 
-  public void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  private Element getContainerElement(Element element)
   {
-    threeDeeWorldComposite.schedule(new Runnable()
+    return element.getProvider().getElement(element.getContainerID());
+  }
+
+  private void clearReferenceNodes(Element element)
+  {
+    Map<Element, ReferenceShape> map = elementReferenceMapping.get(element);
+    if (map != null)
     {
-      public void run()
+      for (ReferenceShape shape : map.values())
       {
-        if (containerContainmentGroup != null)
-        {
-          containerContainmentGroup.layoutChildren();
-        }
-        else
-        {
-          containmentGroup.layoutChildren();
-        }
+
+        universe.getLocale().removeBranchGraph((BranchGroup)shape.getParent().getParent());
       }
-    });
+
+      elementReferenceMapping.remove(element);
+    }
   }
 
   protected ContainmentGroup getContainerContainmentGroup(Element element)
   {
-    Element containerElement = element.getProvider().getElement(element.getContainerID());
-    ContainmentGroup containerContainmentGroup = (ContainmentGroup)containmentGroups.get(containerElement);
+    Element containerElement = getContainerElement(element);
+    ContainmentGroup containerContainmentGroup = (ContainmentGroup)elementNodeMapping.get(containerElement);
     return containerContainmentGroup;
-  }
-
-  private void createReferences(Element element, ElementProvider provider, Map<Integer, Boolean> references)
-  {
-    for (int elementId : references.keySet())
-    {
-      Element referenceElement = provider.getElement(elementId);
-
-      Node shapeLine = createReferenceShape(element, referenceElement, references.get(elementId));
-      threeDeeWorldComposite.addReferenceShape(shapeLine);
-
-      createReferences(referenceElement, provider, referenceElement.getReferences());
-    }
   }
 
   private void createChildren(ContainmentGroup shape, ElementProvider provider, Map<Integer, Boolean> references)
@@ -148,7 +190,7 @@ public class ThreeDeeWorldViewer
     {
       Element referenceElement = provider.getElement(elementId);
 
-      Node referenceNode = containmentGroups.get(referenceElement);
+      Node referenceNode = elementNodeMapping.get(referenceElement);
 
       if (referenceNode == null)
       {
@@ -168,51 +210,15 @@ public class ThreeDeeWorldViewer
     ContainmentGroup group = new ContainmentGroup(element);
     group.setShape(shape);
 
-    containmentGroups.put(element, group);
+    elementNodeMapping.put(element, group);
     return group;
-  }
-
-  private Node createReferenceShape(Element from, Element to, boolean isContainment)
-  {
-    Node shape = ((ContainmentGroup)containmentGroups.get(from)).getShape();
-    Assert.isNotNull(shape);
-
-    Node referenceShape = ((ContainmentGroup)containmentGroups.get(to)).getShape();
-    Assert.isNotNull(referenceShape);
-
-    Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
-    Point3f referencePosition = ThreeDeeWorldUtil.getPositionAsPoint3f(referenceShape);
-
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Drawing connection from {0} to {1}", elementPosition, referencePosition); //$NON-NLS-1$
-    }
-
-    Point3f[] points = new Point3f[2];
-    points[0] = elementPosition;
-    points[1] = referencePosition;
-    LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
-    lineArray.setCoordinates(0, points);
-
-    Appearance appearance = ThreeDeeWorldUtil.getDefaultAppearance(isContainment == true ? Color.white : Color.gray);
-
-    TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
-    if (transparencyAttributes == null)
-    {
-      transparencyAttributes = new TransparencyAttributes();
-      appearance.setTransparencyAttributes(transparencyAttributes);
-    }
-
-    transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
-    transparencyAttributes.setTransparency(0.9f);
-    return new Shape3D(lineArray, appearance);
   }
 
   public void filter(List<String> elementsToBeHidden)
   {
-    for (Element element : containmentGroups.keySet())
+    for (Element element : elementNodeMapping.keySet())
     {
-      Node node = containmentGroups.get(element);
+      Node node = elementNodeMapping.get(element);
       if (node instanceof ContainmentGroup)
       {
         node = ((ContainmentGroup)node).getShape();
@@ -240,5 +246,327 @@ public class ThreeDeeWorldViewer
         renderingAttributes.setVisible(visible);
       }
     }
+  }
+
+  private void init()
+  {
+    Frame frame = SWT_AWT.new_Frame(container);
+    canvas = createCanvas(frame);
+
+    universe = new SimpleUniverse(canvas);
+    positionViewer(universe.getViewingPlatform());
+
+    scene = createScene();
+    addNavigation(scene);
+
+    universe.addBranchGraph(scene);
+    universe.addBranchGraph(createCoordinateSystem());
+
+    frame.add(canvas);
+  }
+
+  private Canvas3D createCanvas(Frame frame)
+  {
+    GraphicsConfiguration config = frame.getGraphicsConfiguration();
+    GraphicsDevice device = config.getDevice();
+
+    GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
+    config = device.getBestConfiguration(template);
+
+    return new Canvas3D(config);
+  }
+
+  private BranchGroup createCoordinateSystem()
+  {
+    BranchGroup group = new BranchGroup();
+
+    // X axis made of spheres
+    for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
+    {
+      Sphere sphere = new Sphere(0.02f);
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Vector3f vector = new Vector3f(x, .0f, .0f);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(sphere);
+      group.addChild(tg);
+    }
+
+    // Y axis made of cones
+    for (float y = -1.0f; y <= 1.0f; y = y + 0.1f)
+    {
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Cone cone = new Cone(0.02f, 0.02f);
+      Vector3f vector = new Vector3f(.0f, y, .0f);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(cone);
+      group.addChild(tg);
+    }
+
+    // Z axis made of cylinders
+    for (float z = -1.0f; z <= 1.0f; z = z + 0.1f)
+    {
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Cylinder cylinder = new Cylinder(0.02f, 0.02f);
+      Vector3f vector = new Vector3f(.0f, .0f, z);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(cylinder);
+      group.addChild(tg);
+    }
+
+    return group;
+  }
+
+  private BranchGroup createScene()
+  {
+    BranchGroup scene = new BranchGroup();
+    addLights(scene);
+    sphereTransformGroup = createTransformGroup();
+
+    scene.addChild(sphereTransformGroup);
+    return scene;
+  }
+
+  public void dispose()
+  {
+    runner.deactivate();
+    container.dispose();
+  }
+
+  public boolean schedule(Runnable runnable)
+  {
+    return runner.addWork(runnable);
+  }
+
+  public void addNode(final Node node, final ContainmentGroup containerContainmentGroup)
+  {
+    schedule(new Runnable()
+    {
+      public void run()
+      {
+        if (containerContainmentGroup == null)
+        {
+          TransformGroup transformGroup = createTransformGroup();
+          positionNewObject(transformGroup, node);
+
+          addChild(transformGroup, node);
+
+          BranchGroup branchGroup = new BranchGroup();
+          branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+          branchGroup.addChild(transformGroup);
+
+          universe.addBranchGraph(branchGroup);
+        }
+        else
+        {
+          containerContainmentGroup.addChild(node);
+        }
+        layout((ContainmentGroup)node, containerContainmentGroup);
+        Element element = ((ContainmentGroup)node).getElement();
+        Element containerElement = getContainerElement(element);
+        if (containerElement != null)
+        {
+          updateReferences(containerElement);
+        }
+        else
+        {
+          updateReferences(element);
+        }
+      }
+    });
+  }
+
+  public void addReferenceShape(final Node shapeLine)
+  {
+    schedule(new Runnable()
+    {
+      public void run()
+      {
+        TransformGroup transformGroupLine = new TransformGroup();
+        addChild(transformGroupLine, shapeLine);
+
+        BranchGroup branchGroup = new BranchGroup();
+        branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+        branchGroup.addChild(transformGroupLine);
+
+        universe.addBranchGraph(branchGroup);
+      }
+    });
+  }
+
+  public void removeNode(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  {
+    schedule(new Runnable()
+    {
+      public void run()
+      {
+        if (containerContainmentGroup != null)
+        {
+          containerContainmentGroup.removeChild(containmentGroup);
+          layout(null, containerContainmentGroup);
+        }
+        else
+        {
+          universe.getLocale().removeBranchGraph(containmentGroup);
+        }
+      }
+    });
+  }
+
+  public void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  {
+    if (containerContainmentGroup != null)
+    {
+      containerContainmentGroup.layoutChildren();
+    }
+    else
+    {
+      containmentGroup.layoutChildren();
+    }
+  }
+
+  private void updateReferences(Element element)
+  {
+    ElementProvider provider = element.getProvider();
+    Map<Integer, Boolean> references = element.getReferences();
+
+    for (int elementId : references.keySet())
+    {
+      Map<Element, ReferenceShape> map = elementReferenceMapping.get(element);
+      Element referenceElement = provider.getElement(elementId);
+      ReferenceShape referenceShape;
+      if (map == null)
+      {
+        map = new HashMap<Element, ReferenceShape>();
+        elementReferenceMapping.put(element, map);
+        referenceShape = createAndSetReferenceShape(element, references, elementId, map, referenceElement);
+      }
+      else
+      {
+        referenceShape = map.get(referenceElement);
+        if (referenceShape == null)
+        {
+          referenceShape = createAndSetReferenceShape(element, references, elementId, map, referenceElement);
+        }
+      }
+      updateReference(element, referenceElement, referenceShape);
+      updateReferences(referenceElement);
+    }
+  }
+
+  private ReferenceShape createAndSetReferenceShape(Element element, Map<Integer, Boolean> references, int elementId,
+      Map<Element, ReferenceShape> map, Element referenceElement)
+  {
+    ReferenceShape referenceShape;
+    referenceShape = createReferenceShape(element, referenceElement, references.get(elementId));
+    addReferenceShape(referenceShape);
+    map.put(referenceElement, referenceShape);
+    return referenceShape;
+  }
+
+  private ReferenceShape createReferenceShape(Element from, Element to, boolean isContainment)
+  {
+    return new ReferenceShape(isContainment);
+  }
+
+  private void updateReference(Element from, Element to, ReferenceShape referenceNode)
+  {
+    Node shape = ((ContainmentGroup)elementNodeMapping.get(from)).getShape();
+    Assert.isNotNull(shape);
+
+    Node referenceShape = ((ContainmentGroup)elementNodeMapping.get(to)).getShape();
+    Assert.isNotNull(referenceShape);
+
+    Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
+    Point3f referencePosition = ThreeDeeWorldUtil.getPositionAsPoint3f(referenceShape);
+
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Drawing connection from {0} to {1}", elementPosition, referencePosition); //$NON-NLS-1$
+    }
+
+    Point3f[] points = new Point3f[2];
+    points[0] = elementPosition;
+    points[1] = referencePosition;
+    LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
+    lineArray.setCoordinates(0, points);
+    referenceNode.setGeometry(lineArray);
+  }
+
+  private void addNavigation(BranchGroup branchGroup)
+  {
+    TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
+    addKeyNavigation(branchGroup, viewTransformGroup);
+    addMouseNavigation(branchGroup, viewTransformGroup);
+  }
+
+  private void addMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
+  {
+    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
+
+    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
+    ob.setSchedulingBounds(mouseZone);
+    universe.getViewingPlatform().setViewPlatformBehavior(ob);
+  }
+
+  private void addKeyNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
+  {
+    KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
+    BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+    keyInteractor.setSchedulingBounds(movingBounds);
+    branchGroup.addChild(keyInteractor);
+  }
+
+  private void positionNewObject(TransformGroup transformGroup, Node node)
+  {
+    Vector3f vector = layouter.getAvailablePosition(node);
+    Transform3D t3d = new Transform3D();
+    t3d.setTranslation(vector);
+    transformGroup.setTransform(t3d);
+
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
+    }
+  }
+
+  private void positionViewer(ViewingPlatform vp)
+  {
+    TransformGroup tg1 = vp.getViewPlatformTransform();
+    Transform3D t3d = new Transform3D();
+    tg1.getTransform(t3d);
+    vp.setNominalViewingTransform();
+  }
+
+  private TransformGroup createTransformGroup()
+  {
+    TransformGroup sphereTransformGroup = new TransformGroup();
+    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+
+    return sphereTransformGroup;
+  }
+
+  private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
+  {
+    parent.addChild(child);
+  }
+
+  public static void addLights(BranchGroup group)
+  {
+    Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
+    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+    Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
+    DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
+    light1.setInfluencingBounds(bounds);
+    group.addChild(light1);
+    AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
+    light2.setInfluencingBounds(bounds);
+    group.addChild(light2);
   }
 }

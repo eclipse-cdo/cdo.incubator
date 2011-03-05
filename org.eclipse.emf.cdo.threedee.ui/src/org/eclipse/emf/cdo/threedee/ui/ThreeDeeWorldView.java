@@ -31,6 +31,7 @@ import org.eclipse.ui.part.ViewPart;
  * <li>Filter check profiles
  * <li>Colored element icons
  * <li>Implement object picker and camera navigation to the selected element
+ * <li>Visualization of references if something is called
  * </ul>
  * 
  * @author Martin Fluegge
@@ -127,5 +128,12 @@ public class ThreeDeeWorldView extends ViewPart
   public void setFocus()
   {
     viewer.getControl().setFocus();
+  }
+
+  @Override
+  public void dispose()
+  {
+    viewer.dispose();
+    super.dispose();
   }
 }
