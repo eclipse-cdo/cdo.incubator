@@ -99,7 +99,6 @@ public class FilterView extends ViewPart
       private void changeElementsToBeHidden(ElementDescriptor descriptor, boolean addFilter)
       {
         String name = descriptor.getName();
-        System.out.println(name);
         if (addFilter)
         {
           elementsToBeHidden.add(name);

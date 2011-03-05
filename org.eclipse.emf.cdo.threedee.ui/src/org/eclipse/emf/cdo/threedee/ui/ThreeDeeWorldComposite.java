@@ -15,7 +15,9 @@ import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
 
+import org.eclipse.net4j.util.concurrent.QueueRunner;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
+import org.eclipse.net4j.util.ui.UIQueueRunner;
 
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.widgets.Composite;
@@ -52,6 +54,8 @@ public class ThreeDeeWorldComposite extends Composite
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldComposite.class);
 
+  private QueueRunner runner;
+
   private SimpleUniverse universe;
 
   private BranchGroup scene;
@@ -65,7 +69,16 @@ public class ThreeDeeWorldComposite extends Composite
   public ThreeDeeWorldComposite(Composite parent, int style)
   {
     super(parent, style);
-    init();
+
+    runner = new UIQueueRunner(parent.getDisplay());
+    runner.activate();
+    runner.addWork(new Runnable()
+    {
+      public void run()
+      {
+        init();
+      }
+    });
   }
 
   private void init()
@@ -94,108 +107,6 @@ public class ThreeDeeWorldComposite extends Composite
     config = device.getBestConfiguration(template);
 
     return new Canvas3D(config);
-  }
-
-  public void addNode(Node node, ContainmentGroup containerContainmentGroup)
-  {
-    if (containerContainmentGroup == null)
-    {
-      BranchGroup branchGroup = new BranchGroup();
-      TransformGroup transformGroup = createTransformGroup();
-
-      positionNewObject(transformGroup, node);
-
-      addChild(transformGroup, node);
-      branchGroup.addChild(transformGroup);
-      branchGroup.compile();
-      universe.addBranchGraph(branchGroup);
-    }
-    else
-    {
-      BranchGroup group = new BranchGroup();
-      group.addChild(node);
-      group.compile();
-      containerContainmentGroup.addChild(group);
-    }
-  }
-
-  private void addNavigation(BranchGroup branchGroup)
-  {
-    TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
-    addKeyNavigation(branchGroup, viewTransformGroup);
-    addMouseNavigation(branchGroup, viewTransformGroup);
-  }
-
-  private void addMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
-  {
-    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
-
-    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
-    ob.setSchedulingBounds(mouseZone);
-    universe.getViewingPlatform().setViewPlatformBehavior(ob);
-  }
-
-  private void addKeyNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
-  {
-    KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
-    BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
-    keyInteractor.setSchedulingBounds(movingBounds);
-    branchGroup.addChild(keyInteractor);
-  }
-
-  private void positionNewObject(TransformGroup transformGroup, Node node)
-  {
-    Vector3f vector = layouter.getAvailablePosition(node);
-    Transform3D t3d = new Transform3D();
-    t3d.setTranslation(vector);
-    transformGroup.setTransform(t3d);
-
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
-    }
-  }
-
-  // private void addMouseListeners(Canvas3D canvas, Frame frame)
-  // {
-  // MouseListener listener = new MouseListener();
-  // canvas.addMouseMotionListener(listener);
-  // frame.addMouseMotionListener(listener);
-  // canvas.addMouseListener(listener);
-  //
-  // frame.addMouseListener(listener);
-  // }
-
-  public void positionViewer(ViewingPlatform vp)
-  {
-    TransformGroup tg1 = vp.getViewPlatformTransform();
-    Transform3D t3d = new Transform3D();
-    tg1.getTransform(t3d);
-    vp.setNominalViewingTransform();
-  }
-
-  public BranchGroup createScene()
-  {
-    BranchGroup scene = new BranchGroup();
-    addLights(scene);
-    sphereTransformGroup = createTransformGroup();
-
-    scene.addChild(sphereTransformGroup);
-    return scene;
-  }
-
-  private TransformGroup createTransformGroup()
-  {
-    TransformGroup sphereTransformGroup = new TransformGroup();
-    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-
-    return sphereTransformGroup;
-  }
-
-  public void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
-  {
-    parent.addChild(child);
   }
 
   private BranchGroup createCoordinateSystem()
@@ -247,6 +158,136 @@ public class ThreeDeeWorldComposite extends Composite
     return group;
   }
 
+  private BranchGroup createScene()
+  {
+    BranchGroup scene = new BranchGroup();
+    addLights(scene);
+    sphereTransformGroup = createTransformGroup();
+
+    scene.addChild(sphereTransformGroup);
+    return scene;
+  }
+
+  @Override
+  public void dispose()
+  {
+    runner.deactivate();
+    super.dispose();
+  }
+
+  public void addNode(final Node node, final ContainmentGroup containerContainmentGroup)
+  {
+    runner.addWork(new Runnable()
+    {
+      public void run()
+      {
+        if (containerContainmentGroup == null)
+        {
+          BranchGroup branchGroup = new BranchGroup();
+          TransformGroup transformGroup = createTransformGroup();
+
+          positionNewObject(transformGroup, node);
+
+          addChild(transformGroup, node);
+          branchGroup.addChild(transformGroup);
+          branchGroup.compile();
+          universe.addBranchGraph(branchGroup);
+        }
+        else
+        {
+          BranchGroup group = new BranchGroup();
+          group.addChild(node);
+          group.compile();
+          containerContainmentGroup.addChild(group);
+        }
+      }
+    });
+  }
+
+  public void addReferenceShape(final Node shapeLine)
+  {
+    runner.addWork(new Runnable()
+    {
+      public void run()
+      {
+        TransformGroup transformGroupLine = new TransformGroup();
+        addChild(transformGroupLine, shapeLine);
+        BranchGroup branchGroup = new BranchGroup();
+        branchGroup.addChild(transformGroupLine);
+        universe.addBranchGraph(branchGroup);
+      }
+    });
+  }
+
+  private void addNavigation(BranchGroup branchGroup)
+  {
+    TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
+    addKeyNavigation(branchGroup, viewTransformGroup);
+    addMouseNavigation(branchGroup, viewTransformGroup);
+  }
+
+  private void addMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
+  {
+    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
+
+    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
+    ob.setSchedulingBounds(mouseZone);
+    universe.getViewingPlatform().setViewPlatformBehavior(ob);
+  }
+
+  private void addKeyNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
+  {
+    KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
+    BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+    keyInteractor.setSchedulingBounds(movingBounds);
+    branchGroup.addChild(keyInteractor);
+  }
+
+  private void positionNewObject(TransformGroup transformGroup, Node node)
+  {
+    Vector3f vector = layouter.getAvailablePosition(node);
+    Transform3D t3d = new Transform3D();
+    t3d.setTranslation(vector);
+    transformGroup.setTransform(t3d);
+
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
+    }
+  }
+
+  // private void addMouseListeners(Canvas3D canvas, Frame frame)
+  // {
+  // MouseListener listener = new MouseListener();
+  // canvas.addMouseMotionListener(listener);
+  // frame.addMouseMotionListener(listener);
+  // canvas.addMouseListener(listener);
+  //
+  // frame.addMouseListener(listener);
+  // }
+
+  private void positionViewer(ViewingPlatform vp)
+  {
+    TransformGroup tg1 = vp.getViewPlatformTransform();
+    Transform3D t3d = new Transform3D();
+    tg1.getTransform(t3d);
+    vp.setNominalViewingTransform();
+  }
+
+  private TransformGroup createTransformGroup()
+  {
+    TransformGroup sphereTransformGroup = new TransformGroup();
+    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+
+    return sphereTransformGroup;
+  }
+
+  private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
+  {
+    parent.addChild(child);
+  }
+
   public static void addLights(BranchGroup group)
   {
     Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
@@ -258,16 +299,5 @@ public class ThreeDeeWorldComposite extends Composite
     AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
     light2.setInfluencingBounds(bounds);
     group.addChild(light2);
-  }
-
-  public void addReferenceShape(Node shapeLine)
-  {
-    TransformGroup transformGroupLine = new TransformGroup();
-    addChild(transformGroupLine, shapeLine);
-
-    BranchGroup branchGroup = new BranchGroup();
-
-    branchGroup.addChild(transformGroupLine);
-    universe.addBranchGraph(branchGroup);
   }
 }

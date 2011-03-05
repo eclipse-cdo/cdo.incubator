@@ -172,34 +172,20 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   @SuppressWarnings("restriction")
   private void called(Object sourceObject, Object targetObject, String what, When when)
   {
-    Element targetElement = getElement(targetObject, false);
-    if (targetElement == null)
+    try
     {
-      return;
-    }
-
-    ElementDescriptor descriptor = targetElement.getDescriptor();
-
-    Element sourceElement = getElement(sourceObject, false);
-    if (sourceElement != null && sourceElement != targetElement)
-    {
-      ElementEvent event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
-      if (event != null)
+      Element targetElement = getElement(targetObject, false);
+      if (targetElement == null)
       {
-        if (TRACER.isEnabled())
-        {
-          TRACER.trace(event.toString());
-        }
-
-        addWork(event);
+        return;
       }
-    }
 
-    if (when == When.BEFORE)
-    {
-      if (targetObject instanceof org.eclipse.net4j.internal.tcp.TCPConnector && "handleWrite".equals(what))
+      ElementDescriptor descriptor = targetElement.getDescriptor();
+
+      Element sourceElement = getElement(sourceObject, false);
+      if (sourceElement != null && sourceElement != targetElement)
       {
-        ElementEvent event = descriptor.createTransmitEvent(targetElement);
+        ElementEvent event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
         if (event != null)
         {
           if (TRACER.isEnabled())
@@ -210,26 +196,50 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
           addWork(event);
         }
       }
-    }
-    else
-    {
-      Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
-      if (pair != null)
+
+      if (when == When.BEFORE)
       {
-        ElementEvent event = pair.getElement1();
-        Element newElement = pair.getElement2();
-
-        if (TRACER.isEnabled())
+        if (targetObject instanceof org.eclipse.net4j.internal.tcp.TCPConnector && "handleWrite".equals(what))
         {
-          TRACER.trace(event.toString());
-        }
+          ElementEvent event = descriptor.createTransmitEvent(targetElement);
+          if (event != null)
+          {
+            if (TRACER.isEnabled())
+            {
+              TRACER.trace(event.toString());
+            }
 
-        synchronized (elements)
+            addWork(event);
+          }
+        }
+      }
+      else
+      {
+        Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
+        if (pair != null)
         {
-          elements.put(targetObject, newElement);
-        }
+          ElementEvent event = pair.getElement1();
+          Element newElement = pair.getElement2();
 
-        addWork(event);
+          if (TRACER.isEnabled())
+          {
+            TRACER.trace(event.toString());
+          }
+
+          synchronized (elements)
+          {
+            elements.put(targetObject, newElement);
+          }
+
+          addWork(event);
+        }
+      }
+    }
+    catch (Exception ex)
+    {
+      if (TRACER.isEnabled())
+      {
+        TRACER.trace(ex.getMessage());
       }
     }
   }
