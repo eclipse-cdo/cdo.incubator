@@ -225,8 +225,8 @@ public class ThreeDeeWorldComposite extends Composite
 
   public void removeNode(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
   {
-    System.err
-        .println(containerContainmentGroup.getClass().getName() + " --> " + containmentGroup.getClass().getName());
+    System.err.println("containmentGroup: " + containmentGroup);
+    System.err.println("containerContainmentGroup: " + containerContainmentGroup);
 
     // schedule(new Runnable()
     // {
