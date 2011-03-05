@@ -11,12 +11,12 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.Net4jDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class Net4jDBDescriptor extends Net4jDescriptor
+public class Net4jDBDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
@@ -27,11 +27,5 @@ public class Net4jDBDescriptor extends Net4jDescriptor
   @Override
   public void initElement(Object object, Element element)
   {
-  }
-
-  @Override
-  public String getLabel()
-  {
-    return getClass() != Net4jDBDescriptor.class ? getBaseLabel() : "DB";
   }
 }

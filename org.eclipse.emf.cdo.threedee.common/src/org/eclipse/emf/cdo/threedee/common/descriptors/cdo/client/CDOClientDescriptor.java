@@ -11,12 +11,12 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.CDODescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class CDOClientDescriptor extends CDODescriptor
+public class CDOClientDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
@@ -27,11 +27,5 @@ public class CDOClientDescriptor extends CDODescriptor
   @Override
   public void initElement(Object object, Element element)
   {
-  }
-
-  @Override
-  public String getLabel()
-  {
-    return getClass() != CDOClientDescriptor.class ? getBaseLabel() : "Client";
   }
 }
