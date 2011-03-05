@@ -337,14 +337,6 @@ public final class Element extends Container<Element>
         result.referenceRemoved(id, Boolean.TRUE == entry.getValue());
       }
     }
-
-    // for (Integer id : oldReferences.keySet())
-    // {
-    // if (!references.containsKey(id))
-    // {
-    // result.referenceRemoved(id);
-    // }
-    // }
   }
 
   public void apply(Change event)
