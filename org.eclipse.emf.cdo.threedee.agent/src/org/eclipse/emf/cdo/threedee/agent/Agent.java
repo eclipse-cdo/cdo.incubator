@@ -165,12 +165,12 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     lastElementID = 0;
     elements.clear();
     protocol = null;
-  
+
     if (TRACER.isEnabled())
     {
-      TRACER.format("Disconnected agent {0}", id); //$NON-NLS-1$
+      TRACER.trace("Disconnected from frontend"); //$NON-NLS-1$
     }
-  
+
     connect();
   }
 
@@ -311,7 +311,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
           id = protocol.openSession();
           if (TRACER.isEnabled())
           {
-            TRACER.format("Connected as agent {0}", id); //$NON-NLS-1$
+            TRACER.format("Connected to frontend as agent {0}", id); //$NON-NLS-1$
           }
 
           addElement(container, true);
