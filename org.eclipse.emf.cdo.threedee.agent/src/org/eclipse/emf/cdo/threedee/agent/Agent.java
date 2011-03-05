@@ -51,9 +51,9 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private int id;
 
-  private Map<Object, Element> elements = new IdentityHashMap<Object, Element>();
-
   private int lastElementID;
+
+  private Map<Object, Element> elements = new IdentityHashMap<Object, Element>();
 
   private Agent()
   {
@@ -159,6 +159,21 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     thread.start();
   }
 
+  protected void reconnect()
+  {
+    connected = false;
+    lastElementID = 0;
+    elements.clear();
+    protocol = null;
+  
+    if (TRACER.isEnabled())
+    {
+      TRACER.format("Disconnected agent {0}", id); //$NON-NLS-1$
+    }
+  
+    connect();
+  }
+
   @Override
   protected void work(WorkContext context, ElementEvent event)
   {
@@ -250,7 +265,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     {
       if (TRACER.isEnabled())
       {
-        TRACER.trace(ex.getMessage());
+        String message = ex.getMessage();
+        if (!"null".equals(message))
+        {
+          TRACER.trace(message);
+        }
       }
     }
   }
@@ -278,33 +297,25 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
         {
           connector = TCPUtil.getConnector(container, server);
           connector.waitForConnection(500L);
+
           protocol = new AgentProtocol(Agent.this, connector);
           protocol.addListener(new LifecycleEventAdapter()
           {
             @Override
             protected void onDeactivated(ILifecycle lifecycle)
             {
-              connected = false;
-              protocol = null;
-
-              if (TRACER.isEnabled())
-              {
-                TRACER.format("Disconnected agent {0}", id); //$NON-NLS-1$
-              }
-
-              connect();
+              reconnect();
             }
           });
 
           id = protocol.openSession();
-          addElement(container, true);
-          connected = true;
-
           if (TRACER.isEnabled())
           {
             TRACER.format("Connected as agent {0}", id); //$NON-NLS-1$
           }
 
+          addElement(container, true);
+          connected = true;
           break;
         }
         catch (Exception ex)

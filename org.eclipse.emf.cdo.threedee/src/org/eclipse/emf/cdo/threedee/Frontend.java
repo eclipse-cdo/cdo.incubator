@@ -21,7 +21,9 @@ import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * @author Eike Stepper
@@ -86,9 +88,23 @@ public class Frontend extends Container<Session>
       @Override
       protected void onDeactivated(ILifecycle lifecycle)
       {
+        int id = session.getID();
+        synchronized (connectors)
+        {
+          for (Iterator<Entry<String, Element>> it = connectors.entrySet().iterator(); it.hasNext();)
+          {
+            Entry<String, Element> entry = it.next();
+            Element connector = entry.getValue();
+            if (connector.getProvider().getID() == id)
+            {
+              it.remove();
+            }
+          }
+        }
+
         synchronized (sessions)
         {
-          sessions.remove(session);
+          sessions.remove(id);
         }
 
         session.deactivate();

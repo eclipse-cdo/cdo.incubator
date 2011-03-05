@@ -171,8 +171,8 @@
 <mapEntry key="org.eclipse.emf.cdo.tests.objectivity/debug" value="true"/>
 <mapEntry key="org.eclipse.emf.cdo.tests/debug" value="true"/>
 <mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug" value="true"/>
-<mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.event" value="false"/>
-<mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.event.send" value="false"/>
+<mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.event" value="true"/>
+<mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.event.send" value="true"/>
 <mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.hook" value="false"/>
 <mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.hook.call" value="false"/>
 <mapEntry key="org.eclipse.emf.cdo.threedee.agent/debug.hook.call.after" value="false"/>
