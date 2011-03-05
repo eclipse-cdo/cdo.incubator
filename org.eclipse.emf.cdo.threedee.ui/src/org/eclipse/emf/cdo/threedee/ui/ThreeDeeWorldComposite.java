@@ -42,10 +42,8 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
 import java.awt.Frame;
-import java.awt.GraphicsConfigTemplate;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 
 /**
  * @author Martin Fluegge
@@ -70,69 +68,32 @@ public class ThreeDeeWorldComposite extends Composite
     init();
   }
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
   private void init()
   {
+    Frame frame = SWT_AWT.new_Frame(this);
+    canvas = createCanvas(frame);
+
+    universe = new SimpleUniverse(canvas);
+    positionViewer(universe.getViewingPlatform());
+
+    scene = createScene();
+    addNavigation(scene);
+
+    universe.addBranchGraph(scene);
+    universe.addBranchGraph(createCoordinateSystem());
+
+    frame.add(canvas);
+  }
+
+  private Canvas3D createCanvas(Frame frame)
+  {
+    GraphicsConfiguration config = frame.getGraphicsConfiguration();
+    GraphicsDevice device = config.getDevice();
+
     GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
-    String stereo;
+    config = device.getBestConfiguration(template);
 
-    // Check if the user has set the Java 3D stereo option.
-    // Getting the system properties causes appletviewer to fail with a
-    // security exception without a try/catch.
-
-    stereo = (String)java.security.AccessController.doPrivileged(new java.security.PrivilegedAction()
-    {
-      public Object run()
-      {
-        return System.getProperty("j3d.stereo");
-      }
-    });
-
-    // update template based on properties.
-    if (stereo != null)
-    {
-      if (stereo.equals("REQUIRED"))
-      {
-        template.setStereo(GraphicsConfigTemplate.REQUIRED);
-      }
-      else if (stereo.equals("PREFERRED"))
-      {
-        template.setStereo(GraphicsConfigTemplate.PREFERRED);
-      }
-    }
-
-    for (GraphicsDevice graphicsDevice : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
-    {
-      try
-      {
-        GraphicsConfiguration config = graphicsDevice.getBestConfiguration(template);
-
-        canvas = new Canvas3D(config);
-
-        universe = new SimpleUniverse(canvas);
-
-        positionViewer(universe.getViewingPlatform());
-        scene = createScene();
-        addNavigation(scene);
-
-        // add the branch group to the locale (which is the root)
-        universe.addBranchGraph(scene);
-
-        universe.addBranchGraph(createCoordinateSystem());
-
-        Frame frame = SWT_AWT.new_Frame(this);
-
-        frame.add(canvas); // Can fail on multi display systems
-
-        return;
-      }
-      catch (Exception ex)
-      {
-        ex.printStackTrace();
-      }
-    }
-
-    throw new IllegalStateException("Could not initialize");
+    return new Canvas3D(config);
   }
 
   public void addNode(Node node, ContainmentGroup containerContainmentGroup)
