@@ -75,7 +75,6 @@ public class ThreeDeeWorldView extends ViewPart
         {
           // TODO implement logic
         }
-
       }
 
       private void addElement(Object object)

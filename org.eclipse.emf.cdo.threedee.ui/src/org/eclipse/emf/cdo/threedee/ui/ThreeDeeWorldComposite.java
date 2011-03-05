@@ -256,16 +256,6 @@ public class ThreeDeeWorldComposite extends Composite
     }
   }
 
-  // private void addMouseListeners(Canvas3D canvas, Frame frame)
-  // {
-  // MouseListener listener = new MouseListener();
-  // canvas.addMouseMotionListener(listener);
-  // frame.addMouseMotionListener(listener);
-  // canvas.addMouseListener(listener);
-  //
-  // frame.addMouseListener(listener);
-  // }
-
   private void positionViewer(ViewingPlatform vp)
   {
     TransformGroup tg1 = vp.getViewPlatformTransform();

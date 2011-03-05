@@ -89,8 +89,8 @@ public class FilterView extends ViewPart
         {
           changeElementsToBeHidden(descriptor, true);
           viewer.setSubtreeChecked(descriptor, false);
-
         }
+
         ThreeDeeWorldView threeDeeWorldView = (ThreeDeeWorldView)getSite().getPage().findView(ThreeDeeWorldView.ID);
         ThreeDeeWorldViewer threeDeeWorldViewViewer = threeDeeWorldView.getViewer();
         threeDeeWorldViewViewer.filter(new ArrayList<String>(elementsToBeHidden));
@@ -113,11 +113,6 @@ public class FilterView extends ViewPart
           changeElementsToBeHidden(child, addFilter);
         }
       }
-
-      // private void addElementsToBeHidden(String name)
-      // {
-      // elementsToBeHidden.add(name);
-      // }
     });
 
     PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.eclipse.emf.cdo.threedee.ui.viewer");
