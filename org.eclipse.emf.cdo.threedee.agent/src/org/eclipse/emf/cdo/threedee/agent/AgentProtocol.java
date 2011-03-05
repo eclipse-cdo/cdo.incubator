@@ -42,7 +42,7 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
     open(connector);
   }
 
-  public int openSession()
+  public int openSession(final String name)
   {
     try
     {
@@ -51,6 +51,7 @@ public class AgentProtocol extends SignalProtocol<Agent> implements ThreeDeeProt
         @Override
         protected void requesting(ExtendedDataOutputStream out) throws Exception
         {
+          out.writeString(name);
         }
 
         @Override

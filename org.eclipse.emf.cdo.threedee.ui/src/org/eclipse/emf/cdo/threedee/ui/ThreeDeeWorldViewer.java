@@ -97,8 +97,11 @@ public class ThreeDeeWorldViewer
     }
 
     ContainmentGroup containerContainmentGroup = getContainerContainmentGroup(element);
-    threeDeeWorldComposite.removeNode(containmentGroup, containerContainmentGroup);
-    layout(null, containerContainmentGroup);
+    if (containerContainmentGroup != null)
+    {
+      threeDeeWorldComposite.removeNode(containmentGroup, containerContainmentGroup);
+      layout(null, containerContainmentGroup);
+    }
   }
 
   public void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)

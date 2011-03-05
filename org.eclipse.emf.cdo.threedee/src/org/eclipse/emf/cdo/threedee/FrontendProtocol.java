@@ -49,7 +49,9 @@ public class FrontendProtocol extends SignalProtocol<Session> implements ThreeDe
         @Override
         protected void indicating(ExtendedDataInputStream in) throws Exception
         {
-          Session session = Frontend.INSTANCE.openSession(FrontendProtocol.this);
+          String name = in.readString();
+
+          Session session = Frontend.INSTANCE.openSession(FrontendProtocol.this, name);
           setInfraStructure(session);
           id = session.getID();
         }

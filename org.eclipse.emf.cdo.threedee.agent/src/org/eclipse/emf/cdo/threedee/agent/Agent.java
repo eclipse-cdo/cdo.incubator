@@ -43,6 +43,8 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG_EVENT, Agent.class);
 
+  private String name;
+
   private String server;
 
   private boolean connected;
@@ -58,6 +60,16 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   private Agent()
   {
     setActivationTimeout(60 * 1000);
+  }
+
+  public String getName()
+  {
+    return name;
+  }
+
+  public void setName(String name)
+  {
+    this.name = name;
   }
 
   public String getServer()
@@ -274,8 +286,9 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     }
   }
 
-  public static void start()
+  public static void start(String name)
   {
+    INSTANCE.setName(name);
     INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
     INSTANCE.activate();
   }
@@ -308,7 +321,7 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
             }
           });
 
-          id = protocol.openSession();
+          id = protocol.openSession(name);
           if (TRACER.isEnabled())
           {
             TRACER.format("Connected to frontend as agent {0}", id); //$NON-NLS-1$

@@ -26,7 +26,7 @@ public class ThreeDeeAppExtension implements IAppExtension
 
   public void start(File configFile) throws Exception
   {
-    Agent.start();
+    Agent.start("Server");
     OM.LOG.info("ThreeDee extension started"); //$NON-NLS-1$
   }
 

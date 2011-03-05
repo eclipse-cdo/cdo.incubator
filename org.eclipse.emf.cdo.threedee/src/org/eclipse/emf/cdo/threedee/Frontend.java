@@ -77,10 +77,10 @@ public class Frontend extends Container<Session>
     }
   }
 
-  public Session openSession(FrontendProtocol protocol)
+  public synchronized Session openSession(FrontendProtocol protocol, String name)
   {
     int id = ++lastSessionID;
-    final Session session = new Session(protocol, id);
+    final Session session = new Session(protocol, name, id);
     session.activate();
 
     protocol.addListener(new LifecycleEventAdapter()

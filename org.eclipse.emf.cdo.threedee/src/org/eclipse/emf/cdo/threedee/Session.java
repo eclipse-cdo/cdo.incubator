@@ -27,6 +27,8 @@ public class Session extends Container<Element> implements ElementProvider
 
   private int id;
 
+  private String name;
+
   private int sequenceNumber;
 
   private Map<Integer, ElementEvent> outOfSequence = new HashMap<Integer, ElementEvent>();
@@ -35,15 +37,21 @@ public class Session extends Container<Element> implements ElementProvider
 
   private Element[] elements = {};
 
-  public Session(FrontendProtocol protocol, int id)
+  public Session(FrontendProtocol protocol, String name, int id)
   {
     this.id = id;
+    this.name = name;
     this.protocol = protocol;
   }
 
   public FrontendProtocol getProtocol()
   {
     return protocol;
+  }
+
+  public String getName()
+  {
+    return name;
   }
 
   public int getID()
@@ -84,7 +92,18 @@ public class Session extends Container<Element> implements ElementProvider
   @Override
   public String toString()
   {
-    return "Agent " + id;
+    StringBuilder builder = new StringBuilder();
+    builder.append("Agent ");
+    builder.append(id);
+
+    if (name != null)
+    {
+      builder.append(" (");
+      builder.append(name);
+      builder.append(")");
+    }
+
+    return builder.toString();
   }
 
   public void handleEvent(int agentSequenceNumber, ElementEvent event)

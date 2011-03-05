@@ -21,6 +21,6 @@ public class Startup implements IStartup
 {
   public void earlyStartup()
   {
-    Agent.start();
+    Agent.start("Client");
   }
 }
