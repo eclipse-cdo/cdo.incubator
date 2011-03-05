@@ -32,7 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * @author Eike Stepper
@@ -295,7 +294,7 @@ public final class Element extends Container<Element>
         }
         else
         {
-          result.referenceRemoved(id);
+          result.referenceRemoved(id, true);
         }
       }
       else if (oldContainment == Boolean.FALSE)
@@ -310,7 +309,7 @@ public final class Element extends Container<Element>
         }
         else
         {
-          result.referenceRemoved(id);
+          result.referenceRemoved(id, false);
         }
       }
       else
@@ -330,14 +329,22 @@ public final class Element extends Container<Element>
       }
     }
 
-    Set<Integer> keySet = oldReferences.keySet();
-    for (Integer id : keySet)
+    for (Entry<Integer, Boolean> entry : oldReferences.entrySet())
     {
+      Integer id = entry.getKey();
       if (!references.containsKey(id))
       {
-        result.referenceRemoved(id);
+        result.referenceRemoved(id, Boolean.TRUE == entry.getValue());
       }
     }
+
+    // for (Integer id : oldReferences.keySet())
+    // {
+    // if (!references.containsKey(id))
+    // {
+    // result.referenceRemoved(id);
+    // }
+    // }
   }
 
   public void apply(Change event)

@@ -323,10 +323,10 @@ public abstract class ElementEvent
       changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.ADDED, id, containment));
     }
 
-    public void referenceRemoved(int id)
+    public void referenceRemoved(int id, boolean containment)
     {
       List<ChangeInfo> changeInfo = ensureChangeInfos();
-      changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.REMOVED, id, false));
+      changeInfo.add(new ChangeInfo.Reference(ChangeInfo.Reference.Kind.REMOVED, id, containment));
     }
 
     public void referenceType(int id, boolean containment)
