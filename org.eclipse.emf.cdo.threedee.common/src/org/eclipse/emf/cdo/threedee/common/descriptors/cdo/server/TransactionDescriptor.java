@@ -8,26 +8,17 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
-
-import org.eclipse.emf.cdo.common.model.CDOPackageRegistry;
-import org.eclipse.emf.cdo.threedee.common.Element;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
 /**
  * @author Eike Stepper
  */
-public class PackageRegistryDescriptor extends CDODescriptor
+@SuppressWarnings("restriction")
+public class TransactionDescriptor extends ViewDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return CDOPackageRegistry.class;
-  }
-
-  @Override
-  public void initElement(Object object, Element element)
-  {
-    CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
-    element.addReferences(true, packageRegistry.getPackageUnits());
+    return org.eclipse.emf.cdo.internal.server.Transaction.class;
   }
 }

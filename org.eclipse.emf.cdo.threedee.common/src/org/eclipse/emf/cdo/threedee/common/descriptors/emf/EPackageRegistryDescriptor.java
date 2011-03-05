@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.emf;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.emf.ecore.EPackage;
 
@@ -20,7 +19,7 @@ import java.util.Collection;
 /**
  * @author Eike Stepper
  */
-public class EPackageRegistryDescriptor extends ElementDescriptor
+public class EPackageRegistryDescriptor extends EMFDescriptor
 {
   @Override
   public Class<?> getElementType()

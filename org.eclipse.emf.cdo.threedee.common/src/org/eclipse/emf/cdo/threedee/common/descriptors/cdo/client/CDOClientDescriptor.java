@@ -8,28 +8,30 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-
-import org.eclipse.spi.net4j.ChannelMultiplexer;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.CDODescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class ChannelMultiplexerDescriptor extends Net4jDescriptor
+public class CDOClientDescriptor extends CDODescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return ChannelMultiplexer.class;
+    return FOLDER_TYPE;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    ChannelMultiplexer channelMultiplexer = (ChannelMultiplexer)object;
-    element.setAttribute("location", channelMultiplexer.getLocation());
-    element.addReferences(true, channelMultiplexer.getChannels());
+  }
+
+  @Override
+  public String getLabel()
+  {
+    return getClass() != CDOClientDescriptor.class ? getBaseLabel() : "Client";
   }
 }

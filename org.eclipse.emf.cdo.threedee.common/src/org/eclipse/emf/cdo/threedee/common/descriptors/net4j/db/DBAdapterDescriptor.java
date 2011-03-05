@@ -11,14 +11,13 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.net4j.db.IDBAdapter;
 
 /**
  * @author Eike Stepper
  */
-public class DBAdapterDescriptor extends ElementDescriptor
+public class DBAdapterDescriptor extends Net4jDBDescriptor
 {
   @Override
   public Class<?> getElementType()

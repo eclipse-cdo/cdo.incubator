@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -21,7 +20,7 @@ import java.nio.channels.SocketChannel;
 /**
  * @author Eike Stepper
  */
-public class SocketChannelDescriptor extends ElementDescriptor
+public class SocketChannelDescriptor extends Net4jDescriptor
 {
   @Override
   public Class<?> getElementType()

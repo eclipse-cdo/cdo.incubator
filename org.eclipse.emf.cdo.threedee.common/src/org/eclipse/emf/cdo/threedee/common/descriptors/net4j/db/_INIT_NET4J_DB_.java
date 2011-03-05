@@ -19,6 +19,7 @@ public class _INIT_NET4J_DB_
 {
   public static void init(Registry registry)
   {
+    registry.register(new Net4jDBDescriptor());
     registry.register(new DBAdapterDescriptor());
     registry.register(new DBFieldDescriptor());
     registry.register(new DBIndexDescriptor());

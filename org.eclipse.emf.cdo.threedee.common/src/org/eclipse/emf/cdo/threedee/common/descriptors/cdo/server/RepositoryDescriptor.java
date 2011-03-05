@@ -8,12 +8,11 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
 import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
 import org.eclipse.emf.cdo.spi.server.InternalRepository;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -21,7 +20,7 @@ import org.eclipse.net4j.util.collection.Pair;
 /**
  * @author Eike Stepper
  */
-public class RepositoryDescriptor extends ElementDescriptor
+public class RepositoryDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()

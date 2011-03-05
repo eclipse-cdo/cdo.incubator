@@ -10,15 +10,22 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
+import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class TransactionDescriptor extends ViewDescriptor
+public class CDODescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return org.eclipse.emf.cdo.internal.server.Transaction.class;
+    return FOLDER_TYPE;
+  }
+
+  @Override
+  public void initElement(Object object, Element element)
+  {
   }
 }

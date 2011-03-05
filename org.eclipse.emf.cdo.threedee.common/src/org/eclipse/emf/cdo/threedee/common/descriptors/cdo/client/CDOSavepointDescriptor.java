@@ -8,30 +8,36 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
 
-import org.eclipse.emf.cdo.server.db.mapping.ITypeMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.transaction.CDOSavepoint;
 
 /**
  * @author Eike Stepper
  */
-public class TypeMappingDescriptor extends ElementDescriptor
+public class CDOSavepointDescriptor extends CDOClientDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return ITypeMapping.class;
+    return CDOSavepoint.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    ITypeMapping typeMapping = (ITypeMapping)object;
-    element.setKeyAttribute(typeMapping.getFeature().getName());
-    element.setAttribute("dbType", typeMapping.getDBType());
-    element.addReference(false, typeMapping.getFeature());
-    element.addReference(false, typeMapping.getField());
+    CDOSavepoint savepoint = (CDOSavepoint)object;
+    CDOSavepoint previousSavepoint = savepoint.getPreviousSavepoint();
+    if (previousSavepoint != null)
+    {
+      element.addReference(true, previousSavepoint);
+    }
+  }
+
+  @Override
+  public String getLabel(Element element)
+  {
+    return super.getLabel(element).substring(3);
   }
 }

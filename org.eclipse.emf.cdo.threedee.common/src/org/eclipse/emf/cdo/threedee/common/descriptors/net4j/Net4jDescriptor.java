@@ -11,25 +11,21 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-
-import org.eclipse.spi.net4j.ChannelMultiplexer;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class ChannelMultiplexerDescriptor extends Net4jDescriptor
+public class Net4jDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return ChannelMultiplexer.class;
+    return FOLDER_TYPE;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    ChannelMultiplexer channelMultiplexer = (ChannelMultiplexer)object;
-    element.setAttribute("location", channelMultiplexer.getLocation());
-    element.addReferences(true, channelMultiplexer.getChannels());
   }
 }

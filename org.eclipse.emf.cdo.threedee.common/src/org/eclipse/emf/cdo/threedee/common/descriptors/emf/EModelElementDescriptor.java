@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.emf;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -21,7 +20,7 @@ import org.eclipse.emf.ecore.EModelElement;
 /**
  * @author Eike Stepper
  */
-public class EModelElementDescriptor extends ElementDescriptor
+public class EModelElementDescriptor extends EMFDescriptor
 {
   @Override
   public Class<?> getElementType()

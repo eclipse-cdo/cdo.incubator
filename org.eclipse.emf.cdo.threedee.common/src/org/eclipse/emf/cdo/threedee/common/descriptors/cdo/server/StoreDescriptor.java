@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
 import org.eclipse.emf.cdo.server.IStore;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -20,7 +19,7 @@ import org.eclipse.net4j.util.collection.Pair;
 /**
  * @author Eike Stepper
  */
-public class StoreDescriptor extends ElementDescriptor
+public class StoreDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()

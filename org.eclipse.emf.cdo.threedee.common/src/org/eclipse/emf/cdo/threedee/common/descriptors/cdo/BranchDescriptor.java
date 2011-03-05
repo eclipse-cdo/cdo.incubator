@@ -12,12 +12,11 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.spi.common.branch.InternalCDOBranch;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class BranchDescriptor extends ElementDescriptor
+public class BranchDescriptor extends CDODescriptor
 {
   @Override
   public Class<?> getElementType()

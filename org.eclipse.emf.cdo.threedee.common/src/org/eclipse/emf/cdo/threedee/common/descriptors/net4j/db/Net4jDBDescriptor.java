@@ -8,37 +8,30 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.transaction.CDOSavepoint;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.Net4jDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class CDOSavepointDescriptor extends ElementDescriptor
+public class Net4jDBDescriptor extends Net4jDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return CDOSavepoint.class;
+    return FOLDER_TYPE;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOSavepoint savepoint = (CDOSavepoint)object;
-    CDOSavepoint previousSavepoint = savepoint.getPreviousSavepoint();
-    if (previousSavepoint != null)
-    {
-      element.addReference(true, previousSavepoint);
-    }
   }
 
   @Override
-  public String getLabel(Element element)
+  public String getLabel()
   {
-    return super.getLabel(element).substring(3);
+    return getClass() != Net4jDBDescriptor.class ? getBaseLabel() : "DB";
   }
 }

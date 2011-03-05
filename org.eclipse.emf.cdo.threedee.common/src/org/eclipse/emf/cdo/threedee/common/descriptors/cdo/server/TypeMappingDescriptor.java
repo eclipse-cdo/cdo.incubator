@@ -8,28 +8,29 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
+import org.eclipse.emf.cdo.server.db.mapping.ITypeMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
-
-import org.eclipse.spi.net4j.ChannelMultiplexer;
 
 /**
  * @author Eike Stepper
  */
-public class ChannelMultiplexerDescriptor extends Net4jDescriptor
+public class TypeMappingDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return ChannelMultiplexer.class;
+    return ITypeMapping.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    ChannelMultiplexer channelMultiplexer = (ChannelMultiplexer)object;
-    element.setAttribute("location", channelMultiplexer.getLocation());
-    element.addReferences(true, channelMultiplexer.getChannels());
+    ITypeMapping typeMapping = (ITypeMapping)object;
+    element.setKeyAttribute(typeMapping.getFeature().getName());
+    element.setAttribute("dbType", typeMapping.getDBType());
+    element.addReference(false, typeMapping.getFeature());
+    element.addReference(false, typeMapping.getField());
   }
 }

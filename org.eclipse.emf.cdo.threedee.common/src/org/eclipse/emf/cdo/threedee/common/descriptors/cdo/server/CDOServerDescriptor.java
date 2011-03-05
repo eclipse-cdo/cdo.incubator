@@ -8,24 +8,20 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
-import org.eclipse.emf.cdo.server.db.IMetaDataManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
-
-import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.CDODescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class MetaDataManagerDescriptor extends ElementDescriptor
+public class CDOServerDescriptor extends CDODescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IMetaDataManager.class;
+    return FOLDER_TYPE;
   }
 
   @Override
@@ -34,8 +30,8 @@ public class MetaDataManagerDescriptor extends ElementDescriptor
   }
 
   @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  public String getLabel()
   {
-    return null;
+    return getClass() != CDOServerDescriptor.class ? getBaseLabel() : "Server";
   }
 }

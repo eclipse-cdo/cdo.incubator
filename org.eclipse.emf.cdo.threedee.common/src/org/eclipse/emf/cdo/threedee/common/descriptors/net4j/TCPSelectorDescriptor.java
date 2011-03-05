@@ -11,13 +11,12 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
 @SuppressWarnings("restriction")
-public class TCPSelectorDescriptor extends ElementDescriptor
+public class TCPSelectorDescriptor extends Net4jDescriptor
 {
   @Override
   public Class<?> getElementType()

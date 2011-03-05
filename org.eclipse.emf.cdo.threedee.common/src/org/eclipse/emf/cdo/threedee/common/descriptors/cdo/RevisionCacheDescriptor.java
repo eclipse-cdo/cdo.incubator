@@ -13,14 +13,13 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 import org.eclipse.emf.cdo.common.revision.CDORevision;
 import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevisionCache;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import java.util.List;
 
 /**
  * @author Eike Stepper
  */
-public class RevisionCacheDescriptor extends ElementDescriptor
+public class RevisionCacheDescriptor extends CDODescriptor
 {
   @Override
   public Class<?> getElementType()

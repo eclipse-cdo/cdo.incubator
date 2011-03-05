@@ -11,14 +11,13 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.spi.net4j.Acceptor;
 
 /**
  * @author Eike Stepper
  */
-public class AcceptorDescriptor extends ElementDescriptor
+public class AcceptorDescriptor extends Net4jDescriptor
 {
   @Override
   public Class<?> getElementType()

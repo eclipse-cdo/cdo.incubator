@@ -8,16 +8,15 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
 import org.eclipse.emf.cdo.server.db.mapping.IClassMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class ClassMappingDescriptor extends ElementDescriptor
+public class ClassMappingDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()

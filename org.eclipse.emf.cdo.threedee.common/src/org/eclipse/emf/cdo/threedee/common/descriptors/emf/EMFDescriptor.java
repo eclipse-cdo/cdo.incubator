@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.emf;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
@@ -16,26 +16,16 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class CDOViewDescriptor extends ElementDescriptor
+public class EMFDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return org.eclipse.emf.internal.cdo.view.CDOViewImpl.class;
+    return FOLDER_TYPE;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    org.eclipse.emf.internal.cdo.view.CDOViewImpl view = (org.eclipse.emf.internal.cdo.view.CDOViewImpl)object;
-    element.addReferences(true, view.getObjects().values());
-    element.addReference(false, view.getViewSet());
-  }
-
-  @Override
-  public String getLabel(Element element)
-  {
-    return super.getLabel(element).substring(3);
   }
 }

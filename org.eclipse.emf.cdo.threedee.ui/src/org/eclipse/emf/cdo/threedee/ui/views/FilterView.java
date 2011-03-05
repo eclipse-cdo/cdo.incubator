@@ -13,7 +13,9 @@ package org.eclipse.emf.cdo.threedee.ui.views;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldView;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldViewer;
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM.Activator;
 
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
@@ -22,7 +24,9 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
@@ -39,15 +43,34 @@ public class FilterView extends ViewPart
 
   private CheckboxTreeViewer viewer;
 
+  private Image folderImage;
+
+  private Image descriptorImage;
+
+  @Override
+  public void dispose()
+  {
+    folderImage.dispose();
+    descriptorImage.dispose();
+    super.dispose();
+  }
+
   @Override
   public void createPartControl(Composite parent)
   {
+    folderImage = getImage(parent, "icons/folder.gif");
+    descriptorImage = getImage(parent, "icons/descriptor.gif");
+
     viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
     viewer.setContentProvider(new ViewContentProvider());
     viewer.setLabelProvider(new ViewLabelProvider());
     viewer.setSorter(new NameSorter());
     viewer.setInput(ElementDescriptor.Registry.INSTANCE);
-    viewer.setAllChecked(true);
+
+    for (ElementDescriptor descriptor : ElementDescriptor.Registry.INSTANCE.values())
+    {
+      viewer.setChecked(descriptor, true);
+    }
 
     viewer.addCheckStateListener(new ICheckStateListener()
     {
@@ -99,6 +122,17 @@ public class FilterView extends ViewPart
     });
 
     PlatformUI.getWorkbench().getHelpSystem().setHelp(viewer.getControl(), "org.eclipse.emf.cdo.threedee.ui.viewer");
+  }
+
+  private Image getImage(Control control, String path)
+  {
+    ImageDescriptor descriptor = Activator.INSTANCE.loadImageDescriptor(path);
+    if (descriptor == null)
+    {
+      return null;
+    }
+
+    return descriptor.createImage(control.getDisplay());
   }
 
   @Override
@@ -162,13 +196,30 @@ public class FilterView extends ViewPart
   private class ViewLabelProvider extends LabelProvider
   {
     @Override
+    public Image getImage(Object element)
+    {
+      if (element instanceof ElementDescriptor)
+      {
+        if (((ElementDescriptor)element).isFolder())
+        {
+          return folderImage;
+        }
+
+        return descriptorImage;
+      }
+
+      return super.getImage(element);
+    }
+
+    @Override
     public String getText(Object element)
     {
       if (element instanceof ElementDescriptor)
       {
-        return ((ElementDescriptor)element).getName();
+        return ((ElementDescriptor)element).getLabel();
       }
-      return element.toString();
+
+      return super.getText(element);
     }
   }
 
@@ -177,5 +228,20 @@ public class FilterView extends ViewPart
    */
   private class NameSorter extends ViewerSorter
   {
+    @Override
+    public int category(Object element)
+    {
+      if (element instanceof ElementDescriptor)
+      {
+        if (((ElementDescriptor)element).isFolder())
+        {
+          return 0;
+        }
+
+        return 1;
+      }
+
+      return 3;
+    }
   }
 }

@@ -11,7 +11,25 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
-import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db._INIT_CDO_DB_;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client.CDOClientDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client.CDOObjectDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client.CDOSavepointDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client.CDOSessionDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client.CDOTransactionDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client.CDOViewDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.CDOServerDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.ClassMappingDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.DBStoreDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.IDHandlerDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.MappingStrategyDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.MetaDataManagerDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.RepositoryDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.SessionDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.SessionManagerDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.StoreDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.TransactionDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.TypeMappingDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server.ViewDescriptor;
 
 /**
  * @author Eike Stepper
@@ -20,8 +38,15 @@ public class _INIT_CDO_
 {
   public static void init(Registry registry)
   {
-    _INIT_CDO_DB_.init(registry);
-
+    registry.register(new CDODescriptor());
+    registry.register(new CDOClientDescriptor());
+    registry.register(new CDOServerDescriptor());
+    registry.register(new ClassMappingDescriptor());
+    registry.register(new DBStoreDescriptor());
+    registry.register(new IDHandlerDescriptor());
+    registry.register(new MappingStrategyDescriptor());
+    registry.register(new MetaDataManagerDescriptor());
+    registry.register(new TypeMappingDescriptor());
     registry.register(new BranchDescriptor());
     registry.register(new BranchManagerDescriptor());
     registry.register(new CDOObjectDescriptor());

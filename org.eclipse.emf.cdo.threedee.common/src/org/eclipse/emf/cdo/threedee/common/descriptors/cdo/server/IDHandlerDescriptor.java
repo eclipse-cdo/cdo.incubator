@@ -8,29 +8,36 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
-import org.eclipse.emf.cdo.CDOObject;
+import org.eclipse.emf.cdo.server.db.IIDHandler;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
  */
-public class CDOObjectDescriptor extends ElementDescriptor
+public class IDHandlerDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return CDOObject.class;
+    return IIDHandler.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    CDOObject cdoObject = (CDOObject)object;
-    element.setIDAttribute(cdoObject.cdoID());
-    element.setAttribute("state", cdoObject.cdoState());
-    element.addReference(false, cdoObject.cdoRevision());
+    IIDHandler idHandler = (IIDHandler)object;
+    element.addReference(false, idHandler.getDBType());
+    element.addReference(false, idHandler.getObjectTypeMapping());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

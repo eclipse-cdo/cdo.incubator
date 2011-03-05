@@ -26,6 +26,7 @@ public class _INIT_EMF_
     IPluginContainer.INSTANCE.putElement("org.eclipse.emf.ecore.packageRegisties", "default", null,
         EPackage.Registry.INSTANCE);
 
+    registry.register(new EMFDescriptor());
     registry.register(new EAnnotationDescriptor());
     registry.register(new EAttributeDescriptor());
     registry.register(new EClassDescriptor());

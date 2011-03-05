@@ -12,7 +12,6 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevisionManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -20,7 +19,7 @@ import org.eclipse.net4j.util.collection.Pair;
 /**
  * @author Eike Stepper
  */
-public class RevisionManagerDescriptor extends ElementDescriptor
+public class RevisionManagerDescriptor extends CDODescriptor
 {
   @Override
   public Class<?> getElementType()

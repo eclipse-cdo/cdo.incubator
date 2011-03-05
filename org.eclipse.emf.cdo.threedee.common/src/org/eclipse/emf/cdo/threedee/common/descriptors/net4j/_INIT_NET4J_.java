@@ -22,6 +22,7 @@ public class _INIT_NET4J_
   {
     _INIT_NET4J_DB_.init(registry);
 
+    registry.register(new Net4jDescriptor());
     registry.register(new AcceptorDescriptor());
     registry.register(new BufferDescriptor());
     registry.register(new ChannelDescriptor());

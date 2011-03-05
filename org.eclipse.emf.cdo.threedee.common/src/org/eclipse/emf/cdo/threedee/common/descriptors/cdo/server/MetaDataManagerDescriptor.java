@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
-import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
+import org.eclipse.emf.cdo.server.db.IMetaDataManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -20,22 +19,17 @@ import org.eclipse.net4j.util.collection.Pair;
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class ViewDescriptor extends ElementDescriptor
+public class MetaDataManagerDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return org.eclipse.emf.cdo.internal.server.View.class;
+    return IMetaDataManager.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    org.eclipse.emf.cdo.internal.server.View view = (org.eclipse.emf.cdo.internal.server.View)object;
-    element.setIDAttribute(view.getViewID());
-    element.addReference(false, view.getBranch());
-    element.setAttribute("timeStamp", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));
   }
 
   @Override

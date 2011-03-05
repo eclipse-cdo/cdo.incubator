@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
 import org.eclipse.emf.cdo.server.db.mapping.IClassMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -22,7 +21,7 @@ import java.util.Map;
  * @author Eike Stepper
  */
 @SuppressWarnings("restriction")
-public class MappingStrategyDescriptor extends ElementDescriptor
+public class MappingStrategyDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()

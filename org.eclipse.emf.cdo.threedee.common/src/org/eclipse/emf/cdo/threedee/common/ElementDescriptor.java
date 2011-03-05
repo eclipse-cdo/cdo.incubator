@@ -19,11 +19,18 @@ import java.util.Map;
  */
 public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 {
+  public static final Class<ElementDescriptor> FOLDER_TYPE = ElementDescriptor.class;
+
   public ElementDescriptor()
   {
   }
 
   public abstract Class<?> getElementType();
+
+  public boolean isFolder()
+  {
+    return getElementType() == FOLDER_TYPE;
+  }
 
   public final String getName()
   {
@@ -32,8 +39,13 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
   public String getLabel()
   {
+    return getBaseLabel();
+  }
+
+  protected String getBaseLabel()
+  {
     String label = getClass().getSimpleName();
-    label = strip(label, "ElementDescriptor");
+    // label = strip(label, "ElementDescriptor");
     label = strip(label, "Descriptor");
     return label;
   }
@@ -67,7 +79,7 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     return Registry.INSTANCE.get(superName);
   }
 
-  private String getSuperDescriptorName()
+  protected String getSuperDescriptorName()
   {
     return getClass().getSuperclass().getSimpleName();
   }

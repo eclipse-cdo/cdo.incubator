@@ -8,11 +8,10 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
 
-import org.eclipse.emf.cdo.server.db.IIDHandler;
+import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
 import org.eclipse.net4j.util.collection.Pair;
@@ -20,20 +19,22 @@ import org.eclipse.net4j.util.collection.Pair;
 /**
  * @author Eike Stepper
  */
-public class IDHandlerDescriptor extends ElementDescriptor
+@SuppressWarnings("restriction")
+public class ViewDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IIDHandler.class;
+    return org.eclipse.emf.cdo.internal.server.View.class;
   }
 
   @Override
   public void initElement(Object object, Element element)
   {
-    IIDHandler idHandler = (IIDHandler)object;
-    element.addReference(false, idHandler.getDBType());
-    element.addReference(false, idHandler.getObjectTypeMapping());
+    org.eclipse.emf.cdo.internal.server.View view = (org.eclipse.emf.cdo.internal.server.View)object;
+    element.setIDAttribute(view.getViewID());
+    element.addReference(false, view.getBranch());
+    element.setAttribute("timeStamp", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));
   }
 
   @Override
