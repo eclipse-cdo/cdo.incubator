@@ -56,7 +56,7 @@ public class ThreeDeeWorldViewer
   public ThreeDeeWorldViewer(Composite parent)
   {
     container = new Composite(parent, SWT.NONE);
-    container.setLayout(new FillLayout(SWT.VERTICAL));
+    container.setLayout(new FillLayout());
 
     threeDeeWorldComposite = new ThreeDeeWorldComposite(container, SWT.EMBEDDED | SWT.NO_BACKGROUND);
   }
@@ -73,29 +73,57 @@ public class ThreeDeeWorldViewer
       return;
     }
 
-    Element containerElement = element.getProvider().getElement(element.getContainerID());
-
-    ContainmentGroup containerContainmentGroup = (ContainmentGroup)containmentGroups.get(containerElement);
-
+    ContainmentGroup containerContainmentGroup = getContainerContainmentGroup(element);
     ContainmentGroup containmentGroup = (ContainmentGroup)createNode(element);
 
     ElementProvider provider = element.getProvider();
 
     Map<Integer, Boolean> references = element.getReferences();
     createChildren(containmentGroup, provider, references);
+
     // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
     threeDeeWorldComposite.addNode(containmentGroup, containerContainmentGroup);
-
-    if (containerContainmentGroup != null)
-    {
-      containerContainmentGroup.layoutChildren();
-    }
-    else
-    {
-      containmentGroup.layoutChildren();
-    }
+    layout(containmentGroup, containerContainmentGroup);
 
     createReferences(element, provider, references);
+  }
+
+  public void removeElement(Element element)
+  {
+    ContainmentGroup containmentGroup = (ContainmentGroup)containmentGroups.remove(element);
+    if (containmentGroup == null)
+    {
+      return;
+    }
+
+    ContainmentGroup containerContainmentGroup = getContainerContainmentGroup(element);
+    threeDeeWorldComposite.removeNode(containmentGroup, containerContainmentGroup);
+    layout(null, containerContainmentGroup);
+  }
+
+  public void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  {
+    threeDeeWorldComposite.schedule(new Runnable()
+    {
+      public void run()
+      {
+        if (containerContainmentGroup != null)
+        {
+          containerContainmentGroup.layoutChildren();
+        }
+        else
+        {
+          containmentGroup.layoutChildren();
+        }
+      }
+    });
+  }
+
+  protected ContainmentGroup getContainerContainmentGroup(Element element)
+  {
+    Element containerElement = element.getProvider().getElement(element.getContainerID());
+    ContainmentGroup containerContainmentGroup = (ContainmentGroup)containmentGroups.get(containerElement);
+    return containerContainmentGroup;
   }
 
   private void createReferences(Element element, ElementProvider provider, Map<Integer, Boolean> references)
@@ -134,7 +162,7 @@ public class ThreeDeeWorldViewer
     INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
     Node shape = factory != null ? factory.createNode(element) : new DefaultNode(element);
 
-    ContainmentGroup group = new ContainmentGroup();
+    ContainmentGroup group = new ContainmentGroup(element);
     group.setShape(shape);
 
     containmentGroups.put(element, group);
@@ -175,10 +203,6 @@ public class ThreeDeeWorldViewer
     transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
     transparencyAttributes.setTransparency(0.9f);
     return new Shape3D(lineArray, appearance);
-  }
-
-  public void removeElement(Element element)
-  {
   }
 
   public void filter(List<String> elementsToBeHidden)

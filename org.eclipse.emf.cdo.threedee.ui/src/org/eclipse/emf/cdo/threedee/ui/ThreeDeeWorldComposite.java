@@ -175,15 +175,20 @@ public class ThreeDeeWorldComposite extends Composite
     super.dispose();
   }
 
+  public boolean schedule(Runnable runnable)
+  {
+    return runner.addWork(runnable);
+  }
+
   public void addNode(final Node node, final ContainmentGroup containerContainmentGroup)
   {
-    runner.addWork(new Runnable()
+    schedule(new Runnable()
     {
       public void run()
       {
+        BranchGroup branchGroup = new BranchGroup();
         if (containerContainmentGroup == null)
         {
-          BranchGroup branchGroup = new BranchGroup();
           TransformGroup transformGroup = createTransformGroup();
 
           positionNewObject(transformGroup, node);
@@ -195,10 +200,9 @@ public class ThreeDeeWorldComposite extends Composite
         }
         else
         {
-          BranchGroup group = new BranchGroup();
-          group.addChild(node);
-          group.compile();
-          containerContainmentGroup.addChild(group);
+          branchGroup.addChild(node);
+          branchGroup.compile();
+          containerContainmentGroup.addChild(branchGroup);
         }
       }
     });
@@ -206,7 +210,7 @@ public class ThreeDeeWorldComposite extends Composite
 
   public void addReferenceShape(final Node shapeLine)
   {
-    runner.addWork(new Runnable()
+    schedule(new Runnable()
     {
       public void run()
       {
@@ -217,6 +221,19 @@ public class ThreeDeeWorldComposite extends Composite
         universe.addBranchGraph(branchGroup);
       }
     });
+  }
+
+  public void removeNode(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  {
+    System.err
+        .println(containerContainmentGroup.getClass().getName() + " --> " + containmentGroup.getClass().getName());
+
+    // schedule(new Runnable()
+    // {
+    // public void run()
+    // {
+    // }
+    // });
   }
 
   private void addNavigation(BranchGroup branchGroup)

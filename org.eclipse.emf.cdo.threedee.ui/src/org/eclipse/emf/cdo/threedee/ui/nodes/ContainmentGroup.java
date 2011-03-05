@@ -4,12 +4,13 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
+import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 
 import javax.media.j3d.BranchGroup;
@@ -29,13 +30,21 @@ public class ContainmentGroup extends TransformGroup
 {
   private Node shape;
 
-  public ContainmentGroup()
+  private final Element element;
+
+  public ContainmentGroup(Element element)
   {
+    this.element = element;
     setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
     setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
     setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
     setCapability(TransformGroup.ALLOW_CHILDREN_READ);
     setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+  }
+
+  public Element getElement()
+  {
+    return element;
   }
 
   public void setShape(Node shape)
