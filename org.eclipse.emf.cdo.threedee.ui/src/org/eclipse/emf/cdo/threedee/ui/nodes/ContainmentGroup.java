@@ -71,19 +71,25 @@ public class ContainmentGroup extends ThreeDeeNode
 
   private void placeChildren(List<ContainmentGroup> elements)
   {
-    float radius = 0.4f;
-    float angle = 0f;
+    float radius = 2f;
+    float phi = 0f;
+    float theta = 0f;
     float distanceAngle = 360f / elements.size();
     for (ContainmentGroup group : elements)
     {
-      float x = (float)(0 + radius * Math.cos(Math.toRadians(angle)));
-      float y = (float)(0 + radius * Math.sin(Math.toRadians(angle)));
+      // float x = (float)(0 + radius * Math.cos(Math.toRadians(angle)));
+      // float y = (float)(0 + radius * Math.sin(Math.toRadians(angle)));
 
-      Vector3f availablePosition = new Vector3f(x, y, 1f);
+      float x = (float)(0 + radius * Math.sin(Math.toRadians(theta)) * Math.cos(Math.toRadians(phi)));
+      float y = (float)(0 + radius * Math.sin(Math.toRadians(theta)) * Math.sin(Math.toRadians(phi)));
+      float z = (float)(0 + radius * Math.cos(Math.toRadians(theta)));
+
+      Vector3f availablePosition = new Vector3f(x, y, z);
       Transform3D t1 = new Transform3D();
       t1.setTranslation(availablePosition);
       group.setTransform(t1);
-      angle += distanceAngle;
+      phi += distanceAngle;
+      theta = phi;
 
       placeChildren(group.getChildren());
     }
