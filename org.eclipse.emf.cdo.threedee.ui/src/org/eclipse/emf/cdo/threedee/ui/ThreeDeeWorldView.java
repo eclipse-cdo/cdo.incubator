@@ -28,7 +28,7 @@ import org.eclipse.ui.part.ViewPart;
 /**
  * TODO
  * <ul>
- * <li>Filter check profiles<br>
+ * <li>Filter check profiles
  * <li>Colored element icons
  * </ul>
  * 
