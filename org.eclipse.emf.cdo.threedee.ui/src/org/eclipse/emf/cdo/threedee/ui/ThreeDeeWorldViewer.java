@@ -205,7 +205,7 @@ public class ThreeDeeWorldViewer
 
   public void addElement(Element element)
   {
-    if (containmentGroups.get(element) != null)
+    if (containmentGroups.containsKey(element))
     {
       return;
     }
