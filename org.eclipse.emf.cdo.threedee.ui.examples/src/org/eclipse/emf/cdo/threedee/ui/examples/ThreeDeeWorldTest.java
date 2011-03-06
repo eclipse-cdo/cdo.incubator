@@ -142,6 +142,7 @@ public class ThreeDeeWorldTest
         display.sleep();
       }
     }
+
     display.dispose();
     System.exit(0);
   }
