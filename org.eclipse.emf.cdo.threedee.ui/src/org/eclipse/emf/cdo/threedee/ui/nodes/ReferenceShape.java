@@ -38,7 +38,7 @@ public class ReferenceShape extends ThreeDeeNode
     }
 
     transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
-    transparencyAttributes.setTransparency(0.01f);
+    transparencyAttributes.setTransparency(0.9f);
     shape = new Shape3D();
     getShape().setAppearance(appearance);
 

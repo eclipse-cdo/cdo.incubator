@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 
+import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
@@ -27,8 +28,6 @@ import java.util.List;
 public class ContainmentGroup extends ThreeDeeNode
 {
   private Element element;
-
-  private float childDistance;
 
   public ContainmentGroup(Element element)
   {
@@ -70,29 +69,51 @@ public class ContainmentGroup extends ThreeDeeNode
 
   private void placeChildren(List<ContainmentGroup> elements)
   {
-    childDistance = 2f;
+    if (elements.size() == 0)
+    {
+      return;
+    }
+
     float phi = 0f;
     float theta = 90f;
     float distanceAngle = 360f / elements.size();
-    for (ContainmentGroup group : elements)
+    float z = 0.7f;
+
+    for (int i = 0; i < elements.size(); i++)
     {
-      // float x = (float)(0 + childDistance * Math.cos(Math.toRadians(phi)));
-      // float y = (float)(0 + childDistance * Math.sin(Math.toRadians(phi)));
-      // float z = 1f;
+      ContainmentGroup currentChild = elements.get(i);
 
-      float x = (float)(0 + childDistance * Math.sin(Math.toRadians(theta)) * Math.cos(Math.toRadians(phi)));
-      float y = (float)(0 + childDistance * Math.sin(Math.toRadians(theta)) * Math.sin(Math.toRadians(phi)));
-      float z = 1f;// (float)(0 + childDistance * Math.cos(Math.toRadians(theta)));
-      // float z = 1f;
+      // my children first
+      placeChildren(currentChild.getChildren());
 
-      Vector3f availablePosition = new Vector3f(x, y, z);
-      Transform3D t1 = new Transform3D();
-      t1.setTranslation(availablePosition);
-      group.setTransform(t1);
+      // currently we assume that all children have the same diameter
+      double childRadius = ((BoundingSphere)elements.get(0).getBounds()).getRadius();
+      double minimalCircumference = childRadius * 2 * elements.size();
+
+      float radius = (float)(minimalCircumference / (2 * Math.PI));
+
+      placeChild(phi, theta, distanceAngle, currentChild, radius, z);
+
       phi += distanceAngle;
-      // theta = phi;
-
-      placeChildren(group.getChildren());
     }
+  }
+
+  private void placeChild(float phi, float theta, float distanceAngle, ContainmentGroup child, float radius, float z)
+  {
+    // float x = (float)(0 + childDistance * Math.cos(Math.toRadians(phi)));
+    // float y = (float)(0 + childDistance * Math.sin(Math.toRadians(phi)));
+    // float z = 1f;
+
+    double sinTheta = Math.sin(Math.toRadians(theta));
+    float x = (float)(0 + radius * sinTheta * Math.cos(Math.toRadians(phi)));
+    float y = (float)(0 + radius * sinTheta * Math.sin(Math.toRadians(phi)));
+    // float z = 1f;// (float)(0 + childDistance * Math.cos(Math.toRadians(theta)));
+
+    Vector3f availablePosition = new Vector3f(x, y, z);
+    Transform3D t1 = new Transform3D();
+    t1.setTranslation(availablePosition);
+    child.setTransform(t1);
+
+    // theta = phi;
   }
 }

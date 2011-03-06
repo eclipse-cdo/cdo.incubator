@@ -63,7 +63,7 @@ public class ThreeDeeWorldTest
       Element child = dummyElementProvider.createElement();
       // element.getReferences().put(child.getID(), true);
       element.addReference(true, child.getID());
-      for (int a = 0; a < 500; a++)
+      for (int a = 0; a < 10; a++)
       {
         Element level2Child = dummyElementProvider.createElement(descriptors.get(i));
         // child.getReferences().put(level2Child.getID(), true);
@@ -80,7 +80,6 @@ public class ThreeDeeWorldTest
         sleep(3000);
         Element element2 = dummyElementProvider.createElement();
         element.addReference(true, element2.getID());
-        // element.getReferences().put(element2.getID(), true);
         viewer.addElement(element2);
 
         sleep(3000);
