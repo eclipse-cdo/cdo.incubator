@@ -35,7 +35,6 @@ public class DefaultShape extends Sphere
   public DefaultShape(Appearance appearance)
   {
     super(.1f, appearance);
-
     setDefaultCapabilities();
   }
 
