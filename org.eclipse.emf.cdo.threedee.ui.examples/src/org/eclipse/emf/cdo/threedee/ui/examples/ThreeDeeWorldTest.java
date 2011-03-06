@@ -20,7 +20,6 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,9 +89,9 @@ public class ThreeDeeWorldTest
     });
 
     t.start();
-    ArrayList<String> elementsToBeHidden = new ArrayList<String>();
+    // ArrayList<String> elementsToBeHidden = new ArrayList<String>();
     // elementsToBeHidden.add("Acceptor");
-    viewer.filter(elementsToBeHidden);
+    // viewer.filter(elementsToBeHidden);
 
     // Thread t = new Thread(new Runnable()
     // {
