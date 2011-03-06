@@ -50,7 +50,7 @@ public class ThreeDeeWorldView extends ViewPart
 
   private IListener frontendListener = new FrontendListener();
 
-  private IListener descriptorViewListener = new DescriptorViewListener();
+  private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
 
   private ThreeDeeWorldViewer viewer;
 
@@ -67,15 +67,10 @@ public class ThreeDeeWorldView extends ViewPart
   public void createPartControl(Composite parent)
   {
     viewer = new ThreeDeeWorldViewer(parent);
-
     Frontend.INSTANCE.addListener(frontendListener);
-    DescriptorView.INSTANCE.removeListener(descriptorViewListener);
-  }
 
-  @Override
-  public void setFocus()
-  {
-    viewer.getControl().setFocus();
+    DescriptorView.INSTANCE.addListener(descriptorViewListener);
+    descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
   }
 
   @Override
@@ -85,6 +80,12 @@ public class ThreeDeeWorldView extends ViewPart
     Frontend.INSTANCE.removeListener(new FrontendListener());
     viewer.dispose();
     super.dispose();
+  }
+
+  @Override
+  public void setFocus()
+  {
+    viewer.getControl().setFocus();
   }
 
   /**
@@ -168,10 +169,7 @@ public class ThreeDeeWorldView extends ViewPart
           }
 
           DescriptorView newView = (DescriptorView)e.getNewValue();
-          if (newView != null)
-          {
-            newView.getNotifier().addListener(this);
-          }
+          connect(newView);
         }
       }
       else if (event instanceof CheckStateEvent)
@@ -179,6 +177,14 @@ public class ThreeDeeWorldView extends ViewPart
         DescriptorView view = DescriptorView.INSTANCE.getValue();
         Set<ElementDescriptor> toBeHidden = view.getAllChecked(false);
         viewer.filter(toBeHidden);
+      }
+    }
+
+    public void connect(DescriptorView view)
+    {
+      if (view != null)
+      {
+        view.getNotifier().addListener(this);
       }
     }
   }
