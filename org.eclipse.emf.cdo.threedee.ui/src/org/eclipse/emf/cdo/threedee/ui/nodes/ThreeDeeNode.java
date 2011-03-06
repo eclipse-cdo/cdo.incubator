@@ -90,26 +90,29 @@ public class ThreeDeeNode extends BranchGroup
     throw new IllegalStateException("Shape has no appearance: " + shape.getClass().getName());
   }
 
-  public boolean isVisible()
+  public RenderingAttributes getRenderingAttributes()
   {
     Appearance appearance = getAppearance();
     RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
-    if (renderingAttributes != null)
+    if (renderingAttributes == null)
     {
-      return renderingAttributes.getVisible();
+      renderingAttributes = new RenderingAttributes();
+      appearance.setRenderingAttributes(renderingAttributes);
     }
 
-    return false;
+    return renderingAttributes;
+  }
+
+  public boolean isVisible()
+  {
+    RenderingAttributes renderingAttributes = getRenderingAttributes();
+    return renderingAttributes.getVisible();
   }
 
   public void setVisible(boolean visible)
   {
-    Appearance appearance = getAppearance();
-    RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
-    if (renderingAttributes != null)
-    {
-      renderingAttributes.setVisible(visible);
-    }
+    RenderingAttributes renderingAttributes = getRenderingAttributes();
+    renderingAttributes.setVisible(visible);
   }
 
   @Override
