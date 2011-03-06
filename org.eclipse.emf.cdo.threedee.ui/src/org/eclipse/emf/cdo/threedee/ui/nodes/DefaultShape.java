@@ -60,7 +60,7 @@ public class DefaultShape extends Sphere
 
   private static Appearance defaultAppearance(Element element)
   {
-    Color color = element.getDescriptor().getColor();
+    Color color = element.getDescriptor().getColor().getValue();
     return ThreeDeeWorldUtil.getDefaultAppearance(color);
   }
 }

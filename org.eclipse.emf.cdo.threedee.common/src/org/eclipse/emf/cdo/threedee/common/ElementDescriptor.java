@@ -5,6 +5,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.descriptors._INIT_;
 
 import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.net4j.util.event.ValueNotifier;
 import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
 import java.awt.Color;
@@ -26,7 +27,7 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
   private static int nextColor;
 
-  private Color color = getNextColor();
+  private ValueNotifier<Color> color = new ValueNotifier<Color>(getNextColor());
 
   public ElementDescriptor()
   {
@@ -54,14 +55,9 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     return strip(getClass().getSimpleName(), "Descriptor");
   }
 
-  public Color getColor()
+  public ValueNotifier<Color> getColor()
   {
     return color;
-  }
-
-  public void setColor(Color color)
-  {
-    this.color = color;
   }
 
   public String getLabel(Element element)
@@ -177,7 +173,7 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     {
       return string.substring(0, string.length() - suffix.length());
     }
-  
+
     return string;
   }
 
