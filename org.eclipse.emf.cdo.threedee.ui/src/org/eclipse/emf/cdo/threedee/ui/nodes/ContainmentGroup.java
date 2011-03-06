@@ -11,7 +11,6 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Node;
@@ -29,6 +28,8 @@ public class ContainmentGroup extends ThreeDeeNode
 {
   private Element element;
 
+  private float childDistance;
+
   public ContainmentGroup(Element element)
   {
     super();
@@ -41,8 +42,6 @@ public class ContainmentGroup extends ThreeDeeNode
   {
     return element;
   }
-
-  CuboidStarLayouter layout = new CuboidStarLayouter();
 
   public void layoutChildren()
   {
@@ -71,26 +70,27 @@ public class ContainmentGroup extends ThreeDeeNode
 
   private void placeChildren(List<ContainmentGroup> elements)
   {
-    float radius = 2f;
+    childDistance = 2f;
     float phi = 0f;
-    float theta = 0f;
+    float theta = 90f;
     float distanceAngle = 360f / elements.size();
     for (ContainmentGroup group : elements)
     {
-      float x = (float)(0 + radius * Math.cos(Math.toRadians(phi)));
-      float y = (float)(0 + radius * Math.sin(Math.toRadians(phi)));
-      float z = 1f;
+      // float x = (float)(0 + childDistance * Math.cos(Math.toRadians(phi)));
+      // float y = (float)(0 + childDistance * Math.sin(Math.toRadians(phi)));
+      // float z = 1f;
 
-      // float x = (float)(0 + radius * Math.sin(Math.toRadians(theta)) * Math.cos(Math.toRadians(phi)));
-      // float y = (float)(0 + radius * Math.sin(Math.toRadians(theta)) * Math.sin(Math.toRadians(phi)));
-      // float z = (float)(0 + radius * Math.cos(Math.toRadians(theta)));
+      float x = (float)(0 + childDistance * Math.sin(Math.toRadians(theta)) * Math.cos(Math.toRadians(phi)));
+      float y = (float)(0 + childDistance * Math.sin(Math.toRadians(theta)) * Math.sin(Math.toRadians(phi)));
+      float z = 1f;// (float)(0 + childDistance * Math.cos(Math.toRadians(theta)));
+      // float z = 1f;
 
       Vector3f availablePosition = new Vector3f(x, y, z);
       Transform3D t1 = new Transform3D();
       t1.setTranslation(availablePosition);
       group.setTransform(t1);
       phi += distanceAngle;
-      theta = phi;
+      // theta = phi;
 
       placeChildren(group.getChildren());
     }

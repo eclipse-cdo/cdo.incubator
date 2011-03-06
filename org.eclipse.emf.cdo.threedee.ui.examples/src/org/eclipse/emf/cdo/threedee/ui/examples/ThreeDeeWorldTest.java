@@ -11,8 +11,15 @@
 package org.eclipse.emf.cdo.threedee.ui.examples;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
+import org.eclipse.emf.cdo.threedee.common.descriptors.ManagedContainerDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EAttributeDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EClassifierDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EPackageRegistryDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.AcceptorDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPAcceptorDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldViewer;
 
 import org.eclipse.swt.SWT;
@@ -20,7 +27,9 @@ import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -40,16 +49,23 @@ public class ThreeDeeWorldTest
 
     final DummyElementProvider dummyElementProvider = new DummyElementProvider();
 
-    final Element element = dummyElementProvider.createElement();
+    final Element element = dummyElementProvider.createElement(new ManagedContainerDescriptor());
 
-    for (int i = 0; i < 3; i++)
+    List<ElementDescriptor> descriptors = new ArrayList<ElementDescriptor>();
+    descriptors.add(new EPackageRegistryDescriptor());
+    descriptors.add(new TCPConnectorDescriptor());
+    descriptors.add(new TCPAcceptorDescriptor());
+    descriptors.add(new EClassifierDescriptor());
+    descriptors.add(new EAttributeDescriptor());
+
+    for (int i = 0; i < 5; i++)
     {
       Element child = dummyElementProvider.createElement();
       // element.getReferences().put(child.getID(), true);
       element.addReference(true, child.getID());
-      for (int a = 0; a < 2; a++)
+      for (int a = 0; a < 500; a++)
       {
-        Element level2Child = dummyElementProvider.createElement();
+        Element level2Child = dummyElementProvider.createElement(descriptors.get(i));
         // child.getReferences().put(level2Child.getID(), true);
         child.addReference(true, level2Child.getID());
       }
@@ -61,18 +77,15 @@ public class ThreeDeeWorldTest
     {
       public void run()
       {
-        // while (true)
-        {
-          sleep(3000);
-          Element element2 = dummyElementProvider.createElement();
-          element.addReference(true, element2.getID());
-          // element.getReferences().put(element2.getID(), true);
-          viewer.addElement(element2);
+        sleep(3000);
+        Element element2 = dummyElementProvider.createElement();
+        element.addReference(true, element2.getID());
+        // element.getReferences().put(element2.getID(), true);
+        viewer.addElement(element2);
 
-          sleep(3000);
+        sleep(3000);
 
-          viewer.removeElement(element2);
-        }
+        // viewer.removeElement(element2);
       }
 
       private void sleep(int time)
@@ -88,7 +101,7 @@ public class ThreeDeeWorldTest
       }
     });
 
-    t.start();
+    // t.start();
     // ArrayList<String> elementsToBeHidden = new ArrayList<String>();
     // elementsToBeHidden.add("Acceptor");
     // viewer.filter(elementsToBeHidden);
@@ -145,6 +158,13 @@ public class ThreeDeeWorldTest
       return id;
     }
 
+    public Element createElement(ElementDescriptor descriptor)
+    {
+      Element element = new Element(++id, descriptor, this);
+      elements.put(element.getID(), element);
+      return element;
+    }
+
     public Element getElement(Object object, boolean addOnDemand)
     {
       return elements.get(id);
@@ -157,10 +177,7 @@ public class ThreeDeeWorldTest
 
     public synchronized Element createElement()
     {
-      Element element = new Element(++id, new AcceptorDescriptor(), this);
-
-      elements.put(element.getID(), element);
-      return element;
+      return createElement(new AcceptorDescriptor());
     }
   }
 }
