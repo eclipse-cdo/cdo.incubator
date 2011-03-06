@@ -23,10 +23,17 @@
       </category>
       <view
             category="org.eclipse.emf.cdo.threedee"
-            class="org.eclipse.emf.cdo.threedee.FrontendView"
-            icon="platform:/plugin/org.eclipse.net4j.ui.shared/icons/full/view16/acceptors.gif"
+            class="org.eclipse.emf.cdo.threedee.ElementView"
+            icon="icons/elements.gif"
             id="org.eclipse.emf.cdo.threedee.FrontendView"
-            name="ThreeDee">
+            name="Elements">
+      </view>
+      <view
+            category="org.eclipse.emf.cdo.threedee"
+            class="org.eclipse.emf.cdo.threedee.DescriptorView"
+            icon="icons/descriptors.gif"
+            id="org.eclipse.emf.cdo.threedee.DescriptorView"
+            name="Descriptors">
       </view>
    </extension>
 

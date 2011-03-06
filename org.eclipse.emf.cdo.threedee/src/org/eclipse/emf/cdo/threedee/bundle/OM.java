@@ -12,12 +12,11 @@ package org.eclipse.emf.cdo.threedee.bundle;
 
 import org.eclipse.emf.cdo.threedee.Frontend;
 
-import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.om.OMBundle;
 import org.eclipse.net4j.util.om.OMPlatform;
-import org.eclipse.net4j.util.om.OSGiActivator;
 import org.eclipse.net4j.util.om.log.OMLogger;
 import org.eclipse.net4j.util.om.trace.OMTracer;
+import org.eclipse.net4j.util.ui.UIActivator;
 
 /**
  * The <em>Operations & Maintenance</em> class of this bundle.
@@ -43,18 +42,20 @@ public abstract class OM
   /**
    * @author Eike Stepper
    */
-  public static final class Activator extends OSGiActivator
+  public static final class Activator extends UIActivator
   {
+    public static Activator INSTANCE;
+
     public Activator()
     {
       super(BUNDLE);
+      INSTANCE = this;
     }
 
     @Override
     protected void doStart() throws Exception
     {
       Frontend.INSTANCE.activate();
-      IPluginContainer.INSTANCE.putElement("threedee.frontends", "default", null, Frontend.INSTANCE);
     }
 
     @Override

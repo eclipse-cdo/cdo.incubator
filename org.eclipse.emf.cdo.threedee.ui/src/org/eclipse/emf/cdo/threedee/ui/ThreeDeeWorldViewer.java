@@ -10,7 +10,10 @@
  */
 package org.eclipse.emf.cdo.threedee.ui;
 
+import org.eclipse.emf.cdo.threedee.Frontend;
+import org.eclipse.emf.cdo.threedee.Session;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
@@ -40,7 +43,6 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
 import javax.media.j3d.AmbientLight;
-import javax.media.j3d.Appearance;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
@@ -48,7 +50,6 @@ import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
-import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
@@ -60,8 +61,8 @@ import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Martin Fluegge
@@ -70,7 +71,7 @@ public class ThreeDeeWorldViewer
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
 
-  private Map<Element, Node> elementNodeMapping = new HashMap<Element, Node>();
+  private Map<Element, ContainmentGroup> containmentGroups = new HashMap<Element, ContainmentGroup>();
 
   private Map<Element, Map<Element, ReferenceShape>> elementReferenceMapping = new HashMap<Element, Map<Element, ReferenceShape>>();
 
@@ -102,6 +103,99 @@ public class ThreeDeeWorldViewer
         init();
       }
     });
+
+    for (Session session : Frontend.INSTANCE.getElements())
+    {
+      Element rootElement = session.getRootElement();
+      if (rootElement != null && !containmentGroups.containsKey(rootElement))
+      {
+        addElement(rootElement);
+      }
+    }
+  }
+
+  private void init()
+  {
+    Frame frame = SWT_AWT.new_Frame(container);
+    canvas = createCanvas(frame);
+
+    universe = new SimpleUniverse(canvas);
+    positionViewer(universe.getViewingPlatform());
+
+    scene = createScene();
+    addNavigation(scene);
+
+    universe.addBranchGraph(scene);
+    universe.addBranchGraph(createCoordinateSystem());
+
+    frame.add(canvas);
+  }
+
+  private Canvas3D createCanvas(Frame frame)
+  {
+    GraphicsConfiguration config = frame.getGraphicsConfiguration();
+    GraphicsDevice device = config.getDevice();
+
+    GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
+    config = device.getBestConfiguration(template);
+
+    return new Canvas3D(config);
+  }
+
+  private BranchGroup createScene()
+  {
+    BranchGroup scene = new BranchGroup();
+    addLights(scene);
+    sphereTransformGroup = createTransformGroup();
+
+    scene.addChild(sphereTransformGroup);
+    return scene;
+  }
+
+  private BranchGroup createCoordinateSystem()
+  {
+    BranchGroup group = new BranchGroup();
+
+    // X axis made of spheres
+    for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
+    {
+      Sphere sphere = new Sphere(0.02f);
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Vector3f vector = new Vector3f(x, .0f, .0f);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(sphere);
+      group.addChild(tg);
+    }
+
+    // Y axis made of cones
+    for (float y = -1.0f; y <= 1.0f; y = y + 0.1f)
+    {
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Cone cone = new Cone(0.02f, 0.02f);
+      Vector3f vector = new Vector3f(.0f, y, .0f);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(cone);
+      group.addChild(tg);
+    }
+
+    // Z axis made of cylinders
+    for (float z = -1.0f; z <= 1.0f; z = z + 0.1f)
+    {
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Cylinder cylinder = new Cylinder(0.02f, 0.02f);
+      Vector3f vector = new Vector3f(.0f, .0f, z);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(cylinder);
+      group.addChild(tg);
+    }
+
+    return group;
   }
 
   public Control getControl()
@@ -111,7 +205,7 @@ public class ThreeDeeWorldViewer
 
   public void addElement(Element element)
   {
-    if (elementNodeMapping.get(element) != null)
+    if (containmentGroups.get(element) != null)
     {
       return;
     }
@@ -130,7 +224,7 @@ public class ThreeDeeWorldViewer
 
   public void removeElement(Element element)
   {
-    ContainmentGroup containmentGroup = (ContainmentGroup)elementNodeMapping.remove(element);
+    ContainmentGroup containmentGroup = containmentGroups.remove(element);
 
     Element containerElement = getContainerElement(element);
 
@@ -180,7 +274,7 @@ public class ThreeDeeWorldViewer
   protected ContainmentGroup getContainerContainmentGroup(Element element)
   {
     Element containerElement = getContainerElement(element);
-    ContainmentGroup containerContainmentGroup = (ContainmentGroup)elementNodeMapping.get(containerElement);
+    ContainmentGroup containerContainmentGroup = containmentGroups.get(containerElement);
     return containerContainmentGroup;
   }
 
@@ -190,7 +284,7 @@ public class ThreeDeeWorldViewer
     {
       Element referenceElement = provider.getElement(elementId);
 
-      Node referenceNode = elementNodeMapping.get(referenceElement);
+      Node referenceNode = containmentGroups.get(referenceElement);
 
       if (referenceNode == null)
       {
@@ -210,126 +304,17 @@ public class ThreeDeeWorldViewer
     ContainmentGroup group = new ContainmentGroup(element);
     group.setShape(shape);
 
-    elementNodeMapping.put(element, group);
+    containmentGroups.put(element, group);
     return group;
   }
 
-  public void filter(List<String> elementsToBeHidden)
+  public void filter(Set<ElementDescriptor> toBeHidden)
   {
-    for (Element element : elementNodeMapping.keySet())
+    for (ContainmentGroup node : containmentGroups.values())
     {
-      Node node = elementNodeMapping.get(element);
-      if (node instanceof ContainmentGroup)
-      {
-        node = ((ContainmentGroup)node).getShape();
-      }
-
-      if (elementsToBeHidden.contains(element.getDescriptor().getName()))
-      {
-        setVisible(node, false);
-      }
-      else
-      {
-        setVisible(node, true);
-      }
+      ElementDescriptor descriptor = node.getElement().getDescriptor();
+      node.setVisible(!toBeHidden.contains(descriptor));
     }
-  }
-
-  private void setVisible(Node node, boolean visible)
-  {
-    if (node instanceof Sphere)
-    {
-      Appearance appearance = ((Sphere)node).getAppearance();
-      RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
-      if (renderingAttributes != null)
-      {
-        renderingAttributes.setVisible(visible);
-      }
-    }
-  }
-
-  private void init()
-  {
-    Frame frame = SWT_AWT.new_Frame(container);
-    canvas = createCanvas(frame);
-
-    universe = new SimpleUniverse(canvas);
-    positionViewer(universe.getViewingPlatform());
-
-    scene = createScene();
-    addNavigation(scene);
-
-    universe.addBranchGraph(scene);
-    universe.addBranchGraph(createCoordinateSystem());
-
-    frame.add(canvas);
-  }
-
-  private Canvas3D createCanvas(Frame frame)
-  {
-    GraphicsConfiguration config = frame.getGraphicsConfiguration();
-    GraphicsDevice device = config.getDevice();
-
-    GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
-    config = device.getBestConfiguration(template);
-
-    return new Canvas3D(config);
-  }
-
-  private BranchGroup createCoordinateSystem()
-  {
-    BranchGroup group = new BranchGroup();
-
-    // X axis made of spheres
-    for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
-    {
-      Sphere sphere = new Sphere(0.02f);
-      TransformGroup tg = new TransformGroup();
-      Transform3D transform = new Transform3D();
-      Vector3f vector = new Vector3f(x, .0f, .0f);
-      transform.setTranslation(vector);
-      tg.setTransform(transform);
-      tg.addChild(sphere);
-      group.addChild(tg);
-    }
-
-    // Y axis made of cones
-    for (float y = -1.0f; y <= 1.0f; y = y + 0.1f)
-    {
-      TransformGroup tg = new TransformGroup();
-      Transform3D transform = new Transform3D();
-      Cone cone = new Cone(0.02f, 0.02f);
-      Vector3f vector = new Vector3f(.0f, y, .0f);
-      transform.setTranslation(vector);
-      tg.setTransform(transform);
-      tg.addChild(cone);
-      group.addChild(tg);
-    }
-
-    // Z axis made of cylinders
-    for (float z = -1.0f; z <= 1.0f; z = z + 0.1f)
-    {
-      TransformGroup tg = new TransformGroup();
-      Transform3D transform = new Transform3D();
-      Cylinder cylinder = new Cylinder(0.02f, 0.02f);
-      Vector3f vector = new Vector3f(.0f, .0f, z);
-      transform.setTranslation(vector);
-      tg.setTransform(transform);
-      tg.addChild(cylinder);
-      group.addChild(tg);
-    }
-
-    return group;
-  }
-
-  private BranchGroup createScene()
-  {
-    BranchGroup scene = new BranchGroup();
-    addLights(scene);
-    sphereTransformGroup = createTransformGroup();
-
-    scene.addChild(sphereTransformGroup);
-    return scene;
   }
 
   public void dispose()
@@ -476,10 +461,10 @@ public class ThreeDeeWorldViewer
 
   private void updateReference(Element from, Element to, ReferenceShape referenceNode)
   {
-    Node shape = ((ContainmentGroup)elementNodeMapping.get(from)).getShape();
+    Node shape = containmentGroups.get(from).getShape();
     Assert.isNotNull(shape);
 
-    Node referenceShape = ((ContainmentGroup)elementNodeMapping.get(to)).getShape();
+    Node referenceShape = containmentGroups.get(to).getShape();
     Assert.isNotNull(referenceShape);
 
     Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);

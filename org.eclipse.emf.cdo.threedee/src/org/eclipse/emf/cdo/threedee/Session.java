@@ -37,6 +37,8 @@ public class Session extends Container<Element> implements ElementProvider
 
   private Element[] elements = {};
 
+  private Element rootElement;
+
   public Session(FrontendProtocol protocol, String name, int id)
   {
     this.id = id;
@@ -66,6 +68,11 @@ public class Session extends Container<Element> implements ElementProvider
     {
       return elements.length == 0;
     }
+  }
+
+  public Element getRootElement()
+  {
+    return rootElement;
   }
 
   public Element[] getElements()
@@ -192,6 +199,7 @@ public class Session extends Container<Element> implements ElementProvider
 
     if (root)
     {
+      rootElement = element;
       fireElementAddedEvent(element);
     }
   }

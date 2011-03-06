@@ -4,14 +4,19 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
+import com.sun.j3d.utils.geometry.Primitive;
+
+import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Node;
+import javax.media.j3d.RenderingAttributes;
+import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 
@@ -35,6 +40,79 @@ public class ThreeDeeNode extends BranchGroup
     super.addChild(transformGroup);
   }
 
+  public Node getShape()
+  {
+    return shape;
+  }
+
+  public void setShape(Node shape)
+  {
+    if (this.shape != null)
+    {
+      transformGroup.removeChild(this.shape);
+    }
+
+    this.shape = shape;
+
+    if (this.shape != null)
+    {
+      transformGroup.addChild(this.shape);
+    }
+  }
+
+  public void getTransform(Transform3D transform)
+  {
+    transformGroup.getTransform(transform);
+  }
+
+  public void setTransform(Transform3D transform)
+  {
+    transformGroup.setTransform(transform);
+  }
+
+  public Appearance getAppearance()
+  {
+    if (shape instanceof Shape3D)
+    {
+      return ((Shape3D)shape).getAppearance();
+    }
+
+    if (shape instanceof Primitive)
+    {
+      return ((Primitive)shape).getAppearance();
+    }
+
+    return null;
+  }
+
+  public boolean isVisible()
+  {
+    Appearance appearance = getAppearance();
+    if (appearance != null)
+    {
+      RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
+      if (renderingAttributes != null)
+      {
+        return renderingAttributes.getVisible();
+      }
+    }
+
+    return false;
+  }
+
+  public void setVisible(boolean visible)
+  {
+    Appearance appearance = getAppearance();
+    if (appearance != null)
+    {
+      RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
+      if (renderingAttributes != null)
+      {
+        renderingAttributes.setVisible(visible);
+      }
+    }
+  }
+
   @Override
   public void addChild(Node child)
   {
@@ -45,21 +123,5 @@ public class ThreeDeeNode extends BranchGroup
   public void removeChild(Node child)
   {
     transformGroup.removeChild(child);
-  }
-
-  public void setTransform(Transform3D transform)
-  {
-    transformGroup.setTransform(transform);
-  }
-
-  public void setShape(Node shape)
-  {
-    this.shape = shape;
-    transformGroup.addChild(shape);
-  }
-
-  public Node getShape()
-  {
-    return shape;
   }
 }
