@@ -15,8 +15,6 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
 import org.eclipse.net4j.util.event.Event;
-import org.eclipse.net4j.util.event.IEvent;
-import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.event.INotifier;
 import org.eclipse.net4j.util.event.ValueNotifier;
 
@@ -33,6 +31,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.part.ViewPart;
 
+import java.awt.Color;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -214,12 +213,9 @@ public class DescriptorView extends ViewPart
   {
     private Image folderImage;
 
-    private Image descriptorImage;
-
     public LabelProvider(Display display)
     {
       folderImage = loadImage(display, "icons/folder.gif");
-      descriptorImage = loadImage(display, "icons/descriptor.gif");
     }
 
     @Override
@@ -227,12 +223,14 @@ public class DescriptorView extends ViewPart
     {
       if (element instanceof ElementDescriptor)
       {
-        if (((ElementDescriptor)element).isFolder())
+        ElementDescriptor descriptor = (ElementDescriptor)element;
+        if (descriptor.isFolder())
         {
           return folderImage;
         }
 
-        return descriptorImage;
+        Color color = descriptor.getColor().getValue();
+        return ColorIcons.get(color);
       }
 
       return super.getImage(element);
@@ -253,7 +251,6 @@ public class DescriptorView extends ViewPart
     public void dispose()
     {
       folderImage.dispose();
-      descriptorImage.dispose();
       super.dispose();
     }
 
@@ -317,16 +314,6 @@ public class DescriptorView extends ViewPart
       }
 
       notifier.fireCheckStateChangedEvent();
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  private final class DescriptorColorListener implements IListener
-  {
-    public void notifyEvent(IEvent event)
-    {
     }
   }
 

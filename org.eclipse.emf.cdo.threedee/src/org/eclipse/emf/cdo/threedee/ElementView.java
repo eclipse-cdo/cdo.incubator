@@ -10,9 +10,18 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
+import org.eclipse.emf.cdo.threedee.bundle.OM;
+import org.eclipse.emf.cdo.threedee.common.Element;
+
 import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.event.ValueNotifier;
+import org.eclipse.net4j.util.ui.UIUtil;
 import org.eclipse.net4j.util.ui.views.ContainerView;
+
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.swt.graphics.Image;
+
+import java.awt.Color;
 
 /**
  * @author Eike Stepper
@@ -23,10 +32,36 @@ public class ElementView extends ContainerView
 
   public static final ValueNotifier<ElementView> INSTANCE = new ValueNotifier<ElementView>(ID);
 
+  private Image agentIcon;
+
+  public ElementView()
+  {
+    ImageDescriptor descriptor = OM.Activator.INSTANCE.loadImageDescriptor("icons/agent.gif");
+    agentIcon = descriptor.createImage(UIUtil.getDisplay());
+  }
+
   @Override
   protected IContainer<?> getContainer()
   {
     return Frontend.INSTANCE;
+  }
+
+  @Override
+  protected Image getElementImage(Object object)
+  {
+    if (object instanceof Element)
+    {
+      Element element = (Element)object;
+      Color color = element.getDescriptor().getColor().getValue();
+      return ColorIcons.get(color);
+    }
+
+    if (object instanceof Session)
+    {
+      return agentIcon;
+    }
+
+    return super.getElementImage(object);
   }
 
   @Override
@@ -39,6 +74,7 @@ public class ElementView extends ContainerView
   public void dispose()
   {
     INSTANCE.setValue(null);
+    agentIcon.dispose();
     super.dispose();
   }
 }

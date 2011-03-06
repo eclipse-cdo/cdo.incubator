@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.bundle;
 
+import org.eclipse.emf.cdo.threedee.ColorIcons;
 import org.eclipse.emf.cdo.threedee.Frontend;
 
 import org.eclipse.net4j.util.om.OMBundle;
@@ -62,6 +63,7 @@ public abstract class OM
     protected void doStop() throws Exception
     {
       Frontend.INSTANCE.deactivate();
+      ColorIcons.dispose();
     }
   }
 }
