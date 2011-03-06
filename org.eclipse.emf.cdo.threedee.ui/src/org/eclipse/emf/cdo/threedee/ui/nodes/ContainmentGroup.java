@@ -69,17 +69,18 @@ public class ContainmentGroup extends ThreeDeeNode
 
   private void placeChildren(List<ContainmentGroup> elements)
   {
-    if (elements.size() == 0)
+    int n = elements.size();
+    if (n == 0)
     {
       return;
     }
 
     float phi = 0f;
     float theta = 90f;
-    float distanceAngle = 360f / elements.size();
+    float distanceAngle = 360f / n;
     float z = 0.7f;
 
-    for (int i = 0; i < elements.size(); i++)
+    for (int i = 0; i < n; i++)
     {
       ContainmentGroup currentChild = elements.get(i);
 
@@ -88,7 +89,7 @@ public class ContainmentGroup extends ThreeDeeNode
 
       // currently we assume that all children have the same diameter
       double childRadius = ((BoundingSphere)elements.get(0).getBounds()).getRadius();
-      double minimalCircumference = childRadius * 2 * elements.size();
+      double minimalCircumference = childRadius * 2 * n;
 
       float radius = (float)(minimalCircumference / (2 * Math.PI));
 

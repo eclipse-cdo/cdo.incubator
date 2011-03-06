@@ -403,7 +403,7 @@ public class ThreeDeeWorldViewer
     });
   }
 
-  public void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  private void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
   {
     if (containerContainmentGroup != null)
     {
