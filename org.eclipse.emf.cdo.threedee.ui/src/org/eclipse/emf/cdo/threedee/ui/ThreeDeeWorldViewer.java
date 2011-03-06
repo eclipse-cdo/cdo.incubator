@@ -19,7 +19,7 @@ import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
-import org.eclipse.emf.cdo.threedee.ui.nodes.DefaultShape;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ElementSphere;
 import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 
@@ -299,7 +299,7 @@ public class ThreeDeeWorldViewer
   {
     String name = element.getDescriptor().getName();
     INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
-    Node shape = factory != null ? factory.createNode(element) : new DefaultShape(element);
+    Node shape = factory != null ? factory.createNode(element) : new ElementSphere(element);
 
     ContainmentGroup group = new ContainmentGroup(element);
     group.setShape(shape);
@@ -351,6 +351,7 @@ public class ThreeDeeWorldViewer
         {
           containerContainmentGroup.addChild(node);
         }
+
         layout((ContainmentGroup)node, containerContainmentGroup);
         Element element = ((ContainmentGroup)node).getElement();
         Element containerElement = getContainerElement(element);
@@ -407,11 +408,11 @@ public class ThreeDeeWorldViewer
   {
     if (containerContainmentGroup != null)
     {
-      containerContainmentGroup.layoutChildren();
+      containerContainmentGroup.layout();
     }
     else
     {
-      containmentGroup.layoutChildren();
+      containmentGroup.layout();
     }
   }
 

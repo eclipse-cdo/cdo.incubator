@@ -37,12 +37,18 @@ public class DBStoreDescriptor extends StoreDescriptor
     {
       mappingStrategy = ((org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.HorizontalMappingStrategy)mappingStrategy)
           .getDelegate();
-
     }
+
     element.addReference(true, store.getDBAdapter());
     element.addReference(true, store.getDBSchema());
     element.addReference(true, store.getIDHandler());
     element.addReference(true, mappingStrategy);
     element.addReference(true, store.getMetaDataManager());
+  }
+
+  @Override
+  public boolean isHomogenous()
+  {
+    return false;
   }
 }

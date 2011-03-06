@@ -38,6 +38,12 @@ public class CDOSessionDescriptor extends CDOClientDescriptor
   }
 
   @Override
+  public boolean isHomogenous()
+  {
+    return false;
+  }
+
+  @Override
   public String getLabel(Element element)
   {
     return super.getLabel(element).substring(3);

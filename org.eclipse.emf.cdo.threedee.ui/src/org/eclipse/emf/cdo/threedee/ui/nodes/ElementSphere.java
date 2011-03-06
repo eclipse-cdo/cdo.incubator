@@ -24,15 +24,17 @@ import java.awt.Color;
 /**
  * @author Eike Stepper
  */
-public class DefaultShape extends Sphere
+public class ElementSphere extends Sphere
 {
-  public DefaultShape(Element element)
+  public static final float RADIUS = .1f;
+
+  public ElementSphere(Element element)
   {
-    super(.1f, defaultAppearance(element));
+    super(RADIUS, defaultAppearance(element));
     setDefaultCapabilities();
   }
 
-  public DefaultShape(Appearance appearance)
+  public ElementSphere(Appearance appearance)
   {
     super(.1f, appearance);
     setDefaultCapabilities();

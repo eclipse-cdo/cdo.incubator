@@ -66,4 +66,10 @@ public class ManagedContainerDescriptor extends ElementDescriptor
       // Ignore
     }
   }
+
+  @Override
+  public boolean isHomogenous()
+  {
+    return false;
+  }
 }

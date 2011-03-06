@@ -111,6 +111,11 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
   public abstract void initElement(Object object, Element element);
 
+  public boolean isHomogenous()
+  {
+    return true;
+  }
+
   public ElementEvent.Call createCallEvent(Element sourceElement, Element targetElement, String what, When when)
   {
     return new ElementEvent.Call(sourceElement, targetElement, what, when);
