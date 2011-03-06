@@ -82,19 +82,21 @@ public class ThreeDeeNode extends BranchGroup
       return ((Primitive)shape).getAppearance();
     }
 
-    return null;
+    if (shape == null)
+    {
+      throw new IllegalStateException("Shape is null");
+    }
+
+    throw new IllegalStateException("Shape has no appearance: " + shape.getClass().getName());
   }
 
   public boolean isVisible()
   {
     Appearance appearance = getAppearance();
-    if (appearance != null)
+    RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
+    if (renderingAttributes != null)
     {
-      RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
-      if (renderingAttributes != null)
-      {
-        return renderingAttributes.getVisible();
-      }
+      return renderingAttributes.getVisible();
     }
 
     return false;
@@ -103,13 +105,10 @@ public class ThreeDeeNode extends BranchGroup
   public void setVisible(boolean visible)
   {
     Appearance appearance = getAppearance();
-    if (appearance != null)
+    RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
+    if (renderingAttributes != null)
     {
-      RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
-      if (renderingAttributes != null)
-      {
-        renderingAttributes.setVisible(visible);
-      }
+      renderingAttributes.setVisible(visible);
     }
   }
 
