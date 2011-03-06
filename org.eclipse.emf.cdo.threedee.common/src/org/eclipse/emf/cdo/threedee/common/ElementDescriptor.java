@@ -7,6 +7,7 @@ import org.eclipse.emf.cdo.threedee.common.descriptors._INIT_;
 import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.lifecycle.LifecycleUtil;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -19,7 +20,13 @@ import java.util.Map;
  */
 public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 {
-  public static final Class<ElementDescriptor> FOLDER_TYPE = ElementDescriptor.class;
+  protected static final Class<ElementDescriptor> FOLDER_TYPE = ElementDescriptor.class;
+
+  private static final Color[] COLORS = initColors();
+
+  private static int nextColor;
+
+  private Color color = getNextColor();
 
   public ElementDescriptor()
   {
@@ -44,10 +51,17 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
   protected String getBaseLabel()
   {
-    String label = getClass().getSimpleName();
-    // label = strip(label, "ElementDescriptor");
-    label = strip(label, "Descriptor");
-    return label;
+    return strip(getClass().getSimpleName(), "Descriptor");
+  }
+
+  public Color getColor()
+  {
+    return color;
+  }
+
+  public void setColor(Color color)
+  {
+    this.color = color;
   }
 
   public String getLabel(Element element)
@@ -163,8 +177,60 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     {
       return string.substring(0, string.length() - suffix.length());
     }
-
+  
     return string;
+  }
+
+  private static Color[] initColors()
+  {
+    List<Color> colors = new ArrayList<Color>();
+    colors.add(Color.pink);
+    colors.add(Color.blue);
+    colors.add(Color.cyan);
+    colors.add(Color.darkGray);
+    colors.add(Color.gray);
+    colors.add(Color.green);
+    colors.add(Color.lightGray);
+    colors.add(Color.magenta);
+    colors.add(Color.red);
+    colors.add(Color.white);
+    colors.add(Color.yellow);
+    colors.add(new Color(20, 93, 20));
+    colors.add(new Color(200, 50, 50));
+    colors.add(new Color(100, 98, 77));
+    colors.add(new Color(200, 20, 200));
+    colors.add(new Color(0, 100, 100));
+    colors.add(new Color(0, 200, 200));
+    colors.add(new Color(100, 0, 100));
+    colors.add(new Color(200, 0, 200));
+    colors.add(new Color(100, 100, 0));
+    colors.add(new Color(200, 200, 0));
+    colors.add(new Color(255, 100, 100));
+    colors.add(new Color(255, 200, 200));
+    colors.add(new Color(100, 255, 100));
+    colors.add(new Color(200, 255, 200));
+    colors.add(new Color(100, 100, 225));
+    colors.add(new Color(200, 200, 255));
+    colors.add(new Color(100, 255, 255));
+    colors.add(new Color(200, 255, 255));
+    colors.add(new Color(255, 255, 100));
+    colors.add(new Color(255, 255, 200));
+    colors.add(new Color(255, 100, 255));
+    colors.add(new Color(255, 200, 255));
+    return colors.toArray(new Color[colors.size()]);
+  }
+
+  private static Color getNextColor()
+  {
+    try
+    {
+      nextColor = nextColor % COLORS.length;
+      return COLORS[nextColor];
+    }
+    finally
+    {
+      ++nextColor;
+    }
   }
 
   /**
