@@ -15,6 +15,8 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
 import org.eclipse.net4j.util.event.Event;
+import org.eclipse.net4j.util.event.IEvent;
+import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.event.INotifier;
 import org.eclipse.net4j.util.event.ValueNotifier;
 
@@ -315,6 +317,16 @@ public class DescriptorView extends ViewPart
       }
 
       notifier.fireCheckStateChangedEvent();
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class DescriptorColorListener implements IListener
+  {
+    public void notifyEvent(IEvent event)
+    {
     }
   }
 
