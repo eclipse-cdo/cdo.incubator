@@ -73,32 +73,32 @@ public class ThreeDeeWorldTest
 
     viewer.addElement(element);
 
-    Thread t = new Thread(new Runnable()
-    {
-      public void run()
-      {
-        sleep(3000);
-        Element element2 = dummyElementProvider.createElement();
-        element.addReference(true, element2.getID());
-        viewer.addElement(element2);
-
-        sleep(3000);
-
-        // viewer.removeElement(element2);
-      }
-
-      private void sleep(int time)
-      {
-        try
-        {
-          Thread.sleep(time);
-        }
-        catch (InterruptedException ex)
-        {
-          throw new RuntimeException(ex);
-        }
-      }
-    });
+    // Thread t = new Thread(new Runnable()
+    // {
+    // public void run()
+    // {
+    // sleep(3000);
+    // Element element2 = dummyElementProvider.createElement();
+    // element.addReference(true, element2.getID());
+    // viewer.addElement(element2);
+    //
+    // sleep(3000);
+    //
+    // // viewer.removeElement(element2);
+    // }
+    //
+    // private void sleep(int time)
+    // {
+    // try
+    // {
+    // Thread.sleep(time);
+    // }
+    // catch (InterruptedException ex)
+    // {
+    // throw new RuntimeException(ex);
+    // }
+    // }
+    // });
 
     // t.start();
     // ArrayList<String> elementsToBeHidden = new ArrayList<String>();
