@@ -50,9 +50,11 @@ import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.media.j3d.View;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
+import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
 import java.awt.Frame;
@@ -115,17 +117,15 @@ public class ThreeDeeWorld
   private void init()
   {
     Frame frame = SWT_AWT.new_Frame(container);
+
     canvas = createCanvas(frame);
-
     universe = new SimpleUniverse(canvas);
-    positionViewer(universe.getViewingPlatform());
-
     scene = createScene();
-    addNavigation(scene);
 
     universe.addBranchGraph(scene);
     universe.addBranchGraph(createCoordinateSystem());
 
+    setNominalTransform();
     frame.add(canvas);
   }
 
@@ -143,11 +143,49 @@ public class ThreeDeeWorld
   private BranchGroup createScene()
   {
     BranchGroup scene = new BranchGroup();
-    addLights(scene);
+    createLights(scene);
+    createNavigation(scene);
     sphereTransformGroup = createTransformGroup();
 
     scene.addChild(sphereTransformGroup);
     return scene;
+  }
+
+  private void createLights(BranchGroup group)
+  {
+    Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
+    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+    Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
+    DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
+    light1.setInfluencingBounds(bounds);
+    group.addChild(light1);
+    AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
+    light2.setInfluencingBounds(bounds);
+    group.addChild(light2);
+  }
+
+  private void createNavigation(BranchGroup branchGroup)
+  {
+    TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
+    createKeyNavigation(branchGroup, viewTransformGroup);
+    createMouseNavigation(branchGroup, viewTransformGroup);
+  }
+
+  private void createMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
+  {
+    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
+
+    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
+    ob.setSchedulingBounds(mouseZone);
+    universe.getViewingPlatform().setViewPlatformBehavior(ob);
+  }
+
+  private void createKeyNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
+  {
+    KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
+    BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
+    keyInteractor.setSchedulingBounds(movingBounds);
+    branchGroup.addChild(keyInteractor);
   }
 
   private BranchGroup createCoordinateSystem()
@@ -194,6 +232,21 @@ public class ThreeDeeWorld
     }
 
     return group;
+  }
+
+  private void setNominalTransform()
+  {
+    ViewingPlatform viewingPlatform = universe.getViewingPlatform();
+
+    View view = viewingPlatform.getViewers()[0].getView();
+    view.setBackClipDistance(100.0d);
+
+    double fieldOfView = view.getFieldOfView();
+    double viewDistance = 12.0d / Math.tan(fieldOfView / 2.0d);
+
+    Transform3D transform = new Transform3D();
+    transform.set(new Vector3d(0.0, 0.0, viewDistance));
+    viewingPlatform.getViewPlatformTransform().setTransform(transform);
   }
 
   public Control getControl()
@@ -473,30 +526,6 @@ public class ThreeDeeWorld
     referenceShape.setGeometry(lineArray);
   }
 
-  private void addNavigation(BranchGroup branchGroup)
-  {
-    TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
-    addKeyNavigation(branchGroup, viewTransformGroup);
-    addMouseNavigation(branchGroup, viewTransformGroup);
-  }
-
-  private void addMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
-  {
-    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
-
-    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
-    ob.setSchedulingBounds(mouseZone);
-    universe.getViewingPlatform().setViewPlatformBehavior(ob);
-  }
-
-  private void addKeyNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
-  {
-    KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
-    BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
-    keyInteractor.setSchedulingBounds(movingBounds);
-    branchGroup.addChild(keyInteractor);
-  }
-
   private void positionNewObject(TransformGroup transformGroup, Node node)
   {
     Vector3f vector = layouter.getAvailablePosition(node);
@@ -508,14 +537,6 @@ public class ThreeDeeWorld
     {
       TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
     }
-  }
-
-  private void positionViewer(ViewingPlatform vp)
-  {
-    TransformGroup tg1 = vp.getViewPlatformTransform();
-    Transform3D t3d = new Transform3D();
-    tg1.getTransform(t3d);
-    vp.setNominalViewingTransform();
   }
 
   private TransformGroup createTransformGroup()
@@ -530,18 +551,5 @@ public class ThreeDeeWorld
   private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
   {
     parent.addChild(child);
-  }
-
-  public static void addLights(BranchGroup group)
-  {
-    Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
-    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
-    Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
-    DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
-    light1.setInfluencingBounds(bounds);
-    group.addChild(light1);
-    AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
-    light2.setInfluencingBounds(bounds);
-    group.addChild(light2);
   }
 }
