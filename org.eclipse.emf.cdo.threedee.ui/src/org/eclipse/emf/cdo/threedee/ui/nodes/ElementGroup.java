@@ -47,6 +47,12 @@ public class ElementGroup extends ThreeDeeNode<Element>
   }
 
   @Override
+  public ElementSphere getShape()
+  {
+    return (ElementSphere)super.getShape();
+  }
+
+  @Override
   public void layout()
   {
     List<ElementGroup> children = getChildren();
