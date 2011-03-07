@@ -93,7 +93,7 @@ public class ContainmentGroup extends ThreeDeeNode
 
       final Transform3D transform = new Transform3D();
 
-      final Vector3d translation = new Vector3d(x, y, 1.0d);
+      final Vector3d translation = new Vector3d(x, y, 1.0d + radius);
       transform.setTranslation(translation);
 
       final double scalarProductX = -y / x;
