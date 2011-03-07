@@ -7,6 +7,7 @@
  *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
+ *    Eike Stepper - initial API and implementation
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
