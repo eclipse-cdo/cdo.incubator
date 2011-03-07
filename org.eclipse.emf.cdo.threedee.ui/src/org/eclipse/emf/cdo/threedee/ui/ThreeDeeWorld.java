@@ -194,7 +194,7 @@ public class ThreeDeeWorld
     branchGroup.addChild(keyInteractor);
   }
 
-  private void createPicking(Canvas3D canvas, BranchGroup scene)
+  private void createPicking(final Canvas3D canvas, final BranchGroup scene)
   {
     final PickCanvas pickCanvas = new PickCanvas(canvas, scene);
     pickCanvas.setMode(PickTool.BOUNDS);
