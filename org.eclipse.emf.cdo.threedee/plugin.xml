@@ -25,7 +25,7 @@
             category="org.eclipse.emf.cdo.threedee"
             class="org.eclipse.emf.cdo.threedee.ElementView"
             icon="icons/agent.gif"
-            id="org.eclipse.emf.cdo.threedee.FrontendView"
+            id="org.eclipse.emf.cdo.threedee.ElementView"
             name="Elements">
       </view>
       <view

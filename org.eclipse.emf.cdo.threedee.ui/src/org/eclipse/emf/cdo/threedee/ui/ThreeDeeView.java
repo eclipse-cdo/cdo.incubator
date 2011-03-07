@@ -45,7 +45,7 @@ import java.util.Set;
  */
 public class ThreeDeeView extends ViewPart
 {
-  public static final String ID = "org.eclipse.emf.cdo.threedee.ui.views.ThreeDeeWorldView";
+  public static final String ID = "org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld";
 
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeView.class);
 
