@@ -258,15 +258,54 @@ public class ThreeDeeWorld
   {
     if (!elementGroups.containsKey(element))
     {
-      ElementGroup containerGroup = getContainerElementGroup(element);
       ElementGroup group = createElementGroup(element);
-
       ElementProvider provider = element.getProvider();
+
       Map<Integer, Boolean> references = element.getReferences();
       createChildren(group, provider, references);
 
+      ElementGroup containerGroup = getContainerElementGroup(element);
       addNode(group, containerGroup);
     }
+  }
+
+  private void addNode(final Node node, final ElementGroup containerContainmentGroup)
+  {
+    schedule(new Runnable()
+    {
+      public void run()
+      {
+        if (containerContainmentGroup == null)
+        {
+          TransformGroup transformGroup = createTransformGroup();
+          positionNewObject(transformGroup, node);
+
+          addChild(transformGroup, node);
+
+          BranchGroup branchGroup = new BranchGroup();
+          branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+          branchGroup.addChild(transformGroup);
+
+          universe.addBranchGraph(branchGroup);
+        }
+        else
+        {
+          containerContainmentGroup.addChild(node);
+        }
+
+        layout((ElementGroup)node, containerContainmentGroup);
+        Element element = ((ElementGroup)node).getModel();
+        Element containerElement = getContainerElement(element);
+        if (containerElement != null)
+        {
+          updateReferences(containerElement);
+        }
+        else
+        {
+          updateReferences(element);
+        }
+      }
+    });
   }
 
   public void removeElement(Element element)
@@ -292,6 +331,25 @@ public class ThreeDeeWorld
         layout(null, containerContainmentGroup);
       }
     }
+  }
+
+  private void removeNode(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
+  {
+    schedule(new Runnable()
+    {
+      public void run()
+      {
+        if (containerContainmentGroup != null)
+        {
+          containerContainmentGroup.removeChild(containmentGroup);
+          layout(null, containerContainmentGroup);
+        }
+        else
+        {
+          universe.getLocale().removeBranchGraph(containmentGroup);
+        }
+      }
+    });
   }
 
   private Element getContainerElement(Element element)
@@ -361,45 +419,6 @@ public class ThreeDeeWorld
     return runner.addWork(runnable);
   }
 
-  public void addNode(final Node node, final ElementGroup containerContainmentGroup)
-  {
-    schedule(new Runnable()
-    {
-      public void run()
-      {
-        if (containerContainmentGroup == null)
-        {
-          TransformGroup transformGroup = createTransformGroup();
-          positionNewObject(transformGroup, node);
-
-          addChild(transformGroup, node);
-
-          BranchGroup branchGroup = new BranchGroup();
-          branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-          branchGroup.addChild(transformGroup);
-
-          universe.addBranchGraph(branchGroup);
-        }
-        else
-        {
-          containerContainmentGroup.addChild(node);
-        }
-
-        layout((ElementGroup)node, containerContainmentGroup);
-        Element element = ((ElementGroup)node).getModel();
-        Element containerElement = getContainerElement(element);
-        if (containerElement != null)
-        {
-          updateReferences(containerElement);
-        }
-        else
-        {
-          updateReferences(element);
-        }
-      }
-    });
-  }
-
   public void addReferenceShape(final Node shapeLine)
   {
     schedule(new Runnable()
@@ -414,25 +433,6 @@ public class ThreeDeeWorld
         branchGroup.addChild(transformGroupLine);
 
         universe.addBranchGraph(branchGroup);
-      }
-    });
-  }
-
-  public void removeNode(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
-  {
-    schedule(new Runnable()
-    {
-      public void run()
-      {
-        if (containerContainmentGroup != null)
-        {
-          containerContainmentGroup.removeChild(containmentGroup);
-          layout(null, containerContainmentGroup);
-        }
-        else
-        {
-          universe.getLocale().removeBranchGraph(containmentGroup);
-        }
       }
     });
   }
