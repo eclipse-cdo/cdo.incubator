@@ -35,6 +35,8 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
 
   private Node shape;
 
+  private ThreeDeeNode<MODEL>[] children;
+
   public ThreeDeeNode(MODEL model, Appearance appearance)
   {
     this.model = model;
@@ -115,33 +117,41 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
     getRenderingAttributes().setVisible(visible);
   }
 
-  public List<ElementGroup> getChildren()
+  @SuppressWarnings("unchecked")
+  public synchronized ThreeDeeNode<MODEL>[] getChildren()
   {
-    List<ElementGroup> result = new ArrayList<ElementGroup>();
-
-    Enumeration<?> allChildren = transformGroup.getAllChildren();
-    while (allChildren.hasMoreElements())
+    if (children == null)
     {
-      Node nextElement = (Node)allChildren.nextElement();
-      if (nextElement != shape && nextElement instanceof ElementGroup)
+      List<ThreeDeeNode<MODEL>> list = new ArrayList<ThreeDeeNode<MODEL>>();
+
+      Enumeration<?> allChildren = transformGroup.getAllChildren();
+      while (allChildren.hasMoreElements())
       {
-        result.add((ElementGroup)nextElement);
+        Node nextElement = (Node)allChildren.nextElement();
+        if (nextElement != shape && nextElement instanceof ThreeDeeNode)
+        {
+          list.add((ThreeDeeNode<MODEL>)nextElement);
+        }
       }
+
+      children = list.toArray(new ThreeDeeNode[list.size()]);
     }
 
-    return result;
+    return children;
   }
 
   @Override
-  public void addChild(Node child)
+  public synchronized void addChild(Node child)
   {
     transformGroup.addChild(child);
+    children = null;
   }
 
   @Override
-  public void removeChild(Node child)
+  public synchronized void removeChild(Node child)
   {
     transformGroup.removeChild(child);
+    children = null;
   }
 
   public abstract void layout();

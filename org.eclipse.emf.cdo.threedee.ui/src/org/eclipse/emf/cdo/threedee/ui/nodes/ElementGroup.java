@@ -24,7 +24,6 @@ import javax.vecmath.AxisAngle4d;
 import javax.vecmath.Vector3d;
 
 import java.awt.Color;
-import java.util.List;
 
 /**
  * @author Martin Fluegge
@@ -55,8 +54,8 @@ public class ElementGroup extends ThreeDeeNode<Element>
   @Override
   public void layout()
   {
-    List<ElementGroup> children = getChildren();
-    int n = children.size();
+    ThreeDeeNode<Element>[] children = getChildren();
+    int n = children.length;
     if (n == 0)
     {
       return;
@@ -70,7 +69,7 @@ public class ElementGroup extends ThreeDeeNode<Element>
 
     for (int i = 0; i < n; i++)
     {
-      ElementGroup child = children.get(i);
+      ElementGroup child = (ElementGroup)children[i];
 
       double x = radius * Math.cos(phi);
       double y = radius * Math.sin(phi);

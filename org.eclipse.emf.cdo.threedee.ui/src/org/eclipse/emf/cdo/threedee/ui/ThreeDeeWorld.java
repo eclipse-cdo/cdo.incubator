@@ -504,19 +504,26 @@ public class ThreeDeeWorld
 
   private void updateReference(Element from, Element to, ReferenceShape referenceShape)
   {
-    Node fromShape = elementGroups.get(from).getShape();
+    ElementGroup fromGroup = elementGroups.get(from);
+    if (fromGroup == null)
+    {
+      return;
+    }
+
+    ElementGroup toGroup = elementGroups.get(to);
+    if (toGroup == null)
+    {
+      return;
+    }
+
+    Node fromShape = fromGroup.getShape();
     Assert.isNotNull(fromShape);
 
-    Node toShape = elementGroups.get(to).getShape();
+    Node toShape = toGroup.getShape();
     Assert.isNotNull(toShape);
 
     Point3f fromPosition = ThreeDeeUtil.getPositionAsPoint3f(fromShape);
     Point3f toPosition = ThreeDeeUtil.getPositionAsPoint3f(toShape);
-
-    // if (TRACER.isEnabled())
-    // {
-    //      TRACER.format("Drawing connection from {0} to {1}", fromPosition, toPosition); //$NON-NLS-1$
-    // }
 
     Point3f[] points = new Point3f[2];
     points[0] = fromPosition;
