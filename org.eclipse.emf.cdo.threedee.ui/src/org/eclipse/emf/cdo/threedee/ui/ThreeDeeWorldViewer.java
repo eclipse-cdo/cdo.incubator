@@ -440,6 +440,7 @@ public class ThreeDeeWorldViewer
           referenceShape = createAndSetReferenceShape(element, references, elementId, map, referenceElement);
         }
       }
+
       updateReference(element, referenceElement, referenceShape);
       updateReferences(referenceElement);
     }
