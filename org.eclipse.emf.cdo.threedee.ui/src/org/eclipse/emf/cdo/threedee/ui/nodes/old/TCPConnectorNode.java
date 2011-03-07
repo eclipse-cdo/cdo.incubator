@@ -8,11 +8,10 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.nodes.emf;
+package org.eclipse.emf.cdo.threedee.ui.nodes.old;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
-import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
 
 import com.sun.j3d.utils.geometry.Sphere;
 
@@ -24,11 +23,11 @@ import java.awt.Color;
 /**
  * @author Martin Fluegge
  */
-public class EPackageRegistryNode extends Sphere
+public class TCPConnectorNode extends Sphere
 {
-  public EPackageRegistryNode()
+  public TCPConnectorNode()
   {
-    super(.1f, ThreeDeeWorldUtil.getDefaultAppearance(Color.green));
+    super(.1f, ThreeDeeWorldUtil.getDefaultAppearance(Color.magenta));
     setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
     setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
   }
@@ -40,7 +39,7 @@ public class EPackageRegistryNode extends Sphere
   {
     public Node createNode(Element element)
     {
-      return new EPackageRegistryNode();
+      return new TCPConnectorNode();
     }
   }
 }

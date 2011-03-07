@@ -18,9 +18,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
-import org.eclipse.emf.cdo.threedee.ui.nodes.ContainmentGroup;
-import org.eclipse.emf.cdo.threedee.ui.nodes.ElementSphere;
-import org.eclipse.emf.cdo.threedee.ui.nodes.INodeFactory;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 
 import org.eclipse.net4j.util.concurrent.QueueRunner;
@@ -71,9 +69,9 @@ public class ThreeDeeWorldViewer
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
 
-  private Map<Element, ContainmentGroup> containmentGroups = new HashMap<Element, ContainmentGroup>();
+  private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
 
-  private Map<Element, Map<Element, ReferenceShape>> elementReferenceMapping = new HashMap<Element, Map<Element, ReferenceShape>>();
+  private Map<Element, Map<Element, ReferenceShape>> referenceShapes = new HashMap<Element, Map<Element, ReferenceShape>>();
 
   private Composite container;
 
@@ -107,7 +105,7 @@ public class ThreeDeeWorldViewer
     for (Session session : Frontend.INSTANCE.getElements())
     {
       Element rootElement = session.getRootElement();
-      if (rootElement != null && !containmentGroups.containsKey(rootElement))
+      if (rootElement != null && !elementGroups.containsKey(rootElement))
       {
         addElement(rootElement);
       }
@@ -205,26 +203,26 @@ public class ThreeDeeWorldViewer
 
   public void addElement(Element element)
   {
-    if (containmentGroups.containsKey(element))
+    if (elementGroups.containsKey(element))
     {
       return;
     }
 
-    ContainmentGroup containerContainmentGroup = getContainerContainmentGroup(element);
-    ContainmentGroup containmentGroup = (ContainmentGroup)createNode(element);
+    ElementGroup containerGroup = getContainerElementGroup(element);
+    ElementGroup group = createElementGroup(element);
 
     ElementProvider provider = element.getProvider();
 
     Map<Integer, Boolean> references = element.getReferences();
-    createChildren(containmentGroup, provider, references);
+    createChildren(group, provider, references);
 
     // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
-    addNode(containmentGroup, containerContainmentGroup);
+    addNode(group, containerGroup);
   }
 
   public void removeElement(Element element)
   {
-    ContainmentGroup containmentGroup = containmentGroups.remove(element);
+    ElementGroup containmentGroup = elementGroups.remove(element);
 
     Element containerElement = getContainerElement(element);
 
@@ -238,7 +236,7 @@ public class ThreeDeeWorldViewer
       return;
     }
 
-    ContainmentGroup containerContainmentGroup = getContainerContainmentGroup(element);
+    ElementGroup containerContainmentGroup = getContainerElementGroup(element);
     removeNode(containmentGroup, containerContainmentGroup);
     clearReferenceNodes(element);
 
@@ -258,7 +256,7 @@ public class ThreeDeeWorldViewer
 
   private void clearReferenceNodes(Element element)
   {
-    Map<Element, ReferenceShape> map = elementReferenceMapping.get(element);
+    Map<Element, ReferenceShape> map = referenceShapes.get(element);
     if (map != null)
     {
       for (ReferenceShape shape : map.values())
@@ -267,53 +265,44 @@ public class ThreeDeeWorldViewer
         universe.getLocale().removeBranchGraph((BranchGroup)shape.getParent().getParent());
       }
 
-      elementReferenceMapping.remove(element);
+      referenceShapes.remove(element);
     }
   }
 
-  protected ContainmentGroup getContainerContainmentGroup(Element element)
+  private ElementGroup getContainerElementGroup(Element element)
   {
     Element containerElement = getContainerElement(element);
-    ContainmentGroup containerContainmentGroup = containmentGroups.get(containerElement);
-    return containerContainmentGroup;
+    return elementGroups.get(containerElement);
   }
 
-  private void createChildren(ContainmentGroup shape, ElementProvider provider, Map<Integer, Boolean> references)
+  private void createChildren(ElementGroup containerGroup, ElementProvider provider, Map<Integer, Boolean> references)
   {
-    for (int elementId : references.keySet())
+    for (int targetID : references.keySet())
     {
-      Element referenceElement = provider.getElement(elementId);
-
-      Node referenceNode = containmentGroups.get(referenceElement);
-
-      if (referenceNode == null)
+      Element target = provider.getElement(targetID);
+      ElementGroup targetGroup = elementGroups.get(target);
+      if (targetGroup == null)
       {
-        referenceNode = createNode(referenceElement);
-        shape.addChild(referenceNode);
-        createChildren((ContainmentGroup)referenceNode, provider, referenceElement.getReferences());
+        targetGroup = createElementGroup(target);
+        containerGroup.addChild(targetGroup);
+        createChildren(targetGroup, provider, target.getReferences());
       }
     }
   }
 
-  private Node createNode(Element element)
+  private ElementGroup createElementGroup(Element element)
   {
-    String name = element.getDescriptor().getName();
-    INodeFactory factory = INodeFactory.Registry.INSTANCE.get(name);
-    Node shape = factory != null ? factory.createNode(element) : new ElementSphere(element);
-
-    ContainmentGroup group = new ContainmentGroup(element);
-    group.setShape(shape);
-
-    containmentGroups.put(element, group);
+    ElementGroup group = new ElementGroup(element);
+    elementGroups.put(element, group);
     return group;
   }
 
   public void filter(Set<ElementDescriptor> toBeHidden)
   {
-    for (ContainmentGroup node : containmentGroups.values())
+    for (ElementGroup elementGroup : elementGroups.values())
     {
-      ElementDescriptor descriptor = node.getElement().getDescriptor();
-      node.setVisible(!toBeHidden.contains(descriptor));
+      ElementDescriptor descriptor = elementGroup.getModel().getDescriptor();
+      elementGroup.setVisible(!toBeHidden.contains(descriptor));
     }
   }
 
@@ -328,7 +317,7 @@ public class ThreeDeeWorldViewer
     return runner.addWork(runnable);
   }
 
-  public void addNode(final Node node, final ContainmentGroup containerContainmentGroup)
+  public void addNode(final Node node, final ElementGroup containerContainmentGroup)
   {
     schedule(new Runnable()
     {
@@ -352,8 +341,8 @@ public class ThreeDeeWorldViewer
           containerContainmentGroup.addChild(node);
         }
 
-        layout((ContainmentGroup)node, containerContainmentGroup);
-        Element element = ((ContainmentGroup)node).getElement();
+        layout((ElementGroup)node, containerContainmentGroup);
+        Element element = ((ElementGroup)node).getModel();
         Element containerElement = getContainerElement(element);
         if (containerElement != null)
         {
@@ -385,7 +374,7 @@ public class ThreeDeeWorldViewer
     });
   }
 
-  public void removeNode(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  public void removeNode(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
   {
     schedule(new Runnable()
     {
@@ -404,7 +393,7 @@ public class ThreeDeeWorldViewer
     });
   }
 
-  private void layout(final ContainmentGroup containmentGroup, final ContainmentGroup containerContainmentGroup)
+  private void layout(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
   {
     if (containerContainmentGroup != null)
     {
@@ -421,23 +410,23 @@ public class ThreeDeeWorldViewer
     ElementProvider provider = element.getProvider();
     Map<Integer, Boolean> references = element.getReferences();
 
-    for (int elementId : references.keySet())
+    for (int elementID : references.keySet())
     {
-      Map<Element, ReferenceShape> map = elementReferenceMapping.get(element);
-      Element referenceElement = provider.getElement(elementId);
+      Map<Element, ReferenceShape> map = referenceShapes.get(element);
+      Element referenceElement = provider.getElement(elementID);
       ReferenceShape referenceShape;
       if (map == null)
       {
         map = new HashMap<Element, ReferenceShape>();
-        elementReferenceMapping.put(element, map);
-        referenceShape = createAndSetReferenceShape(element, references, elementId, map, referenceElement);
+        referenceShapes.put(element, map);
+        referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
       }
       else
       {
         referenceShape = map.get(referenceElement);
         if (referenceShape == null)
         {
-          referenceShape = createAndSetReferenceShape(element, references, elementId, map, referenceElement);
+          referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
         }
       }
 
@@ -446,43 +435,42 @@ public class ThreeDeeWorldViewer
     }
   }
 
-  private ReferenceShape createAndSetReferenceShape(Element element, Map<Integer, Boolean> references, int elementId,
+  private ReferenceShape createAndSetReferenceShape(Element element, Map<Integer, Boolean> references, int elementID,
       Map<Element, ReferenceShape> map, Element referenceElement)
   {
-    ReferenceShape referenceShape;
-    referenceShape = createReferenceShape(element, referenceElement, references.get(elementId));
+    ReferenceShape referenceShape = createReferenceShape(element, referenceElement, references.get(elementID));
     addReferenceShape(referenceShape);
     map.put(referenceElement, referenceShape);
     return referenceShape;
   }
 
-  private ReferenceShape createReferenceShape(Element from, Element to, boolean isContainment)
+  private ReferenceShape createReferenceShape(Element from, Element to, boolean containment)
   {
-    return new ReferenceShape(isContainment);
+    return new ReferenceShape(from, to, containment);
   }
 
-  private void updateReference(Element from, Element to, ReferenceShape referenceNode)
+  private void updateReference(Element from, Element to, ReferenceShape referenceShape)
   {
-    Node shape = containmentGroups.get(from).getShape();
-    Assert.isNotNull(shape);
+    Node fromShape = elementGroups.get(from).getShape();
+    Assert.isNotNull(fromShape);
 
-    Node referenceShape = containmentGroups.get(to).getShape();
-    Assert.isNotNull(referenceShape);
+    Node toShape = elementGroups.get(to).getShape();
+    Assert.isNotNull(toShape);
 
-    Point3f elementPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(shape);
-    Point3f referencePosition = ThreeDeeWorldUtil.getPositionAsPoint3f(referenceShape);
+    Point3f fromPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(fromShape);
+    Point3f toPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(toShape);
 
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Drawing connection from {0} to {1}", elementPosition, referencePosition); //$NON-NLS-1$
-    }
+    // if (TRACER.isEnabled())
+    // {
+    //      TRACER.format("Drawing connection from {0} to {1}", fromPosition, toPosition); //$NON-NLS-1$
+    // }
 
     Point3f[] points = new Point3f[2];
-    points[0] = elementPosition;
-    points[1] = referencePosition;
+    points[0] = fromPosition;
+    points[1] = toPosition;
     LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
     lineArray.setCoordinates(0, points);
-    referenceNode.setGeometry(lineArray);
+    referenceShape.setGeometry(lineArray);
   }
 
   private void addNavigation(BranchGroup branchGroup)

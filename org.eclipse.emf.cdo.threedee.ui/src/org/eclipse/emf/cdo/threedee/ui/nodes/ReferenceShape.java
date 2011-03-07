@@ -10,10 +10,14 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
+import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
+
+import org.eclipse.net4j.util.collection.Pair;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Geometry;
+import javax.media.j3d.Node;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.TransparencyAttributes;
 
@@ -22,13 +26,45 @@ import java.awt.Color;
 /**
  * @author Martin Fluegge
  */
-public class ReferenceShape extends ThreeDeeNode
+public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
 {
-  public ReferenceShape(boolean isContainment)
-  {
-    super();
+  private boolean containment;
 
-    Appearance appearance = ThreeDeeWorldUtil.getDefaultAppearance(isContainment == true ? Color.white : Color.gray);
+  public ReferenceShape(Element from, Element to, boolean containment)
+  {
+    super(new Pair<Element, Element>(from, to), createAppearance(containment));
+    this.containment = containment;
+  }
+
+  public boolean isContainment()
+  {
+    return containment;
+  }
+
+  @Override
+  public Shape3D getShape()
+  {
+    return (Shape3D)super.getShape();
+  }
+
+  public void setGeometry(Geometry geometry)
+  {
+    getShape().setGeometry(geometry);
+  }
+
+  @Override
+  protected Node createShape(Appearance appearance)
+  {
+    Shape3D shape = new Shape3D();
+    shape.setCapability(Shape3D.ALLOW_GEOMETRY_READ);
+    shape.setCapability(Shape3D.ALLOW_GEOMETRY_WRITE);
+    shape.setAppearance(appearance);
+    return shape;
+  }
+
+  private static Appearance createAppearance(boolean containment)
+  {
+    Appearance appearance = ThreeDeeWorldUtil.getDefaultAppearance(containment ? Color.white : Color.gray);
 
     TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
     if (transparencyAttributes == null)
@@ -38,23 +74,13 @@ public class ReferenceShape extends ThreeDeeNode
     }
 
     transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
-    transparencyAttributes.setTransparency(0.75f);
-    shape = new Shape3D();
-    getShape().setAppearance(appearance);
-
-    shape.setCapability(Shape3D.ALLOW_GEOMETRY_READ);
-    shape.setCapability(Shape3D.ALLOW_GEOMETRY_WRITE);
-    addChild(shape);
+    transparencyAttributes.setTransparency(0.5f);
+    return appearance;
   }
 
   @Override
-  public Shape3D getShape()
+  public void layout()
   {
-    return (Shape3D)shape;
-  }
-
-  public void setGeometry(Geometry geometry)
-  {
-    getShape().setGeometry(geometry);
+    throw new UnsupportedOperationException("Should plcaement be done here?");
   }
 }

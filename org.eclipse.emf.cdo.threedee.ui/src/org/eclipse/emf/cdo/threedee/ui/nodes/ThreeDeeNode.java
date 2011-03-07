@@ -20,44 +20,41 @@ import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
+
 /**
  * @author Martin Fluegge
  */
-public class ThreeDeeNode extends BranchGroup
+public abstract class ThreeDeeNode<MODEL> extends BranchGroup
 {
-  protected TransformGroup transformGroup;
+  private MODEL model;
 
-  protected Node shape;
+  private TransformGroup transformGroup;
 
-  public ThreeDeeNode()
+  private Node shape;
+
+  public ThreeDeeNode(MODEL model, Appearance appearance)
   {
+    this.model = model;
+    setCapability(BranchGroup.ALLOW_DETACH);
+
+    shape = createShape(appearance);
+
     transformGroup = new TransformGroup();
     transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
     transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
     transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_EXTEND);
     transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
     transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
+    transformGroup.addChild(shape);
     super.addChild(transformGroup);
   }
 
-  public Node getShape()
+  public MODEL getModel()
   {
-    return shape;
-  }
-
-  public void setShape(Node shape)
-  {
-    if (this.shape != null)
-    {
-      transformGroup.removeChild(this.shape);
-    }
-
-    this.shape = shape;
-
-    if (this.shape != null)
-    {
-      transformGroup.addChild(this.shape);
-    }
+    return model;
   }
 
   public void getTransform(Transform3D transform)
@@ -68,6 +65,11 @@ public class ThreeDeeNode extends BranchGroup
   public void setTransform(Transform3D transform)
   {
     transformGroup.setTransform(transform);
+  }
+
+  public Node getShape()
+  {
+    return shape;
   }
 
   public Appearance getAppearance()
@@ -105,14 +107,29 @@ public class ThreeDeeNode extends BranchGroup
 
   public boolean isVisible()
   {
-    RenderingAttributes renderingAttributes = getRenderingAttributes();
-    return renderingAttributes.getVisible();
+    return getRenderingAttributes().getVisible();
   }
 
   public void setVisible(boolean visible)
   {
-    RenderingAttributes renderingAttributes = getRenderingAttributes();
-    renderingAttributes.setVisible(visible);
+    getRenderingAttributes().setVisible(visible);
+  }
+
+  public List<ElementGroup> getChildren()
+  {
+    List<ElementGroup> result = new ArrayList<ElementGroup>();
+
+    Enumeration<?> allChildren = transformGroup.getAllChildren();
+    while (allChildren.hasMoreElements())
+    {
+      Node nextElement = (Node)allChildren.nextElement();
+      if (nextElement != shape && nextElement instanceof ElementGroup)
+      {
+        result.add((ElementGroup)nextElement);
+      }
+    }
+
+    return result;
   }
 
   @Override
@@ -126,4 +143,8 @@ public class ThreeDeeNode extends BranchGroup
   {
     transformGroup.removeChild(child);
   }
+
+  public abstract void layout();
+
+  protected abstract Node createShape(Appearance appearance);
 }

@@ -10,10 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee.ui;
 
-import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-
-import org.eclipse.net4j.util.om.trace.ContextTracer;
-
 import javax.media.j3d.Appearance;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Material;
@@ -34,9 +30,6 @@ import java.awt.Color;
  */
 public class ThreeDeeWorldUtil
 {
-  @SuppressWarnings("unused")
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldUtil.class);
-
   public static Appearance getDefaultAppearance(Color3f color)
   {
     Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
