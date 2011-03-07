@@ -11,7 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes.old;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import com.sun.j3d.utils.geometry.Sphere;
 
@@ -27,7 +27,7 @@ public class TCPConnectorNode extends Sphere
 {
   public TCPConnectorNode()
   {
-    super(.1f, ThreeDeeWorldUtil.getDefaultAppearance(Color.magenta));
+    super(.1f, ThreeDeeUtil.getDefaultAppearance(Color.magenta));
     setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
     setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
   }

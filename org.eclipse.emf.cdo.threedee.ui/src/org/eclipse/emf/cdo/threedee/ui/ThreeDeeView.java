@@ -42,23 +42,23 @@ import java.util.Set;
  * 
  * @author Martin Fluegge
  */
-public class ThreeDeeWorldView extends ViewPart
+public class ThreeDeeView extends ViewPart
 {
   public static final String ID = "org.eclipse.emf.cdo.threedee.ui.views.ThreeDeeWorldView";
 
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldView.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeView.class);
 
   private IListener frontendListener = new FrontendListener();
 
   private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
 
-  private ThreeDeeWorldViewer viewer;
+  private ThreeDeeWorld viewer;
 
-  public ThreeDeeWorldView()
+  public ThreeDeeView()
   {
   }
 
-  public ThreeDeeWorldViewer getViewer()
+  public ThreeDeeWorld getViewer()
   {
     return viewer;
   }
@@ -66,7 +66,7 @@ public class ThreeDeeWorldView extends ViewPart
   @Override
   public void createPartControl(Composite parent)
   {
-    viewer = new ThreeDeeWorldViewer(parent);
+    viewer = new ThreeDeeWorld(parent);
     Frontend.INSTANCE.addListener(frontendListener);
 
     DescriptorView.INSTANCE.addListener(descriptorViewListener);

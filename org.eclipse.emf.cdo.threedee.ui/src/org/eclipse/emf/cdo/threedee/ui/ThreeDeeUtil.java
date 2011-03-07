@@ -28,7 +28,7 @@ import java.awt.Color;
 /**
  * @author Martin Fluegge
  */
-public class ThreeDeeWorldUtil
+public class ThreeDeeUtil
 {
   public static Appearance getDefaultAppearance(Color3f color)
   {
@@ -52,7 +52,7 @@ public class ThreeDeeWorldUtil
 
   public static Appearance getDefaultAppearance(Color color)
   {
-    return ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(color));
+    return ThreeDeeUtil.getDefaultAppearance(new Color3f(color));
   }
 
   public static Vector3f getPosition(Node shape)

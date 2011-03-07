@@ -11,7 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes.old;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import com.sun.j3d.utils.geometry.Box;
 import com.sun.j3d.utils.geometry.Primitive;
@@ -51,11 +51,11 @@ public class RepositoryNode extends Box
     setCapability(Box.ENABLE_APPEARANCE_MODIFY);
     setCapability(Box.GEOMETRY_NOT_SHARED);
 
-    getShape(Box.TOP).setAppearance(ThreeDeeWorldUtil.getDefaultAppearance(Color.magenta));
-    getShape(Box.BOTTOM).setAppearance(ThreeDeeWorldUtil.getDefaultAppearance(Color.orange));
-    getShape(Box.RIGHT).setAppearance(ThreeDeeWorldUtil.getDefaultAppearance(Color.red));
-    getShape(Box.LEFT).setAppearance(ThreeDeeWorldUtil.getDefaultAppearance(Color.green));
-    getShape(Box.BACK).setAppearance(ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(Color.yellow)));
+    getShape(Box.TOP).setAppearance(ThreeDeeUtil.getDefaultAppearance(Color.magenta));
+    getShape(Box.BOTTOM).setAppearance(ThreeDeeUtil.getDefaultAppearance(Color.orange));
+    getShape(Box.RIGHT).setAppearance(ThreeDeeUtil.getDefaultAppearance(Color.red));
+    getShape(Box.LEFT).setAppearance(ThreeDeeUtil.getDefaultAppearance(Color.green));
+    getShape(Box.BACK).setAppearance(ThreeDeeUtil.getDefaultAppearance(new Color3f(Color.yellow)));
 
     try
     {
@@ -69,7 +69,7 @@ public class RepositoryNode extends Box
 
   private void createFrontImage() throws IOException
   {
-    Appearance ap = ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(Color.blue));
+    Appearance ap = ThreeDeeUtil.getDefaultAppearance(new Color3f(Color.blue));
     ap.setCapability(Appearance.ALLOW_TEXTURE_WRITE);
     ap.setCapability(Appearance.ALLOW_TEXGEN_WRITE);
 
@@ -129,7 +129,7 @@ public class RepositoryNode extends Box
     public Node createNode(Element element)
     {
       return new RepositoryNode(.1f, .1f, .1f, Primitive.GENERATE_TEXTURE_COORDS,
-          ThreeDeeWorldUtil.getDefaultAppearance(new Color3f(Color.green)));
+          ThreeDeeUtil.getDefaultAppearance(new Color3f(Color.green)));
     }
   }
 }

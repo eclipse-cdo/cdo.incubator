@@ -11,7 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import com.sun.j3d.utils.geometry.Sphere;
 
@@ -101,7 +101,7 @@ public class ElementGroup extends ThreeDeeNode<Element>
   private static Appearance createAppearance(Element element)
   {
     Color color = element.getDescriptor().getColor().getValue();
-    return ThreeDeeWorldUtil.getDefaultAppearance(color);
+    return ThreeDeeUtil.getDefaultAppearance(color);
   }
 
   /**

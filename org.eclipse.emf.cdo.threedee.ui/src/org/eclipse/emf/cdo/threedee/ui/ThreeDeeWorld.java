@@ -65,9 +65,9 @@ import java.util.Set;
 /**
  * @author Martin Fluegge
  */
-public class ThreeDeeWorldViewer
+public class ThreeDeeWorld
 {
-  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorldViewer.class);
+  private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
 
@@ -87,7 +87,7 @@ public class ThreeDeeWorldViewer
 
   private Canvas3D canvas;
 
-  public ThreeDeeWorldViewer(Composite parent)
+  public ThreeDeeWorld(Composite parent)
   {
     container = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
     container.setLayout(new FillLayout());
@@ -457,8 +457,8 @@ public class ThreeDeeWorldViewer
     Node toShape = elementGroups.get(to).getShape();
     Assert.isNotNull(toShape);
 
-    Point3f fromPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(fromShape);
-    Point3f toPosition = ThreeDeeWorldUtil.getPositionAsPoint3f(toShape);
+    Point3f fromPosition = ThreeDeeUtil.getPositionAsPoint3f(fromShape);
+    Point3f toPosition = ThreeDeeUtil.getPositionAsPoint3f(toShape);
 
     // if (TRACER.isEnabled())
     // {

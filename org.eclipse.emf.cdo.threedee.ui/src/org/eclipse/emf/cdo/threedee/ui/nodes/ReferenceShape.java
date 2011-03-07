@@ -11,7 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import org.eclipse.net4j.util.collection.Pair;
 
@@ -64,7 +64,7 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
 
   private static Appearance createAppearance(boolean containment)
   {
-    Appearance appearance = ThreeDeeWorldUtil.getDefaultAppearance(containment ? Color.white : Color.gray);
+    Appearance appearance = ThreeDeeUtil.getDefaultAppearance(containment ? Color.white : Color.gray);
 
     TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
     if (transparencyAttributes == null)

@@ -20,7 +20,7 @@ import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EPackageRegistryDescr
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.AcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPAcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
-import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorldViewer;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -44,7 +44,7 @@ public class ThreeDeeWorldTest
     shell.setSize(800, 600);
     shell.setLayout(new FillLayout(SWT.VERTICAL));
 
-    final ThreeDeeWorldViewer viewer = new ThreeDeeWorldViewer(shell);
+    final ThreeDeeWorld viewer = new ThreeDeeWorld(shell);
     // ThreeDeeWorldComposite composite = new ThreeDeeWorldComposite(shell, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 
     final DummyElementProvider dummyElementProvider = new DummyElementProvider();
