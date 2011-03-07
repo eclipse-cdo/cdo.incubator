@@ -79,7 +79,7 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
   }
 
   @Override
-  public void layout()
+  protected void layout(ThreeDeeNode<Pair<Element, Element>>[] children, int n)
   {
     throw new UnsupportedOperationException("Should plcaement be done here?");
   }

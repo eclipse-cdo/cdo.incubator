@@ -52,19 +52,11 @@ public class ElementGroup extends ThreeDeeNode<Element>
   }
 
   @Override
-  public void layout()
+  protected void layout(ThreeDeeNode<Element>[] children, int n)
   {
-    ThreeDeeNode<Element>[] children = getChildren();
-    int n = children.length;
-    if (n == 0)
-    {
-      return;
-    }
-
     double circumference = SPHERE_DISTANCE * n;
     double radius = circumference / TWO_PI;
     double distanceAngle = TWO_PI / n;
-
     double phi = 0.0d;
 
     for (int i = 0; i < n; i++)
@@ -75,7 +67,6 @@ public class ElementGroup extends ThreeDeeNode<Element>
       double y = radius * Math.sin(phi);
 
       Transform3D transform = new Transform3D();
-
       Vector3d translation = new Vector3d(x, y, 1.0d + radius);
       transform.setTranslation(translation);
 

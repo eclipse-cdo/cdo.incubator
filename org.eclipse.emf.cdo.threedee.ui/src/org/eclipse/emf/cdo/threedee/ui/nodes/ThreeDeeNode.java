@@ -154,7 +154,17 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
     children = null;
   }
 
-  public abstract void layout();
+  public final void layout()
+  {
+    ThreeDeeNode<MODEL>[] children = getChildren();
+    int n = children.length;
+    if (n != 0)
+    {
+      layout(children, n);
+    }
+  }
+
+  protected abstract void layout(ThreeDeeNode<MODEL>[] children, int n);
 
   protected abstract Node createShape(Appearance appearance);
 }
