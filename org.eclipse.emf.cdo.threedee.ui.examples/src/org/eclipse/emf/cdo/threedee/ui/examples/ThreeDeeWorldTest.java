@@ -12,14 +12,12 @@ package org.eclipse.emf.cdo.threedee.ui.examples;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
-import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.common.descriptors.ManagedContainerDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EAttributeDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EClassifierDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EPackageRegistryDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EReferenceDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EStructuralFeatureDescriptor;
-import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.AcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPAcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
@@ -30,9 +28,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Martin Fluegge
@@ -48,7 +44,7 @@ public class ThreeDeeWorldTest
 
     final ThreeDeeWorld viewer = new ThreeDeeWorld(shell);
 
-    final DummyElementProvider dummyElementProvider = new DummyElementProvider();
+    final TestingElementProvider dummyElementProvider = new TestingElementProvider();
 
     final Element element = dummyElementProvider.createElement(new ManagedContainerDescriptor());
 
@@ -64,14 +60,14 @@ public class ThreeDeeWorldTest
     descriptors.add(new EReferenceDescriptor());
     descriptors.add(new EPackageRegistryDescriptor());
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 5; i++)
     {
       Element child = dummyElementProvider.createElement();
       element.addReference(true, child.getID());
-      for (int a = 0; a < 20; a++)
+      for (int a = 0; a < 10; a++)
       {
         Element level2Child = dummyElementProvider.createElement(descriptors.get(i));
-        child.addReference(true, level2Child.getID());
+        child.addReference(false, level2Child.getID());
       }
     }
 
@@ -120,39 +116,5 @@ public class ThreeDeeWorldTest
     }
     display.dispose();
     System.exit(0);
-  }
-
-  private static class DummyElementProvider implements ElementProvider
-  {
-    private Map<Integer, Element> elements = new HashMap<Integer, Element>();
-
-    private int id = 0;
-
-    public int getID()
-    {
-      return id;
-    }
-
-    public Element createElement(ElementDescriptor descriptor)
-    {
-      Element element = new Element(++id, descriptor, this);
-      elements.put(element.getID(), element);
-      return element;
-    }
-
-    public Element getElement(Object object, boolean addOnDemand)
-    {
-      return elements.get(id);
-    }
-
-    public Element getElement(int id)
-    {
-      return elements.get(id);
-    }
-
-    public synchronized Element createElement()
-    {
-      return createElement(new AcceptorDescriptor());
-    }
   }
 }

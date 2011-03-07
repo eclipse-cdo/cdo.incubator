@@ -116,7 +116,7 @@ public class ThreeDeeView extends ViewPart
     {
       if (event instanceof TransmissionEvent)
       {
-        // TODO implement logic
+        world.showCall((Element)event.getSource(), ((TransmissionEvent)event).getReceiver());
       }
     }
 

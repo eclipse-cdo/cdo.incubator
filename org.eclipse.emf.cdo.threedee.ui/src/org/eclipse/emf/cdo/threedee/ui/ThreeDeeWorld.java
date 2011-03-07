@@ -48,7 +48,6 @@ import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.GraphicsConfigTemplate3D;
-import javax.media.j3d.Group;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
@@ -94,6 +93,8 @@ public class ThreeDeeWorld
   private ILayout layout = new CuboidStarLayout();// new SimpleLayouter();
 
   private Canvas3D canvas;
+
+  private boolean showCrossReferences = false;
 
   public ThreeDeeWorld(Composite parent)
   {
@@ -155,6 +156,7 @@ public class ThreeDeeWorld
 
     sphereTransformGroup = createTransformGroup();
     scene.addChild(sphereTransformGroup);
+    ThreeDeeUtil.enablePicking(scene);
     return scene;
   }
 
@@ -494,25 +496,28 @@ public class ThreeDeeWorld
 
     for (int elementID : references.keySet())
     {
-      Map<Element, ReferenceShape> map = referenceShapes.get(element);
       Element referenceElement = provider.getElement(elementID);
-      ReferenceShape referenceShape;
-      if (map == null)
+      if (references.get(elementID) || isShowCrossReferences())
       {
-        map = new HashMap<Element, ReferenceShape>();
-        referenceShapes.put(element, map);
-        referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
-      }
-      else
-      {
-        referenceShape = map.get(referenceElement);
-        if (referenceShape == null)
+        Map<Element, ReferenceShape> map = referenceShapes.get(element);
+        ReferenceShape referenceShape;
+        if (map == null)
         {
+          map = new HashMap<Element, ReferenceShape>();
+          referenceShapes.put(element, map);
           referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
         }
-      }
+        else
+        {
+          referenceShape = map.get(referenceElement);
+          if (referenceShape == null)
+          {
+            referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
+          }
+        }
 
-      updateReference(element, referenceElement, referenceShape);
+        updateReference(element, referenceElement, referenceShape);
+      }
       updateReferences(referenceElement);
     }
   }
@@ -580,8 +585,33 @@ public class ThreeDeeWorld
     return transformGroup;
   }
 
-  private void addChild(Group parent, Node child)
+  private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
   {
     parent.addChild(child);
+  }
+
+  public void showCall(Element source, Element target)
+  {
+    System.out.println("Source: " + source);
+    System.out.println("Target: " + target);
+
+    Map<Element, ReferenceShape> references = referenceShapes.get(source);
+
+    ReferenceShape referenceShape = references.get(target);
+    if (referenceShape == null)
+    {
+      referenceShape = createReferenceShape(source, target, true);
+    }
+    referenceShape.blink();
+  }
+
+  public void setShowCrossReferences(boolean showCrossReferences)
+  {
+    this.showCrossReferences = showCrossReferences;
+  }
+
+  public boolean isShowCrossReferences()
+  {
+    return showCrossReferences;
   }
 }

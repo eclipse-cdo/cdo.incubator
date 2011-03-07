@@ -16,7 +16,9 @@ import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 import org.eclipse.net4j.util.collection.Pair;
 
 import javax.media.j3d.Appearance;
+import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Geometry;
+import javax.media.j3d.LineAttributes;
 import javax.media.j3d.Node;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.TransparencyAttributes;
@@ -81,6 +83,52 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
   @Override
   protected void layout(ThreeDeeNode<Pair<Element, Element>>[] children, int n)
   {
-    throw new UnsupportedOperationException("Should plcaement be done here?");
+    throw new UnsupportedOperationException("Should placement be done here?");
+  }
+
+  public void blink()
+  {
+    Appearance appearance = getShape().getAppearance();
+    LineAttributes lineAttributes = appearance.getLineAttributes();
+    if (lineAttributes == null)
+    {
+      lineAttributes = new LineAttributes();
+      appearance.setLineAttributes(lineAttributes);
+    }
+    final float lineWidth = lineAttributes.getLineWidth();
+    lineAttributes.setLineWidth(lineWidth * 10);
+    ColoringAttributes coloringAttributes = appearance.getColoringAttributes();
+
+    if (coloringAttributes != null)
+    {
+      coloringAttributes = new ColoringAttributes();
+      appearance.setColoringAttributes(coloringAttributes);
+    }
+
+    coloringAttributes.setColor(25, 0, 0);
+
+    // Thread t = new Thread(new Runnable()
+    // {
+    // public void run()
+    // {
+    // for (int i = 0; i < 3; i++)
+    // {
+    // lineAttributes.setLineWidth(lineWidth * 10);
+    // try
+    // {
+    // Thread.sleep(100);
+    // }
+    // catch (InterruptedException ex)
+    // {
+    //
+    // }
+    // finally
+    // {
+    // lineAttributes.setLineWidth(lineWidth);
+    // }
+    // }
+    // }
+    // });
+    // t.start();
   }
 }

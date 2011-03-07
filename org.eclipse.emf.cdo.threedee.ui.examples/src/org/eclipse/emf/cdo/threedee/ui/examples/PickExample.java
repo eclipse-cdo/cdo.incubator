@@ -1,16 +1,17 @@
 package org.eclipse.emf.cdo.threedee.ui.examples;
 
+import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
+
 import com.sun.j3d.utils.geometry.ColorCube;
 import com.sun.j3d.utils.geometry.Primitive;
-import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.picking.PickCanvas;
 import com.sun.j3d.utils.picking.PickResult;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 
-import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
-import javax.media.j3d.PolygonAttributes;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
@@ -45,19 +46,15 @@ public class PickExample extends MouseAdapter
     transformGroup.addChild(cube);
     group.addChild(transformGroup);
 
-    // create a sphere
-    Vector3f vector2 = new Vector3f(+0.3f, 0.0f, 0.0f);
-    Transform3D transform2 = new Transform3D();
-    transform2.setTranslation(vector2);
-    TransformGroup transformGroup2 = new TransformGroup(transform2);
-    Appearance appearance = new Appearance();
-    appearance.setPolygonAttributes(new PolygonAttributes(PolygonAttributes.POLYGON_LINE, PolygonAttributes.CULL_BACK,
-        0.0f));
-    Sphere sphere = new Sphere(0.3f, appearance);
-    transformGroup2.addChild(sphere);
-    group.addChild(transformGroup2);
-    universe.getViewingPlatform().setNominalViewingTransform();
+    Element element = new TestingElementProvider().createElement(new TCPConnectorDescriptor());
+    ElementGroup elementGroup = new ElementGroup(element);
+    group.addChild(elementGroup);
+    //
+
     universe.addBranchGraph(group);
+
+    universe.getViewingPlatform().setNominalViewingTransform();
+
     frame.addWindowListener(new WindowAdapter()
     {
       @Override
