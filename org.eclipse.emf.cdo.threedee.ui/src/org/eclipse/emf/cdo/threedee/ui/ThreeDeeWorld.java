@@ -16,7 +16,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayouter;
+import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayout;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
@@ -85,7 +85,7 @@ public class ThreeDeeWorld
 
   private TransformGroup sphereTransformGroup;
 
-  private ILayout layouter = new CuboidStarLayouter();// new SimpleLayouter();
+  private ILayout layouter = new CuboidStarLayout();// new SimpleLayouter();
 
   private Canvas3D canvas;
 

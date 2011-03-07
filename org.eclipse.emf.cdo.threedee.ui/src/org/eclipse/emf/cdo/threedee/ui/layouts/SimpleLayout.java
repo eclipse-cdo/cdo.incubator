@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @author Martin Fluegge
  */
-public class SimpleLayouter implements ILayout
+public class SimpleLayout implements ILayout
 {
   private List<Node> nodes = new ArrayList<Node>();
 

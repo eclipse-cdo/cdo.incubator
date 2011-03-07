@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @author Martin Fluegge
  */
-public class CuboidStarLayouter implements ILayout
+public class CuboidStarLayout implements ILayout
 {
   private List<Node> nodes = new ArrayList<Node>();
 
