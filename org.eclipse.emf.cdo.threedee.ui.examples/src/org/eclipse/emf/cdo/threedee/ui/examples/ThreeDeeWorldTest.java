@@ -17,6 +17,8 @@ import org.eclipse.emf.cdo.threedee.common.descriptors.ManagedContainerDescripto
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EAttributeDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EClassifierDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EPackageRegistryDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EReferenceDescriptor;
+import org.eclipse.emf.cdo.threedee.common.descriptors.emf.EStructuralFeatureDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.AcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPAcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
@@ -45,7 +47,6 @@ public class ThreeDeeWorldTest
     shell.setLayout(new FillLayout(SWT.VERTICAL));
 
     final ThreeDeeWorld viewer = new ThreeDeeWorld(shell);
-    // ThreeDeeWorldComposite composite = new ThreeDeeWorldComposite(shell, SWT.EMBEDDED | SWT.NO_BACKGROUND);
 
     final DummyElementProvider dummyElementProvider = new DummyElementProvider();
 
@@ -57,16 +58,19 @@ public class ThreeDeeWorldTest
     descriptors.add(new TCPAcceptorDescriptor());
     descriptors.add(new EClassifierDescriptor());
     descriptors.add(new EAttributeDescriptor());
+    descriptors.add(new EStructuralFeatureDescriptor());
+    descriptors.add(new EReferenceDescriptor());
+    descriptors.add(new EPackageRegistryDescriptor());
+    descriptors.add(new EReferenceDescriptor());
+    descriptors.add(new EPackageRegistryDescriptor());
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 10; i++)
     {
       Element child = dummyElementProvider.createElement();
-      // element.getReferences().put(child.getID(), true);
       element.addReference(true, child.getID());
-      for (int a = 0; a < 10; a++)
+      for (int a = 0; a < 20; a++)
       {
         Element level2Child = dummyElementProvider.createElement(descriptors.get(i));
-        // child.getReferences().put(level2Child.getID(), true);
         child.addReference(true, level2Child.getID());
       }
     }
@@ -78,9 +82,9 @@ public class ThreeDeeWorldTest
     // public void run()
     // {
     // sleep(3000);
-    // Element element2 = dummyElementProvider.createElement();
-    // element.addReference(true, element2.getID());
-    // viewer.addElement(element2);
+    // // Element element2 = dummyElementProvider.createElement();
+    // // element.addReference(true, element2.getID());
+    // // viewer.addElement(element2);
     //
     // sleep(3000);
     //
@@ -99,41 +103,13 @@ public class ThreeDeeWorldTest
     // }
     // }
     // });
-
+    //
     // t.start();
+
     // ArrayList<String> elementsToBeHidden = new ArrayList<String>();
     // elementsToBeHidden.add("Acceptor");
     // viewer.filter(elementsToBeHidden);
 
-    // Thread t = new Thread(new Runnable()
-    // {
-    // public void run()
-    // {
-    // for (int i = 0; i < 1000; i++)
-    // {
-    // viewer.addElement(new Element(i, new TCPConnectorDescriptor(), null));
-    // try
-    // {
-    // Thread.sleep(10);
-    // }
-    // catch (InterruptedException ex)
-    // {
-    // ex.printStackTrace();
-    // }
-    // }
-    // }
-    // });
-    //
-    // t.start();
-
-    // for (int i = 0; i < 14; i++)
-    // {
-    // viewer.addElement(new Element(i, new TCPConnectorDescriptor(), null));
-    // }
-    // viewer.addElement(new Element(0, new EPackageRegistryDescriptor(), null));
-    // composite.pack();
-
-    // shell.pack();
     shell.open();
     while (!shell.isDisposed())
     {
@@ -142,7 +118,6 @@ public class ThreeDeeWorldTest
         display.sleep();
       }
     }
-
     display.dispose();
     System.exit(0);
   }
