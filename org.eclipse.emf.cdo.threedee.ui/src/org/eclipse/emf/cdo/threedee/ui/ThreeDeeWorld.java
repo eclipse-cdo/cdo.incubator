@@ -48,6 +48,7 @@ import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.GraphicsConfigTemplate3D;
+import javax.media.j3d.Group;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
@@ -579,7 +580,7 @@ public class ThreeDeeWorld
     return transformGroup;
   }
 
-  private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
+  private void addChild(Group parent, Node child)
   {
     parent.addChild(child);
   }
