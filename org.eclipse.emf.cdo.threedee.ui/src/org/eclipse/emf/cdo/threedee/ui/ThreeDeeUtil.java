@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.ColoringAttributes;
+import javax.media.j3d.Group;
 import javax.media.j3d.Material;
 import javax.media.j3d.Node;
 import javax.media.j3d.Texture;
@@ -24,6 +25,7 @@ import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
 import java.awt.Color;
+import java.util.Enumeration;
 
 /**
  * @author Martin Fluegge
@@ -77,5 +79,35 @@ public class ThreeDeeUtil
     positionTrans.get(locationVec);
 
     return new Point3f(locationVec);
+  }
+
+  public static void enablePicking(Node node)
+  {
+    node.setCapability(Node.ENABLE_PICK_REPORTING);
+    node.setPickable(true);
+
+    if (node instanceof Group)
+    {
+      Group group = (Group)node;
+      for (Enumeration<?> e = group.getAllChildren(); e.hasMoreElements();)
+      {
+        enablePicking((Node)e.nextElement());
+      }
+    }
+
+    // try
+    // {
+    // Shape3D shape = (Shape3D)node;
+    // PickTool.setCapabilities(node, PickTool.INTERSECT_FULL);
+    // for (Enumeration<?> e = shape.getAllGeometries(); e.hasMoreElements();)
+    // {
+    // Geometry g = (Geometry)e.nextElement();
+    // g.setCapability(Geometry.ALLOW_INTERSECT);
+    // }
+    // }
+    // catch (ClassCastException e)
+    // {
+    // // Not a Shape3D node ignore exception
+    // }
   }
 }

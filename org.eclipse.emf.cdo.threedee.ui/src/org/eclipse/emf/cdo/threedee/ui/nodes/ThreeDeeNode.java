@@ -40,7 +40,7 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
   public ThreeDeeNode(MODEL model, Appearance appearance)
   {
     this.model = model;
-    setCapability(BranchGroup.ALLOW_DETACH);
+    setCapability(ALLOW_DETACH);
 
     shape = createShape(appearance);
 

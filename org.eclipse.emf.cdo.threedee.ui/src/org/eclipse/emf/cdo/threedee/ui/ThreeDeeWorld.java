@@ -36,6 +36,9 @@ import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
 import com.sun.j3d.utils.geometry.Cone;
 import com.sun.j3d.utils.geometry.Cylinder;
 import com.sun.j3d.utils.geometry.Sphere;
+import com.sun.j3d.utils.picking.PickCanvas;
+import com.sun.j3d.utils.picking.PickResult;
+import com.sun.j3d.utils.picking.PickTool;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
@@ -59,6 +62,8 @@ import javax.vecmath.Vector3f;
 import java.awt.Frame;
 import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -68,6 +73,7 @@ import java.util.Set;
  */
 public class ThreeDeeWorld
 {
+  @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
@@ -84,7 +90,7 @@ public class ThreeDeeWorld
 
   private TransformGroup sphereTransformGroup;
 
-  private ILayout layouter = new CuboidStarLayout();// new SimpleLayouter();
+  private ILayout layout = new CuboidStarLayout();// new SimpleLayouter();
 
   private Canvas3D canvas;
 
@@ -119,13 +125,14 @@ public class ThreeDeeWorld
 
     canvas = createCanvas(frame);
     universe = new SimpleUniverse(canvas);
-    scene = createScene();
+    scene = createScene(canvas);
 
     universe.addBranchGraph(scene);
     universe.addBranchGraph(createCoordinateSystem());
 
     setNominalTransform();
     frame.add(canvas);
+    createPicking(canvas, scene);
   }
 
   private Canvas3D createCanvas(Frame frame)
@@ -139,13 +146,13 @@ public class ThreeDeeWorld
     return new Canvas3D(config);
   }
 
-  private BranchGroup createScene()
+  private BranchGroup createScene(Canvas3D canvas)
   {
     BranchGroup scene = new BranchGroup();
     createLights(scene);
     createNavigation(scene);
-    sphereTransformGroup = createTransformGroup();
 
+    sphereTransformGroup = createTransformGroup();
     scene.addChild(sphereTransformGroup);
     return scene;
   }
@@ -185,6 +192,32 @@ public class ThreeDeeWorld
     BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
     keyInteractor.setSchedulingBounds(movingBounds);
     branchGroup.addChild(keyInteractor);
+  }
+
+  private void createPicking(Canvas3D canvas, BranchGroup scene)
+  {
+    final PickCanvas pickCanvas = new PickCanvas(canvas, scene);
+    pickCanvas.setMode(PickTool.BOUNDS);
+    canvas.addMouseListener(new MouseAdapter()
+    {
+      @Override
+      public void mouseClicked(MouseEvent e)
+      {
+        pickCanvas.setShapeLocation(e);
+        PickResult result = pickCanvas.pickClosest();
+        if (result != null)
+        {
+          Node node = result.getNode(PickResult.PRIMITIVE | PickResult.SHAPE3D);
+          if (node != null)
+          {
+            System.err.println("Picked " + node.getClass().getName());
+            return;
+          }
+        }
+
+        System.err.println("Nothing picked");
+      }
+    });
   }
 
   private BranchGroup createCoordinateSystem()
@@ -283,12 +316,15 @@ public class ThreeDeeWorld
 
           BranchGroup branchGroup = new BranchGroup();
           branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+          branchGroup.setCapability(Node.ENABLE_PICK_REPORTING);
+          branchGroup.setPickable(true);
           branchGroup.addChild(transformGroup);
 
           universe.addBranchGraph(branchGroup);
         }
         else
         {
+          ThreeDeeUtil.enablePicking(node);
           containerContainmentGroup.addChild(node);
         }
 
@@ -430,6 +466,7 @@ public class ThreeDeeWorld
 
         BranchGroup branchGroup = new BranchGroup();
         branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+        branchGroup.setCapability(Node.ALLOW_PICKABLE_WRITE);
         branchGroup.addChild(transformGroupLine);
 
         universe.addBranchGraph(branchGroup);
@@ -526,24 +563,20 @@ public class ThreeDeeWorld
 
   private void positionNewObject(TransformGroup transformGroup, Node node)
   {
-    Vector3f vector = layouter.getAvailablePosition(node);
+    Vector3f vector = layout.getAvailablePosition(node);
     Transform3D t3d = new Transform3D();
     t3d.setTranslation(vector);
     transformGroup.setTransform(t3d);
-
-    if (TRACER.isEnabled())
-    {
-      TRACER.format("Bounds: {0}", node.getBounds()); //$NON-NLS-1$
-    }
   }
 
   private TransformGroup createTransformGroup()
   {
-    TransformGroup sphereTransformGroup = new TransformGroup();
-    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-
-    return sphereTransformGroup;
+    TransformGroup transformGroup = new TransformGroup();
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    transformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
+    transformGroup.setPickable(true);
+    return transformGroup;
   }
 
   private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)

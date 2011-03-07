@@ -20,7 +20,6 @@ import javax.media.j3d.Appearance;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Transform3D;
-import javax.media.j3d.TransformGroup;
 import javax.vecmath.AxisAngle4d;
 import javax.vecmath.Vector3d;
 
@@ -111,13 +110,9 @@ public class ElementGroup extends ThreeDeeNode<Element>
     public ElementSphere(Appearance appearance)
     {
       super(.1f, appearance);
-      setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-      setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-      setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
-      setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
 
-      appearance.setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
       appearance.setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_READ);
+      appearance.setCapability(Appearance.ALLOW_RENDERING_ATTRIBUTES_WRITE);
       RenderingAttributes renderingAttributes = appearance.getRenderingAttributes();
       if (renderingAttributes == null)
       {
