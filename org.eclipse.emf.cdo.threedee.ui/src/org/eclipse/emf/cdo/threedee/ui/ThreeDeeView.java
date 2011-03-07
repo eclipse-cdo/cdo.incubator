@@ -53,21 +53,21 @@ public class ThreeDeeView extends ViewPart
 
   private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
 
-  private ThreeDeeWorld viewer;
+  private ThreeDeeWorld world;
 
   public ThreeDeeView()
   {
   }
 
-  public ThreeDeeWorld getViewer()
+  public ThreeDeeWorld getWorld()
   {
-    return viewer;
+    return world;
   }
 
   @Override
   public void createPartControl(Composite parent)
   {
-    viewer = new ThreeDeeWorld(parent);
+    world = new ThreeDeeWorld(parent);
     Frontend.INSTANCE.addListener(frontendListener);
 
     DescriptorView.INSTANCE.addListener(descriptorViewListener);
@@ -79,14 +79,14 @@ public class ThreeDeeView extends ViewPart
   {
     DescriptorView.INSTANCE.removeListener(descriptorViewListener);
     Frontend.INSTANCE.removeListener(new FrontendListener());
-    viewer.dispose();
+    world.dispose();
     super.dispose();
   }
 
   @Override
   public void setFocus()
   {
-    viewer.getControl().setFocus();
+    world.getComposite().setFocus();
   }
 
   /**
@@ -125,7 +125,7 @@ public class ThreeDeeView extends ViewPart
       if (object instanceof Element)
       {
         Element element = (Element)object;
-        viewer.addElement(element);
+        world.addElement(element);
         for (Element child : element.getElements())
         {
           addElement(child);
@@ -146,7 +146,7 @@ public class ThreeDeeView extends ViewPart
           removeElement(child);
         }
 
-        viewer.removeElement(element);
+        world.removeElement(element);
       }
     }
   }
@@ -177,7 +177,7 @@ public class ThreeDeeView extends ViewPart
       {
         DescriptorView view = DescriptorView.INSTANCE.getValue();
         Set<ElementDescriptor> toBeHidden = view.getAllChecked(false);
-        viewer.filter(toBeHidden);
+        world.filter(toBeHidden);
       }
     }
 

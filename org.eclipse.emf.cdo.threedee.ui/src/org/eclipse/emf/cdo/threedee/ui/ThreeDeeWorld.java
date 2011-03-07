@@ -30,7 +30,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Control;
 
 import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
@@ -75,7 +74,7 @@ public class ThreeDeeWorld
 
   private Map<Element, Map<Element, ReferenceShape>> referenceShapes = new HashMap<Element, Map<Element, ReferenceShape>>();
 
-  private Composite container;
+  private Composite composite;
 
   private QueueRunner runner;
 
@@ -91,8 +90,8 @@ public class ThreeDeeWorld
 
   public ThreeDeeWorld(Composite parent)
   {
-    container = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
-    container.setLayout(new FillLayout());
+    composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
+    composite.setLayout(new FillLayout());
 
     runner = new UIQueueRunner(parent.getDisplay());
     runner.activate();
@@ -116,7 +115,7 @@ public class ThreeDeeWorld
 
   private void init()
   {
-    Frame frame = SWT_AWT.new_Frame(container);
+    Frame frame = SWT_AWT.new_Frame(composite);
 
     canvas = createCanvas(frame);
     universe = new SimpleUniverse(canvas);
@@ -249,9 +248,9 @@ public class ThreeDeeWorld
     viewingPlatform.getViewPlatformTransform().setTransform(transform);
   }
 
-  public Control getControl()
+  public Composite getComposite()
   {
-    return container;
+    return composite;
   }
 
   public void addElement(Element element)
@@ -294,6 +293,7 @@ public class ThreeDeeWorld
         }
 
         layout((ElementGroup)node, containerContainmentGroup);
+
         Element element = ((ElementGroup)node).getModel();
         Element containerElement = getContainerElement(element);
         if (containerElement != null)
@@ -411,7 +411,7 @@ public class ThreeDeeWorld
   public void dispose()
   {
     runner.deactivate();
-    container.dispose();
+    composite.dispose();
   }
 
   public boolean schedule(Runnable runnable)

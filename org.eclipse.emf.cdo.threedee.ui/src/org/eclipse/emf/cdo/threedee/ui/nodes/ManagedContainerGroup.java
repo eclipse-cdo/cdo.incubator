@@ -15,9 +15,9 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 /**
  * @author Eike Stepper
  */
-public class RootGroup extends ElementGroup
+public class ManagedContainerGroup extends ElementGroup
 {
-  public RootGroup(Element element)
+  public ManagedContainerGroup(Element element)
   {
     super(element);
   }
