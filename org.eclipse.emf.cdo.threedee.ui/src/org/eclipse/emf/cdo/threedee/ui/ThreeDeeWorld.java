@@ -256,49 +256,41 @@ public class ThreeDeeWorld
 
   public void addElement(Element element)
   {
-    if (elementGroups.containsKey(element))
+    if (!elementGroups.containsKey(element))
     {
-      return;
+      ElementGroup containerGroup = getContainerElementGroup(element);
+      ElementGroup group = createElementGroup(element);
+
+      ElementProvider provider = element.getProvider();
+      Map<Integer, Boolean> references = element.getReferences();
+      createChildren(group, provider, references);
+
+      addNode(group, containerGroup);
     }
-
-    ElementGroup containerGroup = getContainerElementGroup(element);
-    ElementGroup group = createElementGroup(element);
-
-    ElementProvider provider = element.getProvider();
-
-    Map<Integer, Boolean> references = element.getReferences();
-    createChildren(group, provider, references);
-
-    // it is important to add the parent at last, otherwise it would become alive and nodes cannot be added anymore
-    addNode(group, containerGroup);
   }
 
   public void removeElement(Element element)
   {
-    ElementGroup containmentGroup = elementGroups.remove(element);
-
     Element containerElement = getContainerElement(element);
-
     if (containerElement != null)
     {
       containerElement.getReferences().remove(element.getID());
     }
 
-    if (containmentGroup == null)
+    ElementGroup containmentGroup = elementGroups.remove(element);
+    if (containmentGroup != null)
     {
-      return;
-    }
+      ElementGroup containerContainmentGroup = getContainerElementGroup(element);
+      removeNode(containmentGroup, containerContainmentGroup);
+      clearReferenceNodes(element);
 
-    ElementGroup containerContainmentGroup = getContainerElementGroup(element);
-    removeNode(containmentGroup, containerContainmentGroup);
-    clearReferenceNodes(element);
+      if (containerContainmentGroup != null)
+      {
+        clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
 
-    if (containerContainmentGroup != null)
-    {
-      clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
-
-      updateReferences(containerElement);
-      layout(null, containerContainmentGroup);
+        updateReferences(containerElement);
+        layout(null, containerContainmentGroup);
+      }
     }
   }
 
@@ -314,7 +306,6 @@ public class ThreeDeeWorld
     {
       for (ReferenceShape shape : map.values())
       {
-
         universe.getLocale().removeBranchGraph((BranchGroup)shape.getParent().getParent());
       }
 
