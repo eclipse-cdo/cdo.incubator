@@ -15,6 +15,7 @@ import org.eclipse.emf.cdo.threedee.DescriptorView;
 import org.eclipse.emf.cdo.threedee.DescriptorView.CheckStateEvent;
 import org.eclipse.emf.cdo.threedee.Frontend;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.Element.CallEvent;
 import org.eclipse.emf.cdo.threedee.common.Element.TransmissionEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
@@ -117,6 +118,10 @@ public class ThreeDeeView extends ViewPart
       if (event instanceof TransmissionEvent)
       {
         world.showCall((Element)event.getSource(), ((TransmissionEvent)event).getReceiver());
+      }
+      else if (event instanceof CallEvent)
+      {
+        world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget());
       }
     }
 

@@ -4,6 +4,7 @@ import org.eclipse.emf.cdo.threedee.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Create;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Transmit;
@@ -67,6 +68,14 @@ public class Session extends Container<Element> implements ElementProvider
     synchronized (cache)
     {
       return elements.length == 0;
+    }
+  }
+
+  public Element[] getAllElements()
+  {
+    synchronized (cache)
+    {
+      return cache.values().toArray(new Element[cache.size()]);
     }
   }
 
@@ -142,6 +151,7 @@ public class Session extends Container<Element> implements ElementProvider
       break;
 
     case Call.TYPE:
+      handleCallEvent((Call)event);
       break;
 
     case Transmit.TYPE:
@@ -167,6 +177,16 @@ public class Session extends Container<Element> implements ElementProvider
     }
 
     addElement(element, event.isRoot());
+  }
+
+  private void handleCallEvent(Call event)
+  {
+    Element source = event.getSource();
+    Element target = event.getTarget();
+    String what = event.getWhat();
+    When when = event.getWhen();
+
+    target.fireCallEvent(source, what, when);
   }
 
   private void handleTransmitEvent(Transmit event)

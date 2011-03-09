@@ -18,9 +18,11 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayout;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
+import org.eclipse.emf.cdo.threedee.ui.nodes.CallShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 
+import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 import org.eclipse.net4j.util.concurrent.QueueRunner;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 import org.eclipse.net4j.util.ui.UIQueueRunner;
@@ -47,7 +49,9 @@ import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
+import javax.media.j3d.Geometry;
 import javax.media.j3d.GraphicsConfigTemplate3D;
+import javax.media.j3d.Group;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
@@ -64,8 +68,12 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
 /**
@@ -94,7 +102,7 @@ public class ThreeDeeWorld
 
   private Canvas3D canvas;
 
-  private boolean showCrossReferences = false;
+  private boolean showCrossReferences;
 
   public ThreeDeeWorld(Composite parent)
   {
@@ -135,6 +143,207 @@ public class ThreeDeeWorld
     setNominalTransform();
     frame.add(canvas);
     createPicking(canvas, scene);
+
+    // flashing1();
+    // flashing2();
+  }
+
+  @SuppressWarnings("unused")
+  private void flashing1()
+  {
+    final Random random = new Random(System.currentTimeMillis());
+    new Thread()
+    {
+      @Override
+      public void run()
+      {
+        while (isAlive())
+        {
+          ConcurrencyUtil.sleep(random.nextInt(500));
+
+          new Thread()
+          {
+            private List<CallShape> shapes = new ArrayList<CallShape>();
+
+            @Override
+            public void run()
+            {
+              while (isAlive())
+              {
+                Session[] sessions = Frontend.INSTANCE.getElements();
+                Session session = sessions[random.nextInt(sessions.length)];
+
+                Element rootElement = session.getRootElement();
+                flash(rootElement, random.nextInt(50));
+
+                for (final CallShape shape : shapes)
+                {
+                  schedule(new Runnable()
+                  {
+                    public void run()
+                    {
+                      shape.detach();
+                    }
+                  });
+
+                  ConcurrencyUtil.sleep(random.nextInt(20));
+                }
+              }
+            }
+
+            private void flash(Element element, int count)
+            {
+              if (count == 0)
+              {
+                return;
+              }
+
+              Set<Integer> ids = element.getReferences().keySet();
+              if (ids.isEmpty())
+              {
+                return;
+              }
+
+              Iterator<Integer> it = ids.iterator();
+
+              int id = 0;
+              int n = random.nextInt(ids.size());
+              while (n-- > 0)
+              {
+                id = it.next();
+              }
+
+              ElementProvider provider = element.getProvider();
+              Element target = provider.getElement(id);
+              if (target != null)
+              {
+                final CallShape shape = new CallShape(element, target);
+                Geometry geometry = getLineGeometry(element, target);
+                shape.setGeometry(geometry);
+                shapes.add(shape);
+
+                schedule(new Runnable()
+                {
+                  public void run()
+                  {
+                    universe.addBranchGraph(shape);
+                  }
+                });
+
+                ConcurrencyUtil.sleep(random.nextInt(20));
+                flash(target, --count);
+              }
+            }
+          }.start();
+        }
+      }
+    }.start();
+  }
+
+  @SuppressWarnings("unused")
+  private void flashing2()
+  {
+    final Random random = new Random(System.currentTimeMillis());
+    new Thread()
+    {
+      @Override
+      public void run()
+      {
+        while (isAlive())
+        {
+          ConcurrencyUtil.sleep(500L + random.nextInt(2000));
+
+          new Thread()
+          {
+            private List<CallShape> shapes = new ArrayList<CallShape>();
+
+            @Override
+            public void run()
+            {
+              while (isAlive())
+              {
+                Session[] sessions = Frontend.INSTANCE.getElements();
+                Session session = sessions[random.nextInt(sessions.length)];
+
+                Element[] elements = session.getAllElements();
+                Element rootElement = elements[random.nextInt(elements.length)];
+
+                flash(elements, rootElement, random.nextInt(50));
+
+                for (final CallShape shape : shapes)
+                {
+                  schedule(new Runnable()
+                  {
+                    public void run()
+                    {
+                      shape.detach();
+                    }
+                  });
+
+                  ConcurrencyUtil.sleep(random.nextInt(100));
+                }
+              }
+            }
+
+            private void flash(Element[] elements, Element element, int count)
+            {
+              if (count == 0)
+              {
+                return;
+              }
+
+              Element target;
+
+              Set<Integer> ids = element.getReferences().keySet();
+              if (ids.isEmpty())
+              {
+                if (random.nextInt(5) == 0)
+                {
+                  target = elements[random.nextInt(elements.length)];
+                }
+                else
+                {
+                  return;
+                }
+              }
+              else
+              {
+                Iterator<Integer> it = ids.iterator();
+
+                int id = 0;
+                int n = random.nextInt(ids.size());
+                while (n-- > 0)
+                {
+                  id = it.next();
+                }
+
+                ElementProvider provider = element.getProvider();
+                target = provider.getElement(id);
+              }
+
+              if (target != null)
+              {
+                final CallShape shape = new CallShape(element, target);
+                Geometry geometry = getLineGeometry(element, target);
+                shape.setGeometry(geometry);
+                shapes.add(shape);
+
+                schedule(new Runnable()
+                {
+                  public void run()
+                  {
+                    universe.addBranchGraph(shape);
+                  }
+                });
+
+                ConcurrencyUtil.sleep(random.nextInt(20));
+                flash(elements, target, --count);
+              }
+            }
+          }.start();
+        }
+      }
+    }.start();
   }
 
   private Canvas3D createCanvas(Frame frame)
@@ -156,7 +365,6 @@ public class ThreeDeeWorld
 
     sphereTransformGroup = createTransformGroup();
     scene.addChild(sphereTransformGroup);
-    ThreeDeeUtil.enablePicking(scene);
     return scene;
   }
 
@@ -516,8 +724,9 @@ public class ThreeDeeWorld
           }
         }
 
-        updateReference(element, referenceElement, referenceShape);
+        referenceShape.setGeometry(getLineGeometry(element, referenceElement));
       }
+
       updateReferences(referenceElement);
     }
   }
@@ -525,29 +734,25 @@ public class ThreeDeeWorld
   private ReferenceShape createAndSetReferenceShape(Element element, Map<Integer, Boolean> references, int elementID,
       Map<Element, ReferenceShape> map, Element referenceElement)
   {
-    ReferenceShape referenceShape = createReferenceShape(element, referenceElement, references.get(elementID));
+    boolean containment = references.get(elementID);
+    ReferenceShape referenceShape = new ReferenceShape(element, referenceElement, containment);
     addReferenceShape(referenceShape);
     map.put(referenceElement, referenceShape);
     return referenceShape;
   }
 
-  private ReferenceShape createReferenceShape(Element from, Element to, boolean containment)
-  {
-    return new ReferenceShape(from, to, containment);
-  }
-
-  private void updateReference(Element from, Element to, ReferenceShape referenceShape)
+  private Geometry getLineGeometry(Element from, Element to)
   {
     ElementGroup fromGroup = elementGroups.get(from);
     if (fromGroup == null)
     {
-      return;
+      return null;
     }
 
     ElementGroup toGroup = elementGroups.get(to);
     if (toGroup == null)
     {
-      return;
+      return null;
     }
 
     Node fromShape = fromGroup.getShape();
@@ -564,7 +769,7 @@ public class ThreeDeeWorld
     points[1] = toPosition;
     LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
     lineArray.setCoordinates(0, points);
-    referenceShape.setGeometry(lineArray);
+    return lineArray;
   }
 
   private void positionNewObject(TransformGroup transformGroup, Node node)
@@ -585,13 +790,19 @@ public class ThreeDeeWorld
     return transformGroup;
   }
 
-  private void addChild(javax.media.j3d.Group parent, javax.media.j3d.Node child)
+  private void addChild(Group parent, Node child)
   {
     parent.addChild(child);
   }
 
   public void showCall(Element source, Element target)
   {
+    if (source == null)
+    {
+      // Can happen for call events
+      return;
+    }
+
     System.out.println("Source: " + source);
     System.out.println("Target: " + target);
 
@@ -600,8 +811,9 @@ public class ThreeDeeWorld
     ReferenceShape referenceShape = references.get(target);
     if (referenceShape == null)
     {
-      referenceShape = createReferenceShape(source, target, true);
+      referenceShape = new ReferenceShape(source, target, true);
     }
+
     referenceShape.blink();
   }
 

@@ -60,6 +60,8 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
     Shape3D shape = new Shape3D();
     shape.setCapability(Shape3D.ALLOW_GEOMETRY_READ);
     shape.setCapability(Shape3D.ALLOW_GEOMETRY_WRITE);
+    shape.setCapability(Shape3D.ALLOW_APPEARANCE_READ);
+    shape.setCapability(Shape3D.ALLOW_APPEARANCE_WRITE);
     shape.setAppearance(appearance);
     return shape;
   }
@@ -67,6 +69,10 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
   private static Appearance createAppearance(boolean containment)
   {
     Appearance appearance = ThreeDeeUtil.getDefaultAppearance(containment ? Color.white : Color.gray);
+    appearance.setCapability(Appearance.ALLOW_LINE_ATTRIBUTES_READ);
+    appearance.setCapability(Appearance.ALLOW_LINE_ATTRIBUTES_WRITE);
+    appearance.setCapability(Appearance.ALLOW_COLORING_ATTRIBUTES_READ);
+    appearance.setCapability(Appearance.ALLOW_COLORING_ATTRIBUTES_WRITE);
 
     TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
     if (transparencyAttributes == null)
@@ -76,7 +82,7 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
     }
 
     transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
-    transparencyAttributes.setTransparency(0.5f);
+    transparencyAttributes.setTransparency(0.75f);
     return appearance;
   }
 
@@ -95,7 +101,8 @@ public class ReferenceShape extends ThreeDeeNode<Pair<Element, Element>>
       lineAttributes = new LineAttributes();
       appearance.setLineAttributes(lineAttributes);
     }
-    final float lineWidth = lineAttributes.getLineWidth();
+
+    float lineWidth = lineAttributes.getLineWidth();
     lineAttributes.setLineWidth(lineWidth * 10);
     ColoringAttributes coloringAttributes = appearance.getColoringAttributes();
 

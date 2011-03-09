@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common;
 
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change.ChangeInfo.Attribute;
@@ -465,6 +466,13 @@ public final class Element extends Container<Element>
     return true;
   }
 
+  public void fireCallEvent(Element source, String what, When when)
+  {
+    IEvent event = new CallEvent(source, what, when);
+    System.err.println(event);
+    fireEvent(event);
+  }
+
   public void fireTransmissionEvent(Element receiver)
   {
     IEvent event = new TransmissionEvent(receiver);
@@ -476,6 +484,55 @@ public final class Element extends Container<Element>
   public String toString()
   {
     return descriptor.getLabel(this);
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public final class CallEvent extends Event
+  {
+    private static final long serialVersionUID = 1L;
+
+    private Element target;
+
+    private String what;
+
+    private When when;
+
+    private CallEvent(Element target, String what, When when)
+    {
+      super(Element.this);
+      this.target = target;
+      this.what = what;
+      this.when = when;
+    }
+
+    @Override
+    public Element getSource()
+    {
+      return (Element)super.getSource();
+    }
+
+    public Element getTarget()
+    {
+      return target;
+    }
+
+    public String getWhat()
+    {
+      return what;
+    }
+
+    public When getWhen()
+    {
+      return when;
+    }
+
+    @Override
+    public String toString()
+    {
+      return "CALL " + getTarget();
+    }
   }
 
   /**
