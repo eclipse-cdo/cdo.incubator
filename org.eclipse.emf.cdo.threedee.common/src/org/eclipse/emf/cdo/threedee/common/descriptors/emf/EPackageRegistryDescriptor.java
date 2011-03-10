@@ -34,7 +34,7 @@ public class EPackageRegistryDescriptor extends EMFDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     EPackage.Registry packageRegistry = (EPackage.Registry)object;
     Collection<Object> values = packageRegistry.values();

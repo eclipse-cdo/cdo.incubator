@@ -210,6 +210,11 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
   @SuppressWarnings("restriction")
   private void called(Object sourceObject, Object targetObject, String what, When when)
   {
+    if (ElementDescriptor.INITIALIZING_ELEMENT.get())
+    {
+      return;
+    }
+
     try
     {
       Element targetElement = getElement(targetObject, false);

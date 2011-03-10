@@ -26,9 +26,9 @@ public class EAttributeDescriptor extends EStructuralFeatureDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EAttribute eAttribute = (EAttribute)object;
     element.setAttribute("defaultValue", eAttribute.getDefaultValueLiteral());

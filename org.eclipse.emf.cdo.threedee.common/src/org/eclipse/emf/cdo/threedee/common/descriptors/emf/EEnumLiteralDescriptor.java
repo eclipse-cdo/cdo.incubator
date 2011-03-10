@@ -26,9 +26,9 @@ public class EEnumLiteralDescriptor extends ENamedElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EEnumLiteral eEnumLiteral = (EEnumLiteral)object;
     element.setNameAttribute(eEnumLiteral.getName());

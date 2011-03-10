@@ -26,7 +26,7 @@ public class DBSchemaDescriptor extends Net4jDBDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IDBSchema schema = (IDBSchema)object;
     element.setNameAttribute(schema.getName());

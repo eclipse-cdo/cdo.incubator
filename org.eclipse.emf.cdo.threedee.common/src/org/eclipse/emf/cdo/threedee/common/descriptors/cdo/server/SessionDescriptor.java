@@ -25,7 +25,7 @@ public class SessionDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
     element.setIDAttribute(session.getSessionID());

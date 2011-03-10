@@ -28,7 +28,7 @@ public class RevisionCacheDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     InternalCDORevisionCache revisionCache = (InternalCDORevisionCache)object;
     for (List<CDORevision> list : revisionCache.getAllRevisions().values())

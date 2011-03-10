@@ -29,7 +29,7 @@ public class SocketChannelDescriptor extends Net4jDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     // SocketChannel socketChannel = (SocketChannel)object;
     // element.setIDAttribute(socketChannel.getID());

@@ -26,7 +26,7 @@ public class AcceptorDescriptor extends Net4jDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     Acceptor acceptor = (Acceptor)object;
     element.addReferences(true, acceptor.getAcceptedConnectors());

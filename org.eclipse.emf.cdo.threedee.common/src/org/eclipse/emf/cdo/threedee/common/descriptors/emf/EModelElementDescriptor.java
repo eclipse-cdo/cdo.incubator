@@ -29,7 +29,7 @@ public class EModelElementDescriptor extends EMFDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     EModelElement eModelElement = (EModelElement)object;
     element.addReferences(true, eModelElement.getEAnnotations());

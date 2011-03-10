@@ -28,7 +28,7 @@ public class RevisionManagerDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     InternalCDORevisionManager revisionManager = (InternalCDORevisionManager)object;
     element.addReference(true, revisionManager.getCache());

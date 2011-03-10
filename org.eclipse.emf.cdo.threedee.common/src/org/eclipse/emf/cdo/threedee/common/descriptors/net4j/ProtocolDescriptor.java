@@ -26,7 +26,7 @@ public class ProtocolDescriptor extends Net4jDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     Protocol<?> protocol = (Protocol<?>)object;
     element.setNameAttribute(protocol.getType());

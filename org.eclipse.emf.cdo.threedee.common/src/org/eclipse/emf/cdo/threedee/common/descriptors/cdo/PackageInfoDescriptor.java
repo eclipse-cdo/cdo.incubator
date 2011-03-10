@@ -32,7 +32,7 @@ public class PackageInfoDescriptor extends CDODescriptor
 
   @Override
   @SuppressWarnings("restriction")
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl packageInfo = (org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl)object;
     element.setIDAttribute(packageInfo.getPackageURI());

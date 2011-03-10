@@ -29,7 +29,7 @@ public class RepositoryDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     InternalRepository repository = (InternalRepository)object;
     element.setIDAttribute(repository.getUUID());

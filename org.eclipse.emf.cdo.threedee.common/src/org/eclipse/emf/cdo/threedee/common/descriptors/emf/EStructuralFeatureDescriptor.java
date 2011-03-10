@@ -26,9 +26,9 @@ public class EStructuralFeatureDescriptor extends ETypedElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EStructuralFeature eStructuralFeature = (EStructuralFeature)object;
     element.setIDAttribute(eStructuralFeature.getFeatureID());

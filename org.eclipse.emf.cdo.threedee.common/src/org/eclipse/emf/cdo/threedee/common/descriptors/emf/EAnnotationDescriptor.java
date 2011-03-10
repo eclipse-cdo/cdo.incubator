@@ -26,9 +26,9 @@ public class EAnnotationDescriptor extends EModelElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EAnnotation eAnnotation = (EAnnotation)object;
     element.setKeyAttribute(eAnnotation.getSource());

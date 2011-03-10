@@ -10,8 +10,6 @@
  */
 package org.eclipse.emf.cdo.threedee.agent;
 
-import org.eclipse.net4j.buffer.IBuffer;
-
 /**
  * @author Eike Stepper
  */
@@ -19,14 +17,11 @@ public aspect Aspect
 {
   pointcut publicMethods() :
     !execution(* org.eclipse.net4j.buffer.IBufferProvider.*(..)) &&
-    !execution(public * *.get*()) &&
-    !execution(public boolean *.is*()) &&
-    !execution(public boolean *.has*()) &&
     !execution(public String *.toString()) &&
     !execution(public boolean *.equals(Object)) &&
     !execution(public int *.hashCode()) &&
     (
-      execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.*(..)) && !execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.values()) ||
+      execution(public * org.eclipse.emf.ecore.impl.EPackageRegistryImpl.*(..)) ||
       execution(public * org.eclipse.net4j.util.container.ManagedContainer.*(..)) ||
 
       execution(public * org.eclipse.emf.internal.cdo.session.CDOSessionImpl.*(..)) ||
@@ -34,7 +29,7 @@ public aspect Aspect
       execution(public * org.eclipse.emf.internal.cdo.view.CDOViewImpl.*(..)) ||
       execution(public * org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl.*(..)) ||
       execution(public * org.eclipse.emf.internal.cdo.transaction.CDOSavepointImpl.*(..)) ||
-      execution(public * org.eclipse.emf.internal.cdo.CDOObjectImpl.*(..)) && !execution(public * org.eclipse.emf.internal.cdo.CDOObjectImpl.cdo*()) ||
+      execution(public * org.eclipse.emf.internal.cdo.CDOObjectImpl.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.server.Repository.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.server.CommitManager.*(..)) ||
@@ -50,7 +45,7 @@ public aspect Aspect
       execution(public * org.eclipse.emf.cdo.internal.server.mem.MEMStoreChunkReader.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchManagerImpl.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.getBranches(boolean)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.branch.CDOBranchImpl.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionManagerImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.revision.CDORevisionCacheImpl.*(..)) ||
@@ -60,13 +55,13 @@ public aspect Aspect
 
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageRegistryImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageUnitImpl.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) && !execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.doGetEPackage(boolean)) ||
+      execution(public * org.eclipse.emf.cdo.internal.common.model.CDOPackageInfoImpl.*(..)) ||
       execution(public * org.eclipse.emf.cdo.internal.common.model.CDOClassInfoImpl.*(..)) ||
 
       execution(public * org.eclipse.emf.cdo.spi.server.Store.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.internal.db.DBStore.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.horizontal.AbstractHorizontalClassMapping.*(..)) ||
-      execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.*(..)) && !execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.doGetClassMappings(boolean)) ||
+      execution(public * org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.internal.db.MetaDataManager.*(..)) ||
       execution(public * org.eclipse.emf.cdo.server.db.mapping.AbstractTypeMapping.*(..)) ||
 
@@ -77,7 +72,7 @@ public aspect Aspect
       execution(public * org.eclipse.net4j.internal.db.ddl.DBTable.*(..)) ||
 
       execution(public * org.eclipse.spi.net4j.Acceptor.*(..)) ||
-      execution(public * org.eclipse.spi.net4j.Channel.*(..)) && !execution(public * org.eclipse.spi.net4j.Channel.handleBufferFromMultiplexer(IBuffer)) ||
+      execution(public * org.eclipse.spi.net4j.Channel.*(..)) ||
       execution(public * org.eclipse.spi.net4j.ChannelMultiplexer.*(..)) ||
       execution(public * org.eclipse.spi.net4j.Connector.*(..)) ||
       execution(public * org.eclipse.spi.net4j.Protocol.*(..)) ||

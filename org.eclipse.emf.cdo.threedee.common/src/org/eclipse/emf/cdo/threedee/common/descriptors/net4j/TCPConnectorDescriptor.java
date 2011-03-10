@@ -27,9 +27,9 @@ public class TCPConnectorDescriptor extends ConnectorDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     org.eclipse.net4j.internal.tcp.TCPConnector connector = (org.eclipse.net4j.internal.tcp.TCPConnector)object;
     Socket socket = connector.getSocketChannel().socket();

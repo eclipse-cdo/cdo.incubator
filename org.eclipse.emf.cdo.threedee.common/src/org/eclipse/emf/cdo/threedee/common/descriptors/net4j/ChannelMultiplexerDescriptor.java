@@ -26,7 +26,7 @@ public class ChannelMultiplexerDescriptor extends Net4jDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     ChannelMultiplexer channelMultiplexer = (ChannelMultiplexer)object;
     element.setAttribute("location", channelMultiplexer.getLocation());

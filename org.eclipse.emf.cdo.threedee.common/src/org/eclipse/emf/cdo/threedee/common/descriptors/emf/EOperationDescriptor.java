@@ -26,9 +26,9 @@ public class EOperationDescriptor extends ETypedElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EOperation eOperation = (EOperation)object;
     element.addReferences(true, eOperation.getEParameters());

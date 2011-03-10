@@ -25,7 +25,7 @@ public class BranchDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     InternalCDOBranch branch = (InternalCDOBranch)object;
     element.setIDAttribute(branch.getID());

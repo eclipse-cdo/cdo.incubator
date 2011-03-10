@@ -26,9 +26,9 @@ public class ConnectorDescriptor extends ChannelMultiplexerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     Connector connector = (Connector)object;
     element.setAttribute("state", connector.getState());

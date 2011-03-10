@@ -25,7 +25,7 @@ public class PackageRegistryDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     CDOPackageRegistry packageRegistry = (CDOPackageRegistry)object;
     element.addReferences(true, packageRegistry.getPackageUnits());

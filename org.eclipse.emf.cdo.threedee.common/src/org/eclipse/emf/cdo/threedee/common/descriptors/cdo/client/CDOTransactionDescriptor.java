@@ -25,9 +25,9 @@ public class CDOTransactionDescriptor extends CDOViewDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     // org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl transaction =
     // (org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl)object;

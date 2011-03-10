@@ -26,7 +26,7 @@ public class DBIndexDescriptor extends Net4jDBDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IDBIndex index = (IDBIndex)object;
     element.setNameAttribute(index.getName());

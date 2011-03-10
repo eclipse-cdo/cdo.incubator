@@ -29,7 +29,7 @@ public class ViewDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     org.eclipse.emf.cdo.internal.server.View view = (org.eclipse.emf.cdo.internal.server.View)object;
     element.setIDAttribute(view.getViewID());

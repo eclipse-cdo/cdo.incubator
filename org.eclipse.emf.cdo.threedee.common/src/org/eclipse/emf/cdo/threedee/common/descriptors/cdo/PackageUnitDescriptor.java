@@ -28,7 +28,7 @@ public class PackageUnitDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     CDOPackageUnit packageUnit = (CDOPackageUnit)object;
     element.setIDAttribute(packageUnit.getID());

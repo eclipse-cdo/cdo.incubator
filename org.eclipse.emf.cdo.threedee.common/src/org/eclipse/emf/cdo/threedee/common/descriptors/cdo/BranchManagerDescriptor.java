@@ -28,7 +28,7 @@ public class BranchManagerDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     InternalCDOBranchManager branchManager = (InternalCDOBranchManager)object;
     element.addReference(true, branchManager.getMainBranch());

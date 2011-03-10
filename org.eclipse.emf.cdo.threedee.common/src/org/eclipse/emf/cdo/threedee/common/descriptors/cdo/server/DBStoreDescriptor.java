@@ -27,9 +27,9 @@ public class DBStoreDescriptor extends StoreDescriptor
 
   @Override
   @SuppressWarnings("restriction")
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     IDBStore store = (IDBStore)object;
     IMappingStrategy mappingStrategy = store.getMappingStrategy();

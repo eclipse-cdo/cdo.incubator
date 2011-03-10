@@ -26,7 +26,7 @@ public class DBTableDescriptor extends Net4jDBDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IDBTable table = (IDBTable)object;
     element.setNameAttribute(table.getName());

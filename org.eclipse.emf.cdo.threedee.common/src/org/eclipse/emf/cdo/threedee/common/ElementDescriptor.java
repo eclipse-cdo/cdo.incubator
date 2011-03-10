@@ -21,6 +21,15 @@ import java.util.Map;
  */
 public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 {
+  public static final ThreadLocal<Boolean> INITIALIZING_ELEMENT = new ThreadLocal<Boolean>()
+  {
+    @Override
+    protected Boolean initialValue()
+    {
+      return false;
+    }
+  };
+
   protected static final Class<ElementDescriptor> FOLDER_TYPE = ElementDescriptor.class;
 
   private static final Color[] COLORS = initColors();
@@ -109,7 +118,20 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     return LifecycleUtil.isActive(object);
   }
 
-  public abstract void initElement(Object object, Element element);
+  public void initElement(Object object, Element element)
+  {
+    try
+    {
+      INITIALIZING_ELEMENT.set(true);
+      doInitElement(object, element);
+    }
+    finally
+    {
+      INITIALIZING_ELEMENT.set(false);
+    }
+  }
+
+  protected abstract void doInitElement(Object object, Element element);
 
   public boolean isHomogenous()
   {

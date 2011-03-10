@@ -25,7 +25,7 @@ public class CDODescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
   }
 }

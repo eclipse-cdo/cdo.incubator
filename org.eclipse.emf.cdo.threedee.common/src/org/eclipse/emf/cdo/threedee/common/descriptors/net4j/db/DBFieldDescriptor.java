@@ -26,7 +26,7 @@ public class DBFieldDescriptor extends Net4jDBDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IDBField field = (IDBField)object;
     element.setNameAttribute(field.getName());

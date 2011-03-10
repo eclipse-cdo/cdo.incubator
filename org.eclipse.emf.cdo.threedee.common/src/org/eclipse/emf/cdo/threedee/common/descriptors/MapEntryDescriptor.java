@@ -29,7 +29,7 @@ public class MapEntryDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     Map.Entry<?, ?> mapEntry = (Map.Entry<?, ?>)object;
     element.setKeyAttribute(mapEntry.getKey());

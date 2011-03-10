@@ -25,7 +25,7 @@ public class CDOViewDescriptor extends CDOClientDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     org.eclipse.emf.internal.cdo.view.CDOViewImpl view = (org.eclipse.emf.internal.cdo.view.CDOViewImpl)object;
     element.addReferences(true, view.getObjects().values());

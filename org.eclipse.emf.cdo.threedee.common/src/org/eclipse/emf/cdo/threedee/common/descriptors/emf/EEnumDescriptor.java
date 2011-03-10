@@ -26,9 +26,9 @@ public class EEnumDescriptor extends EClassifierDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EEnum eEnum = (EEnum)object;
     element.addReferences(true, eEnum.getELiterals());

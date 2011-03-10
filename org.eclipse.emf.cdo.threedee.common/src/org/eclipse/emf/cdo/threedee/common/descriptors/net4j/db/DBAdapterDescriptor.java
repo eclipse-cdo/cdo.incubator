@@ -26,7 +26,7 @@ public class DBAdapterDescriptor extends Net4jDBDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IDBAdapter adapter = (IDBAdapter)object;
     element.setNameAttribute(adapter.getName());

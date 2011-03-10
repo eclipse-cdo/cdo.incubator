@@ -27,7 +27,7 @@ public class CollectionDescriptor extends ElementDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     Collection<?> collection = (Collection<?>)object;
     element.addReferences(true, collection);

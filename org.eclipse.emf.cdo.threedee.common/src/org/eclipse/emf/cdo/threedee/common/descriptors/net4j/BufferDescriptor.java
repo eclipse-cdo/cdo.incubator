@@ -28,7 +28,7 @@ public class BufferDescriptor extends Net4jDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IBuffer buffer = (IBuffer)object;
     element.setIDAttribute(System.identityHashCode(buffer));

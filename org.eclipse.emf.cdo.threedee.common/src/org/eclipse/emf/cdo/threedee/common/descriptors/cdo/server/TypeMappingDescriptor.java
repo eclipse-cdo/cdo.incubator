@@ -25,7 +25,7 @@ public class TypeMappingDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     ITypeMapping typeMapping = (ITypeMapping)object;
     element.setKeyAttribute(typeMapping.getFeature().getName());

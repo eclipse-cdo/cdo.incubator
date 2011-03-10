@@ -25,7 +25,7 @@ public class ClassMappingDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IClassMapping classMapping = (IClassMapping)object;
     element.setKeyAttribute(classMapping.getEClass().getName());

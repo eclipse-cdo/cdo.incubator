@@ -25,7 +25,7 @@ public class CDOSavepointDescriptor extends CDOClientDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     CDOSavepoint savepoint = (CDOSavepoint)object;
     CDOSavepoint previousSavepoint = savepoint.getPreviousSavepoint();

@@ -26,9 +26,9 @@ public class EReferenceDescriptor extends EStructuralFeatureDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EReference eReference = (EReference)object;
     element.setAttribute("containment", eReference.isContainment());

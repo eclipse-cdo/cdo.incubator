@@ -25,9 +25,9 @@ public class TCPAcceptorDescriptor extends AcceptorDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     org.eclipse.net4j.internal.tcp.TCPAcceptor acceptor = (org.eclipse.net4j.internal.tcp.TCPAcceptor)object;
     element.setLabelAttribute(acceptor.getAddress() + ":" + acceptor.getPort());

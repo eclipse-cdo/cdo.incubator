@@ -30,7 +30,7 @@ public class MappingStrategyDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy mappingStrategy //
     = (org.eclipse.emf.cdo.server.internal.db.mapping.AbstractMappingStrategy)object;

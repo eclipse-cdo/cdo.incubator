@@ -26,9 +26,9 @@ public class EClassDescriptor extends EClassifierDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
-    super.initElement(object, element);
+    super.doInitElement(object, element);
 
     EClass eClass = (EClass)object;
     element.addReferences(true, eClass.getEStructuralFeatures());

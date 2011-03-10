@@ -26,7 +26,7 @@ public class ChannelDescriptor extends Net4jDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     Channel channel = (Channel)object;
     element.setIDAttribute(channel.getID());

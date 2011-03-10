@@ -28,7 +28,7 @@ public class StoreDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IStore store = (IStore)object;
     element.setAttribute("supportedChangeFormats", store.getSupportedChangeFormats());

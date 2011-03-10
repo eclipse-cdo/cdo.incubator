@@ -28,7 +28,7 @@ public class RevisionDescriptor extends CDODescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     CDORevision revision = (CDORevision)object;
     element.setKeyAttribute(revision);

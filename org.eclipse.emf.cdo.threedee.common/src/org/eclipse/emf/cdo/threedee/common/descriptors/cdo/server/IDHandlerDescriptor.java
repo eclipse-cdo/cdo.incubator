@@ -28,7 +28,7 @@ public class IDHandlerDescriptor extends CDOServerDescriptor
   }
 
   @Override
-  public void initElement(Object object, Element element)
+  protected void doInitElement(Object object, Element element)
   {
     IIDHandler idHandler = (IIDHandler)object;
     element.addReference(false, idHandler.getDBType());
