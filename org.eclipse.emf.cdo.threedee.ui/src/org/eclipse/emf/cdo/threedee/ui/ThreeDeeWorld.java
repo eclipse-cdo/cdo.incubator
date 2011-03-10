@@ -147,7 +147,7 @@ public class ThreeDeeWorld
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    // intro();
+    intro();
 
     // flashing1();
     // flashing2();
@@ -384,11 +384,13 @@ public class ThreeDeeWorld
   private void createLights(BranchGroup group)
   {
     Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
-    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
     Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
     DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
+
+    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
     light1.setInfluencingBounds(bounds);
     group.addChild(light1);
+
     AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
     light2.setInfluencingBounds(bounds);
     group.addChild(light2);

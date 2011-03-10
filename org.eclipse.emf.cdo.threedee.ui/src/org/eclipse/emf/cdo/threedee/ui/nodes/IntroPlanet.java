@@ -28,14 +28,17 @@ import javax.media.j3d.Geometry;
 import javax.media.j3d.Material;
 import javax.media.j3d.RotationInterpolator;
 import javax.media.j3d.Shape3D;
+import javax.media.j3d.SpotLight;
 import javax.media.j3d.Text3D;
 import javax.media.j3d.Texture;
 import javax.media.j3d.TextureAttributes;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
+import javax.vecmath.Vector3f;
 
 import java.awt.Font;
 
@@ -53,6 +56,18 @@ public class IntroPlanet extends BranchGroup implements IColors
   public IntroPlanet(Canvas3D canvas)
   {
     this.canvas = canvas;
+
+    SpotLight light = new SpotLight();
+    light.setColor(new Color3f(0.7f, 0.8f, 0.8f));
+    light.setPosition(new Point3f(0.0f, RADIUS, -RADIUS));
+    light.setDirection(new Vector3f(0.0f, 0.0f, 1.0f));
+    light.setSpreadAngle((float)(0.25f * Math.PI));
+
+    // DirectionalLight light1 = new DirectionalLight(color, direction);
+
+    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, RADIUS, 0.0), RADIUS);
+    light.setInfluencingBounds(bounds);
+    addChild(light);
 
     TransformGroup spin = new TransformGroup();
     spin.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
@@ -72,7 +87,7 @@ public class IntroPlanet extends BranchGroup implements IColors
 
     spin.addChild(createText("CDO Model Repository", -1d));
     spin.addChild(createText("EclipseCon 2011", -2d));
-    spin.addChild(createText("Arts By:", -3d));
+    // spin.addChild(createText("Art By:", -3d));
     spin.addChild(createText("Eike Stepper", -4d));
     spin.addChild(createText("Martin Flügge", -5d));
 
@@ -98,7 +113,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     Appearance appearance = new Appearance();
     // setTexture(appearance, "comet.jpg");
 
-    Material material = new Material(black, gray, darkGray, white, 64.0f);
+    Material material = new Material(black, black, white, yellow, 64.0f);
     material.setLightingEnable(true);
     appearance.setMaterial(material);
 
@@ -107,6 +122,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     text3D.setCapability(Geometry.ALLOW_INTERSECT);
 
     Shape3D textShape = new Shape3D(text3D, appearance);
+
     Point3d upper = new Point3d();
     Point3d lower = new Point3d();
     BoundingBox bounds = (BoundingBox)textShape.getBounds();
