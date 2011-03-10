@@ -147,7 +147,7 @@ public class ThreeDeeWorld
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    intro();
+    // intro();
 
     // flashing1();
     // flashing2();
@@ -865,5 +865,29 @@ public class ThreeDeeWorld
   public boolean isShowCrossReferences()
   {
     return showCrossReferences;
+  }
+
+  public void setSelected(Element element, boolean selected)
+  {
+    ElementGroup elementGroup = elementGroups.get(element);
+    if (elementGroup != null)
+    {
+      elementGroup.selected(selected);
+    }
+  }
+
+  public void setSelected(ElementDescriptor descriptor)
+  {
+    for (Element element : elementGroups.keySet())
+    {
+      if (element.getDescriptor().equals(descriptor))
+      {
+        setSelected(element, true);
+      }
+      else
+      {
+        setSelected(element, false);
+      }
+    }
   }
 }

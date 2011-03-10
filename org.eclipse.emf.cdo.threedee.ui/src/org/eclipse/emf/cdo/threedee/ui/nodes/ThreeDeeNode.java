@@ -14,6 +14,7 @@ import com.sun.j3d.utils.geometry.Primitive;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
+import javax.media.j3d.Material;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Shape3D;
@@ -51,6 +52,11 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
     transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_READ);
     transformGroup.setCapability(TransformGroup.ALLOW_CHILDREN_WRITE);
     transformGroup.addChild(shape);
+
+    appearance.setCapability(Appearance.ALLOW_MATERIAL_READ);
+    appearance.setCapability(Appearance.ALLOW_MATERIAL_WRITE);
+    appearance.getMaterial().setCapability(Material.ALLOW_COMPONENT_READ);
+    appearance.getMaterial().setCapability(Material.ALLOW_COMPONENT_WRITE);
     super.addChild(transformGroup);
   }
 

@@ -83,7 +83,7 @@ public class DescriptorView extends ViewPart
     Set<ElementDescriptor> result = new HashSet<ElementDescriptor>();
     for (ElementDescriptor descriptor : INPUT.values())
     {
-      if (viewer.getChecked(descriptor) == checked)
+      if (getViewer().getChecked(descriptor) == checked)
       {
         result.add(descriptor);
       }
@@ -96,15 +96,15 @@ public class DescriptorView extends ViewPart
   {
     try
     {
-      viewer.removeCheckStateListener(checkStateListener);
+      getViewer().removeCheckStateListener(checkStateListener);
       for (ElementDescriptor descriptor : INPUT.values())
       {
-        viewer.setChecked(descriptor, checked);
+        getViewer().setChecked(descriptor, checked);
       }
     }
     finally
     {
-      viewer.addCheckStateListener(checkStateListener);
+      getViewer().addCheckStateListener(checkStateListener);
     }
 
     notifier.fireCheckStateChangedEvent();
@@ -113,12 +113,12 @@ public class DescriptorView extends ViewPart
   @Override
   public void createPartControl(Composite parent)
   {
-    viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-    viewer.setContentProvider(new ViewContentProvider());
-    viewer.setLabelProvider(new LabelProvider(viewer.getControl().getDisplay()));
-    viewer.setSorter(new NameSorter());
-    viewer.setInput(INPUT);
-    viewer.addCheckStateListener(checkStateListener);
+    setViewer(new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL));
+    getViewer().setContentProvider(new ViewContentProvider());
+    getViewer().setLabelProvider(new LabelProvider(getViewer().getControl().getDisplay()));
+    getViewer().setSorter(new NameSorter());
+    getViewer().setInput(INPUT);
+    getViewer().addCheckStateListener(checkStateListener);
 
     setAllChecked(true);
     INSTANCE.setValue(this);
@@ -127,7 +127,7 @@ public class DescriptorView extends ViewPart
   @Override
   public void setFocus()
   {
-    viewer.getControl().setFocus();
+    getViewer().getControl().setFocus();
   }
 
   @Override
@@ -135,6 +135,16 @@ public class DescriptorView extends ViewPart
   {
     INSTANCE.setValue(null);
     super.dispose();
+  }
+
+  public void setViewer(CheckboxTreeViewer viewer)
+  {
+    this.viewer = viewer;
+  }
+
+  public CheckboxTreeViewer getViewer()
+  {
+    return viewer;
   }
 
   /**
@@ -303,13 +313,13 @@ public class DescriptorView extends ViewPart
       {
         try
         {
-          viewer.removeCheckStateListener(checkStateListener);
+          getViewer().removeCheckStateListener(checkStateListener);
           ElementDescriptor descriptor = (ElementDescriptor)event.getElement();
-          viewer.setSubtreeChecked(descriptor, event.getChecked());
+          getViewer().setSubtreeChecked(descriptor, event.getChecked());
         }
         finally
         {
-          viewer.addCheckStateListener(checkStateListener);
+          getViewer().addCheckStateListener(checkStateListener);
         }
       }
 

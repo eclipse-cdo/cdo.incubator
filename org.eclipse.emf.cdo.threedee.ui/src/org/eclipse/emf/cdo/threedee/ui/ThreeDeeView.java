@@ -32,6 +32,9 @@ import org.eclipse.net4j.util.ui.actions.SafeAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchActionConstants;
@@ -83,6 +86,26 @@ public class ThreeDeeView extends ViewPart
     descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
 
     contributeToActionBars();
+    hookDescriptorsViewSelectionChangeListener();
+  }
+
+  private void hookDescriptorsViewSelectionChangeListener()
+  {
+    DescriptorView descriptorView = DescriptorView.INSTANCE.getValue();
+    descriptorView.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
+    {
+      public void selectionChanged(SelectionChangedEvent event)
+      {
+        TreeSelection selection = (TreeSelection)event.getSelection();
+
+        Object o = selection.getFirstElement();
+        System.out.println("selected " + o);
+        if (o instanceof ElementDescriptor)
+        {
+          world.setSelected((ElementDescriptor)o);
+        }
+      }
+    });
   }
 
   @Override

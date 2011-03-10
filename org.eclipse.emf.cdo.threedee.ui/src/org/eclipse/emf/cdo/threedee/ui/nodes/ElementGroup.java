@@ -18,10 +18,12 @@ import com.sun.j3d.utils.geometry.Sphere;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Canvas3D;
+import javax.media.j3d.Material;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Transform3D;
 import javax.vecmath.AxisAngle4d;
+import javax.vecmath.Color3f;
 import javax.vecmath.Vector3d;
 
 import java.awt.Color;
@@ -122,6 +124,33 @@ public class ElementGroup extends ThreeDeeNode<Element>
     public ElementSphere(Appearance appearance)
     {
       super(.1f, appearance);
+    }
+  }
+
+  private Material oldMaterial;
+
+  public void selected(boolean selected)
+  {
+    Appearance appearance = getShape().getAppearance();
+
+    System.out.println("Selected: " + selected + " " + getModel());
+    if (selected)
+    {
+      oldMaterial = appearance.getMaterial();
+      // Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
+      Color3f white = new Color3f(1.0f, 1.0f, 1.0f);
+      Material material = new Material(white, white, white, white, 100.0f);
+      material.setLightingEnable(true);
+      // appearance.getMaterial().setEmissiveColor(0.7f, 0.7f, 0.7f);
+      material.setShininess(75.0f);
+      appearance.setMaterial(material);
+    }
+    else
+    {
+      if (oldMaterial != null)
+      {
+        appearance.setMaterial(oldMaterial);
+      }
     }
   }
 }
