@@ -828,7 +828,7 @@ public class ThreeDeeWorld
     callShape.setGeometry(getLineGeometry(source, target));
     universe.addBranchGraph(callShape);
 
-    Thread t = new Thread(new Runnable()
+    Thread thread = new Thread(new Runnable()
     {
       public void run()
       {
@@ -847,10 +847,12 @@ public class ThreeDeeWorld
             Thread.currentThread().interrupt();
           }
         }
+
         universe.getLocale().removeBranchGraph(callShape);
       }
     });
-    t.start();
+
+    thread.start();
   }
 
   public void setShowCrossReferences(boolean showCrossReferences)
