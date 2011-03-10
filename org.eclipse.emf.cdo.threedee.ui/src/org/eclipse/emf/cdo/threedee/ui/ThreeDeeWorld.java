@@ -46,6 +46,7 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
 import javax.media.j3d.AmbientLight;
+import javax.media.j3d.Appearance;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
@@ -57,6 +58,7 @@ import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.media.j3d.TransparencyAttributes;
 import javax.media.j3d.View;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
@@ -145,7 +147,7 @@ public class ThreeDeeWorld
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    intro();
+    // intro();
 
     // flashing1();
     // flashing2();
@@ -817,22 +819,38 @@ public class ThreeDeeWorld
   {
     if (source == null)
     {
+      System.out.println("SOURCE IS NULL");
       // Can happen for call events
       return;
     }
 
-    System.out.println("Source: " + source);
-    System.out.println("Target: " + target);
+    final CallShape callShape = new CallShape(source, target);
+    callShape.setGeometry(getLineGeometry(source, target));
+    universe.addBranchGraph(callShape);
 
-    Map<Element, ReferenceShape> references = referenceShapes.get(source);
-
-    ReferenceShape referenceShape = references.get(target);
-    if (referenceShape == null)
+    Thread t = new Thread(new Runnable()
     {
-      referenceShape = new ReferenceShape(source, target, true);
-    }
+      public void run()
+      {
+        Appearance appearance = callShape.getAppearance();
+        TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
 
-    referenceShape.blink();
+        for (int i = 0; i < 100; i++)
+        {
+          transparencyAttributes.setTransparency(transparencyAttributes.getTransparency() + 0.01f);
+          try
+          {
+            Thread.sleep(15);
+          }
+          catch (InterruptedException ex)
+          {
+            Thread.currentThread().interrupt();
+          }
+        }
+        universe.getLocale().removeBranchGraph(callShape);
+      }
+    });
+    t.start();
   }
 
   public void setShowCrossReferences(boolean showCrossReferences)
