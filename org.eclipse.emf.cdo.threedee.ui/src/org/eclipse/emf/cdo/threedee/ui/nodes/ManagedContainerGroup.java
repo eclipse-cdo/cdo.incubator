@@ -12,13 +12,15 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 
+import javax.media.j3d.Canvas3D;
+
 /**
  * @author Eike Stepper
  */
 public class ManagedContainerGroup extends ElementGroup
 {
-  public ManagedContainerGroup(Element element)
+  public ManagedContainerGroup(Element element, Canvas3D canvas)
   {
-    super(element);
+    super(element, canvas);
   }
 }

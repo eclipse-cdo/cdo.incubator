@@ -634,7 +634,7 @@ public class ThreeDeeWorld
 
   private ElementGroup createElementGroup(Element element)
   {
-    ElementGroup group = new ElementGroup(element);
+    ElementGroup group = new ElementGroup(element, canvas);
     elementGroups.put(element, group);
     return group;
   }

@@ -47,7 +47,7 @@ public class PickExample extends MouseAdapter
     group.addChild(transformGroup);
 
     Element element = new TestingElementProvider().createElement(new TCPConnectorDescriptor());
-    ElementGroup elementGroup = new ElementGroup(element);
+    ElementGroup elementGroup = new ElementGroup(element, null);
     group.addChild(elementGroup);
     //
 
