@@ -384,25 +384,15 @@ public class ThreeDeeWorld
   private void createNavigation(BranchGroup branchGroup)
   {
     TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
-    createKeyNavigation(branchGroup, viewTransformGroup);
-    createMouseNavigation(branchGroup, viewTransformGroup);
-  }
-
-  private void createMouseNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
-  {
-    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
-
-    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
-    ob.setSchedulingBounds(mouseZone);
-    universe.getViewingPlatform().setViewPlatformBehavior(ob);
-  }
-
-  private void createKeyNavigation(BranchGroup branchGroup, TransformGroup viewTransformGroup)
-  {
     KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
     BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
     keyInteractor.setSchedulingBounds(movingBounds);
     branchGroup.addChild(keyInteractor);
+
+    BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
+    OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
+    ob.setSchedulingBounds(mouseZone);
+    universe.getViewingPlatform().setViewPlatformBehavior(ob);
   }
 
   private void createPicking(final Canvas3D canvas, final BranchGroup scene)
@@ -521,7 +511,10 @@ public class ThreeDeeWorld
         if (containerContainmentGroup == null)
         {
           TransformGroup transformGroup = createTransformGroup();
-          positionNewObject(transformGroup, node);
+          Vector3f vector = layout.getAvailablePosition(node);
+          Transform3D t3d = new Transform3D();
+          t3d.setTranslation(vector);
+          transformGroup.setTransform(t3d);
 
           addChild(transformGroup, node);
 
@@ -685,6 +678,28 @@ public class ThreeDeeWorld
     });
   }
 
+  public void layout()
+  {
+    schedule(new Runnable()
+    {
+      public void run()
+      {
+        for (Session session : Frontend.INSTANCE.getElements())
+        {
+          Element rootElement = session.getRootElement();
+          if (rootElement != null)
+          {
+            ElementGroup elementGroup = elementGroups.get(rootElement);
+            if (elementGroup != null)
+            {
+              layout(elementGroup, null);
+            }
+          }
+        }
+      }
+    });
+  }
+
   private void layout(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
   {
     if (containerContainmentGroup != null)
@@ -770,14 +785,6 @@ public class ThreeDeeWorld
     LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
     lineArray.setCoordinates(0, points);
     return lineArray;
-  }
-
-  private void positionNewObject(TransformGroup transformGroup, Node node)
-  {
-    Vector3f vector = layout.getAvailablePosition(node);
-    Transform3D t3d = new Transform3D();
-    t3d.setTranslation(vector);
-    transformGroup.setTransform(t3d);
   }
 
   private TransformGroup createTransformGroup()

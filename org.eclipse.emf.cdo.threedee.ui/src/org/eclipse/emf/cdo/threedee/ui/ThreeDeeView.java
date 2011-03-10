@@ -27,8 +27,14 @@ import org.eclipse.net4j.util.event.IEvent;
 import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.event.ValueEvent;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
+import org.eclipse.net4j.util.ui.actions.SafeAction;
 
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.part.ViewPart;
 
 import java.util.Set;
@@ -56,6 +62,8 @@ public class ThreeDeeView extends ViewPart
 
   private ThreeDeeWorld world;
 
+  private LayoutAction layoutAction = new LayoutAction();
+
   public ThreeDeeView()
   {
   }
@@ -73,6 +81,8 @@ public class ThreeDeeView extends ViewPart
 
     DescriptorView.INSTANCE.addListener(descriptorViewListener);
     descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
+
+    contributeToActionBars();
   }
 
   @Override
@@ -88,6 +98,24 @@ public class ThreeDeeView extends ViewPart
   public void setFocus()
   {
     world.getComposite().setFocus();
+  }
+
+  protected void contributeToActionBars()
+  {
+    IActionBars bars = getViewSite().getActionBars();
+    fillLocalPullDown(bars.getMenuManager());
+    fillLocalToolBar(bars.getToolBarManager());
+  }
+
+  protected void fillLocalPullDown(IMenuManager manager)
+  {
+    manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+  }
+
+  protected void fillLocalToolBar(IToolBarManager manager)
+  {
+    manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+    manager.add(layoutAction);
   }
 
   /**
@@ -192,6 +220,23 @@ public class ThreeDeeView extends ViewPart
       {
         view.getNotifier().addListener(this);
       }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class LayoutAction extends SafeAction
+  {
+    private LayoutAction()
+    {
+      super("Layout", "Layout again", OM.Activator.INSTANCE.loadImageDescriptor("icons/refresh.gif"));
+    }
+
+    @Override
+    protected void safeRun() throws Exception
+    {
+      world.layout();
     }
   }
 }
