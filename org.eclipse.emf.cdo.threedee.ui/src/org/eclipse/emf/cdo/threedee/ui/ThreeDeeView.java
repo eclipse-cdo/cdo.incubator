@@ -152,7 +152,7 @@ public class ThreeDeeView extends ViewPart
       }
       else if (event instanceof CallEvent)
       {
-        world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget());
+         world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget());
       }
     }
 
