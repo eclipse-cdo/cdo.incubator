@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
 
 import org.eclipse.emf.cdo.CDOObject;
+import org.eclipse.emf.cdo.CDOState;
 import org.eclipse.emf.cdo.threedee.common.Element;
 
 /**
@@ -28,8 +29,10 @@ public class CDOObjectDescriptor extends CDOClientDescriptor
   public void initElement(Object object, Element element)
   {
     CDOObject cdoObject = (CDOObject)object;
+    CDOState state = cdoObject.cdoState();
+
     element.setIDAttribute(cdoObject.cdoID());
-    element.setAttribute("state", cdoObject.cdoState());
-    element.addReference(false, cdoObject.cdoRevision());
+    element.setAttribute("state", state);
+    element.addReference(state == CDOState.NEW, cdoObject.cdoRevision());
   }
 }
