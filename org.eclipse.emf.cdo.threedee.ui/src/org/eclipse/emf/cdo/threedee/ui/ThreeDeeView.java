@@ -86,26 +86,6 @@ public class ThreeDeeView extends ViewPart
     descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
 
     contributeToActionBars();
-    hookDescriptorsViewSelectionChangeListener();
-  }
-
-  private void hookDescriptorsViewSelectionChangeListener()
-  {
-    DescriptorView descriptorView = DescriptorView.INSTANCE.getValue();
-    descriptorView.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
-    {
-      public void selectionChanged(SelectionChangedEvent event)
-      {
-        TreeSelection selection = (TreeSelection)event.getSelection();
-
-        Object o = selection.getFirstElement();
-        System.out.println("selected " + o);
-        if (o instanceof ElementDescriptor)
-        {
-          world.setSelected((ElementDescriptor)o);
-        }
-      }
-    });
   }
 
   @Override
@@ -242,6 +222,19 @@ public class ThreeDeeView extends ViewPart
       if (view != null)
       {
         view.getNotifier().addListener(this);
+        view.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
+        {
+          public void selectionChanged(SelectionChangedEvent event)
+          {
+            TreeSelection selection = (TreeSelection)event.getSelection();
+
+            Object element = selection.getFirstElement();
+            if (element instanceof ElementDescriptor)
+            {
+              world.setSelected((ElementDescriptor)element);
+            }
+          }
+        });
       }
     }
   }
