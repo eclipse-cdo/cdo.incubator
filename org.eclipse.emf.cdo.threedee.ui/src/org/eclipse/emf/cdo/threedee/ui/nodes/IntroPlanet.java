@@ -47,7 +47,7 @@ import java.awt.Font;
  */
 public class IntroPlanet extends BranchGroup implements IColors
 {
-  private static final float RADIUS = 6.0f;
+  private static final float RADIUS = 5.0f;
 
   private static final float TWO_PI = (float)(2.0f * Math.PI);
 
@@ -59,8 +59,8 @@ public class IntroPlanet extends BranchGroup implements IColors
 
     SpotLight light = new SpotLight();
     light.setColor(new Color3f(0.7f, 0.8f, 0.8f));
-    light.setPosition(new Point3f(0.0f, RADIUS, -RADIUS));
-    light.setDirection(new Vector3f(0.0f, 0.0f, 1.0f));
+    light.setPosition(new Point3f(0.0f, 0.0f, -RADIUS));
+    light.setDirection(new Vector3f(0.0f, 1.5f, 1.0f));
     light.setSpreadAngle((float)(0.25f * Math.PI));
 
     // DirectionalLight light1 = new DirectionalLight(color, direction);
@@ -113,7 +113,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     Appearance appearance = new Appearance();
     // setTexture(appearance, "comet.jpg");
 
-    Material material = new Material(black, black, white, yellow, 64.0f);
+    Material material = new Material(darkGray, black, white, yellow, 128.0f);
     material.setLightingEnable(true);
     appearance.setMaterial(material);
 
