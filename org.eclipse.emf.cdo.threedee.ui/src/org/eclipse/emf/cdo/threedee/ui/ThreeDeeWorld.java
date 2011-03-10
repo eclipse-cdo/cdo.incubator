@@ -20,6 +20,7 @@ import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayout;
 import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 import org.eclipse.emf.cdo.threedee.ui.nodes.CallShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
+import org.eclipse.emf.cdo.threedee.ui.nodes.IntroPlanet;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 
 import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
@@ -144,8 +145,15 @@ public class ThreeDeeWorld
     frame.add(canvas);
     createPicking(canvas, scene);
 
+    intro();
+
     // flashing1();
     // flashing2();
+  }
+
+  private void intro()
+  {
+    universe.addBranchGraph(new IntroPlanet(canvas));
   }
 
   @SuppressWarnings("unused")
@@ -346,6 +354,9 @@ public class ThreeDeeWorld
     }.start();
   }
 
+  /**
+   * See http://stackoverflow.com/questions/507987/how-can-i-make-java3d-start-faster !!!
+   */
   private Canvas3D createCanvas(Frame frame)
   {
     GraphicsConfiguration config = frame.getGraphicsConfiguration();

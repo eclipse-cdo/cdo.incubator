@@ -13,26 +13,18 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
-import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-
-import org.eclipse.net4j.util.WrappedException;
 
 import com.sun.j3d.utils.geometry.Sphere;
-import com.sun.j3d.utils.image.TextureLoader;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
-import javax.media.j3d.Texture;
 import javax.media.j3d.Transform3D;
 import javax.vecmath.AxisAngle4d;
 import javax.vecmath.Vector3d;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * @author Martin Fluegge
@@ -115,27 +107,9 @@ public class ElementGroup extends ThreeDeeNode<Element>
     renderingAttributes.setCapability(RenderingAttributes.ALLOW_VISIBLE_WRITE);
     appearance.setRenderingAttributes(renderingAttributes);
 
-    // setTexture(appearance, canvas);
+    // ThreeDeeUtil.setTexture(appearance, "moon.jpg", canvas);
 
     return appearance;
-  }
-
-  private static void setTexture(Appearance appearance, Component observer)
-  {
-    URL url;
-
-    try
-    {
-      url = new URL(OM.BUNDLE.getBaseURL().toString() + "/images/moon.jpg");
-    }
-    catch (MalformedURLException ex)
-    {
-      throw WrappedException.wrap(ex);
-    }
-
-    TextureLoader loader = new TextureLoader(url, observer);
-    Texture texture = loader.getTexture();
-    appearance.setTexture(texture);
   }
 
   /**

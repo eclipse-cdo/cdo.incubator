@@ -10,6 +10,12 @@
  */
 package org.eclipse.emf.cdo.threedee.ui;
 
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+
+import org.eclipse.net4j.util.WrappedException;
+
+import com.sun.j3d.utils.image.TextureLoader;
+
 import javax.media.j3d.Appearance;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Group;
@@ -25,6 +31,9 @@ import javax.vecmath.Point3f;
 import javax.vecmath.Vector3f;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Enumeration;
 
 /**
@@ -43,7 +52,7 @@ public class ThreeDeeUtil
     texture.setBoundaryModeS(Texture.WRAP);
     texture.setBoundaryModeT(Texture.WRAP);
     texture.setBoundaryColor(new Color4f(0.0f, 1.0f, 0.0f, 0.0f));
-    Material mat = new Material(color, black, color, white, 70f);
+    Material mat = new Material(color, black, color, white, 70.0f);
     ap.setTextureAttributes(texAttr);
     ap.setMaterial(mat);
     ap.setTexture(texture);
@@ -109,5 +118,22 @@ public class ThreeDeeUtil
     // {
     // // Not a Shape3D node ignore exception
     // }
+  }
+
+  public static Texture loadTexture(String image, Component observer)
+  {
+    URL url;
+
+    try
+    {
+      url = new URL(OM.BUNDLE.getBaseURL().toString() + "/images/" + image);
+    }
+    catch (MalformedURLException ex)
+    {
+      throw WrappedException.wrap(ex);
+    }
+
+    TextureLoader loader = new TextureLoader(url, observer);
+    return loader.getTexture();
   }
 }
