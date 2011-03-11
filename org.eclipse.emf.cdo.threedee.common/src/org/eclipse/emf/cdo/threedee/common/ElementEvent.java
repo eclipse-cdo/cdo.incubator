@@ -177,13 +177,13 @@ public abstract class ElementEvent
     public String toString()
     {
       String prefix = "CALL " + when + " ";
-      String suffix = target.getDescriptor().getName() + "." + what + "()";
+      String suffix = target.getDescriptor().getLabel() + "." + what + "()";
       if (source == null)
       {
         return prefix + suffix;
       }
 
-      return prefix + source.getDescriptor().getName() + " --> " + suffix;
+      return prefix + source.getDescriptor().getLabel() + " --> " + suffix;
     }
 
     /**

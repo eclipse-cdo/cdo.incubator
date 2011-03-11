@@ -546,6 +546,10 @@ public class ThreeDeeWorld implements ISelectionProvider
     return composite;
   }
 
+  // public synchronized Element[] getElements()
+  // {
+  // return
+  // }
   public void addElement(Element element)
   {
     if (!elementGroups.containsKey(element))
@@ -752,7 +756,8 @@ public class ThreeDeeWorld implements ISelectionProvider
     ElementProvider provider = element.getProvider();
     Map<Integer, Boolean> references = element.getReferences();
 
-    for (int elementID : references.keySet())
+    Integer[] elementIDs = references.keySet().toArray(new Integer[references.size()]);
+    for (int elementID : elementIDs)
     {
       Element referenceElement = provider.getElement(elementID);
       if (references.get(elementID) || isShowCrossReferences())

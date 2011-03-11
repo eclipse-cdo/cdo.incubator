@@ -186,7 +186,10 @@ public class Session extends Container<Element> implements ElementProvider
     String what = event.getWhat();
     When when = event.getWhen();
 
-    target.fireCallEvent(source, what, when);
+    if (target != null)
+    {
+      target.fireCallEvent(source, what, when);
+    }
   }
 
   private void handleTransmitEvent(Transmit event)
