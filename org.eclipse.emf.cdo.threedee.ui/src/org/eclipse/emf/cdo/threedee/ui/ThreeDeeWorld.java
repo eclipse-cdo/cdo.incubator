@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.Frontend;
+import org.eclipse.emf.cdo.threedee.IElementSelection;
 import org.eclipse.emf.cdo.threedee.Session;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
@@ -996,7 +997,7 @@ public class ThreeDeeWorld implements ISelectionProvider
   /**
    * @author Martin Fluegge
    */
-  public class ThreeDeeNodeSelection implements ISelection
+  public class ThreeDeeNodeSelection implements IElementSelection
   {
     private final ThreeDeeNode<Element> node;
 

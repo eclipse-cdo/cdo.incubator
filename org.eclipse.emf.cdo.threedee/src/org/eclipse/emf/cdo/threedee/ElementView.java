@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee;
 
 import org.eclipse.emf.cdo.threedee.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.util.SelectionListenerRegistrationUtil;
 
 import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.event.ValueNotifier;
@@ -19,7 +20,13 @@ import org.eclipse.net4j.util.ui.UIUtil;
 import org.eclipse.net4j.util.ui.views.ContainerView;
 
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Tree;
+import org.eclipse.swt.widgets.TreeItem;
 
 import java.awt.Color;
 
@@ -68,6 +75,47 @@ public class ElementView extends ContainerView
   protected void createdUI()
   {
     INSTANCE.setValue(this);
+    createThreeDeeWorldListener();
+  }
+
+  private void createThreeDeeWorldListener()
+  {
+    ISelectionChangedListener listener = new ISelectionChangedListener()
+    {
+      public void selectionChanged(final SelectionChangedEvent event)
+      {
+        Display.getDefault().asyncExec(new Runnable()
+        {
+          public void run()
+          {
+            IElementSelection selection = (IElementSelection)event.getSelection();
+            Element element = selection.getElement();
+            TreeViewer viewer = getViewer();
+
+            viewer.expandToLevel(element, 0);
+            Tree tree = getViewer().getTree();
+            tree.deselectAll();
+            select(element, tree.getItems(), tree);
+          }
+
+          private void select(Element element, TreeItem[] treeItems, Tree tree)
+          {
+            for (TreeItem item : treeItems)
+            {
+              Object data = item.getData();
+              if (data != null && data.equals(element))
+              {
+                tree.select(item);
+              }
+              select(element, item.getItems(), tree);
+            }
+          }
+        });
+      }
+    };
+
+    SelectionListenerRegistrationUtil.addSelectionChangedListener(listener,
+        "org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld", getSite().getPage());
   }
 
   @Override

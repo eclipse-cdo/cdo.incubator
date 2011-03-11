@@ -20,6 +20,7 @@ import org.eclipse.emf.cdo.threedee.common.Element.CallEvent;
 import org.eclipse.emf.cdo.threedee.common.Element.TransmissionEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+import org.eclipse.emf.cdo.threedee.util.SelectionListenerRegistrationUtil.ISelectionProviderProvider;
 
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;
@@ -34,6 +35,7 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.widgets.Composite;
@@ -54,7 +56,7 @@ import java.util.Set;
  * 
  * @author Martin Fluegge
  */
-public class ThreeDeeView extends ViewPart
+public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
 {
   public static final String ID = "org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld";
 
@@ -306,5 +308,10 @@ public class ThreeDeeView extends ViewPart
     {
       world.layout();
     }
+  }
+
+  public ISelectionProvider getSelectionProvider()
+  {
+    return world;
   }
 }
