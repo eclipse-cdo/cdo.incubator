@@ -21,6 +21,7 @@ import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.IntroPlanet;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.RootElement;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 
 import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 import org.eclipse.net4j.util.concurrent.QueueRunner;
@@ -28,6 +29,10 @@ import org.eclipse.net4j.util.om.trace.ContextTracer;
 import org.eclipse.net4j.util.ui.UIQueueRunner;
 
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.ISelectionChangedListener;
+import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.layout.FillLayout;
@@ -78,7 +83,7 @@ import java.util.Set;
 /**
  * @author Martin Fluegge
  */
-public class ThreeDeeWorld
+public class ThreeDeeWorld implements ISelectionProvider
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
@@ -105,6 +110,8 @@ public class ThreeDeeWorld
   private Transform3D viewingTransform;
 
   private RootElement root;
+
+  private List<ISelectionChangedListener> selectionChangeListeners = new ArrayList<ISelectionChangedListener>();
 
   public ThreeDeeWorld(Composite parent)
   {
@@ -150,6 +157,15 @@ public class ThreeDeeWorld
 
     // flashing1();
     // flashing2();
+
+    // addSelectionChangedListener(new ISelectionChangedListener()
+    // {
+    // public void selectionChanged(SelectionChangedEvent event)
+    // {
+    // ThreeDeeNodeSelection selection = (ThreeDeeNodeSelection)event.getSelection();
+    // System.out.println("Selection changed " + selection.getNode() + " " + selection.getElement());
+    // }
+    // });
   }
 
   @SuppressWarnings("unused")
@@ -408,6 +424,7 @@ public class ThreeDeeWorld
     pickCanvas.setMode(PickTool.BOUNDS);
     canvas.addMouseListener(new MouseAdapter()
     {
+      @SuppressWarnings("unchecked")
       @Override
       public void mouseClicked(MouseEvent e)
       {
@@ -419,6 +436,10 @@ public class ThreeDeeWorld
           if (node != null)
           {
             System.err.println("Picked " + node.getClass().getName());
+
+            ThreeDeeNode<Element> threeDeeNode = ThreeDeeUtil.getThreeDeeNode(node);
+            Element element = getElementFromThreeDeeNode(threeDeeNode);
+            notifySelectionChangedListeners(threeDeeNode, element);
             return;
           }
         }
@@ -865,6 +886,19 @@ public class ThreeDeeWorld
     return showCrossReferences;
   }
 
+  private Element getElementFromThreeDeeNode(ThreeDeeNode<Element> threeDeeNode)
+  {
+    // TODO implement a more performant solution. Maybe create a reverse lookup map.
+    for (Element element : elementGroups.keySet())
+    {
+      if (elementGroups.get(element).equals(threeDeeNode))
+      {
+        return element;
+      }
+    }
+    return null;
+  }
+
   protected void setSelected(Element element, boolean selected)
   {
     ElementGroup elementGroup = elementGroups.get(element);
@@ -915,6 +949,78 @@ public class ThreeDeeWorld
       {
         setSelected(element, false);
       }
+    }
+  }
+
+  private void notifySelectionChangedListeners(ThreeDeeNode<Element> node, Element element)
+  {
+    SelectionChangedEvent event = new TreeDeeNodeSelectionEvent(new ThreeDeeNodeSelection(node, element));
+    for (ISelectionChangedListener listener : selectionChangeListeners)
+    {
+      listener.selectionChanged(event);
+    }
+  }
+
+  public void addSelectionChangedListener(ISelectionChangedListener listener)
+  {
+    selectionChangeListeners.add(listener);
+  }
+
+  public void removeSelectionChangedListener(ISelectionChangedListener listener)
+  {
+    selectionChangeListeners.remove(listener);
+  }
+
+  public ISelection getSelection()
+  {
+    return null;
+  }
+
+  public void setSelection(ISelection selection)
+  {
+  }
+
+  /**
+   * @author Martin Fluegge
+   */
+  public class TreeDeeNodeSelectionEvent extends SelectionChangedEvent
+  {
+    private static final long serialVersionUID = 1L;
+
+    public TreeDeeNodeSelectionEvent(ISelection selection)
+    {
+      super(ThreeDeeWorld.this, selection);
+    }
+  }
+
+  /**
+   * @author Martin Fluegge
+   */
+  public class ThreeDeeNodeSelection implements ISelection
+  {
+    private final ThreeDeeNode<Element> node;
+
+    private final Element element;
+
+    public Element getElement()
+    {
+      return element;
+    }
+
+    public ThreeDeeNode<Element> getNode()
+    {
+      return node;
+    }
+
+    public ThreeDeeNodeSelection(ThreeDeeNode<Element> node, Element element)
+    {
+      this.node = node;
+      this.element = element;
+    }
+
+    public boolean isEmpty()
+    {
+      return node == null;
     }
   }
 }

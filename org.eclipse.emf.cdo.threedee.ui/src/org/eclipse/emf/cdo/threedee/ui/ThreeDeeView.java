@@ -280,7 +280,7 @@ public class ThreeDeeView extends ViewPart
             TreeSelection selection = (TreeSelection)event.getSelection();
 
             Object element = selection.getFirstElement();
-            System.out.println(element);
+
             if (element instanceof Element)
             {
               world.setSelected((Element)element);

@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 
 import org.eclipse.net4j.util.WrappedException;
 
@@ -53,10 +54,10 @@ public class ThreeDeeUtil
   {
     GraphicsConfiguration config = frame.getGraphicsConfiguration();
     GraphicsDevice device = config.getDevice();
-  
+
     GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
     config = device.getBestConfiguration(template);
-  
+
     return new Canvas3D(config);
   }
 
@@ -154,5 +155,15 @@ public class ThreeDeeUtil
 
     TextureLoader loader = new TextureLoader(url, observer);
     return loader.getTexture();
+  }
+
+  @SuppressWarnings("rawtypes")
+  public static ThreeDeeNode getThreeDeeNode(Node node)
+  {
+    if (node instanceof ThreeDeeNode)
+    {
+      return (ThreeDeeNode)node;
+    }
+    return getThreeDeeNode(node.getParent());
   }
 }
