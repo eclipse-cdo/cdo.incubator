@@ -87,7 +87,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     light.setColor(new Color3f(0.7f, 0.8f, 0.8f));
     light.setPosition(new Point3f(0.0f, 0.0f, -RADIUS));
     light.setDirection(new Vector3f(0.0f, 1.5f, 1.0f));
-    light.setSpreadAngle((float)(0.25f * Math.PI));
+    light.setSpreadAngle((float)(0.5f * Math.PI));
 
     BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, RADIUS, 0.0), RADIUS);
     light.setInfluencingBounds(bounds);
@@ -116,15 +116,25 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   public void start()
   {
+    // try
+    // {
+    // System.in.read();
+    // ConcurrencyUtil.sleep(5000);
+    // }
+    // catch (IOException ex)
+    // {
+    // ex.printStackTrace();
+    // }
+
     new SoundPlayer("zarathustra.wav").start();
     new ChimeIn().start();
 
     new TextAnimation(0, 33, 500, "Eike Stepper", 1).start();
     new TextAnimation(0, 53, 0, "Martin Flügge", 1).start();
     new TextAnimation(1, 12, 600, "EclipseCon 2011", 1).start();
-    new TextAnimation(1, 34, 0, "CDO 3D", 2).start();
+    new TextAnimation(1, 34, 0, "CDO3D", 2).start();
 
-    new ChimeOut(1, 42, 0).start();
+    new ChimeOut(1, 39, 0).start();
   }
 
   private Sphere createPlanet()
@@ -152,7 +162,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     material.setLightingEnable(true);
     appearance.setMaterial(material);
 
-    Font3D font = new Font3D(new Font("TestFont", Font.PLAIN, size), new FontExtrusion());
+    Font3D font = new Font3D(new Font("Neuropol", Font.PLAIN, size), new FontExtrusion());
     Text3D text3D = new Text3D(font, text, new Point3f(-2.0f, 0.7f, 0.0f));
     text3D.setCapability(Geometry.ALLOW_INTERSECT);
 
@@ -371,29 +381,6 @@ public class IntroPlanet extends BranchGroup implements IColors
   /**
    * @author Eike Stepper
    */
-  private final class ChimeOut extends Animation
-  {
-    public ChimeOut(long minute, long second, long milli)
-    {
-      super(minute, second, milli, 15000);
-    }
-
-    @Override
-    protected void animate(float alpha)
-    {
-      double z = Z0 - 20d * alpha;
-
-      Transform3D viewingTransform = new Transform3D();
-      viewingTransform.set(new Vector3d(0.0, y, z));
-
-      ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
-      viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
   private final class TextAnimation extends Animation
   {
     private String string;
@@ -406,7 +393,7 @@ public class IntroPlanet extends BranchGroup implements IColors
 
     public TextAnimation(long minute, long second, long milli, String string, int size)
     {
-      super(minute, second, milli, 5000);
+      super(minute, second, milli, 7000);
       this.string = string;
       this.size = size;
     }
@@ -441,6 +428,29 @@ public class IntroPlanet extends BranchGroup implements IColors
     protected void done()
     {
       spin.removeChild(branchGroup);
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ChimeOut extends Animation
+  {
+    public ChimeOut(long minute, long second, long milli)
+    {
+      super(minute, second, milli, 20000);
+    }
+
+    @Override
+    protected void animate(float alpha)
+    {
+      double z = Z0 - 20d * alpha;
+
+      Transform3D viewingTransform = new Transform3D();
+      viewingTransform.set(new Vector3d(0.0, y, z));
+
+      ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
+      viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
     }
   }
 }
