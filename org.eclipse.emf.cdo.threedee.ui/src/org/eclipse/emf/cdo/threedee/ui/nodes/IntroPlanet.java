@@ -132,7 +132,14 @@ public class IntroPlanet extends BranchGroup implements IColors
     new TextAnimation(0, 33, 500, "Eike Stepper", 1).start();
     new TextAnimation(0, 53, 0, "Martin Flügge", 1).start();
     new TextAnimation(1, 12, 600, "EclipseCon 2011", 1).start();
-    new TextAnimation(1, 34, 0, "CDO3D", 2).start();
+    new TextAnimation(1, 34, 0, "CDO3D", 2)
+    {
+      @Override
+      protected void animate(float alpha)
+      {
+        // Do nothing
+      }
+    }.start();
 
     new ChimeOut(1, 39, 0).start();
   }
@@ -358,7 +365,7 @@ public class IntroPlanet extends BranchGroup implements IColors
   /**
    * @author Eike Stepper
    */
-  private final class ChimeIn extends Animation
+  private class ChimeIn extends Animation
   {
     public ChimeIn()
     {
@@ -381,7 +388,7 @@ public class IntroPlanet extends BranchGroup implements IColors
   /**
    * @author Eike Stepper
    */
-  private final class TextAnimation extends Animation
+  private class TextAnimation extends Animation
   {
     private String string;
 
@@ -434,7 +441,7 @@ public class IntroPlanet extends BranchGroup implements IColors
   /**
    * @author Eike Stepper
    */
-  private final class ChimeOut extends Animation
+  private class ChimeOut extends Animation
   {
     public ChimeOut(long minute, long second, long milli)
     {
