@@ -46,8 +46,6 @@ public class ThreeDeeWorldTest
 
     final TestingElementProvider dummyElementProvider = new TestingElementProvider();
 
-    final Element element = dummyElementProvider.createElement(new ManagedContainerDescriptor());
-
     List<ElementDescriptor> descriptors = new ArrayList<ElementDescriptor>();
     descriptors.add(new EPackageRegistryDescriptor());
     descriptors.add(new TCPConnectorDescriptor());
@@ -60,51 +58,12 @@ public class ThreeDeeWorldTest
     descriptors.add(new EReferenceDescriptor());
     descriptors.add(new EPackageRegistryDescriptor());
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < 2; i++)
     {
-      Element child = dummyElementProvider.createElement();
-      element.addReference(true, child.getID());
-      for (int a = 0; a < 10; a++)
-      {
-        Element level2Child = dummyElementProvider.createElement(descriptors.get(i));
-        child.addReference(false, level2Child.getID());
-      }
+      final Element rootElement = dummyElementProvider.createElement(new ManagedContainerDescriptor());
+      addChildren(dummyElementProvider, rootElement, descriptors);
+      viewer.addElement(rootElement);
     }
-
-    viewer.addElement(element);
-
-    // Thread t = new Thread(new Runnable()
-    // {
-    // public void run()
-    // {
-    // sleep(3000);
-    // // Element element2 = dummyElementProvider.createElement();
-    // // element.addReference(true, element2.getID());
-    // // viewer.addElement(element2);
-    //
-    // sleep(3000);
-    //
-    // // viewer.removeElement(element2);
-    // }
-    //
-    // private void sleep(int time)
-    // {
-    // try
-    // {
-    // Thread.sleep(time);
-    // }
-    // catch (InterruptedException ex)
-    // {
-    // throw new RuntimeException(ex);
-    // }
-    // }
-    // });
-    //
-    // t.start();
-
-    // ArrayList<String> elementsToBeHidden = new ArrayList<String>();
-    // elementsToBeHidden.add("Acceptor");
-    // viewer.filter(elementsToBeHidden);
 
     shell.open();
     while (!shell.isDisposed())
@@ -116,5 +75,20 @@ public class ThreeDeeWorldTest
     }
     display.dispose();
     System.exit(0);
+  }
+
+  private static void addChildren(final TestingElementProvider dummyElementProvider, final Element rootElement,
+      List<ElementDescriptor> descriptors)
+  {
+    for (int i = 0; i < 5; i++)
+    {
+      Element child = dummyElementProvider.createElement();
+      rootElement.addReference(true, child.getID());
+      for (int a = 0; a < 10; a++)
+      {
+        Element level2Child = dummyElementProvider.createElement(descriptors.get(i));
+        child.addReference(true, level2Child.getID());
+      }
+    }
   }
 }
