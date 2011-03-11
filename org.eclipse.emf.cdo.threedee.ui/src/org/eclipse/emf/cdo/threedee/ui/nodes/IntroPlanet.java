@@ -185,7 +185,7 @@ public class IntroPlanet extends BranchGroup implements IColors
   /**
    * @author Eike Stepper
    */
-  public class SoundPlayer extends Thread
+  private final class SoundPlayer extends Thread
   {
     private AudioInputStream in;
 
