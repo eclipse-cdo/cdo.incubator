@@ -47,7 +47,6 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
@@ -84,12 +83,12 @@ public class IntroPlanet extends BranchGroup implements IColors
     setCapability(Group.ALLOW_CHILDREN_WRITE);
 
     SpotLight light = new SpotLight();
-    light.setColor(new Color3f(0.7f, 0.8f, 0.8f));
-    light.setPosition(new Point3f(0.0f, 0.0f, -RADIUS));
-    light.setDirection(new Vector3f(0.0f, 1.5f, 1.0f));
-    light.setSpreadAngle((float)(0.5f * Math.PI));
+    light.setColor(darkGray);
+    light.setPosition(new Point3f(-2.0f, 0.0f, 2 * RADIUS));
+    light.setDirection(new Vector3f(2.0f, RADIUS, -RADIUS));
+    light.setSpreadAngle((float)(0.1f * Math.PI));
 
-    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, RADIUS, 0.0), RADIUS);
+    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100);
     light.setInfluencingBounds(bounds);
     addChild(light);
 
