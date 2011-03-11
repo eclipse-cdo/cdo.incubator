@@ -140,11 +140,11 @@ public class ThreeDeeWorld
     universe.addBranchGraph(scene);
     universe.addBranchGraph(createCoordinateSystem());
 
-    setNominalTransform();
+    setNominalViewingTransform();
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    // intro();
+    intro();
 
     // flashing1();
     // flashing2();
@@ -468,7 +468,7 @@ public class ThreeDeeWorld
     return group;
   }
 
-  private void setNominalTransform()
+  private void setNominalViewingTransform()
   {
     ViewingPlatform viewingPlatform = universe.getViewingPlatform();
 

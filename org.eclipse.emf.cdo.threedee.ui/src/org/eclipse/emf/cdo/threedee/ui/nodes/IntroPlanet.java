@@ -39,6 +39,7 @@ import javax.media.j3d.Texture;
 import javax.media.j3d.TextureAttributes;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.media.j3d.TransparencyAttributes;
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -110,9 +111,10 @@ public class IntroPlanet extends BranchGroup implements IColors
   {
     new SoundPlayer("zarathustra.wav").start();
 
+    // new TextAnimation(0, 1, 0, "Eike Stepper", 1).start();
     new TextAnimation(0, 33, 0, "Eike Stepper", 1).start();
-    new TextAnimation(0, 51, 800, "Martin Flügge", 1).start();
-    new TextAnimation(1, 11, 0, "EclipseCon 2011", 1).start();
+    new TextAnimation(0, 51, 900, "Martin Flügge", 1).start();
+    new TextAnimation(1, 11, 200, "EclipseCon 2011", 1).start();
     new TextAnimation(1, 32, 800, "CDO 3D", 2).start();
 
   }
@@ -131,9 +133,11 @@ public class IntroPlanet extends BranchGroup implements IColors
     return new Sphere(RADIUS, Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS, 64, appearance);
   }
 
-  private TransformGroup createText(String text, int size, double angle)
+  private TransformGroup createText(String text, int size, double angle, TransparencyAttributes transparencyAttributes)
   {
     Appearance appearance = new Appearance();
+    appearance.setTransparencyAttributes(transparencyAttributes);
+
     // setTexture(appearance, "comet.jpg");
 
     Material material = new Material(darkGray, black, white, yellow, 128.0f);
@@ -307,17 +311,34 @@ public class IntroPlanet extends BranchGroup implements IColors
     @Override
     public void run()
     {
-      ConcurrencyUtil.sleep((minute * 60 + second) * 1000 + milli - 5000);
-
-      float value = (float)(alpha.value() * 2.0f * Math.PI);
-      TransformGroup text = createText(string, size, -value - 0.5f * Math.PI);
+      ConcurrencyUtil.sleep(Math.max(0, (minute * 60 + second) * 1000 + milli - 5000));
 
       BranchGroup branchGroup = new BranchGroup();
       branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-      branchGroup.addChild(text);
 
+      TransparencyAttributes transparencyAttributes = new TransparencyAttributes();
+      transparencyAttributes.setCapability(TransparencyAttributes.ALLOW_VALUE_WRITE);
+      transparencyAttributes.setTransparencyMode(TransparencyAttributes.NICEST);
+
+      float value = (float)(alpha.value() * 2.0f * Math.PI);
+      TransformGroup text = createText(string, size, -value - 0.5f * Math.PI, transparencyAttributes);
+
+      branchGroup.addChild(text);
+      branchGroup.compile();
       spin.addChild(branchGroup);
-      ConcurrencyUtil.sleep(17 * 1000);
+
+      ConcurrencyUtil.sleep(10000);
+
+      long fadeMillis = 5000;
+      float increment = 1.0f / fadeMillis;
+      float transparency = 0.0f;
+      while (transparency < 1.0f)
+      {
+        transparencyAttributes.setTransparency(transparency);
+        ConcurrencyUtil.sleep(1);
+        transparency += increment;
+      }
+
       spin.removeChild(branchGroup);
     }
   }
