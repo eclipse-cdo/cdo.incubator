@@ -22,11 +22,10 @@ import org.eclipse.net4j.util.ui.views.ContainerView;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Tree;
-import org.eclipse.swt.widgets.TreeItem;
 
 import java.awt.Color;
 
@@ -92,23 +91,10 @@ public class ElementView extends ContainerView
             Element element = selection.getElement();
             TreeViewer viewer = getViewer();
 
-            viewer.expandToLevel(element, 0);
-            Tree tree = getViewer().getTree();
-            tree.deselectAll();
-            select(element, tree.getItems(), tree);
-          }
+            viewer.reveal(element);
+            StructuredSelection newSelection = new StructuredSelection(element);
 
-          private void select(Element element, TreeItem[] treeItems, Tree tree)
-          {
-            for (TreeItem item : treeItems)
-            {
-              Object data = item.getData();
-              if (data != null && data.equals(element))
-              {
-                tree.select(item);
-              }
-              select(element, item.getItems(), tree);
-            }
+            viewer.setSelection(newSelection);
           }
         });
       }
