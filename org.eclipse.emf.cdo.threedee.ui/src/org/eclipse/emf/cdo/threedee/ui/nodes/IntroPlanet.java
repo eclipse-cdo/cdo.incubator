@@ -329,13 +329,17 @@ public class IntroPlanet extends BranchGroup implements IColors
       ConcurrencyUtil.sleep(10000);
 
       long fadeMillis = 5000;
-      float increment = 1.0f / fadeMillis;
-      float transparency = 0.0f;
-      while (transparency < 1.0f)
+      long start = System.currentTimeMillis();
+      long end = start + fadeMillis;
+      long time = start;
+
+      while (time < end)
       {
-        transparencyAttributes.setTransparency(transparency);
+        float duration = time - start;
+        transparencyAttributes.setTransparency(duration / fadeMillis);
+
         ConcurrencyUtil.sleep(1);
-        transparency += increment;
+        time = System.currentTimeMillis();
       }
 
       spin.removeChild(branchGroup);
