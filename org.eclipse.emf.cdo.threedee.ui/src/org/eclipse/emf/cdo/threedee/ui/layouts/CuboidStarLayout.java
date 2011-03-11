@@ -28,14 +28,19 @@ public class CuboidStarLayout implements ILayout
 
   private static final float moveDistance = .3f;
 
-  private static float currentmoveDistance = moveDistance;
+  private float currentmoveDistance = moveDistance;
+
+  public CuboidStarLayout(float moveDistance)
+  {
+    currentmoveDistance = moveDistance;
+  }
 
   public Vector3f getAvailablePosition(Node node)
   {
     Point3d newCenter = new Point3d(0, 0, 0);
     byte modified = 0;
 
-    while (collidesWithOtherNodes(newCenter, nodes))
+    while (collidesWithOtherNodes(newCenter, nodes, node))
     {
       switch (modified)
       {
@@ -164,10 +169,14 @@ public class CuboidStarLayout implements ILayout
     return translationVector;
   }
 
-  private boolean collidesWithOtherNodes(Point3d newCenter, List<Node> nodes)
+  private boolean collidesWithOtherNodes(Point3d newCenter, List<Node> nodes, Node node)
   {
     for (Node existingNode : nodes)
     {
+      if (existingNode == node)
+      {
+        continue;
+      }
       Bounds bounds = existingNode.getBounds();
       Transform3D positionTrans = new Transform3D();
       existingNode.getLocalToVworld(positionTrans);

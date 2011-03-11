@@ -140,9 +140,7 @@ public class ElementGroup extends ThreeDeeNode<Element>
       // Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
       Color3f white = new Color3f(1.0f, 1.0f, 1.0f);
       Material material = new Material(white, white, white, white, 100.0f);
-      material.setLightingEnable(true);
-      // appearance.getMaterial().setEmissiveColor(0.7f, 0.7f, 0.7f);
-      material.setShininess(75.0f);
+
       appearance.setMaterial(material);
     }
     else

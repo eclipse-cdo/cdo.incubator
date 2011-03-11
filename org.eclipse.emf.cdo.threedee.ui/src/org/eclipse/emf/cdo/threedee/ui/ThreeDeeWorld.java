@@ -16,12 +16,11 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-import org.eclipse.emf.cdo.threedee.ui.layouts.CuboidStarLayout;
-import org.eclipse.emf.cdo.threedee.ui.layouts.ILayout;
 import org.eclipse.emf.cdo.threedee.ui.nodes.CallShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.IntroPlanet;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
+import org.eclipse.emf.cdo.threedee.ui.nodes.RootElement;
 
 import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 import org.eclipse.net4j.util.concurrent.QueueRunner;
@@ -81,7 +80,6 @@ import java.util.Set;
  */
 public class ThreeDeeWorld
 {
-  @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
@@ -98,13 +96,15 @@ public class ThreeDeeWorld
 
   private TransformGroup sphereTransformGroup;
 
-  private ILayout layout = new CuboidStarLayout();// new SimpleLayouter();
+  // private ILayout layout = new CuboidStarLayout();// new SimpleLayouter();
 
   private Canvas3D canvas;
 
   private boolean showCrossReferences;
 
   private Transform3D viewingTransform;
+
+  private RootElement root;
 
   public ThreeDeeWorld(Composite parent)
   {
@@ -146,7 +146,7 @@ public class ThreeDeeWorld
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    intro();
+    // intro();
 
     // flashing1();
     // flashing2();
@@ -366,6 +366,10 @@ public class ThreeDeeWorld
 
     sphereTransformGroup = createTransformGroup();
     scene.addChild(sphereTransformGroup);
+
+    root = new RootElement(canvas);
+    scene.addChild(root);
+
     return scene;
   }
 
@@ -535,39 +539,25 @@ public class ThreeDeeWorld
     }
   }
 
-  private void addNode(final Node node, final ElementGroup containerContainmentGroup)
+  private void addNode(final ElementGroup node, final ElementGroup parent)
   {
     schedule(new Runnable()
     {
       public void run()
       {
-        if (containerContainmentGroup == null)
+        if (parent == null)
         {
-          TransformGroup transformGroup = createTransformGroup();
-          Vector3f vector = layout.getAvailablePosition(node);
-          Transform3D t3d = new Transform3D();
-          t3d.setTranslation(vector);
-          transformGroup.setTransform(t3d);
-
-          addChild(transformGroup, node);
-
-          BranchGroup branchGroup = new BranchGroup();
-          branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-          branchGroup.setCapability(Node.ENABLE_PICK_REPORTING);
-          branchGroup.setPickable(true);
-          branchGroup.addChild(transformGroup);
-
-          universe.addBranchGraph(branchGroup);
+          root.addChild(node);
         }
         else
         {
           ThreeDeeUtil.enablePicking(node);
-          containerContainmentGroup.addChild(node);
+          parent.addChild(node);
         }
 
-        layout((ElementGroup)node, containerContainmentGroup);
+        layout();
 
-        Element element = ((ElementGroup)node).getModel();
+        Element element = node.getModel();
         Element containerElement = getContainerElement(element);
         if (containerElement != null)
         {
@@ -601,9 +591,10 @@ public class ThreeDeeWorld
         clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
 
         updateReferences(containerElement);
-        layout(null, containerContainmentGroup);
+        // layout(null, containerContainmentGroup);
       }
     }
+    layout();
   }
 
   private void removeNode(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
@@ -615,12 +606,12 @@ public class ThreeDeeWorld
         if (containerContainmentGroup != null)
         {
           containerContainmentGroup.removeChild(containmentGroup);
-          layout(null, containerContainmentGroup);
         }
         else
         {
           universe.getLocale().removeBranchGraph(containmentGroup);
         }
+        root.layout();
       }
     });
   }
@@ -713,36 +704,25 @@ public class ThreeDeeWorld
 
   public void layout()
   {
-    schedule(new Runnable()
-    {
-      public void run()
-      {
-        for (Session session : Frontend.INSTANCE.getElements())
-        {
-          Element rootElement = session.getRootElement();
-          if (rootElement != null)
-          {
-            ElementGroup elementGroup = elementGroups.get(rootElement);
-            if (elementGroup != null)
-            {
-              layout(elementGroup, null);
-            }
-          }
-        }
-      }
-    });
-  }
-
-  private void layout(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
-  {
-    if (containerContainmentGroup != null)
-    {
-      containerContainmentGroup.layout();
-    }
-    else
-    {
-      containmentGroup.layout();
-    }
+    // schedule(new Runnable()
+    // {
+    // public void run()
+    // {
+    // for (Session session : Frontend.INSTANCE.getElements())
+    // {
+    // Element rootElement = session.getRootElement();
+    // if (rootElement != null)
+    // {
+    // ElementGroup elementGroup = elementGroups.get(rootElement);
+    // if (elementGroup != null)
+    // {
+    // layout(elementGroup, null);
+    // }
+    // }
+    // }
+    // }
+    // });
+    root.layout();
   }
 
   private void updateReferences(Element element)
