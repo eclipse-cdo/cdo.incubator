@@ -111,7 +111,6 @@ public class IntroPlanet extends BranchGroup implements IColors
   {
     new SoundPlayer("zarathustra.wav").start();
 
-    // new TextAnimation(0, 1, 0, "Eike Stepper", 1).start();
     new TextAnimation(0, 33, 0, "Eike Stepper", 1).start();
     new TextAnimation(0, 51, 900, "Martin Flügge", 1).start();
     new TextAnimation(1, 11, 200, "EclipseCon 2011", 1).start();
