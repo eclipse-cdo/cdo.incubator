@@ -154,6 +154,8 @@ public class ThreeDeeWorld implements ISelectionProvider
     frame.add(canvas);
     createPicking(canvas, scene);
 
+    intro();
+
     // Thread t = new Thread(new Runnable()
     // {
     // public void run()
@@ -211,8 +213,6 @@ public class ThreeDeeWorld implements ISelectionProvider
     // }
     // });
     // t.start();
-
-    // intro();
 
     // flashing1();
     // flashing2();

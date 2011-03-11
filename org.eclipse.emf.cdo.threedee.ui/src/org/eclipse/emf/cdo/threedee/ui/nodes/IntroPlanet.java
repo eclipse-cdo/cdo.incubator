@@ -128,10 +128,10 @@ public class IntroPlanet extends BranchGroup implements IColors
     new SoundPlayer("zarathustra.wav").start();
     new ChimeIn().start();
 
-    new TextAnimation(0, 33, 500, "Eike Stepper", 1).start();
-    new TextAnimation(0, 53, 0, "Martin Flügge", 1).start();
+    new TextAnimation(0, 34, 400, "Eike Stepper", 1).start();
+    new TextAnimation(0, 53, 500, "Martin Flügge", 1).start();
     new TextAnimation(1, 12, 600, "EclipseCon 2011", 1).start();
-    new TextAnimation(1, 34, 0, "CDO3D", 2)
+    new TextAnimation(1, 36, 0, "CDO3D", 3)
     {
       @Override
       protected void animate(float alpha)
@@ -140,7 +140,7 @@ public class IntroPlanet extends BranchGroup implements IColors
       }
     }.start();
 
-    new ChimeOut(1, 39, 0).start();
+    new ChimeOut(1, 40, 0).start();
   }
 
   private Sphere createPlanet()
@@ -186,7 +186,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     TransformGroup transformGroup1 = new TransformGroup(rotation);
 
     Transform3D translation = new Transform3D();
-    translation.setTranslation(new Vector3d(offset, RADIUS + 0.2f, 0.0f));
+    translation.setTranslation(new Vector3d(offset, RADIUS + 0.5f, 0.0f));
     TransformGroup transformGroup2 = new TransformGroup(translation);
 
     transformGroup1.addChild(transformGroup2);
@@ -444,7 +444,7 @@ public class IntroPlanet extends BranchGroup implements IColors
   {
     public ChimeOut(long minute, long second, long milli)
     {
-      super(minute, second, milli, 20000);
+      super(minute, second, milli, 21000);
     }
 
     @Override
@@ -453,7 +453,7 @@ public class IntroPlanet extends BranchGroup implements IColors
       double z = Z0 - 20d * alpha;
 
       Transform3D viewingTransform = new Transform3D();
-      viewingTransform.set(new Vector3d(0.0, y, z));
+      viewingTransform.set(new Vector3d(0.0, y + 2.6d * alpha, z));
 
       ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
       viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
