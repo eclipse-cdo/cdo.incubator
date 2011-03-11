@@ -23,6 +23,7 @@ import com.sun.j3d.utils.universe.ViewingPlatform;
 
 import javax.media.j3d.Alpha;
 import javax.media.j3d.Appearance;
+import javax.media.j3d.Background;
 import javax.media.j3d.BoundingBox;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
@@ -76,11 +77,15 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   private Alpha alpha;
 
+  private TransparencyAttributes background;
+
   public IntroPlanet(ThreeDeeWorld threeDeeWorld)
   {
     this.threeDeeWorld = threeDeeWorld;
     setCapability(Group.ALLOW_CHILDREN_EXTEND);
     setCapability(Group.ALLOW_CHILDREN_WRITE);
+
+    addChild(createBackground());
 
     SpotLight light = new SpotLight();
     light.setColor(darkGray);
@@ -141,6 +146,39 @@ public class IntroPlanet extends BranchGroup implements IColors
     }.start();
 
     new ChimeOut(1, 40, 0).start();
+  }
+
+  private BranchGroup createBackground()
+  {
+    BranchGroup backgroundGroup = new BranchGroup();
+
+    Background back = new Background();
+    back.setApplicationBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 200.0));
+
+    BranchGroup bgGeometry = new BranchGroup();
+
+    Transform3D rotation = new Transform3D();
+    rotation.rotY(Math.PI);
+    TransformGroup transformGroup = new TransformGroup(rotation);
+
+    Appearance appearance = new Appearance();
+    setTexture(appearance, "back.jpg");
+
+    background = new TransparencyAttributes();
+    background.setCapability(TransparencyAttributes.ALLOW_VALUE_WRITE);
+    background.setTransparencyMode(TransparencyAttributes.NICEST);
+    appearance.setTransparencyAttributes(background);
+
+    int primflags = Primitive.GENERATE_TEXTURE_COORDS | Primitive.GENERATE_NORMALS_INWARD;
+    Sphere sphere = new Sphere(1.0f, primflags, 256, appearance);
+
+    transformGroup.addChild(sphere);
+    bgGeometry.addChild(transformGroup);
+    back.setGeometry(bgGeometry);
+    backgroundGroup.addChild(back);
+
+    return backgroundGroup;
+
   }
 
   private Sphere createPlanet()
@@ -450,6 +488,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     @Override
     protected void animate(float alpha)
     {
+      background.setTransparency(alpha);
       double z = Z0 - 20d * alpha;
 
       Transform3D viewingTransform = new Transform3D();
