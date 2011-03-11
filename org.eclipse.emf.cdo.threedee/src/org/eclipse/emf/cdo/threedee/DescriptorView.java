@@ -22,13 +22,18 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
 import java.awt.Color;
@@ -122,6 +127,7 @@ public class DescriptorView extends ViewPart
 
     setAllChecked(true);
     INSTANCE.setValue(this);
+    createPageListener();
   }
 
   @Override
@@ -145,6 +151,31 @@ public class DescriptorView extends ViewPart
   public CheckboxTreeViewer getViewer()
   {
     return viewer;
+  }
+
+  private void createPageListener()
+  {
+    getSite().getPage().addSelectionListener(new ISelectionListener()
+    {
+      public void selectionChanged(IWorkbenchPart part, final ISelection sel)
+      {
+        Display.getDefault().asyncExec(new Runnable()
+        {
+          public void run()
+          {
+            IElementSelection selection = (IElementSelection)sel;
+            ElementDescriptor descriptor = selection.getElement().getDescriptor();
+            TreeViewer viewer = getViewer();
+
+            viewer.reveal(descriptor);
+            StructuredSelection newSelection = new StructuredSelection(descriptor);
+
+            viewer.setSelection(newSelection);
+            // TODO set selection into page
+          }
+        });
+      }
+    });
   }
 
   /**

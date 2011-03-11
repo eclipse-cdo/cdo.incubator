@@ -34,13 +34,18 @@ import org.eclipse.net4j.util.ui.actions.SafeAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.ISelectionProvider;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionBars;
+import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchActionConstants;
+import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
 import java.util.Set;
@@ -94,6 +99,8 @@ public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
     elementViewListener.connect(ElementView.INSTANCE.getValue());
 
     contributeToActionBars();
+
+    getSite().setSelectionProvider(world);
   }
 
   @Override
@@ -275,20 +282,40 @@ public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
     {
       if (view != null)
       {
-        view.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
+        getSite().getPage().addSelectionListener(new ISelectionListener()
         {
-          public void selectionChanged(SelectionChangedEvent event)
+          public void selectionChanged(IWorkbenchPart part, final ISelection sel)
           {
-            TreeSelection selection = (TreeSelection)event.getSelection();
-
-            Object element = selection.getFirstElement();
-
-            if (element instanceof Element)
+            Display.getDefault().asyncExec(new Runnable()
             {
-              world.setSelected((Element)element);
-            }
+              public void run()
+              {
+                IStructuredSelection selection = (IStructuredSelection)sel;
+
+                Object element = selection.getFirstElement();
+
+                if (element instanceof Element)
+                {
+                  world.setSelected((Element)element);
+                }
+              }
+            });
           }
         });
+        // view.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
+        // {
+        // public void selectionChanged(SelectionChangedEvent event)
+        // {
+        // TreeSelection selection = (TreeSelection)event.getSelection();
+        //
+        // Object element = selection.getFirstElement();
+        //
+        // if (element instanceof Element)
+        // {
+        // world.setSelected((Element)element);
+        // }
+        // }
+        // });
       }
     }
   }

@@ -154,6 +154,64 @@ public class ThreeDeeWorld implements ISelectionProvider
     frame.add(canvas);
     createPicking(canvas, scene);
 
+    // Thread t = new Thread(new Runnable()
+    // {
+    // public void run()
+    // {
+    // ConcurrencyUtil.sleep(10000);
+    //
+    // final Display display = composite.getDisplay();
+    // Display.getDefault().asyncExec(new Runnable()
+    // {
+    // public void run()
+    // {
+    // Event event = new Event();
+    // event.type = SWT.MouseDown;
+    // event.button = 1;
+    // display.post(event);
+    // }
+    // });
+    //
+    // for (int i = 0; i < 100; i += 10)
+    // {
+    // final int a = i;
+    // Display.getDefault().asyncExec(new Runnable()
+    // {
+    // public void run()
+    // {
+    // Event event = new Event();
+    // event.type = SWT.MouseMove;
+    // event.x = composite.toDisplay(a, a).x;
+    // event.y = composite.toDisplay(a + 10, a + 10).y;
+    //
+    // display.post(event);
+    // System.out.println("moveMouse");
+    // try
+    // {
+    // Thread.sleep(500);
+    // }
+    // catch (InterruptedException ex)
+    // {
+    // ex.printStackTrace();
+    // }
+    // }
+    // });
+    // }
+    //
+    // Display.getDefault().asyncExec(new Runnable()
+    // {
+    // public void run()
+    // {
+    // Event event = new Event();
+    // event.type = SWT.MouseUp;
+    // event.button = 1;
+    // display.post(event);
+    // }
+    // });
+    // }
+    // });
+    // t.start();
+
     // intro();
 
     // flashing1();
