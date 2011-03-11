@@ -104,6 +104,8 @@ public class ThreeDeeWorld
 
   private boolean showCrossReferences;
 
+  private Transform3D viewingTransform;
+
   public ThreeDeeWorld(Composite parent)
   {
     composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
@@ -153,7 +155,7 @@ public class ThreeDeeWorld
   @SuppressWarnings("unused")
   private void intro()
   {
-    IntroPlanet planet = new IntroPlanet(canvas);
+    IntroPlanet planet = new IntroPlanet(this);
     universe.addBranchGraph(planet);
     planet.start();
   }
@@ -370,7 +372,7 @@ public class ThreeDeeWorld
   private void createLights(BranchGroup group)
   {
     Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
-    Vector3f light1Direction = new Vector3f(4.0f, -7.0f, -12.0f);
+    Vector3f light1Direction = new Vector3f(4.0f, -11.0f, -12.0f);
     DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
 
     BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
@@ -478,9 +480,39 @@ public class ThreeDeeWorld
     double fieldOfView = view.getFieldOfView();
     double viewDistance = 12.0d / Math.tan(fieldOfView / 2.0d);
 
-    Transform3D transform = new Transform3D();
-    transform.set(new Vector3d(0.0, 0.0, viewDistance));
-    viewingPlatform.getViewPlatformTransform().setTransform(transform);
+    viewingTransform = new Transform3D();
+    viewingTransform.set(new Vector3d(0.0, 0.0, viewDistance));
+    viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
+  }
+
+  public static ContextTracer getTracer()
+  {
+    return TRACER;
+  }
+
+  public SimpleUniverse getUniverse()
+  {
+    return universe;
+  }
+
+  public BranchGroup getScene()
+  {
+    return scene;
+  }
+
+  public TransformGroup getSphereTransformGroup()
+  {
+    return sphereTransformGroup;
+  }
+
+  public Canvas3D getCanvas()
+  {
+    return canvas;
+  }
+
+  public Transform3D getViewingTransform()
+  {
+    return viewingTransform;
   }
 
   public Composite getComposite()

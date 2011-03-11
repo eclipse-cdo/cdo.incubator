@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 
 import org.eclipse.net4j.util.WrappedException;
@@ -18,13 +19,13 @@ import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 
 import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.geometry.Sphere;
+import com.sun.j3d.utils.universe.ViewingPlatform;
 
 import javax.media.j3d.Alpha;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BoundingBox;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
-import javax.media.j3d.Canvas3D;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Font3D;
 import javax.media.j3d.FontExtrusion;
@@ -62,17 +63,23 @@ public class IntroPlanet extends BranchGroup implements IColors
 {
   private static final float RADIUS = 5.0f;
 
+  private static final double Y0 = 9.5;
+
+  private static final double Z0 = 15.0;
+
   private static final float TWO_PI = (float)(2.0f * Math.PI);
 
-  private Canvas3D canvas;
+  private ThreeDeeWorld threeDeeWorld;
+
+  private double y;
 
   private TransformGroup spin;
 
   private Alpha alpha;
 
-  public IntroPlanet(Canvas3D canvas)
+  public IntroPlanet(ThreeDeeWorld threeDeeWorld)
   {
-    this.canvas = canvas;
+    this.threeDeeWorld = threeDeeWorld;
     setCapability(Group.ALLOW_CHILDREN_EXTEND);
     setCapability(Group.ALLOW_CHILDREN_WRITE);
 
@@ -110,12 +117,14 @@ public class IntroPlanet extends BranchGroup implements IColors
   public void start()
   {
     new SoundPlayer("zarathustra.wav").start();
+    new ChimeIn().start();
 
-    new TextAnimation(0, 33, 0, "Eike Stepper", 1).start();
-    new TextAnimation(0, 51, 900, "Martin Flügge", 1).start();
-    new TextAnimation(1, 11, 200, "EclipseCon 2011", 1).start();
-    new TextAnimation(1, 32, 800, "CDO 3D", 2).start();
+    new TextAnimation(0, 33, 500, "Eike Stepper", 1).start();
+    new TextAnimation(0, 53, 0, "Martin Flügge", 1).start();
+    new TextAnimation(1, 12, 600, "EclipseCon 2011", 1).start();
+    new TextAnimation(1, 34, 0, "CDO 3D", 2).start();
 
+    new ChimeOut(1, 42, 0).start();
   }
 
   private Sphere createPlanet()
@@ -172,7 +181,7 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   private void setTexture(Appearance appearance, String image)
   {
-    Texture texture = ThreeDeeUtil.loadTexture(image, canvas);
+    Texture texture = ThreeDeeUtil.loadTexture(image, threeDeeWorld.getCanvas());
     texture.setBoundaryModeS(Texture.WRAP);
     texture.setBoundaryModeT(Texture.WRAP);
     appearance.setTexture(texture);
@@ -285,37 +294,130 @@ public class IntroPlanet extends BranchGroup implements IColors
   /**
    * @author Eike Stepper
    */
-  private final class TextAnimation extends Thread
+  private abstract class Animation extends Thread
   {
-    private long minute;
+    private long delay;
 
-    private long second;
+    private long duration;
 
-    private long milli;
+    public Animation(long minute, long second, long milli, long duration)
+    {
+      delay = Math.max(0, (minute * 60 + second) * 1000 + milli - 5000);
+      this.duration = duration;
+    }
 
+    public Animation(long duration)
+    {
+      this.duration = duration;
+    }
+
+    @Override
+    public final void run()
+    {
+      ConcurrencyUtil.sleep(delay);
+      init();
+
+      long start = System.currentTimeMillis();
+      long end = start + duration;
+      long time = start;
+
+      while (time < end)
+      {
+        float progress = time - start;
+        float alpha = -0.5f * (float)Math.cos(Math.PI * progress / duration) + 0.5f;
+        animate(alpha);
+
+        ConcurrencyUtil.sleep(1);
+        time = System.currentTimeMillis();
+      }
+
+      done();
+    }
+
+    protected void init()
+    {
+    }
+
+    protected abstract void animate(float alpha);
+
+    protected void done()
+    {
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ChimeIn extends Animation
+  {
+    public ChimeIn()
+    {
+      super(30000);
+    }
+
+    @Override
+    protected void animate(float alpha)
+    {
+      y = Y0 - 5d * alpha;
+
+      Transform3D viewingTransform = new Transform3D();
+      viewingTransform.set(new Vector3d(0.0, y, Z0));
+
+      ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
+      viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class ChimeOut extends Animation
+  {
+    public ChimeOut(long minute, long second, long milli)
+    {
+      super(minute, second, milli, 15000);
+    }
+
+    @Override
+    protected void animate(float alpha)
+    {
+      double z = Z0 - 20d * alpha;
+
+      Transform3D viewingTransform = new Transform3D();
+      viewingTransform.set(new Vector3d(0.0, y, z));
+
+      ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
+      viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class TextAnimation extends Animation
+  {
     private String string;
 
     private int size;
 
+    private TransparencyAttributes transparencyAttributes;
+
+    private BranchGroup branchGroup;
+
     public TextAnimation(long minute, long second, long milli, String string, int size)
     {
-      setDaemon(true);
-      this.minute = minute;
-      this.second = second;
-      this.milli = milli;
+      super(minute, second, milli, 5000);
       this.string = string;
       this.size = size;
     }
 
     @Override
-    public void run()
+    protected void init()
     {
-      ConcurrencyUtil.sleep(Math.max(0, (minute * 60 + second) * 1000 + milli - 5000));
-
-      BranchGroup branchGroup = new BranchGroup();
+      branchGroup = new BranchGroup();
       branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
 
-      TransparencyAttributes transparencyAttributes = new TransparencyAttributes();
+      transparencyAttributes = new TransparencyAttributes();
       transparencyAttributes.setCapability(TransparencyAttributes.ALLOW_VALUE_WRITE);
       transparencyAttributes.setTransparencyMode(TransparencyAttributes.NICEST);
 
@@ -327,21 +429,17 @@ public class IntroPlanet extends BranchGroup implements IColors
       spin.addChild(branchGroup);
 
       ConcurrencyUtil.sleep(10000);
+    }
 
-      long fadeMillis = 5000;
-      long start = System.currentTimeMillis();
-      long end = start + fadeMillis;
-      long time = start;
+    @Override
+    protected void animate(float alpha)
+    {
+      transparencyAttributes.setTransparency(alpha);
+    }
 
-      while (time < end)
-      {
-        float duration = time - start;
-        transparencyAttributes.setTransparency(duration / fadeMillis);
-
-        ConcurrencyUtil.sleep(1);
-        time = System.currentTimeMillis();
-      }
-
+    @Override
+    protected void done()
+    {
       spin.removeChild(branchGroup);
     }
   }
