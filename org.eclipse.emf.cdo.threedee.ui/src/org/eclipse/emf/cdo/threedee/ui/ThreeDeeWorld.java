@@ -865,12 +865,41 @@ public class ThreeDeeWorld
     return showCrossReferences;
   }
 
-  public void setSelected(Element element, boolean selected)
+  protected void setSelected(Element element, boolean selected)
   {
     ElementGroup elementGroup = elementGroups.get(element);
     if (elementGroup != null)
     {
       elementGroup.selected(selected);
+    }
+  }
+
+  private Element lastSelected;
+
+  public void setSelected(Element element)
+  {
+    ElementGroup elementGroup = elementGroups.get(element);
+    if (elementGroup != null)
+    {
+      if (element.equals(lastSelected))
+      {
+        elementGroup.selected(false);
+        lastSelected = null;
+      }
+      else
+      {
+        clearSelection();
+        elementGroup.selected(true);
+        lastSelected = element;
+      }
+    }
+  }
+
+  private void clearSelection()
+  {
+    for (ElementGroup elementGroup : elementGroups.values())
+    {
+      elementGroup.selected(false);
     }
   }
 

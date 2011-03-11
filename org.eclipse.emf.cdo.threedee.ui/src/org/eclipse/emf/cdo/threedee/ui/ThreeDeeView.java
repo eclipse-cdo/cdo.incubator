@@ -13,6 +13,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.DescriptorView;
 import org.eclipse.emf.cdo.threedee.DescriptorView.CheckStateEvent;
+import org.eclipse.emf.cdo.threedee.ElementView;
 import org.eclipse.emf.cdo.threedee.Frontend;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.Element.CallEvent;
@@ -63,6 +64,8 @@ public class ThreeDeeView extends ViewPart
 
   private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
 
+  private ElementViewListener elementViewListener = new ElementViewListener();
+
   private ThreeDeeWorld world;
 
   private LayoutAction layoutAction = new LayoutAction();
@@ -84,6 +87,9 @@ public class ThreeDeeView extends ViewPart
 
     DescriptorView.INSTANCE.addListener(descriptorViewListener);
     descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
+
+    ElementView.INSTANCE.addListener(elementViewListener);
+    elementViewListener.connect(ElementView.INSTANCE.getValue());
 
     contributeToActionBars();
   }
@@ -152,7 +158,7 @@ public class ThreeDeeView extends ViewPart
       }
       else if (event instanceof CallEvent)
       {
-         world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget());
+        world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget());
       }
     }
 
@@ -232,6 +238,52 @@ public class ThreeDeeView extends ViewPart
             if (element instanceof ElementDescriptor)
             {
               world.setSelected((ElementDescriptor)element);
+            }
+          }
+        });
+      }
+    }
+  }
+
+  /**
+   * @author Martin Fluegge
+   */
+  private final class ElementViewListener implements IListener
+  {
+    public void notifyEvent(IEvent event)
+    {
+      if (event instanceof ValueEvent)
+      {
+        ValueEvent<?> e = (ValueEvent<?>)event;
+        if (e.getSource() == DescriptorView.INSTANCE)
+        {
+          DescriptorView oldView = (DescriptorView)e.getOldValue();
+          if (oldView != null)
+          {
+            oldView.getNotifier().removeListener(this);
+          }
+
+          ElementView newView = (ElementView)e.getNewValue();
+          connect(newView);
+        }
+      }
+    }
+
+    public void connect(ElementView view)
+    {
+      if (view != null)
+      {
+        view.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
+        {
+          public void selectionChanged(SelectionChangedEvent event)
+          {
+            TreeSelection selection = (TreeSelection)event.getSelection();
+
+            Object element = selection.getFirstElement();
+            System.out.println(element);
+            if (element instanceof Element)
+            {
+              world.setSelected((Element)element);
             }
           }
         });
