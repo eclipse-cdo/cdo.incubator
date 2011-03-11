@@ -6,11 +6,15 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *    Martin Fluegge - initial API and implementation
+ *    Eike Stepper - initial API and implementation
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
+import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+
+import org.eclipse.net4j.util.WrappedException;
+import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 
 import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.geometry.Sphere;
@@ -25,6 +29,7 @@ import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Font3D;
 import javax.media.j3d.FontExtrusion;
 import javax.media.j3d.Geometry;
+import javax.media.j3d.Group;
 import javax.media.j3d.Material;
 import javax.media.j3d.RotationInterpolator;
 import javax.media.j3d.Shape3D;
@@ -34,6 +39,12 @@ import javax.media.j3d.Texture;
 import javax.media.j3d.TextureAttributes;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
@@ -41,9 +52,10 @@ import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
 import java.awt.Font;
+import java.net.URL;
 
 /**
- * @author Martin Fluegge
+ * @author Eike Stepper
  */
 public class IntroPlanet extends BranchGroup implements IColors
 {
@@ -53,9 +65,15 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   private Canvas3D canvas;
 
+  private TransformGroup spin;
+
+  private Alpha alpha;
+
   public IntroPlanet(Canvas3D canvas)
   {
     this.canvas = canvas;
+    setCapability(Group.ALLOW_CHILDREN_EXTEND);
+    setCapability(Group.ALLOW_CHILDREN_WRITE);
 
     SpotLight light = new SpotLight();
     light.setColor(new Color3f(0.7f, 0.8f, 0.8f));
@@ -63,17 +81,17 @@ public class IntroPlanet extends BranchGroup implements IColors
     light.setDirection(new Vector3f(0.0f, 1.5f, 1.0f));
     light.setSpreadAngle((float)(0.25f * Math.PI));
 
-    // DirectionalLight light1 = new DirectionalLight(color, direction);
-
     BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, RADIUS, 0.0), RADIUS);
     light.setInfluencingBounds(bounds);
     addChild(light);
 
-    TransformGroup spin = new TransformGroup();
+    spin = new TransformGroup();
     spin.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    spin.setCapability(Group.ALLOW_CHILDREN_EXTEND);
+    spin.setCapability(Group.ALLOW_CHILDREN_WRITE);
     addChild(spin);
 
-    Alpha alpha = new Alpha(-1, 40000);
+    alpha = new Alpha(-1, 40000);
 
     Transform3D axis = new Transform3D();
     axis.rotZ(-Math.PI / 2);
@@ -85,13 +103,18 @@ public class IntroPlanet extends BranchGroup implements IColors
     Sphere planet = createPlanet();
     spin.addChild(planet);
 
-    spin.addChild(createText("CDO Model Repository", -1d));
-    spin.addChild(createText("EclipseCon 2011", -2d));
-    // spin.addChild(createText("Art By:", -3d));
-    spin.addChild(createText("Eike Stepper", -4d));
-    spin.addChild(createText("Martin Flügge", -5d));
-
     compile();
+  }
+
+  public void start()
+  {
+    new SoundPlayer("zarathustra.wav").start();
+
+    new TextAnimation(0, 33, 0, "Eike Stepper", 1).start();
+    new TextAnimation(0, 51, 800, "Martin Flügge", 1).start();
+    new TextAnimation(1, 11, 0, "EclipseCon 2011", 1).start();
+    new TextAnimation(1, 32, 800, "CDO 3D", 2).start();
+
   }
 
   private Sphere createPlanet()
@@ -108,7 +131,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     return new Sphere(RADIUS, Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS, 64, appearance);
   }
 
-  private TransformGroup createText(String text, double angle)
+  private TransformGroup createText(String text, int size, double angle)
   {
     Appearance appearance = new Appearance();
     // setTexture(appearance, "comet.jpg");
@@ -117,7 +140,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     material.setLightingEnable(true);
     appearance.setMaterial(material);
 
-    Font3D font = new Font3D(new Font("TestFont", Font.PLAIN, 1), new FontExtrusion());
+    Font3D font = new Font3D(new Font("TestFont", Font.PLAIN, size), new FontExtrusion());
     Text3D text3D = new Text3D(font, text, new Point3f(-2.0f, 0.7f, 0.0f));
     text3D.setCapability(Geometry.ALLOW_INTERSECT);
 
@@ -154,5 +177,148 @@ public class IntroPlanet extends BranchGroup implements IColors
     TextureAttributes textureAttributes = new TextureAttributes();
     textureAttributes.setTextureMode(TextureAttributes.MODULATE);
     appearance.setTextureAttributes(textureAttributes);
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  public class SoundPlayer extends Thread
+  {
+    private AudioInputStream in;
+
+    private SourceDataLine line;
+
+    private int frameSize;
+
+    private boolean started;
+
+    private boolean stopped;
+
+    public SoundPlayer(String sound)
+    {
+      try
+      {
+        URL url = new URL(OM.BUNDLE.getBaseURL().toString() + "sounds/" + sound);
+        in = AudioSystem.getAudioInputStream(url);
+        AudioFormat format = in.getFormat();
+        checkEncoding(format);
+
+        frameSize = format.getFrameSize();
+
+        DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+        line = (SourceDataLine)AudioSystem.getLine(info);
+        line.open();
+      }
+      catch (Exception ex)
+      {
+        throw WrappedException.wrap(ex);
+      }
+    }
+
+    @Override
+    public void run()
+    {
+      byte[] buffer = new byte[64 * 1024];
+      int readPoint = 0;
+      int bytesRead = 0;
+
+      try
+      {
+        while (!stopped)
+        {
+          if (started)
+          {
+            bytesRead = in.read(buffer, readPoint, buffer.length - readPoint);
+            if (bytesRead == -1)
+            {
+              break;
+            }
+
+            int leftOver = bytesRead % frameSize;
+            line.write(buffer, readPoint, bytesRead - leftOver);
+
+            System.arraycopy(buffer, bytesRead, buffer, 0, leftOver);
+            readPoint = leftOver;
+          }
+          else
+          {
+            ConcurrencyUtil.sleep(10);
+          }
+        }
+
+        line.drain();
+        line.stop();
+      }
+      catch (Exception ex)
+      {
+        ex.printStackTrace();
+      }
+    }
+
+    @Override
+    public synchronized void start()
+    {
+      started = true;
+      stopped = false;
+      if (!isAlive())
+      {
+        super.start();
+      }
+
+      line.start();
+    }
+
+    private void checkEncoding(AudioFormat format) throws UnsupportedAudioFileException
+    {
+      AudioFormat.Encoding formatEncoding = format.getEncoding();
+      if (!(formatEncoding.equals(AudioFormat.Encoding.PCM_SIGNED) || formatEncoding
+          .equals(AudioFormat.Encoding.PCM_UNSIGNED)))
+      {
+        throw new UnsupportedAudioFileException("Audio is not PCM");
+      }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class TextAnimation extends Thread
+  {
+    private long minute;
+
+    private long second;
+
+    private long milli;
+
+    private String string;
+
+    private int size;
+
+    public TextAnimation(long minute, long second, long milli, String string, int size)
+    {
+      setDaemon(true);
+      this.minute = minute;
+      this.second = second;
+      this.milli = milli;
+      this.string = string;
+      this.size = size;
+    }
+
+    @Override
+    public void run()
+    {
+      ConcurrencyUtil.sleep((minute * 60 + second) * 1000 + milli - 5000);
+
+      float value = (float)(alpha.value() * 2.0f * Math.PI);
+      TransformGroup text = createText(string, size, -value - 0.5f * Math.PI);
+
+      BranchGroup branchGroup = new BranchGroup();
+      branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+      branchGroup.addChild(text);
+
+      spin.addChild(branchGroup);
+      ConcurrencyUtil.sleep(17 * 1000);
+      spin.removeChild(branchGroup);
+    }
   }
 }

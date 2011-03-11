@@ -52,7 +52,6 @@ import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.Geometry;
-import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Group;
 import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
@@ -67,8 +66,6 @@ import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
 import java.awt.Frame;
-import java.awt.GraphicsConfiguration;
-import java.awt.GraphicsDevice;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -136,7 +133,7 @@ public class ThreeDeeWorld
   {
     Frame frame = SWT_AWT.new_Frame(composite);
 
-    canvas = createCanvas(frame);
+    canvas = ThreeDeeUtil.createCanvas(frame);
     universe = new SimpleUniverse(canvas);
     scene = createScene(canvas);
 
@@ -153,9 +150,12 @@ public class ThreeDeeWorld
     // flashing2();
   }
 
+  @SuppressWarnings("unused")
   private void intro()
   {
-    universe.addBranchGraph(new IntroPlanet(canvas));
+    IntroPlanet planet = new IntroPlanet(canvas);
+    universe.addBranchGraph(planet);
+    planet.start();
   }
 
   @SuppressWarnings("unused")
@@ -354,20 +354,6 @@ public class ThreeDeeWorld
         }
       }
     }.start();
-  }
-
-  /**
-   * See http://stackoverflow.com/questions/507987/how-can-i-make-java3d-start-faster !!!
-   */
-  private Canvas3D createCanvas(Frame frame)
-  {
-    GraphicsConfiguration config = frame.getGraphicsConfiguration();
-    GraphicsDevice device = config.getDevice();
-
-    GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
-    config = device.getBestConfiguration(template);
-
-    return new Canvas3D(config);
   }
 
   private BranchGroup createScene(Canvas3D canvas)

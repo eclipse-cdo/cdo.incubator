@@ -30,6 +30,7 @@ import java.awt.BorderLayout;
  */
 public class SpotLightApp extends Applet
 {
+  private static final long serialVersionUID = 1L;
 
   Appearance createMatAppear(Color3f dColor, Color3f sColor, float shine)
   {
@@ -54,6 +55,7 @@ public class SpotLightApp extends Applet
     return sl;
   }
 
+  @SuppressWarnings("unused")
   public SpotLightApp()
   {
     BoundingSphere bound1 = new BoundingSphere(new Point3d(0.0, 0.9, 0.0), 0.5);

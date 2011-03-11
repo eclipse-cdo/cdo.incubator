@@ -17,7 +17,9 @@ import org.eclipse.net4j.util.WrappedException;
 import com.sun.j3d.utils.image.TextureLoader;
 
 import javax.media.j3d.Appearance;
+import javax.media.j3d.Canvas3D;
 import javax.media.j3d.ColoringAttributes;
+import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Group;
 import javax.media.j3d.Material;
 import javax.media.j3d.Node;
@@ -32,6 +34,9 @@ import javax.vecmath.Vector3f;
 
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
@@ -41,6 +46,20 @@ import java.util.Enumeration;
  */
 public class ThreeDeeUtil
 {
+  /**
+   * See http://stackoverflow.com/questions/507987/how-can-i-make-java3d-start-faster !!!
+   */
+  public static Canvas3D createCanvas(Frame frame)
+  {
+    GraphicsConfiguration config = frame.getGraphicsConfiguration();
+    GraphicsDevice device = config.getDevice();
+  
+    GraphicsConfigTemplate3D template = new GraphicsConfigTemplate3D();
+    config = device.getBestConfiguration(template);
+  
+    return new Canvas3D(config);
+  }
+
   public static Appearance getDefaultAppearance(Color3f color)
   {
     Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
@@ -126,7 +145,7 @@ public class ThreeDeeUtil
 
     try
     {
-      url = new URL(OM.BUNDLE.getBaseURL().toString() + "/images/" + image);
+      url = new URL(OM.BUNDLE.getBaseURL().toString() + "images/" + image);
     }
     catch (MalformedURLException ex)
     {
