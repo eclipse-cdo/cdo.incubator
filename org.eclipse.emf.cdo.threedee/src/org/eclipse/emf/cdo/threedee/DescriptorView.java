@@ -165,11 +165,10 @@ public class DescriptorView extends ViewPart
           {
             IElementSelection selection = (IElementSelection)sel;
             ElementDescriptor descriptor = selection.getElement().getDescriptor();
-            TreeViewer viewer = getViewer();
-
-            viewer.reveal(descriptor);
             StructuredSelection newSelection = new StructuredSelection(descriptor);
 
+            TreeViewer viewer = getViewer();
+            viewer.reveal(descriptor);
             viewer.setSelection(newSelection);
             // TODO set selection into page
           }
