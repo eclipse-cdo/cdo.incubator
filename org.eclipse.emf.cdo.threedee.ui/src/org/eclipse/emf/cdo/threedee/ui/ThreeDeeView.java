@@ -186,11 +186,6 @@ public class ThreeDeeView extends ViewPart
     @Override
     protected void onAdded(IContainer<Object> container, Object object)
     {
-      if (TRACER.isEnabled())
-      {
-        TRACER.format("onAdded: {0}", object); //$NON-NLS-1$
-      }
-
       addElement(object);
     }
 

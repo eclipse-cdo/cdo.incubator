@@ -207,7 +207,6 @@ public class ThreeDeeWorld implements ISelectionProvider
               event.y = composite.toDisplay(a + 10, a + 10).y;
 
               display.post(event);
-              System.out.println("moveMouse");
 
               try
               {
