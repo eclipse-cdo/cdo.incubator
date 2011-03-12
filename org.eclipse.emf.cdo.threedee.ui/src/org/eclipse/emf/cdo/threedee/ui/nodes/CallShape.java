@@ -14,11 +14,14 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.TransparencyAttributes;
 
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Eike Stepper

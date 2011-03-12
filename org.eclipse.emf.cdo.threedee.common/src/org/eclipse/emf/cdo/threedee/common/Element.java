@@ -474,14 +474,12 @@ public final class Element extends Container<Element>
   public void fireCallEvent(Element source, String what, When when)
   {
     IEvent event = new CallEvent(source, what, when);
-    System.err.println(event);
     fireEvent(event);
   }
 
   public void fireTransmissionEvent(Element receiver)
   {
     IEvent event = new TransmissionEvent(receiver);
-    System.err.println(event);
     fireEvent(event);
   }
 

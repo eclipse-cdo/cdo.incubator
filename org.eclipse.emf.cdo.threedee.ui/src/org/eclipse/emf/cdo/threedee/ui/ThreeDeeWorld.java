@@ -24,6 +24,7 @@ import org.eclipse.emf.cdo.threedee.ui.nodes.RootElement;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 
 import org.eclipse.net4j.util.ObjectUtil;
+import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 import org.eclipse.net4j.util.concurrent.QueueRunner;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
@@ -54,7 +55,6 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
 import javax.media.j3d.AmbientLight;
-import javax.media.j3d.Appearance;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
@@ -81,6 +81,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 /**
@@ -117,6 +118,8 @@ public class ThreeDeeWorld implements ISelectionProvider
   private StructuredSelection selection;
 
   private List<ISelectionChangedListener> selectionChangeListeners = new ArrayList<ISelectionChangedListener>();
+
+  private CallThread callThread;
 
   public ThreeDeeWorld(Composite parent)
   {
@@ -709,36 +712,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       return;
     }
 
-    final CallShape callShape = new CallShape(source, target);
-    callShape.setGeometry(getLineGeometry(source, target));
-    universe.addBranchGraph(callShape);
-
-    Thread thread = new Thread(new Runnable()
-    {
-      public void run()
-      {
-        Appearance appearance = callShape.getAppearance();
-        TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
-
-        for (int i = 0; i < 100; i++)
-        {
-          transparencyAttributes.setTransparency(transparencyAttributes.getTransparency() + 0.01f);
-
-          try
-          {
-            Thread.sleep(15);
-          }
-          catch (InterruptedException ex)
-          {
-            Thread.currentThread().interrupt();
-          }
-        }
-
-        universe.getLocale().removeBranchGraph(callShape);
-      }
-    });
-
-    thread.start();
+    getCallThread().add(source, target);
   }
 
   public void setShowCrossReferences(boolean showCrossReferences)
@@ -801,6 +775,84 @@ public class ThreeDeeWorld implements ISelectionProvider
       {
         elementGroup.select(select);
       }
+    }
+  }
+
+  private synchronized CallThread getCallThread()
+  {
+    if (callThread == null)
+    {
+      callThread = new CallThread();
+      callThread.start();
+    }
+
+    return callThread;
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class CallThread extends Thread
+  {
+    private Map<Pair<Element, Element>, CallShape> calls = new HashMap<Pair<Element, Element>, CallShape>();
+
+    public CallThread()
+    {
+      setDaemon(true);
+    }
+
+    public synchronized void add(Element source, Element target)
+    {
+      Pair<Element, Element> key = new Pair<Element, Element>(source, target);
+      CallShape call = calls.get(key);
+      if (call == null)
+      {
+        call = new CallShape(source, target);
+        call.setGeometry(getLineGeometry(source, target));
+        universe.addBranchGraph(call);
+        calls.put(key, call);
+      }
+      else
+      {
+        call.getAppearance().getTransparencyAttributes().setTransparency(0f);
+      }
+    }
+
+    @Override
+    public void run()
+    {
+      while (!interrupted())
+      {
+        for (Entry<Pair<Element, Element>, CallShape> entry : getEntries())
+        {
+          CallShape call = entry.getValue();
+          TransparencyAttributes transparencyAttributes = call.getAppearance().getTransparencyAttributes();
+          float transparency = transparencyAttributes.getTransparency();
+          if (transparency >= 1.0f)
+          {
+            remove(entry.getKey());
+            call.detach();
+          }
+          else
+          {
+            transparencyAttributes.setTransparency(transparency + 0.01f);
+          }
+        }
+
+        ConcurrencyUtil.sleep(15);
+      }
+    }
+
+    private synchronized Entry<Pair<Element, Element>, CallShape>[] getEntries()
+    {
+      @SuppressWarnings("unchecked")
+      Entry<Pair<Element, Element>, CallShape>[] array = calls.entrySet().toArray(new Entry[calls.size()]);
+      return array;
+    }
+
+    private synchronized void remove(Pair<Element, Element> key)
+    {
+      calls.remove(key);
     }
   }
 }
