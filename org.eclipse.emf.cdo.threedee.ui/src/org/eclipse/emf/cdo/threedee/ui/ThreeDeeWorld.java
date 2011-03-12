@@ -436,6 +436,9 @@ public class ThreeDeeWorld implements ISelectionProvider
   private BranchGroup createScene(Canvas3D canvas)
   {
     BranchGroup scene = new BranchGroup();
+    scene.setCapability(Group.ALLOW_CHILDREN_EXTEND);
+    scene.setCapability(Group.ALLOW_CHILDREN_WRITE);
+
     createLights(scene);
     createNavigation(scene);
 
@@ -450,17 +453,16 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private void createLights(BranchGroup group)
   {
-    Color3f light1Color = new Color3f(0.7f, 0.8f, 0.8f);
-    Vector3f light1Direction = new Vector3f(4.0f, -11.0f, -12.0f);
-    DirectionalLight light1 = new DirectionalLight(light1Color, light1Direction);
+    DirectionalLight directionalLight = new DirectionalLight();
+    directionalLight.setColor(new Color3f(0.7f, 0.8f, 0.8f));
+    directionalLight.setDirection(new Vector3f(4.0f, -11.0f, -12.0f));
+    directionalLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
+    group.addChild(directionalLight);
 
-    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
-    light1.setInfluencingBounds(bounds);
-    group.addChild(light1);
-
-    AmbientLight light2 = new AmbientLight(new Color3f(0.3f, 0.3f, 0.3f));
-    light2.setInfluencingBounds(bounds);
-    group.addChild(light2);
+    AmbientLight ambientLight = new AmbientLight();
+    ambientLight.setColor(new Color3f(0.3f, 0.3f, 0.3f));
+    ambientLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
+    group.addChild(ambientLight);
   }
 
   private void createNavigation(BranchGroup branchGroup)
