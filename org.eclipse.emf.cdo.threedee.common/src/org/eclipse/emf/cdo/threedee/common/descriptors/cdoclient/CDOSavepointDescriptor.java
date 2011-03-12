@@ -8,33 +8,36 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
-import org.eclipse.emf.cdo.server.db.IMetaDataManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
-
-import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.emf.cdo.transaction.CDOSavepoint;
 
 /**
  * @author Eike Stepper
  */
-public class MetaDataManagerDescriptor extends CDOServerDescriptor
+public class CDOSavepointDescriptor extends CDOClientDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IMetaDataManager.class;
+    return CDOSavepoint.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
+    CDOSavepoint savepoint = (CDOSavepoint)object;
+    CDOSavepoint previousSavepoint = savepoint.getPreviousSavepoint();
+    if (previousSavepoint != null)
+    {
+      element.addReference(true, previousSavepoint);
+    }
   }
 
   @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  public String getLabel(Element element)
   {
-    return null;
+    return super.getLabel(element).substring(3);
   }
 }

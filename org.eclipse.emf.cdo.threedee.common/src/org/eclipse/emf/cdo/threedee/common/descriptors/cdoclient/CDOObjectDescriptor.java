@@ -8,30 +8,31 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
+import org.eclipse.emf.cdo.CDOObject;
+import org.eclipse.emf.cdo.CDOState;
 import org.eclipse.emf.cdo.threedee.common.Element;
-
-import org.eclipse.net4j.db.IDBAdapter;
 
 /**
  * @author Eike Stepper
  */
-public class DBAdapterDescriptor extends Net4jDBDescriptor
+public class CDOObjectDescriptor extends CDOClientDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IDBAdapter.class;
+    return CDOObject.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    IDBAdapter adapter = (IDBAdapter)object;
-    element.setNameAttribute(adapter.getName());
-    element.setAttribute("version", adapter.getVersion());
-    element.setAttribute("maxTableNameLength", adapter.getMaxTableNameLength());
-    element.setAttribute("maxFieldNameLength", adapter.getMaxFieldNameLength());
+    CDOObject cdoObject = (CDOObject)object;
+    CDOState state = cdoObject.cdoState();
+
+    element.setIDAttribute(cdoObject.cdoID());
+    element.setAttribute("state", state);
+    element.addReference(state == CDOState.NEW, cdoObject.cdoRevision());
   }
 }

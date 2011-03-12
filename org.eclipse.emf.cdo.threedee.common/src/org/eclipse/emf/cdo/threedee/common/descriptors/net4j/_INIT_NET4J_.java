@@ -11,7 +11,7 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
-import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db._INIT_NET4J_DB_;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb._INIT_NET4J_DB_;
 
 /**
  * @author Eike Stepper

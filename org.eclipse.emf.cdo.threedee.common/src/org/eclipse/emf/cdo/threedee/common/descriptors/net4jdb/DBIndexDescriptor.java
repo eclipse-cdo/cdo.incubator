@@ -8,30 +8,29 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 
-import org.eclipse.net4j.db.ddl.IDBField;
+import org.eclipse.net4j.db.ddl.IDBIndex;
 
 /**
  * @author Eike Stepper
  */
-public class DBFieldDescriptor extends Net4jDBDescriptor
+public class DBIndexDescriptor extends Net4jDBDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IDBField.class;
+    return IDBIndex.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    IDBField field = (IDBField)object;
-    element.setNameAttribute(field.getName());
-    element.setAttribute("type", field.getType());
-    element.setAttribute("scale", field.getScale());
-    element.setAttribute("precision", field.getPrecision());
+    IDBIndex index = (IDBIndex)object;
+    element.setNameAttribute(index.getName());
+    element.setAttribute("type", index.getType());
+    element.addReferences(false, index.getFields());
   }
 }

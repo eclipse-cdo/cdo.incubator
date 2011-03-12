@@ -8,28 +8,33 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoserver;
 
+import org.eclipse.emf.cdo.server.db.IMetaDataManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
+
+import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
  */
-@SuppressWarnings("restriction")
-public class SessionDescriptor extends CDOServerDescriptor
+public class MetaDataManagerDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return org.eclipse.emf.cdo.internal.server.Session.class;
+    return IMetaDataManager.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
-    element.setIDAttribute(session.getSessionID());
-    element.setAttribute("user", session.getUserID());
-    element.addReferences(true, session.getViews());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

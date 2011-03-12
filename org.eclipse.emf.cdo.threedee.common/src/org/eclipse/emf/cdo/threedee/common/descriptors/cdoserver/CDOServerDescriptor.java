@@ -8,29 +8,24 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoserver;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-
-import org.eclipse.net4j.db.ddl.IDBIndex;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class DBIndexDescriptor extends Net4jDBDescriptor
+public class CDOServerDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IDBIndex.class;
+    return FOLDER_TYPE;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    IDBIndex index = (IDBIndex)object;
-    element.setNameAttribute(index.getName());
-    element.setAttribute("type", index.getType());
-    element.addReferences(false, index.getFields());
   }
 }

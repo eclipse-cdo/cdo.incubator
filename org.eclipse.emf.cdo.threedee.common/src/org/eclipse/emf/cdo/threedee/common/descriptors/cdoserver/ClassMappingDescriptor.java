@@ -8,24 +8,30 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoserver;
 
+import org.eclipse.emf.cdo.server.db.mapping.IClassMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class CDOClientDescriptor extends ElementDescriptor
+public class ClassMappingDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return FOLDER_TYPE;
+    return IClassMapping.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
+    IClassMapping classMapping = (IClassMapping)object;
+    element.setKeyAttribute(classMapping.getEClass().getName());
+    element.addReference(false, classMapping.getEClass());
+    element.addReference(false, classMapping.getDBTables());
+    element.addReference(true, classMapping.getValueMappings());
+    element.addReference(true, classMapping.getListMappings());
   }
 }

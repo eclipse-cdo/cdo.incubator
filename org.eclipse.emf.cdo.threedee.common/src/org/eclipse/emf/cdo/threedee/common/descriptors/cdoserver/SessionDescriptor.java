@@ -8,36 +8,28 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoserver;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.transaction.CDOSavepoint;
 
 /**
  * @author Eike Stepper
  */
-public class CDOSavepointDescriptor extends CDOClientDescriptor
+@SuppressWarnings("restriction")
+public class SessionDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return CDOSavepoint.class;
+    return org.eclipse.emf.cdo.internal.server.Session.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    CDOSavepoint savepoint = (CDOSavepoint)object;
-    CDOSavepoint previousSavepoint = savepoint.getPreviousSavepoint();
-    if (previousSavepoint != null)
-    {
-      element.addReference(true, previousSavepoint);
-    }
-  }
-
-  @Override
-  public String getLabel(Element element)
-  {
-    return super.getLabel(element).substring(3);
+    org.eclipse.emf.cdo.internal.server.Session session = (org.eclipse.emf.cdo.internal.server.Session)object;
+    element.setIDAttribute(session.getSessionID());
+    element.setAttribute("user", session.getUserID());
+    element.addReferences(true, session.getViews());
   }
 }

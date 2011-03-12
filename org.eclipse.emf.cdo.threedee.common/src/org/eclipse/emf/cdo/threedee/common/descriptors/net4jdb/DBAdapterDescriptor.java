@@ -8,28 +8,30 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 
-import org.eclipse.net4j.db.ddl.IDBSchema;
+import org.eclipse.net4j.db.IDBAdapter;
 
 /**
  * @author Eike Stepper
  */
-public class DBSchemaDescriptor extends Net4jDBDescriptor
+public class DBAdapterDescriptor extends Net4jDBDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IDBSchema.class;
+    return IDBAdapter.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    IDBSchema schema = (IDBSchema)object;
-    element.setNameAttribute(schema.getName());
-    element.addReferences(true, schema.getTables());
+    IDBAdapter adapter = (IDBAdapter)object;
+    element.setNameAttribute(adapter.getName());
+    element.setAttribute("version", adapter.getVersion());
+    element.setAttribute("maxTableNameLength", adapter.getMaxTableNameLength());
+    element.setAttribute("maxFieldNameLength", adapter.getMaxFieldNameLength());
   }
 }

@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
@@ -16,7 +16,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 /**
  * @author Eike Stepper
  */
-public class Net4jDBDescriptor extends ElementDescriptor
+public class CDOClientDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()

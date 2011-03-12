@@ -8,29 +8,24 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb;
 
-import org.eclipse.emf.cdo.server.db.mapping.ITypeMapping;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 /**
  * @author Eike Stepper
  */
-public class TypeMappingDescriptor extends CDOServerDescriptor
+public class Net4jDBDescriptor extends ElementDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return ITypeMapping.class;
+    return FOLDER_TYPE;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    ITypeMapping typeMapping = (ITypeMapping)object;
-    element.setKeyAttribute(typeMapping.getFeature().getName());
-    element.setAttribute("dbType", typeMapping.getDBType());
-    element.addReference(false, typeMapping.getFeature());
-    element.addReference(false, typeMapping.getField());
   }
 }

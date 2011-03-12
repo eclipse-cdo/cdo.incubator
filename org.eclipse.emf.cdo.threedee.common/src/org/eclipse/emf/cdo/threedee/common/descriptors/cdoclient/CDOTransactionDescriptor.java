@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 
@@ -16,25 +16,24 @@ import org.eclipse.emf.cdo.threedee.common.Element;
  * @author Eike Stepper
  */
 @SuppressWarnings("restriction")
-public class CDOViewDescriptor extends CDOClientDescriptor
+public class CDOTransactionDescriptor extends CDOViewDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return org.eclipse.emf.internal.cdo.view.CDOViewImpl.class;
+    return org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    org.eclipse.emf.internal.cdo.view.CDOViewImpl view = (org.eclipse.emf.internal.cdo.view.CDOViewImpl)object;
-    element.addReferences(true, view.getObjects().values());
-    element.addReference(false, view.getViewSet());
-  }
+    super.doInitElement(object, element);
 
-  @Override
-  public String getLabel(Element element)
-  {
-    return super.getLabel(element).substring(3);
+    // org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl transaction =
+    // (org.eclipse.emf.internal.cdo.transaction.CDOTransactionImpl)object;
+    // element.setAttribute("dirty", transaction.isDirty());
+    // element.setAttribute("conflict", transaction.hasConflict());
+    // element.addReference(true, transaction.getLastSavepoint());
+    // element.addReference(false, transaction.getViewSet());
   }
 }

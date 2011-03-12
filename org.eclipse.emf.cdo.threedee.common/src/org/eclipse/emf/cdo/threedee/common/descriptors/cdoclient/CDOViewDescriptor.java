@@ -8,31 +8,33 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
-import org.eclipse.emf.cdo.CDOObject;
-import org.eclipse.emf.cdo.CDOState;
 import org.eclipse.emf.cdo.threedee.common.Element;
 
 /**
  * @author Eike Stepper
  */
-public class CDOObjectDescriptor extends CDOClientDescriptor
+@SuppressWarnings("restriction")
+public class CDOViewDescriptor extends CDOClientDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return CDOObject.class;
+    return org.eclipse.emf.internal.cdo.view.CDOViewImpl.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    CDOObject cdoObject = (CDOObject)object;
-    CDOState state = cdoObject.cdoState();
+    org.eclipse.emf.internal.cdo.view.CDOViewImpl view = (org.eclipse.emf.internal.cdo.view.CDOViewImpl)object;
+    element.addReferences(true, view.getObjects().values());
+    element.addReference(false, view.getViewSet());
+  }
 
-    element.setIDAttribute(cdoObject.cdoID());
-    element.setAttribute("state", state);
-    element.addReference(state == CDOState.NEW, cdoObject.cdoRevision());
+  @Override
+  public String getLabel(Element element)
+  {
+    return super.getLabel(element).substring(3);
   }
 }

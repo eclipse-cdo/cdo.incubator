@@ -8,25 +8,22 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
 /**
  * @author Eike Stepper
  */
-public class _INIT_CDO_
+public class _INIT_CDO_CLIENT_
 {
   public static void init(Registry registry)
   {
-    registry.register(new CDODescriptor());
-    registry.register(new BranchDescriptor());
-    registry.register(new BranchManagerDescriptor());
-    registry.register(new PackageInfoDescriptor());
-    registry.register(new PackageRegistryDescriptor());
-    registry.register(new PackageUnitDescriptor());
-    registry.register(new RevisionCacheDescriptor());
-    registry.register(new RevisionDescriptor());
-    registry.register(new RevisionManagerDescriptor());
+    registry.register(new CDOClientDescriptor());
+    registry.register(new CDOObjectDescriptor());
+    registry.register(new CDOSavepointDescriptor());
+    registry.register(new CDOSessionDescriptor());
+    registry.register(new CDOTransactionDescriptor());
+    registry.register(new CDOViewDescriptor());
   }
 }

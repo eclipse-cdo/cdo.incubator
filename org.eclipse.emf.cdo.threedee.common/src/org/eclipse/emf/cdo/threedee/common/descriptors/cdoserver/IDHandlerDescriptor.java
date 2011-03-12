@@ -8,29 +8,36 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoserver;
 
+import org.eclipse.emf.cdo.server.db.IIDHandler;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.db.ddl.IDBTable;
+import org.eclipse.net4j.util.collection.Pair;
 
 /**
  * @author Eike Stepper
  */
-public class DBTableDescriptor extends Net4jDBDescriptor
+public class IDHandlerDescriptor extends CDOServerDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return IDBTable.class;
+    return IIDHandler.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    IDBTable table = (IDBTable)object;
-    element.setNameAttribute(table.getName());
-    element.addReferences(true, table.getFields());
-    element.addReferences(true, table.getIndices());
+    IIDHandler idHandler = (IIDHandler)object;
+    element.addReference(false, idHandler.getDBType());
+    element.addReference(false, idHandler.getObjectTypeMapping());
+  }
+
+  @Override
+  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
+  {
+    return null;
   }
 }

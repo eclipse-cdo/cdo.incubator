@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.net4j.db;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 

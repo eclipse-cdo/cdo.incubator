@@ -8,7 +8,7 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.client;
+package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 

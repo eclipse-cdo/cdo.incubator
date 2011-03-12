@@ -8,26 +8,29 @@
  * Contributors:
  *    Eike Stepper - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.common.descriptors.cdo.server;
+package org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb;
 
-import org.eclipse.emf.cdo.spi.server.InternalSessionManager;
 import org.eclipse.emf.cdo.threedee.common.Element;
+
+import org.eclipse.net4j.db.ddl.IDBTable;
 
 /**
  * @author Eike Stepper
  */
-public class SessionManagerDescriptor extends CDOServerDescriptor
+public class DBTableDescriptor extends Net4jDBDescriptor
 {
   @Override
   public Class<?> getElementType()
   {
-    return InternalSessionManager.class;
+    return IDBTable.class;
   }
 
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    InternalSessionManager sessionManager = (InternalSessionManager)object;
-    element.addReferences(true, sessionManager.getSessions());
+    IDBTable table = (IDBTable)object;
+    element.setNameAttribute(table.getName());
+    element.addReferences(true, table.getFields());
+    element.addReferences(true, table.getIndices());
   }
 }
