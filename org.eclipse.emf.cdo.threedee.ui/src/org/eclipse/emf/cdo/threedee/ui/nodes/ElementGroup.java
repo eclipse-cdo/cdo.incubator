@@ -170,6 +170,19 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
   /**
    * @author Eike Stepper
    */
+  public final class ElementSphere extends Sphere
+  {
+    public static final float RADIUS = .1f;
+  
+    public ElementSphere(Appearance appearance)
+    {
+      super(RADIUS, Primitive.GENERATE_NORMALS, 32, appearance);
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
   private static final class SelectionThread extends Thread
   {
     private Map<BranchGroup, TransparencyAttributes> selections = new HashMap<BranchGroup, TransparencyAttributes>();
@@ -215,19 +228,6 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
         ConcurrencyUtil.sleep(5);
       }
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  public final class ElementSphere extends Sphere
-  {
-    public static final float RADIUS = .1f;
-
-    public ElementSphere(Appearance appearance)
-    {
-      super(RADIUS, Primitive.GENERATE_NORMALS, 32, appearance);
     }
   }
 }

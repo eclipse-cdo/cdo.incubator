@@ -705,7 +705,6 @@ public class ThreeDeeWorld implements ISelectionProvider
   {
     if (source == null)
     {
-      System.out.println("SOURCE IS NULL");
       // Can happen for call events
       return;
     }
@@ -724,6 +723,7 @@ public class ThreeDeeWorld implements ISelectionProvider
         for (int i = 0; i < 100; i++)
         {
           transparencyAttributes.setTransparency(transparencyAttributes.getTransparency() + 0.01f);
+
           try
           {
             Thread.sleep(15);
