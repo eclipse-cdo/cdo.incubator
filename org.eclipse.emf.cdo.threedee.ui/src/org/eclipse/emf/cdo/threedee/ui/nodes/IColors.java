@@ -32,4 +32,8 @@ public interface IColors
   public static final Color3f yellow = new Color3f(Color.yellow);
 
   public static final Color3f blue = new Color3f(Color.blue);
+
+  public static final Color3f green = new Color3f(Color.green);
+
+  public static final Color3f red = new Color3f(Color.red);
 }

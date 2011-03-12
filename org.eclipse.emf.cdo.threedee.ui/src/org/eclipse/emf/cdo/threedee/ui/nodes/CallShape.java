@@ -14,28 +14,23 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import org.eclipse.net4j.util.collection.Pair;
-import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.TransparencyAttributes;
 
-import java.awt.Color;
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author Eike Stepper
  */
-public class CallShape extends LineShape
+public class CallShape extends LineShape implements IColors
 {
-  public CallShape(Element from, Element to)
+  public CallShape(Element from, Element to, boolean transmission)
   {
-    super(new Pair<Element, Element>(from, to), createAppearance());
+    super(new Pair<Element, Element>(from, to), createAppearance(transmission));
   }
 
-  private static Appearance createAppearance()
+  private static Appearance createAppearance(boolean transmission)
   {
-    Appearance appearance = ThreeDeeUtil.getDefaultAppearance(Color.red);
+    Appearance appearance = ThreeDeeUtil.getDefaultAppearance(transmission ? green : red);
 
     TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
     if (transparencyAttributes == null)

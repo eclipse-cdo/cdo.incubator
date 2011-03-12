@@ -64,13 +64,12 @@ public class ThreeDeeView extends ViewPart
 {
   public static final String ID = "org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld";
 
+  @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeView.class);
 
   private IListener frontendListener = new FrontendListener();
 
   private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
-
-  // private ElementViewListener elementViewListener = new ElementViewListener();
 
   private ThreeDeeWorld world;
 
@@ -200,11 +199,11 @@ public class ThreeDeeView extends ViewPart
     {
       if (event instanceof TransmissionEvent)
       {
-        world.showCall((Element)event.getSource(), ((TransmissionEvent)event).getReceiver());
+        world.showCall((Element)event.getSource(), ((TransmissionEvent)event).getReceiver(), true);
       }
       else if (event instanceof CallEvent)
       {
-        world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget());
+        world.showCall((Element)event.getSource(), ((CallEvent)event).getTarget(), false);
       }
     }
 

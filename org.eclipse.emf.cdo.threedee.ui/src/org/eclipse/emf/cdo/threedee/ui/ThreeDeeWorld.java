@@ -703,7 +703,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     parent.addChild(child);
   }
 
-  public void showCall(Element source, Element target)
+  public void showCall(Element source, Element target, boolean transmission)
   {
     if (source == null)
     {
@@ -711,7 +711,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       return;
     }
 
-    getCallThread().add(source, target);
+    getCallThread().add(source, target, transmission);
   }
 
   public void setShowCrossReferences(boolean showCrossReferences)
@@ -800,13 +800,13 @@ public class ThreeDeeWorld implements ISelectionProvider
       setDaemon(true);
     }
 
-    public synchronized void add(Element source, Element target)
+    public synchronized void add(Element source, Element target, boolean transmission)
     {
       Pair<Element, Element> key = new Pair<Element, Element>(source, target);
       CallShape call = calls.get(key);
       if (call == null)
       {
-        call = new CallShape(source, target);
+        call = new CallShape(source, target, transmission);
         call.setGeometry(getLineGeometry(source, target));
         universe.addBranchGraph(call);
         calls.put(key, call);
