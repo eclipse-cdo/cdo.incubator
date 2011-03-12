@@ -25,12 +25,12 @@ public class _INIT_
 {
   public static void init(Registry registry)
   {
-    _INIT_NET4J_.init(registry);
-    _INIT_NET4J_DB_.init(registry);
     _INIT_EMF_.init(registry);
     _INIT_CDO_.init(registry);
     _INIT_CDO_CLIENT_.init(registry);
     _INIT_CDO_SERVER_.init(registry);
+    _INIT_NET4J_.init(registry);
+    _INIT_NET4J_DB_.init(registry);
 
     registry.register(new ManagedContainerDescriptor());
     registry.register(new MapEntryDescriptor());
