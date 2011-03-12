@@ -57,7 +57,6 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
   public void selected(boolean selected)
   {
-    System.out.println("Selected " + getModel() + ": " + selected);
     Appearance appearance = getShape().getAppearance();
 
     if (selected)
