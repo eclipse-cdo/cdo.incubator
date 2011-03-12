@@ -16,7 +16,11 @@ import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
 import org.eclipse.net4j.util.ObjectUtil;
+import org.eclipse.net4j.util.container.ContainerEventAdapter;
+import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.event.Event;
+import org.eclipse.net4j.util.event.EventUtil;
+import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.event.INotifier;
 import org.eclipse.net4j.util.event.ValueNotifier;
 
@@ -58,6 +62,8 @@ public class DescriptorView extends ViewPart
   private Notifier notifier = new Notifier();
 
   private ICheckStateListener checkStateListener = new CheckStateListener();
+
+  private IListener frontendListener = new FrontendListener();
 
   private boolean subTreeChecking = true;
 
@@ -132,6 +138,8 @@ public class DescriptorView extends ViewPart
     setAllChecked(true);
     INSTANCE.setValue(this);
 
+    Frontend.INSTANCE.addListener(frontendListener);
+
     getSite().setSelectionProvider(viewer);
     getSite().getPage().addSelectionListener(new ISelectionListener()
     {
@@ -187,6 +195,7 @@ public class DescriptorView extends ViewPart
   @Override
   public void dispose()
   {
+    Frontend.INSTANCE.removeListener(frontendListener);
     INSTANCE.setValue(null);
     super.dispose();
   }
@@ -221,20 +230,20 @@ public class DescriptorView extends ViewPart
     {
     }
 
-    public Object[] getElements(Object parent)
+    public Object[] getElements(Object object)
     {
-      return getChildren(parent);
+      return getChildren(object);
     }
 
-    public Object[] getChildren(Object parentElement)
+    public Object[] getChildren(Object object)
     {
-      if (parentElement instanceof ElementDescriptor)
+      if (object instanceof ElementDescriptor)
       {
-        ElementDescriptor descriptor = (ElementDescriptor)parentElement;
+        ElementDescriptor descriptor = (ElementDescriptor)object;
         return descriptor.getSubDescriptors().toArray();
       }
 
-      if (parentElement == INPUT)
+      if (object == INPUT)
       {
         return INPUT.getRootDescriptors().toArray();
       }
@@ -242,20 +251,20 @@ public class DescriptorView extends ViewPart
       return new Object[0];
     }
 
-    public Object getParent(Object element)
+    public Object getParent(Object object)
     {
-      if (element instanceof ElementDescriptor)
+      if (object instanceof ElementDescriptor)
       {
-        ElementDescriptor descriptor = (ElementDescriptor)element;
+        ElementDescriptor descriptor = (ElementDescriptor)object;
         return descriptor.getSuperDescriptor();
       }
 
       return null;
     }
 
-    public boolean hasChildren(Object element)
+    public boolean hasChildren(Object object)
     {
-      Object[] children = getChildren(element);
+      Object[] children = getChildren(object);
       return children != null && children.length != 0;
     }
   }
@@ -273,11 +282,11 @@ public class DescriptorView extends ViewPart
     }
 
     @Override
-    public Image getImage(Object element)
+    public Image getImage(Object object)
     {
-      if (element instanceof ElementDescriptor)
+      if (object instanceof ElementDescriptor)
       {
-        ElementDescriptor descriptor = (ElementDescriptor)element;
+        ElementDescriptor descriptor = (ElementDescriptor)object;
         if (descriptor.isFolder())
         {
           return folderImage;
@@ -287,18 +296,36 @@ public class DescriptorView extends ViewPart
         return ColorIcons.get(color);
       }
 
-      return super.getImage(element);
+      return super.getImage(object);
     }
 
     @Override
-    public String getText(Object element)
+    public String getText(Object object)
     {
-      if (element instanceof ElementDescriptor)
+      if (object instanceof ElementDescriptor)
       {
-        return ((ElementDescriptor)element).getLabel();
+        int count = 0;
+        for (Session session : Frontend.INSTANCE.getElements())
+        {
+          for (Element element : session.getAllElements())
+          {
+            if (element.getDescriptor() == object)
+            {
+              ++count;
+            }
+          }
+        }
+
+        String label = ((ElementDescriptor)object).getLabel();
+        if (count != 0)
+        {
+          label += " (" + count + ")";
+        }
+
+        return label;
       }
 
-      return super.getText(element);
+      return super.getText(object);
     }
 
     @Override
@@ -379,6 +406,76 @@ public class DescriptorView extends ViewPart
     public void fireCheckStateChangedEvent()
     {
       fireEvent(new CheckStateEvent(this));
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class FrontendListener extends ContainerEventAdapter<Object>
+  {
+    @Override
+    protected void onAdded(IContainer<Object> container, Object object)
+    {
+      addElement(object);
+      refreshViewer();
+    }
+
+    @Override
+    protected void onRemoved(IContainer<Object> container, Object object)
+    {
+      removeElement(object);
+      refreshViewer();
+    }
+
+    private void refreshViewer()
+    {
+      try
+      {
+        viewer.getControl().getDisplay().asyncExec(new Runnable()
+        {
+          public void run()
+          {
+            try
+            {
+              viewer.refresh(true);
+            }
+            catch (Exception ignore)
+            {
+            }
+          }
+        });
+      }
+      catch (Exception ignore)
+      {
+      }
+    }
+
+    private void addElement(Object object)
+    {
+      if (object instanceof Element)
+      {
+        Element element = (Element)object;
+        for (Element child : element.getElements())
+        {
+          addElement(child);
+        }
+      }
+
+      EventUtil.addListener(object, this);
+    }
+
+    private void removeElement(Object object)
+    {
+      EventUtil.removeListener(object, this);
+      if (object instanceof Element)
+      {
+        Element element = (Element)object;
+        for (Element child : element.getElements())
+        {
+          removeElement(child);
+        }
+      }
     }
   }
 }

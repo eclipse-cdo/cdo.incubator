@@ -208,7 +208,7 @@ public class ElementView extends ViewPart
   @Override
   public void dispose()
   {
-    Frontend.INSTANCE.removeListener(new FrontendListener());
+    Frontend.INSTANCE.removeListener(frontendListener);
     INSTANCE.setValue(null);
     super.dispose();
   }
