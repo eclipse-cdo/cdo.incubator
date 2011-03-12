@@ -297,8 +297,6 @@ public class ThreeDeeWorld implements ISelectionProvider
           Node node = result.getNode(PickResult.PRIMITIVE | PickResult.SHAPE3D);
           if (node != null)
           {
-            System.err.println("Picked " + node.getClass().getName());
-
             ThreeDeeNode<Element> threeDeeNode = ThreeDeeUtil.getThreeDeeNode(node);
             Element element = threeDeeNode.getModel();
             setSelection(new StructuredSelection(element));
@@ -306,7 +304,7 @@ public class ThreeDeeWorld implements ISelectionProvider
           }
         }
 
-        System.err.println("Nothing picked");
+        setSelection(StructuredSelection.EMPTY);
       }
     });
   }
@@ -801,7 +799,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       ElementGroup elementGroup = elementGroups.get(object);
       if (elementGroup != null)
       {
-        elementGroup.selected(select);
+        elementGroup.select(select);
       }
     }
   }

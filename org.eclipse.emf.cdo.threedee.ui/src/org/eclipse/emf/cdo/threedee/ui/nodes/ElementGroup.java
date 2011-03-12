@@ -14,18 +14,24 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
+import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
+
+import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.geometry.Sphere;
 
 import javax.media.j3d.Appearance;
+import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
-import javax.media.j3d.Material;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Transform3D;
+import javax.media.j3d.TransparencyAttributes;
 import javax.vecmath.AxisAngle4d;
 import javax.vecmath.Vector3d;
 
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Martin Fluegge
@@ -42,7 +48,9 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
   private static final double THREE_HALF_PI = PI + HALF_PI;
 
-  private Material oldMaterial;
+  private static SelectionThread selectionThread;
+
+  private BranchGroup selection;
 
   public ElementGroup(Element element, Canvas3D canvas)
   {
@@ -55,22 +63,48 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
     return (ElementSphere)super.getShape();
   }
 
-  public void selected(boolean selected)
+  public void select(boolean selected)
   {
-    Appearance appearance = getShape().getAppearance();
-
     if (selected)
     {
-      oldMaterial = appearance.getMaterial();
-      appearance.setMaterial(new Material(white, white, white, white, 100.0f));
+      TransparencyAttributes transparencyAttributes = new TransparencyAttributes();
+      transparencyAttributes.setCapability(TransparencyAttributes.ALLOW_VALUE_WRITE);
+      transparencyAttributes.setTransparencyMode(TransparencyAttributes.NICEST);
+      transparencyAttributes.setTransparency(1f);
+
+      Appearance appearance = ThreeDeeUtil.getDefaultAppearance(white);
+      appearance.setTransparencyAttributes(transparencyAttributes);
+
+      float radius = ElementSphere.RADIUS * 1.4f;
+      Sphere selectionShape = new Sphere(radius, Primitive.GENERATE_NORMALS, 32, appearance);
+
+      selection = new BranchGroup();
+      selection.setCapability(ALLOW_DETACH);
+      selection.addChild(selectionShape);
+
+      addChild(selection);
+      getSelectionThread().add(selection, transparencyAttributes);
     }
     else
     {
-      if (oldMaterial != null)
+      if (selection != null)
       {
-        appearance.setMaterial(oldMaterial);
+        getSelectionThread().remove(selection);
+        selection.detach();
+        selection = null;
       }
     }
+  }
+
+  private static synchronized SelectionThread getSelectionThread()
+  {
+    if (selectionThread == null)
+    {
+      selectionThread = new SelectionThread();
+      selectionThread.start();
+    }
+
+    return selectionThread;
   }
 
   @Override
@@ -136,13 +170,64 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
   /**
    * @author Eike Stepper
    */
+  private static final class SelectionThread extends Thread
+  {
+    private Map<BranchGroup, TransparencyAttributes> selections = new HashMap<BranchGroup, TransparencyAttributes>();
+
+    private double theta;
+
+    public SelectionThread()
+    {
+      setDaemon(true);
+    }
+
+    public synchronized TransparencyAttributes[] getSelections()
+    {
+      return selections.values().toArray(new TransparencyAttributes[selections.size()]);
+    }
+
+    public synchronized void add(BranchGroup selection, TransparencyAttributes transparencyAttributes)
+    {
+      selections.put(selection, transparencyAttributes);
+    }
+
+    public synchronized void remove(BranchGroup selection)
+    {
+      selections.remove(selection);
+    }
+
+    @Override
+    public void run()
+    {
+      while (!interrupted())
+      {
+        float alpha = (float)Math.abs(Math.cos(theta));
+        for (TransparencyAttributes transparencyAttributes : getSelections())
+        {
+          transparencyAttributes.setTransparency(alpha);
+        }
+
+        theta += 0.02f;
+        if (theta > TWO_PI)
+        {
+          theta -= TWO_PI;
+        }
+
+        ConcurrencyUtil.sleep(5);
+      }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
   public final class ElementSphere extends Sphere
   {
     public static final float RADIUS = .1f;
 
     public ElementSphere(Appearance appearance)
     {
-      super(.1f, appearance);
+      super(RADIUS, Primitive.GENERATE_NORMALS, 32, appearance);
     }
   }
 }

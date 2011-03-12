@@ -21,6 +21,7 @@ import org.eclipse.emf.cdo.threedee.common.Element.TransmissionEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.event.EventUtil;
@@ -45,6 +46,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -130,8 +132,14 @@ public class ThreeDeeView extends ViewPart
 
         if (!elements.isEmpty())
         {
-          Element[] array = elements.toArray(new Element[elements.size()]);
-          world.setSelection(new StructuredSelection(array));
+          @SuppressWarnings("unchecked")
+          List<Object> list = world.getSelection().toList();
+          Set<Object> old = new HashSet<Object>(list);
+          if (!ObjectUtil.equals(old, elements))
+          {
+            Element[] array = elements.toArray(new Element[elements.size()]);
+            world.setSelection(new StructuredSelection(array));
+          }
         }
       }
     });
