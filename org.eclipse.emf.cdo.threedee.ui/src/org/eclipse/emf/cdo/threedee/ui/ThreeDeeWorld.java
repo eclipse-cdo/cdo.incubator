@@ -90,11 +90,11 @@ public class ThreeDeeWorld implements ISelectionProvider
 {
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
+  private static boolean PRODUCTION = false;
+
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
 
   private Map<Element, Map<Element, ReferenceShape>> referenceShapes = new HashMap<Element, Map<Element, ReferenceShape>>();
-
-  private boolean production = false;
 
   private Composite composite;
 
@@ -153,7 +153,7 @@ public class ThreeDeeWorld implements ISelectionProvider
 
     universe.addBranchGraph(scene);
 
-    if (!production)
+    if (!PRODUCTION)
     {
       universe.addBranchGraph(createCoordinateSystem());
     }
@@ -162,7 +162,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    if (production)
+    if (PRODUCTION)
     {
       IntroPlanet planet = new IntroPlanet(this);
       universe.addBranchGraph(planet);
