@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee;
 
 import org.eclipse.emf.cdo.threedee.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 
 import org.eclipse.net4j.util.container.IContainer;
 import org.eclipse.net4j.util.event.ValueNotifier;
@@ -20,14 +21,17 @@ import org.eclipse.net4j.util.ui.views.ContainerView;
 
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 
 import java.awt.Color;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * @author Eike Stepper
@@ -74,29 +78,51 @@ public class ElementView extends ContainerView
   protected void createdUI()
   {
     INSTANCE.setValue(this);
-    createThreeDeeWorldListener();
-  }
 
-  private void createThreeDeeWorldListener()
-  {
     getSite().getPage().addSelectionListener(new ISelectionListener()
     {
-      public void selectionChanged(IWorkbenchPart part, final ISelection sel)
+      public void selectionChanged(IWorkbenchPart part, final ISelection selection)
       {
-        Display.getDefault().asyncExec(new Runnable()
+        final Set<Element> elements = new HashSet<Element>();
+        if (selection instanceof IStructuredSelection)
         {
-          public void run()
+          IStructuredSelection ssel = (IStructuredSelection)selection;
+          for (Iterator<?> it = ssel.iterator(); it.hasNext();)
           {
-            IElementSelection selection = (IElementSelection)sel;
-            Element element = selection.getElement();
-            TreeViewer viewer = getViewer();
-
-            viewer.reveal(element);
-            StructuredSelection newSelection = new StructuredSelection(element);
-
-            viewer.setSelection(newSelection);
+            Object object = it.next();
+            if (object instanceof ElementDescriptor)
+            {
+              ElementDescriptor descriptor = (ElementDescriptor)object;
+              for (Session session : Frontend.INSTANCE.getElements())
+              {
+                for (Element element : session.getAllElements())
+                {
+                  if (element.getDescriptor() == descriptor)
+                  {
+                    elements.add(element);
+                  }
+                }
+              }
+            }
+            else if (object instanceof Element)
+            {
+              Element element = (Element)object;
+              elements.add(element);
+            }
           }
-        });
+        }
+
+        if (!elements.isEmpty())
+        {
+          Display.getDefault().asyncExec(new Runnable()
+          {
+            public void run()
+            {
+              Element[] array = elements.toArray(new Element[elements.size()]);
+              getViewer().setSelection(new StructuredSelection(array), true);
+            }
+          });
+        }
       }
     });
   }

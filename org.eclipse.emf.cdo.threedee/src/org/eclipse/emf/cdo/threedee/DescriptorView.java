@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee;
 
 import org.eclipse.emf.cdo.threedee.bundle.OM.Activator;
+import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
@@ -23,9 +24,9 @@ import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
@@ -38,6 +39,7 @@ import org.eclipse.ui.part.ViewPart;
 
 import java.awt.Color;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -127,7 +129,44 @@ public class DescriptorView extends ViewPart
 
     setAllChecked(true);
     INSTANCE.setValue(this);
-    createPageListener();
+
+    getSite().getPage().addSelectionListener(new ISelectionListener()
+    {
+      public void selectionChanged(IWorkbenchPart part, final ISelection selection)
+      {
+        final Set<ElementDescriptor> descriptors = new HashSet<ElementDescriptor>();
+        if (selection instanceof IStructuredSelection)
+        {
+          IStructuredSelection ssel = (IStructuredSelection)selection;
+          for (Iterator<?> it = ssel.iterator(); it.hasNext();)
+          {
+            Object object = it.next();
+            if (object instanceof ElementDescriptor)
+            {
+              ElementDescriptor descriptor = (ElementDescriptor)object;
+              descriptors.add(descriptor);
+            }
+            else if (object instanceof Element)
+            {
+              Element element = (Element)object;
+              descriptors.add(element.getDescriptor());
+            }
+          }
+        }
+
+        if (!descriptors.isEmpty())
+        {
+          Display.getDefault().asyncExec(new Runnable()
+          {
+            public void run()
+            {
+              ElementDescriptor[] array = descriptors.toArray(new ElementDescriptor[descriptors.size()]);
+              getViewer().setSelection(new StructuredSelection(array), true);
+            }
+          });
+        }
+      }
+    });
   }
 
   @Override
@@ -151,30 +190,6 @@ public class DescriptorView extends ViewPart
   public CheckboxTreeViewer getViewer()
   {
     return viewer;
-  }
-
-  private void createPageListener()
-  {
-    getSite().getPage().addSelectionListener(new ISelectionListener()
-    {
-      public void selectionChanged(IWorkbenchPart part, final ISelection sel)
-      {
-        Display.getDefault().asyncExec(new Runnable()
-        {
-          public void run()
-          {
-            IElementSelection selection = (IElementSelection)sel;
-            ElementDescriptor descriptor = selection.getElement().getDescriptor();
-            StructuredSelection newSelection = new StructuredSelection(descriptor);
-
-            TreeViewer viewer = getViewer();
-            viewer.reveal(descriptor);
-            viewer.setSelection(newSelection);
-            // TODO set selection into page
-          }
-        });
-      }
-    });
   }
 
   /**

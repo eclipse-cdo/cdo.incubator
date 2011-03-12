@@ -13,14 +13,13 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.DescriptorView;
 import org.eclipse.emf.cdo.threedee.DescriptorView.CheckStateEvent;
-import org.eclipse.emf.cdo.threedee.ElementView;
 import org.eclipse.emf.cdo.threedee.Frontend;
+import org.eclipse.emf.cdo.threedee.Session;
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.Element.CallEvent;
 import org.eclipse.emf.cdo.threedee.common.Element.TransmissionEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
-import org.eclipse.emf.cdo.threedee.util.SelectionListenerRegistrationUtil.ISelectionProviderProvider;
 
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;
@@ -35,19 +34,17 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.ISelectionProvider;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.TreeSelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -61,7 +58,7 @@ import java.util.Set;
  * 
  * @author Martin Fluegge
  */
-public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
+public class ThreeDeeView extends ViewPart
 {
   public static final String ID = "org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld";
 
@@ -71,7 +68,7 @@ public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
 
   private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
 
-  private ElementViewListener elementViewListener = new ElementViewListener();
+  // private ElementViewListener elementViewListener = new ElementViewListener();
 
   private ThreeDeeWorld world;
 
@@ -95,12 +92,49 @@ public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
     DescriptorView.INSTANCE.addListener(descriptorViewListener);
     descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
 
-    ElementView.INSTANCE.addListener(elementViewListener);
-    elementViewListener.connect(ElementView.INSTANCE.getValue());
-
     contributeToActionBars();
 
     getSite().setSelectionProvider(world);
+    getSite().getPage().addSelectionListener(new ISelectionListener()
+    {
+      public void selectionChanged(IWorkbenchPart part, final ISelection selection)
+      {
+        final Set<Element> elements = new HashSet<Element>();
+        if (selection instanceof IStructuredSelection)
+        {
+          IStructuredSelection ssel = (IStructuredSelection)selection;
+          for (Iterator<?> it = ssel.iterator(); it.hasNext();)
+          {
+            Object object = it.next();
+            if (object instanceof ElementDescriptor)
+            {
+              ElementDescriptor descriptor = (ElementDescriptor)object;
+              for (Session session : Frontend.INSTANCE.getElements())
+              {
+                for (Element element : session.getAllElements())
+                {
+                  if (element.getDescriptor() == descriptor)
+                  {
+                    elements.add(element);
+                  }
+                }
+              }
+            }
+            else if (object instanceof Element)
+            {
+              Element element = (Element)object;
+              elements.add(element);
+            }
+          }
+        }
+
+        if (!elements.isEmpty())
+        {
+          Element[] array = elements.toArray(new Element[elements.size()]);
+          world.setSelection(new StructuredSelection(array));
+        }
+      }
+    });
   }
 
   @Override
@@ -237,85 +271,6 @@ public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
       if (view != null)
       {
         view.getNotifier().addListener(this);
-        view.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
-        {
-          public void selectionChanged(SelectionChangedEvent event)
-          {
-            TreeSelection selection = (TreeSelection)event.getSelection();
-
-            Object element = selection.getFirstElement();
-            if (element instanceof ElementDescriptor)
-            {
-              world.setSelected((ElementDescriptor)element);
-            }
-          }
-        });
-      }
-    }
-  }
-
-  /**
-   * @author Martin Fluegge
-   */
-  private final class ElementViewListener implements IListener
-  {
-    public void notifyEvent(IEvent event)
-    {
-      if (event instanceof ValueEvent)
-      {
-        ValueEvent<?> e = (ValueEvent<?>)event;
-        if (e.getSource() == DescriptorView.INSTANCE)
-        {
-          DescriptorView oldView = (DescriptorView)e.getOldValue();
-          if (oldView != null)
-          {
-            oldView.getNotifier().removeListener(this);
-          }
-
-          ElementView newView = (ElementView)e.getNewValue();
-          connect(newView);
-        }
-      }
-    }
-
-    public void connect(ElementView view)
-    {
-      if (view != null)
-      {
-        getSite().getPage().addSelectionListener(new ISelectionListener()
-        {
-          public void selectionChanged(IWorkbenchPart part, final ISelection sel)
-          {
-            Display.getDefault().asyncExec(new Runnable()
-            {
-              public void run()
-              {
-                IStructuredSelection selection = (IStructuredSelection)sel;
-
-                Object element = selection.getFirstElement();
-
-                if (element instanceof Element)
-                {
-                  world.setSelected((Element)element);
-                }
-              }
-            });
-          }
-        });
-        // view.getViewer().addSelectionChangedListener(new ISelectionChangedListener()
-        // {
-        // public void selectionChanged(SelectionChangedEvent event)
-        // {
-        // TreeSelection selection = (TreeSelection)event.getSelection();
-        //
-        // Object element = selection.getFirstElement();
-        //
-        // if (element instanceof Element)
-        // {
-        // world.setSelected((Element)element);
-        // }
-        // }
-        // });
       }
     }
   }
@@ -335,10 +290,5 @@ public class ThreeDeeView extends ViewPart implements ISelectionProviderProvider
     {
       world.layout();
     }
-  }
-
-  public ISelectionProvider getSelectionProvider()
-  {
-    return world;
   }
 }

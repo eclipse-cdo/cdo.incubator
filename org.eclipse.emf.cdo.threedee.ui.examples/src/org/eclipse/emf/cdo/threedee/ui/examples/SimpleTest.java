@@ -33,6 +33,8 @@ import java.awt.Color;
  */
 public class SimpleTest extends Applet
 {
+  private static final long serialVersionUID = 1L;
+
   /*
    * Create a simple Java 3D environment containing: a sphere (geometry), a light,background geometry with an applied
    * texture, and a behavior that will move the sphere along the X-axis.
@@ -314,6 +316,6 @@ public class SimpleTest extends Applet
 
   public static void main(String[] args)
   {
-    SimpleTest simpleTest = new SimpleTest();
+    new SimpleTest();
   }
 }

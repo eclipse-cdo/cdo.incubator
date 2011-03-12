@@ -23,7 +23,6 @@ import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Transform3D;
 import javax.vecmath.AxisAngle4d;
-import javax.vecmath.Color3f;
 import javax.vecmath.Vector3d;
 
 import java.awt.Color;
@@ -31,7 +30,7 @@ import java.awt.Color;
 /**
  * @author Martin Fluegge
  */
-public class ElementGroup extends ThreeDeeNode<Element>
+public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 {
   private static final double SPHERE_DISTANCE = 2.0d * ElementSphere.RADIUS + 0.08d;
 
@@ -43,6 +42,8 @@ public class ElementGroup extends ThreeDeeNode<Element>
 
   private static final double THREE_HALF_PI = PI + HALF_PI;
 
+  private Material oldMaterial;
+
   public ElementGroup(Element element, Canvas3D canvas)
   {
     super(element, createAppearance(element, canvas));
@@ -52,6 +53,25 @@ public class ElementGroup extends ThreeDeeNode<Element>
   public ElementSphere getShape()
   {
     return (ElementSphere)super.getShape();
+  }
+
+  public void selected(boolean selected)
+  {
+    System.out.println("Selected " + getModel() + ": " + selected);
+    Appearance appearance = getShape().getAppearance();
+
+    if (selected)
+    {
+      oldMaterial = appearance.getMaterial();
+      appearance.setMaterial(new Material(white, white, white, white, 100.0f));
+    }
+    else
+    {
+      if (oldMaterial != null)
+      {
+        appearance.setMaterial(oldMaterial);
+      }
+    }
   }
 
   @Override
@@ -124,31 +144,6 @@ public class ElementGroup extends ThreeDeeNode<Element>
     public ElementSphere(Appearance appearance)
     {
       super(.1f, appearance);
-    }
-  }
-
-  private Material oldMaterial;
-
-  public void selected(boolean selected)
-  {
-    Appearance appearance = getShape().getAppearance();
-
-    System.out.println("Selected: " + selected + " " + getModel());
-    if (selected)
-    {
-      oldMaterial = appearance.getMaterial();
-      // Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
-      Color3f white = new Color3f(1.0f, 1.0f, 1.0f);
-      Material material = new Material(white, white, white, white, 100.0f);
-
-      appearance.setMaterial(material);
-    }
-    else
-    {
-      if (oldMaterial != null)
-      {
-        appearance.setMaterial(oldMaterial);
-      }
     }
   }
 }
