@@ -48,6 +48,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.vecmath.Color3f;
 import javax.vecmath.Point3d;
 import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
@@ -69,7 +70,7 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   private static final float TWO_PI = (float)(2.0f * Math.PI);
 
-  private ThreeDeeWorld threeDeeWorld;
+  private ThreeDeeWorld world;
 
   private double y;
 
@@ -79,22 +80,20 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   private TransparencyAttributes background;
 
-  public IntroPlanet(ThreeDeeWorld threeDeeWorld)
+  public IntroPlanet(ThreeDeeWorld world)
   {
-    this.threeDeeWorld = threeDeeWorld;
+    this.world = world;
     setCapability(Group.ALLOW_CHILDREN_EXTEND);
     setCapability(Group.ALLOW_CHILDREN_WRITE);
 
     addChild(createBackground());
 
     SpotLight light = new SpotLight();
-    light.setColor(darkGray);
-    light.setPosition(new Point3f(-2.0f, 0.0f, 2 * RADIUS));
-    light.setDirection(new Vector3f(2.0f, RADIUS, -RADIUS));
-    light.setSpreadAngle((float)(0.1f * Math.PI));
-
-    BoundingSphere bounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100);
-    light.setInfluencingBounds(bounds);
+    light.setColor(new Color3f(0.7f, 0.7f, 0.6f));
+    light.setPosition(new Point3f(4.0f, 0.0f, 2 * RADIUS));
+    light.setDirection(new Vector3f(-3.0f, RADIUS, -RADIUS));
+    light.setSpreadAngle((float)(0.15f * Math.PI));
+    light.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100));
     addChild(light);
 
     spin = new TransformGroup();
@@ -186,13 +185,13 @@ public class IntroPlanet extends BranchGroup implements IColors
     Appearance appearance = new Appearance();
     setTexture(appearance, "moon.jpg");
 
-    Material material = new Material(black, gray, darkGray, white, 24.0f);
+    Material material = new Material(black, gray, darkGray, white, 48.0f);
     appearance.setMaterial(material);
 
     ColoringAttributes coloringAttributes = new ColoringAttributes(darkGray, ColoringAttributes.NICEST);
     appearance.setColoringAttributes(coloringAttributes);
 
-    return new Sphere(RADIUS, Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS, 64, appearance);
+    return new Sphere(RADIUS, Primitive.GENERATE_NORMALS | Primitive.GENERATE_TEXTURE_COORDS, 128, appearance);
   }
 
   private TransformGroup createText(String text, int size, double angle, TransparencyAttributes transparencyAttributes)
@@ -200,9 +199,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     Appearance appearance = new Appearance();
     appearance.setTransparencyAttributes(transparencyAttributes);
 
-    // setTexture(appearance, "comet.jpg");
-
-    Material material = new Material(darkGray, black, white, yellow, 128.0f);
+    Material material = new Material(darkestGray, darkestGray, white, yellow, 128.0f);
     material.setLightingEnable(true);
     appearance.setMaterial(material);
 
@@ -235,7 +232,7 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   private void setTexture(Appearance appearance, String image)
   {
-    Texture texture = ThreeDeeUtil.loadTexture(image, threeDeeWorld.getCanvas());
+    Texture texture = ThreeDeeUtil.loadTexture(image, world.getCanvas());
     texture.setBoundaryModeS(Texture.WRAP);
     texture.setBoundaryModeT(Texture.WRAP);
     appearance.setTexture(texture);
@@ -412,12 +409,13 @@ public class IntroPlanet extends BranchGroup implements IColors
     @Override
     protected void animate(float alpha)
     {
+      background.setTransparency(Math.max(0, 1 - 1.4f * alpha));
       y = Y0 - 5d * alpha;
 
       Transform3D viewingTransform = new Transform3D();
       viewingTransform.set(new Vector3d(0.0, y, Z0));
 
-      ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
+      ViewingPlatform viewingPlatform = world.getUniverse().getViewingPlatform();
       viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
     }
   }
@@ -488,13 +486,13 @@ public class IntroPlanet extends BranchGroup implements IColors
     @Override
     protected void animate(float alpha)
     {
-      background.setTransparency(alpha);
+      background.setTransparency(Math.min(1, 1.4f * alpha));
       double z = Z0 - 20d * alpha;
 
       Transform3D viewingTransform = new Transform3D();
       viewingTransform.set(new Vector3d(0.0, y + 2.6d * alpha, z));
 
-      ViewingPlatform viewingPlatform = threeDeeWorld.getUniverse().getViewingPlatform();
+      ViewingPlatform viewingPlatform = world.getUniverse().getViewingPlatform();
       viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
     }
   }

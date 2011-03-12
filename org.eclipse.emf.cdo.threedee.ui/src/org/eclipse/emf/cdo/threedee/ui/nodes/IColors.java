@@ -19,6 +19,8 @@ import java.awt.Color;
  */
 public interface IColors
 {
+  public static final Color3f darkestGray = new Color3f(new Color(32, 32, 32));
+
   public static final Color3f darkGray = new Color3f(Color.darkGray);
 
   public static final Color3f gray = new Color3f(Color.gray);

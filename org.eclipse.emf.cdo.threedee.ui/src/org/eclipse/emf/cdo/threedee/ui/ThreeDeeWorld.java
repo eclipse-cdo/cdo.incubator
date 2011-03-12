@@ -38,6 +38,8 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Event;
 
 import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
@@ -154,65 +156,9 @@ public class ThreeDeeWorld implements ISelectionProvider
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    intro();
+    // intro();
 
-    // Thread t = new Thread(new Runnable()
-    // {
-    // public void run()
-    // {
-    // ConcurrencyUtil.sleep(10000);
-    //
-    // final Display display = composite.getDisplay();
-    // Display.getDefault().asyncExec(new Runnable()
-    // {
-    // public void run()
-    // {
-    // Event event = new Event();
-    // event.type = SWT.MouseDown;
-    // event.button = 1;
-    // display.post(event);
-    // }
-    // });
-    //
-    // for (int i = 0; i < 100; i += 10)
-    // {
-    // final int a = i;
-    // Display.getDefault().asyncExec(new Runnable()
-    // {
-    // public void run()
-    // {
-    // Event event = new Event();
-    // event.type = SWT.MouseMove;
-    // event.x = composite.toDisplay(a, a).x;
-    // event.y = composite.toDisplay(a + 10, a + 10).y;
-    //
-    // display.post(event);
-    // System.out.println("moveMouse");
-    // try
-    // {
-    // Thread.sleep(500);
-    // }
-    // catch (InterruptedException ex)
-    // {
-    // ex.printStackTrace();
-    // }
-    // }
-    // });
-    // }
-    //
-    // Display.getDefault().asyncExec(new Runnable()
-    // {
-    // public void run()
-    // {
-    // Event event = new Event();
-    // event.type = SWT.MouseUp;
-    // event.button = 1;
-    // display.post(event);
-    // }
-    // });
-    // }
-    // });
-    // t.start();
+    // mouseTest();
 
     // flashing1();
     // flashing2();
@@ -233,6 +179,69 @@ public class ThreeDeeWorld implements ISelectionProvider
     IntroPlanet planet = new IntroPlanet(this);
     universe.addBranchGraph(planet);
     planet.start();
+  }
+
+  @SuppressWarnings("unused")
+  private void mouseTest()
+  {
+    Thread t = new Thread(new Runnable()
+    {
+      public void run()
+      {
+        ConcurrencyUtil.sleep(10000);
+
+        final Display display = composite.getDisplay();
+        Display.getDefault().asyncExec(new Runnable()
+        {
+          public void run()
+          {
+            Event event = new Event();
+            event.type = SWT.MouseDown;
+            event.button = 1;
+            display.post(event);
+          }
+        });
+
+        for (int i = 0; i < 100; i += 10)
+        {
+          final int a = i;
+          Display.getDefault().asyncExec(new Runnable()
+          {
+            public void run()
+            {
+              Event event = new Event();
+              event.type = SWT.MouseMove;
+              event.x = composite.toDisplay(a, a).x;
+              event.y = composite.toDisplay(a + 10, a + 10).y;
+
+              display.post(event);
+              System.out.println("moveMouse");
+              try
+              {
+                Thread.sleep(500);
+              }
+              catch (InterruptedException ex)
+              {
+                ex.printStackTrace();
+              }
+            }
+          });
+        }
+
+        Display.getDefault().asyncExec(new Runnable()
+        {
+          public void run()
+          {
+            Event event = new Event();
+            event.type = SWT.MouseUp;
+            event.button = 1;
+            display.post(event);
+          }
+        });
+      }
+    });
+
+    t.start();
   }
 
   @SuppressWarnings("unused")
@@ -455,12 +464,12 @@ public class ThreeDeeWorld implements ISelectionProvider
   {
     DirectionalLight directionalLight = new DirectionalLight();
     directionalLight.setColor(new Color3f(0.7f, 0.8f, 0.8f));
-    directionalLight.setDirection(new Vector3f(4.0f, -11.0f, -12.0f));
+    directionalLight.setDirection(new Vector3f(15.0f, -20.0f, -6.0f));
     directionalLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
     group.addChild(directionalLight);
 
     AmbientLight ambientLight = new AmbientLight();
-    ambientLight.setColor(new Color3f(0.3f, 0.3f, 0.3f));
+    ambientLight.setColor(new Color3f(0.4f, 0.4f, 0.4f));
     ambientLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
     group.addChild(ambientLight);
   }

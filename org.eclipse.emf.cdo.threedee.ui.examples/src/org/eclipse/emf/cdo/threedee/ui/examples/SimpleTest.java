@@ -13,6 +13,7 @@ import javax.media.j3d.BranchGroup;
 import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.Material;
 import javax.media.j3d.PositionInterpolator;
+import javax.media.j3d.SpotLight;
 import javax.media.j3d.Texture;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
@@ -21,6 +22,7 @@ import javax.vecmath.Point3d;
 import javax.vecmath.Vector3f;
 
 import java.applet.Applet;
+import java.awt.Color;
 
 /*
  * This example builds a simple Java 3D application using the
@@ -93,7 +95,7 @@ public class SimpleTest extends Applet
     // Assign some colors to the Material and a shininess setting
     // that controls how reflective the surface is to lighting.
     Color3f objColor = new Color3f(0.8f, 0.2f, 1.0f);
-    Color3f black = new Color3f(0.0f, 0.0f, 0.0f);
+    Color3f black = new Color3f(0.1f, 0.1f, 0.1f);
     app.setMaterial(new Material(objColor, black, objColor, black, 80.0f));
 
     // create a Sphere with a radius of 0.1
@@ -113,23 +115,24 @@ public class SimpleTest extends Applet
    */
   public void addLights(BranchGroup bg)
   {
-    // create the color for the light
-    Color3f color = new Color3f(1.0f, 1.0f, 0.0f);
+    BoundingSphere boundingSphere = getBoundingSphere();
 
-    // create a vector that describes the direction that
-    // the light is shining.
-    Vector3f direction = new Vector3f(-1.0f, -1.0f, -1.0f);
+    {
+      DirectionalLight light = new DirectionalLight();
+      light.setInfluencingBounds(boundingSphere);
+      light.setColor(new Color3f(Color.white));
+      light.setDirection(new Vector3f(0, 1, -0.5f));
+      bg.addChild(light);
+    }
 
-    // create the directional light with the color and direction
-    DirectionalLight light = new DirectionalLight(color, direction);
-
-    // set the volume of influence of the light.
-    // Only objects within the Influencing Bounds
-    // will be illuminated.
-    light.setInfluencingBounds(getBoundingSphere());
-
-    // add the light to the BranchGroup
-    bg.addChild(light);
+    {
+      SpotLight light = new SpotLight();
+      light.setInfluencingBounds(boundingSphere);
+      light.setColor(new Color3f(Color.white));
+      light.setPosition(0, 2, -5);
+      light.setDirection(0, 0, 1);
+      bg.addChild(light);
+    }
   }
 
   /*
@@ -156,7 +159,7 @@ public class SimpleTest extends Applet
     Appearance app = new Appearance();
 
     // load a texture image using the Java 3D texture loader
-    Texture tex = new TextureLoader("back.jpg", this).getTexture();
+    Texture tex = new TextureLoader("../org.eclipse.emf.cdo.threedee.ui/images/back.jpg", this).getTexture();
 
     // apply the texture to the Appearance
     app.setTexture(tex);
@@ -304,25 +307,13 @@ public class SimpleTest extends Applet
   /*
    * Return a BoundingSphere that describes the volume of the scene.
    */
-
   BoundingSphere getBoundingSphere()
-
   {
-
     return new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 200.0);
-
   }
-
-  /*
-   * main entry point for the Application.
-   */
 
   public static void main(String[] args)
-
   {
-
     SimpleTest simpleTest = new SimpleTest();
-
   }
-
 }
