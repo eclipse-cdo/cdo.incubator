@@ -12,6 +12,8 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
+import java.awt.Color;
+
 /**
  * @author Eike Stepper
  */
@@ -19,11 +21,12 @@ public class _INIT_NET4J_DB_
 {
   public static void init(Registry registry)
   {
-    registry.register(new Net4jDBDescriptor());
-    registry.register(new DBAdapterDescriptor());
-    registry.register(new DBFieldDescriptor());
-    registry.register(new DBIndexDescriptor());
-    registry.register(new DBSchemaDescriptor());
-    registry.register(new DBTableDescriptor());
+    Color color = Color.cyan;
+    registry.register(new Net4jDBDescriptor(), color, 0.7f);
+    registry.register(new DBAdapterDescriptor(), color, 0.7f);
+    registry.register(new DBFieldDescriptor(), color, 0.7f);
+    registry.register(new DBIndexDescriptor(), color, 0.7f);
+    registry.register(new DBSchemaDescriptor(), color, 0.7f);
+    registry.register(new DBTableDescriptor(), color, 0.7f);
   }
 }

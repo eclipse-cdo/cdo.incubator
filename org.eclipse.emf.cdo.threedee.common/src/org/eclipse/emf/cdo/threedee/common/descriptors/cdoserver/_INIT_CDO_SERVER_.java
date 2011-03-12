@@ -12,6 +12,8 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdoserver;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
+import java.awt.Color;
+
 /**
  * @author Eike Stepper
  */
@@ -19,18 +21,19 @@ public class _INIT_CDO_SERVER_
 {
   public static void init(Registry registry)
   {
-    registry.register(new CDOServerDescriptor());
-    registry.register(new ClassMappingDescriptor());
-    registry.register(new DBStoreDescriptor());
-    registry.register(new IDHandlerDescriptor());
-    registry.register(new MappingStrategyDescriptor());
-    registry.register(new MetaDataManagerDescriptor());
-    registry.register(new TypeMappingDescriptor());
-    registry.register(new RepositoryDescriptor());
-    registry.register(new SessionDescriptor());
-    registry.register(new SessionManagerDescriptor());
-    registry.register(new StoreDescriptor());
-    registry.register(new TransactionDescriptor());
-    registry.register(new ViewDescriptor());
+    Color color = Color.blue;
+    registry.register(new CDOServerDescriptor(), color, 0.7f);
+    registry.register(new ClassMappingDescriptor(), color, 0.7f);
+    registry.register(new DBStoreDescriptor(), color, 0.7f);
+    registry.register(new IDHandlerDescriptor(), color, 0.7f);
+    registry.register(new MappingStrategyDescriptor(), color, 0.7f);
+    registry.register(new MetaDataManagerDescriptor(), color, 0.7f);
+    registry.register(new TypeMappingDescriptor(), color, 0.7f);
+    registry.register(new RepositoryDescriptor(), color, 0.7f);
+    registry.register(new SessionDescriptor(), color, 0.7f);
+    registry.register(new SessionManagerDescriptor(), color, 0.7f);
+    registry.register(new StoreDescriptor(), color, 0.7f);
+    registry.register(new TransactionDescriptor(), color, 0.7f);
+    registry.register(new ViewDescriptor(), color, 0.7f);
   }
 }

@@ -271,8 +271,13 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 
     private Map<String, List<ElementDescriptor>> subDescriptors;
 
-    public void register(ElementDescriptor descriptor)
+    public void register(ElementDescriptor descriptor, Color color, float intensity)
     {
+      float red = color.getRed() * intensity;
+      float green = color.getGreen() * intensity;
+      float blue = color.getBlue() * intensity;
+      Color effective = new Color(Math.round(red), Math.round(green), Math.round(blue));
+      descriptor.getColor().setValue(effective);
       put(descriptor.getName(), descriptor);
     }
 

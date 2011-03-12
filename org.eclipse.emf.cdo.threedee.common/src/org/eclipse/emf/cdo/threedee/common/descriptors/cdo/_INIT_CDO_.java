@@ -12,6 +12,8 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
+import java.awt.Color;
+
 /**
  * @author Eike Stepper
  */
@@ -19,14 +21,15 @@ public class _INIT_CDO_
 {
   public static void init(Registry registry)
   {
-    registry.register(new CDODescriptor());
-    registry.register(new BranchDescriptor());
-    registry.register(new BranchManagerDescriptor());
-    registry.register(new PackageInfoDescriptor());
-    registry.register(new PackageRegistryDescriptor());
-    registry.register(new PackageUnitDescriptor());
-    registry.register(new RevisionCacheDescriptor());
-    registry.register(new RevisionDescriptor());
-    registry.register(new RevisionManagerDescriptor());
+    Color color = Color.magenta;
+    registry.register(new CDODescriptor(), color, 0.7f);
+    registry.register(new BranchDescriptor(), color, 0.7f);
+    registry.register(new BranchManagerDescriptor(), color, 0.7f);
+    registry.register(new PackageInfoDescriptor(), color, 0.7f);
+    registry.register(new PackageRegistryDescriptor(), color, 0.7f);
+    registry.register(new PackageUnitDescriptor(), color, 0.7f);
+    registry.register(new RevisionCacheDescriptor(), color, 0.7f);
+    registry.register(new RevisionDescriptor(), color, 0.7f);
+    registry.register(new RevisionManagerDescriptor(), color, 0.7f);
   }
 }

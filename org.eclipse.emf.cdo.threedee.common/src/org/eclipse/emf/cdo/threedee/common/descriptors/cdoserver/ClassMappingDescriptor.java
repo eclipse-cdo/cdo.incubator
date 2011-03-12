@@ -30,8 +30,8 @@ public class ClassMappingDescriptor extends CDOServerDescriptor
     IClassMapping classMapping = (IClassMapping)object;
     element.setKeyAttribute(classMapping.getEClass().getName());
     element.addReference(false, classMapping.getEClass());
-    element.addReference(false, classMapping.getDBTables());
-    element.addReference(true, classMapping.getValueMappings());
-    element.addReference(true, classMapping.getListMappings());
+    element.addReferences(false, classMapping.getDBTables());
+    element.addReferences(true, classMapping.getValueMappings());
+    element.addReferences(true, classMapping.getListMappings());
   }
 }

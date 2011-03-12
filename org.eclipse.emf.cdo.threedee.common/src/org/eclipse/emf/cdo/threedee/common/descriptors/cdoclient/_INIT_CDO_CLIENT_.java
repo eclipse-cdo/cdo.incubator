@@ -12,6 +12,8 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
+import java.awt.Color;
+
 /**
  * @author Eike Stepper
  */
@@ -19,11 +21,12 @@ public class _INIT_CDO_CLIENT_
 {
   public static void init(Registry registry)
   {
-    registry.register(new CDOClientDescriptor());
-    registry.register(new CDOObjectDescriptor());
-    registry.register(new CDOSavepointDescriptor());
-    registry.register(new CDOSessionDescriptor());
-    registry.register(new CDOTransactionDescriptor());
-    registry.register(new CDOViewDescriptor());
+    Color color = Color.red;
+    registry.register(new CDOClientDescriptor(), color, 0.7f);
+    registry.register(new CDOObjectDescriptor(), color, 0.7f);
+    registry.register(new CDOSavepointDescriptor(), color, 0.7f);
+    registry.register(new CDOSessionDescriptor(), color, 0.7f);
+    registry.register(new CDOTransactionDescriptor(), color, 0.7f);
+    registry.register(new CDOViewDescriptor(), color, 0.7f);
   }
 }

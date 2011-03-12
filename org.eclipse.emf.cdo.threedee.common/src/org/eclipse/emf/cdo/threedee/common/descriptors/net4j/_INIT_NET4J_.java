@@ -11,7 +11,8 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.net4j;
 
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
-import org.eclipse.emf.cdo.threedee.common.descriptors.net4jdb._INIT_NET4J_DB_;
+
+import java.awt.Color;
 
 /**
  * @author Eike Stepper
@@ -20,18 +21,17 @@ public class _INIT_NET4J_
 {
   public static void init(Registry registry)
   {
-    _INIT_NET4J_DB_.init(registry);
-
-    registry.register(new Net4jDescriptor());
-    registry.register(new AcceptorDescriptor());
-    registry.register(new BufferDescriptor());
-    registry.register(new ChannelDescriptor());
-    registry.register(new ChannelMultiplexerDescriptor());
-    registry.register(new ConnectorDescriptor());
-    registry.register(new ProtocolDescriptor());
-    registry.register(new SocketChannelDescriptor());
-    registry.register(new TCPAcceptorDescriptor());
-    registry.register(new TCPConnectorDescriptor());
-    registry.register(new TCPSelectorDescriptor());
+    Color color = Color.green;
+    registry.register(new Net4jDescriptor(), color, 0.7f);
+    registry.register(new AcceptorDescriptor(), color, 0.7f);
+    registry.register(new BufferDescriptor(), color, 0.7f);
+    registry.register(new ChannelDescriptor(), color, 0.7f);
+    registry.register(new ChannelMultiplexerDescriptor(), color, 0.7f);
+    registry.register(new ConnectorDescriptor(), color, 0.7f);
+    registry.register(new ProtocolDescriptor(), color, 0.7f);
+    registry.register(new SocketChannelDescriptor(), color, 0.7f);
+    registry.register(new TCPAcceptorDescriptor(), color, 0.7f);
+    registry.register(new TCPConnectorDescriptor(), color, 0.7f);
+    registry.register(new TCPSelectorDescriptor(), color, 0.7f);
   }
 }
