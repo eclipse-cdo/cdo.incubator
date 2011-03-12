@@ -205,6 +205,7 @@ public class ThreeDeeWorld implements ISelectionProvider
 
               display.post(event);
               System.out.println("moveMouse");
+
               try
               {
                 Thread.sleep(500);
