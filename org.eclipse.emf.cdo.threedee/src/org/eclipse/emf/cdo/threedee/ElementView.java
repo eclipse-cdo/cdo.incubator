@@ -180,7 +180,7 @@ public class ElementView extends ViewPart
 
         if (!elements.isEmpty())
         {
-          Display.getDefault().asyncExec(new Runnable()
+          Display.getDefault().syncExec(new Runnable()
           {
             public void run()
             {

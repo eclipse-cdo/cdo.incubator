@@ -159,7 +159,7 @@ public class DescriptorView extends ViewPart
 
         if (!descriptors.isEmpty())
         {
-          Display.getDefault().asyncExec(new Runnable()
+          Display.getDefault().syncExec(new Runnable()
           {
             public void run()
             {
