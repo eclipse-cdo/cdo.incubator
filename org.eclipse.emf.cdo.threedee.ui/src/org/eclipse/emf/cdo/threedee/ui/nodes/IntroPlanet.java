@@ -136,7 +136,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     new TextAnimation(0, 34, 400, "Eike Stepper", 1).start();
     new TextAnimation(0, 53, 500, "Martin Flügge", 1).start();
     new TextAnimation(1, 12, 600, "EclipseCon 2011", 1).start();
-    new TextAnimation(1, 36, 0, "CDO3D", 3)
+    new TextAnimation(1, 34, 0, "CDO3D", 3)
     {
       @Override
       protected void animate(float alpha)
@@ -145,7 +145,7 @@ public class IntroPlanet extends BranchGroup implements IColors
       }
     }.start();
 
-    new ChimeOut(1, 40, 0).start();
+    new ChimeOut(1, 38, 0).start();
   }
 
   private BranchGroup createBackground()
@@ -487,7 +487,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     @Override
     protected void animate(float alpha)
     {
-      background.setTransparency(Math.min(1, 1.4f * alpha));
+      background.setTransparency(Math.min(1, 1.2f * alpha));
       double z = Z0 - 20d * alpha;
 
       Transform3D viewingTransform = new Transform3D();
