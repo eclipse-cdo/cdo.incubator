@@ -22,11 +22,13 @@ public class _INIT_CDO_CLIENT_
   public static void init(Registry registry)
   {
     Color color = Color.red;
-    registry.register(new CDOClientDescriptor(), color, 0.7f);
+    registry.register(new CDOClientDescriptor(), color, 1f);
+
+    registry.register(new CDOSessionDescriptor(), color, 0.9f);
+
+    registry.register(new CDOViewDescriptor(), color, 0.8f);
+    registry.register(new CDOTransactionDescriptor(), color, 0.8f);
+    registry.register(new CDOSavepointDescriptor(), color, 0.8f);
     registry.register(new CDOObjectDescriptor(), color, 0.7f);
-    registry.register(new CDOSavepointDescriptor(), color, 0.7f);
-    registry.register(new CDOSessionDescriptor(), color, 0.7f);
-    registry.register(new CDOTransactionDescriptor(), color, 0.7f);
-    registry.register(new CDOViewDescriptor(), color, 0.7f);
   }
 }

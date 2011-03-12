@@ -30,7 +30,7 @@ public class CallShape extends LineShape implements IColors
 
   private static Appearance createAppearance(boolean transmission)
   {
-    Appearance appearance = ThreeDeeUtil.getDefaultAppearance(transmission ? green : red);
+    Appearance appearance = ThreeDeeUtil.getDefaultAppearance(transmission ? green : white);
 
     TransparencyAttributes transparencyAttributes = appearance.getTransparencyAttributes();
     if (transparencyAttributes == null)
