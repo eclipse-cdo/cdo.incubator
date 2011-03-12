@@ -15,6 +15,7 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
+import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.event.Event;
 import org.eclipse.net4j.util.event.INotifier;
 import org.eclipse.net4j.util.event.ValueNotifier;
@@ -40,6 +41,7 @@ import org.eclipse.ui.part.ViewPart;
 import java.awt.Color;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -90,7 +92,7 @@ public class DescriptorView extends ViewPart
     Set<ElementDescriptor> result = new HashSet<ElementDescriptor>();
     for (ElementDescriptor descriptor : INPUT.values())
     {
-      if (getViewer().getChecked(descriptor) == checked)
+      if (viewer.getChecked(descriptor) == checked)
       {
         result.add(descriptor);
       }
@@ -103,15 +105,15 @@ public class DescriptorView extends ViewPart
   {
     try
     {
-      getViewer().removeCheckStateListener(checkStateListener);
+      viewer.removeCheckStateListener(checkStateListener);
       for (ElementDescriptor descriptor : INPUT.values())
       {
-        getViewer().setChecked(descriptor, checked);
+        viewer.setChecked(descriptor, checked);
       }
     }
     finally
     {
-      getViewer().addCheckStateListener(checkStateListener);
+      viewer.addCheckStateListener(checkStateListener);
     }
 
     notifier.fireCheckStateChangedEvent();
@@ -120,16 +122,17 @@ public class DescriptorView extends ViewPart
   @Override
   public void createPartControl(Composite parent)
   {
-    setViewer(new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL));
-    getViewer().setContentProvider(new ViewContentProvider());
-    getViewer().setLabelProvider(new LabelProvider(getViewer().getControl().getDisplay()));
-    getViewer().setSorter(new NameSorter());
-    getViewer().setInput(INPUT);
-    getViewer().addCheckStateListener(checkStateListener);
+    viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+    viewer.setContentProvider(new ViewContentProvider());
+    viewer.setLabelProvider(new LabelProvider(viewer.getControl().getDisplay()));
+    viewer.setSorter(new NameSorter());
+    viewer.setInput(INPUT);
+    viewer.addCheckStateListener(checkStateListener);
 
     setAllChecked(true);
     INSTANCE.setValue(this);
 
+    getSite().setSelectionProvider(viewer);
     getSite().getPage().addSelectionListener(new ISelectionListener()
     {
       public void selectionChanged(IWorkbenchPart part, final ISelection selection)
@@ -160,8 +163,14 @@ public class DescriptorView extends ViewPart
           {
             public void run()
             {
-              ElementDescriptor[] array = descriptors.toArray(new ElementDescriptor[descriptors.size()]);
-              getViewer().setSelection(new StructuredSelection(array), true);
+              @SuppressWarnings("unchecked")
+              List<Object> list = ((StructuredSelection)viewer.getSelection()).toList();
+              Set<Object> old = new HashSet<Object>(list);
+              if (!ObjectUtil.equals(old, descriptors))
+              {
+                ElementDescriptor[] array = descriptors.toArray(new ElementDescriptor[descriptors.size()]);
+                viewer.setSelection(new StructuredSelection(array), true);
+              }
             }
           });
         }
@@ -172,7 +181,7 @@ public class DescriptorView extends ViewPart
   @Override
   public void setFocus()
   {
-    getViewer().getControl().setFocus();
+    viewer.getControl().setFocus();
   }
 
   @Override
@@ -180,16 +189,6 @@ public class DescriptorView extends ViewPart
   {
     INSTANCE.setValue(null);
     super.dispose();
-  }
-
-  public void setViewer(CheckboxTreeViewer viewer)
-  {
-    this.viewer = viewer;
-  }
-
-  public CheckboxTreeViewer getViewer()
-  {
-    return viewer;
   }
 
   /**
@@ -358,13 +357,13 @@ public class DescriptorView extends ViewPart
       {
         try
         {
-          getViewer().removeCheckStateListener(checkStateListener);
+          viewer.removeCheckStateListener(checkStateListener);
           ElementDescriptor descriptor = (ElementDescriptor)event.getElement();
-          getViewer().setSubtreeChecked(descriptor, event.getChecked());
+          viewer.setSubtreeChecked(descriptor, event.getChecked());
         }
         finally
         {
-          getViewer().addCheckStateListener(checkStateListener);
+          viewer.addCheckStateListener(checkStateListener);
         }
       }
 

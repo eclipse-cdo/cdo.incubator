@@ -133,6 +133,11 @@ public final class Element extends Container<Element>
     return containerID;
   }
 
+  public Element getContainer()
+  {
+    return provider.getElement(containerID);
+  }
+
   public ElementDescriptor getDescriptor()
   {
     return descriptor;

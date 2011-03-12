@@ -94,7 +94,7 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private Map<Element, Map<Element, ReferenceShape>> referenceShapes = new HashMap<Element, Map<Element, ReferenceShape>>();
 
-  private boolean production = true;
+  private boolean production = false;
 
   private Composite composite;
 
