@@ -81,7 +81,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 /**
@@ -94,6 +93,8 @@ public class ThreeDeeWorld implements ISelectionProvider
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
 
   private Map<Element, Map<Element, ReferenceShape>> referenceShapes = new HashMap<Element, Map<Element, ReferenceShape>>();
+
+  private boolean production = true;
 
   private Composite composite;
 
@@ -151,35 +152,22 @@ public class ThreeDeeWorld implements ISelectionProvider
     scene = createScene(canvas);
 
     universe.addBranchGraph(scene);
-    universe.addBranchGraph(createCoordinateSystem());
+
+    if (!production)
+    {
+      universe.addBranchGraph(createCoordinateSystem());
+    }
 
     setNominalViewingTransform();
     frame.add(canvas);
     createPicking(canvas, scene);
 
-    // intro();
-
-    // mouseTest();
-
-    // flashing1();
-    // flashing2();
-
-    // addSelectionChangedListener(new ISelectionChangedListener()
-    // {
-    // public void selectionChanged(SelectionChangedEvent event)
-    // {
-    // ThreeDeeNodeSelection selection = (ThreeDeeNodeSelection)event.getSelection();
-    // System.out.println("Selection changed " + selection.getNode() + " " + selection.getElement());
-    // }
-    // });
-  }
-
-  @SuppressWarnings("unused")
-  private void intro()
-  {
-    IntroPlanet planet = new IntroPlanet(this);
-    universe.addBranchGraph(planet);
-    planet.start();
+    if (production)
+    {
+      IntroPlanet planet = new IntroPlanet(this);
+      universe.addBranchGraph(planet);
+      planet.start();
+    }
   }
 
   @SuppressWarnings("unused")
@@ -243,204 +231,6 @@ public class ThreeDeeWorld implements ISelectionProvider
     });
 
     t.start();
-  }
-
-  @SuppressWarnings("unused")
-  private void flashing1()
-  {
-    final Random random = new Random(System.currentTimeMillis());
-    new Thread()
-    {
-      @Override
-      public void run()
-      {
-        while (isAlive())
-        {
-          ConcurrencyUtil.sleep(random.nextInt(500));
-
-          new Thread()
-          {
-            private List<CallShape> shapes = new ArrayList<CallShape>();
-
-            @Override
-            public void run()
-            {
-              while (isAlive())
-              {
-                Session[] sessions = Frontend.INSTANCE.getElements();
-                Session session = sessions[random.nextInt(sessions.length)];
-
-                Element rootElement = session.getRootElement();
-                flash(rootElement, random.nextInt(50));
-
-                for (final CallShape shape : shapes)
-                {
-                  schedule(new Runnable()
-                  {
-                    public void run()
-                    {
-                      shape.detach();
-                    }
-                  });
-
-                  ConcurrencyUtil.sleep(random.nextInt(20));
-                }
-              }
-            }
-
-            private void flash(Element element, int count)
-            {
-              if (count == 0)
-              {
-                return;
-              }
-
-              Set<Integer> ids = element.getReferences().keySet();
-              if (ids.isEmpty())
-              {
-                return;
-              }
-
-              Iterator<Integer> it = ids.iterator();
-
-              int id = 0;
-              int n = random.nextInt(ids.size());
-              while (n-- > 0)
-              {
-                id = it.next();
-              }
-
-              ElementProvider provider = element.getProvider();
-              Element target = provider.getElement(id);
-              if (target != null)
-              {
-                final CallShape shape = new CallShape(element, target);
-                Geometry geometry = getLineGeometry(element, target);
-                shape.setGeometry(geometry);
-                shapes.add(shape);
-
-                schedule(new Runnable()
-                {
-                  public void run()
-                  {
-                    universe.addBranchGraph(shape);
-                  }
-                });
-
-                ConcurrencyUtil.sleep(random.nextInt(20));
-                flash(target, --count);
-              }
-            }
-          }.start();
-        }
-      }
-    }.start();
-  }
-
-  @SuppressWarnings("unused")
-  private void flashing2()
-  {
-    final Random random = new Random(System.currentTimeMillis());
-    new Thread()
-    {
-      @Override
-      public void run()
-      {
-        while (isAlive())
-        {
-          ConcurrencyUtil.sleep(500L + random.nextInt(2000));
-
-          new Thread()
-          {
-            private List<CallShape> shapes = new ArrayList<CallShape>();
-
-            @Override
-            public void run()
-            {
-              while (isAlive())
-              {
-                Session[] sessions = Frontend.INSTANCE.getElements();
-                Session session = sessions[random.nextInt(sessions.length)];
-
-                Element[] elements = session.getAllElements();
-                Element rootElement = elements[random.nextInt(elements.length)];
-
-                flash(elements, rootElement, random.nextInt(50));
-
-                for (final CallShape shape : shapes)
-                {
-                  schedule(new Runnable()
-                  {
-                    public void run()
-                    {
-                      shape.detach();
-                    }
-                  });
-
-                  ConcurrencyUtil.sleep(random.nextInt(100));
-                }
-              }
-            }
-
-            private void flash(Element[] elements, Element element, int count)
-            {
-              if (count == 0)
-              {
-                return;
-              }
-
-              Element target;
-
-              Set<Integer> ids = element.getReferences().keySet();
-              if (ids.isEmpty())
-              {
-                if (random.nextInt(5) == 0)
-                {
-                  target = elements[random.nextInt(elements.length)];
-                }
-                else
-                {
-                  return;
-                }
-              }
-              else
-              {
-                Iterator<Integer> it = ids.iterator();
-
-                int id = 0;
-                int n = random.nextInt(ids.size());
-                while (n-- > 0)
-                {
-                  id = it.next();
-                }
-
-                ElementProvider provider = element.getProvider();
-                target = provider.getElement(id);
-              }
-
-              if (target != null)
-              {
-                final CallShape shape = new CallShape(element, target);
-                Geometry geometry = getLineGeometry(element, target);
-                shape.setGeometry(geometry);
-                shapes.add(shape);
-
-                schedule(new Runnable()
-                {
-                  public void run()
-                  {
-                    universe.addBranchGraph(shape);
-                  }
-                });
-
-                ConcurrencyUtil.sleep(random.nextInt(20));
-                flash(elements, target, --count);
-              }
-            }
-          }.start();
-        }
-      }
-    }.start();
   }
 
   private BranchGroup createScene(Canvas3D canvas)
@@ -566,7 +356,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     return group;
   }
 
-  private void setNominalViewingTransform()
+  public void setNominalViewingTransform()
   {
     ViewingPlatform viewingPlatform = universe.getViewingPlatform();
 

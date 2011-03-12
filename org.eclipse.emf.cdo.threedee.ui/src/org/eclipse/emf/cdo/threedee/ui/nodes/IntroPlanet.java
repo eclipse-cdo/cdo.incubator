@@ -85,6 +85,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     this.world = world;
     setCapability(Group.ALLOW_CHILDREN_EXTEND);
     setCapability(Group.ALLOW_CHILDREN_WRITE);
+    setCapability(BranchGroup.ALLOW_DETACH);
 
     addChild(createBackground());
 
@@ -494,6 +495,13 @@ public class IntroPlanet extends BranchGroup implements IColors
 
       ViewingPlatform viewingPlatform = world.getUniverse().getViewingPlatform();
       viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
+    }
+
+    @Override
+    protected void done()
+    {
+      world.setNominalViewingTransform();
+      detach();
     }
   }
 }
