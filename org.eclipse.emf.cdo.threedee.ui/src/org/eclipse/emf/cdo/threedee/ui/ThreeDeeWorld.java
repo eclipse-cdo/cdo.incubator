@@ -849,7 +849,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
           Element element = (Element)objects[0];
           ElementDescriptor descriptor = element.getDescriptor();
 
-          Info info = new Info(row++, descriptor.getLabel(element), bold);
+          Info info = new Info(row++, descriptor.getLabel() + ":", bold);
           infos.add(info);
 
           for (Entry<String, String> entry : element.getAttributes().entrySet())
