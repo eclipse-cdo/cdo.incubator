@@ -709,7 +709,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       ElementGroup elementGroup = elementGroups.get(object);
       if (elementGroup != null)
       {
-        elementGroup.select(select);
+        elementGroup.setSelected(select);
       }
     }
   }

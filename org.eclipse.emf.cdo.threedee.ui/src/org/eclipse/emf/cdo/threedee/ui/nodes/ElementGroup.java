@@ -24,6 +24,7 @@ import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
+import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransparencyAttributes;
 import javax.vecmath.AxisAngle4d;
@@ -50,8 +51,6 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
   private static SelectionThread selectionThread;
 
-  private BranchGroup selection;
-
   public ElementGroup(Element element, Canvas3D canvas)
   {
     super(element, createAppearance(element, canvas));
@@ -63,7 +62,12 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
     return (ElementSphere)super.getShape();
   }
 
-  public void select(boolean selected)
+  public boolean isSelected()
+  {
+    return getSelectionThread().isSelected(this);
+  }
+
+  public void setSelected(boolean selected)
   {
     if (selected)
     {
@@ -78,21 +82,11 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
       float radius = ElementSphere.RADIUS * 1.4f;
       Sphere selectionShape = new Sphere(radius, Primitive.GENERATE_NORMALS, 32, appearance);
 
-      selection = new BranchGroup();
-      selection.setCapability(ALLOW_DETACH);
-      selection.addChild(selectionShape);
-
-      addChild(selection);
-      getSelectionThread().add(selection, transparencyAttributes);
+      getSelectionThread().add(this, selectionShape);
     }
     else
     {
-      if (selection != null)
-      {
-        getSelectionThread().remove(selection);
-        selection.detach();
-        selection = null;
-      }
+      getSelectionThread().remove(this);
     }
   }
 
@@ -173,7 +167,7 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
   public final class ElementSphere extends Sphere
   {
     public static final float RADIUS = .1f;
-  
+
     public ElementSphere(Appearance appearance)
     {
       super(RADIUS, Primitive.GENERATE_NORMALS, 32, appearance);
@@ -185,7 +179,7 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
    */
   private static final class SelectionThread extends Thread
   {
-    private Map<BranchGroup, TransparencyAttributes> selections = new HashMap<BranchGroup, TransparencyAttributes>();
+    private Map<ElementGroup, Node> selectionShapes = new HashMap<ElementGroup, Node>();
 
     private double theta;
 
@@ -194,19 +188,30 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
       setDaemon(true);
     }
 
-    public synchronized TransparencyAttributes[] getSelections()
+    public synchronized boolean isSelected(ElementGroup elementGroup)
     {
-      return selections.values().toArray(new TransparencyAttributes[selections.size()]);
+      return selectionShapes.containsKey(elementGroup);
     }
 
-    public synchronized void add(BranchGroup selection, TransparencyAttributes transparencyAttributes)
+    public synchronized void add(ElementGroup elementGroup, Node selectionShape)
     {
-      selections.put(selection, transparencyAttributes);
+      BranchGroup branchGroup = new BranchGroup();
+      branchGroup.setCapability(ALLOW_DETACH);
+      branchGroup.addChild(selectionShape);
+
+      elementGroup.addChild(branchGroup);
+      selectionShapes.put(elementGroup, selectionShape);
     }
 
-    public synchronized void remove(BranchGroup selection)
+    public synchronized void remove(ElementGroup elementGroup)
     {
-      selections.remove(selection);
+      Node selectionShape = selectionShapes.remove(elementGroup);
+      if (selectionShape != null)
+      {
+        BranchGroup branchGroup = (BranchGroup)selectionShape.getParent();
+        branchGroup.detach();
+      }
+
     }
 
     @Override
@@ -215,9 +220,22 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
       while (!interrupted())
       {
         float alpha = (float)Math.abs(Math.cos(theta));
-        for (TransparencyAttributes transparencyAttributes : getSelections())
+
+        for (Node node : getSelections())
         {
-          transparencyAttributes.setTransparency(alpha);
+          Appearance appearance;
+          if (node instanceof Shape3D)
+          {
+            Shape3D selectionShape = (Shape3D)node;
+            appearance = selectionShape.getAppearance();
+          }
+          else
+          {
+            Primitive selectionShape = (Primitive)node;
+            appearance = selectionShape.getAppearance();
+          }
+
+          appearance.getTransparencyAttributes().setTransparency(alpha);
         }
 
         theta += 0.02f;
@@ -228,6 +246,11 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
         ConcurrencyUtil.sleep(5);
       }
+    }
+
+    private synchronized Node[] getSelections()
+    {
+      return selectionShapes.values().toArray(new Node[selectionShapes.size()]);
     }
   }
 }
