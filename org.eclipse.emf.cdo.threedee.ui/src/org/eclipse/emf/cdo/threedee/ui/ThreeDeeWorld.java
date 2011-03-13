@@ -811,7 +811,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       // translationGroup.addChild(light);
 
       Transform3D scale = new Transform3D();
-      scale.setScale(0.01d);
+      scale.setScale(0.015d);
 
       transformGroup = new TransformGroup(scale);
       transformGroup.setCapability(ALLOW_CHILDREN_WRITE);
@@ -923,16 +923,16 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       {
         setCapability(ALLOW_DETACH);
 
-        Transform3D transform = new Transform3D();
-        transform.set(new Vector3f(0f, -1.2f * row, 0f));
+        Transform3D translation = new Transform3D();
+        translation.set(new Vector3f(0f, -1.2f * row, 0f));
 
-        TransformGroup transformGroup = new TransformGroup(transform);
+        TransformGroup transformGroup = new TransformGroup(translation);
         addChild(transformGroup);
 
         Appearance appearance = new Appearance();
         // appearance.setTransparencyAttributes(transparencyAttributes);
 
-        Material material = new Material(white, gray, gray, yellow, 64.0f);
+        Material material = new Material(darkGray, gray, white, yellow, 16.0f);
         material.setLightingEnable(true);
         appearance.setMaterial(material);
 
