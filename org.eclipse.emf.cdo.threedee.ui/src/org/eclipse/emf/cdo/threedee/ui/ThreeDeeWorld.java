@@ -774,13 +774,29 @@ public class ThreeDeeWorld implements ISelectionProvider
   /**
    * @author Eike Stepper
    */
-  private final class InfoPanel extends TransformGroup
+  private final class InfoPanel extends TransformGroup implements Runnable
   {
-    private List<Info> infos = new ArrayList<Info>();
+    private Thread animator = new Thread(this);
+
+    // private List<Info> infos = new ArrayList<Info>();
+
+    public InfoPanel()
+    {
+      animator.setDaemon(true);
+      animator.start();
+    }
 
     public void updateInfo(Object[] objects)
     {
       List<Info> infos = createInfos(objects);
+      System.out.println(infos);
+    }
+
+    public void run()
+    {
+      while (!animator.isInterrupted())
+      {
+      }
     }
 
     private List<Info> createInfos(Object[] objects)
@@ -833,7 +849,6 @@ public class ThreeDeeWorld implements ISelectionProvider
      */
     private final class Info
     {
-
       public Info(String string)
       {
       }
