@@ -22,16 +22,19 @@ public class _INIT_NET4J_
   public static void init(Registry registry)
   {
     Color color = Color.green;
-    registry.register(new Net4jDescriptor(), color, 0.7f);
-    registry.register(new AcceptorDescriptor(), color, 0.7f);
-    registry.register(new BufferDescriptor(), color, 0.7f);
-    registry.register(new ChannelDescriptor(), color, 0.7f);
-    registry.register(new ChannelMultiplexerDescriptor(), color, 0.7f);
-    registry.register(new ConnectorDescriptor(), color, 0.7f);
-    registry.register(new ProtocolDescriptor(), color, 0.7f);
-    registry.register(new SocketChannelDescriptor(), color, 0.7f);
-    registry.register(new TCPAcceptorDescriptor(), color, 0.7f);
-    registry.register(new TCPConnectorDescriptor(), color, 0.7f);
-    registry.register(new TCPSelectorDescriptor(), color, 0.7f);
+    registry.register(new Net4jDescriptor(), color, 1f);
+
+    registry.register(new AcceptorDescriptor(), color, 0.8f);
+    registry.register(new ConnectorDescriptor(), color, 0.8f);
+    registry.register(new ChannelMultiplexerDescriptor(), color, 0.8f);
+    registry.register(new TCPAcceptorDescriptor(), color, 0.8f);
+    registry.register(new TCPConnectorDescriptor(), color, 0.8f);
+    registry.register(new TCPSelectorDescriptor(), color, 0.8f);
+
+    registry.register(new ChannelDescriptor(), color, 0.6f);
+
+    registry.register(new ProtocolDescriptor(), color, 0.4f);
+    registry.register(new SocketChannelDescriptor(), color, 0.4f);
+    registry.register(new BufferDescriptor(), color, 0.4f);
   }
 }

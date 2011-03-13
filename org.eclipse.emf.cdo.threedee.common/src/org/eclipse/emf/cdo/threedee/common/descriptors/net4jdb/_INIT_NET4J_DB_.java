@@ -22,11 +22,13 @@ public class _INIT_NET4J_DB_
   public static void init(Registry registry)
   {
     Color color = Color.cyan;
-    registry.register(new Net4jDBDescriptor(), color, 0.7f);
-    registry.register(new DBAdapterDescriptor(), color, 0.7f);
-    registry.register(new DBFieldDescriptor(), color, 0.7f);
-    registry.register(new DBIndexDescriptor(), color, 0.7f);
-    registry.register(new DBSchemaDescriptor(), color, 0.7f);
-    registry.register(new DBTableDescriptor(), color, 0.7f);
+    registry.register(new Net4jDBDescriptor(), color, 1f);
+    registry.register(new DBAdapterDescriptor(), color, 1f);
+    registry.register(new DBSchemaDescriptor(), color, 1f);
+
+    registry.register(new DBTableDescriptor(), color, 0.8f);
+
+    registry.register(new DBFieldDescriptor(), color, 0.6f);
+    registry.register(new DBIndexDescriptor(), color, 0.6f);
   }
 }

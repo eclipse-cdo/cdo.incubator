@@ -22,18 +22,20 @@ public class _INIT_CDO_SERVER_
   public static void init(Registry registry)
   {
     Color color = Color.blue;
-    registry.register(new CDOServerDescriptor(), color, 0.7f);
-    registry.register(new ClassMappingDescriptor(), color, 0.7f);
-    registry.register(new DBStoreDescriptor(), color, 0.7f);
-    registry.register(new IDHandlerDescriptor(), color, 0.7f);
-    registry.register(new MappingStrategyDescriptor(), color, 0.7f);
-    registry.register(new MetaDataManagerDescriptor(), color, 0.7f);
-    registry.register(new TypeMappingDescriptor(), color, 0.7f);
-    registry.register(new RepositoryDescriptor(), color, 0.7f);
-    registry.register(new SessionDescriptor(), color, 0.7f);
-    registry.register(new SessionManagerDescriptor(), color, 0.7f);
-    registry.register(new StoreDescriptor(), color, 0.7f);
-    registry.register(new TransactionDescriptor(), color, 0.7f);
-    registry.register(new ViewDescriptor(), color, 0.7f);
+    registry.register(new CDOServerDescriptor(), color, 1f);
+    registry.register(new RepositoryDescriptor(), color, 1f);
+
+    registry.register(new StoreDescriptor(), color, 0.8f);
+    registry.register(new DBStoreDescriptor(), color, 0.8f);
+    registry.register(new MappingStrategyDescriptor(), color, 0.8f);
+    registry.register(new MetaDataManagerDescriptor(), color, 0.8f);
+    registry.register(new IDHandlerDescriptor(), color, 0.8f);
+    registry.register(new SessionManagerDescriptor(), color, 0.8f);
+
+    registry.register(new ClassMappingDescriptor(), color, 0.6f);
+    registry.register(new TypeMappingDescriptor(), color, 0.6f);
+    registry.register(new SessionDescriptor(), color, 0.6f);
+    registry.register(new TransactionDescriptor(), color, 0.6f);
+    registry.register(new ViewDescriptor(), color, 0.6f);
   }
 }

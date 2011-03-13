@@ -29,22 +29,25 @@ public class _INIT_EMF_
         EPackage.Registry.INSTANCE);
 
     Color color = Color.yellow;
-    registry.register(new EMFDescriptor(), color, 0.7f);
-    registry.register(new EAnnotationDescriptor(), color, 0.7f);
-    registry.register(new EAttributeDescriptor(), color, 0.7f);
-    registry.register(new EClassDescriptor(), color, 0.7f);
-    registry.register(new EClassifierDescriptor(), color, 0.7f);
-    registry.register(new EDataTypeDescriptor(), color, 0.7f);
-    registry.register(new EEnumDescriptor(), color, 0.7f);
-    registry.register(new EEnumLiteralDescriptor(), color, 0.7f);
-    registry.register(new EModelElementDescriptor(), color, 0.7f);
-    registry.register(new ENamedElementDescriptor(), color, 0.7f);
-    registry.register(new EOperationDescriptor(), color, 0.7f);
-    registry.register(new EPackageDescriptor(), color, 0.7f);
-    registry.register(new EPackageRegistryDescriptor(), color, 0.7f);
-    registry.register(new EParameterDescriptor(), color, 0.7f);
-    registry.register(new EReferenceDescriptor(), color, 0.7f);
-    registry.register(new EStructuralFeatureDescriptor(), color, 0.7f);
-    registry.register(new ETypedElementDescriptor(), color, 0.7f);
+    registry.register(new EMFDescriptor(), color, 1f);
+    registry.register(new EPackageRegistryDescriptor(), color, 1f);
+    registry.register(new EPackageDescriptor(), color, 1f);
+    registry.register(new EModelElementDescriptor(), color, 1f);
+    registry.register(new ENamedElementDescriptor(), color, 1f);
+    registry.register(new ETypedElementDescriptor(), color, 1f);
+
+    registry.register(new EClassifierDescriptor(), color, 0.8f);
+    registry.register(new EClassDescriptor(), color, 0.8f);
+    registry.register(new EDataTypeDescriptor(), color, 0.8f);
+    registry.register(new EEnumDescriptor(), color, 0.8f);
+
+    registry.register(new EStructuralFeatureDescriptor(), color, 0.6f);
+    registry.register(new EAttributeDescriptor(), color, 0.6f);
+    registry.register(new EReferenceDescriptor(), color, 0.6f);
+    registry.register(new EEnumLiteralDescriptor(), color, 0.6f);
+    registry.register(new EOperationDescriptor(), color, 0.6f);
+
+    registry.register(new EParameterDescriptor(), color, 0.4f);
+    registry.register(new EAnnotationDescriptor(), color, 0.4f);
   }
 }
