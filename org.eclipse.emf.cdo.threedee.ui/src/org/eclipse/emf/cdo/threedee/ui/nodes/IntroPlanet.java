@@ -120,16 +120,6 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   public void start()
   {
-    // try
-    // {
-    // System.in.read();
-    // ConcurrencyUtil.sleep(5000);
-    // }
-    // catch (IOException ex)
-    // {
-    // ex.printStackTrace();
-    // }
-
     new SoundPlayer("zarathustra.wav").start();
     new ChimeIn().start();
 

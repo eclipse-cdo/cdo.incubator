@@ -163,9 +163,27 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
     if (PRODUCTION)
     {
-      IntroPlanet planet = new IntroPlanet(this);
-      universe.addBranchGraph(planet);
-      planet.start();
+      new Thread()
+      {
+        @Override
+        public void run()
+        {
+          IntroPlanet planet = new IntroPlanet(ThreeDeeWorld.this);
+          universe.addBranchGraph(planet);
+
+          try
+          {
+            System.in.read();
+            // ConcurrencyUtil.sleep(5000);
+          }
+          catch (Exception ex)
+          {
+            ex.printStackTrace();
+          }
+
+          planet.start();
+        }
+      }.start();
     }
   }
 
