@@ -284,7 +284,6 @@ public class ThreeDeeWorld implements ISelectionProvider
     pickCanvas.setMode(PickTool.BOUNDS);
     canvas.addMouseListener(new MouseAdapter()
     {
-      @SuppressWarnings("unchecked")
       @Override
       public void mouseClicked(MouseEvent e)
       {
@@ -295,14 +294,40 @@ public class ThreeDeeWorld implements ISelectionProvider
           Node node = result.getNode(PickResult.PRIMITIVE | PickResult.SHAPE3D);
           if (node != null)
           {
-            ThreeDeeNode<Element> threeDeeNode = ThreeDeeUtil.getThreeDeeNode(node);
-            Element element = threeDeeNode.getModel();
-            setSelection(new StructuredSelection(element));
+            int modifiers = e.getModifiers();
+            boolean alt = (modifiers & MouseEvent.ALT_MASK) != 0;
+            boolean ctl = (modifiers & MouseEvent.CTRL_MASK) != 0;
+            picked(node, alt, ctl);
             return;
           }
         }
 
         setSelection(StructuredSelection.EMPTY);
+      }
+
+      private void picked(Node node, boolean alt, boolean ctl)
+      {
+        @SuppressWarnings("unchecked")
+        ThreeDeeNode<Element> threeDeeNode = ThreeDeeUtil.getThreeDeeNode(node);
+        Element element = threeDeeNode.getModel();
+
+        List<Element> elements = new ArrayList<Element>();
+        elements.add(element);
+        if (alt)
+        {
+          addChildren(element, elements);
+        }
+
+        setSelection(new StructuredSelection(elements));
+      }
+
+      private void addChildren(Element element, List<Element> elements)
+      {
+        for (Element child : element.getElements())
+        {
+          elements.add(child);
+          addChildren(child, elements);
+        }
       }
     });
   }

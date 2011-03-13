@@ -287,10 +287,10 @@ public class DescriptorView extends ViewPart
       if (object instanceof ElementDescriptor)
       {
         ElementDescriptor descriptor = (ElementDescriptor)object;
-        if (descriptor.isFolder())
-        {
-          return folderImage;
-        }
+        // if (descriptor.isFolder())
+        // {
+        // return folderImage;
+        // }
 
         Color color = descriptor.getColor().getValue();
         return ColorIcons.get(color);

@@ -36,7 +36,7 @@ public class _INIT_
 
     Color color = Color.white;
     registry.register(new ManagedContainerDescriptor(), color, 0.8f);
-    registry.register(new MapEntryDescriptor(), color, 0.7f);
-    registry.register(new CollectionDescriptor(), color, 0.7f);
+    // registry.register(new MapEntryDescriptor(), color, 0.7f);
+    // registry.register(new CollectionDescriptor(), color, 0.7f);
   }
 }

@@ -85,6 +85,7 @@ public class ThreeDeeView extends ViewPart
   public void createPartControl(Composite parent)
   {
     world = new ThreeDeeWorld(parent);
+
     Frontend.INSTANCE.addListener(frontendListener);
 
     DescriptorView.INSTANCE.addListener(descriptorViewListener);
