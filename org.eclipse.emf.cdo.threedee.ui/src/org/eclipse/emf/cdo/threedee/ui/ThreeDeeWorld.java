@@ -48,6 +48,7 @@ import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.picking.PickCanvas;
 import com.sun.j3d.utils.picking.PickResult;
 import com.sun.j3d.utils.picking.PickTool;
+import com.sun.j3d.utils.universe.PlatformGeometry;
 import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
@@ -76,7 +77,6 @@ import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
-import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.MouseAdapter;
@@ -274,7 +274,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   private void addInfoPanel()
   {
     infoPanel = new InfoPanel();
-    universe.getViewingPlatform().addChild(infoPanel);
+    universe.getViewingPlatform().setPlatformGeometry(infoPanel);
   }
 
   private void addCoordinateSystem()
@@ -783,9 +783,13 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   /**
    * @author Eike Stepper
    */
-  private final class InfoPanel extends BranchGroup implements Runnable
+  private final class InfoPanel extends PlatformGeometry implements Runnable
   {
-    private Font3D font = new Font3D(new Font("Neuropol", Font.PLAIN, 1), new FontExtrusion());
+    private Font3D plain = new Font3D(new Font("Arial", Font.PLAIN, 1), new FontExtrusion());
+
+    private Font3D bold = new Font3D(new Font("Arial", Font.BOLD, 1), new FontExtrusion());
+
+    private TransformGroup transformGroup;
 
     private Thread animator = new Thread(this);
 
@@ -793,25 +797,35 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
     public InfoPanel()
     {
-      setCapability(ALLOW_DETACH);
-      setCapability(ALLOW_CHILDREN_WRITE);
-      setCapability(ALLOW_CHILDREN_EXTEND);
+      Transform3D translation = new Transform3D();
+      translation.setTranslation(new Vector3f(-0.4f, 0.24f, -1f));
+
+      TransformGroup translationGroup = new TransformGroup(translation);
+      addChild(translationGroup);
+
+      Transform3D scale = new Transform3D();
+      scale.setScale(0.01d);
+
+      transformGroup = new TransformGroup(scale);
+      transformGroup.setCapability(ALLOW_CHILDREN_WRITE);
+      transformGroup.setCapability(ALLOW_CHILDREN_EXTEND);
+      translationGroup.addChild(transformGroup);
 
       // animator.setDaemon(true);
       // animator.start();
     }
 
-    public void updateInfo(Object[] objects)
+    public synchronized void updateInfo(Object[] objects)
     {
       for (Info info : infos)
       {
         info.detach();
       }
 
-      List<Info> infos = createInfos(objects);
+      infos = createInfos(objects);
       for (Info info : infos)
       {
-        addChild(info);
+        transformGroup.addChild(info);
       }
     }
 
@@ -833,12 +847,16 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
         if (objects[0] instanceof Element)
         {
           Element element = (Element)objects[0];
-          Color color = element.getDescriptor().getColor().getValue();
+          ElementDescriptor descriptor = element.getDescriptor();
+
+          Info info = new Info(row++, descriptor.getLabel(element), bold);
+          infos.add(info);
+
           for (Entry<String, String> entry : element.getAttributes().entrySet())
           {
             String label = entry.getKey() + " = " + entry.getValue();
 
-            Info info = new Info(row++, label, color);
+            info = new Info(row++, label, plain);
             infos.add(info);
           }
         }
@@ -861,14 +879,26 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
             counts.put(descriptor, ++count);
           }
+        }
 
+        if (!counts.isEmpty())
+        {
           for (Entry<ElementDescriptor, Integer> entry : counts.entrySet())
           {
             ElementDescriptor descriptor = entry.getKey();
-            String label = descriptor.getLabel() + " = " + entry.getValue();
-            Color color = descriptor.getColor().getValue();
+            String label = descriptor.getLabel();
+            if (label.endsWith("y"))
+            {
+              label = label.substring(0, label.length() - 1) + "ies";
+            }
+            else
+            {
+              label += "s";
+            }
 
-            Info info = new Info(row++, label, color);
+            label += ": " + entry.getValue();
+
+            Info info = new Info(row++, label, bold);
             infos.add(info);
           }
         }
@@ -882,12 +912,12 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
      */
     private final class Info extends BranchGroup
     {
-      public Info(int row, String label, Color color)
+      public Info(int row, String label, Font3D font)
       {
         setCapability(ALLOW_DETACH);
 
         Transform3D transform = new Transform3D();
-        transform.set(new Vector3f(0f, -2f * row, 0f));
+        transform.set(new Vector3f(0f, -1.2f * row, 0f));
 
         TransformGroup transformGroup = new TransformGroup(transform);
         addChild(transformGroup);
@@ -895,7 +925,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
         Appearance appearance = new Appearance();
         // appearance.setTransparencyAttributes(transparencyAttributes);
 
-        Material material = new Material(darkestGray, darkestGray, white, yellow, 128.0f);
+        Material material = new Material(darkestGray, darkestGray, white, yellow, 64.0f);
         material.setLightingEnable(true);
         appearance.setMaterial(material);
 
