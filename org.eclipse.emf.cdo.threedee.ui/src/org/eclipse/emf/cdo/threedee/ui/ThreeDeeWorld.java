@@ -113,6 +113,8 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private boolean showCrossReferences;
 
+  private InfoPanel infoPanel;
+
   public ThreeDeeWorld(Composite parent)
   {
     composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
@@ -148,6 +150,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     setNominalViewingTransform();
     frame.add(canvas);
     addPicking();
+    addInfoPanel();
 
     if (PRODUCTION)
     {
@@ -257,6 +260,12 @@ public class ThreeDeeWorld implements ISelectionProvider
         }
       }
     });
+  }
+
+  private void addInfoPanel()
+  {
+    infoPanel = new InfoPanel();
+    universe.getViewingPlatform().addChild(infoPanel);
   }
 
   private void addCoordinateSystem()
@@ -660,6 +669,8 @@ public class ThreeDeeWorld implements ISelectionProvider
         this.selection = ssel;
         updateSelection(true);
 
+        infoPanel.updateInfo(ssel.toArray());
+
         SelectionChangedEvent event = new SelectionChangedEvent(this, getSelection());
         for (ISelectionChangedListener listener : selectionChangeListeners)
         {
@@ -763,15 +774,69 @@ public class ThreeDeeWorld implements ISelectionProvider
   /**
    * @author Eike Stepper
    */
-  private final class InfoPanel
+  private final class InfoPanel extends TransformGroup
   {
     private List<Info> infos = new ArrayList<Info>();
+
+    public void updateInfo(Object[] objects)
+    {
+      List<Info> infos = createInfos(objects);
+    }
+
+    private List<Info> createInfos(Object[] objects)
+    {
+      List<Info> infos = new ArrayList<Info>();
+      if (objects.length == 1)
+      {
+        if (objects[0] instanceof Element)
+        {
+          Element element = (Element)objects[0];
+          for (Entry<String, String> entry : element.getAttributes().entrySet())
+          {
+            Info info = new Info(entry.getKey() + " = " + entry.getValue());
+            infos.add(info);
+          }
+        }
+      }
+      else
+      {
+        Map<ElementDescriptor, Integer> counts = new HashMap<ElementDescriptor, Integer>();
+        for (Object object : objects)
+        {
+          if (object instanceof Element)
+          {
+            Element element = (Element)object;
+            ElementDescriptor descriptor = element.getDescriptor();
+
+            Integer count = counts.get(descriptor);
+            if (count == null)
+            {
+              count = 0;
+            }
+
+            counts.put(descriptor, ++count);
+          }
+
+          for (Entry<ElementDescriptor, Integer> entry : counts.entrySet())
+          {
+            Info info = new Info(entry.getKey().getLabel() + " = " + entry.getValue());
+            infos.add(info);
+          }
+        }
+      }
+
+      return infos;
+    }
 
     /**
      * @author Eike Stepper
      */
     private final class Info
     {
+
+      public Info(String string)
+      {
+      }
     }
   }
 }
