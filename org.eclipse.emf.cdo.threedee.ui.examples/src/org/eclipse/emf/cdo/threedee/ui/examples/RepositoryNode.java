@@ -8,19 +8,16 @@
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
-package org.eclipse.emf.cdo.threedee.ui.nodes.old;
+package org.eclipse.emf.cdo.threedee.ui.examples;
 
-import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 
 import com.sun.j3d.utils.geometry.Box;
-import com.sun.j3d.utils.geometry.Primitive;
 import com.sun.j3d.utils.image.TextureLoader;
 
 import javax.media.j3d.Appearance;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.Material;
-import javax.media.j3d.Node;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.Texture;
 import javax.media.j3d.TextureAttributes;
@@ -119,17 +116,5 @@ public class RepositoryNode extends Box
     appearance.setTextureAttributes(texAttr);
     appearance.setTexture(texture);
     shape.setAppearance(appearance);
-  }
-
-  /**
-   * @author Martin Fluegge
-   */
-  public static class Factory implements INodeFactory
-  {
-    public Node createNode(Element element)
-    {
-      return new RepositoryNode(.1f, .1f, .1f, Primitive.GENERATE_TEXTURE_COORDS,
-          ThreeDeeUtil.getDefaultAppearance(new Color3f(Color.green)));
-    }
   }
 }
