@@ -95,27 +95,23 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private Map<Element, Map<Element, ReferenceShape>> referenceShapes = new HashMap<Element, Map<Element, ReferenceShape>>();
 
+  private List<ISelectionChangedListener> selectionChangeListeners = new ArrayList<ISelectionChangedListener>();
+
+  private CallThread callThread;
+
   private Composite composite;
 
   private SimpleUniverse universe;
 
   private BranchGroup scene;
 
-  private TransformGroup sphereTransformGroup;
-
   private Canvas3D canvas;
-
-  private boolean showCrossReferences;
-
-  private Transform3D viewingTransform;
 
   private RootElement root;
 
   private StructuredSelection selection;
 
-  private List<ISelectionChangedListener> selectionChangeListeners = new ArrayList<ISelectionChangedListener>();
-
-  private CallThread callThread;
+  private boolean showCrossReferences;
 
   public ThreeDeeWorld(Composite parent)
   {
@@ -170,12 +166,12 @@ public class ThreeDeeWorld implements ISelectionProvider
     addLights();
     addNavigation();
 
-    sphereTransformGroup = new TransformGroup();
-    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-    sphereTransformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
-    sphereTransformGroup.setPickable(true);
-    scene.addChild(sphereTransformGroup);
+    TransformGroup transformGroup = new TransformGroup();
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    transformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
+    transformGroup.setPickable(true);
+    scene.addChild(transformGroup);
 
     root = new RootElement(canvas);
     scene.addChild(root);
@@ -319,7 +315,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     double fieldOfView = view.getFieldOfView();
     double viewDistance = 12.0d / Math.tan(fieldOfView / 2.0d);
 
-    viewingTransform = new Transform3D();
+    Transform3D viewingTransform = new Transform3D();
     viewingTransform.set(new Vector3d(0.0, 0.0, viewDistance));
     viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
   }
