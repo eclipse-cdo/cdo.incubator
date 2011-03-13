@@ -33,6 +33,7 @@ import javax.vecmath.Vector3d;
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * @author Martin Fluegge
@@ -156,7 +157,8 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
     renderingAttributes.setCapability(RenderingAttributes.ALLOW_VISIBLE_WRITE);
     appearance.setRenderingAttributes(renderingAttributes);
 
-    // ThreeDeeUtil.setTexture(appearance, "moon.jpg", canvas);
+    // Texture texture = ThreeDeeUtil.loadTexture("moon.jpg", canvas);
+    // appearance.setTexture(texture);
 
     return appearance;
   }
@@ -221,8 +223,11 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
       {
         float alpha = (float)Math.abs(Math.cos(theta));
 
-        for (Node node : getSelections())
+        for (Entry<ElementGroup, Node> entry : getSelections())
         {
+          ElementGroup elementGroup = entry.getKey();
+          Node node = entry.getValue();
+
           Appearance appearance;
           if (node instanceof Shape3D)
           {
@@ -235,7 +240,8 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
             appearance = selectionShape.getAppearance();
           }
 
-          appearance.getTransparencyAttributes().setTransparency(alpha);
+          float transparency = elementGroup.isVisible() ? alpha : 1f;
+          appearance.getTransparencyAttributes().setTransparency(transparency);
         }
 
         theta += 0.02f;
@@ -248,9 +254,10 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
       }
     }
 
-    private synchronized Node[] getSelections()
+    @SuppressWarnings("unchecked")
+    private synchronized Entry<ElementGroup, Node>[] getSelections()
     {
-      return selectionShapes.values().toArray(new Node[selectionShapes.size()]);
+      return selectionShapes.entrySet().toArray(new Entry[selectionShapes.size()]);
     }
   }
 }

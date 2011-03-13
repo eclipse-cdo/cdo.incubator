@@ -25,7 +25,6 @@ import javax.vecmath.Vector3d;
  */
 public class RootElement extends ThreeDeeNode<Element>
 {
-
   private static final double PI = Math.PI;
 
   private static final double TWO_PI = 2.0d * PI;
@@ -39,11 +38,8 @@ public class RootElement extends ThreeDeeNode<Element>
   protected void layout(ThreeDeeNode<Element>[] children, int n)
   {
     double distanceAngle = TWO_PI / n;
-
     double radius = 3f;
-
     double phi = 0.0d;
-
     double theta = 0.0d;
 
     for (int i = 0; i < n; i++)

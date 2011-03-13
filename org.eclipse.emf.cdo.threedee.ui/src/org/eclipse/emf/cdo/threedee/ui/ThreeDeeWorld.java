@@ -76,6 +76,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -234,7 +235,13 @@ public class ThreeDeeWorld implements ISelectionProvider
     createLights(scene);
     createNavigation(scene);
 
-    sphereTransformGroup = createTransformGroup();
+    TransformGroup transformGroup = new TransformGroup();
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    transformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
+    transformGroup.setPickable(true);
+
+    sphereTransformGroup = transformGroup;
     scene.addChild(sphereTransformGroup);
 
     root = new RootElement(canvas);
@@ -406,7 +413,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     }
   }
 
-  private void addNode(final ElementGroup node, final ElementGroup parent)
+  private void addNode(ElementGroup node, ElementGroup parent)
   {
     if (parent == null)
     {
@@ -457,7 +464,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     layout();
   }
 
-  private void removeNode(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
+  private void removeNode(ElementGroup containmentGroup, ElementGroup containerContainmentGroup)
   {
     if (containerContainmentGroup != null)
     {
@@ -467,6 +474,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     {
       universe.getLocale().removeBranchGraph(containmentGroup);
     }
+
     root.layout();
   }
 
@@ -524,6 +532,8 @@ public class ThreeDeeWorld implements ISelectionProvider
       ElementDescriptor descriptor = elementGroup.getModel().getDescriptor();
       elementGroup.setVisible(!toBeHidden.contains(descriptor));
     }
+
+    updateReferences();
   }
 
   public void dispose()
@@ -531,67 +541,102 @@ public class ThreeDeeWorld implements ISelectionProvider
     composite.dispose();
   }
 
-  public void addReferenceShape(final Node shapeLine)
-  {
-    TransformGroup transformGroupLine = new TransformGroup();
-    addChild(transformGroupLine, shapeLine);
-
-    BranchGroup branchGroup = new BranchGroup();
-    branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-    branchGroup.setCapability(Node.ALLOW_PICKABLE_WRITE);
-    branchGroup.addChild(transformGroupLine);
-
-    universe.addBranchGraph(branchGroup);
-  }
-
   public void layout()
   {
     root.layout();
   }
 
-  private void updateReferences(Element element)
+  private void updateReferences()
   {
-    ElementProvider provider = element.getProvider();
-    Map<Integer, Boolean> references = element.getReferences();
-
-    Integer[] elementIDs = references.keySet().toArray(new Integer[references.size()]);
-    for (int elementID : elementIDs)
+    for (Session session : Frontend.INSTANCE.getElements())
     {
-      Element referenceElement = provider.getElement(elementID);
-      if (references.get(elementID) || isShowCrossReferences())
-      {
-        Map<Element, ReferenceShape> map = referenceShapes.get(element);
-        ReferenceShape referenceShape;
-        if (map == null)
-        {
-          map = new HashMap<Element, ReferenceShape>();
-          referenceShapes.put(element, map);
-          referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
-        }
-        else
-        {
-          referenceShape = map.get(referenceElement);
-          if (referenceShape == null)
-          {
-            referenceShape = createAndSetReferenceShape(element, references, elementID, map, referenceElement);
-          }
-        }
-
-        referenceShape.setGeometry(getLineGeometry(element, referenceElement));
-      }
-
-      updateReferences(referenceElement);
+      Element[] elements = session.getElements();
+      updateReferences(elements);
     }
   }
 
-  private ReferenceShape createAndSetReferenceShape(Element element, Map<Integer, Boolean> references, int elementID,
-      Map<Element, ReferenceShape> map, Element referenceElement)
+  private void updateReferences(Element source)
   {
-    boolean containment = references.get(elementID);
-    ReferenceShape referenceShape = new ReferenceShape(element, referenceElement, containment);
-    addReferenceShape(referenceShape);
-    map.put(referenceElement, referenceShape);
-    return referenceShape;
+    updateReferences(source, new HashSet<Element>());
+  }
+
+  private void updateReferences(Element[] sources)
+  {
+    Set<Element> visited = new HashSet<Element>();
+    for (Element element : sources)
+    {
+      updateReferences(element, visited);
+    }
+  }
+
+  private void updateReferences(Element source, Set<Element> visited)
+  {
+    if (visited.add(source))
+    {
+      ElementProvider provider = source.getProvider();
+      Map<Integer, Boolean> references = source.getReferences();
+
+      @SuppressWarnings("unchecked")
+      Entry<Integer, Boolean>[] array = references.entrySet().toArray(new Entry[references.size()]);
+      for (Entry<Integer, Boolean> entry : array)
+      {
+        int targetID = entry.getKey();
+        Element target = provider.getElement(targetID);
+        boolean containment = entry.getValue();
+
+        updateReference(source, target, containment);
+        updateReferences(target, visited);
+      }
+    }
+  }
+
+  private void updateReference(Element source, Element target, boolean containment)
+  {
+    if (containment || showCrossReferences)
+    {
+      Map<Element, ReferenceShape> map = referenceShapes.get(source);
+
+      ElementGroup targetGroup = elementGroups.get(target);
+      if (targetGroup != null && targetGroup.isVisible())
+      {
+        if (map == null)
+        {
+          map = new HashMap<Element, ReferenceShape>();
+          referenceShapes.put(source, map);
+        }
+
+        ReferenceShape referenceShape = map.get(target);
+        if (referenceShape == null)
+        {
+          referenceShape = new ReferenceShape(source, target, containment);
+          map.put(target, referenceShape);
+
+          TransformGroup transformGroup = new TransformGroup();
+          transformGroup.addChild(referenceShape);
+
+          BranchGroup branchGroup = new BranchGroup();
+          branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+          // branchGroup.setCapability(Node.ALLOW_PICKABLE_WRITE);
+          branchGroup.addChild(transformGroup);
+
+          universe.addBranchGraph(branchGroup);
+        }
+
+        referenceShape.setGeometry(getLineGeometry(source, target));
+      }
+      else
+      {
+        if (map != null)
+        {
+          ReferenceShape referenceShape = map.remove(target);
+          if (referenceShape != null)
+          {
+            BranchGroup branchGroup = (BranchGroup)referenceShape.getParent().getParent();
+            branchGroup.detach();
+          }
+        }
+      }
+    }
   }
 
   private Geometry getLineGeometry(Element from, Element to)
@@ -623,21 +668,6 @@ public class ThreeDeeWorld implements ISelectionProvider
     LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
     lineArray.setCoordinates(0, points);
     return lineArray;
-  }
-
-  private TransformGroup createTransformGroup()
-  {
-    TransformGroup transformGroup = new TransformGroup();
-    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-    transformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
-    transformGroup.setPickable(true);
-    return transformGroup;
-  }
-
-  private void addChild(Group parent, Node child)
-  {
-    parent.addChild(child);
   }
 
   public void showCall(Element source, Element target, boolean transmission)
