@@ -89,6 +89,7 @@ import java.util.Set;
  */
 public class ThreeDeeWorld implements ISelectionProvider
 {
+  @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
   private static boolean PRODUCTION = false;
@@ -372,11 +373,6 @@ public class ThreeDeeWorld implements ISelectionProvider
     viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
   }
 
-  public static ContextTracer getTracer()
-  {
-    return TRACER;
-  }
-
   public SimpleUniverse getUniverse()
   {
     return universe;
@@ -407,10 +403,6 @@ public class ThreeDeeWorld implements ISelectionProvider
     return composite;
   }
 
-  // public synchronized Element[] getElements()
-  // {
-  // return
-  // }
   public void addElement(Element element)
   {
     if (!elementGroups.containsKey(element))
@@ -476,11 +468,10 @@ public class ThreeDeeWorld implements ISelectionProvider
       if (containerContainmentGroup != null)
       {
         clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
-
         updateReferences(containerElement);
-        // layout(null, containerContainmentGroup);
       }
     }
+
     layout();
   }
 
@@ -591,24 +582,6 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   public void layout()
   {
-    // schedule(new Runnable()
-    // {
-    // public void run()
-    // {
-    // for (Session session : Frontend.INSTANCE.getElements())
-    // {
-    // Element rootElement = session.getRootElement();
-    // if (rootElement != null)
-    // {
-    // ElementGroup elementGroup = elementGroups.get(rootElement);
-    // if (elementGroup != null)
-    // {
-    // layout(elementGroup, null);
-    // }
-    // }
-    // }
-    // }
-    // });
     root.layout();
   }
 
