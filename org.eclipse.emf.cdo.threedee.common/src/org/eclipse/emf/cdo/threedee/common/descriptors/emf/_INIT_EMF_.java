@@ -49,5 +49,6 @@ public class _INIT_EMF_
 
     registry.register(new EParameterDescriptor(), color, 0.4f);
     registry.register(new EAnnotationDescriptor(), color, 0.4f);
+    registry.register(new EObjectDescriptor(), color, 0.4f);
   }
 }

@@ -14,6 +14,9 @@ import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.CDOState;
 import org.eclipse.emf.cdo.threedee.common.Element;
 
+import org.eclipse.emf.ecore.InternalEObject;
+import org.eclipse.emf.spi.cdo.InternalCDOObject;
+
 /**
  * @author Eike Stepper
  */
@@ -28,11 +31,17 @@ public class CDOObjectDescriptor extends CDOClientDescriptor
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    CDOObject cdoObject = (CDOObject)object;
+    InternalCDOObject cdoObject = (InternalCDOObject)object;
     CDOState state = cdoObject.cdoState();
 
     element.setIDAttribute(cdoObject.cdoID());
     element.setAttribute("state", state);
     element.addReference(state == CDOState.NEW, cdoObject.cdoRevision());
+
+    InternalEObject instance = cdoObject.cdoInternalInstance();
+    if (instance != cdoObject)
+    {
+      element.addReference(true, instance);
+    }
   }
 }
