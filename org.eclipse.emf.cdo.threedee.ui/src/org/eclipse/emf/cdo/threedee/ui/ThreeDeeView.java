@@ -29,7 +29,6 @@ import org.eclipse.net4j.util.event.IEvent;
 import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.event.ValueEvent;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
-import org.eclipse.net4j.util.ui.actions.SafeAction;
 
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
@@ -72,8 +71,6 @@ public class ThreeDeeView extends ViewPart
   private DescriptorViewListener descriptorViewListener = new DescriptorViewListener();
 
   private ThreeDeeWorld world;
-
-  private LayoutAction layoutAction = new LayoutAction();
 
   public ThreeDeeView()
   {
@@ -174,7 +171,6 @@ public class ThreeDeeView extends ViewPart
   protected void fillLocalToolBar(IToolBarManager manager)
   {
     manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
-    manager.add(layoutAction);
   }
 
   /**
@@ -274,23 +270,6 @@ public class ThreeDeeView extends ViewPart
       {
         view.getNotifier().addListener(this);
       }
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  private final class LayoutAction extends SafeAction
-  {
-    private LayoutAction()
-    {
-      super("Layout", "Layout again", OM.Activator.INSTANCE.loadImageDescriptor("icons/refresh.gif"));
-    }
-
-    @Override
-    protected void safeRun() throws Exception
-    {
-      world.layout();
     }
   }
 }

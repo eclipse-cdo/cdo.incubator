@@ -28,6 +28,6 @@ public class ThreeDeePerspective implements IPerspectiveFactory
 
     layout.addView(ElementView.ID, IPageLayout.LEFT, 0.15f, editorArea);
     layout.addView(DescriptorView.ID, IPageLayout.BOTTOM, 0.75f, ElementView.ID);
-    layout.addView(ThreeDeeView.ID, IPageLayout.LEFT, 1.0f, editorArea);
+    layout.addStandaloneView(ThreeDeeView.ID, false, IPageLayout.LEFT, 1.0f, editorArea);
   }
 }

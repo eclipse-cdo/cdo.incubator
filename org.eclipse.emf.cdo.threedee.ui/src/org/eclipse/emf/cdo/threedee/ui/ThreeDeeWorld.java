@@ -26,9 +26,7 @@ import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.collection.Pair;
 import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
-import org.eclipse.net4j.util.concurrent.QueueRunner;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
-import org.eclipse.net4j.util.ui.UIQueueRunner;
 
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.viewers.ISelection;
@@ -100,8 +98,6 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private Composite composite;
 
-  private QueueRunner runner;
-
   private SimpleUniverse universe;
 
   private BranchGroup scene;
@@ -127,15 +123,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
     composite.setLayout(new FillLayout());
 
-    runner = new UIQueueRunner(parent.getDisplay());
-    runner.activate();
-    runner.addWork(new Runnable()
-    {
-      public void run()
-      {
-        init();
-      }
-    });
+    init();
 
     for (Session session : Frontend.INSTANCE.getElements())
     {
@@ -420,34 +408,28 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private void addNode(final ElementGroup node, final ElementGroup parent)
   {
-    schedule(new Runnable()
+    if (parent == null)
     {
-      public void run()
-      {
-        if (parent == null)
-        {
-          root.addChild(node);
-        }
-        else
-        {
-          ThreeDeeUtil.enablePicking(node);
-          parent.addChild(node);
-        }
+      root.addChild(node);
+    }
+    else
+    {
+      ThreeDeeUtil.enablePicking(node);
+      parent.addChild(node);
+    }
 
-        layout();
+    layout();
 
-        Element element = node.getModel();
-        Element containerElement = getContainerElement(element);
-        if (containerElement != null)
-        {
-          updateReferences(containerElement);
-        }
-        else
-        {
-          updateReferences(element);
-        }
-      }
-    });
+    Element element = node.getModel();
+    Element containerElement = getContainerElement(element);
+    if (containerElement != null)
+    {
+      updateReferences(containerElement);
+    }
+    else
+    {
+      updateReferences(element);
+    }
   }
 
   public void removeElement(Element element)
@@ -477,21 +459,15 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   private void removeNode(final ElementGroup containmentGroup, final ElementGroup containerContainmentGroup)
   {
-    schedule(new Runnable()
+    if (containerContainmentGroup != null)
     {
-      public void run()
-      {
-        if (containerContainmentGroup != null)
-        {
-          containerContainmentGroup.removeChild(containmentGroup);
-        }
-        else
-        {
-          universe.getLocale().removeBranchGraph(containmentGroup);
-        }
-        root.layout();
-      }
-    });
+      containerContainmentGroup.removeChild(containmentGroup);
+    }
+    else
+    {
+      universe.getLocale().removeBranchGraph(containmentGroup);
+    }
+    root.layout();
   }
 
   private Element getContainerElement(Element element)
@@ -552,32 +528,20 @@ public class ThreeDeeWorld implements ISelectionProvider
 
   public void dispose()
   {
-    runner.deactivate();
     composite.dispose();
-  }
-
-  public boolean schedule(Runnable runnable)
-  {
-    return runner.addWork(runnable);
   }
 
   public void addReferenceShape(final Node shapeLine)
   {
-    schedule(new Runnable()
-    {
-      public void run()
-      {
-        TransformGroup transformGroupLine = new TransformGroup();
-        addChild(transformGroupLine, shapeLine);
+    TransformGroup transformGroupLine = new TransformGroup();
+    addChild(transformGroupLine, shapeLine);
 
-        BranchGroup branchGroup = new BranchGroup();
-        branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-        branchGroup.setCapability(Node.ALLOW_PICKABLE_WRITE);
-        branchGroup.addChild(transformGroupLine);
+    BranchGroup branchGroup = new BranchGroup();
+    branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
+    branchGroup.setCapability(Node.ALLOW_PICKABLE_WRITE);
+    branchGroup.addChild(transformGroupLine);
 
-        universe.addBranchGraph(branchGroup);
-      }
-    });
+    universe.addBranchGraph(branchGroup);
   }
 
   public void layout()
