@@ -32,6 +32,6 @@ public class EAnnotationDescriptor extends EModelElementDescriptor
 
     EAnnotation eAnnotation = (EAnnotation)object;
     element.setKeyAttribute(eAnnotation.getSource());
-    element.addReferences(true, eAnnotation.getDetails().entrySet());
+    element.setAttributes(eAnnotation.getDetails().map());
   }
 }

@@ -35,14 +35,18 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Tree;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -132,12 +136,51 @@ public class ElementView extends ViewPart
   @Override
   public void createPartControl(Composite parent)
   {
+    final ViewContentProvider contentProvider = new ViewContentProvider();
+
     viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-    viewer.setContentProvider(new ViewContentProvider());
+    viewer.setContentProvider(contentProvider);
     viewer.setLabelProvider(new LabelProvider(viewer.getControl().getDisplay()));
     viewer.setSorter(new NameSorter());
     viewer.setInput(Frontend.INSTANCE);
     viewer.addCheckStateListener(checkStateListener);
+
+    final Tree tree = viewer.getTree();
+    tree.addSelectionListener(new SelectionAdapter()
+    {
+      @Override
+      public void widgetSelected(SelectionEvent e)
+      {
+        if ((e.stateMask & SWT.ALT) == SWT.ALT)
+        {
+          tree.removeSelectionListener(this);
+
+          try
+          {
+            Object object = e.item.getData();
+            List<Object> objects = new ArrayList<Object>();
+            objects.add(object);
+
+            addChildren(contentProvider, object, objects);
+            viewer.setSelection(new StructuredSelection(objects), true);
+          }
+          finally
+          {
+            tree.addSelectionListener(this);
+          }
+        }
+      }
+
+      private void addChildren(final ViewContentProvider contentProvider, Object object, List<Object> objects)
+      {
+        Object[] children = contentProvider.getChildren(object);
+        for (Object child : children)
+        {
+          objects.add(child);
+          addChildren(contentProvider, child, objects);
+        }
+      }
+    });
 
     setAllChecked(true);
     INSTANCE.setValue(this);

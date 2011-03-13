@@ -529,7 +529,8 @@ public class ThreeDeeWorld implements ISelectionProvider
   {
     for (ElementGroup elementGroup : elementGroups.values())
     {
-      ElementDescriptor descriptor = elementGroup.getModel().getDescriptor();
+      Element element = elementGroup.getModel();
+      ElementDescriptor descriptor = element.getDescriptor();
       elementGroup.setVisible(!toBeHidden.contains(descriptor));
     }
 
