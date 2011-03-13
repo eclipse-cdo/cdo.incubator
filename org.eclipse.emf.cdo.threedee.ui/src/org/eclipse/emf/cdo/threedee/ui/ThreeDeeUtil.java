@@ -14,12 +14,6 @@ import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 
 import org.eclipse.net4j.util.WrappedException;
-import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
-
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 
 import com.sun.j3d.utils.image.TextureLoader;
 
@@ -171,70 +165,5 @@ public class ThreeDeeUtil
       return (ThreeDeeNode)node;
     }
     return getThreeDeeNode(node.getParent());
-  }
-
-  /**
-   * Remove, if no longer needed!
-   */
-  private static void testMouseEvents(final Composite composite)
-  {
-    Thread t = new Thread(new Runnable()
-    {
-      public void run()
-      {
-        ConcurrencyUtil.sleep(10000);
-
-        final Display display = composite.getDisplay();
-        Display.getDefault().asyncExec(new Runnable()
-        {
-          public void run()
-          {
-            Event event = new Event();
-            event.type = SWT.MouseDown;
-            event.button = 1;
-            display.post(event);
-          }
-        });
-
-        for (int i = 0; i < 100; i += 10)
-        {
-          final int a = i;
-          Display.getDefault().asyncExec(new Runnable()
-          {
-            public void run()
-            {
-              Event event = new Event();
-              event.type = SWT.MouseMove;
-              event.x = composite.toDisplay(a, a).x;
-              event.y = composite.toDisplay(a + 10, a + 10).y;
-
-              display.post(event);
-
-              try
-              {
-                Thread.sleep(500);
-              }
-              catch (InterruptedException ex)
-              {
-                ex.printStackTrace();
-              }
-            }
-          });
-        }
-
-        Display.getDefault().asyncExec(new Runnable()
-        {
-          public void run()
-          {
-            Event event = new Event();
-            event.type = SWT.MouseUp;
-            event.button = 1;
-            display.post(event);
-          }
-        });
-      }
-    });
-
-    t.start();
   }
 }

@@ -72,6 +72,8 @@ public class ThreeDeeView extends ViewPart
 
   private ThreeDeeWorld world;
 
+  private SmartphoneNavigator smartphoneNavigator;
+
   public ThreeDeeView()
   {
   }
@@ -140,11 +142,20 @@ public class ThreeDeeView extends ViewPart
         }
       }
     });
+
+    startSmartphoneNavigation(parent);
+  }
+
+  private void startSmartphoneNavigation(Composite composite)
+  {
+    smartphoneNavigator = new SmartphoneNavigator(composite);
+    smartphoneNavigator.start();
   }
 
   @Override
   public void dispose()
   {
+    smartphoneNavigator.interrupt();
     DescriptorView.INSTANCE.removeListener(descriptorViewListener);
     Frontend.INSTANCE.removeListener(new FrontendListener());
     world.dispose();
