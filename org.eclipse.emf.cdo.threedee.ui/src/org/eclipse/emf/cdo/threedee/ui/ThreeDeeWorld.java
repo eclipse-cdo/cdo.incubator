@@ -38,8 +38,6 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.awt.SWT_AWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.swt.widgets.Event;
 
 import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
@@ -124,7 +122,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
     composite.setLayout(new FillLayout());
 
-    init();
+    initUniverse();
 
     for (Session session : Frontend.INSTANCE.getElements())
     {
@@ -136,24 +134,24 @@ public class ThreeDeeWorld implements ISelectionProvider
     }
   }
 
-  private void init()
+  private void initUniverse()
   {
     Frame frame = SWT_AWT.new_Frame(composite);
 
     canvas = ThreeDeeUtil.createCanvas(frame);
     universe = new SimpleUniverse(canvas);
-    scene = createScene(canvas);
 
+    addScene();
     universe.addBranchGraph(scene);
 
     if (!PRODUCTION)
     {
-      universe.addBranchGraph(createCoordinateSystem());
+      addCoordinateSystem();
     }
 
     setNominalViewingTransform();
     frame.add(canvas);
-    createPicking(canvas, scene);
+    addPicking();
 
     if (PRODUCTION)
     {
@@ -163,114 +161,47 @@ public class ThreeDeeWorld implements ISelectionProvider
     }
   }
 
-  @SuppressWarnings("unused")
-  private void mouseTest()
+  private void addScene()
   {
-    Thread t = new Thread(new Runnable()
-    {
-      public void run()
-      {
-        ConcurrencyUtil.sleep(10000);
-
-        final Display display = composite.getDisplay();
-        Display.getDefault().asyncExec(new Runnable()
-        {
-          public void run()
-          {
-            Event event = new Event();
-            event.type = SWT.MouseDown;
-            event.button = 1;
-            display.post(event);
-          }
-        });
-
-        for (int i = 0; i < 100; i += 10)
-        {
-          final int a = i;
-          Display.getDefault().asyncExec(new Runnable()
-          {
-            public void run()
-            {
-              Event event = new Event();
-              event.type = SWT.MouseMove;
-              event.x = composite.toDisplay(a, a).x;
-              event.y = composite.toDisplay(a + 10, a + 10).y;
-
-              display.post(event);
-
-              try
-              {
-                Thread.sleep(500);
-              }
-              catch (InterruptedException ex)
-              {
-                ex.printStackTrace();
-              }
-            }
-          });
-        }
-
-        Display.getDefault().asyncExec(new Runnable()
-        {
-          public void run()
-          {
-            Event event = new Event();
-            event.type = SWT.MouseUp;
-            event.button = 1;
-            display.post(event);
-          }
-        });
-      }
-    });
-
-    t.start();
-  }
-
-  private BranchGroup createScene(Canvas3D canvas)
-  {
-    BranchGroup scene = new BranchGroup();
+    scene = new BranchGroup();
     scene.setCapability(Group.ALLOW_CHILDREN_EXTEND);
     scene.setCapability(Group.ALLOW_CHILDREN_WRITE);
 
-    createLights(scene);
-    createNavigation(scene);
+    addLights();
+    addNavigation();
 
-    TransformGroup transformGroup = new TransformGroup();
-    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
-    transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
-    transformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
-    transformGroup.setPickable(true);
-
-    sphereTransformGroup = transformGroup;
+    sphereTransformGroup = new TransformGroup();
+    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+    sphereTransformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+    sphereTransformGroup.setCapability(Node.ENABLE_PICK_REPORTING);
+    sphereTransformGroup.setPickable(true);
     scene.addChild(sphereTransformGroup);
 
     root = new RootElement(canvas);
     scene.addChild(root);
-
-    return scene;
   }
 
-  private void createLights(BranchGroup group)
+  private void addLights()
   {
     DirectionalLight directionalLight = new DirectionalLight();
     directionalLight.setColor(new Color3f(0.7f, 0.8f, 0.8f));
     directionalLight.setDirection(new Vector3f(15.0f, -20.0f, -6.0f));
     directionalLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
-    group.addChild(directionalLight);
+    scene.addChild(directionalLight);
 
     AmbientLight ambientLight = new AmbientLight();
     ambientLight.setColor(new Color3f(0.4f, 0.4f, 0.4f));
     ambientLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
-    group.addChild(ambientLight);
+    scene.addChild(ambientLight);
   }
 
-  private void createNavigation(BranchGroup branchGroup)
+  private void addNavigation()
   {
     TransformGroup viewTransformGroup = universe.getViewingPlatform().getViewPlatformTransform();
     KeyNavigatorBehavior keyInteractor = new KeyNavigatorBehavior(viewTransformGroup);
     BoundingSphere movingBounds = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0);
     keyInteractor.setSchedulingBounds(movingBounds);
-    branchGroup.addChild(keyInteractor);
+    scene.addChild(keyInteractor);
 
     BoundingSphere mouseZone = new BoundingSphere(new Point3d(), Double.MAX_VALUE);
     OrbitBehavior ob = new OrbitBehavior(canvas, OrbitBehavior.REVERSE_TRANSLATE | OrbitBehavior.REVERSE_ROTATE);
@@ -278,7 +209,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     universe.getViewingPlatform().setViewPlatformBehavior(ob);
   }
 
-  private void createPicking(final Canvas3D canvas, final BranchGroup scene)
+  private void addPicking()
   {
     final PickCanvas pickCanvas = new PickCanvas(canvas, scene);
     pickCanvas.setMode(PickTool.BOUNDS);
@@ -332,9 +263,9 @@ public class ThreeDeeWorld implements ISelectionProvider
     });
   }
 
-  private BranchGroup createCoordinateSystem()
+  private void addCoordinateSystem()
   {
-    BranchGroup group = new BranchGroup();
+    BranchGroup coordinateSystem = new BranchGroup();
 
     // X axis made of spheres
     for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
@@ -346,7 +277,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       transform.setTranslation(vector);
       tg.setTransform(transform);
       tg.addChild(sphere);
-      group.addChild(tg);
+      coordinateSystem.addChild(tg);
     }
 
     // Y axis made of cones
@@ -359,7 +290,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       transform.setTranslation(vector);
       tg.setTransform(transform);
       tg.addChild(cone);
-      group.addChild(tg);
+      coordinateSystem.addChild(tg);
     }
 
     // Z axis made of cylinders
@@ -372,10 +303,10 @@ public class ThreeDeeWorld implements ISelectionProvider
       transform.setTranslation(vector);
       tg.setTransform(transform);
       tg.addChild(cylinder);
-      group.addChild(tg);
+      coordinateSystem.addChild(tg);
     }
 
-    return group;
+    universe.addBranchGraph(coordinateSystem);
   }
 
   public void setNominalViewingTransform()
@@ -398,24 +329,9 @@ public class ThreeDeeWorld implements ISelectionProvider
     return universe;
   }
 
-  public BranchGroup getScene()
-  {
-    return scene;
-  }
-
-  public TransformGroup getSphereTransformGroup()
-  {
-    return sphereTransformGroup;
-  }
-
   public Canvas3D getCanvas()
   {
     return canvas;
-  }
-
-  public Transform3D getViewingTransform()
-  {
-    return viewingTransform;
   }
 
   public Composite getComposite()
@@ -435,32 +351,6 @@ public class ThreeDeeWorld implements ISelectionProvider
 
       ElementGroup containerGroup = getContainerElementGroup(element);
       addNode(group, containerGroup);
-    }
-  }
-
-  private void addNode(ElementGroup node, ElementGroup parent)
-  {
-    if (parent == null)
-    {
-      root.addChild(node);
-    }
-    else
-    {
-      ThreeDeeUtil.enablePicking(node);
-      parent.addChild(node);
-    }
-
-    layout();
-
-    Element element = node.getModel();
-    Element containerElement = getContainerElement(element);
-    if (containerElement != null)
-    {
-      updateReferences(containerElement);
-    }
-    else
-    {
-      updateReferences(element);
     }
   }
 
@@ -487,6 +377,32 @@ public class ThreeDeeWorld implements ISelectionProvider
     }
 
     layout();
+  }
+
+  private void addNode(ElementGroup node, ElementGroup parent)
+  {
+    if (parent == null)
+    {
+      root.addChild(node);
+    }
+    else
+    {
+      ThreeDeeUtil.enablePicking(node);
+      parent.addChild(node);
+    }
+
+    layout();
+
+    Element element = node.getModel();
+    Element containerElement = getContainerElement(element);
+    if (containerElement != null)
+    {
+      updateReferences(containerElement);
+    }
+    else
+    {
+      updateReferences(element);
+    }
   }
 
   private void removeNode(ElementGroup containmentGroup, ElementGroup containerContainmentGroup)
@@ -757,7 +673,7 @@ public class ThreeDeeWorld implements ISelectionProvider
     }
   }
 
-  private void updateSelection(boolean select)
+  private void updateSelection(boolean selected)
   {
     for (Iterator<?> it = getSelection().iterator(); it.hasNext();)
     {
@@ -765,7 +681,7 @@ public class ThreeDeeWorld implements ISelectionProvider
       ElementGroup elementGroup = elementGroups.get(object);
       if (elementGroup != null)
       {
-        elementGroup.setSelected(select);
+        elementGroup.setSelected(selected);
       }
     }
   }
@@ -845,6 +761,21 @@ public class ThreeDeeWorld implements ISelectionProvider
     private synchronized void remove(Pair<Element, Element> key)
     {
       calls.remove(key);
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class InfoPanel
+  {
+    private List<Info> infos = new ArrayList<Info>();
+
+    /**
+     * @author Eike Stepper
+     */
+    private final class Info
+    {
     }
   }
 }
