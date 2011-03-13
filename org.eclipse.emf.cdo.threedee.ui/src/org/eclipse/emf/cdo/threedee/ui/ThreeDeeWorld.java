@@ -18,6 +18,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.emf.cdo.threedee.ui.nodes.CallShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
+import org.eclipse.emf.cdo.threedee.ui.nodes.IColors;
 import org.eclipse.emf.cdo.threedee.ui.nodes.IntroPlanet;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
 import org.eclipse.emf.cdo.threedee.ui.nodes.RootElement;
@@ -51,14 +52,20 @@ import com.sun.j3d.utils.universe.SimpleUniverse;
 import com.sun.j3d.utils.universe.ViewingPlatform;
 
 import javax.media.j3d.AmbientLight;
+import javax.media.j3d.Appearance;
 import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.DirectionalLight;
+import javax.media.j3d.Font3D;
+import javax.media.j3d.FontExtrusion;
 import javax.media.j3d.Geometry;
 import javax.media.j3d.Group;
 import javax.media.j3d.LineArray;
+import javax.media.j3d.Material;
 import javax.media.j3d.Node;
+import javax.media.j3d.Shape3D;
+import javax.media.j3d.Text3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.media.j3d.TransparencyAttributes;
@@ -69,6 +76,8 @@ import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
 import javax.vecmath.Vector3f;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -84,7 +93,7 @@ import java.util.Set;
 /**
  * @author Martin Fluegge
  */
-public class ThreeDeeWorld implements ISelectionProvider
+public class ThreeDeeWorld implements ISelectionProvider, IColors
 {
   @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
@@ -774,42 +783,62 @@ public class ThreeDeeWorld implements ISelectionProvider
   /**
    * @author Eike Stepper
    */
-  private final class InfoPanel extends TransformGroup implements Runnable
+  private final class InfoPanel extends BranchGroup implements Runnable
   {
+    private Font3D font = new Font3D(new Font("Neuropol", Font.PLAIN, 1), new FontExtrusion());
+
     private Thread animator = new Thread(this);
 
-    // private List<Info> infos = new ArrayList<Info>();
+    private List<Info> infos = new ArrayList<Info>();
 
     public InfoPanel()
     {
-      animator.setDaemon(true);
-      animator.start();
+      setCapability(ALLOW_DETACH);
+      setCapability(ALLOW_CHILDREN_WRITE);
+      setCapability(ALLOW_CHILDREN_EXTEND);
+
+      // animator.setDaemon(true);
+      // animator.start();
     }
 
     public void updateInfo(Object[] objects)
     {
+      for (Info info : infos)
+      {
+        info.detach();
+      }
+
       List<Info> infos = createInfos(objects);
-      System.out.println(infos);
+      for (Info info : infos)
+      {
+        addChild(info);
+      }
     }
 
     public void run()
     {
       while (!animator.isInterrupted())
       {
+        ConcurrencyUtil.sleep(100);
       }
     }
 
     private List<Info> createInfos(Object[] objects)
     {
       List<Info> infos = new ArrayList<Info>();
+      int row = 0;
+
       if (objects.length == 1)
       {
         if (objects[0] instanceof Element)
         {
           Element element = (Element)objects[0];
+          Color color = element.getDescriptor().getColor().getValue();
           for (Entry<String, String> entry : element.getAttributes().entrySet())
           {
-            Info info = new Info(entry.getKey() + " = " + entry.getValue());
+            String label = entry.getKey() + " = " + entry.getValue();
+
+            Info info = new Info(row++, label, color);
             infos.add(info);
           }
         }
@@ -835,7 +864,11 @@ public class ThreeDeeWorld implements ISelectionProvider
 
           for (Entry<ElementDescriptor, Integer> entry : counts.entrySet())
           {
-            Info info = new Info(entry.getKey().getLabel() + " = " + entry.getValue());
+            ElementDescriptor descriptor = entry.getKey();
+            String label = descriptor.getLabel() + " = " + entry.getValue();
+            Color color = descriptor.getColor().getValue();
+
+            Info info = new Info(row++, label, color);
             infos.add(info);
           }
         }
@@ -847,10 +880,49 @@ public class ThreeDeeWorld implements ISelectionProvider
     /**
      * @author Eike Stepper
      */
-    private final class Info
+    private final class Info extends BranchGroup
     {
-      public Info(String string)
+      public Info(int row, String label, Color color)
       {
+        setCapability(ALLOW_DETACH);
+
+        Transform3D transform = new Transform3D();
+        transform.set(new Vector3f(0f, -2f * row, 0f));
+
+        TransformGroup transformGroup = new TransformGroup(transform);
+        addChild(transformGroup);
+
+        Appearance appearance = new Appearance();
+        // appearance.setTransparencyAttributes(transparencyAttributes);
+
+        Material material = new Material(darkestGray, darkestGray, white, yellow, 128.0f);
+        material.setLightingEnable(true);
+        appearance.setMaterial(material);
+
+        Text3D text3D = new Text3D(font, label);
+        text3D.setCapability(Geometry.ALLOW_INTERSECT);
+
+        Shape3D textShape = new Shape3D(text3D, appearance);
+
+        // Point3d upper = new Point3d();
+        // Point3d lower = new Point3d();
+        // BoundingBox bounds = (BoundingBox)textShape.getBounds();
+        // bounds.getUpper(upper);
+        // bounds.getLower(lower);
+        // double offset = -0.5d * (upper.getX() - lower.getX()) + 2.0d;
+        //
+        // Transform3D rotation = new Transform3D();
+        // rotation.rotX(angle);
+        // TransformGroup transformGroup1 = new TransformGroup(rotation);
+        //
+        // Transform3D translation = new Transform3D();
+        // translation.setTranslation(new Vector3d(offset, RADIUS + 0.5f, 0.0f));
+        // TransformGroup transformGroup2 = new TransformGroup(translation);
+        //
+        // transformGroup1.addChild(transformGroup2);
+        // transformGroup2.addChild(textShape);
+
+        transformGroup.addChild(textShape);
       }
     }
   }
