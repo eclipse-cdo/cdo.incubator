@@ -176,7 +176,7 @@ public class ThreeDeeUtil
   /**
    * Remove, if no longer needed!
    */
-  private static void mouseTest(final Composite composite)
+  private static void testMouseEvents(final Composite composite)
   {
     Thread t = new Thread(new Runnable()
     {
