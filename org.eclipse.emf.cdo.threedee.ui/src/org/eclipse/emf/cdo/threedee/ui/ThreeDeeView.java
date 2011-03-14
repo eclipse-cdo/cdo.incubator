@@ -148,8 +148,15 @@ public class ThreeDeeView extends ViewPart
 
   private void startSmartphoneNavigation(Composite composite)
   {
-    smartphoneNavigator = new SmartphoneNavigator(composite);
-    smartphoneNavigator.start();
+    try
+    {
+      smartphoneNavigator = new SmartphoneNavigator(composite);
+      smartphoneNavigator.start();
+    }
+    catch (Exception ex)
+    {
+      ex.printStackTrace();
+    }
   }
 
   @Override

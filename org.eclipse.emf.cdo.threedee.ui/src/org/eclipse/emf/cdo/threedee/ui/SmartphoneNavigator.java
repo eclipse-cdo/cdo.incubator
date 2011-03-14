@@ -4,7 +4,7 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *    Martin Fluegge - initial API and implementation
  */
@@ -20,17 +20,14 @@ import org.eclipse.swt.widgets.Shell;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 /**
  * @author Martin Fluegge
  */
 public class SmartphoneNavigator extends Thread
 {
-  enum Operation
-  {
-    NONE, ROTATE, TRANSLATE, ZOOM,
-  }
-
   private Operation operation = Operation.NONE;
 
   private static final int RATIO = 5;
@@ -51,11 +48,21 @@ public class SmartphoneNavigator extends Thread
 
   private Point shellSize;
 
-  public SmartphoneNavigator(Composite composite)
+  private DatagramSocket socket;
+
+  public SmartphoneNavigator(Composite composite) throws UnknownHostException, SocketException
   {
     this.composite = composite;
+
+    System.out.println("Starting SmartphoneNavigator.");
+    InetAddress serverAddr = InetAddress.getByName(SERVERIP);
+
+    System.out.println("S: Connecting...");
+    socket = new DatagramSocket(SERVERPORT, serverAddr);
+
     Shell shell = composite.getShell();
     shellSize = shell.getSize();
+
     System.out.println(shellSize);
     display = composite.getDisplay();
     canvasPositions.x = shellSize.x / 2;
@@ -67,10 +74,6 @@ public class SmartphoneNavigator extends Thread
   {
     try
     {
-      System.out.println("Starting SmartphoneNavigator.");
-      InetAddress serverAddr = InetAddress.getByName(SERVERIP);
-      System.out.println("S: Connecting...");
-      DatagramSocket socket = new DatagramSocket(SERVERPORT, serverAddr);
       byte[] buf = new byte[1024];
       DatagramPacket packet = new DatagramPacket(buf, buf.length);
       System.out.println("S: Receiving...");
@@ -264,7 +267,7 @@ public class SmartphoneNavigator extends Thread
     });
   }
 
-  public static void main(String[] args)
+  public static void main(String[] args) throws UnknownHostException, SocketException
   {
     Display display = new Display();
     Shell shell = new Shell(display);
@@ -308,5 +311,13 @@ public class SmartphoneNavigator extends Thread
     {
       return "x: " + x + " y: " + y + " z: " + z + " gx: " + gx + " gy: " + gy + " gz: " + gz;
     }
+  }
+
+  /**
+   * @author Martin Fluegge
+   */
+  private enum Operation
+  {
+    NONE, ROTATE, TRANSLATE, ZOOM,
   }
 }
