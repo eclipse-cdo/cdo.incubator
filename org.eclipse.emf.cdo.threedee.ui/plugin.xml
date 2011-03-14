@@ -21,6 +21,13 @@
             id="org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld"
             name="ThreeDee World">
       </view>
+      <view
+            category="org.eclipse.emf.cdo.threedee"
+            class="org.eclipse.emf.cdo.threedee.ui.InfoTransformView"
+            icon="icons/text.gif"
+            id="org.eclipse.emf.cdo.threedee.ui.InfoTransformView"
+            name="ThreeDee Info Transform">
+      </view>
    </extension>
 
 </plugin>

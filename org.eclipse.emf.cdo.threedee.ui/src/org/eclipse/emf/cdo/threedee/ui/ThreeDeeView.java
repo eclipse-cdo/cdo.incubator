@@ -155,16 +155,21 @@ public class ThreeDeeView extends ViewPart
     }
     catch (Exception ex)
     {
-      ex.printStackTrace();
+      System.err.println(ex.getMessage());
     }
   }
 
   @Override
   public void dispose()
   {
-    smartphoneNavigator.interrupt();
+    if (smartphoneNavigator != null)
+    {
+      smartphoneNavigator.interrupt();
+    }
+
     DescriptorView.INSTANCE.removeListener(descriptorViewListener);
     Frontend.INSTANCE.removeListener(new FrontendListener());
+
     world.dispose();
     super.dispose();
   }

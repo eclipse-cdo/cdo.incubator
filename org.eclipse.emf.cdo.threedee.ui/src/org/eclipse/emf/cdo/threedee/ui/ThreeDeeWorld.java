@@ -374,6 +374,11 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     return composite;
   }
 
+  public InfoPanel getInfoPanel()
+  {
+    return infoPanel;
+  }
+
   public void addElement(Element element)
   {
     if (!elementGroups.containsKey(element))
@@ -820,7 +825,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   /**
    * @author Eike Stepper
    */
-  private final class InfoPanel extends PlatformGeometry implements Runnable
+  public final class InfoPanel extends PlatformGeometry implements Runnable
   {
     private FontExtrusion EXTRUSION = new FontExtrusion();
 
@@ -828,7 +833,9 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
     private Font3D boldFont = new Font3D(new Font("Arial", Font.BOLD, 1), EXTRUSION);
 
-    private TransformGroup transformGroup;
+    private TransformGroup translationGroup;
+
+    private TransformGroup scaleGroup;
 
     private Thread animator = new Thread(this);
 
@@ -839,7 +846,9 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       Transform3D translation = new Transform3D();
       translation.setTranslation(new Vector3f(-0.4f, 0.24f, -1f));
 
-      TransformGroup translationGroup = new TransformGroup(translation);
+      translationGroup = new TransformGroup(translation);
+      translationGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+      translationGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
       addChild(translationGroup);
 
       // DirectionalLight light = new DirectionalLight();
@@ -850,13 +859,25 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       Transform3D scale = new Transform3D();
       scale.setScale(0.015d);
 
-      transformGroup = new TransformGroup(scale);
-      transformGroup.setCapability(ALLOW_CHILDREN_WRITE);
-      transformGroup.setCapability(ALLOW_CHILDREN_EXTEND);
-      translationGroup.addChild(transformGroup);
+      scaleGroup = new TransformGroup(scale);
+      scaleGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
+      scaleGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_WRITE);
+      scaleGroup.setCapability(ALLOW_CHILDREN_WRITE);
+      scaleGroup.setCapability(ALLOW_CHILDREN_EXTEND);
+      translationGroup.addChild(scaleGroup);
 
       // animator.setDaemon(true);
       // animator.start();
+    }
+
+    public TransformGroup getTranslationGroup()
+    {
+      return translationGroup;
+    }
+
+    public TransformGroup getScaleGroup()
+    {
+      return scaleGroup;
     }
 
     public synchronized void updateInfo(Object[] objects)
@@ -869,7 +890,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       infos = createInfos(objects);
       for (Info info : infos)
       {
-        transformGroup.addChild(info);
+        scaleGroup.addChild(info);
       }
     }
 
