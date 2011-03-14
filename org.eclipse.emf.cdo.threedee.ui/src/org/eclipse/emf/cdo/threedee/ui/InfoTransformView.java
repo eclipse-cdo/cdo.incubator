@@ -16,6 +16,7 @@ import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
@@ -87,12 +88,12 @@ public class InfoTransformView extends ViewPart
         }
       };
 
-      xTransformer.getSlider().addSelectionListener(translationListener);
-      yTransformer.getSlider().addSelectionListener(translationListener);
-      zTransformer.getSlider().addSelectionListener(translationListener);
+      xTransformer.addSelectionListener(translationListener);
+      yTransformer.addSelectionListener(translationListener);
+      zTransformer.addSelectionListener(translationListener);
 
       final Transformer scaleTransformer = new Transformer(composite, "scale", 0.005f, 0.1f, scale);
-      scaleTransformer.getSlider().addSelectionListener(new SelectionAdapter()
+      scaleTransformer.addSelectionListener(new SelectionAdapter()
       {
         @Override
         public void widgetSelected(SelectionEvent e)
@@ -149,9 +150,9 @@ public class InfoTransformView extends ViewPart
       setValue(initial);
     }
 
-    public Slider getSlider()
+    public void addSelectionListener(SelectionListener listener)
     {
-      return slider;
+      slider.addSelectionListener(listener);
     }
 
     public double getValue()
