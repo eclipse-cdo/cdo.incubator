@@ -10,6 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
+
 import com.sun.j3d.utils.geometry.Primitive;
 
 import javax.media.j3d.Appearance;
@@ -30,6 +32,8 @@ import java.util.List;
  */
 public abstract class ThreeDeeNode<MODEL> extends BranchGroup
 {
+  private ThreeDeeWorld world;
+
   private MODEL model;
 
   private TransformGroup transformGroup;
@@ -38,8 +42,9 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
 
   private ThreeDeeNode<MODEL>[] children;
 
-  public ThreeDeeNode(MODEL model, Appearance appearance)
+  public ThreeDeeNode(ThreeDeeWorld world, MODEL model, Appearance appearance)
   {
+    this.world = world;
     this.model = model;
     setCapability(ALLOW_DETACH);
 
@@ -58,6 +63,11 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
     appearance.getMaterial().setCapability(Material.ALLOW_COMPONENT_READ);
     appearance.getMaterial().setCapability(Material.ALLOW_COMPONENT_WRITE);
     super.addChild(transformGroup);
+  }
+
+  public ThreeDeeWorld getWorld()
+  {
+    return world;
   }
 
   public MODEL getModel()

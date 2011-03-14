@@ -13,9 +13,10 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import javax.media.j3d.Appearance;
-import javax.media.j3d.Canvas3D;
+import javax.media.j3d.BoundingSphere;
 import javax.media.j3d.Node;
 import javax.media.j3d.Transform3D;
 import javax.vecmath.Vector3d;
@@ -23,50 +24,54 @@ import javax.vecmath.Vector3d;
 /**
  * @author Martin Fluegge
  */
-public class RootElement extends ThreeDeeNode<Element>
+public class RootElementGroup extends ThreeDeeNode<Element>
 {
   private static final double PI = Math.PI;
 
   private static final double TWO_PI = 2.0d * PI;
 
-  public RootElement(Canvas3D canvas)
+  public RootElementGroup(ThreeDeeWorld world)
   {
-    super(null, createAppearance());
+    super(world, null, createAppearance());
   }
 
   @Override
   protected void layout(ThreeDeeNode<Element>[] children, int n)
   {
+    double radius = 0f;
+    for (int i = 0; i < n; i++)
+    {
+      ThreeDeeNode<Element> child = children[i];
+      child.layout();
+
+      BoundingSphere boundingSphere = new BoundingSphere(child.getBounds());
+      double r = boundingSphere.getRadius();
+      if (r > radius)
+      {
+        radius = r;
+      }
+    }
+
     double distanceAngle = TWO_PI / n;
-    double radius = 3f;
     double phi = 0.0d;
-    double theta = 0.0d;
+    radius *= 0.5d;
 
     for (int i = 0; i < n; i++)
     {
       ThreeDeeNode<Element> child = children[i];
+      child.layout();
 
-      float x = (float)(0 + radius * Math.sin(theta) * Math.cos(phi));
-      float y = (float)(0 + radius * Math.sin(theta) * Math.sin(phi));
-      float z = (float)(0 + radius * Math.cos(theta));
+      double x = radius * Math.cos(phi);
+      double y = radius * Math.sin(phi);
 
       Transform3D transform = new Transform3D();
-      Vector3d translation = new Vector3d(x, y, z);
+      Vector3d translation = new Vector3d(x, y, radius);
       transform.setTranslation(translation);
 
-      // double scalarProductX = -y / x;
-      // double scalarProductY = 1.0d;
-      // double scalarProductZ = z;
-      // double rotationAngle = 0.75d;
-      //
-      // AxisAngle4d rotation = new AxisAngle4d(scalarProductX, scalarProductY, scalarProductZ, rotationAngle);
-      // transform.setRotation(rotation);
-
       child.setTransform(transform);
+      child.layout();
 
       phi += distanceAngle;
-      theta -= distanceAngle;
-      child.layout();
     }
   }
 

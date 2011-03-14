@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import org.eclipse.net4j.util.collection.Pair;
 
@@ -23,9 +24,9 @@ import javax.media.j3d.TransparencyAttributes;
  */
 public class CallShape extends LineShape implements IColors
 {
-  public CallShape(Element from, Element to, boolean transmission)
+  public CallShape(ThreeDeeWorld world, Element from, Element to, boolean transmission)
   {
-    super(new Pair<Element, Element>(from, to), createAppearance(transmission));
+    super(world, new Pair<Element, Element>(from, to), createAppearance(transmission));
   }
 
   private static Appearance createAppearance(boolean transmission)

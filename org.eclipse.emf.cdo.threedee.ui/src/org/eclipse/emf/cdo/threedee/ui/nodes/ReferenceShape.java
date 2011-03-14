@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import org.eclipse.net4j.util.collection.Pair;
 
@@ -29,9 +30,9 @@ public class ReferenceShape extends LineShape
 {
   private boolean containment;
 
-  public ReferenceShape(Element from, Element to, boolean containment)
+  public ReferenceShape(ThreeDeeWorld world, Element from, Element to, boolean containment)
   {
-    super(new Pair<Element, Element>(from, to), createAppearance(containment));
+    super(world, new Pair<Element, Element>(from, to), createAppearance(containment));
     this.containment = containment;
   }
 

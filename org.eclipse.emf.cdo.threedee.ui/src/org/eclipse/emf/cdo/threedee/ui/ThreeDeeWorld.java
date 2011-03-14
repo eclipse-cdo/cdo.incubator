@@ -21,7 +21,7 @@ import org.eclipse.emf.cdo.threedee.ui.nodes.ElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.IColors;
 import org.eclipse.emf.cdo.threedee.ui.nodes.IntroPlanet;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ReferenceShape;
-import org.eclipse.emf.cdo.threedee.ui.nodes.RootElement;
+import org.eclipse.emf.cdo.threedee.ui.nodes.RootElementGroup;
 import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 
 import org.eclipse.net4j.util.ObjectUtil;
@@ -119,7 +119,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
   private Canvas3D canvas;
 
-  private RootElement root;
+  private RootElementGroup root;
 
   private StructuredSelection selection;
 
@@ -206,7 +206,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     transformGroup.setPickable(true);
     scene.addChild(transformGroup);
 
-    root = new RootElement(canvas);
+    root = new RootElementGroup(this);
     scene.addChild(root);
   }
 
@@ -501,7 +501,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
   private ElementGroup createElementGroup(Element element)
   {
-    ElementGroup group = new ElementGroup(element, canvas);
+    ElementGroup group = new ElementGroup(this, element);
     ElementDescriptor descriptor = element.getDescriptor();
     if (disabledDescriptors.contains(descriptor))
     {
@@ -597,7 +597,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
         ReferenceShape referenceShape = map.get(target);
         if (referenceShape == null)
         {
-          referenceShape = new ReferenceShape(source, target, containment);
+          referenceShape = new ReferenceShape(this, source, target, containment);
           map.put(target, referenceShape);
 
           TransformGroup transformGroup = new TransformGroup();
@@ -773,7 +773,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       CallShape call = calls.get(key);
       if (call == null)
       {
-        call = new CallShape(source, target, transmission);
+        call = new CallShape(ThreeDeeWorld.this, source, target, transmission);
         call.setGeometry(getLineGeometry(source, target));
         universe.addBranchGraph(call);
         calls.put(key, call);

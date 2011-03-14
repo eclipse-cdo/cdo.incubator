@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import org.eclipse.net4j.util.collection.Pair;
 
@@ -27,9 +28,9 @@ import javax.media.j3d.TransparencyAttributes;
  */
 public class LineShape extends ThreeDeeNode<Pair<Element, Element>>
 {
-  public LineShape(Pair<Element, Element> pair, Appearance appearance)
+  public LineShape(ThreeDeeWorld world, Pair<Element, Element> pair, Appearance appearance)
   {
-    super(pair, appearance);
+    super(world, pair, appearance);
     appearance.getTransparencyAttributes().setCapability(TransparencyAttributes.ALLOW_VALUE_WRITE);
     appearance.getTransparencyAttributes().setCapability(TransparencyAttributes.ALLOW_VALUE_READ);
     appearance.setCapability(Appearance.ALLOW_LINE_ATTRIBUTES_READ);

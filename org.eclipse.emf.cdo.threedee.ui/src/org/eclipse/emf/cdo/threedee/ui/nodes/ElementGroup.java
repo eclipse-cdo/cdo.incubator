@@ -13,6 +13,7 @@ package org.eclipse.emf.cdo.threedee.ui.nodes;
 
 import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 
@@ -52,9 +53,9 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
   private static SelectionThread selectionThread;
 
-  public ElementGroup(Element element, Canvas3D canvas)
+  public ElementGroup(ThreeDeeWorld world, Element element)
   {
-    super(element, createAppearance(element, canvas));
+    super(world, element, createAppearance(element, world == null ? null : world.getCanvas()));
   }
 
   @Override
