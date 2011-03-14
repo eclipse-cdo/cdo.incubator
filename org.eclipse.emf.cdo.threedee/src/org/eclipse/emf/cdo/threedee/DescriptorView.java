@@ -88,6 +88,11 @@ public class DescriptorView extends ViewPart
     this.subTreeChecking = subTreeChecking;
   }
 
+  public boolean isChecked(ElementDescriptor descriptor)
+  {
+    return viewer.getChecked(descriptor);
+  }
+
   public Set<ElementDescriptor> getAllChecked()
   {
     return getAllChecked(true);
