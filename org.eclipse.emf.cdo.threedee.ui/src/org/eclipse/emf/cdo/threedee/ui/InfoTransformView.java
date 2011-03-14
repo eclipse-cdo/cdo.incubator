@@ -111,12 +111,6 @@ public class InfoTransformView extends ViewPart
   }
 
   @Override
-  public void dispose()
-  {
-    super.dispose();
-  }
-
-  @Override
   public void setFocus()
   {
   }
