@@ -42,9 +42,6 @@ import org.eclipse.swt.widgets.Composite;
 
 import com.sun.j3d.utils.behaviors.keyboard.KeyNavigatorBehavior;
 import com.sun.j3d.utils.behaviors.vp.OrbitBehavior;
-import com.sun.j3d.utils.geometry.Cone;
-import com.sun.j3d.utils.geometry.Cylinder;
-import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.picking.PickCanvas;
 import com.sun.j3d.utils.picking.PickResult;
 import com.sun.j3d.utils.picking.PickTool;
@@ -99,7 +96,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
-  private static boolean PRODUCTION = true;
+  private static boolean PRODUCTION = false;
 
   private Set<ElementDescriptor> disabledDescriptors = Collections.emptySet();
 
@@ -152,21 +149,19 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     universe = new SimpleUniverse(canvas);
 
     addScene();
-    universe.addBranchGraph(scene);
 
-    if (!PRODUCTION)
-    {
-      addCoordinateSystem();
-    }
-
-    setNominalViewingTransform();
-    frame.add(canvas);
     addPicking();
-    addInfoPanel();
+    configureViewingPlatform();
+
+    frame.add(canvas);
 
     if (PRODUCTION)
     {
       IntroPlanet.start(ThreeDeeWorld.this);
+    }
+    else
+    {
+      // ThreeDeeUtil.addCoordinateSystem(universe);
     }
   }
 
@@ -176,7 +171,6 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     scene.setCapability(Group.ALLOW_CHILDREN_EXTEND);
     scene.setCapability(Group.ALLOW_CHILDREN_WRITE);
 
-    addLights();
     addNavigation();
 
     TransformGroup transformGroup = new TransformGroup();
@@ -188,20 +182,8 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
     root = new RootElementGroup(this);
     scene.addChild(root);
-  }
 
-  private void addLights()
-  {
-    DirectionalLight directionalLight = new DirectionalLight();
-    directionalLight.setColor(new Color3f(0.7f, 0.8f, 0.8f));
-    directionalLight.setDirection(new Vector3f(15.0f, -20.0f, -6.0f));
-    directionalLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
-    scene.addChild(directionalLight);
-
-    AmbientLight ambientLight = new AmbientLight();
-    ambientLight.setColor(new Color3f(0.4f, 0.4f, 0.4f));
-    ambientLight.setInfluencingBounds(new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 100.0));
-    scene.addChild(ambientLight);
+    universe.addBranchGraph(scene);
   }
 
   private void addNavigation()
@@ -272,56 +254,31 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     });
   }
 
-  private void addInfoPanel()
+  private void configureViewingPlatform()
   {
+    BoundingSphere boundingSphere = new BoundingSphere(new Point3d(0.0, 0.0, 0.0), 200.0);
+
+    PlatformGeometry platformGeometry = new PlatformGeometry();
+    platformGeometry.setCapability(Group.ALLOW_CHILDREN_READ);
+    platformGeometry.setCapability(Group.ALLOW_CHILDREN_WRITE);
+    platformGeometry.setCapability(Group.ALLOW_CHILDREN_EXTEND);
+
+    DirectionalLight directionalLight = new DirectionalLight();
+    directionalLight.setColor(new Color3f(0.7f, 0.8f, 0.8f));
+    directionalLight.setDirection(new Vector3f(1f, -1f, -6f));
+    directionalLight.setInfluencingBounds(boundingSphere);
+    platformGeometry.addChild(directionalLight);
+
+    AmbientLight ambientLight = new AmbientLight();
+    ambientLight.setColor(new Color3f(0.4f, 0.4f, 0.4f));
+    ambientLight.setInfluencingBounds(boundingSphere);
+    platformGeometry.addChild(ambientLight);
+
     infoPanel = new InfoPanel();
-    universe.getViewingPlatform().setPlatformGeometry(infoPanel);
-  }
+    platformGeometry.addChild(infoPanel);
 
-  private void addCoordinateSystem()
-  {
-    BranchGroup coordinateSystem = new BranchGroup();
-
-    // X axis made of spheres
-    for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
-    {
-      Sphere sphere = new Sphere(0.02f);
-      TransformGroup tg = new TransformGroup();
-      Transform3D transform = new Transform3D();
-      Vector3f vector = new Vector3f(x, .0f, .0f);
-      transform.setTranslation(vector);
-      tg.setTransform(transform);
-      tg.addChild(sphere);
-      coordinateSystem.addChild(tg);
-    }
-
-    // Y axis made of cones
-    for (float y = -1.0f; y <= 1.0f; y = y + 0.1f)
-    {
-      TransformGroup tg = new TransformGroup();
-      Transform3D transform = new Transform3D();
-      Cone cone = new Cone(0.02f, 0.02f);
-      Vector3f vector = new Vector3f(.0f, y, .0f);
-      transform.setTranslation(vector);
-      tg.setTransform(transform);
-      tg.addChild(cone);
-      coordinateSystem.addChild(tg);
-    }
-
-    // Z axis made of cylinders
-    for (float z = -1.0f; z <= 1.0f; z = z + 0.1f)
-    {
-      TransformGroup tg = new TransformGroup();
-      Transform3D transform = new Transform3D();
-      Cylinder cylinder = new Cylinder(0.02f, 0.02f);
-      Vector3f vector = new Vector3f(.0f, .0f, z);
-      transform.setTranslation(vector);
-      tg.setTransform(transform);
-      tg.addChild(cylinder);
-      coordinateSystem.addChild(tg);
-    }
-
-    universe.addBranchGraph(coordinateSystem);
+    universe.getViewingPlatform().setPlatformGeometry(platformGeometry);
+    setNominalViewingTransform();
   }
 
   public void setNominalViewingTransform()
@@ -515,7 +472,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     root.layout();
   }
 
-  private void updateReferences()
+  public void updateReferences()
   {
     for (Session session : Frontend.INSTANCE.getElements())
     {

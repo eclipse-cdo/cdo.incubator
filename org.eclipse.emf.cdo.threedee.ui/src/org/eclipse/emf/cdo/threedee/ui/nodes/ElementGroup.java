@@ -23,12 +23,14 @@ import com.sun.j3d.utils.geometry.Sphere;
 import javax.media.j3d.Appearance;
 import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
+import javax.media.j3d.LineArray;
 import javax.media.j3d.Node;
 import javax.media.j3d.RenderingAttributes;
 import javax.media.j3d.Shape3D;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransparencyAttributes;
 import javax.vecmath.AxisAngle4d;
+import javax.vecmath.Point3f;
 import javax.vecmath.Vector3d;
 
 import java.awt.Color;
@@ -134,6 +136,13 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
       transform.setRotation(rotation);
 
       child.setTransform(transform);
+
+      Point3f point = new Point3f((float)translation.getX(), (float)translation.getY(), (float)translation.getZ());
+      Point3f[] points = { new Point3f(), point };
+
+      LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
+      lineArray.setCoordinates(0, points);
+
       child.layout();
 
       phi += distanceAngle;

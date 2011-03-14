@@ -15,9 +15,14 @@ import org.eclipse.emf.cdo.threedee.ui.nodes.ThreeDeeNode;
 
 import org.eclipse.net4j.util.WrappedException;
 
+import com.sun.j3d.utils.geometry.Cone;
+import com.sun.j3d.utils.geometry.Cylinder;
+import com.sun.j3d.utils.geometry.Sphere;
 import com.sun.j3d.utils.image.TextureLoader;
+import com.sun.j3d.utils.universe.SimpleUniverse;
 
 import javax.media.j3d.Appearance;
+import javax.media.j3d.BranchGroup;
 import javax.media.j3d.Canvas3D;
 import javax.media.j3d.ColoringAttributes;
 import javax.media.j3d.GraphicsConfigTemplate3D;
@@ -28,6 +33,7 @@ import javax.media.j3d.Texture;
 import javax.media.j3d.Texture2D;
 import javax.media.j3d.TextureAttributes;
 import javax.media.j3d.Transform3D;
+import javax.media.j3d.TransformGroup;
 import javax.vecmath.Color3f;
 import javax.vecmath.Color4f;
 import javax.vecmath.Point3f;
@@ -47,6 +53,52 @@ import java.util.Enumeration;
  */
 public class ThreeDeeUtil
 {
+  public static void addCoordinateSystem(SimpleUniverse universe)
+  {
+    BranchGroup coordinateSystem = new BranchGroup();
+  
+    // X axis made of spheres
+    for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
+    {
+      Sphere sphere = new Sphere(0.02f);
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Vector3f vector = new Vector3f(x, .0f, .0f);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(sphere);
+      coordinateSystem.addChild(tg);
+    }
+  
+    // Y axis made of cones
+    for (float y = -1.0f; y <= 1.0f; y = y + 0.1f)
+    {
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Cone cone = new Cone(0.02f, 0.02f);
+      Vector3f vector = new Vector3f(.0f, y, .0f);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(cone);
+      coordinateSystem.addChild(tg);
+    }
+  
+    // Z axis made of cylinders
+    for (float z = -1.0f; z <= 1.0f; z = z + 0.1f)
+    {
+      TransformGroup tg = new TransformGroup();
+      Transform3D transform = new Transform3D();
+      Cylinder cylinder = new Cylinder(0.02f, 0.02f);
+      Vector3f vector = new Vector3f(.0f, .0f, z);
+      transform.setTranslation(vector);
+      tg.setTransform(transform);
+      tg.addChild(cylinder);
+      coordinateSystem.addChild(tg);
+    }
+  
+    universe.addBranchGraph(coordinateSystem);
+  }
+
   /**
    * See http://stackoverflow.com/questions/507987/how-can-i-make-java3d-start-faster !!!
    */
