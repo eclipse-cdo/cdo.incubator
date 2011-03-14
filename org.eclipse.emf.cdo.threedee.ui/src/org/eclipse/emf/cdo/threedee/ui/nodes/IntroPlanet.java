@@ -122,7 +122,7 @@ public class IntroPlanet extends BranchGroup implements IColors
 
   public static void start(final ThreeDeeWorld world)
   {
-    new Thread()
+    new Thread("IntroRunner")
     {
       @Override
       public void run()
