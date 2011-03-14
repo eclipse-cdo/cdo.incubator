@@ -10,6 +10,8 @@
  */
 package org.eclipse.emf.cdo.threedee;
 
+import org.eclipse.emf.cdo.threedee.bundle.OM;
+
 import org.eclipse.net4j.util.ObjectUtil;
 import org.eclipse.net4j.util.container.ContainerEventAdapter;
 import org.eclipse.net4j.util.container.IContainer;
@@ -17,15 +19,23 @@ import org.eclipse.net4j.util.event.Event;
 import org.eclipse.net4j.util.event.EventUtil;
 import org.eclipse.net4j.util.event.IListener;
 import org.eclipse.net4j.util.event.INotifier;
+import org.eclipse.net4j.util.ui.actions.SafeAction;
 
+import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.viewers.CheckStateChangedEvent;
 import org.eclipse.jface.viewers.CheckboxTreeViewer;
+import org.eclipse.jface.viewers.DoubleClickEvent;
 import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ICheckStateListener;
+import org.eclipse.jface.viewers.IDoubleClickListener;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeContentProvider;
+import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerSorter;
 import org.eclipse.swt.SWT;
@@ -34,7 +44,9 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchActionConstants;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.part.ViewPart;
 
@@ -143,9 +155,56 @@ public abstract class AbstractView<CONTENT> extends ViewPart
     Frontend.INSTANCE.addListener(frontendListener);
 
     getSite().setSelectionProvider(viewer);
-    // getSite().getPage().addSelectionListener(pageSelectionListener);
+
+    contributeToActionBars();
+    hookDoubleClick();
 
     setInstance(this);
+  }
+
+  protected void contributeToActionBars()
+  {
+    IActionBars bars = getViewSite().getActionBars();
+    fillLocalPullDown(bars.getMenuManager());
+    fillLocalToolBar(bars.getToolBarManager());
+  }
+
+  protected void fillLocalPullDown(IMenuManager manager)
+  {
+    manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+    manager.add(new LinkAction());
+    manager.add(new SubTreeCheckingAction());
+  }
+
+  protected void fillLocalToolBar(IToolBarManager manager)
+  {
+    manager.add(new Separator(IWorkbenchActionConstants.MB_ADDITIONS));
+    manager.add(new CollapseAllAction());
+  }
+
+  protected void hookDoubleClick()
+  {
+    viewer.addDoubleClickListener(new IDoubleClickListener()
+    {
+      public void doubleClick(DoubleClickEvent event)
+      {
+        ITreeSelection selection = (ITreeSelection)viewer.getSelection();
+        Object object = selection.getFirstElement();
+        doubleClicked(object);
+      }
+    });
+  }
+
+  protected void doubleClicked(Object object)
+  {
+    if (viewer.getExpandedState(object))
+    {
+      viewer.collapseToLevel(object, TreeViewer.ALL_LEVELS);
+    }
+    else
+    {
+      viewer.expandToLevel(object, TreeViewer.ALL_LEVELS);
+    }
   }
 
   protected ViewerSorter createSorter()
@@ -427,6 +486,68 @@ public abstract class AbstractView<CONTENT> extends ViewPart
   {
     public NameSorter()
     {
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class LinkAction extends SafeAction
+  {
+    private LinkAction()
+    {
+      super("Link With Page Selection", SWT.TOGGLE);
+      setImageDescriptor(OM.Activator.INSTANCE.loadImageDescriptor("icons/synced.gif"));
+    }
+
+    @Override
+    protected void safeRun() throws Exception
+    {
+      if (isChecked())
+      {
+        getSite().getPage().addSelectionListener(pageSelectionListener);
+      }
+      else
+      {
+        getSite().getPage().removeSelectionListener(pageSelectionListener);
+      }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class SubTreeCheckingAction extends SafeAction
+  {
+    private SubTreeCheckingAction()
+    {
+      super("Sub Tree Checking", SWT.TOGGLE);
+      setImageDescriptor(OM.Activator.INSTANCE.loadImageDescriptor("icons/subtree.gif"));
+      setChecked(subTreeChecking);
+    }
+
+    @Override
+    protected void safeRun() throws Exception
+    {
+      setSubTreeChecking(isChecked());
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class CollapseAllAction extends SafeAction
+  {
+    private CollapseAllAction()
+    {
+      super("Collapse All", SWT.TOGGLE);
+      setImageDescriptor(OM.Activator.INSTANCE.loadImageDescriptor("icons/collapseall.gif"));
+    }
+
+    @Override
+    protected void safeRun() throws Exception
+    {
+      viewer.collapseAll();
     }
   }
 }
