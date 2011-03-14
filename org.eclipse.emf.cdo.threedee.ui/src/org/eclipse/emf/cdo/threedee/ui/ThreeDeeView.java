@@ -143,10 +143,10 @@ public class ThreeDeeView extends ViewPart
       }
     });
 
-    startSmartphoneNavigation(parent);
+    // startSmartphoneNavigation(parent);
   }
 
-  private void startSmartphoneNavigation(Composite composite)
+  protected void startSmartphoneNavigation(Composite composite)
   {
     try
     {

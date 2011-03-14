@@ -115,10 +115,36 @@ public class IntroPlanet extends BranchGroup implements IColors
     Sphere planet = createPlanet();
     spin.addChild(planet);
 
+    chimeIn(0.0f);
     compile();
+    world.getUniverse().addBranchGraph(this);
   }
 
-  public void start()
+  public static void start(final ThreeDeeWorld world)
+  {
+    new Thread()
+    {
+      @Override
+      public void run()
+      {
+        try
+        {
+          System.out.println("Press enter to start intro...");
+          System.in.read();
+        }
+        catch (Exception ex)
+        {
+          ex.printStackTrace();
+        }
+
+        IntroPlanet planet = new IntroPlanet(world);
+
+        planet.start();
+      }
+    }.start();
+  }
+
+  private void start()
   {
     new SoundPlayer("zarathustra.wav").start();
     new ChimeIn().start();
@@ -231,6 +257,18 @@ public class IntroPlanet extends BranchGroup implements IColors
     TextureAttributes textureAttributes = new TextureAttributes();
     textureAttributes.setTextureMode(TextureAttributes.MODULATE);
     appearance.setTextureAttributes(textureAttributes);
+  }
+
+  private void chimeIn(float alpha)
+  {
+    background.setTransparency(Math.max(0, 1 - 1.4f * alpha));
+    y = Y0 - 5d * alpha;
+
+    Transform3D viewingTransform = new Transform3D();
+    viewingTransform.set(new Vector3d(0.0, y, Z0));
+
+    ViewingPlatform viewingPlatform = world.getUniverse().getViewingPlatform();
+    viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
   }
 
   /**
@@ -400,14 +438,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     @Override
     protected void animate(float alpha)
     {
-      background.setTransparency(Math.max(0, 1 - 1.4f * alpha));
-      y = Y0 - 5d * alpha;
-
-      Transform3D viewingTransform = new Transform3D();
-      viewingTransform.set(new Vector3d(0.0, y, Z0));
-
-      ViewingPlatform viewingPlatform = world.getUniverse().getViewingPlatform();
-      viewingPlatform.getViewPlatformTransform().setTransform(viewingTransform);
+      chimeIn(alpha);
     }
   }
 
@@ -492,6 +523,7 @@ public class IntroPlanet extends BranchGroup implements IColors
     {
       world.setNominalViewingTransform();
       detach();
+      System.out.println("Intro finished.");
     }
   }
 }

@@ -99,7 +99,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
-  private static boolean PRODUCTION = false;
+  private static boolean PRODUCTION = true;
 
   private Set<ElementDescriptor> disabledDescriptors = Collections.emptySet();
 
@@ -166,27 +166,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
     if (PRODUCTION)
     {
-      new Thread()
-      {
-        @Override
-        public void run()
-        {
-          IntroPlanet planet = new IntroPlanet(ThreeDeeWorld.this);
-          universe.addBranchGraph(planet);
-
-          try
-          {
-            System.in.read();
-            // ConcurrencyUtil.sleep(5000);
-          }
-          catch (Exception ex)
-          {
-            ex.printStackTrace();
-          }
-
-          planet.start();
-        }
-      }.start();
+      IntroPlanet.start(ThreeDeeWorld.this);
     }
   }
 
