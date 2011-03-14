@@ -15,43 +15,22 @@ import org.eclipse.emf.cdo.threedee.common.Element;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementDescriptor.Registry;
 
-import org.eclipse.net4j.util.ObjectUtil;
-import org.eclipse.net4j.util.container.ContainerEventAdapter;
-import org.eclipse.net4j.util.container.IContainer;
-import org.eclipse.net4j.util.event.Event;
-import org.eclipse.net4j.util.event.EventUtil;
-import org.eclipse.net4j.util.event.IListener;
-import org.eclipse.net4j.util.event.INotifier;
 import org.eclipse.net4j.util.event.ValueNotifier;
 
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.viewers.CheckStateChangedEvent;
-import org.eclipse.jface.viewers.CheckboxTreeViewer;
-import org.eclipse.jface.viewers.ICheckStateListener;
-import org.eclipse.jface.viewers.ISelection;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.ITreeContentProvider;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.IBaseLabelProvider;
 import org.eclipse.jface.viewers.ViewerSorter;
-import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.ISelectionListener;
-import org.eclipse.ui.IWorkbenchPart;
-import org.eclipse.ui.part.ViewPart;
 
 import java.awt.Color;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.Collection;
 import java.util.Set;
 
 /**
  * @author Eike Stepper
  */
-public class DescriptorView extends ViewPart
+public class DescriptorView extends AbstractView<ElementDescriptor>
 {
   public static final String ID = "org.eclipse.emf.cdo.threedee.DescriptorView";
 
@@ -59,219 +38,83 @@ public class DescriptorView extends ViewPart
 
   private static final Registry INPUT = ElementDescriptor.Registry.INSTANCE;
 
-  private Notifier notifier = new Notifier();
-
-  private ICheckStateListener checkStateListener = new CheckStateListener();
-
-  private IListener frontendListener = new FrontendListener();
-
-  private boolean subTreeChecking = true;
-
-  private CheckboxTreeViewer viewer;
-
   public DescriptorView()
   {
   }
 
-  public INotifier getNotifier()
+  @Override
+  public Collection<ElementDescriptor> getContents()
   {
-    return notifier;
-  }
-
-  public boolean isSubTreeChecking()
-  {
-    return subTreeChecking;
-  }
-
-  public void setSubTreeChecking(boolean subTreeChecking)
-  {
-    this.subTreeChecking = subTreeChecking;
-  }
-
-  public boolean isChecked(ElementDescriptor descriptor)
-  {
-    return viewer.getChecked(descriptor);
-  }
-
-  public Set<ElementDescriptor> getAllChecked()
-  {
-    return getAllChecked(true);
-  }
-
-  public Set<ElementDescriptor> getAllChecked(boolean checked)
-  {
-    Set<ElementDescriptor> result = new HashSet<ElementDescriptor>();
-    for (ElementDescriptor descriptor : INPUT.values())
-    {
-      if (viewer.getChecked(descriptor) == checked)
-      {
-        result.add(descriptor);
-      }
-    }
-
-    return result;
-  }
-
-  public void setAllChecked(boolean checked)
-  {
-    try
-    {
-      viewer.removeCheckStateListener(checkStateListener);
-      for (ElementDescriptor descriptor : INPUT.values())
-      {
-        viewer.setChecked(descriptor, checked);
-      }
-    }
-    finally
-    {
-      viewer.addCheckStateListener(checkStateListener);
-    }
-
-    notifier.fireCheckStateChangedEvent();
+    return INPUT.values();
   }
 
   @Override
-  public void createPartControl(Composite parent)
+  public Object[] getChildren(Object object)
   {
-    viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-    viewer.setContentProvider(new ViewContentProvider());
-    viewer.setLabelProvider(new LabelProvider(viewer.getControl().getDisplay()));
-    viewer.setSorter(new NameSorter());
-    viewer.setInput(INPUT);
-    viewer.addCheckStateListener(checkStateListener);
-
-    setAllChecked(true);
-    INSTANCE.setValue(this);
-
-    Frontend.INSTANCE.addListener(frontendListener);
-
-    getSite().setSelectionProvider(viewer);
-    getSite().getPage().addSelectionListener(new ISelectionListener()
+    if (object instanceof ElementDescriptor)
     {
-      public void selectionChanged(IWorkbenchPart part, final ISelection selection)
-      {
-        final Set<ElementDescriptor> descriptors = new HashSet<ElementDescriptor>();
-        if (selection instanceof IStructuredSelection)
-        {
-          IStructuredSelection ssel = (IStructuredSelection)selection;
-          for (Iterator<?> it = ssel.iterator(); it.hasNext();)
-          {
-            Object object = it.next();
-            if (object instanceof ElementDescriptor)
-            {
-              ElementDescriptor descriptor = (ElementDescriptor)object;
-              descriptors.add(descriptor);
-            }
-            else if (object instanceof Element)
-            {
-              Element element = (Element)object;
-              descriptors.add(element.getDescriptor());
-            }
-          }
-        }
+      ElementDescriptor descriptor = (ElementDescriptor)object;
+      return descriptor.getSubDescriptors().toArray();
+    }
 
-        if (!descriptors.isEmpty())
-        {
-          Display.getDefault().syncExec(new Runnable()
-          {
-            public void run()
-            {
-              @SuppressWarnings("unchecked")
-              List<Object> list = ((StructuredSelection)viewer.getSelection()).toList();
-              Set<Object> old = new HashSet<Object>(list);
-              if (!ObjectUtil.equals(old, descriptors))
-              {
-                ElementDescriptor[] array = descriptors.toArray(new ElementDescriptor[descriptors.size()]);
-                viewer.setSelection(new StructuredSelection(array), true);
-              }
-            }
-          });
-        }
-      }
-    });
+    if (object == INPUT)
+    {
+      return INPUT.getRootDescriptors().toArray();
+    }
+
+    return new Object[0];
   }
 
   @Override
-  public void setFocus()
+  public Object getParent(Object object)
   {
-    viewer.getControl().setFocus();
+    if (object instanceof ElementDescriptor)
+    {
+      ElementDescriptor descriptor = (ElementDescriptor)object;
+      return descriptor.getSuperDescriptor();
+    }
+
+    return null;
   }
 
   @Override
-  public void dispose()
+  public Object getInput()
   {
-    Frontend.INSTANCE.removeListener(frontendListener);
-    INSTANCE.setValue(null);
-    super.dispose();
+    return INPUT;
   }
 
-  /**
-   * @author Eike Stepper
-   */
-  public static final class CheckStateEvent extends Event
+  @Override
+  protected IBaseLabelProvider createLabelProvider(Display display)
   {
-    private static final long serialVersionUID = 1L;
+    return new LabelProvider(display);
+  }
 
-    public CheckStateEvent(INotifier notifier)
+  @Override
+  protected ViewerSorter createSorter()
+  {
+    return new NameSorter();
+  }
+
+  @Override
+  protected void handlePageSelectionObject(Object pageSelectionObject, Collection<ElementDescriptor> contents,
+      Set<Object> result)
+  {
+    if (pageSelectionObject instanceof ElementDescriptor)
     {
-      super(notifier);
+      ElementDescriptor descriptor = (ElementDescriptor)pageSelectionObject;
+      result.add(descriptor);
+    }
+    else if (pageSelectionObject instanceof Element)
+    {
+      Element element = (Element)pageSelectionObject;
+      result.add(element.getDescriptor());
     }
   }
 
-  /**
-   * @author Eike Stepper
-   */
-  private static final class ViewContentProvider implements ITreeContentProvider
+  @Override
+  protected void setInstance(AbstractView<ElementDescriptor> view)
   {
-    public ViewContentProvider()
-    {
-    }
-
-    public void inputChanged(Viewer v, Object oldInput, Object newInput)
-    {
-    }
-
-    public void dispose()
-    {
-    }
-
-    public Object[] getElements(Object object)
-    {
-      return getChildren(object);
-    }
-
-    public Object[] getChildren(Object object)
-    {
-      if (object instanceof ElementDescriptor)
-      {
-        ElementDescriptor descriptor = (ElementDescriptor)object;
-        return descriptor.getSubDescriptors().toArray();
-      }
-
-      if (object == INPUT)
-      {
-        return INPUT.getRootDescriptors().toArray();
-      }
-
-      return new Object[0];
-    }
-
-    public Object getParent(Object object)
-    {
-      if (object instanceof ElementDescriptor)
-      {
-        ElementDescriptor descriptor = (ElementDescriptor)object;
-        return descriptor.getSuperDescriptor();
-      }
-
-      return null;
-    }
-
-    public boolean hasChildren(Object object)
-    {
-      Object[] children = getChildren(object);
-      return children != null && children.length != 0;
-    }
+    INSTANCE.setValue((DescriptorView)view);
   }
 
   /**
@@ -357,10 +200,6 @@ public class DescriptorView extends ViewPart
    */
   private static final class NameSorter extends ViewerSorter
   {
-    public NameSorter()
-    {
-    }
-
     @Override
     public int category(Object element)
     {
@@ -375,112 +214,6 @@ public class DescriptorView extends ViewPart
       }
 
       return 3;
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  private final class CheckStateListener implements ICheckStateListener
-  {
-    public void checkStateChanged(CheckStateChangedEvent event)
-    {
-      if (subTreeChecking)
-      {
-        try
-        {
-          viewer.removeCheckStateListener(checkStateListener);
-          ElementDescriptor descriptor = (ElementDescriptor)event.getElement();
-          viewer.setSubtreeChecked(descriptor, event.getChecked());
-        }
-        finally
-        {
-          viewer.addCheckStateListener(checkStateListener);
-        }
-      }
-
-      notifier.fireCheckStateChangedEvent();
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  private final class Notifier extends org.eclipse.net4j.util.event.Notifier
-  {
-    public void fireCheckStateChangedEvent()
-    {
-      fireEvent(new CheckStateEvent(this));
-    }
-  }
-
-  /**
-   * @author Eike Stepper
-   */
-  private final class FrontendListener extends ContainerEventAdapter<Object>
-  {
-    @Override
-    protected void onAdded(IContainer<Object> container, Object object)
-    {
-      addElement(object);
-      refreshViewer();
-    }
-
-    @Override
-    protected void onRemoved(IContainer<Object> container, Object object)
-    {
-      removeElement(object);
-      refreshViewer();
-    }
-
-    private void refreshViewer()
-    {
-      try
-      {
-        viewer.getControl().getDisplay().asyncExec(new Runnable()
-        {
-          public void run()
-          {
-            try
-            {
-              viewer.refresh(true);
-            }
-            catch (Exception ignore)
-            {
-            }
-          }
-        });
-      }
-      catch (Exception ignore)
-      {
-      }
-    }
-
-    private void addElement(Object object)
-    {
-      if (object instanceof Element)
-      {
-        Element element = (Element)object;
-        for (Element child : element.getElements())
-        {
-          addElement(child);
-        }
-      }
-
-      EventUtil.addListener(object, this);
-    }
-
-    private void removeElement(Object object)
-    {
-      EventUtil.removeListener(object, this);
-      if (object instanceof Element)
-      {
-        Element element = (Element)object;
-        for (Element child : element.getElements())
-        {
-          removeElement(child);
-        }
-      }
     }
   }
 }

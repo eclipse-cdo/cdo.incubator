@@ -11,8 +11,8 @@
  */
 package org.eclipse.emf.cdo.threedee.ui;
 
+import org.eclipse.emf.cdo.threedee.AbstractView.CheckStateEvent;
 import org.eclipse.emf.cdo.threedee.DescriptorView;
-import org.eclipse.emf.cdo.threedee.DescriptorView.CheckStateEvent;
 import org.eclipse.emf.cdo.threedee.Frontend;
 import org.eclipse.emf.cdo.threedee.Session;
 import org.eclipse.emf.cdo.threedee.common.Element;
