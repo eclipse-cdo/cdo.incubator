@@ -272,7 +272,7 @@ public class ThreeDeeView extends ViewPart
       {
         DescriptorView view = DescriptorView.INSTANCE.getValue();
         Set<ElementDescriptor> toBeHidden = view.getAllChecked(false);
-        world.filter(toBeHidden);
+        world.setDisabledDescriptors(toBeHidden);
       }
     }
 

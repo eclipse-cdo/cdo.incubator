@@ -82,6 +82,7 @@ import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -99,6 +100,8 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
   private static boolean PRODUCTION = false;
+
+  private Set<ElementDescriptor> disabledDescriptors = Collections.emptySet();
 
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
 
@@ -494,17 +497,24 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   private ElementGroup createElementGroup(Element element)
   {
     ElementGroup group = new ElementGroup(element, canvas);
+    ElementDescriptor descriptor = element.getDescriptor();
+    if (disabledDescriptors.contains(descriptor))
+    {
+      group.setVisible(false);
+    }
+
     elementGroups.put(element, group);
     return group;
   }
 
-  public void filter(Set<ElementDescriptor> toBeHidden)
+  public void setDisabledDescriptors(Set<ElementDescriptor> disabledDescriptors)
   {
+    this.disabledDescriptors = disabledDescriptors;
     for (ElementGroup elementGroup : elementGroups.values())
     {
       Element element = elementGroup.getModel();
       ElementDescriptor descriptor = element.getDescriptor();
-      elementGroup.setVisible(!toBeHidden.contains(descriptor));
+      elementGroup.setVisible(!disabledDescriptors.contains(descriptor));
     }
 
     updateReferences();
@@ -590,7 +600,6 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
           BranchGroup branchGroup = new BranchGroup();
           branchGroup.setCapability(BranchGroup.ALLOW_DETACH);
-          // branchGroup.setCapability(Node.ALLOW_PICKABLE_WRITE);
           branchGroup.addChild(transformGroup);
 
           universe.addBranchGraph(branchGroup);
@@ -649,6 +658,16 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     if (source == null)
     {
       // Can happen for call events
+      return;
+    }
+
+    if (disabledDescriptors.contains(source.getDescriptor()))
+    {
+      return;
+    }
+
+    if (disabledDescriptors.contains(target.getDescriptor()))
+    {
       return;
     }
 
