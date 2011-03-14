@@ -69,6 +69,9 @@ public class RootElementGroup extends ThreeDeeNode<Element>
       transform.setTranslation(translation);
 
       child.setTransform(transform);
+
+      // TODO Eliminate this duplicate child layout() call
+      // Make all references relative to their agent's ElementGroup
       child.layout();
 
       phi += distanceAngle;
