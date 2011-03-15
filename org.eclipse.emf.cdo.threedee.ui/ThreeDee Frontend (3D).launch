@@ -27,7 +27,7 @@
 <stringAttribute key="selected_workspace_plugins" value="org.eclipse.emf.cdo.net4j@default:default,org.eclipse.emf.cdo@default:default,org.eclipse.emf.cdo.threedee.common@default:default,org.eclipse.net4j.db@default:default,org.eclipse.net4j.tcp@default:default,org.eclipse.emf.cdo.common@default:default,org.eclipse.net4j.ui.shared@default:default,org.eclipse.emf.cdo.server.net4j@default:default,com.sun.j3d@default:default,org.eclipse.net4j@default:default,org.eclipse.net4j.util.ui@default:default,org.eclipse.emf.cdo.server.db@default:default,org.eclipse.net4j.ui@default:default,org.eclipse.emf.cdo.server@default:default,org.eclipse.net4j.util@default:default,org.eclipse.emf.cdo.threedee@default:default,org.eclipse.emf.cdo.threedee.ui@default:default"/>
 <booleanAttribute key="show_selected_only" value="false"/>
 <stringAttribute key="templateConfig" value="${target_home}\configuration\config.ini"/>
-<booleanAttribute key="tracing" value="false"/>
+<booleanAttribute key="tracing" value="true"/>
 <mapAttribute key="tracingOptions">
 <mapEntry key="org.aspectj.osgi.service.weaving/debug" value="false"/>
 <mapEntry key="org.aspectj.osgi/debug" value="false"/>
