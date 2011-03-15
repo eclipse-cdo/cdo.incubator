@@ -197,6 +197,7 @@ public class ElementGroup extends ThreeDeeNode<Element> implements IColors
 
     public SelectionThread()
     {
+      super("SelectionThread");
       setDaemon(true);
     }
 
