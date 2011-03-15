@@ -288,6 +288,8 @@ public class IntroPlanet extends BranchGroup implements IColors
 
     public SoundPlayer(String sound)
     {
+      super("SoundPlayer");
+
       try
       {
         URL url = new URL(OM.BUNDLE.getBaseURL().toString() + "sounds/" + sound);
@@ -382,6 +384,8 @@ public class IntroPlanet extends BranchGroup implements IColors
 
     public Animation(long minute, long second, long milli, long duration)
     {
+      super("Animation");
+
       delay = Math.max(0, (minute * 60 + second) * 1000 + milli - 5000);
       this.duration = duration;
     }
