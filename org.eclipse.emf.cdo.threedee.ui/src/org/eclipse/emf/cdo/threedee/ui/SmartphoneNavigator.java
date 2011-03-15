@@ -52,6 +52,7 @@ public class SmartphoneNavigator extends Thread
 
   public SmartphoneNavigator(Composite composite) throws UnknownHostException, SocketException
   {
+    super("SmartphoneNavigator");
     this.composite = composite;
 
     System.out.println("Starting SmartphoneNavigator.");
