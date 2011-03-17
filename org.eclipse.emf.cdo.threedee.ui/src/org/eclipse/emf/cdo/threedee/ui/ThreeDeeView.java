@@ -88,17 +88,17 @@ public class ThreeDeeView extends ViewPart
   {
     world = new ThreeDeeWorld(parent);
 
-    Frontend.INSTANCE.addListener(frontendListener);
+    contributeToActionBars();
+
+    // startSmartphoneNavigation(parent);
 
     DescriptorView.INSTANCE.addListener(descriptorViewListener);
     descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
 
-    contributeToActionBars();
-
     getSite().setSelectionProvider(world);
     getSite().getPage().addSelectionListener(new PageSelectionListener());
 
-    // startSmartphoneNavigation(parent);
+    Frontend.INSTANCE.addListener(frontendListener);
   }
 
   protected void startSmartphoneNavigation(Composite composite)
