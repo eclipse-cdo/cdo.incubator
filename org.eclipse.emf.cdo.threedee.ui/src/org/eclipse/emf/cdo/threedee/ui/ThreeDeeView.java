@@ -96,52 +96,7 @@ public class ThreeDeeView extends ViewPart
     contributeToActionBars();
 
     getSite().setSelectionProvider(world);
-    getSite().getPage().addSelectionListener(new ISelectionListener()
-    {
-      public void selectionChanged(IWorkbenchPart part, final ISelection selection)
-      {
-        final Set<Element> elements = new HashSet<Element>();
-        if (selection instanceof IStructuredSelection)
-        {
-          IStructuredSelection ssel = (IStructuredSelection)selection;
-          for (Iterator<?> it = ssel.iterator(); it.hasNext();)
-          {
-            Object object = it.next();
-            if (object instanceof ElementDescriptor)
-            {
-              ElementDescriptor descriptor = (ElementDescriptor)object;
-              for (Session session : Frontend.INSTANCE.getElements())
-              {
-                for (Element element : session.getAllElements())
-                {
-                  if (element.getDescriptor() == descriptor)
-                  {
-                    elements.add(element);
-                  }
-                }
-              }
-            }
-            else if (object instanceof Element)
-            {
-              Element element = (Element)object;
-              elements.add(element);
-            }
-          }
-        }
-
-        if (!elements.isEmpty())
-        {
-          @SuppressWarnings("unchecked")
-          List<Object> list = world.getSelection().toList();
-          Set<Object> old = new HashSet<Object>(list);
-          if (!ObjectUtil.equals(old, elements))
-          {
-            Element[] array = elements.toArray(new Element[elements.size()]);
-            world.setSelection(new StructuredSelection(array));
-          }
-        }
-      }
-    });
+    getSite().getPage().addSelectionListener(new PageSelectionListener());
 
     // startSmartphoneNavigation(parent);
   }
@@ -293,6 +248,56 @@ public class ThreeDeeView extends ViewPart
       if (view != null)
       {
         view.getNotifier().addListener(this);
+      }
+    }
+  }
+
+  /**
+   * @author Eike Stepper
+   */
+  private final class PageSelectionListener implements ISelectionListener
+  {
+    public void selectionChanged(IWorkbenchPart part, final ISelection selection)
+    {
+      final Set<Element> elements = new HashSet<Element>();
+      if (selection instanceof IStructuredSelection)
+      {
+        IStructuredSelection ssel = (IStructuredSelection)selection;
+        for (Iterator<?> it = ssel.iterator(); it.hasNext();)
+        {
+          Object object = it.next();
+          if (object instanceof ElementDescriptor)
+          {
+            ElementDescriptor descriptor = (ElementDescriptor)object;
+            for (Session session : Frontend.INSTANCE.getElements())
+            {
+              for (Element element : session.getAllElements())
+              {
+                if (element.getDescriptor() == descriptor)
+                {
+                  elements.add(element);
+                }
+              }
+            }
+          }
+          else if (object instanceof Element)
+          {
+            Element element = (Element)object;
+            elements.add(element);
+          }
+        }
+      }
+
+      if (!elements.isEmpty())
+      {
+        @SuppressWarnings("unchecked")
+        List<Object> list = world.getSelection().toList();
+        Set<Object> old = new HashSet<Object>(list);
+        if (!ObjectUtil.equals(old, elements))
+        {
+          Element[] array = elements.toArray(new Element[elements.size()]);
+          world.setSelection(new StructuredSelection(array));
+        }
       }
     }
   }
