@@ -56,13 +56,20 @@ public abstract class OM
     @Override
     protected void doStart() throws Exception
     {
-      Frontend.INSTANCE.activate();
+      synchronized (Frontend.INSTANCE)
+      {
+        Frontend.INSTANCE.activate();
+      }
     }
 
     @Override
     protected void doStop() throws Exception
     {
-      Frontend.INSTANCE.deactivate();
+      synchronized (Frontend.INSTANCE)
+      {
+        Frontend.INSTANCE.deactivate();
+      }
+
       ColorIcons.dispose();
     }
   }

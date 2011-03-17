@@ -138,28 +138,32 @@ public abstract class AbstractView<CONTENT> extends ViewPart
   @Override
   public void createPartControl(Composite parent)
   {
-    ViewContentProvider contentProvider = new ViewContentProvider();
+    synchronized (Frontend.INSTANCE)
+    {
+      System.err.println(getClass().getSimpleName() + ".createPartControl()");
 
-    viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
-    viewer.setContentProvider(contentProvider);
-    viewer.setLabelProvider(createLabelProvider(viewer.getControl().getDisplay()));
-    viewer.setSorter(createSorter());
-    viewer.setInput(getInput());
-    viewer.addCheckStateListener(checkStateListener);
+      ViewContentProvider contentProvider = new ViewContentProvider();
 
-    setAllChecked(true);
+      viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
+      viewer.setContentProvider(contentProvider);
+      viewer.setLabelProvider(createLabelProvider(viewer.getControl().getDisplay()));
+      viewer.setSorter(createSorter());
+      viewer.setInput(getInput());
+      viewer.addCheckStateListener(checkStateListener);
 
-    Tree tree = viewer.getTree();
-    tree.addSelectionListener(new SubTreeSelectionAdapter(contentProvider, tree));
+      setAllChecked(true);
 
-    Frontend.INSTANCE.addListener(frontendListener);
+      Tree tree = viewer.getTree();
+      tree.addSelectionListener(new SubTreeSelectionAdapter(contentProvider, tree));
 
-    getSite().setSelectionProvider(viewer);
+      getSite().setSelectionProvider(viewer);
 
-    contributeToActionBars();
-    hookDoubleClick();
+      contributeToActionBars();
+      hookDoubleClick();
 
-    setInstance(this);
+      setInstance(this);
+      Frontend.INSTANCE.addListener(frontendListener);
+    }
   }
 
   protected void contributeToActionBars()

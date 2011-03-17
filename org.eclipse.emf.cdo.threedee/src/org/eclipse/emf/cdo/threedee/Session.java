@@ -65,7 +65,7 @@ public class Session extends Container<Element> implements ElementProvider
   @Override
   public boolean isEmpty()
   {
-    synchronized (cache)
+    synchronized (Frontend.INSTANCE)
     {
       return elements.length == 0;
     }
@@ -73,7 +73,7 @@ public class Session extends Container<Element> implements ElementProvider
 
   public Element[] getAllElements()
   {
-    synchronized (cache)
+    synchronized (Frontend.INSTANCE)
     {
       return cache.values().toArray(new Element[cache.size()]);
     }
@@ -81,12 +81,15 @@ public class Session extends Container<Element> implements ElementProvider
 
   public Element getRootElement()
   {
-    return rootElement;
+    synchronized (Frontend.INSTANCE)
+    {
+      return rootElement;
+    }
   }
 
   public Element[] getElements()
   {
-    synchronized (cache)
+    synchronized (Frontend.INSTANCE)
     {
       return elements;
     }
@@ -99,7 +102,7 @@ public class Session extends Container<Element> implements ElementProvider
 
   public Element getElement(int id)
   {
-    synchronized (cache)
+    synchronized (Frontend.INSTANCE)
     {
       return cache.get(id);
     }
@@ -110,13 +113,15 @@ public class Session extends Container<Element> implements ElementProvider
   {
     StringBuilder builder = new StringBuilder();
     builder.append("Agent ");
-    builder.append(id);
 
     if (name != null)
     {
-      builder.append(" (");
       builder.append(name);
-      builder.append(")");
+    }
+    else
+    {
+      builder.append("#");
+      builder.append(id);
     }
 
     return builder.toString();
@@ -124,7 +129,7 @@ public class Session extends Container<Element> implements ElementProvider
 
   public void handleEvent(int agentSequenceNumber, ElementEvent event)
   {
-    synchronized (outOfSequence)
+    synchronized (Frontend.INSTANCE)
     {
       outOfSequence.put(agentSequenceNumber, event);
 
@@ -211,18 +216,18 @@ public class Session extends Container<Element> implements ElementProvider
 
   private void addElement(Element element, boolean root)
   {
-    synchronized (cache)
+    synchronized (Frontend.INSTANCE)
     {
       cache.put(element.getID(), element);
       if (root)
       {
         elements = new Element[] { element };
+        rootElement = element;
       }
     }
 
     if (root)
     {
-      rootElement = element;
       fireElementAddedEvent(element);
     }
   }

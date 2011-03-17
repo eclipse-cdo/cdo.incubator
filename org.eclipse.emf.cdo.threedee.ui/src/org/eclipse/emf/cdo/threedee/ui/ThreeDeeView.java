@@ -86,19 +86,32 @@ public class ThreeDeeView extends ViewPart
   @Override
   public void createPartControl(Composite parent)
   {
-    world = new ThreeDeeWorld(parent);
+    synchronized (Frontend.INSTANCE)
+    {
+      System.err.println(getClass().getSimpleName() + ".createPartControl()");
 
-    contributeToActionBars();
+      world = new ThreeDeeWorld(parent);
+      for (Session session : Frontend.INSTANCE.getElements())
+      {
+        Element rootElement = session.getRootElement();
+        if (rootElement != null/* && !elementGroups.containsKey(rootElement) */)
+        {
+          world.addElement(rootElement);
+        }
+      }
 
-    // startSmartphoneNavigation(parent);
+      contributeToActionBars();
 
-    DescriptorView.INSTANCE.addListener(descriptorViewListener);
-    descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
+      // startSmartphoneNavigation(parent);
 
-    getSite().setSelectionProvider(world);
-    getSite().getPage().addSelectionListener(new PageSelectionListener());
+      DescriptorView.INSTANCE.addListener(descriptorViewListener);
+      descriptorViewListener.connect(DescriptorView.INSTANCE.getValue());
 
-    Frontend.INSTANCE.addListener(frontendListener);
+      getSite().setSelectionProvider(world);
+      getSite().getPage().addSelectionListener(new PageSelectionListener());
+
+      Frontend.INSTANCE.addListener(frontendListener);
+    }
   }
 
   protected void startSmartphoneNavigation(Composite composite)

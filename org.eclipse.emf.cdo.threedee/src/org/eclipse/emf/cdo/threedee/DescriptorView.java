@@ -153,16 +153,16 @@ public class DescriptorView extends AbstractView<ElementDescriptor>
       if (object instanceof ElementDescriptor)
       {
         int count = 0;
-        for (Session session : Frontend.INSTANCE.getElements())
-        {
-          for (Element element : session.getAllElements())
-          {
-            if (element.getDescriptor() == object)
-            {
-              ++count;
-            }
-          }
-        }
+        // for (Session session : Frontend.INSTANCE.getElements())
+        // {
+        // for (Element element : session.getAllElements())
+        // {
+        // if (element.getDescriptor() == object)
+        // {
+        // ++count;
+        // }
+        // }
+        // }
 
         String label = ((ElementDescriptor)object).getLabel();
         if (count != 0)

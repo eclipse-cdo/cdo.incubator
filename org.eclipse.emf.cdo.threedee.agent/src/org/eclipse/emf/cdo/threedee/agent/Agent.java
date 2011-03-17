@@ -29,6 +29,7 @@ import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.lifecycle.ILifecycle;
 import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
 import org.eclipse.net4j.util.lifecycle.LifecycleState;
+import org.eclipse.net4j.util.om.OMPlatform;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import java.util.IdentityHashMap;
@@ -293,6 +294,12 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
 
   public static void start(String name)
   {
+    String property = OMPlatform.INSTANCE.getProperty("org.eclipse.emf.cdo.threedee.agent.name");
+    if (property != null)
+    {
+      name = property;
+    }
+
     INSTANCE.setName(name);
     INSTANCE.setServer("localhost:" + ThreeDeeProtocol.PROTOCOL_PORT);
     INSTANCE.activate();
@@ -340,10 +347,17 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
         {
           if (connector != null)
           {
-            String[] key = container.getElementKey(connector);
-            if (key != null)
+            try
             {
-              container.removeElement(key[0], key[1], key[2]);
+              String[] key = container.getElementKey(connector);
+              if (key != null)
+              {
+                container.removeElement(key[0], key[1], key[2]);
+              }
+            }
+            catch (Exception ignore)
+            {
+              System.out.println(ignore.getMessage());
             }
           }
         }

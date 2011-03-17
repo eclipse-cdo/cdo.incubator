@@ -130,15 +130,6 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     composite.setLayout(new FillLayout());
 
     initUniverse();
-
-    for (Session session : Frontend.INSTANCE.getElements())
-    {
-      Element rootElement = session.getRootElement();
-      if (rootElement != null && !elementGroups.containsKey(rootElement))
-      {
-        addElement(rootElement);
-      }
-    }
   }
 
   private void initUniverse()
@@ -474,10 +465,13 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
   public void updateReferences()
   {
-    for (Session session : Frontend.INSTANCE.getElements())
+    synchronized (Frontend.INSTANCE)
     {
-      Element[] elements = session.getElements();
-      updateReferences(elements);
+      for (Session session : Frontend.INSTANCE.getElements())
+      {
+        Element[] elements = session.getElements();
+        updateReferences(elements);
+      }
     }
   }
 

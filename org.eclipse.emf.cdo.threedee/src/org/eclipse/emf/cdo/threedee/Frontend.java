@@ -15,6 +15,7 @@ import org.eclipse.emf.cdo.threedee.common.ThreeDeeProtocol;
 
 import org.eclipse.net4j.tcp.ITCPAcceptor;
 import org.eclipse.net4j.tcp.TCPUtil;
+import org.eclipse.net4j.util.concurrent.ConcurrencyUtil;
 import org.eclipse.net4j.util.container.Container;
 import org.eclipse.net4j.util.container.IPluginContainer;
 import org.eclipse.net4j.util.lifecycle.ILifecycle;
@@ -45,75 +46,64 @@ public class Frontend extends Container<Session>
   }
 
   @Override
-  public boolean isEmpty()
+  public synchronized boolean isEmpty()
   {
-    synchronized (sessions)
-    {
-      return sessions.isEmpty();
-    }
+    return sessions.isEmpty();
   }
 
-  public Session[] getElements()
+  public synchronized Session[] getElements()
   {
-    synchronized (sessions)
-    {
-      return sessions.values().toArray(new Session[sessions.size()]);
-    }
+    return sessions.values().toArray(new Session[sessions.size()]);
   }
 
-  public void putConnector(String local, Element connector)
+  public synchronized void putConnector(String local, Element connector)
   {
-    synchronized (connectors)
-    {
-      connectors.put(local, connector);
-    }
+    connectors.put(local, connector);
   }
 
-  public Element getConnector(String local)
+  public synchronized Element getConnector(String local)
   {
-    synchronized (connectors)
-    {
-      return connectors.get(local);
-    }
+    return connectors.get(local);
   }
 
-  public synchronized Session openSession(FrontendProtocol protocol, String name)
+  public Session openSession(final FrontendProtocol protocol, String name)
   {
-    int id = ++lastSessionID;
-    final Session session = new Session(protocol, name, id);
-    session.activate();
-
-    protocol.addListener(new LifecycleEventAdapter()
+    Session session;
+    synchronized (INSTANCE)
     {
-      @Override
-      protected void onDeactivated(ILifecycle lifecycle)
+      System.err.println("Frontend.openSession(" + name + ")");
+
+      int id = ++lastSessionID;
+      session = new Session(protocol, name, id);
+      session.activate();
+
+      protocol.addListener(new LifecycleEventAdapter()
       {
-        int id = session.getID();
-        synchronized (connectors)
+        @Override
+        protected void onDeactivated(ILifecycle lifecycle)
         {
-          for (Iterator<Entry<String, Element>> it = connectors.entrySet().iterator(); it.hasNext();)
+          Session session = protocol.getInfraStructure();
+          synchronized (INSTANCE)
           {
-            Entry<String, Element> entry = it.next();
-            Element connector = entry.getValue();
-            if (connector.getProvider().getID() == id)
+            int id = session.getID();
+            for (Iterator<Entry<String, Element>> it = connectors.entrySet().iterator(); it.hasNext();)
             {
-              it.remove();
+              Entry<String, Element> entry = it.next();
+              Element connector = entry.getValue();
+              if (connector.getProvider().getID() == id)
+              {
+                it.remove();
+              }
             }
+
+            sessions.remove(id);
+            session.deactivate();
           }
+
+          fireElementRemovedEvent(session);
         }
+      });
 
-        synchronized (sessions)
-        {
-          sessions.remove(id);
-        }
-
-        session.deactivate();
-        fireElementRemovedEvent(session);
-      }
-    });
-
-    synchronized (sessions)
-    {
       sessions.put(id, session);
     }
 
@@ -130,8 +120,20 @@ public class Frontend extends Container<Session>
   @Override
   protected void doActivate() throws Exception
   {
+    System.err.println("Frontend.doActivate()");
+
     super.doActivate();
-    acceptor = TCPUtil.getAcceptor(IPluginContainer.INSTANCE, "0.0.0.0:" + ThreeDeeProtocol.PROTOCOL_PORT);
+
+    new Thread("AcceptorStarter")
+    {
+      @Override
+      public void run()
+      {
+        ConcurrencyUtil.sleep(3000);
+        System.err.println("Acceptor.activate()");
+        acceptor = TCPUtil.getAcceptor(IPluginContainer.INSTANCE, "0.0.0.0:" + ThreeDeeProtocol.PROTOCOL_PORT);
+      }
+    }.start();
   }
 
   @Override

@@ -45,16 +45,19 @@ public class ElementView extends AbstractView<Element>
   @Override
   public List<Element> getContents()
   {
-    List<Element> result = new ArrayList<Element>();
-    for (Session session : Frontend.INSTANCE.getElements())
+    synchronized (Frontend.INSTANCE)
     {
-      for (Element element : session.getAllElements())
+      List<Element> result = new ArrayList<Element>();
+      for (Session session : Frontend.INSTANCE.getElements())
       {
-        result.add(element);
+        for (Element element : session.getAllElements())
+        {
+          result.add(element);
+        }
       }
-    }
 
-    return result;
+      return result;
+    }
   }
 
   @Override
