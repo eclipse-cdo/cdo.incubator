@@ -324,23 +324,11 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
   public void removeElement(Element element)
   {
-    Element containerElement = getContainerElement(element);
-    if (containerElement != null)
-    {
-      containerElement.getReferences().remove(element.getID());
-    }
-
     ElementGroup containmentGroup = elementGroups.remove(element);
     if (containmentGroup != null)
     {
-      ElementGroup containerContainmentGroup = getContainerElementGroup(element);
-      removeNode(containmentGroup, containerContainmentGroup);
+      containmentGroup.detach();
       clearReferenceNodes(element);
-
-      if (containerContainmentGroup != null)
-      {
-        clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
-      }
     }
   }
 
@@ -355,20 +343,6 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       ThreeDeeUtil.enablePicking(node, true);
       parent.addChild(node);
     }
-  }
-
-  private void removeNode(ElementGroup elementGroup, ElementGroup containerElementGroup)
-  {
-    if (containerElementGroup != null)
-    {
-      containerElementGroup.removeChild(elementGroup);
-    }
-    else
-    {
-      root.removeChild(elementGroup);
-    }
-
-    root.layout();
   }
 
   private Element getContainerElement(Element element)
@@ -473,16 +447,40 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       ElementProvider provider = source.getProvider();
       Map<Integer, Boolean> references = source.getReferences();
 
+      Set<Element> targets = new HashSet<Element>();
+
       @SuppressWarnings("unchecked")
       Entry<Integer, Boolean>[] array = references.entrySet().toArray(new Entry[references.size()]);
       for (Entry<Integer, Boolean> entry : array)
       {
         int targetID = entry.getKey();
         Element target = provider.getElement(targetID);
-        boolean containment = entry.getValue();
+        if (target != null)
+        {
+          targets.add(target);
+          boolean containment = entry.getValue();
+          updateReference(source, target, containment);
 
-        updateReference(source, target, containment);
-        updateReferences(target, visited);
+          updateReferences(target, visited);
+        }
+      }
+
+      Map<Element, ReferenceShape> map = referenceShapes.get(source);
+      if (map != null)
+      {
+        Set<Entry<Element, ReferenceShape>> entrySet = map.entrySet();
+        for (Iterator<Entry<Element, ReferenceShape>> it = entrySet.iterator(); it.hasNext();)
+        {
+          Entry<Element, ReferenceShape> entry = it.next();
+          Element target = entry.getKey();
+          if (!targets.contains(target))
+          {
+            ReferenceShape referenceShape = entry.getValue();
+            universe.getLocale().removeBranchGraph(referenceShape);
+
+            it.remove();
+          }
+        }
       }
     }
   }
