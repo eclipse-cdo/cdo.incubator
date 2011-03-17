@@ -247,6 +247,7 @@ public class ThreeDeeUtil
     {
       return (ThreeDeeNode)node;
     }
+
     return getThreeDeeNode(node.getParent());
   }
 }
