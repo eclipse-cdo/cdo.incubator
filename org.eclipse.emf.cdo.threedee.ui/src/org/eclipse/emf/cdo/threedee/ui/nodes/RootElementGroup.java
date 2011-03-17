@@ -73,7 +73,7 @@ public class RootElementGroup extends ThreeDeeNode<Element>
       phi += distanceAngle;
     }
 
-    // getWorld().updateReferences();
+    getWorld().updateReferences();
   }
 
   private static Appearance createAppearance()
