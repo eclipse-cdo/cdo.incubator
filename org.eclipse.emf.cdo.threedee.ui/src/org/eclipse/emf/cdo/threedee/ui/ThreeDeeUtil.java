@@ -29,6 +29,7 @@ import javax.media.j3d.GraphicsConfigTemplate3D;
 import javax.media.j3d.Group;
 import javax.media.j3d.Material;
 import javax.media.j3d.Node;
+import javax.media.j3d.RestrictedAccessException;
 import javax.media.j3d.Texture;
 import javax.media.j3d.Texture2D;
 import javax.media.j3d.TextureAttributes;
@@ -56,7 +57,7 @@ public class ThreeDeeUtil
   public static void addCoordinateSystem(SimpleUniverse universe)
   {
     BranchGroup coordinateSystem = new BranchGroup();
-  
+
     // X axis made of spheres
     for (float x = -1.0f; x <= 1.0f; x = x + 0.1f)
     {
@@ -69,7 +70,7 @@ public class ThreeDeeUtil
       tg.addChild(sphere);
       coordinateSystem.addChild(tg);
     }
-  
+
     // Y axis made of cones
     for (float y = -1.0f; y <= 1.0f; y = y + 0.1f)
     {
@@ -82,7 +83,7 @@ public class ThreeDeeUtil
       tg.addChild(cone);
       coordinateSystem.addChild(tg);
     }
-  
+
     // Z axis made of cylinders
     for (float z = -1.0f; z <= 1.0f; z = z + 0.1f)
     {
@@ -95,7 +96,7 @@ public class ThreeDeeUtil
       tg.addChild(cylinder);
       coordinateSystem.addChild(tg);
     }
-  
+
     universe.addBranchGraph(coordinateSystem);
   }
 
@@ -162,17 +163,47 @@ public class ThreeDeeUtil
     return new Point3f(locationVec);
   }
 
-  public static void enablePicking(Node node)
+  public static void enablePicking(Node node, boolean pickable)
   {
-    node.setCapability(Node.ENABLE_PICK_REPORTING);
-    node.setPickable(true);
+    try
+    {
+      node.setCapability(Node.ENABLE_PICK_REPORTING);
+    }
+    catch (RestrictedAccessException ex)
+    {
+      // Ignore
+    }
+
+    try
+    {
+      node.setPickable(pickable);
+    }
+    catch (RestrictedAccessException ex)
+    {
+      // Ignore
+    }
 
     if (node instanceof Group)
     {
       Group group = (Group)node;
-      for (Enumeration<?> e = group.getAllChildren(); e.hasMoreElements();)
+
+      try
       {
-        enablePicking((Node)e.nextElement());
+        for (Enumeration<?> e = group.getAllChildren(); e.hasMoreElements();)
+        {
+          try
+          {
+            enablePicking((Node)e.nextElement(), pickable);
+          }
+          catch (RestrictedAccessException ex)
+          {
+            // Ignore
+          }
+        }
+      }
+      catch (RestrictedAccessException ex)
+      {
+        // Ignore
       }
     }
 

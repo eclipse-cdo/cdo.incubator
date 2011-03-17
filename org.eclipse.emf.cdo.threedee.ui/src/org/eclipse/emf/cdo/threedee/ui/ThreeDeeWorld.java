@@ -355,7 +355,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     }
     else
     {
-      ThreeDeeUtil.enablePicking(node);
+      ThreeDeeUtil.enablePicking(node, true);
       parent.addChild(node);
     }
 

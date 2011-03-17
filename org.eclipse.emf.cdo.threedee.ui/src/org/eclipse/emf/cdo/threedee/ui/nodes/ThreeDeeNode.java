@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.ui.nodes;
 
+import org.eclipse.emf.cdo.threedee.ui.ThreeDeeUtil;
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 
 import com.sun.j3d.utils.geometry.Primitive;
@@ -49,6 +50,10 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
     setCapability(ALLOW_DETACH);
 
     shape = createShape(appearance);
+    if (shape != null)
+    {
+      shape.setCapability(ALLOW_PICKABLE_WRITE);
+    }
 
     transformGroup = new TransformGroup();
     transformGroup.setCapability(TransformGroup.ALLOW_TRANSFORM_READ);
@@ -131,6 +136,12 @@ public abstract class ThreeDeeNode<MODEL> extends BranchGroup
   public void setVisible(boolean visible)
   {
     getRenderingAttributes().setVisible(visible);
+
+    Node shape = getShape();
+    if (shape != null)
+    {
+      ThreeDeeUtil.enablePicking(shape, visible);
+    }
   }
 
   @SuppressWarnings("unchecked")
