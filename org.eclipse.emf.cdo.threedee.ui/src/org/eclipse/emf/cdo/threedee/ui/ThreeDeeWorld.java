@@ -373,15 +373,15 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     }
   }
 
-  private void removeNode(ElementGroup containmentGroup, ElementGroup containerContainmentGroup)
+  private void removeNode(ElementGroup elementGroup, ElementGroup containerElementGroup)
   {
-    if (containerContainmentGroup != null)
+    if (containerElementGroup != null)
     {
-      containerContainmentGroup.removeChild(containmentGroup);
+      containerElementGroup.removeChild(elementGroup);
     }
     else
     {
-      universe.getLocale().removeBranchGraph(containmentGroup);
+      root.removeChild(elementGroup);
     }
 
     root.layout();
@@ -593,7 +593,11 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   {
     if (source == null)
     {
-      // Can happen for call events
+      return;
+    }
+
+    if (target == null)
+    {
       return;
     }
 

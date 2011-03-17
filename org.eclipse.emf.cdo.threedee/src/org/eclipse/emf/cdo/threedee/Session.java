@@ -12,6 +12,8 @@ import org.eclipse.emf.cdo.threedee.common.ElementProvider;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
 
 import org.eclipse.net4j.util.container.Container;
+import org.eclipse.net4j.util.lifecycle.ILifecycle;
+import org.eclipse.net4j.util.lifecycle.LifecycleEventAdapter;
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
 import java.util.HashMap;
@@ -45,6 +47,18 @@ public class Session extends Container<Element> implements ElementProvider
     this.id = id;
     this.name = name;
     this.protocol = protocol;
+
+    protocol.addListener(new LifecycleEventAdapter()
+    {
+      @Override
+      protected void onDeactivated(ILifecycle lifecycle)
+      {
+        if (rootElement != null)
+        {
+          fireElementRemovedEvent(rootElement);
+        }
+      }
+    });
   }
 
   public FrontendProtocol getProtocol()

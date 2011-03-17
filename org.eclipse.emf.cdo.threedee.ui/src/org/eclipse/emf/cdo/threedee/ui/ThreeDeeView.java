@@ -221,7 +221,14 @@ public class ThreeDeeView extends ViewPart
           removeElement(child);
         }
 
-        world.removeElement(element);
+        try
+        {
+          world.removeElement(element);
+        }
+        catch (Exception ex)
+        {
+          ex.printStackTrace();
+        }
       }
     }
   }
