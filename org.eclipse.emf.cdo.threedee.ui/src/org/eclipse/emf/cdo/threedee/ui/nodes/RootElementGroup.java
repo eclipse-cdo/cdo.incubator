@@ -59,7 +59,6 @@ public class RootElementGroup extends ThreeDeeNode<Element>
     for (int i = 0; i < n; i++)
     {
       ThreeDeeNode<Element> child = children[i];
-      // child.layout();
 
       double x = radius * Math.cos(phi);
       double y = radius * Math.sin(phi);
@@ -72,8 +71,6 @@ public class RootElementGroup extends ThreeDeeNode<Element>
 
       phi += distanceAngle;
     }
-
-    getWorld().updateReferences();
   }
 
   private static Appearance createAppearance()

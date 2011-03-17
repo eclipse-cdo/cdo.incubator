@@ -340,11 +340,8 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       if (containerContainmentGroup != null)
       {
         clearReferenceNodes(element.getProvider().getElement(element.getContainerID()));
-        updateReferences(containerElement);
       }
     }
-
-    layout();
   }
 
   private void addNode(ElementGroup node, ElementGroup parent)
@@ -357,19 +354,6 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     {
       ThreeDeeUtil.enablePicking(node, true);
       parent.addChild(node);
-    }
-
-    layout();
-
-    Element element = node.getModel();
-    Element containerElement = getContainerElement(element);
-    if (containerElement != null)
-    {
-      updateReferences(containerElement);
-    }
-    else
-    {
-      updateReferences(element);
     }
   }
 
@@ -461,23 +445,16 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   public void layout()
   {
     root.layout();
+    updateReferences();
   }
 
   public void updateReferences()
   {
-    synchronized (Frontend.INSTANCE)
+    for (Session session : Frontend.INSTANCE.getElements())
     {
-      for (Session session : Frontend.INSTANCE.getElements())
-      {
-        Element[] elements = session.getElements();
-        updateReferences(elements);
-      }
+      Element[] elements = session.getElements();
+      updateReferences(elements);
     }
-  }
-
-  private void updateReferences(Element source)
-  {
-    updateReferences(source, new HashSet<Element>());
   }
 
   private void updateReferences(Element[] sources)

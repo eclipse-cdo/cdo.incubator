@@ -174,12 +174,14 @@ public class ThreeDeeView extends ViewPart
     protected void onAdded(IContainer<Object> container, Object object)
     {
       addElement(object);
+      world.layout();
     }
 
     @Override
     protected void onRemoved(IContainer<Object> container, Object object)
     {
       removeElement(object);
+      world.layout();
     }
 
     @Override
