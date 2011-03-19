@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.ui;
 
 import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld.InfoPanel;
 import org.eclipse.emf.cdo.threedee.ui.bundle.OM;
+import org.eclipse.emf.cdo.threedee.ui.nodes.RootElementGroup;
 
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
@@ -36,11 +37,11 @@ import java.text.MessageFormat;
 /**
  * @author Eike Stepper
  */
-public class InfoTransformView extends ViewPart
+public class ParametersView extends ViewPart
 {
-  public static final String ID = "org.eclipse.emf.cdo.threedee.ui.InfoTransformView";
+  public static final String ID = "org.eclipse.emf.cdo.threedee.ui.ParametersView";
 
-  public InfoTransformView()
+  public ParametersView()
   {
   }
 
@@ -59,6 +60,7 @@ public class InfoTransformView extends ViewPart
       }
 
       ThreeDeeView view = (ThreeDeeView)page.findView(ThreeDeeView.ID);
+      createRootRadius(composite, view);
       createLightDirection(composite, view);
       createInfoPanelTransform(composite, view);
     }
@@ -66,6 +68,23 @@ public class InfoTransformView extends ViewPart
     {
       OM.LOG.error(ex);
     }
+  }
+
+  private void createRootRadius(Composite composite, ThreeDeeView view)
+  {
+    final ThreeDeeWorld world = view.getWorld();
+    final RootElementGroup root = world.getRoot();
+
+    final Transformer transformer = new Transformer(composite, "Radius", 0f, 2f, root.getRadiusFactor());
+    transformer.addSelectionListener(new SelectionAdapter()
+    {
+      @Override
+      public void widgetSelected(SelectionEvent e)
+      {
+        root.setRadiusFactor(transformer.getValue());
+        world.layout();
+      }
+    });
   }
 
   private void createLightDirection(Composite composite, ThreeDeeView view)

@@ -317,6 +317,11 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     return infoPanel;
   }
 
+  public RootElementGroup getRoot()
+  {
+    return root;
+  }
+
   public void addElement(Element element)
   {
     if (!elementGroups.containsKey(element))

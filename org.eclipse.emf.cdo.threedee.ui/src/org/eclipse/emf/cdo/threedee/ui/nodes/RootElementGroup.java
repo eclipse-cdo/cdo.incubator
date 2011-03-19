@@ -30,9 +30,21 @@ public class RootElementGroup extends ThreeDeeNode<Element>
 
   private static final double TWO_PI = 2.0d * PI;
 
+  private double radiusFactor = 0.8d;
+
   public RootElementGroup(ThreeDeeWorld world)
   {
     super(world, null, createAppearance());
+  }
+
+  public double getRadiusFactor()
+  {
+    return radiusFactor;
+  }
+
+  public void setRadiusFactor(double radiusFactor)
+  {
+    this.radiusFactor = radiusFactor;
   }
 
   @Override
@@ -54,7 +66,7 @@ public class RootElementGroup extends ThreeDeeNode<Element>
 
     double distanceAngle = TWO_PI / n;
     double phi = 0.0d;
-    radius *= 0.8d;
+    radius *= radiusFactor;
 
     for (int i = 0; i < n; i++)
     {
