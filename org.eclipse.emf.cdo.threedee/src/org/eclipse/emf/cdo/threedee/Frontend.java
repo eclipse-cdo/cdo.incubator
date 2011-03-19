@@ -33,15 +33,11 @@ public class Frontend extends Container<Session>
 {
   public static final Frontend INSTANCE = new Frontend();
 
-  // private static final Element FAKE_RECEIVER = new Element(-1, null, null);
-
   private ITCPAcceptor acceptor;
 
   private Map<Integer, Session> sessions = new HashMap<Integer, Session>();
 
   private Map<String, Element> connectors = new HashMap<String, Element>();
-
-  // private Map<Element, Element> deferredTransmissions = new HashMap<Element, Element>();
 
   private int lastSessionID;
 
@@ -69,25 +65,6 @@ public class Frontend extends Container<Session>
   {
     return connectors.get(local);
   }
-
-  // public synchronized void putDeferredTransmission(Element transmitter, Element receiver)
-  // {
-  // // if (!deferredTransmissions.containsKey(transmitter))
-  // {
-  // deferredTransmissions.put(transmitter, receiver);
-  // }
-  // }
-  //
-  // public synchronized Element getDeferredTransmission(Element transmitter)
-  // {
-  // Element old = deferredTransmissions.put(transmitter, FAKE_RECEIVER);
-  // if (old != FAKE_RECEIVER)
-  // {
-  // return old;
-  // }
-  //
-  // return null;
-  // }
 
   public Session openSession(final FrontendProtocol protocol, String name)
   {
