@@ -124,6 +124,8 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
   private InfoPanel infoPanel;
 
+  private DirectionalLight directionalLight;
+
   public ThreeDeeWorld(Composite parent)
   {
     composite = new Composite(parent, SWT.EMBEDDED | SWT.NO_BACKGROUND);
@@ -254,9 +256,12 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     platformGeometry.setCapability(Group.ALLOW_CHILDREN_WRITE);
     platformGeometry.setCapability(Group.ALLOW_CHILDREN_EXTEND);
 
-    DirectionalLight directionalLight = new DirectionalLight();
+    directionalLight = new DirectionalLight();
+    directionalLight.setCapability(DirectionalLight.ALLOW_DIRECTION_READ);
+    directionalLight.setCapability(DirectionalLight.ALLOW_DIRECTION_WRITE);
     directionalLight.setColor(new Color3f(0.7f, 0.8f, 0.8f));
-    directionalLight.setDirection(new Vector3f(1f, -1f, -6f));
+    // directionalLight.setDirection(new Vector3f(1f, -1f, -6f));
+    directionalLight.setDirection(new Vector3f(1.5f, -2.24f, 0.36f));
     directionalLight.setInfluencingBounds(boundingSphere);
     platformGeometry.addChild(directionalLight);
 
@@ -300,6 +305,11 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   public Composite getComposite()
   {
     return composite;
+  }
+
+  public DirectionalLight getDirectionalLight()
+  {
+    return directionalLight;
   }
 
   public InfoPanel getInfoPanel()
@@ -455,7 +465,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       {
         int targetID = entry.getKey();
         Element target = provider.getElement(targetID);
-        if (target != null)
+        if (target != null && target.getContainerID() == source.getID())
         {
           targets.add(target);
           boolean containment = entry.getValue();
@@ -535,6 +545,14 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
   private Geometry getLineGeometry(Element from, Element to)
   {
+    Point3f[] points = getPositions(from, to);
+    LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
+    lineArray.setCoordinates(0, points);
+    return lineArray;
+  }
+
+  private Point3f[] getPositions(Element from, Element to)
+  {
     ElementGroup fromGroup = elementGroups.get(from);
     if (fromGroup == null)
     {
@@ -559,9 +577,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     Point3f[] points = new Point3f[2];
     points[0] = fromPosition;
     points[1] = toPosition;
-    LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
-    lineArray.setCoordinates(0, points);
-    return lineArray;
+    return points;
   }
 
   public void showCall(Element source, Element target, boolean transmission)
@@ -683,10 +699,13 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
       CallShape call = calls.get(key);
       if (call == null)
       {
-        call = new CallShape(ThreeDeeWorld.this, source, target, transmission);
-        call.setGeometry(getLineGeometry(source, target));
-        universe.addBranchGraph(call);
-        calls.put(key, call);
+        Point3f[] positions = getPositions(source, target);
+        if (positions != null)
+        {
+          call = new CallShape(ThreeDeeWorld.this, source, target, positions, transmission);
+          universe.addBranchGraph(call);
+          calls.put(key, call);
+        }
       }
       else
       {
@@ -703,11 +722,26 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
         {
           CallShape call = entry.getValue();
           TransparencyAttributes transparencyAttributes = call.getAppearance().getTransparencyAttributes();
+          Pair<Element, Element> model = call.getModel();
+          Element element1 = model.getElement1();
+          Element element2 = model.getElement2();
+          Point3f[] newPositions = getPositions(element1, element2);
+          if (newPositions == null)
+          {
+            removeCall(entry, call);
+            continue;
+          }
+
+          if (call.hasMoved(newPositions))
+          {
+            call = new CallShape(ThreeDeeWorld.this, element1, element2, newPositions, call.isTransmission());
+            call.getAppearance().setTransparencyAttributes(transparencyAttributes);
+          }
+
           float transparency = transparencyAttributes.getTransparency();
           if (transparency >= 1.0f)
           {
-            remove(entry.getKey());
-            call.detach();
+            removeCall(entry, call);
           }
           else
           {
@@ -717,6 +751,12 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
         ConcurrencyUtil.sleep(15);
       }
+    }
+
+    private void removeCall(Entry<Pair<Element, Element>, CallShape> entry, CallShape call)
+    {
+      remove(entry.getKey());
+      call.detach();
     }
 
     private synchronized Entry<Pair<Element, Element>, CallShape>[] getEntries()

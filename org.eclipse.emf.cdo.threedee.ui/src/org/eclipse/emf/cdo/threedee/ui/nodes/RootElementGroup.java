@@ -54,7 +54,7 @@ public class RootElementGroup extends ThreeDeeNode<Element>
 
     double distanceAngle = TWO_PI / n;
     double phi = 0.0d;
-    radius *= 0.5d;
+    radius *= 0.8d;
 
     for (int i = 0; i < n; i++)
     {

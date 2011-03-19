@@ -17,16 +17,28 @@ import org.eclipse.emf.cdo.threedee.ui.ThreeDeeWorld;
 import org.eclipse.net4j.util.collection.Pair;
 
 import javax.media.j3d.Appearance;
+import javax.media.j3d.LineArray;
 import javax.media.j3d.TransparencyAttributes;
+import javax.vecmath.Point3f;
 
 /**
  * @author Eike Stepper
  */
 public class CallShape extends LineShape implements IColors
 {
-  public CallShape(ThreeDeeWorld world, Element from, Element to, boolean transmission)
+  private Point3f[] positions;
+
+  private boolean transmission;
+
+  public CallShape(ThreeDeeWorld world, Element from, Element to, Point3f[] positions, boolean transmission)
   {
     super(world, new Pair<Element, Element>(from, to), createAppearance(transmission));
+    this.positions = positions;
+    this.transmission = transmission;
+
+    LineArray lineArray = new LineArray(2, LineArray.COORDINATES);
+    lineArray.setCoordinates(0, positions);
+    setGeometry(lineArray);
   }
 
   private static Appearance createAppearance(boolean transmission)
@@ -43,5 +55,26 @@ public class CallShape extends LineShape implements IColors
     transparencyAttributes.setTransparencyMode(TransparencyAttributes.FASTEST);
     transparencyAttributes.setTransparency(0.0f);
     return appearance;
+  }
+
+  public Point3f getTargetPoint()
+  {
+    return positions[0];
+  }
+
+  public Point3f getSourcePoint()
+  {
+    return positions[1];
+  }
+
+  public boolean hasMoved(Point3f[] newPositions)
+  {
+    float allowedDistance = 0.05f;
+    return newPositions[0].distance(positions[0]) > 0.05f | newPositions[1].distance(positions[1]) > allowedDistance;
+  }
+
+  public boolean isTransmission()
+  {
+    return transmission;
   }
 }

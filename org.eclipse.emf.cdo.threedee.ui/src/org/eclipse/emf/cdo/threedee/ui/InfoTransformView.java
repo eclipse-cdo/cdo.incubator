@@ -26,9 +26,12 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.part.ViewPart;
 
+import javax.media.j3d.DirectionalLight;
 import javax.media.j3d.Transform3D;
 import javax.media.j3d.TransformGroup;
 import javax.vecmath.Vector3f;
+
+import java.text.MessageFormat;
 
 /**
  * @author Eike Stepper
@@ -45,7 +48,7 @@ public class InfoTransformView extends ViewPart
   public void createPartControl(Composite parent)
   {
     Composite composite = new Composite(parent, SWT.NONE);
-    composite.setLayout(new GridLayout(2, false));
+    composite.setLayout(new GridLayout(3, false));
 
     try
     {
@@ -56,58 +59,94 @@ public class InfoTransformView extends ViewPart
       }
 
       ThreeDeeView view = (ThreeDeeView)page.findView(ThreeDeeView.ID);
-      InfoPanel infoPanel = view.getWorld().getInfoPanel();
-
-      Transform3D transform = new Transform3D();
-
-      final TransformGroup translationGroup = infoPanel.getTranslationGroup();
-      translationGroup.getTransform(transform);
-      Vector3f translation = new Vector3f();
-      transform.get(translation);
-
-      final TransformGroup scaleGroup = infoPanel.getScaleGroup();
-      scaleGroup.getTransform(transform);
-      double scale = transform.getScale();
-
-      final Transformer xTransformer = new Transformer(composite, "x", -1f, 0f, translation.getX());
-      final Transformer yTransformer = new Transformer(composite, "y", 0f, 1f, translation.getY());
-      final Transformer zTransformer = new Transformer(composite, "z", -2f, 2f, translation.getZ());
-
-      SelectionAdapter translationListener = new SelectionAdapter()
-      {
-        @Override
-        public void widgetSelected(SelectionEvent e)
-        {
-          float x = (float)xTransformer.getValue();
-          float y = (float)yTransformer.getValue();
-          float z = (float)zTransformer.getValue();
-
-          Transform3D transform = new Transform3D();
-          transform.set(new Vector3f(x, y, z));
-          translationGroup.setTransform(transform);
-        }
-      };
-
-      xTransformer.addSelectionListener(translationListener);
-      yTransformer.addSelectionListener(translationListener);
-      zTransformer.addSelectionListener(translationListener);
-
-      final Transformer scaleTransformer = new Transformer(composite, "scale", 0.005f, 0.1f, scale);
-      scaleTransformer.addSelectionListener(new SelectionAdapter()
-      {
-        @Override
-        public void widgetSelected(SelectionEvent e)
-        {
-          Transform3D transform = new Transform3D();
-          transform.setScale(scaleTransformer.getValue());
-          scaleGroup.setTransform(transform);
-        }
-      });
+      createLightDirection(composite, view);
+      createInfoPanelTransform(composite, view);
     }
     catch (Exception ex)
     {
       OM.LOG.error(ex);
     }
+  }
+
+  private void createLightDirection(Composite composite, ThreeDeeView view)
+  {
+    final DirectionalLight directionalLight = view.getWorld().getDirectionalLight();
+
+    Vector3f direction = new Vector3f();
+    directionalLight.getDirection(direction);
+
+    final Transformer xTransformer = new Transformer(composite, "Light X", -10f, 10f, direction.getX());
+    final Transformer yTransformer = new Transformer(composite, "Light Y", -10f, 10f, direction.getY());
+    final Transformer zTransformer = new Transformer(composite, "Light Z", -10f, 10f, direction.getZ());
+
+    SelectionAdapter listener = new SelectionAdapter()
+    {
+      @Override
+      public void widgetSelected(SelectionEvent e)
+      {
+        float x = (float)xTransformer.getValue();
+        float y = (float)yTransformer.getValue();
+        float z = (float)zTransformer.getValue();
+
+        Vector3f direction = new Vector3f(x, y, z);
+        directionalLight.setDirection(direction);
+      }
+    };
+
+    xTransformer.addSelectionListener(listener);
+    yTransformer.addSelectionListener(listener);
+    zTransformer.addSelectionListener(listener);
+  }
+
+  private void createInfoPanelTransform(Composite composite, ThreeDeeView view)
+  {
+    InfoPanel infoPanel = view.getWorld().getInfoPanel();
+
+    Transform3D transform = new Transform3D();
+
+    final TransformGroup translationGroup = infoPanel.getTranslationGroup();
+    translationGroup.getTransform(transform);
+    Vector3f translation = new Vector3f();
+    transform.get(translation);
+
+    final TransformGroup scaleGroup = infoPanel.getScaleGroup();
+    scaleGroup.getTransform(transform);
+    double scale = transform.getScale();
+
+    final Transformer xTransformer = new Transformer(composite, "Info X", -1f, 0f, translation.getX());
+    final Transformer yTransformer = new Transformer(composite, "Info Y", 0f, 1f, translation.getY());
+    final Transformer zTransformer = new Transformer(composite, "Info Z", -2f, 2f, translation.getZ());
+
+    SelectionAdapter translationListener = new SelectionAdapter()
+    {
+      @Override
+      public void widgetSelected(SelectionEvent e)
+      {
+        float x = (float)xTransformer.getValue();
+        float y = (float)yTransformer.getValue();
+        float z = (float)zTransformer.getValue();
+
+        Transform3D transform = new Transform3D();
+        transform.set(new Vector3f(x, y, z));
+        translationGroup.setTransform(transform);
+      }
+    };
+
+    xTransformer.addSelectionListener(translationListener);
+    yTransformer.addSelectionListener(translationListener);
+    zTransformer.addSelectionListener(translationListener);
+
+    final Transformer scaleTransformer = new Transformer(composite, "Info Scale", 0.005f, 0.1f, scale);
+    scaleTransformer.addSelectionListener(new SelectionAdapter()
+    {
+      @Override
+      public void widgetSelected(SelectionEvent e)
+      {
+        Transform3D transform = new Transform3D();
+        transform.setScale(scaleTransformer.getValue());
+        scaleGroup.setTransform(transform);
+      }
+    });
   }
 
   @Override
@@ -128,7 +167,7 @@ public class InfoTransformView extends ViewPart
 
     private Slider slider;
 
-    public Transformer(Composite parent, String text, float min, float max, double initial)
+    public Transformer(final Composite parent, String text, float min, float max, double initial)
     {
       this.min = min;
       range = max - min;
@@ -141,6 +180,23 @@ public class InfoTransformView extends ViewPart
       slider.setLayoutData(new GridData(SWT.FILL, SWT.TOP, true, false));
       slider.setMinimum(0);
       slider.setMaximum(MAX);
+
+      final Label value = new Label(parent, SWT.NONE);
+      GridData data = new GridData(SWT.RIGHT, SWT.TOP, false, false);
+      data.widthHint = 48;
+      value.setLayoutData(data);
+
+      addSelectionListener(new SelectionAdapter()
+      {
+        @Override
+        public void widgetSelected(SelectionEvent e)
+        {
+          String format = MessageFormat.format("{0}", getValue());
+          value.setText(format);
+          // parent.layout();
+        }
+      });
+
       setValue(initial);
     }
 
