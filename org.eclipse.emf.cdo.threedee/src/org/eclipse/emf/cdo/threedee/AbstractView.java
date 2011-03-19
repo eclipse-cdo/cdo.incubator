@@ -140,8 +140,6 @@ public abstract class AbstractView<CONTENT> extends ViewPart
   {
     synchronized (Frontend.INSTANCE)
     {
-      System.err.println(getClass().getSimpleName() + ".createPartControl()");
-
       ViewContentProvider contentProvider = new ViewContentProvider();
 
       viewer = new CheckboxTreeViewer(parent, SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);

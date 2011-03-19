@@ -198,24 +198,9 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
     protocol.sendEvent(event);
   }
 
-  public void beforeCall(Object source, Object target, String what)
-  {
-    called(source, target, what, When.BEFORE);
-  }
-
-  public void afterCall(Object source, Object target, String what)
-  {
-    called(source, target, what, When.AFTER);
-  }
-
   @SuppressWarnings("restriction")
-  private void called(Object sourceObject, Object targetObject, String what, When when)
+  public void called(Object sourceObject, Object targetObject, String what, When when)
   {
-    if (ElementDescriptor.INITIALIZING_ELEMENT.get())
-    {
-      return;
-    }
-
     try
     {
       Element targetElement = getElement(targetObject, false);
@@ -224,12 +209,31 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
         return;
       }
 
-      ElementDescriptor descriptor = targetElement.getDescriptor();
+      ElementDescriptor targetDescriptor = targetElement.getDescriptor();
+
+      Pair<Change, Element> pair = targetDescriptor.createChangeEvent(targetElement, targetObject);
+      if (pair != null)
+      {
+        ElementEvent event = pair.getElement1();
+        Element newElement = pair.getElement2();
+
+        if (TRACER.isEnabled())
+        {
+          TRACER.trace(event.toString());
+        }
+
+        synchronized (elements)
+        {
+          elements.put(targetObject, newElement);
+        }
+
+        addWork(event);
+      }
 
       Element sourceElement = getElement(sourceObject, false);
       if (sourceElement != null && sourceElement != targetElement)
       {
-        ElementEvent event = descriptor.createCallEvent(sourceElement, targetElement, what, when);
+        ElementEvent event = targetDescriptor.createCallEvent(sourceElement, targetElement, what, when);
         if (event != null)
         {
           if (TRACER.isEnabled())
@@ -241,38 +245,14 @@ public class Agent extends QueueWorker<ElementEvent> implements ElementProvider
         }
       }
 
-      if (when == When.BEFORE)
+      if (targetObject instanceof org.eclipse.net4j.internal.tcp.TCPConnector && "handleRead".equals(what))
       {
-        if (targetObject instanceof org.eclipse.net4j.internal.tcp.TCPConnector && "handleWrite".equals(what))
+        ElementEvent event = targetDescriptor.createTransmitEvent(targetElement);
+        if (event != null)
         {
-          ElementEvent event = descriptor.createTransmitEvent(targetElement);
-          if (event != null)
-          {
-            if (TRACER.isEnabled())
-            {
-              TRACER.trace(event.toString());
-            }
-
-            addWork(event);
-          }
-        }
-      }
-      else
-      {
-        Pair<Change, Element> pair = descriptor.createChangeEvent(targetElement, targetObject);
-        if (pair != null)
-        {
-          ElementEvent event = pair.getElement1();
-          Element newElement = pair.getElement2();
-
           if (TRACER.isEnabled())
           {
             TRACER.trace(event.toString());
-          }
-
-          synchronized (elements)
-          {
-            elements.put(targetObject, newElement);
           }
 
           addWork(event);

@@ -21,7 +21,7 @@ import java.util.Map;
  */
 public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
 {
-  public static final ThreadLocal<Boolean> INITIALIZING_ELEMENT = new ThreadLocal<Boolean>()
+  private static final ThreadLocal<Boolean> INITIALIZING_ELEMENT = new ThreadLocal<Boolean>()
   {
     @Override
     protected Boolean initialValue()
@@ -192,6 +192,11 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
   public String toString()
   {
     return getName();
+  }
+
+  public static boolean isInitializingElement()
+  {
+    return INITIALIZING_ELEMENT.get();
   }
 
   private static String strip(String string, String suffix)

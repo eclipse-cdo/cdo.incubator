@@ -80,17 +80,19 @@ public aspect Aspect
       execution(public * org.eclipse.net4j.internal.tcp.TCPConnector.*(..)) ||
       execution(public * org.eclipse.net4j.internal.tcp.TCPClientConnector.*(..)) ||
       execution(public * org.eclipse.net4j.internal.tcp.TCPServerConnector.*(..)) ||
-      // execution(public * org.eclipse.net4j.internal.tcp.TCPSelector.*(..)) ||
+      execution(public * org.eclipse.net4j.internal.tcp.TCPSelector.*(..)) ||
       execution(public * java.nio.channels.SocketChannel.*(..))
     );
 
   before(Object target) : publicMethods() && target(target)
   {
-    Hook.before(target, thisJoinPointStaticPart.getSignature().getName());
+    String what = thisJoinPointStaticPart.getSignature().getName();
+    Hook.before(target, what);
   }
 
   after(Object target) : publicMethods() && target(target)
   {
-    Hook.after(target, thisJoinPointStaticPart.getSignature().getName());
+    String what = thisJoinPointStaticPart.getSignature().getName();
+    Hook.after(target, what);
   }
 }

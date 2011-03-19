@@ -88,8 +88,6 @@ public class ThreeDeeView extends ViewPart
   {
     synchronized (Frontend.INSTANCE)
     {
-      System.err.println(getClass().getSimpleName() + ".createPartControl()");
-
       world = new ThreeDeeWorld(parent);
       for (Session session : Frontend.INSTANCE.getElements())
       {
@@ -123,7 +121,7 @@ public class ThreeDeeView extends ViewPart
     }
     catch (Exception ex)
     {
-      System.err.println(ex.getMessage());
+      System.out.println(ex.getMessage());
     }
   }
 

@@ -11,6 +11,8 @@
 package org.eclipse.emf.cdo.threedee.agent;
 
 import org.eclipse.emf.cdo.threedee.agent.bundle.OM;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
+import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
 
 import org.eclipse.net4j.util.om.trace.ContextTracer;
 
@@ -32,30 +34,40 @@ public class Hook
 
   public static void before(Object target, String what)
   {
+    if (ElementDescriptor.isInitializingElement())
+    {
+      return;
+    }
+
     Stack stack = getStack();
     Object last = stack.peek();
     stack.push(target);
 
     if (TRACER_BEFORE.isEnabled())
     {
-      TRACER_AFTER.trace(format(last, target, what));
+      TRACER_BEFORE.trace(format(last, target, what));
     }
 
-    Agent.INSTANCE.beforeCall(last, target, what);
+    Agent.INSTANCE.called(last, target, what, When.BEFORE);
   }
 
   public static void after(Object target, String what)
   {
+    if (ElementDescriptor.isInitializingElement())
+    {
+      return;
+    }
+
     Stack stack = getStack();
     stack.pop();
     Object last = stack.peek();
 
     if (TRACER_AFTER.isEnabled())
     {
-      TRACER_BEFORE.trace(format(last, target, what));
+      TRACER_AFTER.trace(format(last, target, what));
     }
 
-    Agent.INSTANCE.afterCall(last, target, what);
+    Agent.INSTANCE.called(last, target, what, When.AFTER);
   }
 
   private static String format(Object source, Object target, String what)

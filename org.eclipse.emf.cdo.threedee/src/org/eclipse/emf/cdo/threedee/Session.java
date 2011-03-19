@@ -2,6 +2,7 @@ package org.eclipse.emf.cdo.threedee;
 
 import org.eclipse.emf.cdo.threedee.bundle.OM;
 import org.eclipse.emf.cdo.threedee.common.Element;
+import org.eclipse.emf.cdo.threedee.common.ElementDescriptor;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Call.When;
@@ -9,6 +10,7 @@ import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Create;
 import org.eclipse.emf.cdo.threedee.common.ElementEvent.Transmit;
 import org.eclipse.emf.cdo.threedee.common.ElementProvider;
+import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPAcceptorDescriptor;
 import org.eclipse.emf.cdo.threedee.common.descriptors.net4j.TCPConnectorDescriptor;
 
 import org.eclipse.net4j.util.container.Container;
@@ -189,13 +191,19 @@ public class Session extends Container<Element> implements ElementProvider
   private void handleCreationEvent(Create event)
   {
     Element element = event.getElement();
-    if (element.getDescriptor().getClass() == TCPConnectorDescriptor.class)
+    addElement(element, event.isRoot());
+
+    Class<? extends ElementDescriptor> c = element.getDescriptor().getClass();
+    if (c == TCPConnectorDescriptor.class)
     {
       String local = element.getAttributes().get("local");
       Frontend.INSTANCE.putConnector(local, element);
     }
-
-    addElement(element, event.isRoot());
+    else if (c == TCPAcceptorDescriptor.class)
+    {
+      String port = element.getAttributes().get("port");
+      Frontend.INSTANCE.putConnector(port, element);
+    }
   }
 
   private void handleCallEvent(Call event)
@@ -216,9 +224,18 @@ public class Session extends Container<Element> implements ElementProvider
     Element transmitter = event.getTransmitter();
 
     String remote = transmitter.getAttributes().get("remote");
-    Element receiver = Frontend.INSTANCE.getConnector(remote);
+    if (remote != null)
+    {
+      Element receiver = Frontend.INSTANCE.getConnector(remote);
+      if (receiver == null)
+      {
+        String local = transmitter.getAttributes().get("local");
+        String port = local.substring(local.indexOf(':') + 1);
+        receiver = Frontend.INSTANCE.getConnector(port);
+      }
 
-    transmitter.fireTransmissionEvent(receiver);
+      transmitter.fireTransmissionEvent(receiver);
+    }
   }
 
   private void handleChangeEvent(Change event)
