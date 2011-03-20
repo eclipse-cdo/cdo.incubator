@@ -11,10 +11,10 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.common.revision.CDORevision;
+import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevision;
 import org.eclipse.emf.cdo.threedee.common.Element;
-import org.eclipse.emf.cdo.threedee.common.ElementEvent.Change;
 
-import org.eclipse.net4j.util.collection.Pair;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 /**
  * @author Eike Stepper
@@ -30,13 +30,16 @@ public class RevisionDescriptor extends CDODescriptor
   @Override
   protected void doInitElement(Object object, Element element)
   {
-    CDORevision revision = (CDORevision)object;
+    InternalCDORevision revision = (InternalCDORevision)object;
     element.setKeyAttribute(revision);
-  }
-
-  @Override
-  public Pair<Change, Element> createChangeEvent(Element oldElement, Object newObject)
-  {
-    return null;
+    element.setAttribute("branch", revision.getBranch());
+    element.setAttribute("version", revision.getVersion());
+    element.setAttribute("timeStamp", revision.getTimeStamp());
+    element.setAttribute("revised", revision.getRevised());
+    for (EStructuralFeature feature : revision.getClassInfo().getAllPersistentFeatures())
+    {
+      Object value = revision.getValue(feature);
+      element.setAttribute(feature.getName(), value);
+    }
   }
 }
