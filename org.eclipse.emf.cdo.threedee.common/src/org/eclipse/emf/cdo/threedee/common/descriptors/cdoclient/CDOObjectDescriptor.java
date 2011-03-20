@@ -12,6 +12,7 @@ package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
 import org.eclipse.emf.cdo.CDOObject;
 import org.eclipse.emf.cdo.CDOState;
+import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevision;
 import org.eclipse.emf.cdo.threedee.common.Element;
 
 import org.eclipse.emf.ecore.InternalEObject;
@@ -36,7 +37,14 @@ public class CDOObjectDescriptor extends CDOClientDescriptor
 
     element.setIDAttribute(cdoObject.cdoID());
     element.setAttribute("state", state);
-    element.addReference(state == CDOState.NEW, cdoObject.cdoRevision());
+
+    InternalCDORevision revision = cdoObject.cdoRevision();
+    if (revision != null)
+    {
+      element.setAttribute("revision", revision.getBranch().getName() + "-v" + revision.getVersion());
+    }
+
+    element.addReference(state == CDOState.NEW, revision);
 
     InternalEObject instance = cdoObject.cdoInternalInstance();
     if (instance != cdoObject)
