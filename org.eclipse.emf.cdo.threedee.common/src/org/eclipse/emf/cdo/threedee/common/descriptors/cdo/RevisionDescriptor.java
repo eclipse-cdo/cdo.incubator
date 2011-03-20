@@ -11,6 +11,7 @@
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdo;
 
 import org.eclipse.emf.cdo.common.revision.CDORevision;
+import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
 import org.eclipse.emf.cdo.spi.common.revision.InternalCDORevision;
 import org.eclipse.emf.cdo.threedee.common.Element;
 
@@ -31,11 +32,12 @@ public class RevisionDescriptor extends CDODescriptor
   protected void doInitElement(Object object, Element element)
   {
     InternalCDORevision revision = (InternalCDORevision)object;
-    element.setKeyAttribute(revision);
-    element.setAttribute("branch", revision.getBranch());
-    element.setAttribute("version", revision.getVersion());
-    element.setAttribute("timeStamp", revision.getTimeStamp());
-    element.setAttribute("revised", revision.getRevised());
+    element.setAttribute("_id", revision.getID());
+    element.setAttribute("_class", revision.getEClass().getName());
+    element.setAttribute("_branch", revision.getBranch());
+    element.setAttribute("_version", revision.getVersion());
+    element.setAttribute("_timeStamp", CDOCommonUtil.formatTimeStamp(revision.getTimeStamp()));
+    element.setAttribute("_revised", CDOCommonUtil.formatTimeStamp(revision.getRevised()));
     for (EStructuralFeature feature : revision.getClassInfo().getAllPersistentFeatures())
     {
       Object value = revision.getValue(feature);

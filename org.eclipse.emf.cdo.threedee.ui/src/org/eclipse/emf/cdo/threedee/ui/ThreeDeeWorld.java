@@ -80,6 +80,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -872,7 +873,16 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
           Info info = new Info(row++, descriptor.getLabel() + ":", true);
           infos.add(info);
 
-          for (Entry<String, String> entry : element.getAttributes().entrySet())
+          List<Entry<String, String>> entries = new ArrayList<Entry<String, String>>(element.getAttributes().entrySet());
+          Collections.sort(entries, new Comparator<Entry<String, String>>()
+          {
+            public int compare(Entry<String, String> o1, Entry<String, String> o2)
+            {
+              return o1.getKey().compareTo(o2.getKey());
+            }
+          });
+
+          for (Entry<String, String> entry : entries)
           {
             String label = entry.getKey() + " = " + entry.getValue();
 
