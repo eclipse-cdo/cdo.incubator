@@ -32,6 +32,7 @@ public class RevisionDescriptor extends CDODescriptor
   protected void doInitElement(Object object, Element element)
   {
     InternalCDORevision revision = (InternalCDORevision)object;
+    element.setAttribute("_label", revision);
     element.setAttribute("_id", revision.getID());
     element.setAttribute("_class", revision.getEClass().getName());
     element.setAttribute("_branch", revision.getBranch());

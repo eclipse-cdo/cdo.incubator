@@ -74,16 +74,20 @@ public abstract class ElementDescriptor implements Comparable<ElementDescriptor>
     String label = element.getAttributes().get(Element.LABEL_ATTRIBUTE);
     if (label == null)
     {
-      label = element.getAttributes().get(Element.NAME_ATTRIBUTE);
+      label = element.getAttributes().get("_label");
       if (label == null)
       {
-        label = element.getAttributes().get(Element.KEY_ATTRIBUTE);
+        label = element.getAttributes().get(Element.NAME_ATTRIBUTE);
         if (label == null)
         {
-          label = element.getAttributes().get(Element.ID_ATTRIBUTE);
+          label = element.getAttributes().get(Element.KEY_ATTRIBUTE);
           if (label == null)
           {
-            return getLabel();
+            label = element.getAttributes().get(Element.ID_ATTRIBUTE);
+            if (label == null)
+            {
+              return getLabel();
+            }
           }
         }
       }

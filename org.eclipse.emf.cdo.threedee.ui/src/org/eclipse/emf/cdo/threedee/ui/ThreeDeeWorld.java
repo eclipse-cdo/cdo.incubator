@@ -941,10 +941,14 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
 
           for (Entry<String, String> entry : entries)
           {
-            String label = entry.getKey() + " = " + entry.getValue();
+            String key = entry.getKey();
+            if (!"_label".equals(key))
+            {
+              String label = key + " = " + entry.getValue();
 
-            info = new Info(row++, label, false);
-            infos.add(info);
+              info = new Info(row++, label, false);
+              infos.add(info);
+            }
           }
         }
       }
