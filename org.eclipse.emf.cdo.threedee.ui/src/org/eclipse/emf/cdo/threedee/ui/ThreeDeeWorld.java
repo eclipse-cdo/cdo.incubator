@@ -79,6 +79,7 @@ import java.awt.Frame;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -100,6 +101,55 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   private static boolean PRODUCTION = false;
 
   private Set<ElementDescriptor> disabledDescriptors = Collections.emptySet();
+
+  class ElementGroups
+  {
+    private Map<Pair<Element, Element>, ElementGroup> map = new HashMap<Pair<Element, Element>, ElementGroup>();
+
+    public Collection<ElementGroup> values()
+    {
+      return map.values();
+    }
+
+    public boolean containsKey(Element element)
+    {
+      Pair<Element, Element> pair = makePair(element);
+      return map.containsKey(pair);
+    }
+
+    public ElementGroup get(Object object)
+    {
+      if (object instanceof Element)
+      {
+        Element element = (Element)object;
+        Pair<Element, Element> pair = makePair(element);
+        return map.get(pair);
+      }
+
+      return null;
+    }
+
+    public ElementGroup put(Element element, ElementGroup elementGroup)
+    {
+      Pair<Element, Element> pair = makePair(element);
+      return map.put(pair, elementGroup);
+    }
+
+    public ElementGroup remove(Element element)
+    {
+      Pair<Element, Element> pair = makePair(element);
+      return map.remove(pair);
+    }
+
+    private Pair<Element, Element> makePair(Element element)
+    {
+      Element container = element.getContainer();
+      Pair<Element, Element> pair = new Pair<Element, Element>(element, container);
+      return pair;
+    }
+  }
+
+  // private ElementGroups elementGroups = new ElementGroups();
 
   private Map<Element, ElementGroup> elementGroups = new HashMap<Element, ElementGroup>();
 
@@ -323,28 +373,35 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
     return root;
   }
 
-  public void addElement(Element element)
+  public void addElement(Object container, Element element)
   {
-    if (!elementGroups.containsKey(element))
+    if (elementGroups.containsKey(element))
+    {
+      removeElement(element.getContainer(), element);
+    }
     {
       ElementGroup group = createElementGroup(element);
-      ElementProvider provider = element.getProvider();
 
-      Map<Integer, Boolean> references = element.getReferences();
-      createChildren(group, provider, references);
+      // TODO check if the createChildren call is still needed
+      // ElementProvider provider = element.getProvider();
+      // Map<Integer, Boolean> references = element.getReferences();
+      // createChildren(group, provider, references);
 
       ElementGroup containerGroup = getContainerElementGroup(element);
       addNode(group, containerGroup);
     }
   }
 
-  public void removeElement(Element element)
+  public void removeElement(Object container, Element element)
   {
-    ElementGroup containmentGroup = elementGroups.remove(element);
-    if (containmentGroup != null)
+    if (container == element.getContainer())
     {
-      containmentGroup.detach();
-      clearReferenceNodes(element);
+      ElementGroup containmentGroup = elementGroups.remove(element);
+      if (containmentGroup != null)
+      {
+        containmentGroup.detach();
+        clearReferenceNodes(element);
+      }
     }
   }
 

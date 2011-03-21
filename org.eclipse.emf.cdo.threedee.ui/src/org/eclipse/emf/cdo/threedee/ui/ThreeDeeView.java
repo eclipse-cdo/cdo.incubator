@@ -94,7 +94,7 @@ public class ThreeDeeView extends ViewPart
         Element rootElement = session.getRootElement();
         if (rootElement != null/* && !elementGroups.containsKey(rootElement) */)
         {
-          world.addElement(rootElement);
+          world.addElement(null, rootElement);
         }
       }
 
@@ -171,14 +171,14 @@ public class ThreeDeeView extends ViewPart
     @Override
     protected void onAdded(IContainer<Object> container, Object object)
     {
-      addElement(object);
+      addElement(container, object);
       world.layout();
     }
 
     @Override
     protected void onRemoved(IContainer<Object> container, Object object)
     {
-      removeElement(object);
+      removeElement(container, object);
       world.layout();
     }
 
@@ -195,22 +195,22 @@ public class ThreeDeeView extends ViewPart
       }
     }
 
-    private void addElement(Object object)
+    private void addElement(Object container, Object object)
     {
       if (object instanceof Element)
       {
         Element element = (Element)object;
-        world.addElement(element);
+        world.addElement(container, element);
         for (Element child : element.getElements())
         {
-          addElement(child);
+          addElement(element, child);
         }
       }
 
       EventUtil.addListener(object, this);
     }
 
-    private void removeElement(Object object)
+    private void removeElement(Object container, Object object)
     {
       EventUtil.removeListener(object, this);
       if (object instanceof Element)
@@ -218,12 +218,12 @@ public class ThreeDeeView extends ViewPart
         Element element = (Element)object;
         for (Element child : element.getElements())
         {
-          removeElement(child);
+          removeElement(element, child);
         }
 
         try
         {
-          world.removeElement(element);
+          world.removeElement(container, element);
         }
         catch (Exception ex)
         {
