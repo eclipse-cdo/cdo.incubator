@@ -405,7 +405,7 @@ public final class Element extends Container<Element>
             }
             else
             {
-              element.containerID = 0;
+              // element.containerID = 0;
               containerEvent.addDelta(element, IContainerDelta.Kind.REMOVED);
             }
           }
@@ -415,7 +415,7 @@ public final class Element extends Container<Element>
           references.remove(id);
           if (element != null && containment)
           {
-            element.containerID = 0;
+            // element.containerID = 0;
             if (containerEvent == null)
             {
               containerEvent = new ContainerEvent<Element>(this);
