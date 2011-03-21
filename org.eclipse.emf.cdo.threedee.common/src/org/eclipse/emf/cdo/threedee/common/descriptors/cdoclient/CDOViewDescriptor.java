@@ -10,6 +10,7 @@
  */
 package org.eclipse.emf.cdo.threedee.common.descriptors.cdoclient;
 
+import org.eclipse.emf.cdo.common.util.CDOCommonUtil;
 import org.eclipse.emf.cdo.threedee.common.Element;
 
 /**
@@ -28,6 +29,8 @@ public class CDOViewDescriptor extends CDOClientDescriptor
   protected void doInitElement(Object object, Element element)
   {
     org.eclipse.emf.internal.cdo.view.CDOViewImpl view = (org.eclipse.emf.internal.cdo.view.CDOViewImpl)object;
+    element.setAttribute("targetBranch", view.getBranch());
+    element.setAttribute("targetTime", CDOCommonUtil.formatTimeStamp(view.getTimeStamp()));
     element.addReferences(true, view.getObjects().values());
     element.addReference(false, view.getViewSet());
   }
