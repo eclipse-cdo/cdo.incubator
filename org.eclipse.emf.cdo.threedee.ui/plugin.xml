@@ -29,5 +29,31 @@
             name="Parameters">
       </view>
    </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            id="org.eclipse.emf.cdo.threedee.ui.actionSet"
+            label="Intro"
+            visible="true">
+         <menu
+               id="sampleMenu"
+               label="Sample &amp;Menu">
+            <separator
+                  name="sampleGroup">
+            </separator>
+         </menu>
+         <action
+               class="org.eclipse.emf.cdo.threedee.ui.actions.IntroAction"
+               icon="icons/world.gif"
+               id="org.eclipse.emf.cdo.threedee.ui.actions.IntroAction"
+               label="Intro"
+               menubarPath="sampleMenu/sampleGroup"
+               state="true"
+               style="push"
+               toolbarPath="sampleGroup"
+               tooltip="Intro">
+         </action>
+      </actionSet>
+   </extension>
 
 </plugin>

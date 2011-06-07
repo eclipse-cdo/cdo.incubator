@@ -98,7 +98,7 @@ public class ThreeDeeWorld implements ISelectionProvider, IColors
   @SuppressWarnings("unused")
   private static final ContextTracer TRACER = new ContextTracer(OM.DEBUG, ThreeDeeWorld.class);
 
-  private static boolean PRODUCTION = false;
+  private static boolean PRODUCTION = true;
 
   private Set<ElementDescriptor> disabledDescriptors = Collections.emptySet();
 

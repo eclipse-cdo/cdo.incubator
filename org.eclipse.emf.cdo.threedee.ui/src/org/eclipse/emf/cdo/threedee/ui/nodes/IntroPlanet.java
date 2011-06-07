@@ -56,12 +56,15 @@ import javax.vecmath.Vector3f;
 
 import java.awt.Font;
 import java.net.URL;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @author Eike Stepper
  */
 public class IntroPlanet extends BranchGroup implements IColors
 {
+  public static final CountDownLatch START_LATCH = new CountDownLatch(1);
+
   private static final float RADIUS = 5.0f;
 
   private static final double Y0 = 9.5;
@@ -129,8 +132,9 @@ public class IntroPlanet extends BranchGroup implements IColors
       {
         try
         {
-          System.out.println("Press enter to start intro...");
-          System.in.read();
+          START_LATCH.await();
+          // System.out.println("Press enter to start intro...");
+          // System.in.read();
         }
         catch (Exception ex)
         {
@@ -138,7 +142,6 @@ public class IntroPlanet extends BranchGroup implements IColors
         }
 
         IntroPlanet planet = new IntroPlanet(world);
-
         planet.start();
       }
     }.start();
@@ -149,9 +152,9 @@ public class IntroPlanet extends BranchGroup implements IColors
     new SoundPlayer("zarathustra.wav").start();
     new ChimeIn().start();
 
-    new TextAnimation(0, 34, 400, "Eike Stepper", 1).start();
-    new TextAnimation(0, 53, 500, "Martin Flügge", 1).start();
-    new TextAnimation(1, 12, 600, "EclipseCon 2011", 1).start();
+    new TextAnimation(0, 34, 400, "Wahlendorf", 1).start();
+    new TextAnimation(0, 53, 500, "Paranor AG", 1).start();
+    new TextAnimation(1, 12, 600, "Eike Stepper", 1).start();
     new TextAnimation(1, 34, 0, "CDO3D", 3)
     {
       @Override
