@@ -13,8 +13,8 @@ package org.eclipse.emf.cdo.dawn.web;
 import org.eclipse.emf.cdo.common.id.CDOID;
 import org.eclipse.emf.cdo.common.id.CDOIDUtil;
 import org.eclipse.emf.cdo.dawn.internal.web.OM;
-import org.eclipse.emf.cdo.dawn.util.DawnResourceHelper;
 import org.eclipse.emf.cdo.dawn.web.registry.DawnResourceRegistry;
+import org.eclipse.emf.cdo.dawn.web.util.DawnWebGMFUtil;
 import org.eclipse.emf.cdo.dawn.web.util.DawnWebUtil;
 import org.eclipse.emf.cdo.eresource.CDOResource;
 import org.eclipse.emf.cdo.transaction.CDOTransaction;
@@ -116,7 +116,7 @@ public class ChangeResourceServlet extends HttpServlet
     if (cdoView instanceof CDOTransaction)
     {
       View view = (View)CDOUtil.getEObject(cdoView.getObject(cdoId));
-      DawnResourceHelper.deleteViewInResource(resource, view);
+      DawnWebGMFUtil.deleteViewInResource(resource, view);
 
       try
       {
