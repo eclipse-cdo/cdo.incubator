@@ -1,0 +1,6 @@
+bin/
+state/
+*~
+~*.docx
+~*.pptx
+com.chronon.sb.browser.launcher.prefs
